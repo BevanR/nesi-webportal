@@ -9,6 +9,7 @@ Drupal modules developed specifically for use within the NeSI web portal.
 
 :::Contrib Modules (available on d.o) :::
 
+ ctools
  features
  countries
  profile2
@@ -22,6 +23,7 @@ Drupal modules developed specifically for use within the NeSI web portal.
  eva
  diff
  email_registration
+ date
 
 :::Setup Instructions:::
 
@@ -30,4 +32,23 @@ Drupal modules developed specifically for use within the NeSI web portal.
   3. Install contrib modules
   4. Config - follow as outlined below:
 
+:::Modules Outlined:::
+
+  nesi_rest
+	Base module to assist communication with neuss.
+
+  nesi_user
+	User registration module.
+
+  nesi_platform
+	Platform module used to manage platforms available for use by the HPC calculator.
+
+  nesi_hpc_calculator
+	HPC Calculator module, used to provide costing for use of NeSI HPC facilities.
+
+  nesi_proposal
+	Proposal module to facilitate applications for access to NeSI HPC facilities.
+
+  nesi_technical_review
+	Technical Review workflow to aid management of NeSI proposal submissions.
 
