@@ -1,0 +1,33 @@
+NeSI Web Portal
+---------------
+
+Drupal modules developed specifically for use within the NeSI web portal.
+
+:::Requirements:::
+
+ Drupal 7
+
+:::Contrib Modules (available on d.o) :::
+
+ features
+ countries
+ profile2
+ references
+ revisioning
+ rules
+ flag
+ views
+ nodereference_url
+ field_permissions
+ eva
+ diff
+ email_registration
+
+:::Setup Instructions:::
+
+  1. Recommended to install Drush (http://drush.ws/) to ease deployment. 
+  2. Install Drupal 7
+  3. Install contrib modules
+  4. Config - follow as outlined below:
+
+
