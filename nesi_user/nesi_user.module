@@ -1,0 +1,116 @@
+<?php
+/**
+ * @file
+ * NeSI User module.
+ * 
+ * The purpose of this module is to provide additional functionality for user registration 
+ * and user update events within the NeSI portal. This module communicates with the NeSI
+ * REST API to ensure user data is kept up to date within the NeSI account system.
+ *
+ * @todo Add terms of service
+ */
+
+include_once 'nesi_user.features.inc';
+
+/**
+ * Implements hook_form_profile2_form_alter()
+ */
+function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
+  //drupal_set_message(print_r($form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'], TRUE));  // print array to messages
+
+  $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];
+
+  // Provide New Zealand and Australia as a primary option in nationality field.
+  $new_option = new stdClass();
+  $new_option->option['Select Nationality'] = array('NZ' => 'New Zealand', 'AU' => 'Australia'); 
+
+  $cur_option = new stdClass();
+  $cur_option->option['All Countries'] = $queue; 
+
+  //array_unshift($queue, $new_option);
+  $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
+  $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
+  //dpm($form['profile_researcher_profile']['field_user_nationality']);
+  
+}
+
+/**
+ * Implements hook_user_insert()
+ */
+function nesi_user_user_insert(&$edit, $account, $category) {  
+  
+  // Before we do anything, check if REST is enabled in Drupal's admin interface
+  if (nesi_rest_interface_status() == TRUE) {
+
+    // Attempt to connect to REST and create account
+
+    // Check for error or http response
+
+    // If connection error to REST, flag for processing later
+    
+    // If http response failure, add to watchdog and notify admin
+
+  }
+}
+
+/**
+ * Implements hook_user_update()
+ */
+function nesi_user_user_update(&$edit, $account, $category) {
+
+  // Before we do anything, check if REST is enabled in Drupal's admin interface
+  if (nesi_rest_interface_status() == TRUE) {
+
+    // Attempt to connect to REST and update account
+
+    // Check for error or http response
+
+    // If connection error to REST, flag for processing later
+    
+    // If http response failure, add to watchdog and notify admin
+
+  }
+
+}
+
+/**
+ * Implements hook_user_view()
+ */
+function nesi_user_user_view($account, $view_mode, $langcode) {
+
+  // Before we do anything, check if REST is enabled in Drupal's admin interface
+  if (nesi_rest_interface_status() == TRUE) {
+
+    // Attempt to connect to REST and retrieve account information
+    // Display neuss data instead of Drupal data... (neuss is considered "up to date")
+
+    // Check for error or http response
+
+    // If connection error to REST, flag for processing later
+    
+    // If http response failure, notify admin
+
+  }
+} 
+
+/**
+ * Implements hook_user_delete()
+ */
+function nesi_user_user_delete($account) {
+  
+  // Before we do anything, check if REST is enabled in Drupal's admin interface
+  if (nesi_rest_interface_status() == TRUE) {
+
+  }
+}
+
+/**
+ * Implements hook_user_login()
+ */
+function nesi_user_user_login(&$edit, $account) {
+  
+  // NOT YET IMPLEMENTED 
+  // - Placeholder to bootstrap any required user login operations
+
+}
+
