@@ -1,0 +1,53 @@
+<?php
+/**
+ * @file
+ * Code for the NeSI Proposal feature.
+ */
+
+include_once 'nesi_proposal.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function nesi_proposal_menu() {
+  $items['add-proposal'] = array(
+    'title' => 'Add Proposal',
+    'page callback' => 'nesi_proposal_page',
+    'access callback' => TRUE,
+  );
+
+  $items['admin/config/nesi/proposal'] = array(
+    'title' => 'NeSI Proposal Configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_proposal_admin_settings'),
+    'access arguments' => array('administer'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'nesi_proposal.admin.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Menu callback.
+ */
+function nesi_proposal_page() {
+
+  $output = '';
+
+  $output .= '
+    <h1 class="title">Proposal Options</h1>
+    <p><em>Select the type of proposal you wish to complete:</em></p>
+    <div id="proposal-options">
+    <p><a href="node/add/proposal-research-class">Research</a></p>
+    <p><a href="node/add/proposal-development-class">Proposal Development</a></p>
+    <p><a href="node/add/proposal-teaching">Teaching</a></p>
+    <p><a href="node/add/proposal-private-industry">Private Industry</a></p>
+    <p><a href="node/add/proposal-collaborative">Collaborative</a></p>
+    </div>
+  ';  
+
+  return $output;
+
+}
+
