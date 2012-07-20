@@ -1,0 +1,63 @@
+<?php
+/**
+ * @file
+ * NeSI REST module.
+ * 
+ * The purpose of this module is to provide configuration options for connecting to the 
+ * NeSI Access Workflow REST interface. The config information will be used by other NeSI 
+ * Drupal modules such as nesi_user and nesi_proposal.
+ *
+ * @todo Provide REST interface connection status to admin.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function nesi_rest_menu() {
+
+  $items['admin/config/nesi/rest'] = array(
+    'title' => 'NeSI REST Interface Configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_rest_admin_settings'),
+    'access arguments' => array('administer'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'nesi_rest.admin.inc'
+  );
+
+  return $items;
+}
+
+/*
+ * Provides REST interface connection information for other NeSI modules
+ *
+ * @return
+ *   Returns REST interface base_url and port as a string. e.g. http://awapi:8080/
+ */
+function nesi_rest_connection_uri() {
+
+  $rest_server = variable_get( 'nesi_rest_base_url', 'http://gold.nesi.org.nz:8080/goldwrap/rest/goldwrap');
+  //$rest_port = variable_get( 'nesi_rest_base_port', '8080' );
+
+  //$connection_string = 'http://'.$rest_server.':'.$rest_port.'/';
+  $connection_string = $rest_server.'/';
+
+  return $connection_string;
+}
+
+/*
+ * Identifies whether the REST interface is currently enabled or disabled.
+ *
+ * @return
+ *   Returns TRUE if interface is enabled, FALSE if it is disabled
+ */
+function nesi_rest_interface_status() {
+  
+  $status = variable_get( 'nesi_rest_interface_status', '1' );
+  if ($status == 1) {
+    return TRUE;
+  }
+  
+  return FALSE;
+}
+
