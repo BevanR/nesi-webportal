@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the NeSI Technical Review feature.
+ */
+
+include_once 'nesi_technical_review.features.inc';
