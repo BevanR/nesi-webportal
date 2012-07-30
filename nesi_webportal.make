@@ -92,6 +92,10 @@ projects[email_registration][version] = "1.0"
 
 ; Custom modules
 ; --------------
+projects[nesi_webportal][type] = "module"
+projects[nesi_webportal][subdir] = "custom" 
+projects[nesi_webportal][download][type] = "git"
+projects[nesi_webportal][download][url] = "https://github.com/nesi/nesi-webportal.git" 
 ; projects[nesi_rest][type] = "module"
 ; projects[nesi_rest][subdir] = "custom" 
 ; projects[nesi_rest][download][type] = "git" 
