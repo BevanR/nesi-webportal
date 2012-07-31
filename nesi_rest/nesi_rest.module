@@ -3,8 +3,8 @@
  * @file
  * NeSI REST module.
  * 
- * The purpose of this module is to provide configuration options for connecting to the 
- * NeSI Access Workflow REST interface. The config information will be used by other NeSI 
+ * The purpose of this module is to provide configuration options and functions for connecting
+ * to the NeSI Access Workflow REST interface. The config information will be used by other NeSI 
  * Drupal modules such as nesi_user and nesi_proposal.
  *
  * @todo Provide REST interface connection status to admin.
@@ -38,15 +38,15 @@ function nesi_rest_connection_uri() {
 
   $rest_server = variable_get( 'nesi_rest_base_url', 'http://gold.nesi.org.nz:8080/goldwrap/rest/goldwrap');
   //$rest_port = variable_get( 'nesi_rest_base_port', '8080' );
-
   //$connection_string = 'http://'.$rest_server.':'.$rest_port.'/';
+
   $connection_string = $rest_server.'/';
 
   return $connection_string;
 }
 
 /*
- * Identifies whether the REST interface is currently enabled or disabled.
+ * Identifies whether the REST interface is currently enabled or disabled within Drupal.
  *
  * @return
  *   Returns TRUE if interface is enabled, FALSE if it is disabled
@@ -60,4 +60,443 @@ function nesi_rest_interface_status() {
   
   return FALSE;
 }
+
+/*
+ * Takes a goldwrap request and connects to the REST interface.
+ * $request_method -  supported options: GET (default) and POST. (DELETE to be implemented) 
+ * @return
+ *   Success returns array containing http_code as integer and json_data response
+ *   Failure returns FALSE (if request fails, api disabled or some other error to do with transport)
+ *   FALSE will result in error being sent to watchdog
+ */
+function nesi_rest_connection_process($request_uri, $request_method = 'GET', $json_data = NULL) {
+
+  // Before we do anything, check if REST is enabled in Drupal's admin interface
+  if (nesi_rest_interface_status() == TRUE) {
+
+    // Initialise
+    $ch = curl_init();
+
+    // default request method to GET unless specified otherwise
+    curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+
+    if ($request_method == 'POST') {
+      curl_setopt($ch, CURLOPT_POST, TRUE);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+    }
+
+    // set REST URL and other appropriate options
+    curl_setopt($ch, CURLOPT_URL, $request_uri);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
+    
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+    // Execute
+    $rest_response = curl_exec($ch);
+
+    // Check if any error occured
+    if(curl_errno($ch) > 0) {
+      // Set message in drupal watchdog
+      // watchdog()
+      // drupal_set_message()
+      //echo 'Curl error: ' . curl_error($ch);
+
+      return FALSE;
+    }
+    else {
+      
+      // No error reported, check REST api response
+      $result_status = curl_getinfo($ch);
+      
+      // Prepare response data array
+      $response_data = array();      
+      $response_data['http_code'] = $result_status['http_code'];
+      $response_data['json_data'] = $rest_response;
+
+      return $response_data;
+
+    }
+
+    // Finished - close handle
+    curl_close($ch);  
+
+  }
+  else {
+    // REST API is disabled - call currently supressed
+    return FALSE;
+  }
+
+}
+
+/* Takes the API response and identifies a successful or failed response based on http_code.
+ * Currently does not check the validity of the json response from the REST api.
+ * @params response_data array
+ * returns TRUE on 200-204 response code otherwise returns FALSE
+ */
+function nesi_rest_verify_response($response_data = array()) {
+  
+  // Check http_code - currently we only check for success codes
+  // Error codes will be logged/handled but hidden from the end user
+  if (($response_data['http_code'] >= 200) && ($response_data['http_code'] <= 204)) {
+    return TRUE;  
+  }
+  else {
+    return FALSE;
+  }
+
+  /*
+  These are taken from the W3 consortium HTTP/1.1: Status Code Definitions, found at
+  http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+  [Informational 1xx]
+  100="Continue"
+  101="Switching Protocols"
+
+  [Successful 2xx]
+  200="OK"
+  201="Created"
+  202="Accepted"
+  203="Non-Authoritative Information"
+  204="No Content"
+  205="Reset Content"
+  206="Partial Content"
+
+  [Redirection 3xx]
+  300="Multiple Choices"
+  301="Moved Permanently"
+  302="Found"
+  303="See Other"
+  304="Not Modified"
+  305="Use Proxy"
+  306="(Unused)"
+  307="Temporary Redirect"
+
+  [Client Error 4xx]
+  400="Bad Request"
+  401="Unauthorized"
+  402="Payment Required"
+  403="Forbidden"
+  404="Not Found"
+  405="Method Not Allowed"
+  406="Not Acceptable"
+  407="Proxy Authentication Required"
+  408="Request Timeout"
+  409="Conflict"
+  410="Gone"
+  411="Length Required"
+  412="Precondition Failed"
+  413="Request Entity Too Large"
+  414="Request-URI Too Long"
+  415="Unsupported Media Type"
+  416="Requested Range Not Satisfiable"
+  417="Expectation Failed"
+
+  [Server Error 5xx]
+  500="Internal Server Error"
+  501="Not Implemented"
+  502="Bad Gateway"
+  503="Service Unavailable"
+  504="Gateway Timeout"
+  505="HTTP Version Not Supported"
+
+  */
+}
+
+/* Returns json list of users or FALSE on failure
+ * REST URI /rest/goldwrap/users
+ * http method GET
+ */
+function nesi_rest_get_users() {
+
+  $rest_api_call = 'users';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
+
+  // Check response for failure
+  // Valid response is json list of users or empty list. 
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+ 
+}
+
+/* Returns json list of projects or FALSE on failure
+ * REST URI /rest/goldwrap/projects
+ * http method GET
+ */
+function nesi_rest_get_projects() {
+
+  $rest_api_call = 'projects';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
+
+  // Check response for failure
+  // Valid response is json list of projects or empty list. 
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+ 
+}
+
+/* Takes user object as array, converts to json and posts to rest server
+ * REST URI /rest/goldwrap/users/{username}
+ * http method POST
+ */
+function nesi_rest_insert_user($user_data = array()) {
+
+  $json_data = json_encode($user_data);
+
+  $rest_api_call = 'users';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+ 
+}
+
+/* Takes updated user object as array, converts to json and posts to rest server
+ * REST URI /rest/goldwrap/users/{username}
+ * http method POST
+ */
+function nesi_rest_update_user($user_data = array()) {
+
+  $json_data = json_encode($user_data);
+
+  $rest_api_call = 'users/'.$user_data['userId'];
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+
+}
+
+/* Takes updated project object as array, converts to json and posts to rest server
+ * REST URI /rest/goldwrap/projects/{username}
+ * http method POST
+ */
+function nesi_rest_update_project($project_data = array()) {
+
+  $json_data = json_encode($project_data);
+
+  $rest_api_call = 'projects/'.$project_data['projectName'];
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+
+}
+
+/* Queries and returns all projects where this user is the principal. 
+ * REST URI /rest/goldwrap/users/{username}/principal
+ * http method GET
+ */
+function nesi_rest_get_principal_projects($user_id) {
+
+  $rest_api_call = 'users/'.$user_id.'/principal';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+
+}
+
+/* Queries and returns all projects for this user. 
+ * REST URI /rest/goldwrap/users/{username}/projects
+ * http method GET
+ */
+function nesi_rest_get_user_projects($user_id) {
+
+  $rest_api_call = 'users/'.$user_id.'/projects';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+
+}
+
+/* Creates a project
+ * REST URI /rest/goldwrap/projects
+ * http method POST
+ */
+function nesi_rest_insert_project($project_data = array()) {
+
+  $json_data = json_encode($project_data);
+
+  $rest_api_call = 'projects';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+}
+
+/* Return project information
+ * REST URI /rest/goldwrap/projects/{projectName}
+ * http method GET
+ */
+function nesi_rest_get_project($project_name) {
+
+  $rest_api_call = 'projects/'.$project_name;
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+}
+
+/* Delete a project
+ * REST URI /rest/goldwrap/projects/{projectName} 
+ * http method DELETE
+ */
+function nesi_rest_delete_project($project_name) {
+
+  $rest_api_call = 'projects/'.$project_name;
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+}
+
+/* Add a user to a project
+ * REST URI /rest/goldwrap/projects/{projectName}/deposit
+ * http method POST
+ */
+function nesi_rest_project_add_user($project_name, $user_id) {
+
+  $json_data = json_encode($user_id);
+
+  $rest_api_call = 'projects/'.$project_name.'/add_user';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+
+}
+
+/* Add an allocation to a project
+ * REST URI /rest/goldwrap/projects/{projectName}/users
+ * http method POST
+ */
+function nesi_rest_get_project_users($project_name) {
+
+  $rest_api_call = 'projects/'.$project_name.'/users';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
+
+  // Check response for failure
+  // Valid response is  
+  if (nesi_rest_verify_response() == FALSE) {
+    return FALSE;
+  }
+  else {
+    return $rest_result['json_data'];
+  }
+
+}
+
+
 

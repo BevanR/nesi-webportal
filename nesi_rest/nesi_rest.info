@@ -2,6 +2,6 @@ name = NeSI REST
 description = Provides base configuration and connection information for the NeSI REST interface.
 core = 7.x
 package = NeSI
-version = 7.x-0.3
+version = 7.x-0.5
 project = nesi_rest
 configure = admin/config/nesi/rest
