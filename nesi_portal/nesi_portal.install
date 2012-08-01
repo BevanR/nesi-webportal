@@ -25,8 +25,8 @@ function nesi_portal_install() {
    );
 
   /* Enable visitor account settings */
-  variable_set( 'user_register', '1' ), // 1 = allow visitors to register without approval
+  variable_set( 'user_register', '1' ); // 1 = allow visitors to register without approval
 
   /* Turn off email verification */
-
+  variable_set( 'user_email_registration', '0' );  
 }
