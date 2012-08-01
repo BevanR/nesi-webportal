@@ -1,0 +1,8 @@
+name = NeSI Portal
+description = Provides some general config options and permission settings for the NeSI portal.
+core = 7.x
+package = NeSI
+version = 7.x-0.1
+project = nesi_portal
+configure = admin/config/nesi/portal
+dependencies[] = nesi_user

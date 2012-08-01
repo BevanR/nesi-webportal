@@ -1,0 +1,11 @@
+<?php
+/**
+ * @file
+ * NeSI Portal module.
+ * 
+ * The purpose of this module is to temporarily provide configuration and settings for the NeSI portal.
+ * The module may be removed as the build process is further developed. 
+ *
+ */
+
+
