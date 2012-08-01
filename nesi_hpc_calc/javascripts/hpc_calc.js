@@ -1,3 +1,9 @@
+/**
+ * JavaScript code to be used in this module.
+ * - Display the jquery-ui tabs
+ * - Do the calculations and print results, based on input in the various form fields
+ */
+
 jQuery(document).ready(function() {
 	jQuery("#tabs").tabs();
 
@@ -28,6 +34,9 @@ jQuery(document).ready(function() {
 		jQuery('#edit-'+platform+'-nesi-contrib-value').html(nesi_contribution);
 	}
 	
+	// TODO: Check out closures to create event handlers for all platforms in a loop, instead of
+	//       defining the same event handlers for each platform
+
 	// Platform p6
 	jQuery("#edit-p6-job-size").keyup(function() {
 		do_calculation('p6');

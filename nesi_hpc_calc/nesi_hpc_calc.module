@@ -31,6 +31,8 @@ function nesi_hpc_calc_help($path, $arg) {
  * @param array $form Form to be rendered
  * @return string
  */
+// TODO: The rendering is perhaps a bit crude.
+// TODO: Add functionality to send calculation results as an e-mail
 function render_form($form, $platform) {
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/hpc_calc.css');
 	$output = drupal_render($form[$platform.'_job_size']) . 
@@ -71,8 +73,6 @@ function render_form($form, $platform) {
 		'<b>' . drupal_render($form[$platform.'_nesi_contrib_label']) . '</b>: $' .
 		drupal_render($form[$platform.'_nesi_contrib_value']) .
 		'</div>';
-		
-	;
 	return $output;
 }
 

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Tooltips for the Tabs
+ */
+
+// TODO: What tool do we use for HTML tooltips?
+// TODO: Fill in content for tooltips for p7, intel, bluegene
+
 $p6_tooltip = '<h3>NIWA P575/POWER6</h3>
 <table>
 <tr>
