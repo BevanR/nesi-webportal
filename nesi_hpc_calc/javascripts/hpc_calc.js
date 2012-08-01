@@ -1,3 +1,9 @@
+/**
+ * JavaScript code to be used in this module.
+ * - Display the jquery-ui tabs
+ * - Do the calculations and print results, based on input in the various form fields
+ */
+
 jQuery(document).ready(function() {
 	jQuery("#tabs").tabs();
 
@@ -23,11 +29,14 @@ jQuery(document).ready(function() {
 		nesi_contribution = hpc_cost - project_discount;
 		// display the calculated values
 		jQuery('#edit-'+platform+'-core-cpu-hours-value').html(cpu_core_hours);
-		jQuery('#edit-'+platform+'-hpc-cost-value').html(hpc_cost);
-		jQuery('#edit-'+platform+'-project-cost-value').html(project_discount);
-		jQuery('#edit-'+platform+'-nesi-contrib-value').html(nesi_contribution);
+		jQuery('#edit-'+platform+'-hpc-cost-value').html(hpc_cost.toFixed(2));
+		jQuery('#edit-'+platform+'-project-cost-value').html(project_discount.toFixed(2));
+		jQuery('#edit-'+platform+'-nesi-contrib-value').html(nesi_contribution.toFixed(2));
 	}
 	
+	// TODO: Check out closures to create event handlers for all platforms in a loop, instead of
+	//       defining the same event handlers for each platform (http://www.mennovanslooten.nl/blog/post/62/)
+
 	// Platform p6
 	jQuery("#edit-p6-job-size").keyup(function() {
 		do_calculation('p6');

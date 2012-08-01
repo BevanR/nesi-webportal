@@ -3,6 +3,9 @@
  * Methods to create forms in the body of the tabs
  */
 
+// TODO: Make the number of CPU cores per node and the cost per core hour configurable,
+//       perhaps on an admin page, instead of hard-coding it into the function calls
+
 function hpc_create_p6_form() {
 	return hpc_create_form('p6', '$0.20', '32');
 }
