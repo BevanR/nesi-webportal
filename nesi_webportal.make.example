@@ -89,6 +89,9 @@ projects[eva][version] = "1.x-dev"
 projects[email_registration][type] = "module"
 projects[email_registration][subdir] = "contrib"
 projects[email_registration][version] = "1.0"
+projects[zendesk][type] = "module"
+projects[zendesk][subdir] = "contrib"
+projects[zendesk][version] = "1.2"
 
 ; Custom modules
 ; --------------
