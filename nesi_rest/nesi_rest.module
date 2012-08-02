@@ -217,12 +217,14 @@ function nesi_rest_get_users() {
   $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
 
   // Check response for failure
-  // Valid response is json list of users or empty list. 
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  $response_check = nesi_rest_verify_response($rest_result);
+
+  // Valid response is  
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
  
 }
@@ -242,14 +244,15 @@ function nesi_rest_get_projects() {
   $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
 
   // Check response for failure
-  // Valid response is json list of projects or empty list. 
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  $response_check = nesi_rest_verify_response($rest_result);
+
+  // Valid response is  
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
-  }
- 
+    return FALSE;
+  } 
 }
 
 /* Takes user object as array, converts to json and posts to rest server
@@ -269,12 +272,14 @@ function nesi_rest_insert_user($user_data = array()) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
  
 }
@@ -296,14 +301,15 @@ function nesi_rest_update_user($user_data = array()) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
-
 }
 
 /* Takes updated project object as array, converts to json and posts to rest server
@@ -323,14 +329,15 @@ function nesi_rest_update_project($project_data = array()) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
-
 }
 
 /* Queries and returns all projects where this user is the principal. 
@@ -348,14 +355,15 @@ function nesi_rest_get_principal_projects($user_id) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
-
 }
 
 /* Queries and returns all projects for this user. 
@@ -373,14 +381,15 @@ function nesi_rest_get_user_projects($user_id) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
-
 }
 
 /* Creates a project
@@ -400,12 +409,14 @@ function nesi_rest_insert_project($project_data = array()) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
 }
 
@@ -424,12 +435,14 @@ function nesi_rest_get_project($project_name) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
 }
 
@@ -463,14 +476,15 @@ function nesi_rest_project_add_user($project_name, $user_id) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
-
 }
 
 /* Add an allocation to a project
@@ -488,15 +502,14 @@ function nesi_rest_get_project_users($project_name) {
   $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
 
   // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
   // Valid response is  
-  if (nesi_rest_verify_response() == FALSE) {
-    return FALSE;
+  if ($response_check) {
+    return $rest_result;
   }
   else {
-    return $rest_result['json_data'];
+    return FALSE;
   }
-
 }
-
-
 
