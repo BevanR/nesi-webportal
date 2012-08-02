@@ -10,7 +10,6 @@
  * @todo Provide REST interface connection status to admin.
  */
 
-
 /**
  * Implements hook_menu().
  */
@@ -227,6 +226,32 @@ function nesi_rest_get_users() {
     return FALSE;
   }
  
+}
+
+/* Return user information
+ * REST URI /rest/goldwrap/users/{userId}
+ * http method GET
+ */
+function nesi_rest_get_user($user_id) {
+
+  $rest_api_call = 'users/'.$user_id;
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
+
+  // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
+  // Valid response is  
+  if ($response_check) {
+    return $rest_result;
+  }
+  else {
+    return FALSE;
+  }
 }
 
 /* Returns json list of projects or FALSE on failure
