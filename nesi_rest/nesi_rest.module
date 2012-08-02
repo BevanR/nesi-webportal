@@ -36,7 +36,7 @@ function nesi_rest_menu() {
  */
 function nesi_rest_connection_uri() {
 
-  $rest_server = variable_get( 'nesi_rest_base_url', 'http://gold.nesi.org.nz:8080/goldwrap/rest/goldwrap');
+  $rest_server = variable_get( 'nesi_rest_base_url', 'http://gold.dev.nesi.org.nz:8080/goldwrap/rest/goldwrap');
   //$rest_port = variable_get( 'nesi_rest_base_port', '8080' );
   //$connection_string = 'http://'.$rest_server.':'.$rest_port.'/';
 
