@@ -28,5 +28,8 @@ function nesi_portal_install() {
   variable_set( 'user_register', '1' ); // 1 = allow visitors to register without approval
 
   /* Turn off email verification */
-  variable_set( 'user_email_verification', '0' );  
+  variable_set( 'user_email_verification', '0' ); 
+
+  /* Set frontpage to user module */
+  variable_set( 'site_frontpage', 'user'); 
 }
