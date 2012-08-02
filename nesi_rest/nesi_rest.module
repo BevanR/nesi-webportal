@@ -87,6 +87,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
     // set REST URL and other appropriate options
     curl_setopt($ch, CURLOPT_URL, $request_uri);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json')); 
     
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
