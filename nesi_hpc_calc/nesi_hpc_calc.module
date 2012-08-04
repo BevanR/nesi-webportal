@@ -88,22 +88,22 @@ function nesi_hpc_calc_page() {
 	// Create tabs
     $output = '<div id="tabs">
 	  <ul>
-		<li><a href="#tab01"><div style="text-align:center"><b>POWER6</b><br>
+		<li id="power6_tab"><a href="#tab01"><div style="text-align:center"><b>POWER6</b><br>
 		    <div style="font-size:11px">$0.20 per CPU core hour<br>32 CPU cores/node</div>
 		    <div style="text-align:right"><img id="p6_info" title="'.$p6_tooltip.'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
-		<li><a href="#tab02"><div style="text-align:center"><b>POWER7</b><br>
+		<li id="power7_tab"><a href="#tab02"><div style="text-align:center"><b>POWER7</b><br>
 		    <div style="font-size:11px">$0.20 per CPU core hour<br>32 CPU cores/node</div>
 		    <div style="text-align:right"><img id="p7_info" title="'.$p7_tooltip.'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
-		<li><a href="#tab03"><div style="text-align:center"><b>Intel Cluster</b><br>
+		<li id="intel_tab"><a href="#tab03"><div style="text-align:center"><b>Intel Cluster</b><br>
 		    <div style="font-size:11px">$0.20 per CPU core hour<br>12 CPU cores/node</div>
 		    <div style="text-align:right"><img id="intel_info" title="'.$intel_tooltip.'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
-		<li><a href="#tab04"><div style="text-align:center"><b>BlueGene/P</b><br>
+		<li id="bluegene_tab"><a href="#tab04"><div style="text-align:center"><b>BlueGene/P</b><br>
 		    <div style="font-size:11px">$0.05 per CPU core hour<br>256 CPU cores/partition</div>
 		    <div style="text-align:right"><img id="bluegene_info" title="'.$bluegene_tooltip.'" src="'.$info_img.'"/></div>
 		    </div></a>
