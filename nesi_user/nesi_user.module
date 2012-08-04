@@ -27,7 +27,6 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
   $cur_option = new stdClass();
   $cur_option->option['All Countries'] = $queue; 
 
-  //array_unshift($queue, $new_option);
   $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
   $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
   //dpm($form['profile_researcher_profile']['field_user_nationality']);
@@ -38,19 +37,51 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
  * Implements hook_user_insert()
  */
 function nesi_user_user_insert(&$edit, $account, $category) {  
-  
-  // Before we do anything, check if REST is enabled in Drupal's admin interface
-  if (nesi_rest_interface_status() == TRUE) {
 
-    // Attempt to connect to REST and create account
+  //dpm(' * Implements hook_user_insert()');
+  //dpm($account);
+  // Prepare user information for goldwrap
+  $user_data = array();
+  $user_data['userId'] = 'tuakiri-test-hash-'.$account->uid;
+  $user_data['email'] = $account->mail;
+  $user_data['firstName'] = $account->profile_researcher_profile['field_user_firstname'][LANGUAGE_NONE][0]['value'];
+  $user_data['middleName'] = $account->profile_researcher_profile['field_user_middlename'][LANGUAGE_NONE][0]['value'];
+  $user_data['lastName'] = $account->profile_researcher_profile['field_user_lastname'][LANGUAGE_NONE][0]['value'];
+  $user_data['institution'] = $account->profile_researcher_profile['field_user_institution'][LANGUAGE_NONE][0]['value'];
+  $user_data['department'] = $account->profile_researcher_profile['field_user_department'][LANGUAGE_NONE][0]['value'];
+  $user_data['position'] = $account->profile_researcher_profile['field_user_position'][LANGUAGE_NONE][0]['value'];
+  $user_data['phone'] = $account->profile_researcher_profile['field_user_phone'][LANGUAGE_NONE][0]['value'];
+  $user_data['address'] = $account->profile_researcher_profile['field_user_address'][LANGUAGE_NONE][0]['value'];
+  $user_data['altEmail'] = $account->profile_researcher_profile['field_user_altemail'][LANGUAGE_NONE][0]['value'];
+  $user_data['nationality'] = $account->profile_researcher_profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'];
+  //dpm($user_data);
 
-    // Check for error or http response
+  //$json_data = json_encode($user_data);
+  //dpm($json_data);  
 
-    // If connection error to REST, flag for processing later
-    
-    // If http response failure, add to watchdog and notify admin
+  // Attempt to connect to REST and create account
+  $rest_result = nesi_rest_insert_user($user_data);  
 
+  // Check for error or http response
+  if ($rest_result <> FALSE) {
+    //dpm('User was created successfully in GOLD.');
+    //dpm($rest_result);
   }
+  else {
+
+    // Need to handle this: 
+    // Decision has been made to prevent account registration if REST connection fails. (as of 02082012).
+    // Multiple options to resolve this.
+    // Initially, problem accounts will be created in Drupal for logging purposes but set to inactive.
+    // User email will be altered to ensure that user can re-register. 
+    // User will be notified and redirected to try re-register again later.
+    // Need to prepare config so NeSI can manage all end-user response text.
+    dpm('It appears that there may have been a problem creating the user in GOLD.');
+
+    // If http response failure, add to watchdog and notify admin
+  }
+    
+
 }
 
 /**
@@ -58,18 +89,25 @@ function nesi_user_user_insert(&$edit, $account, $category) {
  */
 function nesi_user_user_update(&$edit, $account, $category) {
 
-  // Before we do anything, check if REST is enabled in Drupal's admin interface
-  if (nesi_rest_interface_status() == TRUE) {
+/*
+  if ($account->uid > 1) {
+  
+  // Unfortunately entity_metadata_wrapper is problematic in certain instances. May revert back to array access methods.
+  $obj = entity_metadata_wrapper('user', $account);
+  
+  dpm($obj->getPropertyInfo());
 
-    // Attempt to connect to REST and update account
-
-    // Check for error or http response
-
-    // If connection error to REST, flag for processing later
-    
-    // If http response failure, add to watchdog and notify admin
+  $profile = entity_metadata_wrapper ('profile2', $obj->profile_researcher_profile->value()->pid );
+  $value = $profile->field_user_address->value();  
+  dpm ($profile->getPropertyInfo());
+  dpm($value);
 
   }
+*/
+
+  // Attempt to connect to REST and update account
+  // Check for error or http response
+  // If http response failure, add to watchdog and notify admin
 
 }
 
@@ -78,30 +116,92 @@ function nesi_user_user_update(&$edit, $account, $category) {
  */
 function nesi_user_user_view($account, $view_mode, $langcode) {
 
-  // Before we do anything, check if REST is enabled in Drupal's admin interface
-  if (nesi_rest_interface_status() == TRUE) {
+  //dpm(' * Implements hook_user_view() ');
+  //dpm($account);
+
+  // Exclude superadmin
+  if ($account->uid > 1) {
+
+    $obj = entity_metadata_wrapper('user', $account);
+    //dpm($obj->getPropertyInfo());
+
+    $profile = entity_metadata_wrapper ('profile2', $obj->profile_researcher_profile->value()->pid );
+    //dpm ($profile->getPropertyInfo());
+    //$test = $profile->field_user_firstname->value();
+
+    /* Alternate data access method using field_get_items() will have to be used in some cases. */  
+    //$profile_data = profile2_load_by_user($account->uid);
+    //dpm($profile_data);
+    //$test_get_profile = field_get_items('profile2', $profile_data['researcher_profile'], 'field_user_nationality');
+    //dpm($test_get_profile);
+
+    // Update view using nesi_rest
+    //$profile->field_user_address->set('TestN'); 
 
     // Attempt to connect to REST and retrieve account information
-    // Display neuss data instead of Drupal data... (neuss is considered "up to date")
+    $rest_user_id = 'tuakiri-test-hash-'.$account->uid;
+    
+    $rest_result = nesi_rest_get_user($rest_user_id);  
 
     // Check for error or http response
+    if ($rest_result <> FALSE) {
+      dpm('User was successfully retrieved from GOLD.');
+      //dpm($rest_result);
+      // Display nesi_rest data instead of Drupal data... (GOLD is considered "up to date")
+      
+      // Convert from json
+      $user_data = json_decode($rest_result['json_data']);
+      
+      if ($user_data) {
+        //dpm($user_data);
 
-    // If connection error to REST, flag for processing later
-    
-    // If http response failure, notify admin
+        $profile->field_user_firstname->set($user_data->firstName); 
+        $profile->field_user_middlename->set($user_data->middleName); 
+        $profile->field_user_lastname->set($user_data->lastName); 
+        $profile->field_user_institution->set($user_data->institution); 
+        $profile->field_user_department->set($user_data->department); 
+        $profile->field_user_phone->set($user_data->phone); 
+        $profile->field_user_position->set($user_data->position); 
+        $profile->field_user_address->set($user_data->address); 
+        $profile->field_user_altemail->set($user_data->altEmail); 
+       // $profile->field_user_nationality->set('TestN'); 
+      }
+      else {
+        // Problem with return json or conversion. Log and Notify.
+
+      }
+
+    }
+    else {
+
+      // Need to handle this: 
+      // Decision has been made to prevent access to account if REST connection fails. (as of 02082012).
+      dpm('It appears that there may have been a problem querying the user in GOLD.');
+
+      // If http response failure, add to watchdog and notify admin
+    }
 
   }
-} 
+
+}
+
+/**
+ * Implements hook_user_view_alter()
+ */
+function nesi_user_user_view_alter(&$build) {
+ 
+  //dpm($build);
+}
 
 /**
  * Implements hook_user_delete()
  */
 function nesi_user_user_delete($account) {
-  
-  // Before we do anything, check if REST is enabled in Drupal's admin interface
-  if (nesi_rest_interface_status() == TRUE) {
 
-  }
+  // DELETE disabled currently. 
+  // Questions:
+  // 1. Will portal be used to manage users (ie. remove them from GOLD?)
+  // 2. Should user be able to delete own account?  
 }
 
 /**

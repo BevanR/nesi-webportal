@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * NeSI Portal module - installation.
+ * 
+ * This file is executed on installation of the nesi_portal module.
+ *
+ */
+
+/**
+ * Implements hook_user_install()
+ */
+function nesi_portal_install() {
+
+  /* Current actions on install:
+   * Sets the permission of the authenticated user... this should be migrated to 
+   * drush make install profile post install 
+   */
+
+  user_role_change_permissions(2,
+    array(
+      'view own researcher_profile profile' => TRUE,
+      'edit own researcher_profile profile' => TRUE,
+     )
+   );
+
+  /* Enable visitor account settings */
+  variable_set( 'user_register', '1' ); // 1 = allow visitors to register without approval
+
+  /* Turn off email verification */
+  variable_set( 'user_email_verification', '0' ); 
+
+  /* Set frontpage to user module */
+  variable_set( 'site_frontpage', 'user'); 
+}
