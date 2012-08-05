@@ -5,9 +5,9 @@
  */
 
 // TODO: What tool do we use for HTML tooltips?
-// TODO: Fill in content for tooltips for p7, intel, bluegene
+// TODO: Fill in content for tooltips for power7, intel, bluegene
 
-$p6_tooltip = '<h3>NIWA P575/POWER6</h3>
+$power6_tooltip = '<h3>NIWA P575/POWER6</h3>
 <table>
 <tr>
   <td><b>Hardware</b></td>
@@ -22,7 +22,7 @@ DDR Infiniband interconnect between nodes</td>
 <b>Facility</b><br>
 FitzRoy High Performance Computing Facility, NIWA';
 
-$p7_tooltip = 'This is POWER7';
+$power7_tooltip = 'This is POWER7';
 
 $intel_tooltip = 'This is Intel Cluster';
 

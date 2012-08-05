@@ -6,12 +6,12 @@
 // TODO: Make the number of CPU cores per node and the cost per core hour configurable,
 //       perhaps on an admin page, instead of hard-coding it into the function calls
 
-function hpc_create_p6_form() {
-	return hpc_create_form('p6', '$0.20', '32');
+function hpc_create_power6_form() {
+	return hpc_create_form('power6', '$0.20', '32');
 }
 
-function hpc_create_p7_form() {
-	return hpc_create_form('p7', '$0.20', '32');
+function hpc_create_power7_form() {
+	return hpc_create_form('power7', '$0.20', '32');
 }
 
 function hpc_create_intel_form() {
@@ -52,10 +52,21 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 			'#type' => 'item',
 			'#markup' => 'Would you like to overide the CPU Cores per allocation?',
 	);
+	$form[$platform.'_usage'] = array(
+			'#type' => 'radios',
+			'#title' => t(''),
+			'#options' => array('shared' => t('Shared'), 'scaled' => t('Scaled')),
+			'#default_value' => 'shared',
+	);
 	$form[$platform.'_cpu_cores'] = array(
 			'#type' => 'textfield',
 			'#size' => $field_len,
+			'#default_value' => $num_cpu_cores_per_node,
 			'#maxlength' => $field_len,
+			'#states' => array(
+				'visible' => array(
+					':input[name="' . $platform . '_usage"]' => array('value' => 'scaled'),
+			)),
 	);
 	$form[$platform.'_cpu_cores_avail'] = array(
 			'#type' => 'textfield',
@@ -64,12 +75,10 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 			'#description' => t($cpu_cores_avail_description),
 			'#maxlength' => $field_len,
 			'#disabled' => TRUE,
-	);
-	$form[$platform.'_usage'] = array(
-			'#type' => 'radios',
-			'#title' => t(''),
-			'#options' => array(0 => t('Shared'), 1 => t('Exclusive')),
-			'#default_value' => 0,
+			'#states' => array(
+				'visible' => array(
+					':input[name="' . $platform . '_usage"]' => array('value' => 'scaled'),
+			)),
 	);
 	$form[$platform.'_tip_01'] = array(
 			'#type' => 'item',
@@ -99,10 +108,17 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 			'#type' => 'item',
 			'#markup' => '',
 	);
-	$form[$platform.'_core_cpu_hours_tip'] = array(
-			'#markup' => 'Job size x Wall clock hours',
-	);
+	if ($platform == "bluegene") {
+		$form[$platform.'_core_cpu_hours_tip'] = array(
+				'#markup' => 'N x ' . $num_cpu_cores_per_node . ' x Wall clock hours x Number job runs',
+		);
+	} else {
+		$form[$platform.'_core_cpu_hours_tip'] = array(
+				'#markup' => 'Job size x Wall clock hours x Number job runs',
+		);
+	}
 	$form[$platform.'_hpc_cost_label'] = array(
+			'#type' => 'item',
 			'#markup' => 'HPC Cost',
 	);
 	$form[$platform.'_hpc_cost_value'] = array(

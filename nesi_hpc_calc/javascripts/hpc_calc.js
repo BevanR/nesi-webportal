@@ -8,12 +8,20 @@ jQuery(document).ready(function() {
 	jQuery("#tabs").tabs();
 
 	// calculate the costs
-	// TODO: include overriding cpu core allocation into the calculation
 	function do_calculation(platform) {
 		var job_size = jQuery('#edit-'+platform+'-job-size').val();
 		var wallclock_hours = jQuery('#edit-'+platform+'-wall-clock-hours').val();
 		var number_job_runs = jQuery('#edit-'+platform+'-number-job-runs').val();
 		var price_per_core_hour = jQuery('#edit-'+platform+'-price-per-core-hour').html().replace('$','');
+		var cpu_cores_avail = jQuery('#edit-'+platform+'-cpu-cores-avail').val();
+		var cpu_cores_per_machine = -1;
+		
+		var mode = jQuery('input[name='+platform+'_usage]:checked').val();
+		if (mode == 'scaled') {
+			var cpu_cores_per_machine = jQuery('#edit-'+platform+'-cpu-cores').val();
+			cpu_cores_avail = cpu_cores_avail.replace('/','');
+		}
+		
 		if (job_size == '') {
 			job_size = 0;
 		}
@@ -23,50 +31,92 @@ jQuery(document).ready(function() {
 		if (number_job_runs == '') {
 			number_job_runs = 0;
 		}
+		if (cpu_cores_per_machine == '') {
+			cpu_cores_per_machine = 0;
+		}
+
+		// TODO: don't hard-code 'bluegene'
+		// TODO: don't hard-code 256		
+		if (platform == 'bluegene') {
+			cpu_cores_avail = 256;
+			// count in blocks of 256
+			if ((job_size % cpu_cores_avail) != 0) {
+				job_size = (Math.floor(job_size/cpu_cores_avail) + 1) * cpu_cores_avail;
+			}
+		}
 		cpu_core_hours = parseInt(job_size) * parseInt(wallclock_hours) * parseInt(number_job_runs);
-		hpc_cost = cpu_core_hours * parseFloat(price_per_core_hour);
+		if (mode == 'shared' || platform == 'bluegene') {
+			hpc_cost = cpu_core_hours * parseFloat(price_per_core_hour);
+		} else {
+			// Scaled
+			hpc_cost = (cpu_core_hours * parseFloat(price_per_core_hour)) / (cpu_cores_per_machine / cpu_cores_avail);
+		}
 		project_discount = (hpc_cost * 20) / 100;
 		nesi_contribution = hpc_cost - project_discount;
 		// display the calculated values
 		jQuery('#edit-'+platform+'-core-cpu-hours-value').html(cpu_core_hours);
-		jQuery('#edit-'+platform+'-hpc-cost-value').html(hpc_cost.toFixed(2));
-		jQuery('#edit-'+platform+'-project-cost-value').html(project_discount.toFixed(2));
-		jQuery('#edit-'+platform+'-nesi-contrib-value').html(nesi_contribution.toFixed(2));
+		jQuery('#edit-'+platform+'-hpc-cost-value').html(Math.round(hpc_cost));
+		jQuery('#edit-'+platform+'-project-cost-value').html(Math.round(project_discount));
+		jQuery('#edit-'+platform+'-nesi-contrib-value').html(Math.round(nesi_contribution));
 	}
 	
 	// TODO: Check out closures to create event handlers for all platforms in a loop, instead of
 	//       defining the same event handlers for each platform (http://www.mennovanslooten.nl/blog/post/62/)
 
-	// Platform p6
-	jQuery("#edit-p6-job-size").keyup(function() {
-		do_calculation('p6');
+	// Platform power6
+	jQuery("#edit-power6-job-size").keyup(function() {
+		do_calculation('power6');
 	}).keyup();
 
-	jQuery("#edit-p6-wall-clock-hours").keyup(function() {
-		do_calculation('p6');
+	jQuery("input[name='power6_usage']").change(function() {
+		do_calculation('power6');
+	});
+
+	jQuery("#edit-power6-cpu-cores").keyup(function() {
+		do_calculation('power6');
+	}).keyup();
+	
+	jQuery("#edit-power6-wall-clock-hours").keyup(function() {
+		do_calculation('power6');
 	}).keyup();
 
-	jQuery("#edit-p6-number-job-runs").keyup(function() {
-		do_calculation('p6');
+	jQuery("#edit-power6-number-job-runs").keyup(function() {
+		do_calculation('power6');
 	}).keyup();
 
 	
-	// Platform p7
-	jQuery("#edit-p7-job-size").keyup(function() {
-		do_calculation('p7');
+	// Platform power7
+	jQuery("#edit-power7-job-size").keyup(function() {
+		do_calculation('power7');
 	}).keyup();
 
-	jQuery("#edit-p7-wall-clock-hours").keyup(function() {
-		do_calculation('p7');
+	jQuery("input[name='power7_usage']").change(function() {
+		do_calculation('power7');
+	});
+
+	jQuery("#edit-power7-cpu-cores").keyup(function() {
+		do_calculation('power7');
 	}).keyup();
 
-	jQuery("#edit-p7-number-job-runs").keyup(function() {
-		do_calculation('p7');
+	jQuery("#edit-power7-wall-clock-hours").keyup(function() {
+		do_calculation('power7');
+	}).keyup();
+
+	jQuery("#edit-power7-number-job-runs").keyup(function() {
+		do_calculation('power7');
 	}).keyup();
 
 
 	// Platform Intel
 	jQuery("#edit-intel-job-size").keyup(function() {
+		do_calculation('intel');
+	}).keyup();
+
+	jQuery("input[name='intel_usage']").change(function() {
+		do_calculation('intel');
+	});
+
+	jQuery("#edit-intel-cpu-cores").keyup(function() {
 		do_calculation('intel');
 	}).keyup();
 
