@@ -48,7 +48,6 @@ jQuery(document).ready(function() {
 		if (mode == 'shared' || platform == 'bluegene') {
 			hpc_cost = cpu_core_hours * parseFloat(price_per_core_hour);
 		} else {
-			// Scaled
 			hpc_cost = (cpu_core_hours * parseFloat(price_per_core_hour)) / (cpu_cores_per_machine / cpu_cores_avail);
 		}
 		project_discount = (hpc_cost * 20) / 100;
