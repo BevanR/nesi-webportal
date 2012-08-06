@@ -87,7 +87,11 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
     // set REST URL and other appropriate options
     curl_setopt($ch, CURLOPT_URL, $request_uri);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json')); 
+
+    // We need to set Accept header for content to be returned to us in json 
+    if ($request_method == 'GET') {
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json')); 
+    }
     
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
@@ -96,10 +100,9 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
 
     // Check if any error occured
     if(curl_errno($ch) > 0) {
-      // Set message in drupal watchdog
-      // watchdog()
-      // drupal_set_message()
-      //echo 'Curl error: ' . curl_error($ch);
+      // Set error message in drupal watchdog
+      watchdog('nesi_rest', 'REST communication error: '.curl_error($ch), NULL , WATCHDOG_ERROR, $link = NULL);
+      //drupal_set_message('Curl error: ' . curl_error($ch));
 
       return FALSE;
     }
@@ -112,7 +115,8 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
       $response_data = array();      
       $response_data['http_code'] = $result_status['http_code'];
       $response_data['json_data'] = $rest_response;
-
+ 
+      watchdog('nesi_rest', 'REST response: HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_INFO, $link = NULL);
       return $response_data;
 
     }
@@ -123,6 +127,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
   }
   else {
     // REST API is disabled - call currently supressed
+    watchdog('nesi_rest', 'REST communication disabled.', NULL , WATCHDOG_NOTICE, $link = NULL);
     return FALSE;
   }
 
@@ -134,16 +139,20 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
  * returns TRUE on 200-204 response code otherwise returns FALSE
  */
 function nesi_rest_verify_response($response_data = array()) {
-  
-  // Check http_code - currently we only check for success codes
-  // Error codes will be logged/handled but hidden from the end user
-  if (($response_data['http_code'] >= 200) && ($response_data['http_code'] <= 204)) {
-    return TRUE;  
-  }
-  else {
-    return FALSE;
-  }
 
+  // Before we do anything, check if REST is enabled in Drupal's admin interface
+  if (nesi_rest_interface_status() == TRUE) {  
+    // Check http_code - currently we only check for success codes
+    // Error codes will be logged/handled but hidden from the end user
+    if (($response_data['http_code'] >= 200) && ($response_data['http_code'] <= 204)) {
+      watchdog('nesi_rest', 'REST response success - '.$response_data['http_code'], NULL , WATCHDOG_INFO, $link = NULL);
+      return TRUE;  
+    }
+    else {
+      watchdog('nesi_rest', 'REST response failure - '.$response_data['http_code'], NULL , WATCHDOG_ERROR, $link = NULL);
+      return FALSE;
+    }
+  }
   /*
   These are taken from the W3 consortium HTTP/1.1: Status Code Definitions, found at
   http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
