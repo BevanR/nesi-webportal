@@ -116,7 +116,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
       $response_data['http_code'] = $result_status['http_code'];
       $response_data['json_data'] = $rest_response;
  
-      watchdog('nesi_rest', 'REST response: HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_ERROR, $link = NULL);
+      watchdog('nesi_rest', 'REST response: HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_INFO, $link = NULL);
       return $response_data;
 
     }
@@ -127,7 +127,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
   }
   else {
     // REST API is disabled - call currently supressed
-    watchdog('nesi_rest', 'REST communication disabled.', NULL , WATCHDOG_ERROR, $link = NULL);
+    watchdog('nesi_rest', 'REST communication disabled.', NULL , WATCHDOG_NOTICE, $link = NULL);
     return FALSE;
   }
 
@@ -143,7 +143,7 @@ function nesi_rest_verify_response($response_data = array()) {
   // Check http_code - currently we only check for success codes
   // Error codes will be logged/handled but hidden from the end user
   if (($response_data['http_code'] >= 200) && ($response_data['http_code'] <= 204)) {
-    watchdog('nesi_rest', 'REST response success - '.$response_data['http_code'], NULL , WATCHDOG_ERROR, $link = NULL);
+    watchdog('nesi_rest', 'REST response success - '.$response_data['http_code'], NULL , WATCHDOG_INFO, $link = NULL);
     return TRUE;  
   }
   else {
