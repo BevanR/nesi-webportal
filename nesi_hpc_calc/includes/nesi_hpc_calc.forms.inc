@@ -44,8 +44,12 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#size' => 6,
 		'#maxlength' => 6,
 		'#description' => t('CPU core(s)'),
+		'#attributes' => array('class' => array('positive-integer')),
 	);
-	// efficiency: used for decision whether to display elements that allow for overriding the allocation
+	$form[$platform.'_job_size_error'] = array(
+		'#type' => 'item',
+		'#markup' => t(''),
+	);
 	$form[$platform.'_cpu_cores_avail'] = array(
 		'#type' => 'hidden',
 		'#value' => t($num_cpu_cores_per_node),
@@ -63,8 +67,8 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 	$form[$platform.'_cpu_cores'] = array(
 		'#type' => 'textfield',
 		'#size' => $field_len,
-		'#default_value' => $num_cpu_cores_per_node,
 		'#maxlength' => $field_len,
+		'#attributes' => array('class' => array('positive-integer')),
 		'#states' => array(
 			'visible' => array(
 				':input[name="' . $platform . '_usage"]' => array('value' => 'scaled'),
@@ -73,6 +77,14 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 	$form[$platform.'_cpu_cores_description'] = array(
 		'#type' => 'item',
 		'#markup' => t($cpu_cores_avail_description),
+		'#states' => array(
+			'visible' => array(
+				':input[name="' . $platform . '_usage"]' => array('value' => 'scaled'),
+		)),
+	);
+	$form[$platform.'_cpu_cores_error'] = array(
+		'#type' => 'item',
+		'#markup' => t(''),
 		'#states' => array(
 			'visible' => array(
 				':input[name="' . $platform . '_usage"]' => array('value' => 'scaled'),
@@ -90,6 +102,11 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#size' => 10,
 		'#maxlength' => 10,
 		'#description' => t('Hours'),
+		'#attributes' => array('class' => array('positive-integer')),
+	);
+	$form[$platform.'_wall_clock_hours_error'] = array(
+		'#type' => 'item',
+		'#markup' => t(''),
 	);
 	$form[$platform.'_number_job_runs'] = array(
 		'#type' => 'textfield',
@@ -97,6 +114,12 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#size' => 10,
 		'#maxlength' => 10,
 		'#description' => t('Runs'),
+		'#attributes' => array('class' => array('positive-integer')),
+	);
+	$form[$platform.'_number_job_runs_error'] = array(
+		'#type' => 'item',
+		'#markup' => t(''),
+		'#attributes' => array('class' => array('error')),
 	);
 	$form[$platform.'_core_cpu_hours_label'] = array(
 		'#type' => 'item',

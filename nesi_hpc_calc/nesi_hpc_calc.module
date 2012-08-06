@@ -36,7 +36,8 @@ function nesi_hpc_calc_help($path, $arg) {
 function render_form($form, $platform) {
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/hpc_calc.css');
 	$output = drupal_render($form[$platform.'_job_size']) . 
-    	'<hr>';
+		'<div class="myerror">' . drupal_render($form[$platform.'_job_size_error']) . '</div>' . 
+		'<hr>';
 	if ($platform != "bluegene") {
 		//$output .= 	'<div id="' . $platform. '_override_allocation" style="display: none;"><p/>' .
 		$output .= 	'<div id="' . $platform. '_override_allocation"><p/>' .
@@ -45,14 +46,17 @@ function render_form($form, $platform) {
 			'<div class="myinline">' .
 			drupal_render($form[$platform.'_cpu_cores']) .
 			drupal_render($form[$platform.'_cpu_cores_description']) .
+			'<div class="myerror">' . drupal_render($form[$platform.'_cpu_cores_error']) . '</div>' .
 			'</div>' .
     		drupal_render($form[$platform.'_tip_01']) .
 	    	'<hr></div>';
 	}
 	$output .= drupal_render($form[$platform.'_cpu_cores_avail']) .
 		drupal_render($form[$platform.'_wall_clock_hours']) .
-    	drupal_render($form[$platform.'_number_job_runs']) .
-	    '<hr>' .
+		'<div class="myerror">' . drupal_render($form[$platform.'_wall_clock_hours_error']) . '</div>' .
+		drupal_render($form[$platform.'_number_job_runs']) .
+		'<div class="myerror">' . drupal_render($form[$platform.'_number_job_runs_error']) . '</div>' .
+		'<hr>' .
 	    '<p/>' .
 		'<div class="myinline">' .
 	    '<b>' . drupal_render($form[$platform.'_core_cpu_hours_label']) . '</b>: ' .
