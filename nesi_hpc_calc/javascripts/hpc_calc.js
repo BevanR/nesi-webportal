@@ -82,6 +82,8 @@ jQuery(document).ready(function() {
 	
 	function verify_input(platform) {
 		
+		rc = true;
+		
 		var ids = new Array();
 		ids['job_size_id'] = '#edit-' + platform + '-job-size';
 		ids['wall_clock_hours_id'] = '#edit-' + platform + '-wall-clock-hours';
@@ -106,15 +108,13 @@ jQuery(document).ready(function() {
 		for (var key in ids) {
 			value = jQuery(ids[key]).val();
 			// hide all error elements for fields without any content
-			if (value == "") {
-				jQuery(error_ids[key]).hide();
-			} else {
+			if (value != "") {
 				// verify positive integer
 				if (isPositiveInteger(value)) {
 					jQuery(error_ids[key]).hide();
 				} else {
 					jQuery(error_ids[key]).html("Only positive numbers permitted<br>").show();
-					return false;
+					rc = false;
 				}	
 			}
 		}
@@ -133,9 +133,9 @@ jQuery(document).ready(function() {
 			if (mode == 'scaled') {
 				if (cpu_cores > job_size) {
 					jQuery(error_ids['cpu_cores_id']).html("Number of requested CPU cores greater than job size").show();
-					return false;
+					rc = false;
 				} else if (cpu_cores == -1) {
-					return false;
+					rc = false;
 				}
 			} else {
 				jQuery(error_ids['cpu_cores_id']).hide();			
@@ -144,21 +144,24 @@ jQuery(document).ready(function() {
 			if (mode == 'scaled') {
 				if (cpu_cores > cpus_avail) {
 					jQuery(error_ids['cpu_cores_id']).html("No values greater than " + cpus_avail + " permitted").show();
-					return false;
+					rc = false;
 				} else if (cpu_cores == -1) {
-					return false;
+					rc = false;
 				}
 			} else {
 				jQuery(error_ids['cpu_cores_id']).hide();			
 			}
 		}
-		return true;
+		return rc;
 	}
 	
     // changes in input fields
 	jQuery(".positive-integer").keyup(function() {
 		var id = jQuery(this).attr('id');
 		var platform = get_platform(id);
+		if (jQuery(this).val() == "") {
+			jQuery(id).hide();
+		}
 		do_calculation(platform, verify_input(platform));
 	}).keyup();
 	
