@@ -18,8 +18,6 @@ include_once 'nesi_user.features.inc';
 function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
   //drupal_set_message(print_r($form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'], TRUE));  // print array to messages
   //drupal_set_message(print_r($form['profile_researcher_profile'], TRUE));  // print array to messages
-  dpm($form['profile_researcher_profile']);  // print array to messages
-  //print_r($form);
 
   // User Registration form alter
   if ($form['#form_id'] == 'user_register_form') {
@@ -68,7 +66,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
           $form['profile_researcher_profile']['field_user_position'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->position;
           $form['profile_researcher_profile']['field_user_phone'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->phone;
           $form['profile_researcher_profile']['field_user_address'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->address;
-          $form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->altemail;
+          $form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->altEmail;
         }
         else {
           // Problem with return json or conversion. Log and Notify.
@@ -82,7 +80,6 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
 
         // If http response failure, add to watchdog and notify admin
       }
-
     } 
   }
 }
@@ -134,42 +131,57 @@ function nesi_user_user_insert(&$edit, $account, $category) {
     // Need to prepare config so NeSI can manage all end-user response text.
     dpm('It appears that there may have been a problem creating the user in GOLD.');
 
-
     // If http response failure, add to watchdog and notify admin
   }
-    
-
 }
 
 /**
  * Implements hook_user_update()
  */
 function nesi_user_user_update(&$edit, $account, $category) {
-
   dpm('* Implements hook_user_update()');
+  dpm($edit);
+  dpm($category);
 
-  
+  if ($category == 'researcher_profile') {
+    if ($account->uid > 1) {
+    
+      $user_data = array();
+      $user_data['userId'] = 'tuakiri-test-hash-'.$account->uid;
+      $user_data['email'] = $account->mail;
+      $user_data['firstName'] = $edit['profile_researcher_profile']['field_user_firstname'][LANGUAGE_NONE][0]['value'];
+      $user_data['middleName'] = $edit['profile_researcher_profile']['field_user_middlename'][LANGUAGE_NONE][0]['value'];
+      $user_data['lastName'] = $edit['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value'];
+      $user_data['institution'] = $edit['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value'];
+      $user_data['department'] = $edit['profile_researcher_profile']['field_user_department'][LANGUAGE_NONE][0]['value'];
+      $user_data['position'] = $edit['profile_researcher_profile']['field_user_position'][LANGUAGE_NONE][0]['value'];
+      $user_data['phone'] = $edit['profile_researcher_profile']['field_user_phone'][LANGUAGE_NONE][0]['value'];
+      $user_data['address'] = $edit['profile_researcher_profile']['field_user_address'][LANGUAGE_NONE][0]['value'];
+      $user_data['altEmail'] = $edit['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value'];
+      $user_data['nationality'] = $edit['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE][0]['iso2'];  
 
-/*
-  if ($account->uid > 1) {
-  
-  // Unfortunately entity_metadata_wrapper is problematic in certain instances. May revert back to array access methods.
-  $obj = entity_metadata_wrapper('user', $account);
-  
-  dpm($obj->getPropertyInfo());
+      dpm($user_data);
 
-  $profile = entity_metadata_wrapper ('profile2', $obj->profile_researcher_profile->value()->pid );
-  $value = $profile->field_user_address->value();  
-  dpm ($profile->getPropertyInfo());
-  dpm($value);
+      //$json_data = json_encode($user_data);
+      //dpm($json_data);  
 
+      // Attempt to connect to REST and create account
+      $rest_result = nesi_rest_update_user($user_data);  
+
+      // Check for error or http response
+      if ($rest_result <> FALSE) {
+        //dpm('User was updated successfully in GOLD.');
+        //dpm($rest_result);
+        watchdog('nesi_user', 'REST user updated - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+      }
+      else {
+        // If http response failure, add to watchdog and notify admin
+        watchdog('nesi_user', 'REST update user failure - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+
+        dpm('It appears that there may have been a problem updating the user in GOLD.');
+      }
+    }
   }
-*/
-
-  // Attempt to connect to REST and update account
-  // Check for error or http response
-  // If http response failure, add to watchdog and notify admin
-
 }
 
 /**
@@ -241,16 +253,14 @@ function nesi_user_user_view($account, $view_mode, $langcode) {
 
       // If http response failure, add to watchdog and notify admin
     }
-
   }
-
 }
 
 /**
  * Implements hook_user_view_alter()
  */
 function nesi_user_user_view_alter(&$build) {
- 
+  //dpm('* Implements hook_user_view_alter()');
   //dpm($build);
 }
 
