@@ -100,8 +100,8 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
 
     // Check if any error occured
     if(curl_errno($ch) > 0) {
-      // Set message in drupal watchdog
-      // watchdog()
+      // Set error message in drupal watchdog
+      watchdog('nesi_rest', 'REST communication error: '.curl_error($ch), NULL , WATCHDOG_ERROR, $link = NULL);
       //drupal_set_message('Curl error: ' . curl_error($ch));
 
       return FALSE;
@@ -115,7 +115,8 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
       $response_data = array();      
       $response_data['http_code'] = $result_status['http_code'];
       $response_data['json_data'] = $rest_response;
-
+ 
+      watchdog('nesi_rest', 'REST response: HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_ERROR, $link = NULL);
       return $response_data;
 
     }
@@ -126,6 +127,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
   }
   else {
     // REST API is disabled - call currently supressed
+    watchdog('nesi_rest', 'REST communication disabled.', NULL , WATCHDOG_ERROR, $link = NULL);
     return FALSE;
   }
 
@@ -141,9 +143,11 @@ function nesi_rest_verify_response($response_data = array()) {
   // Check http_code - currently we only check for success codes
   // Error codes will be logged/handled but hidden from the end user
   if (($response_data['http_code'] >= 200) && ($response_data['http_code'] <= 204)) {
+    watchdog('nesi_rest', 'REST response success - '.$response_data['http_code'], NULL , WATCHDOG_ERROR, $link = NULL);
     return TRUE;  
   }
   else {
+    watchdog('nesi_rest', 'REST response failure - '.$response_data['http_code'], NULL , WATCHDOG_ERROR, $link = NULL);
     return FALSE;
   }
 
