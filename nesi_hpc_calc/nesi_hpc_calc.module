@@ -38,17 +38,19 @@ function render_form($form, $platform) {
 	$output = drupal_render($form[$platform.'_job_size']) . 
     	'<hr>';
 	if ($platform != "bluegene") {
-		$output .= 	'<p/>' .
+		//$output .= 	'<div id="' . $platform. '_override_allocation" style="display: none;"><p/>' .
+		$output .= 	'<div id="' . $platform. '_override_allocation"><p/>' .
 			'<b>' . drupal_render($form[$platform.'_override_allocation']) . '</b>' .
 			drupal_render($form[$platform.'_usage']) .
 			'<div class="myinline">' .
 			drupal_render($form[$platform.'_cpu_cores']) .
-			drupal_render($form[$platform.'_cpu_cores_avail']) .
+			drupal_render($form[$platform.'_cpu_cores_description']) .
 			'</div>' .
     		drupal_render($form[$platform.'_tip_01']) .
-	    	'<hr>';
+	    	'<hr></div>';
 	}
-	$output .= drupal_render($form[$platform.'_wall_clock_hours']) .
+	$output .= drupal_render($form[$platform.'_cpu_cores_avail']) .
+		drupal_render($form[$platform.'_wall_clock_hours']) .
     	drupal_render($form[$platform.'_number_job_runs']) .
 	    '<hr>' .
 	    '<p/>' .

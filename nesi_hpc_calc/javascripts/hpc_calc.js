@@ -13,13 +13,12 @@ jQuery(document).ready(function() {
 		var wallclock_hours = jQuery('#edit-'+platform+'-wall-clock-hours').val();
 		var number_job_runs = jQuery('#edit-'+platform+'-number-job-runs').val();
 		var price_per_core_hour = jQuery('#edit-'+platform+'-price-per-core-hour').html().replace('$','');
-		var cpu_cores_avail = jQuery('#edit-'+platform+'-cpu-cores-avail').val();
+		var cpu_cores_avail = jQuery('input[name='+platform+'_cpu_cores_avail]').val();
 		var cpu_cores_per_machine = -1;
 		
 		var mode = jQuery('input[name='+platform+'_usage]:checked').val();
 		if (mode == 'scaled') {
 			var cpu_cores_per_machine = jQuery('#edit-'+platform+'-cpu-cores').val();
-			cpu_cores_avail = cpu_cores_avail.replace('/','');
 		}
 		
 		if (job_size == '') {
@@ -35,11 +34,17 @@ jQuery(document).ready(function() {
 			cpu_cores_per_machine = 0;
 		}
 
+		// show or hide shared/scaled box
+		if (platform != "bluegene" && 0==1) {
+			if ((job_size > 0) && ((job_size % cpu_cores_avail) != 0)) {
+				jQuery('#'+platform+'_override_allocation').show();
+			} else {
+			    jQuery('#'+platform+'_override_allocation').hide();			
+			}			
+		}
+		
 		// TODO: don't hard-code 'bluegene'
-		// TODO: don't hard-code 256		
 		if (platform == 'bluegene') {
-			cpu_cores_avail = 256;
-			// count in blocks of 256
 			if ((job_size % cpu_cores_avail) != 0) {
 				job_size = (Math.floor(job_size/cpu_cores_avail) + 1) * cpu_cores_avail;
 			}
