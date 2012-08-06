@@ -139,18 +139,20 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
  * returns TRUE on 200-204 response code otherwise returns FALSE
  */
 function nesi_rest_verify_response($response_data = array()) {
-  
-  // Check http_code - currently we only check for success codes
-  // Error codes will be logged/handled but hidden from the end user
-  if (($response_data['http_code'] >= 200) && ($response_data['http_code'] <= 204)) {
-    watchdog('nesi_rest', 'REST response success - '.$response_data['http_code'], NULL , WATCHDOG_INFO, $link = NULL);
-    return TRUE;  
-  }
-  else {
-    watchdog('nesi_rest', 'REST response failure - '.$response_data['http_code'], NULL , WATCHDOG_ERROR, $link = NULL);
-    return FALSE;
-  }
 
+  // Before we do anything, check if REST is enabled in Drupal's admin interface
+  if (nesi_rest_interface_status() == TRUE) {  
+    // Check http_code - currently we only check for success codes
+    // Error codes will be logged/handled but hidden from the end user
+    if (($response_data['http_code'] >= 200) && ($response_data['http_code'] <= 204)) {
+      watchdog('nesi_rest', 'REST response success - '.$response_data['http_code'], NULL , WATCHDOG_INFO, $link = NULL);
+      return TRUE;  
+    }
+    else {
+      watchdog('nesi_rest', 'REST response failure - '.$response_data['http_code'], NULL , WATCHDOG_ERROR, $link = NULL);
+      return FALSE;
+    }
+  }
   /*
   These are taken from the W3 consortium HTTP/1.1: Status Code Definitions, found at
   http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
