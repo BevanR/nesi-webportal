@@ -120,8 +120,10 @@ function nesi_user_user_insert(&$edit, $account, $category) {
   if ($rest_result <> FALSE) {
     //dpm('User was created successfully in GOLD.');
     //dpm($rest_result);
+    watchdog('nesi_user', 'REST user created - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
   }
   else {
+    watchdog('nesi_user', 'REST create user failure - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
 
     // Need to handle this: 
     // Decision has been made to prevent account registration if REST connection fails. (as of 02082012).
@@ -131,6 +133,7 @@ function nesi_user_user_insert(&$edit, $account, $category) {
     // User will be notified and redirected to try re-register again later.
     // Need to prepare config so NeSI can manage all end-user response text.
     dpm('It appears that there may have been a problem creating the user in GOLD.');
+
 
     // If http response failure, add to watchdog and notify admin
   }
@@ -142,6 +145,10 @@ function nesi_user_user_insert(&$edit, $account, $category) {
  * Implements hook_user_update()
  */
 function nesi_user_user_update(&$edit, $account, $category) {
+
+  dpm('* Implements hook_user_update()');
+
+  
 
 /*
   if ($account->uid > 1) {
