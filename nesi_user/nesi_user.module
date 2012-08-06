@@ -72,7 +72,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
         }
         else {
           // Problem with return json or conversion. Log and Notify.
-
+          watchdog('nesi_user', 'REST response issue - check json for compliance.', NULL , WATCHDOG_CRITICAL, $link = NULL);
         }
       }
       else {
@@ -222,7 +222,7 @@ function nesi_user_user_view($account, $view_mode, $langcode) {
       }
       else {
         // Problem with return json or conversion. Log and Notify.
-
+        watchdog('nesi_user', 'REST response issue - check json for compliance.', NULL , WATCHDOG_CRITICAL, $link = NULL);
       }
 
     }
