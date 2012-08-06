@@ -132,7 +132,7 @@ jQuery(document).ready(function() {
 			// verify cpu cores <= job size
 			if (mode == 'scaled') {
 				if (cpu_cores > job_size) {
-					jQuery(error_ids['cpu_cores_id']).html("Number of requested CPU cores > job size").show();
+					jQuery(error_ids['cpu_cores_id']).html("Number of requested CPU cores greater than job size").show();
 					return false;
 				} else if (cpu_cores == -1) {
 					return false;
@@ -143,7 +143,7 @@ jQuery(document).ready(function() {
 			// verify cpu cores <= cpus avail
 			if (mode == 'scaled') {
 				if (cpu_cores > cpus_avail) {
-					jQuery(error_ids['cpu_cores_id']).html("No values > " + cpus_avail + " permitted").show();
+					jQuery(error_ids['cpu_cores_id']).html("No values greater than " + cpus_avail + " permitted").show();
 					return false;
 				} else if (cpu_cores == -1) {
 					return false;
