@@ -1,17 +1,42 @@
 .form-item .description {
-  display:inline;
+	display: inline;
 }
 
-.myinline div {
-  display:inline;
+table.hpc_calc {
+	table-layout: fixed;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size: inherit;
+}
+
+td.hpc_calc {
+	background-color: white;
+	vertical-align: top;
+	padding: 0;
+	font-size: inherit;
+}
+
+.hpc_calc_tabheader_center {
+	text-align: center;
+}
+
+.hpc_calc_tabheader_smaller_font {
+	font-size: x-small;
+}
+
+.hpc_calc_tabheader_right {
+	text-align: right;
+}
+
+.hpc_calc_inline div {
+	display: inline;
 }
 
 .form-type-radios div {
-  display:inline;
+	display: inline;
 }
 
 .myerror div {
-  display:none;
-  color:red;
+	display: none;
+	color: red;
 }
-
