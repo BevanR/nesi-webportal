@@ -52,6 +52,16 @@ function nesi_proposal_page() {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &$form_state, $form_id) {
+  //dpm('* Implements hook_form_FORM_ID_alter()');
+  //dpm($form_state);
+
+  $form['#validate'][] = 'nesi_proposal_validate_proposal_development_class';
+}
+
+/**
  * Validation of REST submission prior to Drupal saving proposal development
  */
 function nesi_proposal_validate_proposal_development_class(&$form, &$form_state) {
