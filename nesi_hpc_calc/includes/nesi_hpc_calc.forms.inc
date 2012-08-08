@@ -101,7 +101,7 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#title' => t('Wall clock hours'),
 		'#size' => 10,
 		'#maxlength' => 10,
-		'#description' => t('Hours'),
+		'#description' => t('Hour(s)'),
 		'#attributes' => array('class' => array('positive-integer')),
 	);
 	$form[$platform.'_wall_clock_hours_error'] = array(
@@ -113,7 +113,7 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#title' => t('Number of job runs'),
 		'#size' => 10,
 		'#maxlength' => 10,
-		'#description' => t('Runs'),
+		'#description' => t('Run(s)'),
 		'#attributes' => array('class' => array('positive-integer')),
 	);
 	$form[$platform.'_number_job_runs_error'] = array(
