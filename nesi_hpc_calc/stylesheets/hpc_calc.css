@@ -9,3 +9,9 @@
 .form-type-radios div {
   display:inline;
 }
+
+.myerror div {
+  display:none;
+  color:red;
+}
+
