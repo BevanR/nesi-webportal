@@ -51,3 +51,22 @@ function nesi_proposal_page() {
 
 }
 
+function _get_proposal_team_members($multi_form_field = array()) {
+
+  $member_data = array();
+  // Returns emails of team members in a simplified array.
+  if ($multi_form_field) {
+    foreach ($multi_form_field[LANGUAGE_NONE] as $team_member => $title) {
+      // Add to collection
+      if (is_array($title)) {
+        // verify field is not empty
+        if (trim($title['value']) <> '') {
+          $member_data[]['userId'] = trim($title['value']);
+        }
+      }
+    }
+  }
+  //dpm($member_data);
+  return $member_data;
+}
+
