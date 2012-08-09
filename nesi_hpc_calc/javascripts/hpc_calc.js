@@ -75,9 +75,9 @@ jQuery(document).ready(function() {
 		}
 		// display the calculated values
 		jQuery('#edit-'+platform+'-core-cpu-hours-value').html(cpu_core_hours);
-		jQuery('#edit-'+platform+'-hpc-cost-value').html(Math.round(hpc_cost));
-		jQuery('#edit-'+platform+'-project-cost-value').html(Math.round(project_discount));
-		jQuery('#edit-'+platform+'-nesi-contrib-value').html(Math.round(nesi_contribution));
+		jQuery('#edit-'+platform+'-hpc-cost-value').html(hpc_cost.toFixed(2));
+		jQuery('#edit-'+platform+'-project-cost-value').html(project_discount.toFixed(2));
+		jQuery('#edit-'+platform+'-nesi-contrib-value').html(nesi_contribution.toFixed(2));
 	}
 	
 	function verify_input(platform) {
