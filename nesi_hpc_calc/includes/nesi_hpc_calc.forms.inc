@@ -61,7 +61,7 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 	$form[$platform.'_usage'] = array(
 		'#type' => 'radios',
 		'#title' => t(''),
-		'#options' => array('shared' => t('Shared'), 'scaled' => t('Scaled')),
+		'#options' => array('shared' => t('Shared'), 'exclusive' => t('Exclusive')),
 		'#default_value' => 'shared',
 	);
 	$form[$platform.'_cpu_cores'] = array(
@@ -71,7 +71,7 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#attributes' => array('class' => array('positive-integer')),
 		'#states' => array(
 			'visible' => array(
-				':input[name="' . $platform . '_usage"]' => array('value' => 'scaled'),
+				':input[name="' . $platform . '_usage"]' => array('value' => 'exclusive'),
 		)),
 	);
 	$form[$platform.'_cpu_cores_description'] = array(
@@ -79,7 +79,7 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#markup' => t($cpu_cores_avail_description),
 		'#states' => array(
 			'visible' => array(
-				':input[name="' . $platform . '_usage"]' => array('value' => 'scaled'),
+				':input[name="' . $platform . '_usage"]' => array('value' => 'exclusive'),
 		)),
 	);
 	$form[$platform.'_cpu_cores_error'] = array(
@@ -87,7 +87,7 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#markup' => t(''),
 		'#states' => array(
 			'visible' => array(
-				':input[name="' . $platform . '_usage"]' => array('value' => 'scaled'),
+				':input[name="' . $platform . '_usage"]' => array('value' => 'exclusive'),
 		)),
 	);
 	$form[$platform.'_tip_01'] = array(

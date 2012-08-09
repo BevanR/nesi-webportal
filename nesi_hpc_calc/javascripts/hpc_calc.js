@@ -41,7 +41,7 @@ jQuery(document).ready(function() {
 			var cpu_cores_per_machine = -1;
 		
 			var mode = jQuery('input[name='+platform+'_usage]:checked').val();
-			if (mode == 'scaled') {
+			if (mode == 'exclusive') {
 				var cpu_cores_per_machine = jQuery('#edit-'+platform+'-cpu-cores').val();
 			}
 		
@@ -130,7 +130,7 @@ jQuery(document).ready(function() {
 			job_size = (job_size == '') ? -1 : parseInt(job_size);
 			cpus_avail = parseInt(cpus_avail);
 			// verify cpu cores <= job size
-			if (mode == 'scaled') {
+			if (mode == 'exclusive') {
 				if (cpu_cores > job_size) {
 					jQuery(error_ids['cpu_cores_id']).html("Number of requested CPU cores greater than job size").show();
 					rc = false;
@@ -141,7 +141,7 @@ jQuery(document).ready(function() {
 				jQuery(error_ids['cpu_cores_id']).hide();			
 			}
 			// verify cpu cores <= cpus avail
-			if (mode == 'scaled') {
+			if (mode == 'exclusive') {
 				if (cpu_cores > cpus_avail) {
 					jQuery(error_ids['cpu_cores_id']).html("No values greater than " + cpus_avail + " permitted").show();
 					rc = false;
@@ -167,7 +167,7 @@ jQuery(document).ready(function() {
 	
 	
 	
-	// Clicks on radio buttons Shared/Scaled
+	// Clicks on radio buttons Shared/Exclusive
 	jQuery("input[name='power6_usage']").change(function() {
 		do_calculation('power6', verify_input('power6'));
 	});
