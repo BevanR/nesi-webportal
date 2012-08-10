@@ -35,6 +35,7 @@ function nesi_hpc_calc_help($path, $arg) {
 // TODO: Add functionality to send calculation results as an e-mail
 function render_form($form, $platform) {
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/hpc_calc.css');
+	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/jquery.qtip.css');
 	$output = drupal_render($form[$platform.'_job_size']) . 
 		'<div class="myerror">' . drupal_render($form[$platform.'_job_size_error']) . '</div>' . 
 		'<hr>';
@@ -97,7 +98,8 @@ function nesi_hpc_calc_page() {
 	// Tabs are created using jquery-ui
 	drupal_add_library('system', 'ui.tabs');
 	drupal_add_js($module_path . '/javascripts/hpc_calc.js', 'file');
-    $info_img = $module_path . '/images/info_small.png';
+	drupal_add_js($module_path . '/javascripts/jquery.qtip-1.0.0-rc3.min.js');
+	$info_img = $module_path . '/images/info_small.png';
     include_once 'includes/tooltips.inc';    
 
 	// Create tabs
