@@ -16,6 +16,19 @@ td.hpc_calc {
 	font-size: inherit;
 }
 
+td.hpc_calc_right {
+	background-color: white;
+	vertical-align: top;
+	text-align: right;
+	padding: 0;
+	font-size: inherit;
+	font-weight: bold;
+}
+
+.hpc_calc_description {
+	font-size: x-small;
+}
+
 .hpc_calc_tabheader_center {
 	text-align: center;
 }

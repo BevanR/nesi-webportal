@@ -36,59 +36,85 @@ function nesi_hpc_calc_help($path, $arg) {
 function render_form($form, $platform) {
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/hpc_calc.css');
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/jquery.qtip.css');
-	$output = drupal_render($form[$platform.'_job_size']) . 
+	$output = '<table class="hpc_calc"><tr><td class="hpc_calc">' .
+		drupal_render($form[$platform.'_job_size_title']) .
+		'<div class="hpc_calc_inline">' .
+		drupal_render($form[$platform.'_job_size']) . 
+		'<span class="hpc_calc_description">' .
+		drupal_render($form[$platform.'_job_size_description']) . 
+		'</span>' .
+		'</div>' .
 		'<div class="myerror">' . drupal_render($form[$platform.'_job_size_error']) . '</div>' . 
+		'</td><td class="hpc_calc">' .
+		drupal_render($form[$platform.'_wall_clock_hours_title']) .
+		'<div class="hpc_calc_inline">' .
+		drupal_render($form[$platform.'_wall_clock_hours']) .
+		'<span class="hpc_calc_description">' .
+		drupal_render($form[$platform.'_wall_clock_hours_description']) .
+		'</span>' .
+		'</div>' . 
+		'<div class="myerror">' . drupal_render($form[$platform.'_wall_clock_hours_error']) . '</div>' .
+		'</td></tr></table>' .
 		'<hr>';
 	if ($platform != "bluegene") {
-		$output .= 	'<div id="' . $platform. '_override_allocation"><p/>' .
-			'<b>' . drupal_render($form[$platform.'_override_allocation']) . '</b>' .
-			'<table class="hpc_calc"><tr><td class="hpc_calc" width="40%">' .
+		$output .=
+			'<div id="' . $platform. '_usage">' .
+			drupal_render($form[$platform.'_usage_title']) .
 			drupal_render($form[$platform.'_usage']) .
 			'<div class="hpc_calc_inline">' .
-			drupal_render($form[$platform.'_cpu_cores']) .
-			drupal_render($form[$platform.'_cpu_cores_description']) .
-			'<div class="myerror">' . drupal_render($form[$platform.'_cpu_cores_error']) . '</div>' .
+			drupal_render($form[$platform.'_cpu_cores_per_node_title']) .
+			drupal_render($form[$platform.'_cpu_cores_per_node']) .
+			drupal_render($form[$platform.'_cpu_cores_per_node_description']) .
+			'<div class="myerror">' . drupal_render($form[$platform.'_cpu_cores_per_node_error']) . '</div>' .
 			'</div>' .
-    		'</td><td class="hpc_calc">' .
-    		drupal_render($form[$platform.'_tip_01']) .
-    		'</td></tr></table>' .
+    		drupal_render($form[$platform.'_usage_description']) .
     		'<hr></div>';
 	}
-	$output .= drupal_render($form[$platform.'_cpu_cores_avail']) .
-		'<table class="hpc_calc"><tr><td class="hpc_calc">' .
-		drupal_render($form[$platform.'_wall_clock_hours']) .
-		'<div class="myerror">' . drupal_render($form[$platform.'_wall_clock_hours_error']) . '</div>' .
-		'</td><td class="hpc_calc">' . 
+	
+	$output .= drupal_render($form[$platform.'_cpu_cores_avail']);
+	$output .= drupal_render($form[$platform.'_price_per_core_hour']);
+	
+	$output .=
+		drupal_render($form[$platform.'_number_job_runs_title']) .
 		drupal_render($form[$platform.'_number_job_runs']) .
 		'<div class="myerror">' . drupal_render($form[$platform.'_number_job_runs_error']) . '</div>' .
+		'<hr>';
+	
+	$output .=
+		'<table class="hpc_calc"><tr><td width="70%" class="hpc_calc">' .
+		drupal_render($form[$platform.'_cpu_core_hours_title']) . '<br>' .
+		'<span class="hpc_calc_description">' .
+		drupal_render($form[$platform.'_cpu_core_hours_description']) .
+		'</span>' .
+		'</td><td class="hpc_calc_right">' .
+		drupal_render($form[$platform.'_cpu_core_hours']) .
+		'</td></tr></table>';
+		
+	$output .= 
+		'<table class="hpc_calc"><tr><td width="70%" class="hpc_calc">' .
+		drupal_render($form[$platform.'_hpc_cost_title']) . '<br>' .
+		'<span class="hpc_calc_description">' .
+		drupal_render($form[$platform.'_hpc_cost_description']) .	
+		'</span>' .
+		'</td><td class="hpc_calc_right">' .
+		drupal_render($form[$platform.'_hpc_cost']) .
 		'</td></tr></table>' .
-		'<hr>' .
-		'<p/>' .
-		'<table class="hpc_calc"><tr><td class="hpc_calc" width="60%">' .
-		'<div class="hpc_calc_inline">' .
-		'<b>' . drupal_render($form[$platform.'_core_cpu_hours_label']) . '</b>: ' .
-		drupal_render($form[$platform.'_core_cpu_hours_value']) . '<br>' .
-		'(' .drupal_render($form[$platform.'_core_cpu_hours_tip']) . ')' .
-		'</div>' .
-		'<p/>' .
-		'</td><td class="hpc_calc">' . 
-		'<div class="hpc_calc_inline">' .
-		'<b>' . drupal_render($form[$platform.'_hpc_cost_label']) . '</b>: $' .
-		drupal_render($form[$platform.'_hpc_cost_value']) . '<br>' .
-		'(CPU core hours x ' . drupal_render($form[$platform.'_price_per_core_hour']) . ')' .
-		'</div>' .
-		'</td></tr></table>' .
-		'<hr>' .
-		'<p/>' .
-		'<div class="hpc_calc_inline">' .
-		'<b>' . drupal_render($form[$platform.'_project_cost_label']) . '</b>: $' .
-		drupal_render($form[$platform.'_project_cost_value']) .
-		'</div>' .
-		'<p/>' .
-		'<div class="hpc_calc_inline">' .
-		'<b>' . drupal_render($form[$platform.'_nesi_contrib_label']) . '</b>: $' .
-		drupal_render($form[$platform.'_nesi_contrib_value']) .
-		'</div>';
+		'<hr>';
+	
+	$output .=
+		'<table class="hpc_calc"><tr><td width="70%" class="hpc_calc">' .
+		drupal_render($form[$platform.'_project_cost_title']) .
+		'</td><td class="hpc_calc_right">' .
+		drupal_render($form[$platform.'_project_cost']) .
+		'</td></tr></table>';
+			
+	$output .=
+		'<table class="hpc_calc"><tr><td width="70%" class="hpc_calc">' .
+		drupal_render($form[$platform.'_nesi_contribution_title']) .
+		'</td><td class="hpc_calc_right">' .
+		drupal_render($form[$platform.'_nesi_contribution']) .
+		'</td></tr></table>';
+	
 	return $output;
 }
 
@@ -106,22 +132,22 @@ function nesi_hpc_calc_page() {
     $output = '<div id="tabs">
 	  <ul>
 		<li id="power6_tab"><a href="#tab01"><div class="hpc_calc_tabheader_center"><b>POWER6</b><br>
-		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour<br>32 CPU cores/node</div>
+		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
 		    <div class="hpc_calc_tabheader_right"><img id="power6_info" title="'.$power6_tooltip.'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="power7_tab"><a href="#tab02"><div class="hpc_calc_tabheader_center"><b>POWER7</b><br>
-		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour<br>32 CPU cores/node</div>
+		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
 		    <div class="hpc_calc_tabheader_right"><img id="power7_info" title="'.$power7_tooltip.'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="intel_tab"><a href="#tab03"><div class="hpc_calc_tabheader_center"><b>Intel Cluster</b><br>
-		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour<br>12 CPU cores/node</div>
+		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
 		    <div class="hpc_calc_tabheader_right"><img id="intel_info" title="'.$intel_tooltip.'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="bluegene_tab"><a href="#tab04"><div class="hpc_calc_tabheader_center"><b>BlueGene/P</b><br>
-		    <div class="hpc_calc_tabheader_smaller_font">$0.05 per CPU core hour<br>256 CPU cores/partition</div>
+		    <div class="hpc_calc_tabheader_smaller_font">$0.05 per CPU core hour</div>
 		    <div class="hpc_calc_tabheader_right"><img id="bluegene_info" title="'.$bluegene_tooltip.'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>

@@ -36,13 +36,13 @@ jQuery(document).ready(function() {
 			var job_size = jQuery('#edit-'+platform+'-job-size').val();
 			var wallclock_hours = jQuery('#edit-'+platform+'-wall-clock-hours').val();
 			var number_job_runs = jQuery('#edit-'+platform+'-number-job-runs').val();
-			var price_per_core_hour = jQuery('#edit-'+platform+'-price-per-core-hour').html().replace('$','');
+			var price_per_core_hour = jQuery('input[name='+platform+'_price_per_core_hour]').val();
 			var cpu_cores_avail = jQuery('input[name='+platform+'_cpu_cores_avail]').val();
 			var cpu_cores_per_machine = -1;
 		
 			var mode = jQuery('input[name='+platform+'_usage]:checked').val();
 			if (mode == 'exclusive') {
-				var cpu_cores_per_machine = jQuery('#edit-'+platform+'-cpu-cores').val();
+				var cpu_cores_per_node = jQuery('#edit-'+platform+'-cpu-cores-per-node').val();
 			}
 		
 			if (job_size == '') {
@@ -54,8 +54,8 @@ jQuery(document).ready(function() {
 			if (number_job_runs == '') {
 				number_job_runs = 0;
 			}
-			if (cpu_cores_per_machine == '') {
-				cpu_cores_per_machine = 0;
+			if (cpu_cores_per_node == '') {
+				cpu_cores_per_node = 0;
 			}
 
 			// TODO: don't hard-code 'bluegene'
@@ -68,16 +68,17 @@ jQuery(document).ready(function() {
 			if (mode == 'shared' || platform == 'bluegene') {
 				hpc_cost = cpu_core_hours * parseFloat(price_per_core_hour);
 			} else {
-				hpc_cost = (cpu_core_hours * parseFloat(price_per_core_hour)) / (cpu_cores_per_machine / cpu_cores_avail);
+				hpc_cost = (cpu_core_hours * parseFloat(price_per_core_hour)) / (cpu_cores_per_node / cpu_cores_avail);
 			}
 			project_discount = (hpc_cost * 20) / 100;
 			nesi_contribution = hpc_cost - project_discount;
 		}
+		
 		// display the calculated values
-		jQuery('#edit-'+platform+'-core-cpu-hours-value').html(cpu_core_hours);
-		jQuery('#edit-'+platform+'-hpc-cost-value').html(hpc_cost.toFixed(2));
-		jQuery('#edit-'+platform+'-project-cost-value').html(project_discount.toFixed(2));
-		jQuery('#edit-'+platform+'-nesi-contrib-value').html(nesi_contribution.toFixed(2));
+		jQuery('#edit-'+platform+'-cpu-core-hours').html(cpu_core_hours);
+		jQuery('#edit-'+platform+'-hpc-cost').html('$' + hpc_cost.toFixed(2));
+		jQuery('#edit-'+platform+'-project-cost').html('$' + project_discount.toFixed(2));
+		jQuery('#edit-'+platform+'-nesi-contribution').html('$' + nesi_contribution.toFixed(2));
 	}
 	
 	function verify_input(platform) {
@@ -89,7 +90,7 @@ jQuery(document).ready(function() {
 		ids['wall_clock_hours_id'] = '#edit-' + platform + '-wall-clock-hours';
 		ids['number_job_runs_id'] = '#edit-' + platform + '-number-job-runs';
 		if (platform != 'bluegene') {
-			ids['cpu_cores_id'] = '#edit-' + platform + '-cpu-cores';
+			ids['cpu_cores_per_node_id'] = '#edit-' + platform + '-cpu-cores-per-node';
 		}
 		
 		var error_ids = new Array();
@@ -97,10 +98,10 @@ jQuery(document).ready(function() {
 		error_ids['wall_clock_hours_id'] = '#edit-' + platform + '-wall-clock-hours-error';
 		error_ids['number_job_runs_id'] = '#edit-' + platform + '-number-job-runs-error';
 		if (platform != 'bluegene') {
-			error_ids['cpu_cores_id'] = '#edit-' + platform + '-cpu-cores-error';
+			error_ids['cpu_cores_per_node_id'] = '#edit-' + platform + '-cpu-cores-per-node-error';
 		}
 		
-		var cpu_avail_id = 'input[name=' + platform + '_cpu_cores_avail]';
+		var cpu_cores_avail_id = 'input[name=' + platform + '_cpu_cores_avail]';
 		var mode_id = 'input[name=\'' + platform + '_usage\']:checked';
 		var value = '';
 		
@@ -121,37 +122,38 @@ jQuery(document).ready(function() {
 		
 		if (platform != "bluegene") {
 			// specific checks
-			var cpu_cores = jQuery(ids['cpu_cores_id']).val();
+			var cpu_cores_per_node = jQuery(ids['cpu_cores_per_node_id']).val();
 			var job_size = jQuery(ids['job_size_id']).val();
-			var cpus_avail = jQuery(cpu_avail_id).val();
+			var cpu_cores_avail = jQuery(cpu_cores_avail_id).val();
 			var mode = jQuery(mode_id).val();
 
-			cpu_cores = (cpu_cores == '') ? -1 : parseInt(cpu_cores);
+			cpu_cores_per_node = (cpu_cores_per_node == '') ? -1 : parseInt(cpu_cores_per_node);
 			job_size = (job_size == '') ? -1 : parseInt(job_size);
-			cpus_avail = parseInt(cpus_avail);
+			cpu_cores_avail = parseInt(cpu_cores_avail);
 			// verify cpu cores <= job size
 			if (mode == 'exclusive') {
-				if (cpu_cores > job_size) {
-					jQuery(error_ids['cpu_cores_id']).html("Number of requested CPU cores greater than job size").show();
+				if (cpu_cores_per_node > job_size) {
+					jQuery(error_ids['cpu_cores_per_node_id']).html("Number of requested CPU cores greater than job size").show();
 					rc = false;
-				} else if (cpu_cores == -1) {
+				} else if (cpu_cores_per_node == -1) {
 					rc = false;
 				}
 			} else {
-				jQuery(error_ids['cpu_cores_id']).hide();			
+				jQuery(error_ids['cpu_cores_per_node_id']).hide();			
 			}
-			// verify cpu cores <= cpus avail
+			// verify cpu cores <= cpu cores avail
 			if (mode == 'exclusive') {
-				if (cpu_cores > cpus_avail) {
-					jQuery(error_ids['cpu_cores_id']).html("No values greater than " + cpus_avail + " permitted").show();
+				if (cpu_cores_per_node > cpu_cores_avail) {
+					jQuery(error_ids['cpu_cores_per_node_id']).html("No values greater than " + cpu_cores_avail + " permitted").show();
 					rc = false;
-				} else if (cpu_cores == -1) {
+				} else if (cpu_cores_per_node == -1) {
 					rc = false;
 				}
 			} else {
-				jQuery(error_ids['cpu_cores_id']).hide();			
+				jQuery(error_ids['cpu_cores_per_node_id']).hide();			
 			}
 		}
+
 		return rc;
 	}
 	
