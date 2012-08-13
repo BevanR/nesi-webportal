@@ -33,11 +33,15 @@ function nesi_hpc_calc_help($path, $arg) {
  */
 // TODO: The rendering is perhaps a bit crude.
 // TODO: Add functionality to send calculation results as an e-mail
-function render_form($form, $platform) {
+function render_form($form, $platform, $tooltips) {
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/hpc_calc.css');
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/jquery.qtip.css');
+	include_once 'includes/tooltips.inc';
+	
 	$output = '<table class="hpc_calc"><tr><td class="hpc_calc">' .
+		'<span id="job_size_info" title="' . $tooltips['job_size'] . '">' .
 		drupal_render($form[$platform.'_job_size_title']) .
+		'</span>' .
 		'<div class="hpc_calc_inline">' .
 		drupal_render($form[$platform.'_job_size']) . 
 		'<span class="hpc_calc_description">' .
@@ -46,7 +50,9 @@ function render_form($form, $platform) {
 		'</div>' .
 		'<div class="myerror">' . drupal_render($form[$platform.'_job_size_error']) . '</div>' . 
 		'</td><td class="hpc_calc">' .
+		'<span id="wall_clock_hours_info" title="' . $tooltips['wall_clock_hours'] . '">' .
 		drupal_render($form[$platform.'_wall_clock_hours_title']) .
+		'</span>' .
 		'<div class="hpc_calc_inline">' .
 		drupal_render($form[$platform.'_wall_clock_hours']) .
 		'<span class="hpc_calc_description">' .
@@ -75,7 +81,9 @@ function render_form($form, $platform) {
 	$output .= drupal_render($form[$platform.'_price_per_core_hour']);
 	
 	$output .=
+		'<span id="number_job_runs_info" title="' . $tooltips['number_job_runs'] . '">' .
 		drupal_render($form[$platform.'_number_job_runs_title']) .
+		'</span>' .
 		drupal_render($form[$platform.'_number_job_runs']) .
 		'<div class="myerror">' . drupal_render($form[$platform.'_number_job_runs_error']) . '</div>' .
 		'<hr>';
@@ -133,31 +141,31 @@ function nesi_hpc_calc_page() {
 	  <ul>
 		<li id="power6_tab"><a href="#tab01"><div class="hpc_calc_tabheader_center"><b>POWER6</b><br>
 		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="power6_info" title="'.$power6_tooltip.'" src="'.$info_img.'"/></div>
+		    <div class="hpc_calc_tabheader_right"><img id="power6_info" title="'.$tooltips['power6'].'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="power7_tab"><a href="#tab02"><div class="hpc_calc_tabheader_center"><b>POWER7</b><br>
 		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="power7_info" title="'.$power7_tooltip.'" src="'.$info_img.'"/></div>
+		    <div class="hpc_calc_tabheader_right"><img id="power7_info" title="'.$tooltips['power7'].'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="intel_tab"><a href="#tab03"><div class="hpc_calc_tabheader_center"><b>Intel Cluster</b><br>
 		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="intel_info" title="'.$intel_tooltip.'" src="'.$info_img.'"/></div>
+		    <div class="hpc_calc_tabheader_right"><img id="intel_info" title="'.$tooltips['intel'].'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="bluegene_tab"><a href="#tab04"><div class="hpc_calc_tabheader_center"><b>BlueGene/P</b><br>
 		    <div class="hpc_calc_tabheader_smaller_font">$0.05 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="bluegene_info" title="'.$bluegene_tooltip.'" src="'.$info_img.'"/></div>
+		    <div class="hpc_calc_tabheader_right"><img id="bluegene_info" title="'.$tooltips['bluegene'].'" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 	  </ul>';
     // Create content for the tabs
     $output .= 
-      	'<div id="tab01">' . render_form(drupal_get_form('hpc_create_power6_form'), 'power6') . '</div>' .
-		'<div id="tab02">' . render_form(drupal_get_form('hpc_create_power7_form'), 'power7') . '</div>' .
-		'<div id="tab03">' . render_form(drupal_get_form('hpc_create_intel_form'), 'intel') . '</div>' .
-		'<div id="tab04">' . render_form(drupal_get_form('hpc_create_bluegene_form'), 'bluegene') . '</div>' .
+      	'<div id="tab01">' . render_form(drupal_get_form('hpc_create_power6_form'), 'power6', $tooltips) . '</div>' .
+		'<div id="tab02">' . render_form(drupal_get_form('hpc_create_power7_form'), 'power7', $tooltips) . '</div>' .
+		'<div id="tab03">' . render_form(drupal_get_form('hpc_create_intel_form'), 'intel', $tooltips) . '</div>' .
+		'<div id="tab04">' . render_form(drupal_get_form('hpc_create_bluegene_form'), 'bluegene', $tooltips) . '</div>' .
 		'</div>';
 	return $output;
 }

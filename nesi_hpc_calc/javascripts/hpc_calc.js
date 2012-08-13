@@ -5,8 +5,21 @@
  */
 
 jQuery(document).ready(function() {
-	jQuery("#tabs").tabs();
 
+	// display the tabs
+	jQuery("#tabs").tabs();
+	bind_qtip();
+
+	function bind_qtip() {
+		jQuery('#power6_info').qtip({style:{width:'200px'},position:{corner:{target:'bottomRight',tooltip:'topLeft'}}});
+		jQuery('#power7_info').qtip({style:{width:'200px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
+		jQuery('#intel_info').qtip({style:{width:'200px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
+		jQuery('#bluegene_info').qtip({style:{width:'200px'},position:{corner:{target:'bottomLeft',tooltip:'topRight'}}});
+		jQuery('#job_size_info').qtip({style:{width:'100px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
+		jQuery('#wall_clock_hours_info').qtip({style:{width:'100px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
+		jQuery('#number_job_runs_info').qtip({style:{width:'100px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
+	}
+	
 	function isPositiveInteger(val) {
 		return (val|0) > 0 && val % 1 == 0;
 	}
