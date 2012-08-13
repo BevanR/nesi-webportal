@@ -67,22 +67,22 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 	
 	// wall clock hours
 	$form[$platform.'_wall_clock_hours'] = array(
-			'#type' => 'textfield',
-			'#size' => 10,
-			'#maxlength' => 10,
-			'#attributes' => array('class' => array('positive-integer')),
+		'#type' => 'textfield',
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#attributes' => array('class' => array('positive-integer')),
 	);
 	$form[$platform.'_wall_clock_hours_title'] = array(
-			'#type' => 'markup',
-			'#markup' => t('Wall clock hours for a typical job'),
+		'#type' => 'markup',
+		'#markup' => t('Wall clock hours for a typical job'),
 	);
 	$form[$platform.'_wall_clock_hours_description'] = array(
-			'#type' => 'markup',
-			'#markup' => t('Hour(s)'),
+		'#type' => 'markup',
+		'#markup' => t('Hour(s)'),
 	);
 	$form[$platform.'_wall_clock_hours_error'] = array(
-			'#type' => 'item',
-			'#markup' => t(''),
+		'#type' => 'item',
+		'#markup' => t(''),
 	);
 	
 	// cpu cores per node
@@ -144,22 +144,22 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 
 	// number job runs
 	$form[$platform.'_number_job_runs'] = array(
-			'#type' => 'textfield',
-			'#size' => 10,
-			'#maxlength' => 10,
-			'#attributes' => array('class' => array('positive-integer')),
+		'#type' => 'textfield',
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#attributes' => array('class' => array('positive-integer')),
 	);
 	$form[$platform.'_number_job_runs_title'] = array(
-			'#type' => 'markup',
-			'#markup' => t('Number of job runs required to complete my project'),
+		'#type' => 'markup',
+		'#markup' => t('Number of job runs required to complete my project'),
 	);
 	$form[$platform.'_number_job_runs_description'] = array(
-			'#type' => 'item',
-			'#markup' => t('Run(s)'),
+		'#type' => 'item',
+		'#markup' => t('Run(s)'),
 	);
 	$form[$platform.'_number_job_runs_error'] = array(
-			'#type' => 'item',
-			'#markup' => t(''),
+		'#type' => 'item',
+		'#markup' => t(''),
 	);
 	
 	// cpu core hours
