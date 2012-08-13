@@ -172,7 +172,7 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#markup' => 'CPU core hours',
 	);
 	if ($platform == "bluegene") {
-		$form[$platform.'cpu_core_hours_description'] = array(
+		$form[$platform.'_cpu_core_hours_description'] = array(
 			'#type' => 'markup',
 			'#markup' => '(N x ' . $num_cpu_cores_per_node . ' x Wall clock hours x Number job runs)',
 		);
