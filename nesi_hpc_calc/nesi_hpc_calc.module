@@ -3,7 +3,6 @@
  * @file
  * NeSI HPC Calculator module.
  *
- * @todo Add terms of service
  */
 
 include_once 'includes/nesi_hpc_calc.forms.inc';
