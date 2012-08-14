@@ -65,7 +65,14 @@ function render_form($form, $platform, $tooltips) {
 	if ($platform != "bluegene") {
 		$output .=
 			'<div id="' . $platform. '_usage">' .
+			'<table class="hpc_calc"><tr><td class="hpc_calc">' .
 			drupal_render($form[$platform.'_usage_title']) .
+			'</td><td class="hpc_calc_right">' .
+			'<div class="hpc_calc_inline">' .
+			drupal_render($form[$platform.'_job_efficiency_title']) .
+			drupal_render($form[$platform.'_job_efficiency']) .
+			'</div>' .
+			'</td></tr></table>' .
 			drupal_render($form[$platform.'_usage']) .
 			'<div class="hpc_calc_inline">' .
 			drupal_render($form[$platform.'_cpu_cores_per_node_title']) .
@@ -94,9 +101,9 @@ function render_form($form, $platform, $tooltips) {
 		'<span class="hpc_calc_description">' .
 		drupal_render($form[$platform.'_cpu_core_hours_description']) .
 		'</span>' .
-		'</td><td class="hpc_calc_right">' .
+		'</td><td class="hpc_calc_right"><b>' .
 		drupal_render($form[$platform.'_cpu_core_hours']) .
-		'</td></tr></table>';
+		'</b></td></tr></table>';
 		
 	$output .= 
 		'<table class="hpc_calc"><tr><td width="70%" class="hpc_calc">' .
@@ -104,24 +111,24 @@ function render_form($form, $platform, $tooltips) {
 		'<span class="hpc_calc_description">' .
 		drupal_render($form[$platform.'_hpc_cost_description']) .	
 		'</span>' .
-		'</td><td class="hpc_calc_right">' .
+		'</td><td class="hpc_calc_right"><b>' .
 		drupal_render($form[$platform.'_hpc_cost']) .
-		'</td></tr></table>' .
+		'</b></td></tr></table>' .
 		'<hr>';
 	
 	$output .=
 		'<table class="hpc_calc"><tr><td width="70%" class="hpc_calc">' .
 		drupal_render($form[$platform.'_project_cost_title']) .
-		'</td><td class="hpc_calc_right">' .
+		'</td><td class="hpc_calc_right"><b>' .
 		drupal_render($form[$platform.'_project_cost']) .
-		'</td></tr></table>';
+		'</b></td></tr></table>';
 			
 	$output .=
 		'<table class="hpc_calc"><tr><td width="70%" class="hpc_calc">' .
 		drupal_render($form[$platform.'_nesi_contribution_title']) .
-		'</td><td class="hpc_calc_right">' .
+		'</td><td class="hpc_calc_right"><b>' .
 		drupal_render($form[$platform.'_nesi_contribution']) .
-		'</td></tr></table>';
+		'</b></td></tr></table>';
 	
 	return $output;
 }

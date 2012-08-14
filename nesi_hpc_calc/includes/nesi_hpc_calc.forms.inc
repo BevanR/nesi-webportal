@@ -65,6 +65,25 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 		'#markup' => t(''),
 	);
 	
+	// job efficiency
+	$form[$platform.'_job_efficiency'] = array(
+			'#type' => 'item',
+			'#markup' => '0%',
+			'#states' => array(
+				'visible' => array(
+					':input[name="' . $platform . '_usage"]' => array('value' => 'exclusive'),
+			)),
+						
+	);
+	$form[$platform.'_job_efficiency_title'] = array(
+			'#type' => 'item',
+			'#markup' => t('Job Efficiency: '),
+			'#states' => array(
+				'visible' => array(
+					':input[name="' . $platform . '_usage"]' => array('value' => 'exclusive'),
+			)),
+	);
+	
 	// wall clock hours
 	$form[$platform.'_wall_clock_hours'] = array(
 		'#type' => 'textfield',

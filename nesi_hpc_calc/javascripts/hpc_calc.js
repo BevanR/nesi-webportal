@@ -44,6 +44,7 @@ jQuery(document).ready(function() {
 		var hpc_cost = 0;
 		var project_discount = 0;
 		var nesi_contribution = 0;
+		var job_efficiency = 0;
 		
 		if (valid_input) {
 			var job_size = jQuery('#edit-'+platform+'-job-size').val();
@@ -71,6 +72,11 @@ jQuery(document).ready(function() {
 				cpu_cores_per_node = 0;
 			}
 
+			if (mode == 'exclusive') {
+				var job_efficiency = jQuery('#edit-'+platform+'-job-efficiency').html().replace('%','');
+				job_efficiency = (parseFloat(cpu_cores_per_node) / parseInt(cpu_cores_avail)) * 100;
+			}
+
 			// TODO: don't hard-code 'bluegene'
 			if (platform == 'bluegene') {
 				if ((job_size % cpu_cores_avail) != 0) {
@@ -92,6 +98,7 @@ jQuery(document).ready(function() {
 		jQuery('#edit-'+platform+'-hpc-cost').html('$' + hpc_cost.toFixed(2));
 		jQuery('#edit-'+platform+'-project-cost').html('$' + project_discount.toFixed(2));
 		jQuery('#edit-'+platform+'-nesi-contribution').html('$' + nesi_contribution.toFixed(2));
+		jQuery('#edit-'+platform+'-job-efficiency').html(Math.round(job_efficiency) + '%');
 	}
 	
 	function verify_input(platform) {
