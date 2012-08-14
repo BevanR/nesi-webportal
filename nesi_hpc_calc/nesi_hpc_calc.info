@@ -5,4 +5,3 @@ package = NeSI
 php = 5.2.4
 version = 7.x-0.5
 project = nesi_hpc_calc
-
