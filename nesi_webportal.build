@@ -111,6 +111,9 @@ projects[nesi_webportal][download][url] = "https://github.com/nesi/nesi-webporta
 
 ; Themes
 ; --------
+projects[twitter_bootstrap][download][type] = "git"
+projects[twitter_bootstrap][download][revision] = "263a5c14a5ea5d822f01ea85c13e211b56389146"
+projects[twitter_bootstrap][type] = "theme"
   
 ; Libraries
 ; ---------
