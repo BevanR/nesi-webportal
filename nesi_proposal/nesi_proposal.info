@@ -5,6 +5,7 @@ package = NeSI
 php = 5.2.4
 version = 7.x-0.9
 project = nesi_proposal
+dependencies[] = nesi_rest
 dependencies[] = features
 dependencies[] = file
 dependencies[] = list
