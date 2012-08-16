@@ -16,7 +16,7 @@ function nesi_rest_admin_settings() {
   $form['nesi_rest']['nesi_rest_base_url'] = array(
     '#title' => t('NeSI REST interface base URL (include full url http://&lt;url&gt; - no trailing slash!)'),
     '#type' => 'textfield',
-    '#default_value' => variable_get( 'nesi_rest_base_url', 'http://gold.nesi.org.nz:8080/goldwrap/rest/goldwrap' ),
+    '#default_value' => variable_get( 'nesi_rest_base_url', 'http://gold.dev.nesi.org.nz:8080/goldwrap/rest/goldwrap' ),
     '#size' => 80,
     '#maxlength' => 255,
   );
