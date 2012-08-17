@@ -52,7 +52,7 @@ function nesi_rest_connection_uri() {
  */
 function nesi_rest_interface_status() {
   
-  $status = variable_get( 'nesi_rest_interface_status', '1' );
+  $status = variable_get( 'nesi_rest_interface_status', '0' );
   if ($status == 1) {
     return TRUE;
   }
