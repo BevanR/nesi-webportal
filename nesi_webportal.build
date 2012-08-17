@@ -92,6 +92,10 @@ projects[email_registration][version] = "1.0"
 projects[zendesk][type] = "module"
 projects[zendesk][subdir] = "contrib"
 projects[zendesk][version] = "1.2"
+projects[jquery_update][type] = "module"
+projects[jquery_update][download][type] = "git"
+projects[jquery_update][download][revision] = "5d2a4b2e07cd6332d9da84a967867e4c9f25b105"
+projects[jquery_update][subdir] = "contrib"
 
 ; Custom modules
 ; --------------
