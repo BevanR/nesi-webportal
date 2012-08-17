@@ -42,4 +42,7 @@ function nesi_portal_install() {
 
   /* Set frontpage to user module */
   variable_set( 'site_frontpage', 'user'); 
+
+  /* Set sitename */
+  variable_set( 'site_name', 'web.dev.nesi.org.nz'); 
 }
