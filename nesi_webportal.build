@@ -124,4 +124,7 @@ projects[twitter_bootstrap][type] = "theme"
 ; Libraries
 ; ---------
 ; No libraries were included
-
+projects[bootstrap][type] = "theme"
+projects[bootstrap][download][type] = "file"
+projects[bootstrap][subdir] = "twitter_bootstrap"
+projects[bootstrap][download][url] = "https://github.com/twitter/bootstrap/tarball/v2.1.0"
