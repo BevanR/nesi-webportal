@@ -3,9 +3,16 @@
 @import "nesi-mixins.less";
 
 
-
-
 // Nesi styles for main website
+.navbar-inner{
+	min-height: 70px;
+}
+.brand span{
+	.hide-text();
+	display: block;
+	background: url(../img/nesi-logo.png) no-repeat 0 0;
+	height: 70px;
+}
 
 #home-hero {
 	@height:460px;
@@ -28,7 +35,7 @@
 	.slide-content{
 		@top: @height/2;
 		top: @top;
-		margin-top: -@top/2;
+		margin-top: -@top/2.4;
 		width: 60%;
 		max-width: 660px;
 		margin-left:140px;

@@ -4668,7 +4668,7 @@ a.badge:hover {
 }
 .carousel-control {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 15px;
   width: 40px;
   height: 40px;
@@ -4756,6 +4756,19 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+.navbar-inner {
+  min-height: 70px;
+}
+.brand span {
+  font: a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  display: block;
+  background: url(../img/nesi-logo.png) no-repeat 0 0;
+  height: 70px;
+}
 #home-hero {
   margin-top: -20px;
 }
@@ -4785,7 +4798,7 @@ a.badge:hover {
 }
 #home-hero .slide-content {
   top: 230px;
-  margin-top: -115px;
+  margin-top: -95.83333333333334px;
   width: 60%;
   max-width: 660px;
   margin-left: 140px;
