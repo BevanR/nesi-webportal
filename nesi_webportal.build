@@ -117,17 +117,17 @@ projects[nesi_webportal][download][url] = "https://github.com/nesi/nesi-webporta
 
 ; Themes
 ; --------
-projects[twitter_bootstrap][download][type] = "git"
-; The following revision is the version we have branched from in our sandbox
+projects[nesi_bootstrap][download][type] = "file"
+; The following revision is the version we have branched from to create nesi_bootstrap in our sandbox
 ; projects[twitter_bootstrap][download][revision] = "263a5c14a5ea5d822f01ea85c13e211b56389146"
-projects[twitter_bootstrap][type] = "theme"
-; Setup git sandbox for modifications to twitter_bootstrap
-projects[twitter_bootstrap][download][url] = "http://drupalcode.org/sandbox/natted/1743380.git" 
+projects[nesi_bootstrap][type] = "theme"
+; Sandbox for nesi modifications to twitter_bootstrap
+projects[nesi_bootstrap][download][url] = "http://drupalcode.org/sandbox/natted/1743380.git/snapshot/719628cc361cbd89a832c76342c096957f08eb3b.tar.gz"
   
 ; Libraries
 ; ---------
 ; No libraries were included
-projects[bootstrap][type] = "theme"
-projects[bootstrap][download][type] = "file"
-projects[bootstrap][subdir] = "twitter_bootstrap"
-projects[bootstrap][download][url] = "https://github.com/twitter/bootstrap/tarball/v2.1.0"
+projects[bootstrap_2.1.0][type] = "theme"
+projects[bootstrap_2.1.0][download][type] = "file"
+projects[bootstrap_2.1.0][subdir] = "nesi_bootstrap"
+projects[bootstrap_2.1.0][download][url] = "https://github.com/twitter/bootstrap/tarball/v2.1.0"
