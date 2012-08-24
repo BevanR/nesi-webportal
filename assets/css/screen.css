@@ -4680,6 +4680,7 @@ a.badge:hover {
   text-align: center;
   background: #222222;
   border: 3px solid #ffffff;
+  z-index: 20;
   -webkit-border-radius: 23px;
   -moz-border-radius: 23px;
   border-radius: 23px;
@@ -4760,6 +4761,16 @@ a.badge:hover {
 }
 #home-hero .item {
   min-height: 460px;
+  *zoom: 1;
+}
+#home-hero .item:before,
+#home-hero .item:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+#home-hero .item:after {
+  clear: both;
 }
 .lt-ie8 #home-hero .item {
   height: 460px;
