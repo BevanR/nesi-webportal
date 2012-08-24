@@ -118,10 +118,11 @@ projects[nesi_webportal][download][url] = "https://github.com/nesi/nesi-webporta
 ; Themes
 ; --------
 projects[twitter_bootstrap][download][type] = "git"
-projects[twitter_bootstrap][download][revision] = "263a5c14a5ea5d822f01ea85c13e211b56389146"
+; The following revision is the version we have branched from in our sandbox
+; projects[twitter_bootstrap][download][revision] = "263a5c14a5ea5d822f01ea85c13e211b56389146"
 projects[twitter_bootstrap][type] = "theme"
 ; Setup git sandbox for modifications to twitter_bootstrap
-; http://drupalcode.org/sandbox/natted/1743380.git
+projects[twitter_bootstrap][download][url] = "http://drupalcode.org/sandbox/natted/1743380.git" 
   
 ; Libraries
 ; ---------
