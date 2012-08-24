@@ -10,3 +10,8 @@
 		color: @color;
 	}
 }
+.text-shadow(@x-axis: 0, @y-axis: 1px, @blur: 1px, @color: rgba(0, 0, 0, 0.3)) {
+  -webkit-text-shadow: @x-axis @y-axis @blur @color;
+  -moz-text-shadow: @x-axis @y-axis @blur @color;
+  text-shadow: @x-axis @y-axis @blur @color;
+}

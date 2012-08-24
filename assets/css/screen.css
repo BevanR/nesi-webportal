@@ -4802,8 +4802,12 @@ a.badge:hover {
   padding-left: .25em;
   padding-right: .25em;
 }
-.legal {
-  text-align: center;
+#home-hero .slide-link {
+  font-weight: 600;
+  font-size: 120%;
+  -webkit-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  -moz-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 #slide-research-application {
   background-color: #e1e1e1;
@@ -4850,4 +4854,7 @@ a.badge:hover {
 #slide-national-roadshow img {
   top: -24%;
   left: -20px;
+}
+.legal {
+  text-align: center;
 }
