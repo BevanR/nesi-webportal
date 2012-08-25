@@ -20,3 +20,40 @@ function nesi_portal_menu_alter(&$items) {
   //  $items['node/add']['title'] = 'Add Proposal/Content';
   //}
 }
+
+function nesi_portal_block_info() {    
+  $blocks['researcher_navigation'] = array(
+    // info: The name of the block.
+    'info' => t('Researcher Navigation'),
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+
+  );
+
+  return $blocks;
+}
+
+function nesi_portal_block_view($delta = '') {
+  global $base_url;
+  $block = array();
+
+  // The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'researcher_navigation':
+      // Create your block content here
+      $block['subject'] = t('Researcher menu');
+      $block['content'] = '<ul class="menu nav">
+          <li class="first leaf"><a title="Review your proposals" href="'.$base_url.'/researcher-my-proposals">My Proposals</a></li>
+          <li class="collapsed"><a href="'.$base_url.'/node/add">Add Proposal</a></li>
+          <li class="last leaf"><a href="'.$base_url.'/hpc-calc">HPC Calculator</a></li>
+          </ul>';
+
+      break;
+  }
+
+  return $block;
+}
+
+
