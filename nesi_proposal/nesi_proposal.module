@@ -60,6 +60,14 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
   //dpm($form_state);
 
   $form['#validate'][] = 'nesi_proposal_validate_proposal_development_class';
+ 
+  // Hide unused fields
+  unset($form['field_lead_reviewer']);
+  unset($form['field_peer_reviewer']);
+  unset($form['field_pdc_status']);
+  unset($form['field_pdc_outcome']);
+  unset($form['field_pdc_outcome_report']);
+  unset($form['field_pdc_status_record']);
 }
 
 /**
@@ -70,6 +78,56 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
   //dpm($form_state);
 
   $form['#validate'][] = 'nesi_proposal_validate_proposal_research_class';
+  unset($form['field_lead_reviewer']);
+  unset($form['field_peer_reviewer']);
+  unset($form['field_prc_status']);
+  unset($form['field_prc_outcome']);
+  unset($form['field_prc_outcome_report']);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function nesi_proposal_form_proposal_private_industry_node_form_alter(&$form, &$form_state, $form_id) {
+  //dpm('* Implements hook_form_FORM_ID_alter()');
+  //dpm($form_state);
+
+  //$form['#validate'][] = 'nesi_proposal_validate_proposal_private_industry';
+  unset($form['field_lead_reviewer']);
+  unset($form['field_peer_reviewer']);
+  unset($form['field_prc_status']);
+  unset($form['field_prc_outcome']);
+  unset($form['field_prc_outcome_report']);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function nesi_proposal_form_proposal_collaborative_node_form_alter(&$form, &$form_state, $form_id) {
+  //dpm('* Implements hook_form_FORM_ID_alter()');
+  //dpm($form_state);
+
+  //$form['#validate'][] = 'nesi_proposal_validate_proposal_collaborative';
+  unset($form['field_lead_reviewer']);
+  unset($form['field_peer_reviewer']);
+  unset($form['field_prc_status']);
+  unset($form['field_prc_outcome']);
+  unset($form['field_prc_outcome_report']);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function nesi_proposal_form_proposal_teaching_node_form_alter(&$form, &$form_state, $form_id) {
+  //dpm('* Implements hook_form_FORM_ID_alter()');
+  //dpm($form_state);
+
+  //$form['#validate'][] = 'nesi_proposal_validate_proposal_teaching';
+  unset($form['field_lead_reviewer']);
+  unset($form['field_peer_reviewer']);
+  unset($form['field_prc_status']);
+  unset($form['field_prc_outcome']);
+  unset($form['field_prc_outcome_report']);
 }
 
 /**
