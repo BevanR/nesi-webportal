@@ -122,7 +122,7 @@ projects[nesi_bootstrap][download][type] = "file"
 ; projects[twitter_bootstrap][download][revision] = "263a5c14a5ea5d822f01ea85c13e211b56389146"
 projects[nesi_bootstrap][type] = "theme"
 ; Sandbox for nesi modifications to twitter_bootstrap
-projects[nesi_bootstrap][download][url] = "http://drupalcode.org/sandbox/natted/1743380.git/snapshot/719628cc361cbd89a832c76342c096957f08eb3b.tar.gz"
+projects[nesi_bootstrap][download][url] = "http://drupalcode.org/sandbox/natted/1743380.git/snapshot/868bdc5555a08da48879e5e9a566ba14e4af080a.tar.gz"
   
 ; Libraries
 ; ---------
