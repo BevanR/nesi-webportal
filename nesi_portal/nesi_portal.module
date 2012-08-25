@@ -37,22 +37,24 @@ function nesi_portal_block_info() {
 
 function nesi_portal_block_view($delta = '') {
   global $base_url;
+  global $user;
   $block = array();
 
   // The $delta parameter tells us which block is being requested.
-  switch ($delta) {
-    case 'researcher_navigation':
-      // Create your block content here
-      $block['subject'] = t('Researcher menu');
-      $block['content'] = '<ul class="menu nav">
-          <li class="first leaf"><a title="Review your proposals" href="'.$base_url.'/researcher-my-proposals">My Proposals</a></li>
-          <li class="collapsed"><a href="'.$base_url.'/node/add">Add Proposal</a></li>
-          <li class="last leaf"><a href="'.$base_url.'/hpc-calc">HPC Calculator</a></li>
-          </ul>';
-
-      break;
-  }
-
+    switch ($delta) {
+      case 'researcher_navigation':
+        // Create your block content here
+        if ($user->uid <> 0) {
+        $block['subject'] = t('Researcher menu');
+        $block['content'] = '<ul class="menu nav">
+            <li class="first leaf"><a title="Review your proposals" href="'.$base_url.'/researcher-my-proposals">My Proposals</a></li>
+            <li class="collapsed"><a href="'.$base_url.'/node/add">Add Proposal</a></li>
+            <li class="last leaf"><a href="'.$base_url.'/hpc-calc">HPC Calculator</a></li>
+            </ul>';
+        }
+        break;
+    }
+  
   return $block;
 }
 
