@@ -8,4 +8,15 @@
  *
  */
 
+function nesi_portal_menu_alter(&$items) {
 
+  //global $user;
+  //dpm($user);
+
+  //if (in_array("researcher", $user->roles)) { 
+  $items['node/add']['title'] = 'Add Proposal';
+  //}
+  //if (in_array("administrator", $user->roles)) { 
+  //  $items['node/add']['title'] = 'Add Proposal/Content';
+  //}
+}

@@ -10,11 +10,12 @@ include_once 'nesi_proposal.features.inc';
  * Implements hook_menu().
  */
 function nesi_proposal_menu() {
+  /* 
   $items['add-proposal'] = array(
     'title' => 'Add Proposal',
     'page callback' => 'nesi_proposal_page',
     'access callback' => TRUE,
-  );
+  ); */
 
   $items['admin/config/nesi/proposal'] = array(
     'title' => 'NeSI Proposal Configuration',
