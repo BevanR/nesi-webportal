@@ -128,3 +128,5 @@ body.admin-menu .navbar-fixed-top {
 #block-system-navigation { display:none; }
 #block-system-navigation li.expanded ul { display:none; }
 #block-system-powered-by { display:none; }
+
+h2 { font-size:20px; }
