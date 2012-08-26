@@ -17,9 +17,9 @@ stylesheets[all][] = css/twitter_bootstrap.css
 
 scripts[] = bootstrap/js/bootstrap.js
 
-settings[toggle_name] = 0
-settings[toggle_search] = 1
 settings[toggle_logo] = 0
+settings[toggle_name] = 0
+settings[toggle_search] = 0
 
 ;Exclude
 ;javascript
