@@ -108,3 +108,5 @@ body.admin-menu .navbar-fixed-top {
 }
 
 #site-name-slogan .brand { line-height:1; }
+
+#block-search-form { display: none; }
