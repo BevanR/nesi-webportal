@@ -124,3 +124,5 @@ body.admin-menu .navbar-fixed-top {
 .btn-group.open .btn-success.dropdown-toggle {
   background-color: #0088CC;
 }
+
+#block-system-navigation li.expanded ul { display:none; }
