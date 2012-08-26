@@ -125,5 +125,6 @@ body.admin-menu .navbar-fixed-top {
   background-color: #0088CC;
 }
 
+#block-system-navigation { display:none; }
 #block-system-navigation li.expanded ul { display:none; }
 #block-system-powered-by { display:none; }
