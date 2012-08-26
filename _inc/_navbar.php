@@ -8,25 +8,39 @@
 		</a>
 		<a class="brand" href="#"><span>NeSI &ndash; New Zealand eScience Infrastructure</span></a>
 		<div class="nav-collapse collapse">
-		<nav>
+		<nav id="pnav">
 		<ul class="nav">
-			<li class="active"><a href="#">Access</a></li>
+			<li><a href="#">Access</a></li>
 			<li><a href="#">HPC Facilities</a></li>
 			<li><a href="#">Projects &amp; Case studies</a></li>
 			<li><a href="about.php">About Nesi</a></li>
 		</ul>
 		</nav>
-		<nav>
+		<nav id="global-nav">
 		<ul class="nav pull-right">
 			<li><a href="#">Support</a></li>
-			<li class="divider-vertical"></li>
 			<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
 			<ul class="dropdown-menu">
-				<li><a href="#">Action</a></li>
+				<li class="current-user">
+					<a href="/username" class="account-summary account-summary-small js-nav" data-nav="profile">
+					      <div class="content">
+					        <div class="account-group">
+					          <img class="avatar size32" src="https://twimg0-a.akamaihd.net/profile_images/2255495760/lookylooky_normal.jpg" alt="Daniel Eberhardt">
+					          <b class="fullname">Daniel Eberhardt</b>
+					          <small class="metadata">
+					              View my profile page
+					          </small>
+					        </div>
+					      </div>
+					    </a>
+				</li>
+				<li class="divider"></li>
+				<li><a href="#">Email</a></li>
 				<li><a href="#">Another action</a></li>
 				<li><a href="#">Something else here</a></li>
 				<li class="divider"></li>
+				<li><a href="#">Settings</a></li>
 				<li><a href="#">Sign out</a></li>
 			</ul>
 			</li>
