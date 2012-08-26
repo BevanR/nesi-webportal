@@ -109,7 +109,7 @@ body.admin-menu .navbar-fixed-top {
 
 #site-name-slogan .brand { line-height:1; }
 
-#block-search-form { display: none; }
+#block-search-form { display:none; }
 
 .btn-success {
   background-color: #0088CC;
@@ -126,3 +126,4 @@ body.admin-menu .navbar-fixed-top {
 }
 
 #block-system-navigation li.expanded ul { display:none; }
+#block-system-powered-by { display:none; }
