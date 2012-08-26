@@ -106,3 +106,5 @@ body.admin-menu .navbar-fixed-top {
   top: 21px;
   z-index: 499;
 }
+
+#site-name-slogan .brand { line-height:1; }
