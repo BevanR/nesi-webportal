@@ -471,8 +471,8 @@ a:hover {
 }
 @font-face {
   font-family: 'ModernPictogramsNormal';
-  src: url('../webfonts/modernpics-webfont.eot');
-  src: url('../webfonts/modernpics-webfont.eot?#iefix') format('embedded-opentype'), url('../webfonts/modernpics-webfont.woff') format('woff'), url('../webfonts/modernpics-webfont.ttf') format('truetype'), url('../webfonts/modernpics-webfont.svg#ModernPictogramsNormal') format('svg');
+  src: url('../webfonts/fontello.eot');
+  src: url('../webfonts/fontello.eot?#iefix') format('embedded-opentype'), url('../webfonts/fontello.woff') format('woff'), url('../webfonts/fontello.ttf') format('truetype'), url('../webfonts/fontello.svg#ModernPictogramsNormal') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -4775,6 +4775,7 @@ a.badge:hover {
   display: block;
   background: url(../img/nesi-logo.png) no-repeat 0 0;
   height: 70px;
+  width: 190px;
 }
 .account-summary .avatar {
   position: absolute;
@@ -4795,10 +4796,12 @@ a.badge:hover {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-#pnav a,
-#global-nav a {
-  padding-top: 35px;
-  padding-bottom: 35px;
+@media (min-width: 979px) {
+  #pnav a,
+  #global-nav a {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
 }
 #pnav .dropdown-menu,
 #global-nav .dropdown-menu {
@@ -4846,6 +4849,8 @@ a.badge:hover {
   box-shadow: none;
 }
 #home-hero {
+  border-bottom: 1px double #e1e1e1;
+  padding-bottom: 1px;
   margin-top: -20px;
 }
 #home-hero .item {
@@ -4951,14 +4956,18 @@ a.badge:hover {
   border-top: 5px solid #b3cf1a;
   margin-top: -65px;
   padding-top: 22px;
-  padding-left: 22px;
-  padding-right: 22px;
   -webkit-box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.09);
   -moz-box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.09);
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.09);
   -webkit-border-radius: 2px 2px 0 0;
   -moz-border-radius: 2px 2px 0 0;
   border-radius: 2px 2px 0 0;
+}
+@media (min-width: 1240px) {
+  .page-intro {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
 }
 .home-intro > h1 {
   display: none;
@@ -5006,13 +5015,102 @@ a.badge:hover {
 }
 .home-intro .page-summary {
   font-size: 16.8px;
-  width: 66.6666667%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   font-weight: 300;
   max-width: 620px;
   color: #555;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .home-intro .page-summary {
+    width: 86.666667%;
+  }
+}
+@media (min-width: 1200px) {
+  .home-intro .page-summary {
+    width: 66.666667%;
+  }
+}
+.news-overview section > h1,
+.events-overview section > h1 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.571428571;
+  color: #22809b;
+  text-transform: uppercase;
+}
+.news-overview a:hover,
+.events-overview a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid black;
+}
+.o-item .meta-date {
+  color: #b0b0b0;
+  font-size: 0.785714286em;
+  font-weight: 400;
+  line-height: 1.636;
+  text-transform: uppercase;
+}
+.o-item .summary {
+  padding-right: 10%;
+}
+@media (min-width: 979px) {
+  .o-item {
+    position: relative;
+    padding-left: 10.5%;
+  }
+}
+.o-title {
+  font-size: 16.8px;
+  font-weight: 600;
+  line-height: 1.222222222;
+  padding-right: 10%;
+  color: #050505;
+}
+.o-title a {
+  color: #050505;
+}
+.news-item .meta-date {
+  font-weight: 700;
+}
+.news-item .meta-date .yr {
+  font-weight: 300;
+}
+@media (min-width: 979px) {
+  .news-item .meta-date {
+    width: 8.547008547%;
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: right;
+  }
+  .news-item .yr {
+    display: block;
+  }
+}
+.event-item .o-title:before {
+  content: "";
+  font-family: ModernPictogramsNormal;
+  font-size: 22px;
+  font-weight: normal;
+  line-height: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #b0b0b0;
+}
+@media (min-width: 979px) {
+  .event-item {
+    padding-left: 30px;
+  }
+}
+.event-type-seminar .o-title:before {
+  content: "S";
+}
+.event-type-roadshow .o-title:before {
+  content: "D";
 }
 .legal {
   text-align: center;

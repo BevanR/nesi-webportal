@@ -27,49 +27,47 @@
 				</article>
 			</div>
 			</div>
-			<div class="fluid-row">
+			<div class="row-fluid">
 				<p class="page-summary">NeSI enables our scientists across a wide range of communities and disciplines to access and utilise vastly superior computing power, achieving this through better more efficient coordination and cooperation across the research sector.</p>
 			</div>
 		</section>
 	</div> <!-- /container -->
 
 	<div class="container">
-		<div class="flud-row">
+		<div class="row-fluid">
 
-			<div class=" ">
+			<div class="span6 news-overview">
 				<section>
 					<h1>Latest News</h1>
 
-					<article class="news-item">
+					<article class="o-item news-item">
 						<header>
-							<h1></h1>
+							<h1 class="o-title"><a href="#">NZ researchers apply for 700,000 CPU core hours for amazing science</a></h1>
 							<p class="meta meta-date">Jun 7 <span class="yr">2012</span></p>
 						</header>
-							<div class="summary"></div>
+							<div class="summary">
+								<p>The New Zealand eScience Infrastructure (NeSI) received applications for about 700,000 CPU core hours in its first call for access proposals from New Zealand researchers.</p>
+							</div>
 					</article>
 
-					<article class="news-item">
+					<article class="o-item news-item">
 						<header>
-							<h1></h1>
+							<h1 class="o-title"><a href="#">Vacancy: Education leader now open.</a></h1>
 							<p class="meta meta-date">Jun 7 <span class="yr">2012</span></p>
 						</header>
-							<div class="summary"></div>
+							<div class="summary">
+								<p>The Education Programme Leader leads activities for NeSI's professional education programme. This programme supports research communities across New Zealand with their ability to utilise High Performance Computing. </p>
+							</div>
 					</article>
 
-					<article class="news-item">
+					<article class="o-item news-item">
 						<header>
-							<h1></h1>
+							<h1 class="o-title"><a href="#">Podcast: "Does this science compute?"</a></h1>
 							<p class="meta meta-date">Jun 7 <span class="yr">2012</span></p>
 						</header>
-							<div class="summary"></div>
-					</article>
-
-					<article class="news-item">
-						<header>
-							<h1></h1>
-							<p class="meta meta-date">Jun 7 <span class="yr">2012</span></p>
-						</header>
-							<div class="summary"></div>
+							<div class="summary">
+								<p>Peter Griffin from Sciblogs recently interviewed our Director, Nick Jones as part of their weekly podcast. It is now available for download. The pair discussed the current call for access proposals as well as a few applications of NeSI's HPC facilities.</p>
+							</div>
 					</article>
 
 					<footer>
@@ -78,47 +76,46 @@
 				</section>
 			</div>
 
-			<div class="span6">
+			<div class="span6 events-overview">
 				<section>
 					<h1>Latest Events</h1>
 
-					<article class="event-item event-type-roadshow">
+					<article class="o-item event-item event-type-roadshow">
 						<header>
-							<h1 class="event-title"></h1>
+							<h1 class="o-title"><a href="#">National Roadshow - September 2012</a></h1>
 						</header>
-						<div class="summary"></div>
+						<div class="summary">
+							<p>The team will visiting Dunedin, Christchurch, Wellington, Hamilton and Auckland, spending a day at each city.</p>
+						</div>
 						<aside class="event-dates">
-							<p class="meta meta-date">Event Dates <span class="event-date-from"></span> &ndash; <span class="event-date-to"></span></p>
+							<p class="meta meta-date">Event Dates <span class="event-date-from">10/09/12</span> &ndash; <span class="event-date-to">14/09/12</span></p>
 						</aside>
 					</article>
 
-					<article class="event-item event-type-seminar">
+					<article class="o-item event-item event-type-seminar">
 						<header>
-							<h1 class="event-title"></h1>
+							<h1 class="o-title"><a href="#">"Modelling the superheating of small gallium clusters" - Christchurch</a></h1>
 						</header>
-						<div class="summary"></div>
 						<aside class="event-dates">
-							<p class="meta meta-date">Event Dates <span class="event-date-from"></span> &ndash; <span class="event-date-to"></span></p>
+							<p class="meta meta-date">Seminar <span class="event-date-from">20/08/12</span></p>
 						</aside>
 					</article>
 
-					<article class="event-item event-type-seminar">
+					<article class="o-item event-item event-type-seminar">
 						<header>
-							<h1 class="event-title"></h1>
+							<h1 class="o-title"><a href="#">"Discussing the What, Why and How To of NeSI" - Auckland</a></h1>
 						</header>
-						<div class="summary"></div>
 						<aside class="event-dates">
-							<p class="meta meta-date">Event Dates <span class="event-date-from"></span> &ndash; <span class="event-date-to"></span></p>
+							<p class="meta meta-date">Seminar <span class="event-date-from">20/08/12</span></p>
 						</aside>
 					</article>
 
-					<article class="event-item event-type-seminar">
+					<article class="o-item event-item event-type-seminar">
 						<header>
-							<h1 class="event-title"></h1>
+							<h1 class="o-title"><a href="#">"Benefiting from the New Zealand eScience Infrastructure" Wellington</a></h1>
 						</header>
-						<div class="summary"></div>
 						<aside class="event-dates">
-							<p class="meta meta-date">Event Dates <span class="event-date-from"></span> &ndash; <span class="event-date-to"></span></p>
+							<p class="meta meta-date">Seminar <span class="event-date-from">20/08/12</span></p>
 						</aside>
 					</article>
 					<footer>

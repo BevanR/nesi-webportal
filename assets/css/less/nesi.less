@@ -3,6 +3,7 @@
 @import "nesi-mixins.less";
 
 
+
 // Nesi styles for main website
 .navbar-inner{
 	min-height: 70px;
@@ -12,6 +13,7 @@
 	display: block;
 	background: url(../img/nesi-logo.png) no-repeat 0 0;
 	height: 70px;
+	width: 190px;
 }
 
 .account-summary .avatar {
@@ -34,9 +36,11 @@
 
 
 #pnav, #global-nav{
-	a{
-		padding-top: 35px;
-		padding-bottom: 35px;
+	@media (min-width: 979px) {
+		a{
+			padding-top: 35px;
+			padding-bottom: 35px;
+		}
 	}
 	.dropdown-menu {
 		margin-top: -25px;
@@ -89,6 +93,8 @@
 
 
 #home-hero {
+	border-bottom: 1px double #e1e1e1;
+	padding-bottom: 1px;
 	@height:460px;
 	margin-top: -20px;
 	.item{
@@ -172,10 +178,12 @@
 	border-top: 5px solid @nesi-green;
 	margin-top: -65px;
 	padding-top: @baseLineHeight;
-	padding-left: @baseLineHeight;
-	padding-right: @baseLineHeight;
 	.box-shadow(0 -4px 10px rgba(0,0,0, .09));
 	.border-radius(2px 2px 0 0);
+	@media (min-width: 1240px) {
+		padding-left: @baseLineHeight;
+		padding-right: @baseLineHeight;
+	}
 }
 .home-intro > h1{
 	display: none;
@@ -218,14 +226,101 @@
 
 .home-intro .page-summary{
 	font-size: @baseFontSize*1.2;
-	width: 66.6666667%;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 	font-weight: 300;
 	max-width: 620px;
 	color: #555;
+
+	@media (min-width: 768px) and (max-width: 979px) {
+		width: 86.666667%;
+	}
+	@media (min-width: 1200px) {
+		width: 66.666667%;
+	}
 }
+
+.news-overview, .events-overview{
+	section > h1{
+		#font > .shorthand(@baseFontSize, 600, 1.571428571);
+		color: #22809b;
+		text-transform: uppercase;
+	}
+	a:hover{
+		text-decoration: none;
+		border-bottom: 1px solid black;
+	}
+}
+
+// Overview items
+.o-item{
+	.meta-date{
+		color: rgb(176, 176, 176);
+		#font > .shorthand(.785714286em, 400, 1.636);
+		text-transform: uppercase;
+	}
+	.summary{
+		padding-right: 10%;
+	}
+
+
+	@media (min-width: 979px) {
+		position: relative;
+		padding-left: 10.5%;
+	}
+
+}
+.o-title{
+	#font > .shorthand(@baseFontSize*1.2, 600, 1.222222222);
+	padding-right: 10%;
+	color: rgb(5, 5, 5);
+	a{
+		color: rgb(5, 5, 5);
+	}
+}
+.news-item{
+	.meta-date{
+		font-weight: 700;
+		.yr{
+			font-weight: 300;
+		}
+	}
+	@media (min-width: 979px) {
+		.meta-date{
+			width: 8.547008547%;
+			float: left;
+			position: absolute;
+			left: 0;
+			top: 0;
+			text-align: right;
+		}
+		.yr{
+			display: block;
+		}
+	}
+}
+.event-item{
+	.o-title:before{
+		content: "";
+		#font > .pictograms(22px, normal, 1);
+		position: absolute;
+		left: 0;
+		top: 0;
+		color: rgb(176, 176, 176);
+	}
+	@media (min-width: 979px) {
+		padding-left: 30px;
+	}
+}
+.event-type-seminar .o-title:before{
+	content: "S";
+}
+.event-type-roadshow .o-title:before{
+	content: "D";
+}
+
+
 
 // Foter
 .legal{
