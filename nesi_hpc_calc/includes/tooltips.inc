@@ -20,7 +20,7 @@ $tooltips['number_job_runs'] = '
 	How many times your job needs to run.';
 	
 $tooltips['power6'] = '
-	<h3>NIWA P575/POWER6</h3>
+	<h3>P575/POWER6</h3>
 	<table>
 	<tr>
 		<td><b>Hardware</b></td>
@@ -41,7 +41,7 @@ $tooltips['power6'] = '
 	FitzRoy High Performance Computing Facility, NIWA';
 
 $tooltips['power7'] = '
-	<h3>NIWA P755/POWER7</h3>
+	<h3>P755/POWER7</h3>
 	<table>
 	<tr>
 		<td><b>Hardware</b></td>
@@ -59,7 +59,7 @@ $tooltips['power7'] = '
 	</tr>
 	</table>
 	<b>Facility</b><br>
-	FitzRoy High Performance Computing Facility, NIWA';
+	BlueFern, University of Canterbury';
 
 $tooltips['intel'] = '
 	<h3>Intel Cluster</h3>
