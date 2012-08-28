@@ -477,7 +477,7 @@ a:hover {
   font-style: normal;
 }
 p {
-  margin: 0 0 11px;
+  margin: 0 0 22px;
 }
 .lead {
   margin-bottom: 22px;
@@ -567,7 +567,7 @@ h4 small {
 ul,
 ol {
   padding: 0;
-  margin: 0 0 11px 25px;
+  margin: 0 0 22px 25px;
 }
 ul ul,
 ul ol,
@@ -5056,16 +5056,19 @@ a.badge:hover {
     margin-left: 10.5%;
   }
 }
-.o-item {
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
-.o-item .meta-date {
-  color: #b0b0b0;
+.meta-date {
+  color: #6a6a6a;
   font-size: 0.785714286em;
   font-weight: 400;
   line-height: 1.636;
   text-transform: uppercase;
+}
+.author {
+  text-transform: none;
+}
+.o-item {
+  margin-top: 22px;
+  margin-bottom: 22px;
 }
 .o-item .summary {
   padding-right: 10%;
@@ -5127,6 +5130,77 @@ a.badge:hover {
 .event-type-roadshow .o-title:before {
   content: "D";
 }
+.news-article[role="main"] {
+  *zoom: 1;
+  margin: 44px 0;
+}
+.news-article[role="main"]:before,
+.news-article[role="main"]:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.news-article[role="main"]:after {
+  clear: both;
+}
+.news-article[role="main"] header {
+  float: left;
+  margin-left: 20px;
+  width: 700px;
+}
+.news-article[role="main"] header h1 {
+  font-weight: 300;
+  color: #263945;
+}
+.news-article[role="main"] .entry {
+  float: left;
+  margin-left: 100px;
+  width: 620px;
+}
+.news-article[role="main"] .related {
+  float: left;
+  margin-left: 180px;
+  width: 220px;
+}
+.news-article[role="main"] .related ul,
+.news-article[role="main"] .related ol {
+  margin-left: 0;
+  list-style: none;
+}
+.entry p {
+  font-size: 16.000000002px;
+  font-weight: 400;
+  line-height: 1.375;
+  color: #707070;
+}
+.entry p:first-of-type {
+  font-size: 20.000000006px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: #292929;
+  margin-left: -80px;
+  margin-bottom: 20px;
+}
+.entry ul {
+  margin-left: 0px;
+  color: #707070;
+}
+.related h2 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.571428571;
+  margin-top: 0;
+}
+.related li {
+  line-height: 1.285714286;
+  margin-bottom: 1em;
+}
+.related a {
+  color: #8fabb3;
+}
+.related a:hover {
+  color: #445d64;
+}
 .directorynav,
 .collaborators {
   padding-top: 20px;
@@ -5160,4 +5234,5 @@ a.badge:hover {
   font-size: 80%;
   padding: 6px 0;
   text-align: center;
+  margin: 0;
 }
