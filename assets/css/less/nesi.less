@@ -52,7 +52,12 @@
 
 #pnav
 {
-	a{color: rgb(142, 170, 178)}
+	a{
+		color: rgb(142, 170, 178);
+		&:hover{
+			color: darken(rgb(142, 170, 178), 30%);
+		}
+	}
 	.active a{
 		color:@nesi-highlight-color2;
 		background: none;

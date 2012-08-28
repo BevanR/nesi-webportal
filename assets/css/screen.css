@@ -4814,6 +4814,9 @@ a.badge:hover {
 #pnav a {
   color: #8eaab2;
 }
+#pnav a:hover {
+  color: #445c63;
+}
 #pnav .active a {
   color: #f04e63;
   background: none;
