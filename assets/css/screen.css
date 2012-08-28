@@ -5133,43 +5133,28 @@ a.badge:hover {
 .event-type-roadshow .o-title:before {
   content: "D";
 }
+.single-post .post aside ul {
+  margin-left: 0;
+  list-style: none;
+}
 .news-article[role="main"] {
-  margin-left: -2.127659574468085%;
-  *zoom: 1;
   margin: 44px 0;
-}
-.news-article[role="main"]:before,
-.news-article[role="main"]:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.news-article[role="main"]:after {
-  clear: both;
-}
-.news-article[role="main"] header {
-  float: left;
-  margin-left: 20px;
-  width: 700px;
 }
 .news-article[role="main"] header h1 {
   font-weight: 300;
   color: #263945;
 }
-.news-article[role="main"] .entry {
-  float: left;
-  margin-left: 100px;
-  width: 620px;
-}
-.news-article[role="main"] .related {
-  float: left;
-  margin-left: 180px;
-  width: 220px;
-}
-.news-article[role="main"] .related ul,
-.news-article[role="main"] .related ol {
+.news-article[role="main"] .span8 {
   margin-left: 0;
-  list-style: none;
+}
+.entry {
+  margin-left: 60px;
+}
+.entry p:first-of-type {
+  font-size: 18.999999998px;
+  font-weight: 300;
+  line-height: 1.157894737;
+  margin-left: -60px;
 }
 .entry p {
   font-size: 16.000000002px;
