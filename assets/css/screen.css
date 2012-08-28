@@ -4962,12 +4962,9 @@ a.badge:hover {
   -webkit-border-radius: 2px 2px 0 0;
   -moz-border-radius: 2px 2px 0 0;
   border-radius: 2px 2px 0 0;
-}
-@media (min-width: 1240px) {
-  .page-intro {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
+  padding-left: 22px;
+  padding-right: 22px;
+  margin-bottom: 44px;
 }
 .home-intro > h1 {
   display: none;
@@ -5032,6 +5029,12 @@ a.badge:hover {
     width: 66.666667%;
   }
 }
+.news-events-overview {
+  padding-top: 20px;
+  margin-top: 21px;
+  border-top: 1px solid #e1e1e1;
+  margin-bottom: 22px;
+}
 .news-overview section > h1,
 .events-overview section > h1 {
   font-size: 14px;
@@ -5044,6 +5047,18 @@ a.badge:hover {
 .events-overview a:hover {
   text-decoration: none;
   border-bottom: 1px solid black;
+}
+.events-overview footer > a {
+  margin-left: 30px;
+}
+@media (min-width: 979px) {
+  .news-overview footer > a {
+    margin-left: 10.5%;
+  }
+}
+.o-item {
+  margin-top: 22px;
+  margin-bottom: 22px;
 }
 .o-item .meta-date {
   color: #b0b0b0;
@@ -5066,7 +5081,7 @@ a.badge:hover {
   font-weight: 600;
   line-height: 1.222222222;
   padding-right: 10%;
-  color: #050505;
+  color: #333333;
 }
 .o-title a {
   color: #050505;
@@ -5112,6 +5127,37 @@ a.badge:hover {
 .event-type-roadshow .o-title:before {
   content: "D";
 }
+.directorynav,
+.collaborators {
+  padding-top: 20px;
+  margin-top: 21px;
+  border-top: 1px solid #e1e1e1;
+  margin-bottom: 22px;
+}
+.directorynav h3,
+.collaborators h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.571428571;
+  color: #263945;
+}
+.directorynav nav li,
+.collaborators nav li {
+  font-size: 13.000000006px;
+  font-weight: 400;
+  line-height: 1.636;
+}
+.directorynav a,
+.collaborators a {
+  color: #363636;
+}
+.collaborators li {
+  margin-right: 3%;
+}
 .legal {
+  background: #273945;
+  color: #6e818c;
+  font-size: 80%;
+  padding: 6px 0;
   text-align: center;
 }

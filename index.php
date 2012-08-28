@@ -33,7 +33,7 @@
 		</section>
 	</div> <!-- /container -->
 
-	<div class="container">
+	<div class="container news-events-overview">
 		<div class="row-fluid">
 
 			<div class="span6 news-overview">
