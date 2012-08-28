@@ -5134,6 +5134,7 @@ a.badge:hover {
   content: "D";
 }
 .news-article[role="main"] {
+  margin-left: -2.127659574468085%;
   *zoom: 1;
   margin: 44px 0;
 }

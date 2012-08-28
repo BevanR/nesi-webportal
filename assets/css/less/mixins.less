@@ -553,7 +553,15 @@
   margin-left: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
-
+.makeRowFluid() {
+  margin-left: @fluidGridGutterWidth * -1;
+  .clearfix();
+}
+.makeColumnFluid(@columns: 1, @offset: 0) {
+  float: left;
+  margin-left: (@fluidGridColumnWidth * @offset) + (@fluidGridGutterWidth * (@offset - 1)) + (@fluidGridGutterWidth * 2);
+  width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+}
 // The Grid
 #grid {
 
