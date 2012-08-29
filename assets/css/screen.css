@@ -5172,6 +5172,7 @@ a.badge:hover {
   font-weight: 300;
   line-height: 1.2;
   color: #292929;
+  margin-left: -19%;
   margin-bottom: 20px;
 }
 .entry ul {
