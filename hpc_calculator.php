@@ -1,7 +1,7 @@
 <?php include('_inc/_html_head.php') ?>
 
 <body class="">
-	<?php include('_inc/_navbar.php') ?>
+	<?php $active = 1; include('_inc/_navbar.php') ?>
 
 	<div class="container">
 		<div class="row-fluid">

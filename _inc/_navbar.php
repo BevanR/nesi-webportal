@@ -1,3 +1,4 @@
+<?php $active = (isset($active)) ? $active : 0; ?>
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 	<div class="container">
@@ -10,10 +11,10 @@
 		<div class="nav-collapse collapse">
 		<nav id="pnav">
 		<ul class="nav">
-			<li><a href="#">Access</a></li>
-			<li><a href="#">HPC Facilities</a></li>
-			<li><a href="#">Projects &amp; Case studies</a></li>
-			<li><a href="about.php">About Nesi</a></li>
+			<li<?php if($active == 1) echo " class='active'"; ?>><a href="#">Access</a></li>
+			<li<?php if($active == 2) echo " class='active'"; ?>><a href="#">HPC Facilities</a></li>
+			<li<?php if($active == 3) echo " class='active'"; ?>><a href="#">Projects &amp; Case studies</a></li>
+			<li<?php if($active == 4) echo " class='active'"; ?>><a href="about.php">About Nesi</a></li>
 		</ul>
 		</nav>
 		<nav id="global-nav">
