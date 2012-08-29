@@ -6,7 +6,7 @@
 	<div class="container">
 			<article role="main" class="post group news-article">
 			<div class="row-fluid">
-				<header class="span8">
+				<header class="span8 offset1">
 					<h1>NZ researchers apply for 700,000 CPU core hours for amazing science</h1>
 					<p class="meta meta-date">Jun 7 <span class="yr">2012</span> by: <span class="author">Tim Mcnamara</span> </p>
 				</header>
