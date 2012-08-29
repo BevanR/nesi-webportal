@@ -33,7 +33,7 @@
 					<ul>
 						<li><a href="#">Apply</a></li>
 						<li><a href="#">Acceptable Use Policy</a></li>
-						<li><a href="#">Access Policy</a></li>
+						<li class="active"><a href="#">Access Policy</a></li>
 						<li><a href="#">Acknowledgement and Publication</a></li>
 						<li><a href="#">Allocations, Allocation Classes, Review Cycle</a></li>
 						<li><a href="#">Calls Timetable</a></li>

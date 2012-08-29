@@ -455,6 +455,18 @@
 }
 .sub-nav{
 	margin-top: @baseLineHeight*5;
+	.active a{
+		color:@nesi-highlight-color2;
+		&:before{
+			#font > .pictograms(10px, 300, 1.8);
+			content: '\e75e';
+			display: inline-block;
+			.ie7-inline-block();
+			margin-left: -14px;
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+	}
 }
 // Footer
 .directorynav, .collaborators{

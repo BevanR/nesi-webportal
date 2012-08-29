@@ -5255,6 +5255,24 @@ a.badge:hover {
 .sub-nav {
   margin-top: 110px;
 }
+.sub-nav .active a {
+  color: #f04e63;
+}
+.sub-nav .active a:before {
+  font-family: ModernPictogramsNormal;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1.8;
+  content: '\e75e';
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  margin-left: -14px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
 .directorynav,
 .collaborators {
   padding-top: 20px;
