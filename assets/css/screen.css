@@ -4824,6 +4824,12 @@ a.badge:hover {
   -moz-box-shadow: none;
   box-shadow: none;
 }
+#global-nav {
+  font-size: 12px;
+}
+#global-nav > ul > li > a {
+  color: #6e6e6e;
+}
 #global-nav .dropdown-toggle {
   background: none;
 }
