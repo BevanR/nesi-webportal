@@ -23,7 +23,7 @@
 			<div class="span4">
 				<article class="sub-feature" id="calculator-intro">
 					<h1 class="feature-title"><abbr class="tip" rel="tooltip" data-animation="true" data-placement="top" title="High Performance Computing" title="High Performance Computing">HPC</abbr> Calculator</h1>
-					<p>Calculate the resourses and allocations requird for your next project. <a href="#" class="l-more">Learn more</a></p>
+					<p>Calculate the resourses and allocations requird for your next project. <a href="/hpc_calculator.php" class="l-more">Learn more</a></p>
 				</article>
 			</div>
 			</div>
@@ -42,7 +42,7 @@
 
 					<article class="o-item news-item">
 						<header>
-							<h1 class="o-title"><a href="#">NZ researchers apply for 700,000 CPU core hours for amazing science</a></h1>
+							<h1 class="o-title"><a href="/news_article.php">NZ researchers apply for 700,000 CPU core hours for amazing science</a></h1>
 							<p class="meta meta-date">Jun 7 <span class="yr">2012</span></p>
 						</header>
 							<div class="summary">
@@ -52,7 +52,7 @@
 
 					<article class="o-item news-item">
 						<header>
-							<h1 class="o-title"><a href="#">Vacancy: Education leader now open.</a></h1>
+							<h1 class="o-title"><a href="/news_article.php">Vacancy: Education leader now open.</a></h1>
 							<p class="meta meta-date">Jun 7 <span class="yr">2012</span></p>
 						</header>
 							<div class="summary">
@@ -62,7 +62,7 @@
 
 					<article class="o-item news-item">
 						<header>
-							<h1 class="o-title"><a href="#">Podcast: "Does this science compute?"</a></h1>
+							<h1 class="o-title"><a href="/news_article.php">Podcast: "Does this science compute?"</a></h1>
 							<p class="meta meta-date">Jun 7 <span class="yr">2012</span></p>
 						</header>
 							<div class="summary">
