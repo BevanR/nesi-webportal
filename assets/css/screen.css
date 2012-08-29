@@ -5140,7 +5140,6 @@ a.badge:hover {
   content: "D";
 }
 .news-article[role="main"] {
-  margin-left: -2.127659574468085%;
   *zoom: 1;
   margin: 44px 0;
 }
@@ -5153,27 +5152,12 @@ a.badge:hover {
 .news-article[role="main"]:after {
   clear: both;
 }
-.news-article[role="main"] header {
-  float: left;
-  margin-left: 0%;
-  width: 65.95744680851064%;
-}
 .news-article[role="main"] header h1 {
   font-weight: 300;
   color: #263945;
 }
-.news-article[role="main"] .entry {
-  float: left;
-  margin-left: 8.51063829787234%;
-  width: 57.44680851063829%;
-}
-.news-article[role="main"] .related {
-  float: left;
-  margin-left: 8.51063829787234%;
-  width: 23.404255319148934%;
-}
-.news-article[role="main"] .related ul,
-.news-article[role="main"] .related ol {
+.news-article[role="main"] .related ol,
+.news-article[role="main"] .related ul {
   margin-left: 0;
   list-style: none;
 }
@@ -5188,7 +5172,6 @@ a.badge:hover {
   font-weight: 300;
   line-height: 1.2;
   color: #292929;
-  margin-left: -14.7321429%;
   margin-bottom: 20px;
 }
 .entry ul {

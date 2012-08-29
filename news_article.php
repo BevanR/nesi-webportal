@@ -4,16 +4,16 @@
 	<?php include('_inc/_navbar.php') ?>
 
 	<div class="container">
-		<div>
 			<article role="main" class="post group news-article">
-				<header>
+			<div class="row-fluid">
+				<header class="span8">
 					<h1>NZ researchers apply for 700,000 CPU core hours for amazing science</h1>
 					<p class="meta meta-date">Jun 7 <span class="yr">2012</span> by: <span class="author">Tim Mcnamara</span> </p>
 				</header>
-				<div class="entry">
-					<p>The New Zealand eScience Infrastructure (NeSI) received applications for about 700,000 CPU core hours in its first call for access proposals from New Zealand researchers. This represents the first of many steps to improving access to high performance computers for Kiwi researchers, and enhancing the environment for computing intensive science in New Zealand.</p>
+				<div class="span7 offset1">
+					<div class="entry">
 
-					<p>Lorem ipsum dolor sit amet, consectetur adip*isicing elit, sed do eiusmod *tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>The New Zealand eScience Infrastructure (NeSI) received applications for about 700,000 CPU core hours in its first call for access proposals from New Zealand researchers. This represents the first of many steps to improving access to high performance computers for Kiwi researchers, and enhancing the environment for computing intensive science in New Zealand.</p>
 
 					<p>Applications currently being reviewed span many fields and institutions, with topics including:</p>
 					<ul>
@@ -31,8 +31,9 @@
 
 					<p>NeSI welcomes contact from all New Zealand researchers from all disciplines and institutions seeking support for their computing intensive research needs. The next call for large projects is in July and every two months during this first year. Smaller and evaluation projects can be requested at any time.</p>
 				</div>
-				<div class="related">
-					<aside>
+				</div>
+				<div class="span2 offset1">
+					<aside class="related">
 						<h2>Related News</h2>
 						<ul>
 							<li><a href="#">Related news item #1</a></li>
@@ -55,8 +56,8 @@
 					</aside>
 
 				</div>
+				</div> <!-- /Row Fluid -->
 			</article>
-		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->
 
 	<?php include('_inc/_footer.php') ?>
