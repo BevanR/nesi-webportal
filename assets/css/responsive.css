@@ -34,6 +34,12 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.muted-link-color {
+  color: #8fabb3;
+}
+.muted-link-color:hover {
+  color: #445d64;
+}
 .hidden {
   display: none;
   visibility: hidden;
