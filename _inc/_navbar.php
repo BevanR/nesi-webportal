@@ -7,11 +7,11 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		</a>
-		<a class="brand" href="#"><span>NeSI &ndash; New Zealand eScience Infrastructure</span></a>
+		<a class="brand" href="/index.php"><span>NeSI &ndash; New Zealand eScience Infrastructure</span></a>
 		<div class="nav-collapse collapse">
 		<nav id="pnav">
 		<ul class="nav">
-			<li<?php if($active == 1) echo " class='active'"; ?>><a href="#">Access</a></li>
+			<li<?php if($active == 1) echo " class='active'"; ?>><a href="/content_page.php">Access</a></li>
 			<li<?php if($active == 2) echo " class='active'"; ?>><a href="#">HPC Facilities</a></li>
 			<li<?php if($active == 3) echo " class='active'"; ?>><a href="#">Projects &amp; Case studies</a></li>
 			<li<?php if($active == 4) echo " class='active'"; ?>><a href="about.php">About Nesi</a></li>

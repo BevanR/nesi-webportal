@@ -23,7 +23,7 @@
 			<div class="span4">
 				<article class="sub-feature" id="calculator-intro">
 					<h1 class="feature-title"><abbr class="tip" rel="tooltip" data-animation="true" data-placement="top" title="High Performance Computing" title="High Performance Computing">HPC</abbr> Calculator</h1>
-					<p>Calculate the resourses and allocations requird for your next project. <a href="#" class="l-more">Learn more</a></p>
+					<p>Calculate the resourses and allocations requird for your next project. <a href="/hpc_calculator.php" class="l-more">Learn more</a></p>
 				</article>
 			</div>
 			</div>
