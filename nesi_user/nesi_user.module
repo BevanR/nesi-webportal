@@ -12,6 +12,38 @@
 
 include_once 'nesi_user.features.inc';
 
+
+/**
+ * Implements hook_init()
+ */
+function nesi_user_init(){
+ 
+  // Implement check to see if user has setup a researcher_profile
+  // This check is done for users created automatically by Tuakiri or other external 
+  // process where a researcher profile will not have been assigned by default
+
+  global $user;
+
+  if($user->uid && $user->uid != 1){
+
+    $account = user_load($user->uid);
+    //$obj = entity_metadata_wrapper('user', $account);
+    //dpm($obj->getPropertyInfo());
+    $profile = profile2_load_by_user($account->uid);
+    //dpm($profile);
+    $destination = drupal_get_destination();
+
+    if(empty( $profile['researcher_profile']->pid )){
+
+      if($destination['destination'] != 'user/'.$account->uid.'/edit/researcher_profile' && $destination['destination'] != 'user/logout'){
+        drupal_set_message('Researcher profile incomplete.', 'error');
+        drupal_set_message('Please ensure that you complete your researcher profile below.', 'error');
+        drupal_goto('user/'.$account->uid.'/edit/researcher_profile');
+      }
+    }
+  }
+}
+
 /**
  * Implements hook_form_profile2_form_alter()
  */
