@@ -34,11 +34,10 @@ function nesi_user_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'max_length' => '255',
         'profile2_private' => 0,
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'researcher_profile',
@@ -51,7 +50,7 @@ function nesi_user_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 6,
+          'weight' => 10,
         ),
       ),
       'entity_type' => 'profile2',
@@ -66,9 +65,9 @@ function nesi_user_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '60',
+          'rows' => '4',
         ),
-        'type' => 'text_textfield',
+        'type' => 'text_textarea',
         'weight' => '7',
       ),
     ),
