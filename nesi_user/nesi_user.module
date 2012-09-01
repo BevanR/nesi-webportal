@@ -197,61 +197,64 @@ function nesi_user_user_view($account, $view_mode, $langcode) {
 
     $obj = entity_metadata_wrapper('user', $account);
     //dpm($obj->getPropertyInfo());
-
-    $profile = entity_metadata_wrapper ('profile2', $obj->profile_researcher_profile->value()->pid );
-    //dpm ($profile->getPropertyInfo());
-    //$test = $profile->field_user_firstname->value();
-
-    /* Alternate data access method using field_get_items() will have to be used in some cases. */  
-    //$profile_data = profile2_load_by_user($account->uid);
-    //dpm($profile_data);
-    //$test_get_profile = field_get_items('profile2', $profile_data['researcher_profile'], 'field_user_nationality');
-    //dpm($test_get_profile);
-
-    // Update view using nesi_rest
-    //$profile->field_user_address->set('TestN'); 
-
-    // Attempt to connect to REST and retrieve account information
-    $rest_user_id = 'tuakiri-test-hash-'.$account->uid;
     
-    $rest_result = nesi_rest_get_user($rest_user_id);  
+    if (!empty( $obj->profile_researcher_profile->value()->pid )) { 
+   
+      $profile = entity_metadata_wrapper ('profile2', $obj->profile_researcher_profile->value()->pid );
+      //dpm ($profile->getPropertyInfo());
+      //$test = $profile->field_user_firstname->value();
 
-    // Check for error or http response
-    if ($rest_result <> FALSE) {
-      dpm('User was successfully retrieved from GOLD.');
-      dpm($rest_result);
-      // Display nesi_rest data instead of Drupal data... (GOLD is considered "up to date")
-      
-      // Convert from json
-      $user_data = json_decode($rest_result['json_data']);
-      
-      if ($user_data) {
-        //dpm($user_data);
+      /* Alternate data access method using field_get_items() will have to be used in some cases. */  
+      //$profile_data = profile2_load_by_user($account->uid);
+      //dpm($profile_data);
+      //$test_get_profile = field_get_items('profile2', $profile_data['researcher_profile'], 'field_user_nationality');
+      //dpm($test_get_profile);
 
-        $profile->field_user_firstname->set($user_data->firstName); 
-        $profile->field_user_middlename->set($user_data->middleName); 
-        $profile->field_user_lastname->set($user_data->lastName); 
-        $profile->field_user_institution->set($user_data->institution); 
-        $profile->field_user_department->set($user_data->department); 
-        $profile->field_user_phone->set($user_data->phone); 
-        $profile->field_user_position->set($user_data->position); 
-        $profile->field_user_address->set($user_data->address); 
-        $profile->field_user_altemail->set($user_data->altEmail); 
-       // $profile->field_user_nationality->set('TestN'); 
+      // Update view using nesi_rest
+      //$profile->field_user_address->set('TestN'); 
+
+      // Attempt to connect to REST and retrieve account information
+      $rest_user_id = 'tuakiri-test-hash-'.$account->uid;
+    
+      $rest_result = nesi_rest_get_user($rest_user_id);  
+
+      // Check for error or http response
+      if ($rest_result <> FALSE) {
+        dpm('User was successfully retrieved from GOLD.');
+        dpm($rest_result);
+        // Display nesi_rest data instead of Drupal data... (GOLD is considered "up to date")
+        
+        // Convert from json
+        $user_data = json_decode($rest_result['json_data']);
+        
+        if ($user_data) {
+          //dpm($user_data);
+
+          $profile->field_user_firstname->set($user_data->firstName); 
+          $profile->field_user_middlename->set($user_data->middleName); 
+          $profile->field_user_lastname->set($user_data->lastName); 
+          $profile->field_user_institution->set($user_data->institution); 
+          $profile->field_user_department->set($user_data->department); 
+          $profile->field_user_phone->set($user_data->phone); 
+          $profile->field_user_position->set($user_data->position); 
+          $profile->field_user_address->set($user_data->address); 
+          $profile->field_user_altemail->set($user_data->altEmail); 
+         // $profile->field_user_nationality->set('TestN'); 
+        }
+        else {
+          // Problem with return json or conversion. Log and Notify.
+          watchdog('nesi_user', 'REST response issue - check json for compliance.', NULL , WATCHDOG_CRITICAL, $link = NULL);
+        }
+
       }
       else {
-        // Problem with return json or conversion. Log and Notify.
-        watchdog('nesi_user', 'REST response issue - check json for compliance.', NULL , WATCHDOG_CRITICAL, $link = NULL);
+
+        // Need to handle this: 
+        // Decision has been made to prevent access to account if REST connection fails. (as of 02082012).
+        dpm('It appears that there may have been a problem querying the user in GOLD.');
+
+        // If http response failure, add to watchdog and notify admin
       }
-
-    }
-    else {
-
-      // Need to handle this: 
-      // Decision has been made to prevent access to account if REST connection fails. (as of 02082012).
-      dpm('It appears that there may have been a problem querying the user in GOLD.');
-
-      // If http response failure, add to watchdog and notify admin
     }
   }
 }
