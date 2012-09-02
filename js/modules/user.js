@@ -9,8 +9,8 @@ Drupal.behaviors.password = {
     var translate = settings.password;
     $('input.password-field', context).once('password', function () {
       var passwordInput = $(this);
-      var innerWrapper = $(this).parent();
-      var outerWrapper = $(this).parent().parent();
+      var innerWrapper = $(this).parent().parent();
+      var outerWrapper = $(this).parent().parent().parent().parent();
 
       // Add identifying class to password element parent.
       innerWrapper.addClass('password-parent');
