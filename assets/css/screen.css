@@ -4769,6 +4769,117 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+.bs-docs-sidebar .sub-nav {
+  top: 140px;
+}
+p {
+  font-size: 16.000000002px;
+  font-weight: 400;
+  line-height: 1.375;
+  color: #707070;
+}
+[role="main"],
+.subhead {
+  *zoom: 1;
+  margin: 44px 0;
+}
+[role="main"]:before,
+.subhead:before,
+[role="main"]:after,
+.subhead:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+[role="main"]:after,
+.subhead:after {
+  clear: both;
+}
+[role="main"] header h1,
+.subhead h1 {
+  font-weight: 300;
+  color: #263945;
+}
+figure,
+.figure {
+  display: block;
+}
+figure p,
+.figure p {
+  font-size: 13.000000006px;
+  font-weight: 400;
+  line-height: 1.384615385;
+  padding-top: .5em;
+}
+img.figure {
+  margin-bottom: 13px;
+}
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+.left,
+.right {
+  margin-top: 5px;
+}
+.left {
+  float: left;
+  margin-right: 20px;
+}
+.right {
+  float: right;
+  margin-left: 20px;
+}
+.small {
+  width: 30%;
+}
+.medium {
+  width: 60%;
+}
+.large {
+  width: 90%;
+  max-width: 640px;
+}
+.caption,
+figcaption {
+  display: block;
+  font-size: 90%;
+  color: #555;
+  margin: 0 0 13px;
+}
+.txt-right {
+  text-align: right;
+}
+.txt-left {
+  text-align: left;
+}
+.txt-center {
+  text-align: center;
+}
+.txt-justify {
+  text-align: justify;
+}
+figure img + div,
+.figure img + div {
+  display: block;
+  padding: 0 15px;
+}
+figure .liner,
+.figure .liner,
+figure .has-border,
+.figure .has-border {
+  padding: 10px;
+  background: #eee;
+  border: 1px solid #dedede;
+}
+figure .liner,
+.figure .liner {
+  margin: 0;
+}
+figure .caption,
+.figure .caption {
+  margin-bottom: 0;
+}
 .navbar-inner {
   min-height: 70px;
 }
@@ -5188,23 +5299,6 @@ a.badge:hover {
 .breadcrumbs li:last-child a:after {
   content: none;
 }
-.post[role="main"] {
-  *zoom: 1;
-  margin: 44px 0;
-}
-.post[role="main"]:before,
-.post[role="main"]:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.post[role="main"]:after {
-  clear: both;
-}
-.post[role="main"] header h1 {
-  font-weight: 300;
-  color: #263945;
-}
 .related ol,
 .sub-nav ol,
 .related ul,
@@ -5214,12 +5308,6 @@ a.badge:hover {
 }
 .news-article[role="main"] .entry p:first-of-type {
   margin-left: -19%;
-}
-.entry p {
-  font-size: 16.000000002px;
-  font-weight: 400;
-  line-height: 1.375;
-  color: #707070;
 }
 .entry p:first-of-type {
   font-size: 20.000000006px;
@@ -5252,7 +5340,7 @@ a.badge:hover {
 .sub-nav a:hover {
   color: #445d64;
 }
-.sub-nav {
+.single-post .sub-nav {
   margin-top: 110px;
 }
 .sub-nav .active a {
