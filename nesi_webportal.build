@@ -101,6 +101,9 @@ projects[jquery_update][subdir] = "contrib"
 projects[libraries][type] = "module"
 projects[libraries][subdir] = "contrib"
 projects[libraries][version] = "2.0"
+projects[modernizr][type] = "module"
+projects[modernizr][subdir] = "contrib"
+projects[modernizr][version] = "2.1"
 
 ; Custom modules
 ; --------------
