@@ -99,3 +99,87 @@ input.error {
   padding: 35px 0 36px;
   border-top: 1px solid #E5E5E5;
 }
+
+/* NeSI adjustments and overrides */
+
+body.admin-menu .navbar-fixed-top {
+  top: 21px;
+  z-index: 499;
+}
+
+#site-name-slogan .brand { line-height:1; }
+
+#block-search-form { display:none; }
+
+.btn-success {
+  background-color: #0088CC;
+  background-image: -moz-linear-gradient(center top , #0088CC, #0088CC);
+  background-image: -webkit-linear-gradient(top , #0088CC, #0088CC);
+}
+
+.btn-success.dropdown-toggle {
+  background-color: #0088CC;
+}
+
+.btn-group.open .btn-success.dropdown-toggle {
+  background-color: #0088CC;
+}
+
+#block-system-navigation { display:none; }
+#block-system-navigation li.expanded ul { display:none; }
+#block-system-powered-by { display:none; }
+
+h2 { font-size:20px; }
+
+/**
+ * Password strength indicator.
+ */
+.password-strength {
+  width: 17em;
+  float: right;  /* LTR */
+  margin-top: 1.4em;
+}
+.password-strength-title {
+  display: inline;
+}
+.password-strength-text {
+  float: right; /* LTR */
+  font-weight: bold;
+}
+.password-indicator {
+  background-color: #C4C4C4;
+  height: 0.3em;
+  width: 100%;
+}
+.password-indicator div {
+  height: 100%;
+  width: 0%;
+  background-color: #47C965;
+}
+input.password-confirm,
+input.password-field {
+  width: 16em;
+  margin-bottom: 0.4em;
+}
+div.password-confirm {
+  float: right;  /* LTR */
+  /* margin-top: 1.5em; */
+  visibility: hidden;
+  width: 17em;
+}
+div.form-item div.password-suggestions {
+  padding: 0.2em 0.5em;
+  margin: 0.7em 0;
+  width: 38.5em;
+  border: 1px solid #B4B4B4;
+}
+div.password-suggestions ul {
+  margin-bottom: 0;
+}
+.confirm-parent,
+.password-parent {
+  clear: left; /* LTR */
+  margin: 0;
+  width: 36.3em;
+}
+
