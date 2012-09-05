@@ -98,6 +98,9 @@ projects[jquery_update][type] = "module"
 projects[jquery_update][download][type] = "git"
 projects[jquery_update][download][revision] = "5d2a4b2e07cd6332d9da84a967867e4c9f25b105"
 projects[jquery_update][subdir] = "contrib"
+projects[libraries][type] = "module"
+projects[libraries][subdir] = "contrib"
+projects[libraries][version] = "2.0"
 
 ; Custom modules
 ; --------------
