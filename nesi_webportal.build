@@ -1,6 +1,6 @@
 ; ----------------
 ; NeSI webportal make file
-; version 0.6
+; version 0.8
 ; ----------------
   
 ; Core version
@@ -105,24 +105,10 @@ projects[nesi_webportal][type] = "module"
 projects[nesi_webportal][subdir] = "custom" 
 projects[nesi_webportal][download][type] = "git"
 projects[nesi_webportal][download][url] = "https://github.com/nesi/nesi-webportal.git" 
-; projects[nesi_rest][type] = "module"
-; projects[nesi_rest][subdir] = "custom" 
-; projects[nesi_rest][download][type] = "git" 
-; projects[nesi_user][type] = "module"  
-; projects[nesi_user][subdir] = "custom"
-; projects[nesi_user][download][type] = "git"
-; projects[nesi_proposal][type] = "module"  
-; projects[nesi_proposal][subdir] = "custom"
-; projects[nesi_proposal][download][type] = "git"
 
 ; Themes
 ; --------
-projects[nesi_bootstrap][download][type] = "file"
-; The following revision is the version we have branched from to create nesi_bootstrap in our sandbox
-; projects[twitter_bootstrap][download][revision] = "263a5c14a5ea5d822f01ea85c13e211b56389146"
-projects[nesi_bootstrap][type] = "theme"
-; Sandbox for nesi modifications to twitter_bootstrap
-projects[nesi_bootstrap][download][url] = "http://drupalcode.org/sandbox/natted/1743380.git/snapshot/53ae405bb5aba7e760e45fad202975939567ab89.tar.gz"
+; Currently theme is pulled in via nesi_webportal repo above.
   
 ; Libraries
 ; ---------
