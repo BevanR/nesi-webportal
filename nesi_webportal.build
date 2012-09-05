@@ -104,6 +104,9 @@ projects[libraries][version] = "2.0"
 projects[modernizr][type] = "module"
 projects[modernizr][subdir] = "contrib"
 projects[modernizr][version] = "2.1"
+projects[bugherd][type] = "module"
+projects[bugherd][subdir] = "contrib"
+projects[bugherd][version] = "1.0-beta3"
 
 ; Custom modules
 ; --------------
