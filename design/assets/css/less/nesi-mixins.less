@@ -1,0 +1,17 @@
+#hero-slide{
+	.background(@background-color: rgb(225,225,225)){
+		background-color: @background-color;
+	}
+	.title(@background-color: @nesi-highlight-color, @color: white){
+		background-color: @background-color;
+		color: @color;
+	}
+	.link-color(@color: @nesi-highlight-color){
+		color: @color;
+	}
+}
+.text-shadow(@x-axis: 0, @y-axis: 1px, @blur: 1px, @color: rgba(0, 0, 0, 0.3)) {
+  -webkit-text-shadow: @x-axis @y-axis @blur @color;
+  -moz-text-shadow: @x-axis @y-axis @blur @color;
+  text-shadow: @x-axis @y-axis @blur @color;
+}
