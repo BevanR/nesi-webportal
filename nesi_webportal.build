@@ -114,7 +114,6 @@ projects[shib_auth][version] = "4.0"
 ; Custom modules
 ; --------------
 projects[nesi_webportal][type] = "module"
-projects[nesi_webportal][subdir] = "custom" 
 projects[nesi_webportal][download][type] = "git"
 projects[nesi_webportal][download][url] = "https://github.com/nesi/nesi-webportal.git" 
 
