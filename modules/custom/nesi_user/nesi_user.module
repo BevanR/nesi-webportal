@@ -307,7 +307,7 @@ function nesi_user_username_alter(&$name, $account) {
 
   if ($account->uid > 1) {
     // Display actual user name rather than generated username
-    if (isset($_SERVER['Shib-Identity-Provider']) {
+    if (isset($_SERVER['Shib-Identity-Provider'])) {
       $name = $_SERVER['displayName'];
     }
     else {
