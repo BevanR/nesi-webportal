@@ -107,6 +107,9 @@ projects[modernizr][version] = "2.1"
 projects[bugherd][type] = "module"
 projects[bugherd][subdir] = "contrib"
 projects[bugherd][version] = "1.0-beta3"
+projects[shib_auth][type] = "module"
+projects[shib_auth][subdir] = "contrib"
+projects[shib_auth][version] = "4.0"
 
 ; Custom modules
 ; --------------
