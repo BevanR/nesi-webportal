@@ -173,7 +173,7 @@ function nesi_user_user_insert(&$edit, $account, $category) {
   else {
     // No researcher profile exists, so this is an automated registration via Tuakiri
     // Process Tuakiri variables...
-
+    dpm($_SERVER);
     dpm($_SESSION);   
  
   }
@@ -299,6 +299,22 @@ function nesi_user_user_view($account, $view_mode, $langcode) {
 
         // If http response failure, add to watchdog and notify admin
       }
+    }
+  }
+}
+
+function nesi_user_username_alter(&$name, $account) {
+
+  if ($account->uid > 1) {
+    // Display actual user name rather than generated username
+    if (isset($_SERVER['Shib-Identity-Provider']) {
+      $name = $_SERVER['displayName'];
+    }
+    else {
+      //if (isset($account->profile_researcher_profile)) {
+
+      //  $name = $
+      //}
     }
   }
 }
