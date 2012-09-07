@@ -121,15 +121,14 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
  */
 function nesi_user_user_insert(&$edit, $account, $category) {  
 
+  $user_data = array();
+  $rest_user_id = nesi_user_get_user_identifier();
   // Currently there are two registration options
   // With Tuakiri and without.
-  // If profile_researcher_profile is correct, then user has registered manually
+  // If profile_researcher_profile exists, then user has registered manually
   if (isset($account->profile_researcher_profile)) {
-    //dpm(' * Implements hook_user_insert()');
-    //dpm($account);
     // Prepare user information for goldwrap
-    $user_data = array();
-    $user_data['userId'] = 'tuakiri-test-hash-'.$account->uid;
+    $user_data['userId'] = $rest_user_id;
     $user_data['email'] = $account->mail;
     $user_data['firstName'] = $account->profile_researcher_profile['field_user_firstname'][LANGUAGE_NONE][0]['value'];
     $user_data['middleName'] = $account->profile_researcher_profile['field_user_middlename'][LANGUAGE_NONE][0]['value'];
@@ -141,41 +140,38 @@ function nesi_user_user_insert(&$edit, $account, $category) {
     $user_data['address'] = $account->profile_researcher_profile['field_user_address'][LANGUAGE_NONE][0]['value'];
     $user_data['altEmail'] = $account->profile_researcher_profile['field_user_altemail'][LANGUAGE_NONE][0]['value'];
     $user_data['nationality'] = $account->profile_researcher_profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'];
-    //dpm($user_data);
-
-    //$json_data = json_encode($user_data);
-    //dpm($json_data);  
-
-    // Attempt to connect to REST and create account
-    $rest_result = nesi_rest_insert_user($user_data);  
-
-    // Check for error or http response
-    if ($rest_result <> FALSE) {
-      //dpm('User was created successfully in GOLD.');
-      //dpm($rest_result);
-      watchdog('nesi_user', 'REST user created - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
-    }
-    else {
-      watchdog('nesi_user', 'REST create user failure - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
-
-      // Need to handle this: 
-      // Decision has been made to prevent account registration if REST connection fails. (as of 02082012).
-      // Multiple options to resolve this.
-      // Initially, problem accounts will be created in Drupal for logging purposes but set to inactive.
-      // User email will be altered to ensure that user can re-register. 
-      // User will be notified and redirected to try re-register again later.
-      // Need to prepare config so NeSI can manage all end-user response text.
-      dpm('It appears that there may have been a problem creating the user in GOLD.');
-
-      // If http response failure, add to watchdog and notify admin
-    }
   }
   else {
     // No researcher profile exists, so this is an automated registration via Tuakiri
     // Process Tuakiri variables...
-    dpm($_SERVER);
-    dpm($_SESSION);   
- 
+    $user_data['userId'] = $rest_user_id;
+    $user_data['email'] = $SERVER['mail'];
+    $user_data['firstName'] = $SERVER['givenName'];
+    $user_data['lastName'] = $SERVER['sn'];
+  }
+
+  // Attempt to connect to REST and create account
+  $rest_result = nesi_rest_insert_user($user_data);  
+
+  // Check for error or http response
+  if ($rest_result) {
+    //dpm('User was created successfully in GOLD.');
+    //dpm($rest_result);
+    watchdog('nesi_user', 'REST user created - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+  }
+  else {
+    watchdog('nesi_user', 'REST create user failure - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+
+    // Need to handle this: 
+    // Decision has been made to prevent account registration if REST connection fails. (as of 02082012).
+    // Multiple options to resolve this.
+    // Initially, problem accounts will be created in Drupal for logging purposes but set to inactive.
+    // User email will be altered to ensure that user can re-register. 
+    // User will be notified and redirected to try re-register again later.
+    // Need to prepare config so NeSI can manage all end-user response text.
+    dpm('It appears that there may have been a problem creating the user in GOLD.');
+
+    // If http response failure, add to watchdog and notify admin
   }
 }
 
@@ -204,11 +200,6 @@ function nesi_user_user_update(&$edit, $account, $category) {
         $user_data['address'] = $edit['profile_researcher_profile']['field_user_address'][LANGUAGE_NONE][0]['value'];
         $user_data['altEmail'] = $edit['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value'];
         $user_data['nationality'] = $edit['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE][0]['iso2'];  
-
-        dpm($user_data);
-
-        //$json_data = json_encode($user_data);
-        //dpm($json_data);  
 
         // Attempt to connect to REST and create account
         $rest_result = nesi_rest_update_user($user_data);  
