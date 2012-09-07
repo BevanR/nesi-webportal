@@ -317,10 +317,13 @@ function nesi_user_username_alter(&$name, $account) {
       }
     }
     else {
-      //if (isset($account->profile_researcher_profile)) {
+      // Attempt to use researcher profile for non Tuakiri users
+      $profile = profile2_load_by_user($account, 'researcher_profile');
 
-      //  $name = $
-      //}
+      if (is_object($profile)) {
+        $profile_data = entity_metadata_wrapper('profile2', $profile); 
+        $name = $profile_data->field_user_firstname->value().' '.$profile_data->field_user_lastname->value();
+      }
     }
   }
 }
