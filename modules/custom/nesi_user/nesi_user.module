@@ -309,6 +309,35 @@ function nesi_user_username_alter(&$name, $account) {
   }
 }
 
+function nesi_user_get_user_identifier() {
+  // Returns identifier to be used for userId in REST calls
+  global $user;
+  $account = $user;
+
+  $identifier = FALSE;
+
+  if ($account->uid > 1) {
+    // Check for tuakiri session
+    if (!empty($_SERVER['Shib-Identity-Provider'])) {
+      if (!empty($_SERVER['shared-token'])) {
+        $identifier = $_SERVER['shared-token'];
+      }
+      else {
+        $identifier = 'tuakiri-test-hash-'.$account->uid;
+        // Tuakiri shared-token not set. Curious detail, needs to be logged.
+        watchdog('nesi_user', 'Tuakiri shared-token is empty - UID " '.$account->uid.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
+      }
+    }
+    else {
+      // It seems this is a non Tuakiri user - utilise drupal user id
+      // This case should not occur in the live portal
+      $identifier = 'tuakiri-test-hash-'.$account->uid;
+    }
+  }
+
+  return $identifier;
+}
+
 /**
  * Implements hook_user_view_alter()
  */
