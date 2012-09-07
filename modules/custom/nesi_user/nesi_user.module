@@ -307,8 +307,14 @@ function nesi_user_username_alter(&$name, $account) {
 
   if ($account->uid > 1) {
     // Display actual user name rather than generated username
-    if (isset($_SERVER['Shib-Identity-Provider'])) {
-      $name = $_SERVER['displayName'];
+    if (!empty($_SERVER['Shib-Identity-Provider'])) {
+      if (!empty($_SERVER['Shib-Identity-Provider'])) {
+        $name = $_SERVER['displayName'];
+      }
+      else {
+        // Tuakiri displayName not set. Curious detail, needs to be logged.
+        watchdog('nesi_user', 'Tuakiri displayName is empty - UID " '.$account->uid.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
+      }
     }
     else {
       //if (isset($account->profile_researcher_profile)) {
