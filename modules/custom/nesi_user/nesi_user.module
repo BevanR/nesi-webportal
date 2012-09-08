@@ -12,7 +12,6 @@
 
 include_once 'nesi_user.features.inc';
 
-
 /**
  * Implements hook_init()
  */
@@ -76,7 +75,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
      
     if ($user->uid > 1) {
       // Get user data from GOLD
-      $rest_user_id = 'tuakiri-test-hash-'.$user->uid;
+      $rest_user_id = nesi_user_get_user_identifier();
       $rest_result = nesi_rest_get_user($rest_user_id);  
       
       // Check for error or http response
@@ -89,7 +88,6 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
         $user_data = json_decode($rest_result['json_data']);
         
         if ($user_data) {
-          dpm($user_data);
           $form['profile_researcher_profile']['field_user_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->firstName;
           $form['profile_researcher_profile']['field_user_middlename'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->middleName;
           $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->lastName;
