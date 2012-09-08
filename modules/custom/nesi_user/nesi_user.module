@@ -142,10 +142,13 @@ function nesi_user_user_insert(&$edit, $account, $category) {
   else {
     // No researcher profile exists, so this is an automated registration via Tuakiri
     // Process Tuakiri variables...
+    $tk_attributes = nesi_user_tuakiri_attributes();
+    
     $user_data['userId'] = $rest_user_id;
-    $user_data['email'] = $SERVER['mail'];
-    $user_data['firstName'] = $SERVER['givenName'];
-    $user_data['lastName'] = $SERVER['sn'];
+    $user_data['email'] = $tk_attributes['mail'];
+    $user_data['firstName'] = $tk_attributes['givenName'];
+    $user_data['lastName'] = $tk_attributes['sn'];
+    $user_data['institution'] = $tk_attributes['organizationName'];
   }
 
   // Attempt to connect to REST and create account
