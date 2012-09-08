@@ -332,11 +332,29 @@ function nesi_user_get_user_identifier() {
   return $identifier;
 }
 
-function nesi_user_get_user_tuakiri_attributes() {
+function nesi_user_tuakiri_attributes() {
   // Tests tuakiri session and returns valid attributes as an array
   // Invalid attributes will be returned as empty strings and reported 
   // to the administrator via watchdog
+
+  $attributes = array();
   
+  return $attributes;
+}
+
+function nesi_user_tuakiri_validate() {
+  // Checks for a valid tuakiri session
+  // Returns true or false based on session data available.
+
+  // User must be logged in so we can identify them within portal
+  if ($account->uid > 1) {
+    // Check for tuakiri session
+    if (!empty($_SERVER['Shib-Identity-Provider'])) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;  
 }
 
 /**
