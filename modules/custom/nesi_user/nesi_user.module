@@ -131,6 +131,37 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
   }
 }
 
+function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
+  // Prevent tuakiri users from modifying their Drupal account password or email
+  // Inspired by userprotect.module (http://drupal.org/project/userprotect)
+
+  if (nesi_user_tuakiri_validate()) {
+
+    $account = $form['#user'];
+
+    if (isset($form['account']['name'])) {
+      $form['account']['name']['#disabled'] = TRUE;
+      $form['account']['name']['#value'] = $account->name;
+    }
+
+    // Disable account email change
+    if (isset($form['account']['mail'])) {
+      $form['account']['mail']['#disabled'] = TRUE;
+      $form['account']['mail']['#value'] = $account->mail;
+    }
+    
+    // Disable password change
+    // Password is an exception, as it needs no value, Just unset it, as
+    // there's no need to display two empty boxes that are disabled.
+    if (isset($form['account']['pass']) {
+      // Core stores pass as a required value in 'current_pass_required_values',
+      // and we're removing the form element, so remove the pass value from there
+      // too to prevent warnings.
+      unset($form['account']['pass'], $form['account']['current_pass'], $form['account']['current_pass_required_values']['#value']['pass']);
+    }  
+  }
+}
+
 /**
  * Implements hook_user_insert()
  */
