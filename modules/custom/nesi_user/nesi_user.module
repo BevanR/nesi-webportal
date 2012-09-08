@@ -339,7 +339,15 @@ function nesi_user_tuakiri_attributes() {
   // to the administrator via watchdog
 
   $attributes = array();
-  
+
+  $attributes['shared-token'] = (!empty($_SERVER['shared-token'])) ? $_SERVER['shared-token'] : "";
+  $attributes['displayName'] = (!empty($_SERVER['displayName'])) ? $_SERVER['displayName'] : "";
+  $attributes['mail'] = (!empty($_SERVER['mail'])) ? $_SERVER['mail'] : "";
+  $attributes['cn'] = (!empty($_SERVER['cn'])) ? $_SERVER['cn'] : "";
+  $attributes['givenName'] = (!empty($_SERVER['givenName'])) ? $_SERVER['givenName'] : "";
+  $attributes['sn'] = (!empty($_SERVER['sn'])) ? $_SERVER['sn'] : "";
+  $attributes['organizationName'] = (!empty($_SERVER['organizationName'])) ? $_SERVER['organizationName'] : "";
+
   return $attributes;
 }
 
