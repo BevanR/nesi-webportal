@@ -332,6 +332,13 @@ function nesi_user_get_user_identifier() {
   return $identifier;
 }
 
+function nesi_user_get_user_tuakiri_attributes() {
+  // Tests tuakiri session and returns valid attributes as an array
+  // Invalid attributes will be returned as empty strings and reported 
+  // to the administrator via watchdog
+  
+}
+
 /**
  * Implements hook_user_view_alter()
  */
