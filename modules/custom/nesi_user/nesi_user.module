@@ -360,6 +360,7 @@ function nesi_user_tuakiri_attributes() {
   $attributes['givenName'] = (!empty($_SERVER['givenName'])) ? $_SERVER['givenName'] : "";
   $attributes['sn'] = (!empty($_SERVER['sn'])) ? $_SERVER['sn'] : "";
   $attributes['organizationName'] = (!empty($_SERVER['organizationName'])) ? $_SERVER['organizationName'] : "";
+  $attributes['o'] = (!empty($_SERVER['o'])) ? $_SERVER['o'] : "";
 
   return $attributes;
 }
