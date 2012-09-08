@@ -71,7 +71,6 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
     
     // Check user
     global $user;
-    dpm($user);
      
     if ($user->uid > 1) {
       // Get user data from GOLD
@@ -79,7 +78,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
       $rest_result = nesi_rest_get_user($rest_user_id);  
       
       // Check for error or http response
-      if ($rest_result <> FALSE) {
+      if ($rest_result) {
         dpm('User was successfully retrieved from GOLD.');
         dpm($rest_result);
         // Display nesi_rest data instead of Drupal data... (GOLD is considered "up to date")
@@ -110,6 +109,17 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
 
         // If http response failure, add to watchdog and notify admin
       }
+
+      // As we are now sourcing data from tuakiri. Some data must be updated from tuakiri
+      if (nesi_user_tuakiri_validate()) {
+        $tk_attributes = nesi_user_tuakiri_attributes();
+        
+        $form['profile_researcher_profile']['field_user_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['givenName'];
+        $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['sn'];
+        $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['organizationName'];
+        $form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['mail'];
+      }
+      
     } 
   }
 }
