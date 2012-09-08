@@ -355,6 +355,9 @@ function nesi_user_tuakiri_validate() {
   // Checks for a valid tuakiri session
   // Returns true or false based on session data available.
 
+  global $user;
+  $account = $user; 
+
   // User must be logged in so we can identify them within portal
   if ($account->uid > 1) {
     // Check for tuakiri session
