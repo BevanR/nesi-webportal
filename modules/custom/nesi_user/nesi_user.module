@@ -421,6 +421,16 @@ function nesi_user_tuakiri_validate() {
   return FALSE;  
 }
 
+function nesi_user_field_access($op, $field, $entity_type, $entity, $account) {
+ // disable access to gold_create field
+ switch ($field['field_name']){
+   case 'field_user_gold_create':
+     return FALSE;
+   break;
+ }
+}
+
+
 /**
  * Implements hook_user_view_alter()
  */
