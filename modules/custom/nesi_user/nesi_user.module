@@ -460,3 +460,74 @@ function nesi_user_user_login(&$edit, $account) {
 
 }
 
+function _gold_user_create($account) {
+  // Skip if superadmin
+  if ($account->uid > 1) {
+    // Bootstrap any required user login operations
+    $gold_emw = entity_metadata_wrapper('user', $account)->field_user_gold_create;
+    $gold_flag = $gold_emw->value();
+
+    // If gold_flag is not set, then attempt to create user in GOLD for the first time...
+    if (empty($gold_flag)) {
+
+      /* ***************************************************** */
+      /* CREATE OR UPDATE OF USERS IN GOLD                     */
+      /* We set user data based on reverse order of authority: */ 
+      /* (core -> researcher profile -> tuakiri)               */
+      /* ***************************************************** */
+
+      // Set user data based on known attributes
+      $user_data['email'] = $account->mail;
+
+      // Check for research profile data setup by user
+      $profile = profile2_load_by_user($account->uid);
+      if (is_object($profile)) {
+        $profile_emw = entity_metadata_wrapper('profile2', $profile); 
+
+        $user_data['firstName'] = $account->field_user_firstname->value();
+        $user_data['middleName'] = $account->field_user_middlename->value();
+        $user_data['lastName'] = $account->field_user_lastname->value();
+        $user_data['institution'] = $account->field_user_institution->value();
+        $user_data['department'] = $account->field_user_department->value();
+        $user_data['position'] = $account->field_user_position->value();
+        $user_data['phone'] = $account->field_user_phone->value();
+        $user_data['address'] = $account->field_user_address->value();
+        $user_data['altEmail'] = $account->field_user_altemail->value();
+        $user_data['nationality'] = $account->field_user_nationality->value();
+      }
+
+      $rest_user_id = nesi_user_tuakiri_identifier();
+      $user_data['userId'] = $rest_user_id;
+
+      // Fetch tuakiri attribute information if it exists
+      $tk_attributes = nesi_user_tuakiri_attributes();
+
+      // Override stored data with "current" data supplied by tuakiri
+      $user_data['email'] = (!empty($tk_attributes['mail'])) ? $tk_attributes['mail'] : $user_data['email'];
+      $user_data['firstName'] = (!empty($tk_attributes['givenName'])) ? $tk_attributes['givenName'] : $user_data['firstName'];
+      $user_data['lastName'] = (!empty($tk_attributes['sn'])) ? $tk_attributes['sn'] : $user_data['lastName'];
+      $user_data['institution'] = (!empty($tk_attributes['organizationName'])) ? $tk_attributes['organizationName'] : $user_data['institution'];
+      // Second attempt to capture organisations using 'o' vs 'organizationName' as attribute
+      $user_data['institution'] = (!empty($tk_attributes['o'])) ? $tk_attributes['o'] : $user_data['institution'];
+      
+      // Attempt to connect to REST and create account
+      $rest_result = nesi_rest_insert_user($user_data); 
+
+      // Check for error or http response
+      if ($rest_result) {
+        watchdog('nesi_user', 'REST user created - UID " '.$rest_user_id.' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+        // Attempt to update gold_flag
+        $gold_emw->set('1');
+        // Save changes to user.
+        user_save($account);
+      }
+      else {
+        watchdog('nesi_user', 'REST create user failure - UID " '.$rest_user_id.' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+        
+        // Nothing to do - user creat failed. Attempt to create again later.
+        dpm('It appears that there may have been a problem creating the user in GOLD.');
+      }
+    }
+  }
+}
+
