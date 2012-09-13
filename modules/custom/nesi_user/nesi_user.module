@@ -396,8 +396,10 @@ function nesi_user_user_delete($account) {
  */
 function nesi_user_user_login(&$edit, $account) {
   
+  
+
   // Check user had been created in GOLD
-  _gold_user_create($account);
+  _gold_user_create($account, $user_data);
 }
 
 function _gold_user_create($account, $user_data = array()) {
@@ -419,7 +421,7 @@ function _gold_user_create($account, $user_data = array()) {
       $user_data['email'] = $account->mail;
       // Set presupplied fields ready for override - not so nice but required for unset attributes
       $user_data['firstName'] = (!empty($user_data['firstName'])) ? $user_data['firstName'] : "";
-      $user_data['lastName'] = (!empty($user_data['lastName'])) ? $user_data['firstName'] : "";
+      $user_data['lastName'] = (!empty($user_data['lastName'])) ? $user_data['lastName'] : "";
       $user_data['middleName'] = (!empty($user_data['middleName'])) ? $user_data['middleName'] : "";
       $user_data['institution'] = (!empty($user_data['institution'])) ? $user_data['institution'] : "";
       $user_data['department'] = (!empty($user_data['department'])) ? $user_data['department'] : "";
