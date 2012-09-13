@@ -416,7 +416,7 @@ function nesi_user_user_login(&$edit, $account) {
     $user_data['phone'] = (!empty($profile['field_user_phone'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_phone'][LANGUAGE_NONE][0]['value'] : "";
     $user_data['address'] = (!empty($profile['field_user_address'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_address'][LANGUAGE_NONE][0]['value'] : "";
     $user_data['altEmail'] = (!empty($profile['field_user_altemail'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_altemail'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['nationality'] = (!empty($profile['field_user_nationality'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'] : "";  
+    $user_data['nationality'] = (!empty($profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'])) ? $profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'] : "";  
   }
   // Check user had been created in GOLD
   _gold_user_create($account, $user_data);
