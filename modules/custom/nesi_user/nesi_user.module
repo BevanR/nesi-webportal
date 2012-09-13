@@ -412,9 +412,13 @@ function _gold_user_create($account) {
       /* We set user data based on reverse order of authority: */ 
       /* (core -> researcher profile -> tuakiri)               */
       /* ***************************************************** */
-
+      $user_data = array();
       // Set user data based on known attributes
       $user_data['email'] = $account->mail;
+      // Set required fields to empty ready for override
+      $user_data['firstName'] = "";
+      $user_data['lastName'] = "";
+      $user_data['institution'] = "";
 
       // Check for research profile data setup by user
       $profile = profile2_load_by_user($account->uid);
