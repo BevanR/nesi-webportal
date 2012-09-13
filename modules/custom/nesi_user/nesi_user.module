@@ -397,8 +397,8 @@ function nesi_user_user_delete($account) {
 function nesi_user_user_login(&$edit, $account) {
 
   $user_data = array(); 
-  if (isset($edit['values']['profiles']['profile_researcher_profile'])) {
-    $profile = $edit['values']['profiles']['profile_researcher_profile'];
+  if (isset($edit['values']['profile_researcher_profile'])) {
+    $profile = $edit['values']['profile_researcher_profile'];
     // Send in profile form data if supplied
     $user_data['firstName'] = (!empty($profile['field_user_firstname'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_firstname'][LANGUAGE_NONE][0]['value'] : "";
     $user_data['lastName'] = (!empty($profile['field_user_lastname'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_lastname'][LANGUAGE_NONE][0]['value'] : "";
