@@ -371,6 +371,10 @@ function nesi_user_field_access($op, $field, $entity_type, $entity, $account) {
  }
 }
 
+function nesi_user_menu_alter(&$items) {
+  // Disable access to request new password
+  $items['user/password']['access callback'] = FALSE;
+}
 
 /**
  * Implements hook_user_view_alter()
