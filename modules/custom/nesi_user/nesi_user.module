@@ -230,6 +230,9 @@ function nesi_user_user_view($account, $view_mode, $langcode) {
       if ($rest_user_id) {
         $rest_result = nesi_rest_get_user($rest_user_id);  
       }
+      else {
+        $rest_result = FALSE;
+      }
 
       // Check for error or http response
       if ($rest_result <> FALSE) {
