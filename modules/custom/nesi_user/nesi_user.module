@@ -490,6 +490,13 @@ function _gold_user_create($account, $user_data = array()) {
         watchdog('nesi_user', 'REST user created - UID " '.$rest_user_id.' " ', NULL , WATCHDOG_INFO, $link = NULL);
         // Attempt to update gold_flag
         $gold_emw->set('1');
+        
+        // Set researcher role
+        $researcher_role = user_role_load_by_name('researcher');
+        if ($researcher_role) {
+          $account->roles + array($researcher_role->rid, $researcher_role->name);
+        }
+
         // Save changes to user.
         user_save($account);
       }
