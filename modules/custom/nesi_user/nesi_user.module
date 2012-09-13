@@ -428,16 +428,16 @@ function _gold_user_create($account) {
       if (is_object($profile)) {
         $profile_emw = entity_metadata_wrapper('profile2', $profile); 
 
-        $user_data['firstName'] = $account->field_user_firstname->value();
-        $user_data['middleName'] = $account->field_user_middlename->value();
-        $user_data['lastName'] = $account->field_user_lastname->value();
-        $user_data['institution'] = $account->field_user_institution->value();
-        $user_data['department'] = $account->field_user_department->value();
-        $user_data['position'] = $account->field_user_position->value();
-        $user_data['phone'] = $account->field_user_phone->value();
-        $user_data['address'] = $account->field_user_address->value();
-        $user_data['altEmail'] = $account->field_user_altemail->value();
-        $user_data['nationality'] = $account->field_user_nationality->value();
+        $user_data['firstName'] = $profile_emw->field_user_firstname->value();
+        $user_data['middleName'] = $profile_emw->field_user_middlename->value();
+        $user_data['lastName'] = $profile_emw->field_user_lastname->value();
+        $user_data['institution'] = $profile_emw->field_user_institution->value();
+        $user_data['department'] = $profile_emw->field_user_department->value();
+        $user_data['position'] = $profile_emw->field_user_position->value();
+        $user_data['phone'] = $profile_emw->field_user_phone->value();
+        $user_data['address'] = $profile_emw->field_user_address->value();
+        $user_data['altEmail'] = $profile_emw->field_user_altemail->value();
+        $user_data['nationality'] = $profile_emw->field_user_nationality->value();
       }
 
       $rest_user_id = nesi_user_tuakiri_identifier();
