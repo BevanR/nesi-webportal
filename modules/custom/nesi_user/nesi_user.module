@@ -395,9 +395,22 @@ function nesi_user_user_delete($account) {
  * Implements hook_user_login()
  */
 function nesi_user_user_login(&$edit, $account) {
-  
-  
 
+  $user_data = array(); 
+  if (isset($edit['values']['profiles']['profile_researcher_profile'])) {
+    $profile = $edit['values']['profiles']['profile_researcher_profile'];
+    // Send in profile form data if supplied
+    $user_data['firstName'] = (!empty($profile['field_user_firstname'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_firstname'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['lastName'] = (!empty($profile['field_user_lastname'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_lastname'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['middleName'] = (!empty($profile['field_user_middlename'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_middlename'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['institution'] = (!empty($profile['field_user_institution'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_institution'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['department'] = (!empty($profile['field_user_department'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_department'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['position'] = (!empty($profile['field_user_position'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_position'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['phone'] = (!empty($profile['field_user_phone'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_phone'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['address'] = (!empty($profile['field_user_address'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_address'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['altEmail'] = (!empty($profile['field_user_altemail'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_altemail'][LANGUAGE_NONE][0]['value'] : "";
+    $user_data['nationality'] = (!empty($profile['field_user_nationality'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'] : "";  
+  }
   // Check user had been created in GOLD
   _gold_user_create($account, $user_data);
 }
