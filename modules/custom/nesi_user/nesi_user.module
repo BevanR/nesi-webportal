@@ -494,7 +494,7 @@ function _gold_user_create($account, $user_data = array()) {
         // Set researcher role
         $researcher_role = user_role_load_by_name('researcher');
         if ($researcher_role) {
-          $account->roles + array($researcher_role->rid, $researcher_role->name);
+          $account->roles += array($researcher_role->rid => $researcher_role->name);
         }
 
         // Save changes to user.
