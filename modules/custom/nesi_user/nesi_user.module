@@ -163,68 +163,6 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_user_insert()
- */
-function nesi_user_user_insert(&$edit, $account, $category) {  
-
-  $user_data = array();
-  $rest_user_id = nesi_user_tuakiri_identifier();
-  // Currently there are two registration options
-  // With Tuakiri and without.
-  // If profile_researcher_profile exists, then user has registered manually
-  if (isset($account->profile_researcher_profile)) {
-    // Prepare user information for goldwrap
-    $user_data['userId'] = $rest_user_id;
-    $user_data['email'] = $account->mail;
-    $user_data['firstName'] = $account->profile_researcher_profile['field_user_firstname'][LANGUAGE_NONE][0]['value'];
-    $user_data['middleName'] = $account->profile_researcher_profile['field_user_middlename'][LANGUAGE_NONE][0]['value'];
-    $user_data['lastName'] = $account->profile_researcher_profile['field_user_lastname'][LANGUAGE_NONE][0]['value'];
-    $user_data['institution'] = $account->profile_researcher_profile['field_user_institution'][LANGUAGE_NONE][0]['value'];
-    $user_data['department'] = $account->profile_researcher_profile['field_user_department'][LANGUAGE_NONE][0]['value'];
-    $user_data['position'] = $account->profile_researcher_profile['field_user_position'][LANGUAGE_NONE][0]['value'];
-    $user_data['phone'] = $account->profile_researcher_profile['field_user_phone'][LANGUAGE_NONE][0]['value'];
-    $user_data['address'] = $account->profile_researcher_profile['field_user_address'][LANGUAGE_NONE][0]['value'];
-    $user_data['altEmail'] = $account->profile_researcher_profile['field_user_altemail'][LANGUAGE_NONE][0]['value'];
-    $user_data['nationality'] = $account->profile_researcher_profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'];
-  }
-  else {
-    // No researcher profile exists, so this is an automated registration via Tuakiri
-    // Process Tuakiri variables...
-    $tk_attributes = nesi_user_tuakiri_attributes();
-    
-    $user_data['userId'] = $rest_user_id;
-    $user_data['email'] = $tk_attributes['mail'];
-    $user_data['firstName'] = $tk_attributes['givenName'];
-    $user_data['lastName'] = $tk_attributes['sn'];
-    $user_data['institution'] = $tk_attributes['organizationName'];
-  }
-
-  // Attempt to connect to REST and create account
-  $rest_result = nesi_rest_insert_user($user_data);  
-
-  // Check for error or http response
-  if ($rest_result) {
-    //dpm('User was created successfully in GOLD.');
-    //dpm($rest_result);
-    watchdog('nesi_user', 'REST user created - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
-  }
-  else {
-    watchdog('nesi_user', 'REST create user failure - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
-
-    // Need to handle this: 
-    // Decision has been made to prevent account registration if REST connection fails. (as of 02082012).
-    // Multiple options to resolve this.
-    // Initially, problem accounts will be created in Drupal for logging purposes but set to inactive.
-    // User email will be altered to ensure that user can re-register. 
-    // User will be notified and redirected to try re-register again later.
-    // Need to prepare config so NeSI can manage all end-user response text.
-    dpm('It appears that there may have been a problem creating the user in GOLD.');
-
-    // If http response failure, add to watchdog and notify admin
-  }
-}
-
-/**
  * Implements hook_user_update()
  */
 function nesi_user_user_update(&$edit, $account, $category) {
