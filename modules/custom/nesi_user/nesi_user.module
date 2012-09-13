@@ -455,9 +455,8 @@ function nesi_user_user_delete($account) {
  */
 function nesi_user_user_login(&$edit, $account) {
   
-  // NOT YET IMPLEMENTED 
-  // - Placeholder to bootstrap any required user login operations
-
+  // Check user had been created in GOLD
+  _gold_user_create($account);
 }
 
 function _gold_user_create($account) {
