@@ -195,7 +195,7 @@ function nesi_user_user_update(&$edit, $account, $category) {
         if ($rest_result <> FALSE) {
           //dpm('User was updated successfully in GOLD.');
           //dpm($rest_result);
-          watchdog('nesi_user', 'REST user updated - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+          watchdog('nesi_user', 'REST user updated - UID " '.$user_data['userId'].' " ', NULL , WATCHDOG_INFO, $link = NULL);
         }
         else {
           // If http response failure, add to watchdog and notify admin
@@ -459,7 +459,7 @@ function _gold_user_create($account) {
 
       // Check for error or http response
       if ($rest_result) {
-        watchdog('nesi_user', 'REST user created - UID " '.$rest_user_id.' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+        watchdog('nesi_user', 'REST user created - UID " '.$rest_user_id.' " ', NULL , WATCHDOG_INFO, $link = NULL);
         // Attempt to update gold_flag
         $gold_emw->set('1');
         // Save changes to user.
