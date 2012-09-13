@@ -216,6 +216,9 @@ function nesi_user_user_view($account, $view_mode, $langcode) {
   // Exclude superadmin
   if ($account->uid > 1) {
 
+    // Check user had been created in GOLD
+    _gold_user_create($account);
+
     $profile = profile2_load_by_user($account, 'researcher_profile');
 
     if (is_object($profile)) {
