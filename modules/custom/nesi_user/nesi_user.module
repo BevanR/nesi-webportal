@@ -400,7 +400,7 @@ function nesi_user_user_login(&$edit, $account) {
   _gold_user_create($account);
 }
 
-function _gold_user_create($account) {
+function _gold_user_create($account, $user_data = array()) {
   // Skip if superadmin
   if ($account->uid > 1) {
     // Bootstrap any required user login operations
@@ -415,19 +415,25 @@ function _gold_user_create($account) {
       /* We set user data based on reverse order of authority: */ 
       /* (core -> researcher profile -> tuakiri)               */
       /* ***************************************************** */
-      $user_data = array();
       // Set user data based on known attributes
       $user_data['email'] = $account->mail;
-      // Set required fields to empty ready for override
-      $user_data['firstName'] = "";
-      $user_data['lastName'] = "";
-      $user_data['institution'] = "";
+      // Set presupplied fields ready for override - not so nice but required for unset attributes
+      $user_data['firstName'] = (!empty($user_data['firstName'])) ? $user_data['firstName'] : "";
+      $user_data['lastName'] = (!empty($user_data['lastName'])) ? $user_data['firstName'] : "";
+      $user_data['middleName'] = (!empty($user_data['middleName'])) ? $user_data['middleName'] : "";
+      $user_data['institution'] = (!empty($user_data['institution'])) ? $user_data['institution'] : "";
+      $user_data['department'] = (!empty($user_data['department'])) ? $user_data['department'] : "";
+      $user_data['position'] = (!empty($user_data['position'])) ? $user_data['position'] : "";
+      $user_data['phone'] = (!empty($user_data['phone'])) ? $user_data['phone'] : "";
+      $user_data['address'] = (!empty($user_data['address'])) ? $user_data['address'] : "";
+      $user_data['altEmail'] = (!empty($user_data['altEmail'])) ? $user_data['altEmail'] : "";
+      $user_data['nationality'] = (!empty($user_data['nationality'])) ? $user_data['nationality'] : "";
 
       // Check for research profile data setup by user
       $profile = profile2_load_by_user($account->uid);
       if (is_object($profile)) {
         $profile_emw = entity_metadata_wrapper('profile2', $profile); 
-
+        dpm($profile_emw);
         $user_data['firstName'] = $profile_emw->field_user_firstname->value();
         $user_data['middleName'] = $profile_emw->field_user_middlename->value();
         $user_data['lastName'] = $profile_emw->field_user_lastname->value();
