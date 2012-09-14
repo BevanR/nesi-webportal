@@ -233,14 +233,16 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     $project_map['prefix'] = 'pdc'; 
 
     //Project Description
-    //Details of Project Team Members
+    $project_map['description'] = $form_state['values']['field_pdc_description'][LANGUAGE_NONE][0]['value'];
     //Project Team's HPC Experience
+    $project_map['team_hpcexperience'] = $form_state['values']['field_pdc_team_hpcexperience'][LANGUAGE_NONE][0]['value'];
     //Software Requirements
-    //$project_map['software_requirements'] = 'Test Software Req.'; 
+    $project_map['software_requirements'] = $form_state['values']['field_pdc_software_requirements'][LANGUAGE_NONE][0]['value'];
     //Storage Requirements
-    //$project_map['storage_requirements'] = 'Test Storage Req.'; 
+    $project_map['storage_requirements'] = $form_state['values']['field_pdc_storage_requirements'][LANGUAGE_NONE][0]['value'];
     //Expert Support
     //Further Information
+    $project_map['additional_information'] = $form_state['values']['field_pdc_additional_information'][LANGUAGE_NONE][0]['value'];
 
     // Map project data
     $project_data['projectData'] = $project_map;
