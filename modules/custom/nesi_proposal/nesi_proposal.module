@@ -60,7 +60,25 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
   //dpm($form_state);
 
   $form['#validate'][] = 'nesi_proposal_validate_proposal_development_class';
- 
+  
+  global $user;
+  $account = $user;
+
+  $profile = profile2_load_by_user($user, 'researcher_profile');
+
+  if (is_object($profile)) {
+    $profile_emw = entity_metadata_wrapper('profile2', $profile);   
+
+    // Prepopulate fields for users
+    $form['field_pdc_pi_email'][LANGUAGE_NONE][0]['value']['#default_value'] = $account->mail;
+    $form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile->field_user_firstname->value() .' '.$profile->field_user_lastname->value();
+    $form['field_pdc_pi_phone'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile->field_user_phone->value();
+    // Lock fields
+    $form['field_pdc_pi_email'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+    $form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+    $form['field_pdc_pi_phone'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+  } 
+
   // Hide unused fields
   unset($form['field_lead_reviewer']);
   unset($form['field_peer_reviewer']);
