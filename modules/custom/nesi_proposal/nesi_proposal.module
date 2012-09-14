@@ -122,8 +122,8 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
   unset($form['field_prc_status']);
   unset($form['field_prc_outcome']);
   unset($form['field_prc_outcome_report']);
-  unset($form['field_pdc_team_member_emails']);
-  unset($form['field_pdc_team_members']);
+  unset($form['field_prc_team_member_emails']);
+  unset($form['field_prc_team_members']);
 }
 
 /**
