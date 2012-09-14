@@ -229,8 +229,8 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     //PI Team Members
     $project_data['users'] = $members; 
 
-    //$project_map['type'] = 'proposal_development_class'; 
-    //$project_map['prefix'] = 'pdc'; 
+    $project_map['type'] = 'proposal_development_class'; 
+    $project_map['prefix'] = 'pdc'; 
 
     //Project Description
     //PI Name
@@ -248,7 +248,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     //Further Information
 
     // Map project data
-    //$project_data['projectData'] = $project_map;
+    $project_data['projectData'] = $project_map;
 
     //$project_json = json_encode($project_data);
     //dpm($project_json);
@@ -305,8 +305,8 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     //PI Team Members
     $project_data['users'] = $members; 
 
-    //$project_map['type'] = 'proposal_research_class'; 
-    //$project_map['prefix'] = 'prc'; 
+    $project_map['type'] = 'proposal_research_class'; 
+    $project_map['prefix'] = 'prc'; 
 
     //Scientific Goals
     //Benefits from HPC
@@ -331,7 +331,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     //Further Information
 
     // Map project data
-    //$project_data['projectData'] = $project_map;
+    $project_data['projectData'] = $project_map;
 
     //$project_json = json_encode($project_data);
     //dpm($project_json);
