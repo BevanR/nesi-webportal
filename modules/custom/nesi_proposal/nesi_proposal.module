@@ -85,7 +85,7 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
     '#value' => t('Cancel'),
     '#access' => TRUE,
     '#weight' => 15,
-    '#submit' => array('nesi_proposal_form_cancel', 'node_form_submit_build_node'),
+    '#submit' => array('nesi_proposal_form_cancel'),
     '#limit_validation_errors' => array(),
   ); 
 
@@ -136,7 +136,7 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     '#value' => t('Cancel'),
     '#access' => TRUE,
     '#weight' => 15,
-    '#submit' => array('nesi_proposal_form_cancel', 'node_form_submit_build_node'),
+    '#submit' => array('nesi_proposal_form_cancel'),
     '#limit_validation_errors' => array(),
   ); 
 
@@ -208,55 +208,57 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     return;
   }  
 
-  $project_data = array();
-  $project_map = array();
+  if ($form['clicked_button']['#value'] <> 'Cancel') {
+    $project_data = array();
+    $project_map = array();
 
-  // Prep proposal data for REST interface
-  //Project ID
-  $project_data['projectId'] = 'nesi-'.$form_state['values']['uid'].'-'.$form_state['values']['created'];
-  //Project Title
-  $project_data['projectTitle'] = $form_state['values']['title'];
-  $project_data['principal'] = $form_state['values']['field_pdc_pi_email'][LANGUAGE_NONE][0]['value'];
+    // Prep proposal data for REST interface
+    //Project ID
+    $project_data['projectId'] = 'nesi-'.$form_state['values']['uid'].'-'.$form_state['values']['created'];
+    //Project Title
+    $project_data['projectTitle'] = $form_state['values']['title'];
+    $project_data['principal'] = $form_state['values']['field_pdc_pi_email'][LANGUAGE_NONE][0]['value'];
 
-  //$project_map['type'] = 'proposal_development_class'; 
-  //$project_map['prefix'] = 'pdc'; 
+    //$project_map['type'] = 'proposal_development_class'; 
+    //$project_map['prefix'] = 'pdc'; 
 
-  //Project Description
-  //PI Name
-  //PI Email
-  //PI Phone
-  //PI Team Members
-  //$project_data['users'] = _get_proposal_team_members($form_state['values']['field_pdc_team_member_emails']);
-  //Details of Project Team Members
-  //Project Team's HPC Experience
-  //Software Requirements
-  //$project_map['software_requirements'] = 'Test Software Req.'; 
-  //Storage Requirements
-  //$project_map['storage_requirements'] = 'Test Storage Req.'; 
-  //Expert Support
-  //Further Information
+    //Project Description
+    //PI Name
+    //PI Email
+    //PI Phone
+    //PI Team Members
+    //$project_data['users'] = _get_proposal_team_members($form_state['values']['field_pdc_team_member_emails']);
+    //Details of Project Team Members
+    //Project Team's HPC Experience
+    //Software Requirements
+    //$project_map['software_requirements'] = 'Test Software Req.'; 
+    //Storage Requirements
+    //$project_map['storage_requirements'] = 'Test Storage Req.'; 
+    //Expert Support
+    //Further Information
 
-  // Map project data
-  //$project_data['projectData'] = $project_map;
+    // Map project data
+    //$project_data['projectData'] = $project_map;
 
-  //$project_json = json_encode($project_data);
-  //dpm($project_json);
+    //$project_json = json_encode($project_data);
+    //dpm($project_json);
 
-  // Attempt to send proposal to REST interface
-  //$rest_result = nesi_rest_insert_project($project_data);
+    // Attempt to send proposal to REST interface
+    //$rest_result = nesi_rest_insert_project($project_data);
 
-  // Check for error or http response
-  if ($rest_result <> FALSE) {
-    //dpm('Project was created successfully in GOLD.');
-    //dpm($rest_result);
-    watchdog('nesi_proposal', 'REST project created - ID " '.$project_data['projectId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
-  }
-  else {
-    // If http response failure, add to watchdog and notify admin
-    watchdog('nesi_proposal', 'REST create project failure - ID " '.$project_data['projectId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+    // Check for error or http response
+    if ($rest_result <> FALSE) {
+      //dpm('Project was created successfully in GOLD.');
+      //dpm($rest_result);
+      watchdog('nesi_proposal', 'REST project created - ID " '.$project_data['projectId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+    }
+    else {
+      // If http response failure, add to watchdog and notify admin
+      watchdog('nesi_proposal', 'REST create project failure - ID " '.$project_data['projectId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
 
-    // Need to prepare config so NeSI can manage all end-user response text.
-    form_set_error('nesi_proposal','There was a problem saving your proposal information. Try to submit again. if you continue to experience problems, please try again later.');
+      // Need to prepare config so NeSI can manage all end-user response text.
+      form_set_error('nesi_proposal','There was a problem saving your proposal information. Try to submit again. if you continue to experience problems, please try again later.');
+    }
   }
 
 }
@@ -272,64 +274,66 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     return;
   }  
 
-  $project_data = array();
-  $project_map = array();
+  if ($form['clicked_button']['#value'] <> 'Cancel') {
 
-  // Prep proposal data for REST interface
-  //Project ID
-  $project_data['projectId'] = 'nesi-'.$form_state['values']['uid'].'-'.$form_state['values']['created'];
-  //Project Title
-  $project_data['projectTitle'] = $form_state['values']['title'];
-  $project_data['principal'] = $form_state['values']['field_prc_pi_email'][LANGUAGE_NONE][0]['value'];
+    $project_data = array();
+    $project_map = array();
 
-  //$project_map['type'] = 'proposal_research_class'; 
-  //$project_map['prefix'] = 'prc'; 
+    // Prep proposal data for REST interface
+    //Project ID
+    $project_data['projectId'] = 'nesi-'.$form_state['values']['uid'].'-'.$form_state['values']['created'];
+    //Project Title
+    $project_data['projectTitle'] = $form_state['values']['title'];
+    $project_data['principal'] = $form_state['values']['field_prc_pi_email'][LANGUAGE_NONE][0]['value'];
 
-  //Scientific Goals
-  //Benefits from HPC
-  //Project Deliverables
-  //Profile of usage through Allocation
-  //Desired HPC Platform
-  //CPU Core Hours
-  //Storage Requirements
-  //Software Requirements
-  //Data transfer
-  //PI Name
-  //PI Email
-  //PI Phone
-  //PI Team Members
-  //$project_data['users'] = _get_proposal_team_members($form_state['values']['field_prc_team_member_emails']);
-  //Details of Project Team Members
-  //Project Team's HPC Experience
-  //Expert Support
-  //Explanatory notes for "Expert support" section
-  //Funding Provider
-  //Funding Amount
-  //Further Information
+    //$project_map['type'] = 'proposal_research_class'; 
+    //$project_map['prefix'] = 'prc'; 
 
-  // Map project data
-  //$project_data['projectData'] = $project_map;
+    //Scientific Goals
+    //Benefits from HPC
+    //Project Deliverables
+    //Profile of usage through Allocation
+    //Desired HPC Platform
+    //CPU Core Hours
+    //Storage Requirements
+    //Software Requirements
+    //Data transfer
+    //PI Name
+    //PI Email
+    //PI Phone
+    //PI Team Members
+    //$project_data['users'] = _get_proposal_team_members($form_state['values']['field_prc_team_member_emails']);
+    //Details of Project Team Members
+    //Project Team's HPC Experience
+    //Expert Support
+    //Explanatory notes for "Expert support" section
+    //Funding Provider
+    //Funding Amount
+    //Further Information
 
-  //$project_json = json_encode($project_data);
-  //dpm($project_json);
+    // Map project data
+    //$project_data['projectData'] = $project_map;
 
-  // Attempt to send proposal to REST interface
-  //$rest_result = nesi_rest_insert_project($project_data);
+    //$project_json = json_encode($project_data);
+    //dpm($project_json);
 
-  // Check for error or http response
-  if ($rest_result <> FALSE) {
-    //dpm('Project was created successfully in GOLD.');
-    //dpm($rest_result);
-    watchdog('nesi_proposal', 'REST project created - ID " '.$project_data['projectId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+    // Attempt to send proposal to REST interface
+    //$rest_result = nesi_rest_insert_project($project_data);
+
+    // Check for error or http response
+    if ($rest_result <> FALSE) {
+      //dpm('Project was created successfully in GOLD.');
+      //dpm($rest_result);
+      watchdog('nesi_proposal', 'REST project created - ID " '.$project_data['projectId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+    }
+    else {
+      // If http response failure, add to watchdog and notify admin
+      watchdog('nesi_proposal', 'REST create project failure - ID " '.$project_data['projectId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
+
+      // Need to prepare config so NeSI can manage all end-user response text.
+      form_set_error('nesi_proposal','There was a problem saving your proposal information. Try to submit again. if you continue to experience problems, please try again later.');
+    }
   }
-  else {
-    // If http response failure, add to watchdog and notify admin
-    watchdog('nesi_proposal', 'REST create project failure - ID " '.$project_data['projectId'].' " ', NULL , WATCHDOG_ERROR, $link = NULL);
-
-    // Need to prepare config so NeSI can manage all end-user response text.
-    form_set_error('nesi_proposal','There was a problem saving your proposal information. Try to submit again. if you continue to experience problems, please try again later.');
-  }
-
 }
 
 function nesi_proposal_form_cancel() {
