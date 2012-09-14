@@ -221,7 +221,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
 
     //Project Title
     $project_data['projectTitle'] = $form_state['values']['title'];
-    $project_data['principal'] = $form_state['values']['field_pdc_pi_email'][LANGUAGE_NONE][0]['value'];
+    $project_data['principal'] = $account->name;
 
     // Set PI as member
     $members = array();
@@ -297,7 +297,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
 
     //Project Title
     $project_data['projectTitle'] = $form_state['values']['title'];
-    $project_data['principal'] = $form_state['values']['field_prc_pi_email'][LANGUAGE_NONE][0]['value'];
+    $project_data['principal'] = $account->name;
 
     // Set PI as member
     $members = array();
