@@ -306,21 +306,35 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     $project_map['prefix'] = 'prc'; 
 
     //Scientific Goals
+    $project_map['scientific_goals'] = $form_state['values']['field_prc_scientific_goals'][LANGUAGE_NONE][0]['value'];
     //Benefits from HPC
+    $project_map['hpc_benefits'] = $form_state['values']['field_prc_hpc_benefits'][LANGUAGE_NONE][0]['value'];
     //Project Deliverables
+    $project_map['project_deliverables'] = $form_state['values']['field_prc_project_deliverables'][LANGUAGE_NONE][0]['value'];
     //Profile of usage through Allocation
+    $project_map['allocation_profile'] = $form_state['values']['field_prc_allocation_profile'][LANGUAGE_NONE][0]['value'];
     //Desired HPC Platform
+    $project_map['proposed_hpc_platform'] = $form_state['values']['field_prc_proposed_hpc_platform'][LANGUAGE_NONE][0]['value'];
     //CPU Core Hours
+    $project_map['cpu_core_hours'] = $form_state['values']['field_prc_cpu_core_hours'][LANGUAGE_NONE][0]['value'];
     //Storage Requirements
+    $project_map['storage_requirements'] = $form_state['values']['field_prc_storage_requirements'][LANGUAGE_NONE][0]['value'];
     //Software Requirements
+    $project_map['software_requirements'] = $form_state['values']['field_prc_software_requirements'][LANGUAGE_NONE][0]['value'];
     //Data transfer
-    //Details of Project Team Members
+    $project_map['data_transfer'] = $form_state['values']['field_prc_data_transfer'][LANGUAGE_NONE][0]['value'];
     //Project Team's HPC Experience
+    $project_map['hpc_background'] = $form_state['values']['field_prc_hpc_background'][LANGUAGE_NONE][0]['value'];
     //Expert Support
+    $project_map['expert_support'] = $form_state['values']['field_prc_expert_support'][LANGUAGE_NONE][0]['value'];
     //Explanatory notes for "Expert support" section
+    $project_map['expert_support_notes'] = $form_state['values']['field_prc_export_support_notes'][LANGUAGE_NONE][0]['value'];
     //Funding Provider
+    $project_map['funding_provider'] = $form_state['values']['field_prc_funding_provider'][LANGUAGE_NONE][0]['value'];
     //Funding Amount
+    $project_map['funding_amount'] = $form_state['values']['field_prc_funding_amount'][LANGUAGE_NONE][0]['value'];
     //Further Information
+    $project_map['additional_information'] = $form_state['values']['field_prc_additional_information'][LANGUAGE_NONE][0]['value'];
 
     // Map project data
     $project_data['projectData'] = $project_map;
