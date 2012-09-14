@@ -233,11 +233,6 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     $project_map['prefix'] = 'pdc'; 
 
     //Project Description
-    //PI Name
-    //PI Email
-    //PI Phone
-    //PI Team Members
-    //$project_data['users'] = _get_proposal_team_members($form_state['values']['field_pdc_team_member_emails']);
     //Details of Project Team Members
     //Project Team's HPC Experience
     //Software Requirements
@@ -317,11 +312,6 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     //Storage Requirements
     //Software Requirements
     //Data transfer
-    //PI Name
-    //PI Email
-    //PI Phone
-    //PI Team Members
-    //$project_data['users'] = _get_proposal_team_members($form_state['values']['field_prc_team_member_emails']);
     //Details of Project Team Members
     //Project Team's HPC Experience
     //Expert Support
