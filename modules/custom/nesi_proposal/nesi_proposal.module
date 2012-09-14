@@ -220,7 +220,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
   //PI Email
   //PI Phone
   //PI Team Members
-  $project_data['users'] = _get_proposal_team_members($form_state['values']['field_pdc_team_member_emails']);
+  //$project_data['users'] = _get_proposal_team_members($form_state['values']['field_pdc_team_member_emails']);
   //Details of Project Team Members
   //Project Team's HPC Experience
   //Software Requirements
@@ -237,7 +237,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
   //dpm($project_json);
 
   // Attempt to send proposal to REST interface
-  $rest_result = nesi_rest_insert_project($project_data);
+  //$rest_result = nesi_rest_insert_project($project_data);
 
   // Check for error or http response
   if ($rest_result <> FALSE) {
@@ -292,7 +292,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
   //PI Email
   //PI Phone
   //PI Team Members
-  $project_data['users'] = _get_proposal_team_members($form_state['values']['field_prc_team_member_emails']);
+  //$project_data['users'] = _get_proposal_team_members($form_state['values']['field_prc_team_member_emails']);
   //Details of Project Team Members
   //Project Team's HPC Experience
   //Expert Support
@@ -308,7 +308,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
   //dpm($project_json);
 
   // Attempt to send proposal to REST interface
-  $rest_result = nesi_rest_insert_project($project_data);
+  //$rest_result = nesi_rest_insert_project($project_data);
 
   // Check for error or http response
   if ($rest_result <> FALSE) {
