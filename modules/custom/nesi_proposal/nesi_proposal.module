@@ -209,6 +209,10 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
   }  
 
   if ($form_state['clicked_button']['#value'] <> 'Cancel') {
+
+    global $user;
+    $account = $user;
+
     $project_data = array();
     $project_map = array();
 
@@ -218,6 +222,12 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     //Project Title
     $project_data['projectTitle'] = $form_state['values']['title'];
     $project_data['principal'] = $form_state['values']['field_pdc_pi_email'][LANGUAGE_NONE][0]['value'];
+
+    // Set PI as member
+    $members = array();
+    $members[]['userId'] = $account->name;
+    //PI Team Members
+    $project_data['users'] = $members; 
 
     //$project_map['type'] = 'proposal_development_class'; 
     //$project_map['prefix'] = 'pdc'; 
