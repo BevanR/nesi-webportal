@@ -89,6 +89,9 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
     '#limit_validation_errors' => array(),
   ); 
 
+  // Remove preview
+  unset($form['actions']['preview']);
+
   // Hide unused fields
   unset($form['field_lead_reviewer']);
   unset($form['field_peer_reviewer']);
@@ -136,6 +139,9 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     '#submit' => array('nesi_proposal_form_cancel', 'node_form_submit_build_node'),
     '#limit_validation_errors' => array(),
   ); 
+
+  // Remove preview
+  unset($form['actions']['preview']);
 
   unset($form['field_lead_reviewer']);
   unset($form['field_peer_reviewer']);
