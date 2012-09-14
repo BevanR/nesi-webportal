@@ -208,7 +208,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     return;
   }  
 
-  if ($form['clicked_button']['#value'] <> 'Cancel') {
+  if ($form_state['clicked_button']['#value'] <> 'Cancel') {
     $project_data = array();
     $project_map = array();
 
@@ -274,7 +274,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     return;
   }  
 
-  if ($form['clicked_button']['#value'] <> 'Cancel') {
+  if ($form_state['clicked_button']['#value'] <> 'Cancel') {
 
     $project_data = array();
     $project_map = array();
