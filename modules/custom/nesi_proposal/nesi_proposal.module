@@ -79,6 +79,16 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
     $form['field_pdc_pi_phone'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
   } 
 
+  // Add a cancel button.
+  $form['actions']['cancel'] = array(
+    '#type' => 'submit',
+    '#value' => t('Cancel'),
+    '#access' => TRUE,
+    '#weight' => 15,
+    '#submit' => array('nesi_proposal_form_cancel', 'node_form_submit_build_node'),
+    '#limit_validation_errors' => array(),
+  ); 
+
   // Hide unused fields
   unset($form['field_lead_reviewer']);
   unset($form['field_peer_reviewer']);
@@ -115,7 +125,17 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     $form['field_prc_pi_email'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
     $form['field_prc_pi_name'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
     $form['field_prc_pi_phone'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
-  } 
+  }
+
+  // Add a cancel button.
+  $form['actions']['cancel'] = array(
+    '#type' => 'submit',
+    '#value' => t('Cancel'),
+    '#access' => TRUE,
+    '#weight' => 15,
+    '#submit' => array('nesi_proposal_form_cancel', 'node_form_submit_build_node'),
+    '#limit_validation_errors' => array(),
+  ); 
 
   unset($form['field_lead_reviewer']);
   unset($form['field_peer_reviewer']);
@@ -304,6 +324,10 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     form_set_error('nesi_proposal','There was a problem saving your proposal information. Try to submit again. if you continue to experience problems, please try again later.');
   }
 
+}
+
+function nesi_proposal_form_cancel() {
+  drupal_goto('researcher-my-proposals');
 }
 
 function _get_proposal_team_members($multi_form_field = array()) {
