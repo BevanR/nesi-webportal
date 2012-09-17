@@ -43,7 +43,7 @@
     <?php print render($page['header']); ?>
   </header> <!-- /#header -->
 	
-	<div class="row">
+	<div class="row-fluid">
 	  
     <?php if ($page['sidebar_first']): ?>
       <aside class="span3" role="complementary">
