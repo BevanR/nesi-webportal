@@ -15,7 +15,7 @@
   	  <?php endif; ?>
   	  
   	  <div class="nav-collapse">
-    	  <nav role="navigation">
+    	  <nav id="pnav" role="navigation">
       		<?php if ($primary_nav): ?>
       		  <?php print $primary_nav; ?>
       		<?php endif; ?>
