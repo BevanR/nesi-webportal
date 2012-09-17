@@ -45,6 +45,9 @@
 	
 	<div class="row-fluid">
 	  
+    <?php if ($breadcrumb): ?>
+    <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
+    <?php endif;?>
     <?php if ($page['sidebar_first']): ?>
       <aside class="span3" role="complementary">
         <?php print render($page['sidebar_first']); ?>
@@ -55,7 +58,6 @@
       <?php if ($page['highlighted']): ?>
         <div class="highlighted hero-unit"><?php print render($page['highlighted']); ?></div>
       <?php endif; ?>
-      <?php if ($breadcrumb): print $breadcrumb; endif;?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
