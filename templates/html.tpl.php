@@ -13,6 +13,16 @@
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $scripts; ?>
+
+	<!-- Le styles -->
+	<link href="/assets/css/screen.css" rel="stylesheet">
+	<style>
+		body {
+		padding-top: 90px; /* 90px to make the container go all the way to the bottom of the topbar */
+		}
+	</style>
+	<link href="/assets/css/responsive.css" rel="stylesheet">
+
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
