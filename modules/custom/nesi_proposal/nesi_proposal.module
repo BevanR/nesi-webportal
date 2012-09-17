@@ -246,7 +246,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     $project_map['additional_information'] = $form_state['values']['field_pdc_additional_information'][LANGUAGE_NONE][0]['value'];
 
     // Map project data
-    $project_data['projectData'] = base64_encode($project_map);
+    $project_data['projectData'] = base64_encode(serialize($project_map));
 
     $project_json = json_encode($project_data);
     dpm($project_json);
@@ -339,7 +339,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     $project_map['additional_information'] = $form_state['values']['field_prc_additional_information'][LANGUAGE_NONE][0]['value'];
 
     // Map project data
-    $project_data['projectData'] = base64_encode($project_map);
+    $project_data['projectData'] = base64_encode(serialize($project_map));
 
     $project_json = json_encode($project_data);
     dpm($project_json);
