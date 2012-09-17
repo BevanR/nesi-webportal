@@ -15,12 +15,12 @@
   <?php print $scripts; ?>
 
 	<!-- Le styles -->
+	<link href="<?php print $directory; ?>/assets/css/screen.css" rel="stylesheet">
 	<style>
 		body {
 		padding-top: 90px; /* 90px to make the container go all the way to the bottom of the topbar */
 		}
 	</style>
-	<link href="<?php print $directory; ?>/assets/css/responsive.css" rel="stylesheet">
 
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
@@ -87,32 +87,32 @@
 					<ul class="unstyled inline-list">
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-u-of-a.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-u-of-a.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-u-of-c.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-u-of-c.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-niwa.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-niwa.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-ministry-of-si.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-ministry-of-si.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-manaaki-whenua.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-manaaki-whenua.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-u-of-o.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-u-of-o.jpg" alt="logo">
 							</a>
 						</li>
 					</ul>
