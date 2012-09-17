@@ -43,7 +43,7 @@
     <?php print render($page['header']); ?>
   </header> <!-- /#header -->
 	
-	<div class="row-fluid">
+	<div class="row">
 	  
     <?php if ($breadcrumb): ?>
     <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
