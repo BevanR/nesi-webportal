@@ -15,7 +15,7 @@
   <?php print $scripts; ?>
 
 	<!-- Le styles -->
-	<link href="<?php print $directory; ?>/assets/css/screen.css" rel="stylesheet">
+	<link href="/<?php print $directory; ?>/assets/css/screen.css" rel="stylesheet">
 	<style>
 		body {
 		padding-top: 90px; /* 90px to make the container go all the way to the bottom of the topbar */
@@ -28,11 +28,11 @@
   <![endif]-->
 
 	<!-- Le fav and touch icons -->
-	<link rel="shortcut icon" href="<?php print $directory; ?>/assets/ico/favicon.ico">
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php print $directory; ?>/assets/ico/apple-touch-icon-144-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php print $directory; ?>/assets/ico/apple-touch-icon-114-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php print $directory; ?>/assets/ico/apple-touch-icon-72-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" href="<?php print $directory; ?>/assets/ico/apple-touch-icon-57-precomposed.png">
+	<link rel="shortcut icon" href="/<?php print $directory; ?>/assets/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/<?php print $directory; ?>/assets/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/<?php print $directory; ?>/assets/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/<?php print $directory; ?>/assets/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/<?php print $directory; ?>/assets/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php print $page_top; ?>
@@ -87,32 +87,32 @@
 					<ul class="unstyled inline-list">
 						<li>
 							<a href="#">
-								<img src="<?php print $directory; ?>/assets/img/logo-u-of-a.jpg" alt="logo">
+								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-a.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="<?php print $directory; ?>/assets/img/logo-u-of-c.jpg" alt="logo">
+								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-c.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="<?php print $directory; ?>/assets/img/logo-niwa.jpg" alt="logo">
+								<img src="/<?php print $directory; ?>/assets/img/logo-niwa.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="<?php print $directory; ?>/assets/img/logo-ministry-of-si.jpg" alt="logo">
+								<img src="/<?php print $directory; ?>/assets/img/logo-ministry-of-si.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="<?php print $directory; ?>/assets/img/logo-manaaki-whenua.jpg" alt="logo">
+								<img src="/<?php print $directory; ?>/assets/img/logo-manaaki-whenua.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="<?php print $directory; ?>/assets/img/logo-u-of-o.jpg" alt="logo">
+								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-o.jpg" alt="logo">
 							</a>
 						</li>
 					</ul>
