@@ -87,32 +87,32 @@
 					<ul class="unstyled inline-list">
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-u-of-a.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-u-of-a.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-u-of-c.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-u-of-c.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-niwa.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-niwa.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-ministry-of-si.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-ministry-of-si.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-manaaki-whenua.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-manaaki-whenua.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="assets/img/logo-u-of-o.jpg" alt="logo">
+								<img src="<?php print $directory; ?>assets/img/logo-u-of-o.jpg" alt="logo">
 							</a>
 						</li>
 					</ul>
