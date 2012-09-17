@@ -246,10 +246,10 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     $project_map['additional_information'] = $form_state['values']['field_pdc_additional_information'][LANGUAGE_NONE][0]['value'];
 
     // Map project data
-    $project_data['projectData'] = $project_map;
+    $project_data['projectData'] = base64_encode($project_map);
 
-    //$project_json = json_encode($project_data);
-    //dpm($project_json);
+    $project_json = json_encode($project_data);
+    dpm($project_json);
 
     // Attempt to send proposal to REST interface
     $rest_result = nesi_rest_insert_project($project_data);
@@ -339,10 +339,10 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     $project_map['additional_information'] = $form_state['values']['field_prc_additional_information'][LANGUAGE_NONE][0]['value'];
 
     // Map project data
-    $project_data['projectData'] = $project_map;
+    $project_data['projectData'] = base64_encode($project_map);
 
-    //$project_json = json_encode($project_data);
-    //dpm($project_json);
+    $project_json = json_encode($project_data);
+    dpm($project_json);
 
     // Attempt to send proposal to REST interface
     $rest_result = nesi_rest_insert_project($project_data);
