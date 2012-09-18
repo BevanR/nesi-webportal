@@ -89,6 +89,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json')); 
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 
     // Execute
     $rest_response = curl_exec($ch);
