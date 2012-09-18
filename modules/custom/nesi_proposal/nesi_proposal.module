@@ -259,7 +259,8 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
       //dpm('Project was created successfully in GOLD.');
       //dpm($rest_result);
       watchdog('nesi_proposal', 'REST project created - DUID " '.$account->uid.' " ', NULL , WATCHDOG_INFO, $link = NULL);
-
+      $json_result = json_decode($rest_result['json_data']);
+      $form_state['values']['field_pdc_outcome'][LANGUAGE_NONE][0]['value'] = $json_result['projectId'];
       $form_state['redirect'] = array('researcher-my-proposals');
     }
     else {
@@ -354,6 +355,9 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
       //dpm('Project was created successfully in GOLD.');
       //dpm($rest_result);
       watchdog('nesi_proposal', 'REST project created - DUID " '.$account->uid.' " ', NULL , WATCHDOG_INFO, $link = NULL);
+      $json_result = json_decode($rest_result['json_data']);
+      $form_state['values']['field_pdc_outcome'][LANGUAGE_NONE][0]['value'] = $json_result['projectId'];
+
       $form_state['redirect'] = array('researcher-my-proposals');
     }
     else {
