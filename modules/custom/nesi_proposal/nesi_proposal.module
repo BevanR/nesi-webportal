@@ -89,6 +89,9 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
     '#limit_validation_errors' => array(),
   ); 
 
+  // Redirect on save
+  $form['actions']['submit']['#submit'] = 'nesi_proposal_form_submit';
+
   $form['field_proposal_nesi_id']['#type'] = 'hidden';
 
   // Remove preview
@@ -141,6 +144,9 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     '#submit' => array('nesi_proposal_form_cancel'),
     '#limit_validation_errors' => array(),
   ); 
+
+  // Redirect on save
+  $form['actions']['submit']['#submit'] = 'nesi_proposal_form_submit';
 
   $form['field_proposal_nesi_id']['#type'] = 'hidden';
 
@@ -266,7 +272,6 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
       watchdog('nesi_proposal', 'REST project created - DUID " '.$account->uid.' " ', NULL , WATCHDOG_INFO, $link = NULL);
       $json_result = json_decode($rest_result['json_data']);
       $form_state['values']['field_pdc_outcome'][LANGUAGE_NONE][0]['value'] = $json_result['projectId'];
-      $form_state['redirect'] = array('researcher-my-proposals');
     }
     else {
       // If http response failure, add to watchdog and notify admin
@@ -364,8 +369,6 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
       watchdog('nesi_proposal', 'REST project created - DUID " '.$account->uid.' " ', NULL , WATCHDOG_INFO, $link = NULL);
       $json_result = json_decode($rest_result['json_data']);
       $form_state['values']['field_prc_outcome'][LANGUAGE_NONE][0]['value'] = $json_result['projectId'];
-
-      $form_state['redirect'] = array('researcher-my-proposals');
     }
     else {
       // If http response failure, add to watchdog and notify admin
@@ -378,6 +381,10 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
 }
 
 function nesi_proposal_form_cancel() {
+  drupal_goto('researcher-my-proposals');
+}
+
+function nesi_proposal_form_submit() {
   drupal_goto('researcher-my-proposals');
 }
 
