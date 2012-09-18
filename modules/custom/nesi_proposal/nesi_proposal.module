@@ -259,6 +259,8 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
       //dpm('Project was created successfully in GOLD.');
       //dpm($rest_result);
       watchdog('nesi_proposal', 'REST project created - DUID " '.$account->uid.' " ', NULL , WATCHDOG_INFO, $link = NULL);
+
+      $form_state['redirect'] = array('researcher-my-proposals');
     }
     else {
       // If http response failure, add to watchdog and notify admin
@@ -352,6 +354,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
       //dpm('Project was created successfully in GOLD.');
       //dpm($rest_result);
       watchdog('nesi_proposal', 'REST project created - DUID " '.$account->uid.' " ', NULL , WATCHDOG_INFO, $link = NULL);
+      $form_state['redirect'] = array('researcher-my-proposals');
     }
     else {
       // If http response failure, add to watchdog and notify admin
