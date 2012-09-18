@@ -96,7 +96,7 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
   unset($form['field_lead_reviewer']);
   unset($form['field_peer_reviewer']);
   unset($form['field_pdc_status']);
-  unset($form['field_pdc_outcome']);
+  $form['field_pdc_outcome']['#type'] = 'hidden';
   unset($form['field_pdc_outcome_report']);
   unset($form['field_pdc_status_record']);
   unset($form['field_pdc_team_member_emails']);
@@ -146,7 +146,7 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
   unset($form['field_lead_reviewer']);
   unset($form['field_peer_reviewer']);
   unset($form['field_prc_status']);
-  unset($form['field_prc_outcome']);
+  $form['field_prc_outcome']['#type'] = 'hidden';
   unset($form['field_prc_outcome_report']);
   unset($form['field_prc_team_member_emails']);
   unset($form['field_prc_team_members']);
