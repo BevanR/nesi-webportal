@@ -218,14 +218,15 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
 
     // Prep proposal data for REST interface
     //Project ID - this will be returned by GOLD
+    $identifier = nesi_user_tuakiri_identifier();
 
     //Project Title
     $project_data['projectTitle'] = $form_state['values']['title'];
-    $project_data['principal'] = $account->name;
+    $project_data['principal'] = $identifier;
 
     // Set PI as member
     $members = array();
-    $members[]['userId'] = $account->name;
+    $members[]['userId'] = $identifier;
     //PI Team Members
     $project_data['users'] = $members; 
 
@@ -296,13 +297,15 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     // Prep proposal data for REST interface
     //Project ID - this will be returned by GOLD
 
+    $identifier = nesi_user_tuakiri_identifier(); 
+
     //Project Title
     $project_data['projectTitle'] = $form_state['values']['title'];
-    $project_data['principal'] = $account->name;
+    $project_data['principal'] = $identifier;
 
     // Set PI as member
     $members = array();
-    $members[]['userId'] = $account->name;
+    $members[]['userId'] = $identifier;
     //PI Team Members
     $project_data['users'] = $members; 
 
