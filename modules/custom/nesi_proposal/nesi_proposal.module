@@ -90,7 +90,7 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
   ); 
 
   // Redirect on save
-  $form['actions']['submit']['#submit'] = 'nesi_proposal_form_submit';
+  $form['actions']['submit']['#submit'] = array('nesi_proposal_form_submit');
 
   $form['field_proposal_nesi_id']['#type'] = 'hidden';
 
@@ -146,7 +146,7 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
   ); 
 
   // Redirect on save
-  $form['actions']['submit']['#submit'] = 'nesi_proposal_form_submit';
+  $form['actions']['submit']['#submit'] = array('nesi_proposal_form_submit');
 
   $form['field_proposal_nesi_id']['#type'] = 'hidden';
 
@@ -384,8 +384,8 @@ function nesi_proposal_form_cancel() {
   drupal_goto('researcher-my-proposals');
 }
 
-function nesi_proposal_form_submit() {
-  drupal_goto('researcher-my-proposals');
+function nesi_proposal_form_submit(&$form, &$form_state) {
+  $form_state['redirect'] = array('researcher-my-proposals');
 }
 
 function _get_proposal_team_members($multi_form_field = array()) {
