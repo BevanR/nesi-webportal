@@ -10,7 +10,7 @@
 function nesi_proposal_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-proposal_collaborative-field_lead_reviewer'
+  // Exported field: 'node-proposal_collaborative-field_lead_reviewer'.
   $fields['node-proposal_collaborative-field_lead_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -34,6 +34,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -99,7 +100,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_collaborative-field_pc_description'
+  // Exported field: 'node-proposal_collaborative-field_pc_description'.
   $fields['node-proposal_collaborative-field_pc_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -120,6 +121,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -165,7 +167,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_collaborative-field_peer_reviewer'
+  // Exported field: 'node-proposal_collaborative-field_peer_reviewer'.
   $fields['node-proposal_collaborative-field_peer_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -189,6 +191,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -258,7 +261,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_lead_reviewer'
+  // Exported field: 'node-proposal_development_class-field_lead_reviewer'.
   $fields['node-proposal_development_class-field_lead_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -282,6 +285,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -356,7 +360,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_additional_information'
+  // Exported field: 'node-proposal_development_class-field_pdc_additional_information'.
   $fields['node-proposal_development_class-field_pdc_additional_information'] = array(
     'field_config' => array(
       'active' => '1',
@@ -377,6 +381,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -422,7 +427,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_description'
+  // Exported field: 'node-proposal_development_class-field_pdc_description'.
   $fields['node-proposal_development_class-field_pdc_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -443,6 +448,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -488,7 +494,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_expert_support'
+  // Exported field: 'node-proposal_development_class-field_pdc_expert_support'.
   $fields['node-proposal_development_class-field_pdc_expert_support'] = array(
     'field_config' => array(
       'active' => '1',
@@ -502,6 +508,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -552,7 +559,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_outcome'
+  // Exported field: 'node-proposal_development_class-field_pdc_outcome'.
   $fields['node-proposal_development_class-field_pdc_outcome'] = array(
     'field_config' => array(
       'active' => '1',
@@ -576,6 +583,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -628,7 +636,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_outcome_report'
+  // Exported field: 'node-proposal_development_class-field_pdc_outcome_report'.
   $fields['node-proposal_development_class-field_pdc_outcome_report'] = array(
     'field_config' => array(
       'active' => '1',
@@ -652,6 +660,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -704,7 +713,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_pi_email'
+  // Exported field: 'node-proposal_development_class-field_pdc_pi_email'.
   $fields['node-proposal_development_class-field_pdc_pi_email'] = array(
     'field_config' => array(
       'active' => '1',
@@ -725,6 +734,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -772,7 +782,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_pi_name'
+  // Exported field: 'node-proposal_development_class-field_pdc_pi_name'.
   $fields['node-proposal_development_class-field_pdc_pi_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -793,6 +803,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -840,7 +851,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_pi_phone'
+  // Exported field: 'node-proposal_development_class-field_pdc_pi_phone'.
   $fields['node-proposal_development_class-field_pdc_pi_phone'] = array(
     'field_config' => array(
       'active' => '1',
@@ -861,6 +872,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -908,7 +920,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_software_requirements'
+  // Exported field: 'node-proposal_development_class-field_pdc_software_requirements'.
   $fields['node-proposal_development_class-field_pdc_software_requirements'] = array(
     'field_config' => array(
       'active' => '1',
@@ -929,6 +941,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -974,7 +987,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_status'
+  // Exported field: 'node-proposal_development_class-field_pdc_status'.
   $fields['node-proposal_development_class-field_pdc_status'] = array(
     'field_config' => array(
       'active' => '1',
@@ -998,6 +1011,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1050,7 +1064,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_status_record'
+  // Exported field: 'node-proposal_development_class-field_pdc_status_record'.
   $fields['node-proposal_development_class-field_pdc_status_record'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1074,6 +1088,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1121,7 +1136,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_storage_requirements'
+  // Exported field: 'node-proposal_development_class-field_pdc_storage_requirements'.
   $fields['node-proposal_development_class-field_pdc_storage_requirements'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1142,6 +1157,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -1187,7 +1203,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_team_hpcexperience'
+  // Exported field: 'node-proposal_development_class-field_pdc_team_hpcexperience'.
   $fields['node-proposal_development_class-field_pdc_team_hpcexperience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1208,6 +1224,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -1253,7 +1270,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_team_member_emails'
+  // Exported field: 'node-proposal_development_class-field_pdc_team_member_emails'.
   $fields['node-proposal_development_class-field_pdc_team_member_emails'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1277,6 +1294,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1325,7 +1343,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_team_members'
+  // Exported field: 'node-proposal_development_class-field_pdc_team_members'.
   $fields['node-proposal_development_class-field_pdc_team_members'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1346,6 +1364,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -1391,7 +1410,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_peer_reviewer'
+  // Exported field: 'node-proposal_development_class-field_peer_reviewer'.
   $fields['node-proposal_development_class-field_peer_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1415,6 +1434,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1484,7 +1504,77 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_private_industry-field_lead_reviewer'
+  // Exported field: 'node-proposal_development_class-field_proposal_nesi_id'.
+  $fields['node-proposal_development_class-field_proposal_nesi_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_proposal_nesi_id',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_development_class',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 17,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_proposal_nesi_id',
+      'label' => 'NeSI Project ID',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '18',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_private_industry-field_lead_reviewer'.
   $fields['node-proposal_private_industry-field_lead_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1508,6 +1598,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1573,7 +1664,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_private_industry-field_peer_reviewer'
+  // Exported field: 'node-proposal_private_industry-field_peer_reviewer'.
   $fields['node-proposal_private_industry-field_peer_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1597,6 +1688,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1666,7 +1758,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_private_industry-field_ppi_description'
+  // Exported field: 'node-proposal_private_industry-field_ppi_description'.
   $fields['node-proposal_private_industry-field_ppi_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1687,6 +1779,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1734,7 +1827,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_lead_reviewer'
+  // Exported field: 'node-proposal_research_class-field_lead_reviewer'.
   $fields['node-proposal_research_class-field_lead_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1758,6 +1851,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1823,7 +1917,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_peer_reviewer'
+  // Exported field: 'node-proposal_research_class-field_peer_reviewer'.
   $fields['node-proposal_research_class-field_peer_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1847,6 +1941,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1916,7 +2011,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_additional_information'
+  // Exported field: 'node-proposal_research_class-field_prc_additional_information'.
   $fields['node-proposal_research_class-field_prc_additional_information'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1937,6 +2032,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -1982,7 +2078,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_allocation_profile'
+  // Exported field: 'node-proposal_research_class-field_prc_allocation_profile'.
   $fields['node-proposal_research_class-field_prc_allocation_profile'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2003,6 +2099,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -2048,7 +2145,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_cpu_core_hours'
+  // Exported field: 'node-proposal_research_class-field_prc_cpu_core_hours'.
   $fields['node-proposal_research_class-field_prc_cpu_core_hours'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2069,6 +2166,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2116,7 +2214,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_data_transfer'
+  // Exported field: 'node-proposal_research_class-field_prc_data_transfer'.
   $fields['node-proposal_research_class-field_prc_data_transfer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2137,6 +2235,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -2182,7 +2281,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_expert_support'
+  // Exported field: 'node-proposal_research_class-field_prc_expert_support'.
   $fields['node-proposal_research_class-field_prc_expert_support'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2196,6 +2295,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -2244,7 +2344,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_export_support_notes'
+  // Exported field: 'node-proposal_research_class-field_prc_export_support_notes'.
   $fields['node-proposal_research_class-field_prc_export_support_notes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2265,6 +2365,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -2310,7 +2411,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_funding_amount'
+  // Exported field: 'node-proposal_research_class-field_prc_funding_amount'.
   $fields['node-proposal_research_class-field_prc_funding_amount'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2331,6 +2432,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2378,7 +2480,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_funding_provider'
+  // Exported field: 'node-proposal_research_class-field_prc_funding_provider'.
   $fields['node-proposal_research_class-field_prc_funding_provider'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2399,6 +2501,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2446,7 +2549,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_hpc_background'
+  // Exported field: 'node-proposal_research_class-field_prc_hpc_background'.
   $fields['node-proposal_research_class-field_prc_hpc_background'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2467,6 +2570,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -2512,7 +2616,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_hpc_benefits'
+  // Exported field: 'node-proposal_research_class-field_prc_hpc_benefits'.
   $fields['node-proposal_research_class-field_prc_hpc_benefits'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2533,6 +2637,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -2578,7 +2683,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_outcome'
+  // Exported field: 'node-proposal_research_class-field_prc_outcome'.
   $fields['node-proposal_research_class-field_prc_outcome'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2602,6 +2707,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2650,7 +2756,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_outcome_report'
+  // Exported field: 'node-proposal_research_class-field_prc_outcome_report'.
   $fields['node-proposal_research_class-field_prc_outcome_report'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2674,6 +2780,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -2726,7 +2833,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_pi_email'
+  // Exported field: 'node-proposal_research_class-field_prc_pi_email'.
   $fields['node-proposal_research_class-field_prc_pi_email'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2747,6 +2854,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2794,7 +2902,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_pi_name'
+  // Exported field: 'node-proposal_research_class-field_prc_pi_name'.
   $fields['node-proposal_research_class-field_prc_pi_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2815,6 +2923,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2862,7 +2971,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_pi_phone'
+  // Exported field: 'node-proposal_research_class-field_prc_pi_phone'.
   $fields['node-proposal_research_class-field_prc_pi_phone'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2883,6 +2992,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2930,7 +3040,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_project_deliverables'
+  // Exported field: 'node-proposal_research_class-field_prc_project_deliverables'.
   $fields['node-proposal_research_class-field_prc_project_deliverables'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2951,6 +3061,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -2996,7 +3107,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_proposed_hpc_platform'
+  // Exported field: 'node-proposal_research_class-field_prc_proposed_hpc_platform'.
   $fields['node-proposal_research_class-field_prc_proposed_hpc_platform'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3010,6 +3121,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -3061,7 +3173,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_scientific_goals'
+  // Exported field: 'node-proposal_research_class-field_prc_scientific_goals'.
   $fields['node-proposal_research_class-field_prc_scientific_goals'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3082,6 +3194,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -3127,7 +3240,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_software_requirements'
+  // Exported field: 'node-proposal_research_class-field_prc_software_requirements'.
   $fields['node-proposal_research_class-field_prc_software_requirements'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3148,6 +3261,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -3193,7 +3307,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_status'
+  // Exported field: 'node-proposal_research_class-field_prc_status'.
   $fields['node-proposal_research_class-field_prc_status'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3217,6 +3331,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3269,7 +3384,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_storage_requirements'
+  // Exported field: 'node-proposal_research_class-field_prc_storage_requirements'.
   $fields['node-proposal_research_class-field_prc_storage_requirements'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3290,6 +3405,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3337,7 +3453,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_team_member_emails'
+  // Exported field: 'node-proposal_research_class-field_prc_team_member_emails'.
   $fields['node-proposal_research_class-field_prc_team_member_emails'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3361,6 +3477,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3409,7 +3526,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_team_members'
+  // Exported field: 'node-proposal_research_class-field_prc_team_members'.
   $fields['node-proposal_research_class-field_prc_team_members'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3430,6 +3547,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -3475,7 +3593,77 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_teaching-field_lead_reviewer'
+  // Exported field: 'node-proposal_research_class-field_proposal_nesi_id'.
+  $fields['node-proposal_research_class-field_proposal_nesi_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_proposal_nesi_id',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_research_class',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 26,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_proposal_nesi_id',
+      'label' => 'NeSI Project ID',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '27',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_teaching-field_lead_reviewer'.
   $fields['node-proposal_teaching-field_lead_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3499,6 +3687,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -3564,7 +3753,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_teaching-field_peer_reviewer'
+  // Exported field: 'node-proposal_teaching-field_peer_reviewer'.
   $fields['node-proposal_teaching-field_peer_reviewer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3588,6 +3777,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -3657,7 +3847,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_teaching-field_ptch_description'
+  // Exported field: 'node-proposal_teaching-field_ptch_description'.
   $fields['node-proposal_teaching-field_ptch_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3678,6 +3868,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -3725,7 +3916,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_type-body'
+  // Exported field: 'node-proposal_type-body'.
   $fields['node-proposal_type-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3751,6 +3942,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -3803,7 +3995,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_type-field_pt_add_content_url'
+  // Exported field: 'node-proposal_type-field_pt_add_content_url'.
   $fields['node-proposal_type-field_pt_add_content_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3824,6 +4016,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3871,7 +4064,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_type-field_pt_reviewer_selection'
+  // Exported field: 'node-proposal_type-field_pt_reviewer_selection'.
   $fields['node-proposal_type-field_pt_reviewer_selection'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3885,6 +4078,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -3939,7 +4133,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_type-field_pt_reviewers'
+  // Exported field: 'node-proposal_type-field_pt_reviewers'.
   $fields['node-proposal_type-field_pt_reviewers'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3960,6 +4154,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -4020,7 +4215,7 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_type-field_pt_workflow_states'
+  // Exported field: 'node-proposal_type-field_pt_workflow_states'.
   $fields['node-proposal_type-field_pt_workflow_states'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4041,6 +4236,7 @@ function nesi_proposal_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -4107,6 +4303,7 @@ function nesi_proposal_field_default_fields() {
   t('Further Information');
   t('If you have received external funding to support your HPC needs, please fill in this section.');
   t('Lead Reviewer');
+  t('NeSI Project ID');
   t('Peer Reviewer');
   t('Please check the appropriate box if the project team will need NeSI support/consultancy for: ');
   t('Please describe how access to HPC resources will benefit your project.');
