@@ -73,52 +73,60 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
   // Before we do anything, check if REST is enabled in Drupal's admin interface
   if (nesi_rest_interface_status() == TRUE) {
 
-    // Initialise
-    $ch = curl_init();
+    // Check data length (current GOLD limitation of 4k)...
+    if (strlen($json_data) < 4000) {
+      // Initialise
+      $ch = curl_init();
 
-    // default request method to GET unless specified otherwise
-    curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+      // default request method to GET unless specified otherwise
+      curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
 
-    if ($request_method == 'POST') {
-      curl_setopt($ch, CURLOPT_POST, TRUE);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-    }
+      if ($request_method == 'POST') {
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+      }
 
-    // set REST URL and other appropriate options
-    curl_setopt($ch, CURLOPT_URL, $request_uri);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json')); 
+      // set REST URL and other appropriate options
+      curl_setopt($ch, CURLOPT_URL, $request_uri);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json')); 
 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 
-    // Execute
-    $rest_response = curl_exec($ch);
+      // Execute
+      $rest_response = curl_exec($ch);
 
-    // Check if any error occured
-    if(curl_errno($ch) > 0) {
-      // Set error message in drupal watchdog
-      watchdog('nesi_rest', 'REST communication error: '.curl_error($ch), NULL , WATCHDOG_ERROR, $link = NULL);
-      //drupal_set_message('Curl error: ' . curl_error($ch));
+      // Check if any error occured
+      if(curl_errno($ch) > 0) {
+        // Set error message in drupal watchdog
+        watchdog('nesi_rest', 'REST communication error: '.curl_error($ch), NULL , WATCHDOG_ERROR, $link = NULL);
+        //drupal_set_message('Curl error: ' . curl_error($ch));
 
-      return FALSE;
+        return FALSE;
+      }
+      else {
+        
+        // No error reported, check REST api response
+        $result_status = curl_getinfo($ch);
+        
+        // Prepare response data array
+        $response_data = array();      
+        $response_data['http_code'] = $result_status['http_code'];
+        $response_data['json_data'] = $rest_response;
+   
+        watchdog('nesi_rest', 'REST response: HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_INFO, $link = NULL);
+        return $response_data;
+
+      }
+
+      // Finished - close handle
+      curl_close($ch);  
+
     }
     else {
-      
-      // No error reported, check REST api response
-      $result_status = curl_getinfo($ch);
-      
-      // Prepare response data array
-      $response_data = array();      
-      $response_data['http_code'] = $result_status['http_code'];
-      $response_data['json_data'] = $rest_response;
- 
-      watchdog('nesi_rest', 'REST response: HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_INFO, $link = NULL);
-      return $response_data;
-
+      // Artificial restriction on size of dataset
+      watchdog('nesi_rest', 'REST request size error: JSON exceeds 4k', NULL , WATCHDOG_ERROR, $link = NULL);
     }
-
-    // Finished - close handle
-    curl_close($ch);  
 
   }
   else {
