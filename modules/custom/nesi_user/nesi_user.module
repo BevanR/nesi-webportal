@@ -35,8 +35,8 @@ function nesi_user_init(){
     if(empty( $profile['researcher_profile']->pid )){
 
       if($destination['destination'] != 'user/'.$account->uid.'/edit/researcher_profile' && $destination['destination'] != 'user/logout'){
-        drupal_set_message('Researcher profile incomplete.', 'error');
-        drupal_set_message('Please ensure that you complete your researcher profile below.', 'error');
+        drupal_set_message('Researcher profile incomplete.', 'info');
+        drupal_set_message('Please ensure that you complete your researcher profile below.', 'info');
         drupal_goto('user/'.$account->uid.'/edit/researcher_profile');
       }
     }
