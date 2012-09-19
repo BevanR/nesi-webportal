@@ -355,7 +355,7 @@ function nesi_proposal_field_default_fields() {
           ),
         ),
         'type' => 'user_reference_autocomplete',
-        'weight' => '12',
+        'weight' => '14',
       ),
     ),
   );
@@ -422,7 +422,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '11',
+        'weight' => '13',
       ),
     ),
   );
@@ -489,6 +489,90 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_development_class-field_pdc_estimated_start_date'.
+  $fields['node-proposal_development_class-field_pdc_estimated_start_date'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pdc_estimated_start_date',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'date',
+      'settings' => array(
+        'cache_count' => '4',
+        'cache_enabled' => 0,
+        'granularity' => array(
+          'day' => 'day',
+          'hour' => 0,
+          'minute' => 0,
+          'month' => 'month',
+          'second' => 0,
+          'year' => 'year',
+        ),
+        'profile2_private' => FALSE,
+        'timezone_db' => '',
+        'todate' => '',
+        'tz_handling' => 'none',
+      ),
+      'translatable' => '0',
+      'type' => 'datetime',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_development_class',
+      'deleted' => '0',
+      'description' => 'Please indicate the approximate date from which the HPC resource will be required.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+          ),
+          'type' => 'date_default',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_pdc_estimated_start_date',
+      'label' => 'Estimated Project Start Date',
+      'required' => 1,
+      'settings' => array(
+        'default_value' => 'now',
+        'default_value2' => 'same',
+        'default_value_code' => '',
+        'default_value_code2' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'date',
+        'settings' => array(
+          'increment' => '15',
+          'input_format' => 'd/m/Y - H:i:s',
+          'input_format_custom' => '',
+          'label_position' => 'above',
+          'text_parts' => array(),
+          'year_range' => '-0:+3',
+        ),
+        'type' => 'date_popup',
         'weight' => '1',
       ),
     ),
@@ -554,7 +638,7 @@ function nesi_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '10',
+        'weight' => '12',
       ),
     ),
   );
@@ -631,7 +715,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '15',
+        'weight' => '17',
       ),
     ),
   );
@@ -708,7 +792,7 @@ function nesi_proposal_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
-        'weight' => '16',
+        'weight' => '18',
       ),
     ),
   );
@@ -777,7 +861,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -846,7 +930,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -915,7 +999,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -982,7 +1066,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '10',
       ),
     ),
   );
@@ -1059,7 +1143,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '16',
       ),
     ),
   );
@@ -1131,7 +1215,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '17',
+        'weight' => '19',
       ),
     ),
   );
@@ -1198,7 +1282,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '9',
+        'weight' => '11',
       ),
     ),
   );
@@ -1265,7 +1349,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -1338,7 +1422,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -1405,7 +1489,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -1499,7 +1583,74 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'user_reference_autocomplete',
-        'weight' => '13',
+        'weight' => '15',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_development_class-field_prc_proposed_hpc_platform'.
+  $fields['node-proposal_development_class-field_prc_proposed_hpc_platform'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_prc_proposed_hpc_platform',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'intel_cluster' => 'Intel cluster',
+          'power6' => 'P575/POWER6',
+          'power7' => 'P755/POWER7',
+          'bluegene' => 'BlueGene/P',
+          'unknown' => 'Don\'t know',
+        ),
+        'allowed_values_function' => '',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_development_class',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'See also http://www.nesi.org.nz/facilities',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_prc_proposed_hpc_platform',
+      'label' => 'Desired HPC Platform',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '9',
       ),
     ),
   );
@@ -1569,7 +1720,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '18',
+        'weight' => '20',
       ),
     ),
   );
@@ -3132,6 +3283,7 @@ function nesi_proposal_field_default_fields() {
           'unknown' => 'Don\'t know',
         ),
         'allowed_values_function' => '',
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_text',
@@ -4295,6 +4447,7 @@ function nesi_proposal_field_default_fields() {
   t('Description');
   t('Desired HPC Platform');
   t('Details of Project Team Members');
+  t('Estimated Project Start Date');
   t('Expected journal article(s), conference proceedings or other publications that will come from this research.');
   t('Expert Support');
   t('Explanatory notes for "Expert support" section ');
@@ -4313,6 +4466,7 @@ function nesi_proposal_field_default_fields() {
   t('Please indicate if you would like to request an Expert from NeSI. Please provide an explanation of what this is intended to cover and an estimate of hours in the space below. Experts can "contribute to optimizing your applications and software to better scale and perform on our HPC facilities".');
   t('Please indicate production code(s) to be used including the licence status as well as external libraries, or/and compilers, debuggers, profilers and other dependencies required for developing your HPC code.');
   t('Please indicate production code(s) to be used including the license status as well as external libraries, or/and compilers, debuggers, profilers and other dependencies required for developing your HPC code.');
+  t('Please indicate the approximate date from which the HPC resource will be required.');
   t('Please indicate the expected shape of your computational needs. For example, your proposal may require of a large number of small runs or a small number of large runs.');
   t('Please indicate unit, e.g. GB. Note that this is not archival storage, but disk space for a job\'s input and output data.');
   t('Please outline the scientific outcomes of your proposal. You are welcome to provide a reference to an overarching proposal, rather than duplicating content.');
