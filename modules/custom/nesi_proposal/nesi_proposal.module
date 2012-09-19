@@ -105,7 +105,7 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
   unset($form['field_pdc_outcome_report']);
   unset($form['field_pdc_status_record']);
   unset($form['field_pdc_team_member_emails']);
-  unset($form['field_pdc_team_members']);
+  //unset($form['field_pdc_team_members']);
 }
 
 /**
