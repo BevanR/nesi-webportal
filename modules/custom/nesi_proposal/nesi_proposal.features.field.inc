@@ -2063,7 +2063,91 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'user_reference_autocomplete',
-        'weight' => '21',
+        'weight' => '25',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_research_class-field_pdc_estimated_start_date'.
+  $fields['node-proposal_research_class-field_pdc_estimated_start_date'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pdc_estimated_start_date',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'date',
+      'settings' => array(
+        'cache_count' => '4',
+        'cache_enabled' => 0,
+        'granularity' => array(
+          'day' => 'day',
+          'hour' => 0,
+          'minute' => 0,
+          'month' => 'month',
+          'second' => 0,
+          'year' => 'year',
+        ),
+        'profile2_private' => FALSE,
+        'timezone_db' => '',
+        'todate' => '',
+        'tz_handling' => 'none',
+      ),
+      'translatable' => '0',
+      'type' => 'datetime',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_research_class',
+      'deleted' => '0',
+      'description' => 'Please indicate the approximate date from which the HPC resource will be required.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+          ),
+          'type' => 'date_default',
+          'weight' => 27,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_pdc_estimated_start_date',
+      'label' => 'Estimated Project Start Date',
+      'required' => 1,
+      'settings' => array(
+        'default_value' => 'now',
+        'default_value2' => 'same',
+        'default_value_code' => '',
+        'default_value_code2' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'date',
+        'settings' => array(
+          'increment' => '15',
+          'input_format' => 'd/m/Y - H:i:s',
+          'input_format_custom' => '',
+          'label_position' => 'above',
+          'text_parts' => array(),
+          'year_range' => '-0:+3',
+        ),
+        'type' => 'date_popup',
+        'weight' => '2',
       ),
     ),
   );
@@ -2157,7 +2241,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'user_reference_autocomplete',
-        'weight' => '22',
+        'weight' => '26',
       ),
     ),
   );
@@ -2224,7 +2308,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '20',
+        'weight' => '24',
       ),
     ),
   );
@@ -2252,7 +2336,9 @@ function nesi_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -2260,7 +2346,7 @@ function nesi_proposal_field_default_fields() {
       'bundle' => 'proposal_research_class',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Please indicate the expected shape of your computational needs. For example, your proposal may require of a large number of small runs or a small number of large runs.',
+      'description' => 'Please provide any additional information on usage requirements.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2278,7 +2364,7 @@ function nesi_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_allocation_profile',
-      'label' => 'Profile of usage through Allocation',
+      'label' => 'Additional usage information',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
@@ -2291,7 +2377,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '4',
+        'weight' => '9',
       ),
     ),
   );
@@ -2360,7 +2446,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '11',
       ),
     ),
   );
@@ -2427,7 +2513,214 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '9',
+        'weight' => '14',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_research_class-field_prc_estimated_cpus'.
+  $fields['node-proposal_research_class-field_prc_estimated_cpus'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_prc_estimated_cpus',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_research_class',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 29,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_prc_estimated_cpus',
+      'label' => 'Estimated average number of CPUs per run',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_research_class-field_prc_estimated_simulations'.
+  $fields['node-proposal_research_class-field_prc_estimated_simulations'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_prc_estimated_simulations',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_research_class',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 28,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_prc_estimated_simulations',
+      'label' => 'Estimated number of runs/simulations',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_research_class-field_prc_estimated_wc_hours'.
+  $fields['node-proposal_research_class-field_prc_estimated_wc_hours'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_prc_estimated_wc_hours',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_research_class',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 31,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_prc_estimated_wc_hours',
+      'label' => 'Estimated average length of each run (in wall-clock hours)',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '8',
       ),
     ),
   );
@@ -2490,7 +2783,7 @@ function nesi_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '16',
+        'weight' => '21',
       ),
     ),
   );
@@ -2557,7 +2850,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '17',
+        'weight' => '22',
       ),
     ),
   );
@@ -2626,7 +2919,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '19',
+        'weight' => '23',
       ),
     ),
   );
@@ -2656,6 +2949,7 @@ function nesi_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -2664,7 +2958,7 @@ function nesi_proposal_field_default_fields() {
       'bundle' => 'proposal_research_class',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'If you have received external funding to support your HPC needs, please fill in this section.',
+      'description' => 'Please provide the name of your institutional, national or international grant provider.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2682,8 +2976,8 @@ function nesi_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_funding_provider',
-      'label' => 'Funding Provider',
-      'required' => 0,
+      'label' => 'Name of peer-reviewed research grant provider',
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -2695,7 +2989,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '18',
+        'weight' => '0',
       ),
     ),
   );
@@ -2762,7 +3056,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '15',
+        'weight' => '20',
       ),
     ),
   );
@@ -2829,7 +3123,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '2',
+        'weight' => '4',
       ),
     ),
   );
@@ -2902,7 +3196,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '24',
+        'weight' => '28',
       ),
     ),
   );
@@ -2979,7 +3273,7 @@ function nesi_proposal_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
-        'weight' => '25',
+        'weight' => '29',
       ),
     ),
   );
@@ -3048,7 +3342,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '16',
       ),
     ),
   );
@@ -3117,7 +3411,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '15',
       ),
     ),
   );
@@ -3186,7 +3480,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '17',
       ),
     ),
   );
@@ -3253,7 +3547,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '3',
+        'weight' => '5',
       ),
     ),
   );
@@ -3320,7 +3614,7 @@ function nesi_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '5',
+        'weight' => '10',
       ),
     ),
   );
@@ -3387,7 +3681,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -3454,7 +3748,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '13',
       ),
     ),
   );
@@ -3531,7 +3825,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '23',
+        'weight' => '27',
       ),
     ),
   );
@@ -3600,7 +3894,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '12',
       ),
     ),
   );
@@ -3673,7 +3967,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '18',
       ),
     ),
   );
@@ -3740,7 +4034,7 @@ function nesi_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '14',
+        'weight' => '19',
       ),
     ),
   );
@@ -3810,7 +4104,7 @@ function nesi_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '27',
+        'weight' => '30',
       ),
     ),
   );
@@ -4440,6 +4734,7 @@ function nesi_proposal_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add Content URL');
+  t('Additional usage information');
   t('Background');
   t('Benefits from HPC');
   t('CPU core Hours');
@@ -4448,14 +4743,16 @@ function nesi_proposal_field_default_fields() {
   t('Desired HPC Platform');
   t('Details of Project Team Members');
   t('Estimated Project Start Date');
+  t('Estimated average length of each run (in wall-clock hours)');
+  t('Estimated average number of CPUs per run');
+  t('Estimated number of runs/simulations');
   t('Expected journal article(s), conference proceedings or other publications that will come from this research.');
   t('Expert Support');
   t('Explanatory notes for "Expert support" section ');
   t('Funding Amount');
-  t('Funding Provider');
   t('Further Information');
-  t('If you have received external funding to support your HPC needs, please fill in this section.');
   t('Lead Reviewer');
+  t('Name of peer-reviewed research grant provider');
   t('NeSI Project ID');
   t('Peer Reviewer');
   t('Please check the appropriate box if the project team will need NeSI support/consultancy for: ');
@@ -4467,20 +4764,20 @@ function nesi_proposal_field_default_fields() {
   t('Please indicate production code(s) to be used including the licence status as well as external libraries, or/and compilers, debuggers, profilers and other dependencies required for developing your HPC code.');
   t('Please indicate production code(s) to be used including the license status as well as external libraries, or/and compilers, debuggers, profilers and other dependencies required for developing your HPC code.');
   t('Please indicate the approximate date from which the HPC resource will be required.');
-  t('Please indicate the expected shape of your computational needs. For example, your proposal may require of a large number of small runs or a small number of large runs.');
   t('Please indicate unit, e.g. GB. Note that this is not archival storage, but disk space for a job\'s input and output data.');
   t('Please outline the scientific outcomes of your proposal. You are welcome to provide a reference to an overarching proposal, rather than duplicating content.');
   t('Please outline the team\'s experience with HPC. This should include HPC architectures, programming languages, parallelisation methods and packages the team has experience with. Please also include names of HPC facilities that the research team has collaborated with in the past.');
   t('Please provide a description of the project such as the scientific goals.');
+  t('Please provide any additional information on usage requirements.');
   t('Please provide the Add Content URL for the Proposal Type.');
   t('Please provide the email address for each project team member.');
+  t('Please provide the name of your institutional, national or international grant provider.');
   t('Please provide the names and institutions of the team members.');
   t('Please select a method in which a reviewer is assigned to a proposal.');
   t('Please use this section to add any information which has not been covered elsewhere.');
   t('Principal Investigator\'s Email');
   t('Principal Investigator\'s Name');
   t('Principal Investigator\'s Phone Number');
-  t('Profile of usage through Allocation');
   t('Project Deliverables');
   t('Project Description');
   t('Project Team Members');
