@@ -549,7 +549,7 @@ figure .caption,
   font-size: 10px;
   font-weight: 300;
   line-height: 1.8;
-  content: '\e75e';
+  /* content: '\e75e'; */
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
