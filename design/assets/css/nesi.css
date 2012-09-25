@@ -519,6 +519,7 @@ figure .caption,
 .event-type-roadshow .o-title:before {
   content: "D";
 }
+.breadcrumb { background-color: #ffffff; }
 .breadcrumbs {
   margin-top: 20px;
   /*margin-bottom: -40px;*/
