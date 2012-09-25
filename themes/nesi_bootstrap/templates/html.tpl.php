@@ -15,7 +15,7 @@
   <?php print $scripts; ?>
 
 	<!-- Le styles -->
-	<link href="/<?php print $directory; ?>/assets/css/screen.css" rel="stylesheet">
+	<link href="/<?php print $directory; ?>/assets/css/nesi.css" rel="stylesheet">
 	<style>
 		body {
 		padding-top: 90px; /* 90px to make the container go all the way to the bottom of the topbar */
