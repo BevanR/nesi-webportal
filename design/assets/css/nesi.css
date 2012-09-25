@@ -521,7 +521,7 @@ figure .caption,
 }
 .breadcrumbs {
   margin-top: 20px;
-  margin-bottom: -40px;
+  /*margin-bottom: -40px;*/
   margin-left: 2.564102564102564%;
 }
 .breadcrumbs ol {
