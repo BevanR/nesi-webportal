@@ -111,18 +111,23 @@ body.admin-menu .navbar-fixed-top {
 
 #block-search-form { display:none; }
 
+.caret { 
+  border-bottom-color: #8EAAB2;
+  border-top-color: #8EAAB2;
+ }
+
 .btn-success {
-  background-color: #0088CC;
-  background-image: -moz-linear-gradient(center top , #0088CC, #0088CC);
-  background-image: -webkit-linear-gradient(top , #0088CC, #0088CC);
+  background-color: #F2F2F2;
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #F2F2F2);
+  background-image: -webkit-linear-gradient(top , #FFFFFF, #F2F2F2);
 }
 
 .btn-success.dropdown-toggle {
-  background-color: #0088CC;
+  background-color: #F2F2F2;
 }
 
 .btn-group.open .btn-success.dropdown-toggle {
-  background-color: #0088CC;
+  background-color: #F2F2F2;
 }
 
 #block-system-navigation { display:none; }
