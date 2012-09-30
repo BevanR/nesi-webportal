@@ -64,7 +64,7 @@ function nesi_portal_block_view($delta = '') {
         $block['subject'] = t('Researcher menu');
         $block['content'] = '<ul class="menu nav">
             <li class="first leaf"><a title="Project History" href="'.$base_url.'/researcher/history">History</a></li>
-            <li class="leaf"><a title="Project History" href="'.$base_url.'/researcher/projects">Live Projects</a></li>
+            <li class="leaf"><a title="Live Projects" href="'.$base_url.'/researcher/projects">Live Projects</a></li>
             '.$current_proposal_link.'
             <li class="last leaf"><a href="'.$base_url.'/hpc-calc">HPC Calculator</a></li>
             </ul>';
