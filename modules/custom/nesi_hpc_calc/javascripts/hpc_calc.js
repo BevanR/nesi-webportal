@@ -218,14 +218,17 @@ jQuery(document).ready(function() {
   // Remember the input for job size across tabs
   jQuery('[id$=job-size]').bind('keyup keypress blur', function() {
     jQuery('[id$=job-size]').val(jQuery(this).val());
+    run_hpc_validation();
   });
   // Remember the input for wallclock hours across tabs
   jQuery('[id$=wall-clock-hours]').bind('keyup keypress blur', function() {
     jQuery('[id$=wall-clock-hours]').val(jQuery(this).val());
+    run_hpc_validation();
   });
   // Remember the input for job runs across tabs
   jQuery('[id$=number-job-runs]').bind('keyup keypress blur', function() {
     jQuery('[id$=number-job-runs]').val(jQuery(this).val());
+    run_hpc_validation();
   });
 
 });
