@@ -453,6 +453,17 @@ function nesi_proposal_node_access($node, $op, $account) {
 
       }
     }
+
+    $flag = flag_get_flag('prc_check_proposal');
+
+    if ($flag->is_flagged($node->nid)) {
+
+      if (!in_array('reviewer', array_values($account->roles))) {
+
+        return NODE_ACCESS_DENY;
+
+      }
+    }
   }
 
   if ($op == 'delete') {
@@ -462,6 +473,13 @@ function nesi_proposal_node_access($node, $op, $account) {
     if ($flag->is_flagged($node->nid)) {
       return NODE_ACCESS_DENY;
     }
+
+    $flag = flag_get_flag('prc_check_proposal');
+
+    if ($flag->is_flagged($node->nid)) {
+      return NODE_ACCESS_DENY;
+    }
+
   }
 }
 
