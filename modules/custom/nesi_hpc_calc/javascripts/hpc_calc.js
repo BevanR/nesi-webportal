@@ -202,4 +202,23 @@ jQuery(document).ready(function() {
 		do_calculation('intel', verify_input('intel'));
 	});
 
+
+  /*  Synchronise input across tabs:
+   *  Request of input for wc hour, job size and job run fields needs to be remembered.
+   *  The following code ensures input synchronisation.
+   */
+
+  // Remember the input for job size across tabs
+  jQuery('[id$=job-size]').bind('keyup keypress blur', function() {
+    jQuery('[id$=job-size]').val(jQuery(this).val());
+  });
+  // Remember the input for wallclock hours across tabs
+  jQuery('[id$=wall-clock-hours]').bind('keyup keypress blur', function() {
+    jQuery('[id$=wall-clock-hours]').val(jQuery(this).val());
+  });
+  // Remember the input for job runs across tabs
+  jQuery('[id$=number-job-runs]').bind('keyup keypress blur', function() {
+    jQuery('[id$=number-job-runs]').val(jQuery(this).val());
+  });
+
 });
