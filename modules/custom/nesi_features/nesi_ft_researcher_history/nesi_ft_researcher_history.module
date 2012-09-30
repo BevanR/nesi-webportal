@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the nesi_ft_researcher_history feature.
+ */
+
+include_once 'nesi_ft_researcher_history.features.inc';
