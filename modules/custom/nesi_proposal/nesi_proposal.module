@@ -413,7 +413,8 @@ function nesi_proposal_form_cancel(&$form, &$form_state) {
 }
 
 function nesi_proposal_form_submit(&$form, &$form_state) {
-  $form_state['redirect'] = array('researcher-my-proposals');
+  // We no longer need to redirect the submit... just go to the proposal view by default
+  //$form_state['redirect'] = array('researcher-my-proposals');
 }
 
 function _get_proposal_team_members($multi_form_field = array()) {
