@@ -31,6 +31,8 @@ function nesi_portal_install() {
       //'edit own proposal_private_industry content' => TRUE,
       'edit own proposal_research_class content' => TRUE,
       //'edit own proposal_teaching content' => TRUE,
+      'delete own proposal_development_class content' => TRUE,
+      'delete own proposal_research_class content' => TRUE,
      )
    );
 
