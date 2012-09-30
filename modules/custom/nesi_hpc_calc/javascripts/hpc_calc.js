@@ -176,7 +176,15 @@ jQuery(document).ready(function() {
 
 		return rc;
 	}
-	
+
+  // Quick function to re-run input and validation across all tabs
+	function run_hpc_validation() {
+		do_calculation('power6', verify_input('power6'));
+		do_calculation('power7', verify_input('power7'));
+		do_calculation('intel', verify_input('intel'));
+		do_calculation('bluegene', verify_input('bluegene'));
+  }  
+
     // changes in input fields
 	jQuery(".positive-integer").keyup(function() {
 		var id = jQuery(this).attr('id');
@@ -187,8 +195,7 @@ jQuery(document).ready(function() {
 		do_calculation(platform, verify_input(platform));
 	}).keyup();
 	
-	
-	
+		
 	// Clicks on radio buttons Shared/Exclusive
 	jQuery("input[name='power6_usage']").change(function() {
 		do_calculation('power6', verify_input('power6'));
