@@ -1,0 +1,13 @@
+name = nesi_ft_submit_proposal_rules
+core = 7.x
+package = NeSI
+version = 7.x-0.1
+project = nesi_ft_submit_proposal_rules
+dependencies[] = entity
+dependencies[] = flag
+dependencies[] = rules
+features[features_api][] = api:1
+features[rules_config][] = rules_pdc_proposal_submitted
+features[rules_config][] = rules_pdc_proposal_unsubmitted
+features[rules_config][] = rules_prc_proposal_submitted
+features[rules_config][] = rules_prc_proposal_unsubmitted
