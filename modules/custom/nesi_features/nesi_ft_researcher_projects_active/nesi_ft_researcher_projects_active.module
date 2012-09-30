@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the nesi_ft_researcher_projects_active feature.
+ */
+
+include_once 'nesi_ft_researcher_projects_active.features.inc';

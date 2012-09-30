@@ -1,0 +1,11 @@
+name = nesi_ft_researcher_projects_active
+description = Provides summary of active projects.
+core = 7.x
+package = NeSI
+version = 7.x-0.1
+project = nesi_ft_researcher_projects_active
+dependencies[] = ctools
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = researcher_projects_active
