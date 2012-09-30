@@ -53,3 +53,7 @@ td.hpc_calc_right {
 	display: none;
 	color: red;
 }
+#power6_detail, #power7_detail, #intel_detail, #bluegene_detail {
+  display: none;
+  font-size: 0.9em;
+}
