@@ -147,22 +147,22 @@ function nesi_hpc_calc_page() {
 	  <ul>
 		<li id="power6_tab"><a href="#tab01"><div class="hpc_calc_tabheader_center"><b>POWER6</b><br>
 		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="power6_info" title="'.$tooltips['power6'].'" src="'.$info_img.'"/></div>
+		    <div class="hpc_calc_tabheader_right"><img id="power6_info" title="Power6 information" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="power7_tab"><a href="#tab02"><div class="hpc_calc_tabheader_center"><b>POWER7</b><br>
 		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="power7_info" title="'.$tooltips['power7'].'" src="'.$info_img.'"/></div>
+		    <div class="hpc_calc_tabheader_right"><img id="power7_info" title="Power7 information" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="intel_tab"><a href="#tab03"><div class="hpc_calc_tabheader_center"><b>Intel Cluster</b><br>
 		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="intel_info" title="'.$tooltips['intel'].'" src="'.$info_img.'"/></div>
+		    <div class="hpc_calc_tabheader_right"><img id="intel_info" title="Intel information" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 		<li id="bluegene_tab"><a href="#tab04"><div class="hpc_calc_tabheader_center"><b>BlueGene/P</b><br>
 		    <div class="hpc_calc_tabheader_smaller_font">$0.05 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="bluegene_info" title="'.$tooltips['bluegene'].'" src="'.$info_img.'"/></div>
+		    <div class="hpc_calc_tabheader_right"><img id="bluegene_info" title="Bluegene information" src="'.$info_img.'"/></div>
 		    </div></a>
 		</li>
 	  </ul>';
