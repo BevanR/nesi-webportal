@@ -210,3 +210,12 @@
 .ui-tooltip-blue .ui-state-default .ui-tooltip-icon {
 	background-position: -2px 0;
 }
+
+/* Minor style updates -natted */
+.ui-widget {
+  font-size: 1em;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.ui-widget-content a, .ui-widget-header a {
+  color: #4082C4;
+}
