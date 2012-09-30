@@ -231,4 +231,20 @@ jQuery(document).ready(function() {
     run_hpc_validation();
   });
 
+
+  jQuery("[id$=_platform_info]").hover(
+    function () {
+      //jQuery("[id$=_platform_detail]").css("display","block");
+      jQuery("[id$=_platform_detail]").slideDown('slow', function() {
+        // ...
+      });
+    },
+    function () {
+      //jQuery("[id$=_platform_detail]").css("display","none");
+      //jQuery("[id$=_platform_detail]").slideUp('slow', function() {
+        // ...
+      //});
+    }
+  );
+
 });
