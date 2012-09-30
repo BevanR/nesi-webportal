@@ -436,3 +436,32 @@ function _get_proposal_team_members($multi_form_field = array()) {
   return $member_data;
 }
 
+function nesi_proposal_node_access($node, $op, $account) {
+// Limit access to proposal once submitted..
+  global $user;
+
+  //dpm($node);
+  if ($op == 'update') {
+
+    $flag = flag_get_flag('pdc_check_proposal');
+
+    if ($flag->is_flagged($node->nid)) {
+
+      if (!in_array('reviewer', array_values($account->roles))) {
+
+        return NODE_ACCESS_DENY;
+
+      }
+    }
+  }
+
+  if ($op == 'delete') {
+
+    $flag = flag_get_flag('pdc_check_proposal');
+
+    if ($flag->is_flagged($node->nid)) {
+      return NODE_ACCESS_DENY;
+    }
+  }
+}
+
