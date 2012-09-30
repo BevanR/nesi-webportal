@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the nesi_ft_submit_proposal_flag feature.
+ */
+
+include_once 'nesi_ft_submit_proposal_flag.features.inc';

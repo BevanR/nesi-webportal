@@ -1,0 +1,10 @@
+name = nesi_ft_submit_proposal_flag
+core = 7.x
+package = NeSI
+version = 7.x-0.1
+project = nesi_ft_submit_proposal_flag
+dependencies[] = flag
+dependencies[] = flag
+features[features_api][] = api:1
+features[flag][] = pdc_check_proposal
+features[flag][] = prc_check_proposal
