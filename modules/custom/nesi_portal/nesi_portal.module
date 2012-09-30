@@ -40,6 +40,19 @@ function nesi_portal_block_view($delta = '') {
   global $user;
   $block = array();
 
+  // Check if user has a current proposal mmmkay.. cause we only want 1 open at a time
+  $view = views_get_view('researcher_my_proposals');
+  $view->execute();
+  $response = $view->result; 
+  
+  if (!empty($response)) {
+    // Need to get link to the exact proposal for this user...
+    $current_proposal_link = '<li class="collapsed"><a href="'.$base_url.'/node/add">Current Proposal</a></li>';
+  }
+  else {
+    $current_proposal_link = '<li class="collapsed"><a href="'.$base_url.'/node/add">Add Proposal</a></li>';
+  }
+
   // The $delta parameter tells us which block is being requested.
     switch ($delta) {
       case 'researcher_navigation':
@@ -49,7 +62,7 @@ function nesi_portal_block_view($delta = '') {
         $block['content'] = '<ul class="menu nav">
             <li class="first leaf"><a title="Project History" href="'.$base_url.'/researcher/history">History</a></li>
             <li class="leaf"><a title="Project History" href="'.$base_url.'/researcher/projects">Live Projects</a></li>
-            <li class="collapsed"><a href="'.$base_url.'/node/add">Add Proposal</a></li>
+            '.$current_proposal_link.'
             <li class="last leaf"><a href="'.$base_url.'/hpc-calc">HPC Calculator</a></li>
             </ul>';
         }
