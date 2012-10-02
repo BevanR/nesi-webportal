@@ -5646,6 +5646,12 @@ figure .caption,
   height: 70px;
   width: 190px;
 }
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  .brand span {
+    background-image: url(../img/nesi-logo@2x.png);
+    background-size: 173px 70px;
+  }
+}
 .account-summary .avatar {
   position: absolute;
   top: 0;
