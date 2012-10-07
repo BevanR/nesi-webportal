@@ -129,4 +129,4 @@ projects[nesi_webportal][download][url] = "https://github.com/nesi/nesi-webporta
 projects[bootstrap_2.1.0][type] = "theme"
 projects[bootstrap_2.1.0][download][type] = "file"
 projects[bootstrap_2.1.0][subdir] = "twitter_bootstrap"
-projects[bootstrap_2.1.0][download][url] = "https://github.com/twitter/bootstrap/tarball/v2.1.0"
+projects[bootstrap_2.1.0][download][url] = "https://github.com/twitter/bootstrap/tarball/v2.1.1"
