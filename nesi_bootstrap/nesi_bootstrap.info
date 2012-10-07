@@ -15,5 +15,5 @@ regions[footer]         = 'Footer'
 stylesheets[all][] = css/nesi_bootstrap.css
 
 settings[toggle_name] = 0
-settings[toggle_search] = 1
+settings[toggle_search] = 0
 settings[toggle_logo] = 0
