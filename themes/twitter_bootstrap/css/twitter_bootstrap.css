@@ -100,42 +100,6 @@ input.error {
   border-top: 1px solid #E5E5E5;
 }
 
-/* NeSI adjustments and overrides */
-
-body.admin-menu .navbar-fixed-top {
-  top: 21px;
-  z-index: 499;
-}
-
-#site-name-slogan .brand { line-height:1; }
-
-#block-search-form { display:none; }
-
-.caret { 
-  border-bottom-color: #8EAAB2;
-  border-top-color: #8EAAB2;
- }
-
-.btn-success {
-  background-color: #F2F2F2;
-  background-image: -moz-linear-gradient(center top , #FFFFFF, #F2F2F2);
-  background-image: -webkit-linear-gradient(top , #FFFFFF, #F2F2F2);
-}
-
-.btn-success.dropdown-toggle {
-  background-color: #F2F2F2;
-}
-
-.btn-group.open .btn-success.dropdown-toggle {
-  background-color: #F2F2F2;
-}
-
-#block-system-navigation { display:none; }
-#block-system-navigation li.expanded ul { display:none; }
-#block-system-powered-by { display:none; }
-
-h2 { font-size:20px; }
-
 /**
  * Password strength indicator.
  */
@@ -187,4 +151,3 @@ div.password-suggestions ul {
   margin: 0;
   width: 36.3em;
 }
-

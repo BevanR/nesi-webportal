@@ -8,24 +8,14 @@
   		<span class="icon-bar"></span>
   	  </a>
   	  
-  	  <?php if ($logo): ?>
-    		<a class="brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-    		  <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-    		</a>
-  	  <?php endif; ?>
-
   	  <?php if ($site_name || $site_slogan): ?>
-    		<hgroup id="site-name-slogan">
     		  <?php if ($site_name): ?>
-    			<h1>
-    			  <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="brand"><?php print $site_name; ?></a>
-    			</h1>
+    			  <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="brand"><span><?php print $site_name; ?></span></a>
     		  <?php endif; ?>
-    		</hgroup>
   	  <?php endif; ?>
   	  
   	  <div class="nav-collapse">
-    	  <nav role="navigation">
+    	  <nav id="pnav" role="navigation">
       		<?php if ($primary_nav): ?>
       		  <?php print $primary_nav; ?>
       		<?php endif; ?>
@@ -55,6 +45,9 @@
 	
 	<div class="row">
 	  
+    <?php if ($breadcrumb): ?>
+    <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
+    <?php endif;?>
     <?php if ($page['sidebar_first']): ?>
       <aside class="span3" role="complementary">
         <?php print render($page['sidebar_first']); ?>
@@ -65,7 +58,6 @@
       <?php if ($page['highlighted']): ?>
         <div class="highlighted hero-unit"><?php print render($page['highlighted']); ?></div>
       <?php endif; ?>
-      <?php if ($breadcrumb): print $breadcrumb; endif;?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
@@ -96,7 +88,4 @@
     <?php print render($page['footer']); ?>
   </footer>
 </div>
-
-
-	
 

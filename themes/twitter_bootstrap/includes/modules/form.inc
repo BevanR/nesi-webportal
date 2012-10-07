@@ -112,10 +112,6 @@ function twitter_bootstrap_form_element(&$variables) {
     case 'before':
     case 'invisible':
       $output .= ' ' . theme('form_element_label', $variables);
-      // Show field description help below field label and above field input
-      if ( !empty($element['#description']) ) {
-        $output .= '<p class="help-block">' . $element['#description'] . "</p>\n";
-      }
       $output .= '<div class="controls">';
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
       break;
@@ -123,10 +119,6 @@ function twitter_bootstrap_form_element(&$variables) {
     case 'after':
       $output .= '<div class="controls">';
       $variables['#children'] = ' ' . $prefix . $element['#children'] . $suffix;
-      // Show field description help below field label and above field input
-      if ( !empty($element['#description']) ) {
-        $output .= '<p class="help-block">' . $element['#description'] . "</p>\n";
-      }
       $output .= ' ' . theme('form_element_label', $variables) . "\n";
       break;
 
@@ -136,6 +128,10 @@ function twitter_bootstrap_form_element(&$variables) {
       $output .= '<div class="controls">';
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
       break;
+  }
+
+  if ( !empty($element['#description']) ) {
+    $output .= '<p class="help-block">' . $element['#description'] . "</p>\n";
   }
 
   $output .= "</div></div>\n";
