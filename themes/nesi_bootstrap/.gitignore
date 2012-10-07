@@ -1,5 +1,0 @@
-lib/*
-!lib/README.txt
-bootstrap/*
-.DS_Store
-*.swp
