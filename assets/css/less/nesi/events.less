@@ -1,0 +1,19 @@
+.event-item{
+	.o-title:before{
+		content: "";
+		#font > .pictograms(22px, normal, 1);
+		position: absolute;
+		left: 0;
+		top: 0;
+		color: rgb(176, 176, 176);
+	}
+	@media (min-width: 979px) {
+		padding-left: 30px;
+	}
+}
+.event-type-seminar .o-title:before{
+	content: "S";
+}
+.event-type-roadshow .o-title:before{
+	content: "D";
+}
