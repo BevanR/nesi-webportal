@@ -13,7 +13,7 @@
 		<ul class="nav">
 			<li<?php if($active == 1) echo " class='active'"; ?>><a href="/content_page.php">Access</a></li>
 			<li<?php if($active == 2) echo " class='active'"; ?>><a href="#">HPC Facilities</a></li>
-			<li<?php if($active == 3) echo " class='active'"; ?>><a href="#">Projects &amp; Case studies</a></li>
+			<li<?php if($active == 3) echo " class='active'"; ?>><a href="case_studies.php">Projects &amp; Case studies</a></li>
 			<li<?php if($active == 4) echo " class='active'"; ?>><a href="about.php">About Nesi</a></li>
 		</ul>
 		</nav>
