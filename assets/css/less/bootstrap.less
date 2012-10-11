@@ -63,4 +63,21 @@
 
 
 // Nesi specific styles
-@import "nesi.less";
+// @import "nesi.less";
+
+@import "nesi-variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "nesi-mixins.less";
+
+// Differet parts that make up the NeSI Site
+@import "nesi/base.less";
+@import "nesi/navbar.less";
+@import "nesi/heros.less";
+@import "nesi/modules.less";
+
+// Specific Pages/Sections of the site
+@import "nesi/homepage.less";
+@import "nesi/news.less";
+@import "nesi/events.less";
+@import "nesi/login.less";
+@import "nesi/HPC-calculator.less";
+@import "nesi/case-studies.less";

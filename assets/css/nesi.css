@@ -145,8 +145,7 @@ figure .caption,
 }
 .breadcrumbs {
   margin-top: 20px;
-  margin-bottom: -40px;
-  margin-left: 2.564102564102564%;
+  margin-bottom: 20px;
 }
 .breadcrumbs ol {
   margin-left: 0;
@@ -424,7 +423,6 @@ figure .caption,
 #home-hero {
   border-bottom: 1px double #e1e1e1;
   padding-bottom: 1px;
-  margin-top: -20px;
 }
 #home-hero .item {
   min-height: 460px;
@@ -521,6 +519,76 @@ figure .caption,
 #slide-national-roadshow img {
   top: -24%;
   left: -20px;
+}
+.teasers .teaser {
+  *zoom: 1;
+  margin: 0 0 10px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #eee;
+  list-style: none;
+}
+.teasers .teaser:before,
+.teasers .teaser:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.teasers .teaser:after {
+  clear: both;
+}
+.teasers .teaser:last-child {
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}
+.teasers .teaser .teaser-title {
+  font-size: 16.000000002px;
+  font-weight: 400;
+  line-height: 1.375;
+  margin-bottom: 0;
+}
+.teasers .teaser p {
+  font-size: 14px;
+  line-height: 1.428571429;
+}
+.teasers .teaser .meta {
+  display: block;
+  font-size: 12px;
+  color: #999;
+}
+.teasers .teaser figure {
+  overflow: hidden;
+  zoom: 1;
+  float: left;
+  margin: 0;
+}
+.teasers .teaser a .teaser-title {
+  font-size: 15.75px;
+  font-weight: 400;
+  line-height: 1.111111;
+  margin-bottom: 0;
+}
+.teasers .teaser a img {
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 4px;
+  border: 1px solid #eee;
+}
+.teasers .teaser a:hover img {
+  background: #eee;
+}
+.teasers .teaser a p {
+  margin: 0 0 0 76px;
+}
+@media screen and (max-width: 700px) {
+  .teasers .teaser a img {
+    display: block;
+    float: none;
+    margin: 0 0 5px 0;
+  }
+  .teasers .teaser a p {
+    margin: 0;
+  }
 }
 .page-intro {
   position: relative;
@@ -878,4 +946,33 @@ h3.popover-title,
 }
 .hpc_calc_summary .hpc_contributions {
   border-top: 2px solid #cccccc;
+}
+.case-studies .featured {
+  *zoom: 1;
+  border-bottom: 1px solid #cccccc;
+}
+.case-studies .featured:before,
+.case-studies .featured:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.case-studies .featured:after {
+  clear: both;
+}
+.case-studies .featured > h1 {
+  display: none;
+}
+.case-studies .featured .teaser h1 {
+  font-weight: 300;
+}
+.case-studies .featured .teaser figure {
+  float: right;
+  width: 40%;
+}
+.case-studies .teasers .teaser {
+  max-width: 800px;
+}
+#case-study-teasers > header {
+  display: none;
 }

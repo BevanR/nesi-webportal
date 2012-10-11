@@ -34,16 +34,16 @@ img.figure{margin-bottom:13px;}
 	margin-right: auto;
 }
 
-.left, .right {
+.a-left, .a-right {
 	margin-top: 5px; // this aligns the top of the floated element with the text. Otherwise the floated element will appear to be a couple of pixel ~5px above the wrapped text. This is probably caused by the line height of the text. You can remove this whole block if you wish
 }
 
-.left {
+.a-left {
 	float: left;
 	margin-right: 20px; // so wrapped text doesn't sit flush against image border -- whitespace is good. Set this value to whatever you want
 }
 
-.right {
+.a-right {
 	 float: right;
 	 margin-left: 20px; // so wrapped text doesn't sit flush against image border -- whitespace is good. Set this value to whatever you want
 }
@@ -101,8 +101,7 @@ figure, .figure {
 
 .breadcrumbs{
 	margin-top: @baseLineHeight * 1;
-	margin-bottom: @baseLineHeight * -2;
-	margin-left: 2.564102564102564%;
+	margin-bottom: @baseLineHeight;
 	ol{
 		.unstyled();
 	}
