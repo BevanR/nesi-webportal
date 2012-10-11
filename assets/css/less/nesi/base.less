@@ -9,21 +9,27 @@ p{
 
 [role="main"], .subhead{
 	.clearfix;
-	margin: @baseLineHeight*2 0;
+	margin: @baseLineHeight 0;
 }
 [role="main"] header, .subhead{
+	margin-bottom: @baseLineHeight * 2;
 	h1{
 		font-weight: 300;
 		color: hsl(203, 29%, 21%);
 	}
 }
 
+
+
+// IMAGES AND FIGURES
 figure, .figure {
 	display: block;
 	margin-bottom: @baseLineHeight;
+	border-bottom: 1px solid @baseBorderColor;
 	p{
 		#font > .shorthand(@baseFontSize*.928571429, 400, 1.384615385);
 		padding-top: .5em;
+		margin-left: 0 !important;
 	}
 }
 
@@ -101,7 +107,7 @@ figure, .figure {
 
 .breadcrumbs{
 	margin-top: @baseLineHeight * 1;
-	margin-bottom: @baseLineHeight;
+	margin-bottom: 0;
 	ol{
 		.unstyled();
 	}
@@ -114,8 +120,8 @@ figure, .figure {
 		#font > .shorthand(@baseFontSize*.785714286, 400, 1.636);
 
 		&:after{
-			#font > .pictograms(10px, 300, 1.8);
-			content: '\e75e';
+			// #font > .pictograms(10px, 300, 1.8);
+			content: '/';
 			display: inline-block;
 			.ie7-inline-block();
 			color: hsl(0, 0%, 70%);
@@ -131,10 +137,8 @@ figure, .figure {
 // SUB NAV
 
 .related, .sub-nav{
-	.related, .sub-nav{
-		ol, ul{
-			.unstyled();
-		}
+	ol, ul, li{
+		.unstyled();
 	}
 	h2{
 		#font > .shorthand(@baseFontSize, 600, 1.571428571);
@@ -147,7 +151,7 @@ figure, .figure {
 	a{.muted-link-color;}
 }
 .single-post .sub-nav{
-	margin-top: @baseLineHeight*5;
+	margin-top: @baseLineHeight*7;
 }
 .sub-nav{
 	.active a{
@@ -166,9 +170,10 @@ figure, .figure {
 
 
 // Overview items
+
 .meta-date{
-	color: rgb(106, 106, 106);
-	#font > .shorthand(.785714286em, 400, 1.636);
+	color: lighten(rgb(106, 106, 106), 20%);
+	#font > .shorthand(.785714286em, 300, 1.636);
 	text-transform: uppercase;
 }
 .author{
