@@ -5482,9 +5482,12 @@ figure .caption,
   color: #707070;
 }
 .entry blockquote {
-  margin: 40px 0;
+  margin: 40px 0 80px;
   float: left;
   width: 40%;
+  margin-right: 1em;
+  border: 0;
+  padding-left: 0;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 14px;
   font-weight: normal;
