@@ -20,7 +20,11 @@
 						<h1>Advancing computational fluid dynamics</h1>
 						<p class="meta-date">Thu, 07-06-2012 by: Tim Mcnamara </p>
 					</header>
-
+					<div class="main-cs-image">
+						<figure>
+							<img src="/assets/img/norris-wind-tunnel.png" />
+						</figure>
+					</div>
 					<div class="entry">
 						<p>Swiftly solving complex computational problems may seem an obvious advantage of high performance computing but access to the new NeSI cluster is doing more for a mechanical engineering researcher than helping him to speed up his calculations.</p>
 						<p>Access to a new computational cluster is helping a researcher to solve his equations up to 500 times faster. Dr Stuart Norris is a mechanical engineering researcher working to solve computational fluid dynamics (CFD) problems at the University of Auckland. CFD solves the Navier-Stokes equations, the application of Sir Isaac Newton’s Second Law of Motion (F=m.a) to small quantities of fluid. Although they were derived over 150 years ago there are surprisingly few analytical solutions to the Navier-Stokes equations, and none for turbulent flow, so an alternative is solve them numerically using CFD.</p>

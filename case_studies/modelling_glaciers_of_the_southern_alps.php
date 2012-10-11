@@ -20,7 +20,11 @@
 						<h1>Modelling glaciers of the Southern Alps</h1>
 						<p class="meta-date">Thu, 07-06-2012 by: Tim Mcnamara </p>
 					</header>
-
+					<div class="main-cs-image">
+						<figure>
+							<img src="/assets/img/ice.png" />
+						</figure>
+					</div>
 					<div class="entry">
 						<p>The University of Canterbury’s BlueFern supercomputer facilities have been helping Kiwi researchers tackle some big scientific problems.</p>
 						<p>The University of Canterbury’s BlueFern supercomputer facilities have been helping Kiwi researchers tackle some big scientific problems.</p>
@@ -47,7 +51,7 @@
 					<h2>Other case studies</h2>
 					<ul>
 						<li class="active"><a href="/case_studies/modelling_glaciers_of_the_southern_alps.php">Modelling glaciers of the Southern Alps</a></li>
-						<li><a href="#">Advancing computational fluid dynamics</a></li>
+						<li><a href="/case_studies/advancing_computational_fluid_dynamics.php">Advancing computational fluid dynamics</a></li>
 						<li><a href="#">Digital support in a national crisis</a></li>
 						<li><a href="#">Molecular modelling in cancer research</a></li>
 					</ul>
