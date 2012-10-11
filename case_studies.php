@@ -20,7 +20,7 @@
 						<header>
 							<h1 class="teaser-title">
 							<a href="case_study.html">
-								<img src="/assets/img/ice.png" alt="Ice" />
+								<figure><img src="/assets/img/ice.png" alt="Ice" /></figure>
 								Modelling glaciers of the Southern Alps
 							</a>
 							</h1>
@@ -45,7 +45,7 @@
 						<header>
 							<h1 class="teaser-title">
 							<a href="case_study.html">
-								<img src="/assets/img/advancing-computational-fluid-dynamics-tn.png" alt="thumbnail" />
+								<figure><img src="/assets/img/advancing-computational-fluid-dynamics-tn.png" alt="thumbnail" /></figure>
 								Advancing computational fluid dynamics
 							</a>
 							</h1>
@@ -55,11 +55,12 @@
 							<p class="meta">August 10, 2011</p>
 						</footer>
 					</article>
+
 					<article class="teaser">
 						<header>
 							<h1 class="teaser-title">
 							<a href="case_study.html">
-								<img src="/assets/img/digital-support-in-national-crisis-tn.jpeg" alt="thumbnail" />
+								<figure><img src="/assets/img/digital-support-in-national-crisis-tn.jpeg" alt="thumbnail" /></figure>
 								Digital support in a national crisis
 							</a>
 							</h1>
@@ -73,7 +74,7 @@
 						<header>
 							<h1 class="teaser-title">
 							<a href="case_study.html">
-								<img src="/assets/img/molecular-modelling-in-cancer-research-tn.png" alt="thumbnail" />
+								<figure><img src="/assets/img/molecular-modelling-in-cancer-research-tn.png" alt="thumbnail" /></figure>
 								Molecular modelling in cancer research
 							</a>
 							</h1>
