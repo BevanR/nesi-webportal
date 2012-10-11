@@ -18,7 +18,7 @@
 					<h1>Featured Case study</h1>
 					<article class="teaser">
 						<header>
-							<h1>
+							<h1 class="teaser-title">
 							<a href="case_study.html">
 								<img src="/assets/img/ice.png" alt="Ice" />
 								Modelling glaciers of the Southern Alps
@@ -43,7 +43,7 @@
 
 					<article class="teaser">
 						<header>
-							<h1>
+							<h1 class="teaser-title">
 							<a href="case_study.html">
 								<img src="/assets/img/advancing-computational-fluid-dynamics-tn.png" alt="thumbnail" />
 								Advancing computational fluid dynamics
@@ -57,7 +57,7 @@
 					</article>
 					<article class="teaser">
 						<header>
-							<h1>
+							<h1 class="teaser-title">
 							<a href="case_study.html">
 								<img src="/assets/img/digital-support-in-national-crisis-tn.jpeg" alt="thumbnail" />
 								Digital support in a national crisis
@@ -71,7 +71,7 @@
 					</article>
 					<article class="teaser">
 						<header>
-							<h1>
+							<h1 class="teaser-title">
 							<a href="case_study.html">
 								<img src="/assets/img/molecular-modelling-in-cancer-research-tn.png" alt="thumbnail" />
 								Molecular modelling in cancer research
