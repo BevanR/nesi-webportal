@@ -25,7 +25,7 @@
 							</a>
 							</h1>
 						</header>
-						<p>Without this fantastic resource, high resolution modelling of large ice sheet domains would be impossible. <a href="case_study.html">Read more</a></p>
+						<p>The University of Canterbury’s BlueFern supercomputer facilities have been helping Kiwi researchers tackle some big scientific problems. <a href="case_study.html">Read more</a></p>
 						<footer>
 							<p class="meta">August 10, 2011</p>
 						</footer>
