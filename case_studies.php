@@ -11,6 +11,8 @@
 					<li><a href="#">Case Studies</a></li>
 				</ol>
 			</div>
+		</div>
+		<div class="row-fluid">
 			<div class="span12">
 				<section class="featured">
 					<h1>Featured Case study</h1>
@@ -30,6 +32,8 @@
 					</article>
 				</section>
 			</div>
+		</div>
+		<div class="row-fluid">
 			<div class="span12">
 				<section role="main" class="teasers" id="case-study-teasers">
 					<header>

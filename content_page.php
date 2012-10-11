@@ -11,6 +11,8 @@
 					<li><a href="#">Access</a></li>
 				</ol>
 			</div>
+		</div>
+		<div class="row-fluid">
 			<div class="span8">
 				<article role="main" class="post">
 					<header>
