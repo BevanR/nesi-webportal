@@ -15,9 +15,8 @@
   <?php print $scripts; ?>
 
 	<!-- Le styles -->
-	<link href="/<?php print $directory; ?>/assets/css/nesi.css" rel="stylesheet">
-  <link href="/<?php print $directory; ?>/assets/css/responsive.css" rel="stylesheet">
-
+	<link href="/<?php print $directory; ?>/assets/css/bootstrap.css" rel="stylesheet">
+	<link href="/<?php print $directory; ?>/assets/css/responsive.css" rel="stylesheet">
 	<style>
 		body {
 		padding-top: 90px; /* 90px to make the container go all the way to the bottom of the topbar */
@@ -35,6 +34,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/<?php print $directory; ?>/assets/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/<?php print $directory; ?>/assets/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="/<?php print $directory; ?>/assets/ico/apple-touch-icon-57-precomposed.png">
+
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php print $page_top; ?>
@@ -55,9 +55,9 @@
 			<nav class="span3">
 				<h3>Access & Allocations</h3>
 				<ul class="unstyled">
-					<li><a href="#">Calculator</a></li>
+					<li><a href="/rebuild/hpc-calc">Calculator</a></li>
 					<li><a href="#">Propose</a></li>
-					<li><a href="#">Access Policy</a></li>
+					<li><a href="/?q=access-policy">Access Policy</a></li>
 				</ul>
 			</nav>
 			<nav class="span3">
@@ -73,8 +73,8 @@
 				<ul class="unstyled">
 					<li><a href="#">News</a></li>
 					<li><a href="#">Events</a></li>
-					<li><a href="#">Facilitites</a></li>
-					<li><a href="#">Case Studies</a></li>
+					<li><a href="/?q=facilities">Facilitites</a></li>
+					<li><a href="/?q=case-studies">Case Studies</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -127,4 +127,3 @@
 	</footer>
 </body>
 </html>
-
