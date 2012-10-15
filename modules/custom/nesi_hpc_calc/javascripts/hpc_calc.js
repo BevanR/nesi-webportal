@@ -227,22 +227,6 @@ jQuery(document).ready(function() {
   });
 
 
-  jQuery("[id$=_platform_info]").hover(
-    function () {
-      //jQuery("[id$=_platform_detail]").css("display","block");
-      jQuery("[id$=_platform_detail]").slideDown('slow', function() {
-        // ...
-      });
-    },
-    function () {
-      //jQuery("[id$=_platform_detail]").css("display","none");
-      //jQuery("[id$=_platform_detail]").slideUp('slow', function() {
-        // ...
-      //});
-    }
-  );
-
-
   jQuery('#myTab a').click(function (e) {
     e.preventDefault();
     jQuery(this).tab('show');
