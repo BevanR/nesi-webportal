@@ -37,29 +37,28 @@ function render_form($form, $platform, $tooltips) {
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/jquery.qtip.css');
 	include_once 'includes/tooltips.inc';
 	
-	$output = '<table class="hpc_calc"><tr><td class="hpc_calc">' .
-		'<span id="job_size_info" title="' . $tooltips['job_size'] . '">' .
+	$output = '<div class="hpc_calc_inline">' .
+		'<label>' . 
 		drupal_render($form[$platform.'_job_size_title']) .
-		'</span>' .
-		'<div class="hpc_calc_inline">' .
+		$tooltips['job_size'] .
+		'</label>' .
 		drupal_render($form[$platform.'_job_size']) . 
-		'<span class="hpc_calc_description">' .
+		'<span class="add-on">' .
 		drupal_render($form[$platform.'_job_size_description']) . 
 		'</span>' .
 		'</div>' .
 		'<div class="myerror">' . drupal_render($form[$platform.'_job_size_error']) . '</div>' . 
-		'</td><td class="hpc_calc">' .
-		'<span id="wall_clock_hours_info" title="' . $tooltips['wall_clock_hours'] . '">' .
-		drupal_render($form[$platform.'_wall_clock_hours_title']) .
-		'</span>' .
 		'<div class="hpc_calc_inline">' .
+		'<label>' . 
+		drupal_render($form[$platform.'_wall_clock_hours_title']) .
+		$tooltips['wall_clock_hours'] .
+		'</label>' .
 		drupal_render($form[$platform.'_wall_clock_hours']) .
-		'<span class="hpc_calc_description">' .
+		'<span class="add-on">' .
 		drupal_render($form[$platform.'_wall_clock_hours_description']) .
 		'</span>' .
 		'</div>' . 
 		'<div class="myerror">' . drupal_render($form[$platform.'_wall_clock_hours_error']) . '</div>' .
-		'</td></tr></table>' .
 		'<hr>';
 	if ($platform != "bluegene") {
 		$output .=
