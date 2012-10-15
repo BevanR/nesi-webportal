@@ -141,27 +141,23 @@ function nesi_hpc_calc_page() {
     include_once 'includes/tooltips.inc';    
 
 	// Create tabs
-    $output = '<div id="tabs">
-	  <ul>
-		<li id="power6_tab"><a href="#tab01"><div class="hpc_calc_tabheader_center"><b>POWER6</b><br>
-		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="power6_platform_info" title="Power6 information" src="'.$info_img.'"/></div>
-		    </div></a>
+  $output = '<div id="hpc-calculator" class="content">
+	  <ul class="nav nav-tabs">
+		<li id="power6_tab" class="active"><a data-toggle="tab" href="#tab01">POWER6
+		    <span>$0.20 per CPU core hour</span></a>
+		    <i id="power6_platform_info" class="icon-info-sign">info on this platform</i>
 		</li>
-		<li id="power7_tab"><a href="#tab02"><div class="hpc_calc_tabheader_center"><b>POWER7</b><br>
-		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="power7_platform_info" title="Power7 information" src="'.$info_img.'"/></div>
-		    </div></a>
+		<li id="power7_tab"><a data-toggle="tab" href="#tab02">POWER7
+		    <span>$0.20 per CPU core hour</span></a>
+		    <i id="power7_platform_info" class="icon-info-sign">info on this platform</i>
 		</li>
-		<li id="intel_tab"><a href="#tab03"><div class="hpc_calc_tabheader_center"><b>Intel Cluster</b><br>
-		    <div class="hpc_calc_tabheader_smaller_font">$0.20 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="intel_platform_info" title="Intel information" src="'.$info_img.'"/></div>
-		    </div></a>
+		<li id="intel_tab"><a data-toggle="tab" href="#tab03">Intel Cluster
+		    <span>$0.20 per CPU core hour</span></a>
+		    <i id="intel_platform_info" class="icon-info-sign">info on this platform</i>
 		</li>
-		<li id="bluegene_tab"><a href="#tab04"><div class="hpc_calc_tabheader_center"><b>BlueGene/P</b><br>
-		    <div class="hpc_calc_tabheader_smaller_font">$0.05 per CPU core hour</div>
-		    <div class="hpc_calc_tabheader_right"><img id="bluegene_platform_info" title="Bluegene information" src="'.$info_img.'"/></div>
-		    </div></a>
+		<li id="bluegene_tab"><a data-toggle="tab" href="#tab04">BlueGene/P
+		    <span>$0.05 per CPU core hour</span></a>
+		    <i id="bluegene_platform_info" class="icon-info-sign">info on this platform</i>
 		</li>
 	  </ul>';
     // Create content for the tabs
