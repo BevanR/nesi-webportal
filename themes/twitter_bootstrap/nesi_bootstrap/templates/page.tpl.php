@@ -8,25 +8,34 @@
   		<span class="icon-bar"></span>
   	  </a>
   	  
-  	  <?php if ($site_name || $site_slogan): ?>
-    		  <?php if ($site_name): ?>
-    			  <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="brand"><span><?php print $site_name; ?></span></a>
-    		  <?php endif; ?>
-  	  <?php endif; ?>
-  	  
+		<a class="brand" href="/"><span>NeSI &ndash; New Zealand eScience Infrastructure</span></a>
   	  <div class="nav-collapse">
     	  <nav id="pnav" role="navigation">
+		<ul class="nav">
+			<li><a href="/?q=access-policy">Access</a></li>
+			<li><a href="/?q=facilities">HPC Facilities</a></li>
+			<li><a href="/?q=case-studies">Projects &amp; Case studies</a></li>
+			<li><a href="/?q=background">About Nesi</a></li>
+		</ul>
       		<?php if ($primary_nav): ?>
-      		  <?php print $primary_nav; ?>
+      		  <?php //print $primary_nav; ?>
       		<?php endif; ?>
       	  
       		<?php if ($search): ?>
       		  <?php if ($search): print render($search); endif; ?>
       		<?php endif; ?>
       		
-      		<?php if ($secondary_nav): ?>
+      		<?php if ($secondary_nav) { ?>
       		  <?php print $secondary_nav; ?>
-      		<?php endif; ?>
+      		<?php } else { ?>
+      <nav id="global-nav">
+      <ul class="nav pull-right">
+        <li><a href="#">Support</a></li>
+        <li><a href="/rebuild/user/login">Login</a></li>
+ 	    </ul>
+		  </nav>
+
+          <?php }; ?>
     		</nav>
   	  </div>         
   	</div>

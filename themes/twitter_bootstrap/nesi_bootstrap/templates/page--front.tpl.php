@@ -19,7 +19,7 @@
 		<nav id="global-nav">
 		<ul class="nav pull-right">
 			<li><a href="#">Support</a></li>
-			<li><a href="/rebuild/user">Login</a></li>
+			<li><a href="/rebuild/user/login">Login</a></li>
 			<!--<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
 			<ul class="dropdown-menu">
