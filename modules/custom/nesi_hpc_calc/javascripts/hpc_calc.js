@@ -242,4 +242,42 @@ jQuery(document).ready(function() {
     }
   );
 
+
+  jQuery('#myTab a').click(function (e) {
+    e.preventDefault();
+    jQuery(this).tab('show');
+  })
+  jQuery('input[value="exclusive"]').click(function() {
+    jQuery("#hpc_calc_exclusive_options").show('fast');
+    jQuery("#hpc_job_effeciency").show('fast');
+    jQuery("#hpc_calc_shared_note").hide('fast');
+  });
+  jQuery('input[value="shared"]').click(function() {
+    jQuery("#hpc_calc_shared_note").show('fast');
+    jQuery("#hpc_calc_exclusive_options").hide('fast');
+    jQuery("#hpc_job_effeciency").hide('fast');
+  });
+  // popover demo
+  jQuery("i[rel=popover]")
+    .popover()
+    .click(function(e) {
+    e.preventDefault()
+  })
+  jQuery('#power6_platform_info').click(function (e) {
+    e.preventDefault();
+    jQuery('#power6_platform_detail').slideToggle('fast', function() {});
+  });
+  jQuery('#power7_platform_info').click(function (e) {
+    e.preventDefault();
+    jQuery('#power7_platform_detail').slideToggle('fast', function() {});
+  });
+  jQuery('#intel_platform_info').click(function (e) {
+    e.preventDefault();
+    jQuery('#intel_platform_detail').slideToggle('fast', function() {});
+  });
+  jQuery('#bluegene_platform_info').click(function (e) {
+    e.preventDefault();
+    jQuery('#bluegene_platform_detail').slideToggle('fast', function() {});
+  }); 
+
 });
