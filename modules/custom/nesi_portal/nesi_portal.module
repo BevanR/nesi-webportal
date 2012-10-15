@@ -26,7 +26,7 @@ function nesi_portal_block_info() {
     // info: The name of the block.
     'info' => t('Researcher Navigation'),
     'status' => TRUE,
-    'region' => 'sidebar_first',
+    'region' => 'sidebar_second',
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'cache' => DRUPAL_NO_CACHE,
 
