@@ -135,7 +135,6 @@ function nesi_hpc_calc_page() {
 
 	$module_path = drupal_get_path('module', 'nesi_hpc_calc');
 	// Tabs are created using jquery-ui
-	drupal_add_library('system', 'ui.tabs');
 	drupal_add_js($module_path . '/javascripts/hpc_calc.js', 'file');
 	drupal_add_js($module_path . '/javascripts/jquery.qtip-1.0.0-rc3.min.js');
 	$info_img = $module_path . '/images/info_small.png';
