@@ -137,13 +137,9 @@ function twitter_bootstrap_preprocess_page(&$variables) {
   
   // Secondary nav
   $variables['secondary_nav'] = FALSE;
-  if($variables['secondary_menu']) {
+  if(function_exists('menu_load') && $variables['secondary_menu']) {
     $secondary_menu = menu_load(variable_get('menu_secondary_links_source', 'user-menu'));
-    
-    // Build links
-    $tree = menu_tree_page_data($secondary_menu['menu_name']);
-    $variables['secondary_menu'] = twitter_bootstrap_menu_navigation_links($tree);
-    
+
     // Build list
     $variables['secondary_nav'] = theme('twitter_bootstrap_btn_dropdown', array(
       'links' => $variables['secondary_menu'],
