@@ -377,6 +377,30 @@ function nesi_user_field_access($op, $field, $entity_type, $entity, $account) {
 function nesi_user_menu_alter(&$items) {
   // Disable access to request new password
   $items['user/password']['access callback'] = FALSE;
+
+  // Login with Drupal
+  $items['user/login']['title'] = 'Login via Drupal';
+
+  // Login with Tuakiri
+  $items['user/tuakiri'] = array(
+    'title' => 'Login via Tuakiri',
+    'page callback' => 'nesi_user_tuakiri_tab_callback',
+    'access callback' => TRUE,
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'nesi_user.pages.inc',
+    'file path' => drupal_get_path('module', 'nesi_user'),
+  );
+
+  $items['user/tuakiri/vho-request'] = array(
+    'title' => 'Tuakiri VHO Request',
+    'page callback' => 'nesi_user_tuakiri_vho_callback',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'weight' => 0,
+    'file' => 'nesi_user.pages.inc',
+    'file path' => drupal_get_path('module', 'nesi_user'),
+  );
 }
 
 /**
