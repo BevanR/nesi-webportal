@@ -162,10 +162,10 @@ function nesi_hpc_calc_page() {
 	  </ul>';
     // Create content for the tabs
     $output .= 
-    '<div id="tab01"><div id="power6_platform_detail">'.$tooltips['power6'].'<hr></div>' . render_form(drupal_get_form('hpc_create_power6_form'), 'power6', $tooltips) . '</div>' .
-		'<div id="tab02"><div id="power7_platform_detail">'.$tooltips['power7'].'<hr></div>' . render_form(drupal_get_form('hpc_create_power7_form'), 'power7', $tooltips) . '</div>' .
-		'<div id="tab03"><div id="intel_platform_detail">'.$tooltips['intel'].'<hr></div>' . render_form(drupal_get_form('hpc_create_intel_form'), 'intel', $tooltips) . '</div>' .
-		'<div id="tab04"><div id="bluegene_platform_detail">'.$tooltips['bluegene'].'<hr></div>' . render_form(drupal_get_form('hpc_create_bluegene_form'), 'bluegene', $tooltips) . '</div>' .
-		'</div>';
+    '<div class="tab-content"><div id="tab01" class="tab-pane fade active in"><aside id="power6_platform_detail">'.$tooltips['power6'].'</aside>' . render_form(drupal_get_form('hpc_create_power6_form'), 'power6', $tooltips) . '</div>' .
+		'<div id="tab02" class="tab-pane fade"><aside id="power7_platform_detail">'.$tooltips['power7'].'</aside>' . render_form(drupal_get_form('hpc_create_power7_form'), 'power7', $tooltips) . '</div>' .
+		'<div id="tab03" class="tab-pane fade"><aside id="intel_platform_detail">'.$tooltips['intel'].'</aside>' . render_form(drupal_get_form('hpc_create_intel_form'), 'intel', $tooltips) . '</div>' .
+		'<div id="tab04" class="tab-pane fade"><aside id="bluegene_platform_detail">'.$tooltips['bluegene'].'</aside>' . render_form(drupal_get_form('hpc_create_bluegene_form'), 'bluegene', $tooltips) . '</div>' .
+		'</div></div>';
 	return $output;
 }
