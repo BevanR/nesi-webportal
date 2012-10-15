@@ -91,5 +91,8 @@ function nesi_portal_block_list_alter(&$blocks) {
     if ($block->delta == 'login_box') {
         unset($blocks[$bid]);
     }
+    if ($block->delta == 'login') {
+        unset($blocks[$bid]);
+    }
   }
 }
