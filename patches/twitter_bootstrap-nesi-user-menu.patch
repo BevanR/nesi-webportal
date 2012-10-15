@@ -1,0 +1,43 @@
+diff --git a/themes/twitter_bootstrap/includes/twitter_bootstrap.inc b/themes/twitter_bootstrap/includes/twitter_bootstrap.inc
+index d127d11..df4e572 100644
+--- a/themes/twitter_bootstrap/includes/twitter_bootstrap.inc
++++ b/themes/twitter_bootstrap/includes/twitter_bootstrap.inc
+@@ -147,7 +147,37 @@ function twitter_bootstrap_twitter_bootstrap_btn_dropdown($variables) {
+ 	</a>
+ 	' . $variables['links'] . '
+   </div>';
+-  
++
++  // User menu override
++  if(is_string($variables['label'])) {
++
++    if($variables['label'] == 'User menu') {
++
++    // Start markup
++    $output = '<nav id="global-nav"><ul class="nav pull-right"><li><a href="#">Support</a></li>';
++
++    // Ad as string if its not a link
++    if(is_array($variables['label'])) {
++          $output .= l($variables['label']['title'], $$variables['label']['href'], $variables['label']);
++    }
++
++    $output .= '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">';
++
++    // Its a link so create one
++    if(is_string($variables['label'])) {
++          $output .= check_plain($variables['label']);
++    }
++    
++    // Finish markup
++    $output .= '
++    <span class="caret"></span>
++          </a>
++          ' . $variables['links'] . '
++    </li></nav>';
++
++    }
++  }
++
+   return $output;
+ }  
+ 
