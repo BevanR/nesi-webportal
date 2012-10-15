@@ -1,5 +1,5 @@
 <?php $active = (isset($active)) ? $active : 0; ?>
-<div class="navbar navbar-fixed-top">
+<div class="navbar">
 	<div class="navbar-inner">
 	<div class="container">
 		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -13,7 +13,7 @@
 		<ul class="nav">
 			<li<?php if($active == 1) echo " class='active'"; ?>><a href="/content_page.php">Access</a></li>
 			<li<?php if($active == 2) echo " class='active'"; ?>><a href="#">HPC Facilities</a></li>
-			<li<?php if($active == 3) echo " class='active'"; ?>><a href="#">Projects &amp; Case studies</a></li>
+			<li<?php if($active == 3) echo " class='active'"; ?>><a href="case_studies/index.php">Projects &amp; Case studies</a></li>
 			<li<?php if($active == 4) echo " class='active'"; ?>><a href="about.php">About Nesi</a></li>
 		</ul>
 		</nav>

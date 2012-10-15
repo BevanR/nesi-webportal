@@ -15,11 +15,6 @@
 
 	<!-- Le styles -->
 	<link href="/assets/css/bootstrap.css" rel="stylesheet">
-	<style>
-		body {
-		padding-top: 90px; /* 90px to make the container go all the way to the bottom of the topbar */
-		}
-	</style>
 	<link href="/assets/css/responsive.css" rel="stylesheet">
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->

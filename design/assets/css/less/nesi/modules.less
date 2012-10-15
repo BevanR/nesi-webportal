@@ -1,0 +1,70 @@
+
+//SLATES
+
+.teasers {
+	.teaser {
+		header{
+			margin-bottom: 0;
+		}
+		.clearfix;
+		margin: 0 0 10px 0;
+		padding: 0 0 10px 0;
+		border-bottom: 1px solid #eee;
+		list-style:none;
+
+		&:last-child {
+			margin: 0;
+			padding: 0;
+			border-bottom: none;
+		}
+		.teaser-title {
+			#font > .shorthand(@baseFontSize*1.142857143, 400, 1.375);
+			margin-bottom:0;
+		}
+		p {
+			font-size: 14px;
+			line-height: 1.428571429;
+		}
+		.meta {
+			display: block;
+			font-size: 12px;
+			color: #999;
+		}
+		figure{
+			overflow: hidden;
+			zoom:1;
+			float: left;
+			margin: 0;
+		}
+		//HTML5 Objects
+		a {
+			.teaser-title {
+				#font > .shorthand(@baseFontSize*1.125, 400, 1.111111);
+				margin-bottom:0;
+			}
+			img {
+				float: left;
+				margin: 0 10px 0 0;
+				padding: 4px;
+				border: 1px solid #eee;
+			}
+			&:hover img {
+				background: #eee;
+			}
+
+			p{
+				margin: 0 0 0 76px;
+			}
+		}
+	}
+}
+@media screen and (max-width: 700px) {
+	.teasers .teaser a img {
+		display: block;
+		float: none;
+		margin: 0 0 5px 0;
+		}
+	.teasers .teaser a p {
+		margin: 0;
+		}
+	}
