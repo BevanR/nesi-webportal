@@ -153,8 +153,8 @@ function hpc_create_form($platform, $price_per_core_hour, $num_cpu_cores_per_nod
 	);
 	$form[$platform.'_usage_description'] = array(
 		'#type' => 'item',
-		'#markup' => 'If you select Shared please make sure that the jobs will not reduce the ' .
-					 'performance of the shared resource. <a href="#">Read our terms</a>.',
+		'#markup' => '<div id="hpc_calc_shared_note" class="alert alert-info">If you select Shared please make sure that the jobs will not reduce the ' .
+					 'performance of the shared resource. <a href="#">Read our terms</a>.</div>',
 		'#states' => array(
 				'visible' => array(
 						':input[name="' . $platform . '_usage"]' => array('value' => 'shared'),
