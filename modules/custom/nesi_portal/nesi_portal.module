@@ -75,4 +75,21 @@ function nesi_portal_block_view($delta = '') {
   return $block;
 }
 
+function nesi_portal_block_list_alter(&$blocks) {
 
+  // Disable currently unused blocks
+  foreach ($blocks as $bid => $block) {
+    if ($block->module == 'search') {
+        unset($blocks[$bid]);
+    }
+    if ($block->delta == 'navigation') {
+        unset($blocks[$bid]);
+    }
+    if ($block->delta == 'powered-by') {
+        unset($blocks[$bid]);
+    }
+    if ($block->delta == 'login_box') {
+        unset($blocks[$bid]);
+    }
+  }
+}
