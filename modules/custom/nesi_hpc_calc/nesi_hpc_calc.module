@@ -37,7 +37,7 @@ function render_form($form, $platform, $tooltips) {
 	drupal_add_css(drupal_get_path('module', 'nesi_hpc_calc') .'/stylesheets/jquery.qtip.css');
 	include_once 'includes/tooltips.inc';
 	
-	$output = '<div class="hpc_calc_inline">' .
+	$output = '<fieldset><div class="hpc_calc_inline">' .
 		'<label>' . 
 		drupal_render($form[$platform.'_job_size_title']) .
 		$tooltips['job_size'] .
@@ -59,10 +59,10 @@ function render_form($form, $platform, $tooltips) {
 		'</span>' .
 		'</div>' . 
 		'<div class="myerror">' . drupal_render($form[$platform.'_wall_clock_hours_error']) . '</div>' .
-		'<hr>';
+		'</fieldset>';
 	if ($platform != "bluegene") {
 		$output .=
-			'<div id="' . $platform. '_usage">' .
+			'<fieldset id="' . $platform. '_usage">' .
 			'<table class="hpc_calc"><tr><td class="hpc_calc">' .
 			drupal_render($form[$platform.'_usage_title']) .
 			'</td><td class="hpc_calc_right">' .
@@ -79,7 +79,7 @@ function render_form($form, $platform, $tooltips) {
 			'<div class="myerror">' . drupal_render($form[$platform.'_cpu_cores_per_node_error']) . '</div>' .
 			'</div>' .
     		drupal_render($form[$platform.'_usage_description']) .
-    		'<hr></div>';
+    		'<hr></fieldset>';
 	}
 	
 	$output .= drupal_render($form[$platform.'_cpu_cores_avail']);
