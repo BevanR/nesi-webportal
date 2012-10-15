@@ -1,5 +1,6 @@
 lib/*
 !lib/README.txt
 bootstrap/*
+nesi_bootstrap/*
 .DS_Store
 *.swp
