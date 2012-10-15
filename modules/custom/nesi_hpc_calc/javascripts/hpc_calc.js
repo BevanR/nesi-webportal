@@ -10,10 +10,6 @@ jQuery(document).ready(function() {
 	bind_qtip();
 
 	function bind_qtip() {
-		//jQuery('#power6_info').qtip({style:{width:'200px'},position:{corner:{target:'bottomRight',tooltip:'topLeft'}}});
-		//jQuery('#power7_info').qtip({style:{width:'200px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
-		//jQuery('#intel_info').qtip({style:{width:'200px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
-		//jQuery('#bluegene_info').qtip({style:{width:'200px'},position:{corner:{target:'bottomLeft',tooltip:'topRight'}}});
 		jQuery('#job_size_info').qtip({style:{width:'100px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
 		jQuery('#wall_clock_hours_info').qtip({style:{width:'100px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
 		jQuery('#number_job_runs_info').qtip({style:{width:'100px'},position:{corner:{target:'bottomMiddle',tooltip:'topMiddle'}}});
