@@ -7,7 +7,6 @@
 jQuery(document).ready(function() {
 
 	// display the tabs
-	jQuery("#tabs").tabs();
 	bind_qtip();
 
 	function bind_qtip() {
