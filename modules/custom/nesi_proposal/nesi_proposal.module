@@ -58,7 +58,6 @@ function nesi_proposal_page() {
 function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &$form_state, $form_id) {
   //dpm('* Implements hook_form_FORM_ID_alter()');
   //dpm($form_state);
-
   $form['#validate'][] = 'nesi_proposal_validate_proposal_development_class';
   
   global $user;
@@ -70,15 +69,51 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
     $profile_emw = entity_metadata_wrapper('profile2', $profile);   
 
     // Prepopulate fields for users
-    $form['field_pdc_pi_email'][LANGUAGE_NONE][0]['value']['#default_value'] = $account->mail;
-    $form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile_emw->field_user_firstname->value() .' '.$profile_emw->field_user_lastname->value();
-    $form['field_pdc_pi_phone'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile_emw->field_user_phone->value();
+    $form['submitter']['#type'] = 'fieldset';
+    $form['submitter']['#title'] = 'Submitter information';
+    $form['submitter']['#weight'] = '2';
+    $form['submitter']['field_pdc_sub_check']['#title'] = 'I am the submitter and the PI';
+    $form['submitter']['field_pdc_sub_check']['#type'] = 'checkbox';
+    $form['submitter']['field_pdc_sub_check']['#default_value'] = 1;
+    $form['submitter']['field_pdc_sub_name']['#title'] = 'Name of submitter';
+    $form['submitter']['field_pdc_sub_name']['#type'] = 'textfield';
+    $form['submitter']['field_pdc_sub_name']['#default_value'] = $profile_emw->field_user_firstname->value() .' '.$profile_emw->field_user_lastname->value();
+    $form['submitter']['field_pdc_sub_email']['#title'] = 'Contact email of submitter';
+    $form['submitter']['field_pdc_sub_email']['#type'] = 'textfield';
+    $form['submitter']['field_pdc_sub_email']['#default_value'] = $account->mail;
+    $form['submitter']['field_pdc_sub_phone']['#title'] = 'Contact phone of submitter';
+    $form['submitter']['field_pdc_sub_phone']['#type'] = 'textfield';
+    $form['submitter']['field_pdc_sub_phone']['#default_value'] = $profile_emw->field_user_phone->value();
     // Lock fields
-    $form['field_pdc_pi_email'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
-    $form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
-    $form['field_pdc_pi_phone'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+    $form['submitter']['field_pdc_sub_name']['#attributes']['disabled'] = TRUE;
+    $form['submitter']['field_pdc_sub_email']['#attributes']['disabled'] = TRUE;
+    $form['submitter']['field_pdc_sub_phone']['#attributes']['disabled'] = TRUE;
+
+    $form['field_pdc_pi_email'][LANGUAGE_NONE][0]['value']['#default_value'] = $account->mail;
+    $form['field_pdc_pi_email'][LANGUAGE_NONE][0]['value']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_pdc_sub_check"]' => array('checked' => FALSE),
+      ));
+    $form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#field_prefix'] = '<legend><span class="fieldset-legend">PI information</span></legend>
+    <label class="control-label" for="edit-field-pdc-pi-name-und-0-value">Principal Investigator\'s Name <span title="This field is required." class="form-required">*</span></label>';
+    $form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#title'] = '';
+    $form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile_emw->field_user_firstname->value() .' '.$profile_emw->field_user_lastname->value();
+    $form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_pdc_sub_check"]' => array('checked' => FALSE),
+      ));
+    $form['field_pdc_pi_phone'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile_emw->field_user_phone->value();
+    $form['field_pdc_pi_phone'][LANGUAGE_NONE][0]['value']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_pdc_sub_check"]' => array('checked' => FALSE),
+      ));
+    // Lock fields
+    //$form['field_pdc_pi_email'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+    //$form['field_pdc_pi_name'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+    //$form['field_pdc_pi_phone'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
   } 
 
+  dpm($form);
   // Add a cancel button.
   $form['actions']['cancel'] = array(
     '#type' => 'submit',
@@ -126,15 +161,51 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     $profile_emw = entity_metadata_wrapper('profile2', $profile);   
 
     // Prepopulate fields for users
-    $form['field_prc_pi_email'][LANGUAGE_NONE][0]['value']['#default_value'] = $account->mail;
-    $form['field_prc_pi_name'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile_emw->field_user_firstname->value() .' '.$profile_emw->field_user_lastname->value();
-    $form['field_prc_pi_phone'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile_emw->field_user_phone->value();
+    $form['submitter']['#type'] = 'fieldset';
+    $form['submitter']['#title'] = 'Submitter information';
+    $form['submitter']['#weight'] = '15';
+    $form['submitter']['field_prc_sub_check']['#title'] = 'I am the submitter and the PI';
+    $form['submitter']['field_prc_sub_check']['#type'] = 'checkbox';
+    $form['submitter']['field_prc_sub_check']['#default_value'] = 1;
+    $form['submitter']['field_prc_sub_name']['#title'] = 'Name of submitter';
+    $form['submitter']['field_prc_sub_name']['#type'] = 'textfield';
+    $form['submitter']['field_prc_sub_name']['#default_value'] = $profile_emw->field_user_firstname->value() .' '.$profile_emw->field_user_lastname->value();
+    $form['submitter']['field_prc_sub_email']['#title'] = 'Contact email of submitter';
+    $form['submitter']['field_prc_sub_email']['#type'] = 'textfield';
+    $form['submitter']['field_prc_sub_email']['#default_value'] = $account->mail;
+    $form['submitter']['field_prc_sub_phone']['#title'] = 'Contact phone of submitter';
+    $form['submitter']['field_prc_sub_phone']['#type'] = 'textfield';
+    $form['submitter']['field_prc_sub_phone']['#default_value'] = $profile_emw->field_user_phone->value();
     // Lock fields
-    $form['field_prc_pi_email'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
-    $form['field_prc_pi_name'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
-    $form['field_prc_pi_phone'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+    $form['submitter']['field_prc_sub_name']['#attributes']['disabled'] = TRUE;
+    $form['submitter']['field_prc_sub_email']['#attributes']['disabled'] = TRUE;
+    $form['submitter']['field_prc_sub_phone']['#attributes']['disabled'] = TRUE;
+
+    $form['field_prc_pi_email'][LANGUAGE_NONE][0]['value']['#default_value'] = $account->mail;
+    $form['field_prc_pi_email'][LANGUAGE_NONE][0]['value']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_prc_sub_check"]' => array('checked' => FALSE),
+      ));
+    $form['field_prc_pi_name'][LANGUAGE_NONE][0]['value']['#field_prefix'] = '<legend><span class="fieldset-legend">PI information</span></legend>
+    <label class="control-label" for="edit-field-pdc-pi-name-und-0-value">Principal Investigator\'s Name <span title="This field is required." class="form-required">*</span></label>';
+    $form['field_prc_pi_name'][LANGUAGE_NONE][0]['value']['#title'] = '';
+    $form['field_prc_pi_name'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile_emw->field_user_firstname->value() .' '.$profile_emw->field_user_lastname->value();
+    $form['field_prc_pi_name'][LANGUAGE_NONE][0]['value']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_prc_sub_check"]' => array('checked' => FALSE),
+      ));
+    $form['field_prc_pi_phone'][LANGUAGE_NONE][0]['value']['#default_value'] = $profile_emw->field_user_phone->value();
+    $form['field_prc_pi_phone'][LANGUAGE_NONE][0]['value']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_prc_sub_check"]' => array('checked' => FALSE),
+      ));
+    // Lock fields
+    //$form['field_prc_pi_email'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+    //$form['field_prc_pi_name'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+    //$form['field_prc_pi_phone'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
   }
 
+  dpm($form);
   // Add a cancel button.
   $form['actions']['cancel'] = array(
     '#type' => 'submit',
@@ -264,7 +335,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
 
     // Attempt to send proposal to REST interface
     $rest_result = nesi_rest_insert_project($project_data);
-
+    $rest_result = TRUE;
     // Check for error or http response
     if ($rest_result <> FALSE) {
       //dpm('Project was created successfully in GOLD.');
@@ -367,7 +438,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
 
     // Attempt to send proposal to REST interface
     $rest_result = nesi_rest_insert_project($project_data);
-
+    $rest_result = TRUE;
     // Check for error or http response
     if ($rest_result <> FALSE) {
       //dpm('Project was created successfully in GOLD.');
