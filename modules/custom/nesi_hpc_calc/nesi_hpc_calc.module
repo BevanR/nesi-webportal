@@ -64,7 +64,7 @@ function render_form($form, $platform, $tooltips) {
 		$output .=
 			'<fieldset id="' . $platform. '_usage">' .
 			'<table class="hpc_calc"><tr><td class="hpc_calc">' .
-			drupal_render($form[$platform.'_usage_title']) .
+			'<legend>' . drupal_render($form[$platform.'_usage_title']) . '</legend>' .
 			'</td><td class="hpc_calc_right">' .
 			'<div class="hpc_calc_inline">' .
 			drupal_render($form[$platform.'_job_efficiency_title']) .
@@ -86,9 +86,10 @@ function render_form($form, $platform, $tooltips) {
 	$output .= drupal_render($form[$platform.'_price_per_core_hour']);
 	
 	$output .=
-		'<span id="number_job_runs_info" title="' . $tooltips['number_job_runs'] . '">' .
+		'<label>' .
 		drupal_render($form[$platform.'_number_job_runs_title']) .
-		'</span>' .
+    '<i class="icon-question-sign" data-content="How many times your job needs to run." rel="popover" data-original-title=""></i>' .
+		'</label>' .
 		drupal_render($form[$platform.'_number_job_runs']) .
 		'<div class="myerror">' . drupal_render($form[$platform.'_number_job_runs_error']) . '</div>' .
 		'<hr>';
