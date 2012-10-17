@@ -112,6 +112,9 @@ projects[bugherd][version] = "1.0-beta3"
 projects[shib_auth][type] = "module"
 projects[shib_auth][subdir] = "contrib"
 projects[shib_auth][version] = "4.0"
+projects[views_bulk_operations][type] = "module"
+projects[views_bulk_operations][subdir] = "contrib"
+projects[views_bulk_operations][version] = "3.0"
 
 ; Custom modules
 ; --------------
