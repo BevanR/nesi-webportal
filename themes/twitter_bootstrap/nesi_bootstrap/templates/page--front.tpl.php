@@ -1,4 +1,3 @@
-<?php drupal_goto('http://web.dev.nesi.org.nz'); ?>
 	<div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 	<div class="container">
