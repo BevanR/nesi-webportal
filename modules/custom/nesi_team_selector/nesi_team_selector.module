@@ -36,9 +36,9 @@ function nesi_team_selector_block_info() {
     'info' => t('Project Team Members'),
     'status' => TRUE,
     'region' => 'sidebar_second',
-    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'visibility' => BLOCK_VISIBILITY_LISTED,
     'cache' => DRUPAL_NO_CACHE,
-    'pages' => array('node/*')
+    'pages' => implode("\n",array('node/*'))
   );
 
   return $blocks;
