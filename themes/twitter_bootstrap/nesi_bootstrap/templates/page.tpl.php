@@ -1,5 +1,3 @@
-
-
   <?php print render($page['header']); ?>
 	
 	<div class="row">
