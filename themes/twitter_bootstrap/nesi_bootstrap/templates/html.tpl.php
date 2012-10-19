@@ -44,32 +44,32 @@
 				<div class="span9">
 					<ul class="unstyled inline-list">
 						<li>
-							<a href="#">
+							<a href="http://www.auckland.ac.nz/uoa/">
 								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-a.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="http://www.canterbury.ac.nz/">
 								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-c.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="http://www.niwa.co.nz/">
 								<img src="/<?php print $directory; ?>/assets/img/logo-niwa.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="http://www.msi.govt.nz/">
 								<img src="/<?php print $directory; ?>/assets/img/logo-ministry-of-si.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="http://www.otago.ac.nz/">
 								<img src="/<?php print $directory; ?>/assets/img/logo-manaaki-whenua.jpg" alt="logo">
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="http://www.landcareresearch.co.nz/">
 								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-o.jpg" alt="logo">
 							</a>
 						</li>
