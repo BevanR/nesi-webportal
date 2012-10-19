@@ -1,6 +1,6 @@
   <?php print render($page['header']); ?>
 	
-	<div class="row">
+	<div class="container">
 	  
     <?php if ($breadcrumb): ?>
     <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
@@ -40,7 +40,6 @@
       </aside>  <!-- /#sidebar-second -->
     <?php endif; ?>
 
-  </div>
 
 </div>
 
