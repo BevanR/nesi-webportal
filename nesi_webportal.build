@@ -115,6 +115,9 @@ projects[shib_auth][version] = "4.0"
 projects[views_bulk_operations][type] = "module"
 projects[views_bulk_operations][subdir] = "contrib"
 projects[views_bulk_operations][version] = "3.0"
+projects[phpmailer][type] = "module"
+projects[phpmailer][subdir] = "contrib"
+projects[phpmailer][version] = "3.x-dev"
 
 ; Custom modules
 ; --------------
