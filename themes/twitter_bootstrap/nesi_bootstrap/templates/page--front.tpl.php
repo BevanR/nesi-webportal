@@ -1,6 +1,7 @@
 
   <?php print render($page['header']); ?>
 
+  <?php print render($page['subheader']); ?>
 
   <?php print render($page['directory']); ?>
 

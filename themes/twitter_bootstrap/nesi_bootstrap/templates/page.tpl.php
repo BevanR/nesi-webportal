@@ -1,4 +1,5 @@
   <?php print render($page['header']); ?>
+  <?php print render($page['subheader']); ?>
 	
 <div class="container">
 	  
