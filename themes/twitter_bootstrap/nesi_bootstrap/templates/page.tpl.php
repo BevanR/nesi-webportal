@@ -3,7 +3,9 @@
 	<div class="container">
 	  
     <?php if ($breadcrumb): ?>
-    <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
+		<div class="row-fluid">
+      <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
+    </div>
     <?php endif;?>
     <?php if ($page['sidebar_first']): ?>
       <aside class="span3" role="complementary">
