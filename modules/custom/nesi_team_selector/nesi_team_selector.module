@@ -38,6 +38,7 @@ function nesi_team_selector_block_info() {
     'region' => 'sidebar_second',
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'cache' => DRUPAL_NO_CACHE,
+    'pages' => array('node/*')
   );
 
   return $blocks;
