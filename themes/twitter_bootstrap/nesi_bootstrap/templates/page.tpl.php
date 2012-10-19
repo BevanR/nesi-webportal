@@ -1,12 +1,13 @@
   <?php print render($page['header']); ?>
 	
-	<div class="container">
+<div class="container">
 	  
-    <?php if ($breadcrumb): ?>
-		<div class="row-fluid">
-      <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
-    </div>
-    <?php endif;?>
+  <?php if ($breadcrumb): ?>
+	<div class="row-fluid">
+    <div class="breadcrumbs"><?php print $breadcrumb; ?></div>
+  </div>
+  <?php endif;?>
+  <div class="row-fluid">
     <?php if ($page['sidebar_first']): ?>
       <aside class="span3" role="complementary">
         <?php print render($page['sidebar_first']); ?>
@@ -42,7 +43,7 @@
       </aside>  <!-- /#sidebar-second -->
     <?php endif; ?>
 
-
+  </div>
 </div>
 
   <?php print render($page['directory']); ?>
