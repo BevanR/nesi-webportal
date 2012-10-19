@@ -5,6 +5,7 @@ core = 7.x
 base theme = twitter_bootstrap
 
 regions[header]         = 'Top Bar'
+regions[subheader]      = 'Sub Header'
 regions[highlighted]    = 'Highlighted'
 regions[help]           = 'Help'
 regions[content]        = 'Content'
