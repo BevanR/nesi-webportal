@@ -1,4 +1,4 @@
-<nav class="span-3">
+<nav class="span3">
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
     <h3><?php print $title; ?></h3>
