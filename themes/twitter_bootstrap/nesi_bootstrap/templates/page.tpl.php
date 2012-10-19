@@ -93,6 +93,11 @@
     <?php endif; ?>
 
   </div>
+
+  <?php print render($page['directory']); ?>
+
+  <?php print render($page['collaborators']); ?>
+
   <footer class="footer container">
     <?php print render($page['footer']); ?>
   </footer>
