@@ -100,4 +100,11 @@
   <?php print render($page['collaborators']); ?>
 
 	<script src="<?php print $directory; ?>/assets/js/jquery.lettering.js"></script>
-	<script src="<?php print $directory; ?>/assets/js/custom.js"></script>
+
+	<script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery('[rel="tooltip"]').tooltip();
+      jQuery('#home-hero').carousel();
+      jQuery('#home-hero .slide-title').lettering('lines').children('words');
+    });
+	</script>
