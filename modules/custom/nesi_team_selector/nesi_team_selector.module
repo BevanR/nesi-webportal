@@ -1,0 +1,123 @@
+<?php
+/**
+ * @file
+ * Code for the NeSI Team Selector feature.
+ */
+
+include_once 'nesi_team_selector.features.inc';
+
+
+function nesi_team_selector_menu_alter(&$items) {
+
+  // Check access rules
+
+  $items['node/%node/team']['access callback'] = '_nesi_team_selector_team_access';
+  //$items['node/%node/team']['access arguments'] = array('view hidden tabs');
+
+}
+
+function _nesi_team_selector_team_access() {
+  
+  // Checks to see if a user has access to manage this team..
+  global $user;
+  $node = menu_get_object();
+  // User owns proposal node?
+  if ($node->uid == $user->uid) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+function nesi_team_selector_block_info() {    
+  $blocks['project_team_members'] = array(
+    // info: The name of the block.
+    'info' => t('Project Team Members'),
+    'status' => TRUE,
+    'region' => 'sidebar_second',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+function nesi_team_selector_block_view($delta = '') {
+  global $base_url;
+  global $user;
+  $block = array();
+
+  // The $delta parameter tells us which block is being requested.
+    switch ($delta) {
+      case 'project_team_members':
+        // Create your block content here
+        if ($user->uid <> 0) {
+        $block['subject'] = t('Team Members');
+        $block['content'] = '<div>
+            <p></p>
+            </div>';
+        }
+        break;
+    }
+  
+  return $block;
+}
+
+
+/**
+ * Implementation of hook_action_info().
+ */
+function nesi_team_selector_action_info() {
+
+  return array(
+    'nesi_team_selector_argument_selector_action' => array(
+      'label' => t('Add Researcher to Team'),
+      'type' => 'entity',
+      'aggregate' => TRUE,
+      'configurable' => FALSE,
+      'hooks' => array(),
+      'parameters' => array('project' => arg()),
+    ),
+  );
+}
+
+/**
+* Implementation of a Drupal action.
+* Passes selected ids as arguments to a view.
+*/
+function nesi_team_selector_argument_selector_action($entities, $context = array()) {
+
+  if ($context['project'][0] == 'node') {
+    $project = node_load($context['project'][1]);
+
+    if ($project) {
+      dpm($project);
+      
+      // Assign user
+      foreach ($entities as $researcher) {
+        dpm($researcher);
+        if ($project->type == 'proposal_development_class') {
+          // Add check for user already being within the team
+            $project->field_pdc_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
+            node_save($project);
+        }
+        if ($project->type == 'proposal_research_class') {
+          // Add check for user already being within the team
+            $project->field_prc_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
+            node_save($project);
+        }
+      }        
+ 
+      drupal_goto('node/'.$project->nid);
+    }
+  }
+  // Not a node... take user home 
+  drupal_goto('user');
+}
+
+function nesi_team_selector_views_bulk_operations_form_alter(&$form, &$form_state, $vbo) {
+  // Form alter placeholder to adjust / simplify the team member form
+  
+}
+
