@@ -6,13 +6,13 @@ function nesi_bootstrap_breadcrumb($variables) {
   if (!empty($breadcrumb)) {
     $breadcrumbs = '<ol>';
     
-    $count = count($breadcrumb) - 1;
     foreach($breadcrumb as $key => $value) {
-      if($count != $key) {
         $breadcrumbs .= '<li>'.$value.'</li>';
-      }else{
-        $breadcrumbs .= '<li>'.$value.'</li>';
-      }
+    }
+    
+    $current_page_title = drupal_get_title();
+    if (!empty($current_page_title)) {
+      $breadcrumbs .= '<li>'.$current_page_title.'</li>';
     }
     $breadcrumbs .= '</ol>';
     
