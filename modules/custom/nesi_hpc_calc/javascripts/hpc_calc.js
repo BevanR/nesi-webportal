@@ -226,11 +226,16 @@ jQuery(document).ready(function() {
     run_hpc_validation();
   });
 
+  // Hide info markers on tabs
+  jQuery('[id$=_tab] i').css("display","none");
+  // Show marker on active tab
+  jQuery('[id$=_tab].active i').css("display","block");
+  
+  jQuery('[id$=_tab]').click(function() {
+      jQuery('[id$=_platform_info]').css("display","none");
+      jQuery("#" + this.id + " i").css("display","block");
+  });
 
-  jQuery('#myTab a').click(function (e) {
-    e.preventDefault();
-    jQuery(this).tab('show');
-  })
   jQuery('input[value="exclusive"]').click(function() {
     jQuery("#hpc_calc_exclusive_options").show('fast');
     jQuery("#hpc_job_effeciency").show('fast');
@@ -247,21 +252,12 @@ jQuery(document).ready(function() {
     .click(function(e) {
     e.preventDefault()
   })
-  jQuery('#power6_platform_info').click(function (e) {
+
+  // Toggle state for platform info
+  jQuery('[id$=_platform_info]').click(function (e) {
     e.preventDefault();
-    jQuery('#power6_platform_detail').slideToggle('fast', function() {});
+    var selPlatform = this.id.split('_')[0];
+    jQuery('#' + selPlatform + '_platform_detail').slideToggle('fast', function() {});
   });
-  jQuery('#power7_platform_info').click(function (e) {
-    e.preventDefault();
-    jQuery('#power7_platform_detail').slideToggle('fast', function() {});
-  });
-  jQuery('#intel_platform_info').click(function (e) {
-    e.preventDefault();
-    jQuery('#intel_platform_detail').slideToggle('fast', function() {});
-  });
-  jQuery('#bluegene_platform_info').click(function (e) {
-    e.preventDefault();
-    jQuery('#bluegene_platform_detail').slideToggle('fast', function() {});
-  }); 
 
 });
