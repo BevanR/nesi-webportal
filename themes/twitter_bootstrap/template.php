@@ -31,6 +31,11 @@ function twitter_bootstrap_theme() {
   );
 }
 
+/**
+ * Override theme_breadrumb().
+ *
+ * Print breadcrumbs as a list, with separators.
+ */
 function twitter_bootstrap_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
 
@@ -38,11 +43,12 @@ function twitter_bootstrap_breadcrumb($variables) {
     $breadcrumbs = '<ul class="breadcrumb">';
     
     $count = count($breadcrumb) - 1;
-    foreach($breadcrumb as $key => $value) {
-      if($count != $key) {
-        $breadcrumbs .= '<li>'.$value.'<span class="divider">/</span></li>';
-      }else{
-        $breadcrumbs .= '<li>'.$value.'</li>';
+    foreach ($breadcrumb as $key => $value) {
+      if ($count != $key) {
+        $breadcrumbs .= '<li>' . $value . '<span class="divider">/</span></li>';
+      }
+      else{
+        $breadcrumbs .= '<li>' . $value . '</li>';
       }
     }
     $breadcrumbs .= '</ul>';
@@ -57,8 +63,9 @@ function twitter_bootstrap_breadcrumb($variables) {
  * @see node.tpl.php
  */
 function twitter_bootstrap_preprocess_node(&$variables) {
-  if($variables['teaser'])
+  if ($variables['teaser']) {
     $variables['classes_array'][] = 'row-fluid';
+  }
 }
 
 /**
@@ -137,13 +144,9 @@ function twitter_bootstrap_preprocess_page(&$variables) {
   
   // Secondary nav
   $variables['secondary_nav'] = FALSE;
-  if($variables['secondary_menu']) {
+  if(function_exists('menu_load') && $variables['secondary_menu']) {
     $secondary_menu = menu_load(variable_get('menu_secondary_links_source', 'user-menu'));
-    
-    // Build links
-    $tree = menu_tree_page_data($secondary_menu['menu_name']);
-    $variables['secondary_menu'] = twitter_bootstrap_menu_navigation_links($tree);
-    
+
     // Build list
     $variables['secondary_nav'] = theme('twitter_bootstrap_btn_dropdown', array(
       'links' => $variables['secondary_menu'],
@@ -161,7 +164,7 @@ function twitter_bootstrap_preprocess_page(&$variables) {
     ));
   }
   
-  // Replace tabs with dropw down version
+  // Replace tabs with drop down version
   $variables['tabs']['#primary'] = _twitter_bootstrap_local_tasks($variables['tabs']['#primary']);
 }
 
@@ -184,8 +187,6 @@ function _twitter_bootstrap_search_form($form, &$form_state) {
 
   return $form;
 }
-
-
 
 /**
  * Preprocess variables for region.tpl.php
