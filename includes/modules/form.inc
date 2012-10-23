@@ -15,7 +15,7 @@ function twitter_bootstrap_button(&$vars) {
   return '<input' . drupal_attributes($element['#attributes']) . ' />';
 }
 */
-/**
+/*
  * Returns HTML for a form.
  *
  * @param $vars
