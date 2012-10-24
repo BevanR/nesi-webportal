@@ -5355,6 +5355,9 @@ figure .caption,
   text-align: center;
   padding: 10px 20px;
 }
+.sub-feature > a:hover {
+  text-decoration: none;
+}
 .sub-feature .feature-title {
   font-weight: 300;
   font-size: 21px;

@@ -17,6 +17,9 @@
 .sub-feature{
 	text-align: center;
 	padding: (@baseLineHeight/2) @baseLineHeight;
+	& > a:hover{
+		text-decoration: none;
+	}
 	.feature-title{
 		font-weight: 300;
 		font-size: @baseFontSize*1.5;
@@ -32,6 +35,7 @@
 			margin: -@baseLineHeight auto 0;
 			color: rgba(24, 128, 155, .8);
 			cursor: pointer;
+			text-decoration: none;
 		}
 	}
 	p{color: #777;}
