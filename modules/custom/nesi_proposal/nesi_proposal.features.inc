@@ -9,14 +9,6 @@
  */
 function nesi_proposal_node_info() {
   $items = array(
-    'proposal_collaborative' => array(
-      'name' => t('Collaborator'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'proposal_development_class' => array(
       'name' => t('Proposal Development Class'),
       'base' => 'node_content',
