@@ -42,7 +42,6 @@ function nesi_proposal_page() {
     <div id="proposal-options">
     <p><a href="node/add/proposal-research-class">Research</a></p>
     <p><a href="node/add/proposal-development-class">Proposal Development</a></p>
-    <p><a href="node/add/proposal-teaching">Teaching</a></p>
     <p><a href="node/add/proposal-collaborative">Collaborative</a></p>
     </div>
   ';  
@@ -242,21 +241,6 @@ function nesi_proposal_form_proposal_collaborative_node_form_alter(&$form, &$for
   //dpm($form_state);
 
   //$form['#validate'][] = 'nesi_proposal_validate_proposal_collaborative';
-  unset($form['field_lead_reviewer']);
-  unset($form['field_peer_reviewer']);
-  unset($form['field_prc_status']);
-  unset($form['field_prc_outcome']);
-  unset($form['field_prc_outcome_report']);
-}
-
-/**
- * Implements hook_form_FORM_ID_alter()
- */
-function nesi_proposal_form_proposal_teaching_node_form_alter(&$form, &$form_state, $form_id) {
-  //dpm('* Implements hook_form_FORM_ID_alter()');
-  //dpm($form_state);
-
-  //$form['#validate'][] = 'nesi_proposal_validate_proposal_teaching';
   unset($form['field_lead_reviewer']);
   unset($form['field_peer_reviewer']);
   unset($form['field_prc_status']);
