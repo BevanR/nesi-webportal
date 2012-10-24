@@ -23,20 +23,19 @@
 								<h1 class="project-title">Research into waste disposal across New Zealand</h1>
 							</header>
 							<div class="stats-pane">
-								<h3 class="platform-title">Platform: POWER 7</h3>
-								<div>Progress</div>
-
-								<div class="allocation-summary">
-									<h2>Allocation Summary</h2>
+								<div class="project-allocation-summary">
+									<h3 class="allocation-title">Allocation Summary</h3>
 									<p class="date">Allocation begins: 12/10/2012</p>
 									<p class="date">Allocation ends: 12/11/2012</p>
 								</div>
 
 								<div class="allocation-stats">
+									<h2 class="project-platform-title">Platform: POWER 7</h2>
+									<div class="project-progress"><div class="bar" style="width: 20%;"></div></div>
 									<ul class="stats-tabs">
-										<li>1,234 <span>donuts</span></li>
-										<li>567 <span>kayaks</span></li>
-										<li>23,456 <span>kittens</span></li>
+										<li>12 <span>CPUs</span></li>
+										<li>7680 <span>CPU hours</span></li>
+										<li>80 <span>Wall clock hours</span></li>
 									</ul>
 
 								</div>
@@ -48,20 +47,19 @@
 								<h1 class="project-title">Research of plastic recycling</h1>
 							</header>
 							<div class="stats-pane">
-								<h3 class="platform-title">Platform: POWER 7</h3>
-								<div>Progress</div>
-
-								<div class="allocation-summary">
-									<h2>Allocation Summary</h2>
+								<div class="project-allocation-summary">
+									<h3 class="allocation-title">Allocation Summary</h3>
 									<p class="date">Allocation begins: 12/10/2012</p>
 									<p class="date">Allocation ends: 12/11/2012</p>
 								</div>
 
 								<div class="allocation-stats">
+									<h2 class="project-platform-title">Platform: POWER 7</h2>
+									<div class="project-progress"><div class="bar" style="width: 60%;"></div></div>
 									<ul class="stats-tabs">
-										<li>1,234 <span>donuts</span></li>
-										<li>567 <span>kayaks</span></li>
-										<li>23,456 <span>kittens</span></li>
+										<li>12 <span>CPUs</span></li>
+										<li>7680 <span>CPU hours</span></li>
+										<li>80 <span>Wall clock hours</span></li>
 									</ul>
 
 								</div>
