@@ -21,16 +21,10 @@ function nesi_portal_install() {
     array(
       'view own researcher_profile profile' => TRUE,
       'edit own researcher_profile profile' => TRUE,
-      //'create proposal_collaborative content' => TRUE,
       'create proposal_development_class content' => TRUE,
-      //'create proposal_private_industry content' => TRUE,
       'create proposal_research_class content' => TRUE,
-      //'create proposal_teaching content' => TRUE,
-      //'edit own proposal_collaborative content' => TRUE,
       'edit own proposal_development_class content' => TRUE,
-      //'edit own proposal_private_industry content' => TRUE,
       'edit own proposal_research_class content' => TRUE,
-      //'edit own proposal_teaching content' => TRUE,
       'delete own proposal_development_class content' => TRUE,
       'delete own proposal_research_class content' => TRUE,
      )
