@@ -30,7 +30,7 @@
       		<?php } else { ?>
       <nav id="global-nav">
       <ul class="nav pull-right">
-        <li><a href="#">Support</a></li>
+        <li><a href="https://support.nesi.org.nz/">Support</a></li>
         <li><a href="/rebuild/user/login">Login</a></li>
  	    </ul>
 		  </nav>

@@ -42,7 +42,7 @@
   <?php print $page_bottom; ?>
 
 <div class="container">
-		<div class="row-fluid directorynav">
+<div class="row-fluid directorynav">
 			<nav class="span3">
 				<h3>Services</h3>
 				<ul class="unstyled">
@@ -53,31 +53,32 @@
 				</ul>
 			</nav>
 			<nav class="span3">
-				<h3>Access & Allocations</h3>
+				<h3>Access &amp; Allocations</h3>
 				<ul class="unstyled">
 					<li><a href="/rebuild/hpc-calc">Calculator</a></li>
-					<li><a href="#">Propose</a></li>
+					<li><a href="/?q=apply">Propose</a></li>
 					<li><a href="/?q=access-policy">Access Policy</a></li>
 				</ul>
 			</nav>
 			<nav class="span3">
 				<h3>Support</h3>
 				<ul class="unstyled">
-					<li><a href="#">Submit a Request</a></li>
-					<li><a href="#">Knowledge base</a></li>
-					<li><a href="#">FAQ</a></li>
+					<li><a href="https://support.nesi.org.nz/anonymous_requests/new">Submit a Request</a></li>
+					<li><a href="https://support.nesi.org.nz/forums/20255713-knowledge-base">Knowledge base</a></li>
+					<li><a href="https://support.nesi.org.nz/forums">FAQ</a></li>
 				</ul>
 			</nav>
 			<nav class="span3">
 				<h3>About NeSI</h3>
 				<ul class="unstyled">
-					<li><a href="#">News</a></li>
-					<li><a href="#">Events</a></li>
+					<li><a href="/?q=news-events">News</a></li>
+					<li><a href="/?q=news-events">Events</a></li>
 					<li><a href="/?q=facilities">Facilitites</a></li>
 					<li><a href="/?q=case-studies">Case Studies</a></li>
 				</ul>
 			</nav>
 		</div>
+
 		</div>
 	</div> <!-- /container -->
 
