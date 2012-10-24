@@ -13,7 +13,87 @@
 		</div>
 		<div class="row-fluid">
 			<div class="span8">
-				<article role="main" class="post">
+				<article role="main">
+
+					<section class="clearfix">
+						<h1>Projects in progress</h1>
+
+						<article class="project-outline">
+							<header>
+								<h1 class="project-title">Research into waste disposal across New Zealand</h1>
+							</header>
+							<div class="stats-pane">
+								<h3 class="platform-title">Platform: POWER 7</h3>
+								<div>Progress</div>
+
+								<div class="allocation-summary">
+									<h2>Allocation Summary</h2>
+									<p class="date">Allocation begins: 12/10/2012</p>
+									<p class="date">Allocation ends: 12/11/2012</p>
+								</div>
+
+								<div class="allocation-stats">
+									<ul class="stats-tabs">
+										<li>1,234 <span>donuts</span></li>
+										<li>567 <span>kayaks</span></li>
+										<li>23,456 <span>kittens</span></li>
+									</ul>
+
+								</div>
+							</div>
+						</article>
+
+						<article class="project-outline">
+							<header>
+								<h1 class="project-title">Research of plastic recycling</h1>
+							</header>
+							<div class="stats-pane">
+								<h3 class="platform-title">Platform: POWER 7</h3>
+								<div>Progress</div>
+
+								<div class="allocation-summary">
+									<h2>Allocation Summary</h2>
+									<p class="date">Allocation begins: 12/10/2012</p>
+									<p class="date">Allocation ends: 12/11/2012</p>
+								</div>
+
+								<div class="allocation-stats">
+									<ul class="stats-tabs">
+										<li>1,234 <span>donuts</span></li>
+										<li>567 <span>kayaks</span></li>
+										<li>23,456 <span>kittens</span></li>
+									</ul>
+
+								</div>
+							</div>
+						</article>
+
+					</section>
+
+
+
+					<div class="alert alert-info">
+						<p>Hi Oscar, it doesn't look like you have any saved or pending proposals yet, get started by creating one. </p>
+					</div>
+
+					<div class="module centered-module bordered-module">
+						<div>
+							<article id="create-proposal">
+								<h1>Create a proposal</h1>
+								<div class="content">
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+									<div class="module-actions">
+										<a href="#" class="btn btn-large">Development Proposal</a>
+										<a href="#" class="btn btn-large">Research Proposal</a>
+										<a href="#" class="learn-more">Learn more about the different proposals</a>
+									</div>
+
+								</div>
+							</article>
+						</div>
+					</div>
+
+
 
 				</article>
 			</div>

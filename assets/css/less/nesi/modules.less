@@ -68,3 +68,48 @@
 		margin: 0;
 		}
 	}
+
+
+
+// Modules/Widget
+.module{
+	padding: 20px;
+}
+.centered-module{
+	text-align: center;
+}
+.bordered-module{
+	border: 1px solid @baseBorderColor;
+}
+.stats-pane{
+	.clearfix;
+	border: 1px solid @baseBorderColor;
+	padding: 20px;
+	margin: 0 0 @baseLineHeight 0;
+}
+.stats-tabs{
+	.unstyled();
+	li {
+		float: left;
+		margin: 0 10px 0 0;
+		padding: 0 10px 0 0;
+		border-right: 1px solid #ccc;
+		&:last-child {
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		& a{
+			display: block;
+			float: left;
+			font-size: 18px;
+			font-weight: bold;
+			& span {
+				display: block;
+				margin-top: 2px;
+				font-size: 13px;
+				font-weight: normal;
+			}
+		}
+	}
+}

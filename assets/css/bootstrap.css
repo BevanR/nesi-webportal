@@ -527,11 +527,12 @@ h5 small,
 h6 small {
   font-weight: normal;
   line-height: 1;
-  color: #999999;
+  color: #263945;
 }
 h1 {
   font-size: 36px;
   line-height: 40px;
+  font-weight: 300;
 }
 h2 {
   font-size: 30px;
@@ -3401,9 +3402,6 @@ input[type="submit"].btn.btn-mini {
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 }
-.navbar .container {
-  width: auto;
-}
 .nav-collapse.collapse {
   height: auto;
 }
@@ -4799,11 +4797,6 @@ p {
 .subhead {
   margin-bottom: 40px;
 }
-[role="main"] header h1,
-.subhead h1 {
-  font-weight: 300;
-  color: #263945;
-}
 figure,
 .figure {
   display: block;
@@ -5331,6 +5324,57 @@ figure .caption,
     margin: 0;
   }
 }
+.module {
+  padding: 20px;
+}
+.centered-module {
+  text-align: center;
+}
+.bordered-module {
+  border: 1px solid #cccccc;
+}
+.stats-pane {
+  *zoom: 1;
+  border: 1px solid #cccccc;
+  padding: 20px;
+  margin: 0 0 20px 0;
+}
+.stats-pane:before,
+.stats-pane:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.stats-pane:after {
+  clear: both;
+}
+.stats-tabs {
+  margin-left: 0;
+  list-style: none;
+}
+.stats-tabs li {
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 0 10px 0 0;
+  border-right: 1px solid #ccc;
+}
+.stats-tabs li:last-child {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.stats-tabs li a {
+  display: block;
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+.stats-tabs li a span {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: normal;
+}
 .page-intro {
   position: relative;
   z-index: 20;
@@ -5749,4 +5793,19 @@ h3.popover-title,
 }
 .main-cs-image figure {
   border: 0;
+}
+#create-proposal .btn {
+  display: inline-block;
+}
+#create-proposal .learn-more {
+  display: block;
+  margin-top: 20px;
+}
+.project-outline header {
+  margin-bottom: 0;
+}
+.project-outline .project-title {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
 }
