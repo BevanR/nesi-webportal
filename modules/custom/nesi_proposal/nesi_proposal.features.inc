@@ -25,14 +25,6 @@ function nesi_proposal_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
-    'proposal_teaching' => array(
-      'name' => t('Teaching'),
-      'base' => 'node_content',
-      'description' => t('Teaching Proposal'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'proposal_type' => array(
       'name' => t('Proposal Type'),
       'base' => 'node_content',
