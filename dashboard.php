@@ -20,7 +20,7 @@
 
 						<article class="project-outline">
 							<header>
-								<h1 class="project-title">Research into waste disposal across New Zealand</h1>
+								<h1 class="project-title"><a href="#">Research into waste disposal across New Zealand</a></h1>
 							</header>
 							<div class="stats-pane">
 								<div class="project-allocation-summary">
@@ -44,7 +44,7 @@
 
 						<article class="project-outline">
 							<header>
-								<h1 class="project-title">Research of plastic recycling</h1>
+								<h1 class="project-title"><a href="#">Research of plastic recycling</a></h1>
 							</header>
 							<div class="stats-pane">
 								<div class="project-allocation-summary">
@@ -71,7 +71,7 @@
 
 
 					<div class="alert alert-info">
-						<p>Hi Oscar, it doesn't look like you have any saved or pending proposals yet, get started by creating one. </p>
+						Hi Oscar, it doesn't look like you have any saved or pending proposals yet, get started by creating one.
 					</div>
 
 					<div class="module centered-module bordered-module">
