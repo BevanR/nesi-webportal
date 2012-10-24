@@ -68,3 +68,50 @@
 		margin: 0;
 		}
 	}
+
+
+
+// Modules/Widget
+.module{
+	padding: 20px;
+}
+.centered-module{
+	text-align: center;
+}
+.bordered-module{
+	border: 1px solid @baseBorderColor;
+}
+.stats-pane{
+	.clearfix;
+	border-top: 1px solid @baseBorderColor;
+	padding-top: @baseLineHeight;
+	margin: 0 0 (@baseLineHeight*2) 0;
+	.date{
+		margin: 0;
+		padding: 0;
+		font-size: 12px;
+		font-weight: 400;
+	}
+}
+.stats-tabs{
+	.unstyled();
+	li {
+		float: left;
+		margin: 0 20px 0 0;
+		padding: 0 20px 0 0;
+		border-right: 1px solid #ccc;
+		font-size: 18px;
+			font-weight: bold;
+		&:last-child {
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		& span {
+			display: block;
+			margin-top: 2px;
+			font-size: 13px;
+			font-weight: normal;
+		}
+	}
+}

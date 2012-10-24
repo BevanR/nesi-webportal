@@ -1,6 +1,6 @@
 <?php include('../_inc/_html_head.php') ?>
 
-<body class="single-post">
+<body class="case-study">
 	<?php $active = 3; include('../_inc/_navbar.php') ?>
 
 	<div class="container">

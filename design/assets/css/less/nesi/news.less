@@ -60,17 +60,20 @@
 // 	}
 // }
 .entry{
-	h2, h3, h4, p, ul, ol{
-		margin-left: 20%;
+	@media (min-width: 979px) {
+		h2, h3, h4, p, ul, ol{
+			max-width: 40em;
+		}
 	}
 	h2, h3{
 		font-weight: 300;
 		color: lighten(#263945, 30%);
 	}
 	> p:first-of-type{
-		#font > .shorthand(@baseFontSize*1.428571429, 300, 1.2);
+		#font > .shorthand(@baseFontSize*1.285714286, 300, 1.333333);
 		color: hsl(0, 0%, 16%);
 		margin-bottom: @baseLineHeight - 2px;
+		letter-spacing: 1px;
 	}
 	ul{
 		margin-left: 0px;
