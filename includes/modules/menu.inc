@@ -3,19 +3,21 @@
 /**
  * Returns HTML for primary and secondary local tasks.
  */
-function twitter_bootstrap_menu_local_tasks(&$vars) {
+function twitter_bootstrap_menu_local_tasks(&$variables) {
   $output = '';
 
-  if ( !empty($vars['primary']) ) {
-    $vars['primary']['#prefix'] = '<ul class="nav nav-tabs">';
-    $vars['primary']['#suffix'] = '</ul>';
-    $output .= drupal_render($vars['primary']);
+  if ( !empty($variables['primary']) ) {
+    $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
+    $variables['primary']['#prefix'] = '<ul class="nav nav-tabs">';
+    $variables['primary']['#suffix'] = '</ul>';
+    $output .= drupal_render($variables['primary']);
   }
 
-  if ( !empty($vars['secondary']) ) {
-    $vars['secondary']['#prefix'] = '<ul class="nav nav-pills">';
-    $vars['secondary']['#suffix'] = '</ul>';
-    $output .= drupal_render($vars['secondary']);
+  if ( !empty($variables['secondary']) ) {
+    $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
+    $variables['secondary']['#prefix'] = '<ul class="nav nav-pills">';
+    $variables['secondary']['#suffix'] = '</ul>';
+    $output .= drupal_render($variables['secondary']);
   }
 
   return $output;
@@ -51,15 +53,16 @@ function twitter_bootstrap_menu_local_task($variables) {
   $children = '';
   if (element_children($variables['element'])) {
     $link['localized_options']['attributes']['class'][] = 'dropdown-toggle';
-	$link['localized_options']['attributes']['data-toggle'][] = 'dropdown';
+    $link['localized_options']['attributes']['data-toggle'][] = 'dropdown';
     $classes[] = 'dropdown';
 
     $children = drupal_render_children($variables['element']);
-    $children = '</b><ul class="secondary-tabs dropdown-menu">' . $children . "</ul>";
+    $children = '<ul class="secondary-tabs dropdown-menu">' . $children . "</ul>";
 
-	return '<li class="' . implode(' ', $classes) . '"><a href="#"' . drupal_attributes($link['localized_options']['attributes']) .'>' . $link_text . '<b class="caret"></a>' . $children . "</li>\n";
-  }else{
-	return '<li class="' . implode(' ', $classes) . '">' . l($link_text, $link['href'], $link['localized_options']) . $children . "</li>\n";
+    return '<li class="' . implode(' ', $classes) . '"><a href="#"' . drupal_attributes($link['localized_options']['attributes']) .'>' . $link_text . ' <b class="caret"></b></a>' . $children . "</li>\n";
+  }
+  else {
+    return '<li class="' . implode(' ', $classes) . '">' . l($link_text, $link['href'], $link['localized_options']) . $children . "</li>\n";
   }
 }
 
