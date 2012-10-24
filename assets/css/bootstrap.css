@@ -5508,13 +5508,15 @@ figure .caption,
     display: block;
   }
 }
-.entry h2,
-.entry h3,
-.entry h4,
-.entry p,
-.entry ul,
-.entry ol {
-  margin-left: 20%;
+@media (min-width: 979px) {
+  .entry h2,
+  .entry h3,
+  .entry h4,
+  .entry p,
+  .entry ul,
+  .entry ol {
+    max-width: 40em;
+  }
 }
 .entry h2,
 .entry h3 {
@@ -5797,6 +5799,24 @@ h3.popover-title,
 }
 .main-cs-image figure {
   border: 0;
+}
+@media (min-width: 979px) {
+  .case-study .entry h2,
+  .case-study .entry h3,
+  .case-study .entry h4,
+  .case-study .entry p,
+  .case-study .entry ul,
+  .case-study .entry ol {
+    margin-left: 20%;
+  }
+}
+#create-proposal h1:before {
+  font-family: ModernPictogramsNormal;
+  font-size: 72px;
+  font-weight: normal;
+  line-height: 72px;
+  content: '\270D';
+  display: block;
 }
 #create-proposal .btn {
   display: inline-block;
