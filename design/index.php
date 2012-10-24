@@ -10,7 +10,7 @@
 			<div class="row-fluid">
 			<div class="span4">
 				<article class="sub-feature" id="bestgrid-intro">
-					<h1 class="feature-title">BeSTGRID Data Fabric</h1>
+					<a href="#"><h1 class="feature-title">BeSTGRID Data Fabric</h1></a>
 					<p>Broadband enabled Science and Technology grid. <a href="#" class="l-more">Learn more</a></p>
 				</article>
 			</div>
