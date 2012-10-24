@@ -13,6 +13,8 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
+	<link rel="icon" type="image/ico" href="/favicon.ico" />
+
 	<!-- Le styles -->
 	<link href="/assets/css/bootstrap.css" rel="stylesheet">
 	<link href="/assets/css/responsive.css" rel="stylesheet">
