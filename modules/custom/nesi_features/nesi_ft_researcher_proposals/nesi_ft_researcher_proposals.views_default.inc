@@ -212,11 +212,8 @@ function nesi_ft_researcher_proposals_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'proposal_collaborative' => 'proposal_collaborative',
-    'proposal_private_industry' => 'proposal_private_industry',
     'proposal_development_class' => 'proposal_development_class',
     'proposal_research_class' => 'proposal_research_class',
-    'proposal_teaching' => 'proposal_teaching',
   );
 
   /* Display: My Proposals */
