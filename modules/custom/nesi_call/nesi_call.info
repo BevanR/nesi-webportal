@@ -1,7 +1,7 @@
 name = NeSI Call
 core = 7.x
 package = NeSI
-version = 7.x-0.2
+version = 7.x-0.5
 project = nesi_call
 dependencies[] = date
 dependencies[] = features
