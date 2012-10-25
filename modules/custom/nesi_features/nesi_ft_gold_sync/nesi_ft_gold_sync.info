@@ -1,0 +1,10 @@
+name = nesi_ft_gold_sync
+core = 7.x
+package = NeSI
+version = 7.x-0.1
+project = nesi_ft_gold_sync
+dependencies[] = ctools
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = gold_sync
