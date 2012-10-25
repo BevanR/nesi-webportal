@@ -98,14 +98,9 @@ function nesi_team_selector_argument_selector_action($entities, $context = array
       // Assign user
       foreach ($entities as $researcher) {
         dpm($researcher);
-        if ($project->type == 'proposal_development_class') {
+        if ($project->type == 'project') {
           // Add check for user already being within the team
-            $project->field_pdc_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
-            node_save($project);
-        }
-        if ($project->type == 'proposal_research_class') {
-          // Add check for user already being within the team
-            $project->field_prc_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
+            $project->field_p_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
             node_save($project);
         }
       }        
