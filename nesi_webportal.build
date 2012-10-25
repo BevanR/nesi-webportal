@@ -118,6 +118,9 @@ projects[views_bulk_operations][version] = "3.0"
 projects[phpmailer][type] = "module"
 projects[phpmailer][subdir] = "contrib"
 projects[phpmailer][version] = "3.x-dev"
+projects[field_validation][type] = "module"
+projects[field_validation][subdir] = "contrib"
+projects[field_validation][version] = "2.1"
 
 ; Custom modules
 ; --------------
