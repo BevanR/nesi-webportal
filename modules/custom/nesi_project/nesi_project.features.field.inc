@@ -752,11 +752,11 @@ function nesi_project_field_default_fields() {
         'module' => 'date',
         'settings' => array(
           'increment' => '15',
-          'input_format' => 'm/d/Y - H:i:s',
+          'input_format' => 'j M Y - H:i:s',
           'input_format_custom' => '',
           'label_position' => 'above',
           'text_parts' => array(),
-          'year_range' => '-3:+3',
+          'year_range' => '-0:+3',
         ),
         'type' => 'date_popup',
         'weight' => '-3',

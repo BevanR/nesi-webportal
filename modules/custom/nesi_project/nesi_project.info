@@ -1,7 +1,7 @@
 name = NeSI Project
 core = 7.x
 package = NeSI
-version = 7.x-0.3
+version = 7.x-0.5
 project = nesi_project
 dependencies[] = date
 dependencies[] = features
