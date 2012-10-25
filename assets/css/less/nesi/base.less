@@ -110,11 +110,15 @@ figure, .figure {
 	li{
 		display: inline-block;
 		.ie7-inline-block();
+		max-width: 120px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		#font > .shorthand(@baseFontSize*.785714286, 400, 1.636);
+		.muted-link-color;
 	}
 	a{
 		.muted-link-color;
-		#font > .shorthand(@baseFontSize*.785714286, 400, 1.636);
-
 		&:after{
 			// #font > .pictograms(10px, 300, 1.8);
 			content: '/';
