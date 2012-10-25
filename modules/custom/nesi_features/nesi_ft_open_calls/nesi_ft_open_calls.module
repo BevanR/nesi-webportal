@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the nesi_ft_open_calls feature.
+ */
+
+include_once 'nesi_ft_open_calls.features.inc';
