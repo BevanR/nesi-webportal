@@ -5,3 +5,9 @@
  */
 
 include_once 'nesi_project.features.inc';
+
+function nesi_project_cron() {
+
+  // Find all projects with a set gold sync flag
+
+}
