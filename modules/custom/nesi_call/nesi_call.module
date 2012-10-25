@@ -5,3 +5,10 @@
  */
 
 include_once 'nesi_call.features.inc';
+
+function nesi_call_form_call_node_form_alter(&$form, &$form_state, $form_id) {
+  // Calls do not require a title
+  $form['title']['#default_value'] = 'Open Call';
+  $form['title']['#access'] = FALSE;
+
+}
