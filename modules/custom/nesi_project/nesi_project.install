@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * NeSI Project module - installation.
+ * 
+ * This file is executed on installation of the nesi_project module.
+ *
+ */
+
+/**
+ * Implements hook_project_install()
+ */
+function nesi_project_install() {
+
+  /* Current actions on install:
+   */
+
+}
+
+function nesi_project_enable() {
+
+  // Check if our field is not already created.
+  if (!field_info_field('field_p_gold_sync')) {
+    $field = array(
+      'field_name' => 'field_p_gold_sync', 
+      'type' => 'number_integer', 
+      'locked' => TRUE,
+    );
+
+    field_create_field($field);
+
+    // Create the instance on the bundle.
+    $instance = array(
+      'field_name' => 'field_p_gold_sync', 
+      'entity_type' => 'node', 
+      'label' => 'Project synchronised in GOLD', 
+      'bundle' => 'project', 
+      'display' => array(
+         'default' => array(
+           'type' => 'hidden',
+         ),
+      ),
+    );
+    field_create_instance($instance);
+  }
+}
+
