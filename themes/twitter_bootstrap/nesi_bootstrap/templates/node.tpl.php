@@ -4,7 +4,7 @@
   <header>
     <?php print render($title_prefix); ?>
     <?php //if (!$page && $title): ?>
-      <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
+      <h1<?php print $title_attributes; ?>><?php //print $title; ?></h1>
     <?php //endif; ?>
     <?php print render($title_suffix); ?>
 
