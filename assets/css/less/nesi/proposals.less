@@ -85,13 +85,21 @@
 		border-bottom: 1px solid @defaultBorderColor;
 		margin-left: -10px;
 		margin-right: -10px;
-		padding:10px;
+		padding: 20px 10px;
+		background: @grayLighter;
 
-		h4{
-			display: inline-block;
+		label{
+			float: left;
+			width: 20%;
+			text-align: right;
 			margin-right: 10px;
 			padding-right: 10px;
+			#font > .shorthand(@baseFontSize*.857142857, 400, 1.5);
+			color: @gray;
 		}
+	}
+	.search-query{
+		width: 60%;
 	}
 	li{
 		border-bottom: 1px solid @defaultBorderColor;
@@ -99,6 +107,9 @@
 		#font > .shorthand(@baseFontSize*.857142857, 400, 1.5);
 	}
 	#principal{
+		margin-left: -10px;
+		margin-right: -10px;
+		padding: 10px;
 		strong{
 			display: block;
 		}
