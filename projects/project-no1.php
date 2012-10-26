@@ -8,7 +8,7 @@
 			<div class="breadcrumbs">
 				<ol>
 					<li><a href="/dashboard.php">Dashboard</a></li>
-					<li><a href="/project/">project</a></li>
+					<li><a href="/project/">Projects</a></li>
 					<li><a href="/project/proposal-no1.php">Regional Climate Simulations of New Zealand recent past climate change episodes</a></li>
 				</ol>
 			</div>
