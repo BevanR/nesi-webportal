@@ -46,15 +46,16 @@
 							<section class="team">
 								<h2>Team</h2>
 								<div class="team-members">
+									<div id="principal">
+										<strong>Principal Investigator:</strong> Abha Sood <a href="mailto:abha.sood@niwa.co.nz">abha.sood@niwa.co.nz</a> Phone: +64-4-386-0577
+									</div>
 									<form class="form-search">
-										<h4>Add people to your team</h4>
+										<label>Search and add more people to your team</label>
 										<input type="text" class="input-large search-query">
 										<button type="submit" class="btn">Add to team</button>
 									</form>
 									<ul class="unstyled">
-										<li id="principal">
-											<strong>Principal Investigator:</strong> Abha Sood <a href="mailto:abha.sood@niwa.co.nz">abha.sood@niwa.co.nz</a> Phone: +64-4-386-0577
-										</li>
+
 										<li class="field-multiple-drag">
 											<a href="#" class="tabledrag-handle tabledrag-handle-hover" title="Drag to re-order" style=""><div class="handle">&nbsp;</div></a>
 											Another members name and details.
