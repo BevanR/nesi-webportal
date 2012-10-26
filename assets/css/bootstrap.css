@@ -1491,7 +1491,8 @@ table {
   vertical-align: top;
   border-top: 1px solid #dddddd;
 }
-.table th {
+.table th,
+.table th p {
   font-weight: bold;
 }
 .table thead th {
