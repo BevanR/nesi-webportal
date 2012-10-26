@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="span8">
+			<div class="span9">
 				<article role="main">
 
 					<div class="module centered-module bordered-module">

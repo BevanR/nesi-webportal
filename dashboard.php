@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="span8">
+			<div class="span9">
 				<article role="main">
 
 					<section class="clearfix">
@@ -102,7 +102,7 @@
 				</article>
 			</div>
 			<div class="span2 offset1">
-				<?php $active = 1; include('../_inc/_researcher_nav.php') ?>
+				<?php $active = 1; include('_inc/_researcher_nav.php') ?>
 			</div>
 		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->
