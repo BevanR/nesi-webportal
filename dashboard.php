@@ -31,7 +31,10 @@
 
 								<div class="allocation-stats">
 									<h2 class="project-platform-title">Platform: POWER 7</h2>
-									<div class="project-progress"><div class="bar" style="width: 20%;"></div></div>
+									<div class="project-progress">
+										<small>Progress</small>
+										<div class="bar" style="width: 20%;"></div>
+									</div>
 									<ul class="stats-tabs">
 										<li>12 <span>CPUs</span></li>
 										<li>7680 <span>CPU hours</span></li>
@@ -55,7 +58,10 @@
 
 								<div class="allocation-stats">
 									<h2 class="project-platform-title">Platform: POWER 7</h2>
-									<div class="project-progress"><div class="bar" style="width: 60%;"></div></div>
+									<div class="project-progress">
+										<small>Progress</small>
+										<div class="bar" style="width: 60%;"></div>
+									</div>
 									<ul class="stats-tabs">
 										<li>12 <span>CPUs</span></li>
 										<li>7680 <span>CPU hours</span></li>

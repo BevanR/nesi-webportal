@@ -50,6 +50,13 @@
 	height: 10px;
 	.border-radius(20em);
 	background: lighten(@grayLight, 30%);
+	small{
+		#font > .shorthand(@baseFontSize*.714285714, 400, 1);
+		text-transform: uppercase;
+		position: absolute;
+		left: -65px;
+		color: @grayLight;
+	}
 }
 .project-progress .bar {
   float: left;
