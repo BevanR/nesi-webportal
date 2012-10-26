@@ -51,7 +51,7 @@
 									</div>
 									<form class="form-search">
 										<label>Search and add more people to your team</label>
-										<input type="text" class="input-large search-query">
+										<input type="text" class="input-medium search-query" placeholder="Name"> <input type="email" class="input-medium search-query" placeholder="address@example.com">
 										<button type="submit" class="btn">Add to team</button>
 									</form>
 									<ul class="unstyled">
