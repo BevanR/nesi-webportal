@@ -55,7 +55,7 @@
 			<nav class="span3">
 				<h3>Access &amp; Allocations</h3>
 				<ul class="unstyled">
-					<li><a href="/rebuild/hpc-calc">Calculator</a></li>
+					<li><a href="/portal/hpc-calc">Calculator</a></li>
 					<li><a href="/?q=apply">Propose</a></li>
 					<li><a href="/?q=access-policy">Access Policy</a></li>
 				</ul>
