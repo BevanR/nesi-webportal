@@ -83,7 +83,7 @@
 									<div class="module-actions">
 										<a href="#" class="btn btn-large">Development Proposal</a>
 										<a href="#" class="btn btn-large">Research Proposal</a>
-										<a href="#" class="learn-more">Learn more about the different proposals</a>
+										<a href="/proposals" class="learn-more">Learn more about the different proposals</a>
 									</div>
 
 								</div>
