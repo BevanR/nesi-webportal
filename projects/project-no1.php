@@ -72,8 +72,8 @@
 					<h2>Researcher Menu</h2>
 					<ul>
 						<li><a href="#">Dashboard</a></li>
-						<li class="active"><a href="#">Add Proposal</a></li>
-						<li><a href="#">Live Projects</a></li>
+						<li><a href="#">Add Proposal</a></li>
+						<li class="active"><a href="#">Live Projects</a></li>
 						<li><a href="#">History</a></li>
 						<li><a href="#">HPC calculator</a></li>
 					</ul>
