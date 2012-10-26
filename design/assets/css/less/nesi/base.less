@@ -14,7 +14,9 @@ p{
 [role="main"] > header, .subhead{
 	margin-bottom: @baseLineHeight * 2;
 }
-
+ul.unstyled{
+	.unstyled();
+}
 
 
 // IMAGES AND FIGURES
@@ -110,11 +112,12 @@ figure, .figure {
 	li{
 		display: inline-block;
 		.ie7-inline-block();
+		.text-overflow(120px);
+		#font > .shorthand(@baseFontSize*.785714286, 400, 1.636);
+		.muted-link-color;
 	}
 	a{
 		.muted-link-color;
-		#font > .shorthand(@baseFontSize*.785714286, 400, 1.636);
-
 		&:after{
 			// #font > .pictograms(10px, 300, 1.8);
 			content: '/';
