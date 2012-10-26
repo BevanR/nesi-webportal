@@ -102,16 +102,7 @@
 				</article>
 			</div>
 			<div class="span2 offset1">
-				<nav class="sub-nav">
-					<h2>Researcher Menu</h2>
-					<ul>
-						<li class="active"><a href="#">Dashboard</a></li>
-						<li><a href="#">Current Proposal</a></li>
-						<li><a href="#">Live Projects</a></li>
-						<li><a href="#">History</a></li>
-						<li><a href="#">HPC calculator</a></li>
-					</ul>
-				</nav>
+				<?php $active = 1; include('../_inc/_researcher_nav.php') ?>
 			</div>
 		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->
