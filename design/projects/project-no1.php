@@ -1,6 +1,6 @@
 <?php include('../_inc/_html_head.php') ?>
 
-<body class="proposal-entry">
+<body class="project-entry">
 	<?php $active = 0; include('../_inc/_navbar.php') ?>
 
 	<div class="container">
@@ -8,30 +8,38 @@
 			<div class="breadcrumbs">
 				<ol>
 					<li><a href="/dashboard.php">Dashboard</a></li>
-					<li><a href="/proposals/">Proposals</a></li>
-					<li><a href="/proposals/proposal-no1.php">Regional Climate Simulations of New Zealand recent past climate change episodes</a></li>
+					<li><a href="/project/">Projects</a></li>
+					<li><a href="/project/proposal-no1.php">Regional Climate Simulations of New Zealand recent past climate change episodes</a></li>
 				</ol>
 			</div>
 		</div>
 		<div class="row-fluid">
 			<div class="span9">
 				<section>
-					<?php $active = 1; include('../_inc/_proposal-no1-header.php') ?>
+					<?php $active = 1; include('../_inc/_project-no1-header.php') ?>
 
+						<div class="stats-pane">
+								<div class="project-allocation-summary">
+									<h3 class="allocation-title">Allocation Summary</h3>
+									<p class="date">Allocation begins: 12/10/2012</p>
+									<p class="date">Allocation ends: 12/11/2012</p>
+								</div>
 
-						<aside class="proposal-allocation-requests">
-							<h3>Platform &amp; Allocation details</h3>
-							<ul class="unstyled">
-								<li><strong>Desired HPC Platform:</strong> P575/POWER6</li>
-								<li><strong>CPU core hours:</strong> 150000</li>
-								<li><strong>Storage Requirements:</strong> 5TB</li>
-							</ul>
-							<h4>Software Requirements: UMv4.5 and dependencies.</h4>
-							<p>The UMv4.5 code is installed, tested and is currently being used in other climate modelling projects</p>
+								<div class="allocation-stats">
+									<h2 class="project-platform-title">Platform: POWER 7</h2>
+									<div class="project-progress">
+										<small>Progress</small>
+										<div class="bar" style="width: 20%;"></div>
+									</div>
+									<ul class="stats-tabs">
+										<li>12 <span>CPUs</span></li>
+										<li>7680 <span>CPU hours</span></li>
+										<li>80 <span>Wall clock hours</span></li>
+									</ul>
 
-							<h4>Data Transfer</h4>
-							<p>No Data Transfer required.</p>
-						</aside>
+								</div>
+						</div>
+
 						<div class="content proposal-details">
 							<section>
 								<h2>Scientific Goals</h2>
@@ -60,7 +68,7 @@
 				</section>
 			</div>
 			<div class="span2 offset1">
-				<?php $active = 2; include('../_inc/_researcher_nav.php') ?>
+				<?php $active = 3; include('../_inc/_researcher_nav.php') ?>
 			</div>
 		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->

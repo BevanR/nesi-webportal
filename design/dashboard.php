@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="span8">
+			<div class="span9">
 				<article role="main">
 
 					<section class="clearfix">
@@ -31,7 +31,10 @@
 
 								<div class="allocation-stats">
 									<h2 class="project-platform-title">Platform: POWER 7</h2>
-									<div class="project-progress"><div class="bar" style="width: 20%;"></div></div>
+									<div class="project-progress">
+										<small>Progress</small>
+										<div class="bar" style="width: 20%;"></div>
+									</div>
 									<ul class="stats-tabs">
 										<li>12 <span>CPUs</span></li>
 										<li>7680 <span>CPU hours</span></li>
@@ -55,7 +58,10 @@
 
 								<div class="allocation-stats">
 									<h2 class="project-platform-title">Platform: POWER 7</h2>
-									<div class="project-progress"><div class="bar" style="width: 60%;"></div></div>
+									<div class="project-progress">
+										<small>Progress</small>
+										<div class="bar" style="width: 60%;"></div>
+									</div>
 									<ul class="stats-tabs">
 										<li>12 <span>CPUs</span></li>
 										<li>7680 <span>CPU hours</span></li>
@@ -96,16 +102,7 @@
 				</article>
 			</div>
 			<div class="span2 offset1">
-				<nav class="sub-nav">
-					<h2>Researcher Menu</h2>
-					<ul>
-						<li class="active"><a href="#">Dashboard</a></li>
-						<li><a href="#">Current Proposal</a></li>
-						<li><a href="#">Live Projects</a></li>
-						<li><a href="#">History</a></li>
-						<li><a href="#">HPC calculator</a></li>
-					</ul>
-				</nav>
+				<?php $active = 1; include('_inc/_researcher_nav.php') ?>
 			</div>
 		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->

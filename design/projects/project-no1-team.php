@@ -1,6 +1,6 @@
 <?php include('../_inc/_html_head.php') ?>
 
-<body class="proposal-entry">
+<body class="project-entry">
 	<?php $active = 0; include('../_inc/_navbar.php') ?>
 
 	<div class="container">
@@ -8,15 +8,15 @@
 			<div class="breadcrumbs">
 				<ol>
 					<li><a href="/dashboard.php">Dashboard</a></li>
-					<li><a href="/proposals/">Proposals</a></li>
-					<li><a href="/proposals/proposal-no1.php">Regional Climate Simulations of New Zealand recent past climate change episodes</a></li>
+					<li><a href="/projects/">Projects</a></li>
+					<li><a href="/projects/project-no1.php">Regional Climate Simulations of New Zealand recent past climate change episodes</a></li>
 				</ol>
 			</div>
 		</div>
 		<div class="row-fluid">
 			<div class="span9">
 				<section>
-					<?php $active = 3; include('../_inc/_proposal-no1-header.php') ?>
+					<?php $active = 2; include('../_inc/_project-no1-header.php') ?>
 
 						<div class="content">
 							<section class="team">
@@ -56,7 +56,7 @@
 				</section>
 			</div>
 			<div class="span2 offset1">
-				<?php $active = 2; include('../_inc/_researcher_nav.php') ?>
+				<?php $active = 3; include('../_inc/_researcher_nav.php') ?>
 			</div>
 		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->

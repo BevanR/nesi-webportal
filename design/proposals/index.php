@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="row-fluid">
-			<div class="span8">
+			<div class="span9">
 				<article role="main">
 
 					<div class="module centered-module bordered-module">
@@ -49,16 +49,7 @@
 				</article>
 			</div>
 			<div class="span2 offset1">
-				<nav class="sub-nav">
-					<h2>Researcher Menu</h2>
-					<ul>
-						<li><a href="#">Dashboard</a></li>
-						<li class="active"><a href="#">Add Proposal</a></li>
-						<li><a href="#">Live Projects</a></li>
-						<li><a href="#">History</a></li>
-						<li><a href="#">HPC calculator</a></li>
-					</ul>
-				</nav>
+				<?php $active = 2; include('../_inc/_researcher_nav.php') ?>
 			</div>
 		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->
