@@ -145,7 +145,7 @@ input.password-field {
 }
 div.password-confirm {
   float: right;  /* LTR */
-  /* margin-top: 1.5em; */
+  margin-top: 1.5em;
   visibility: hidden;
   width: 17em;
 }
@@ -164,4 +164,3 @@ div.password-suggestions ul {
   margin: 0;
   width: 36.3em;
 }
-
