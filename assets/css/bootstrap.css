@@ -119,6 +119,9 @@ textarea {
 }
 .hide-text {
   font: a;
+  font-size: 0;
+  line-height: 0;
+  font-family: a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -5080,6 +5083,9 @@ figure .caption,
 }
 .brand span {
   font: a;
+  font-size: 0;
+  line-height: 0;
+  font-family: a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -5642,6 +5648,9 @@ figure .caption,
   opacity: 0.5;
   filter: alpha(opacity=50);
   font: a;
+  font-size: 0;
+  line-height: 0;
+  font-family: a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
