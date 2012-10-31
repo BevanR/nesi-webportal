@@ -5018,6 +5018,10 @@ figure .caption,
     padding-left: 10.5%;
   }
 }
+.ie8 .o-item {
+  padding-left: 30px;
+  position: relative;
+}
 .o-title {
   font-size: 16.8px;
   font-weight: 600;
@@ -5539,6 +5543,20 @@ figure .caption,
   .news-item .yr {
     display: block;
   }
+}
+.ie8 .news-item {
+  padding-left: 10.5%;
+}
+.ie8 .news-item .meta-date {
+  width: 8.547008547%;
+  float: left;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: right;
+}
+.ie8 .news-item .meta-date .yr {
+  display: block;
 }
 @media (min-width: 979px) {
   .entry h2,
