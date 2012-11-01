@@ -119,6 +119,9 @@ textarea {
 }
 .hide-text {
   font: a;
+  font-size: 0;
+  line-height: 0;
+  font-family: a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -5015,6 +5018,10 @@ figure .caption,
     padding-left: 10.5%;
   }
 }
+.ie8 .o-item {
+  padding-left: 30px;
+  position: relative;
+}
 .o-title {
   font-size: 16.8px;
   font-weight: 600;
@@ -5080,6 +5087,9 @@ figure .caption,
 }
 .brand span {
   font: a;
+  font-size: 0;
+  line-height: 0;
+  font-family: a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -5456,6 +5466,10 @@ figure .caption,
 .sub-feature .l-more {
   display: block;
 }
+.no-borderradius .sub-feature .feature-title:before {
+  background: none;
+  text-align: center;
+}
 #bestgrid-intro .feature-title:before {
   content: "3";
 }
@@ -5529,6 +5543,20 @@ figure .caption,
   .news-item .yr {
     display: block;
   }
+}
+.ie8 .news-item {
+  padding-left: 10.5%;
+}
+.ie8 .news-item .meta-date {
+  width: 8.547008547%;
+  float: left;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: right;
+}
+.ie8 .news-item .meta-date .yr {
+  display: block;
 }
 @media (min-width: 979px) {
   .entry h2,
@@ -5642,6 +5670,9 @@ figure .caption,
   opacity: 0.5;
   filter: alpha(opacity=50);
   font: a;
+  font-size: 0;
+  line-height: 0;
+  font-family: a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;

@@ -21,6 +21,9 @@
 }
 .hide-text {
   font: a;
+  font-size: 0;
+  line-height: 0;
+  font-family: a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
