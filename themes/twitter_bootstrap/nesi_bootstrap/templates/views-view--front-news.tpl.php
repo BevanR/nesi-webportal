@@ -72,7 +72,7 @@
   <?php endif; ?>
 
   <?php if ($more): ?>
-    <?php print $more; ?>
+    <?php //print $more; ?>
   <?php endif; ?>
 
   <?php if ($footer): ?>
