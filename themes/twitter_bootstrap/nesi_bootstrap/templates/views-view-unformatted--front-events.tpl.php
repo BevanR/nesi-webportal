@@ -11,7 +11,7 @@
   <h3><?php print $title; ?></h3>
 <?php endif; ?>
 <?php foreach ($rows as $id => $row): ?>
-  <div <?php if ($classes_array[$id]) { print 'class="' . $classes_array[$id] .'"';  } ?>>
+<article class="o-item event-item">
     <?php print $row; ?>
-  </div>
+</article>
 <?php endforeach; ?>
