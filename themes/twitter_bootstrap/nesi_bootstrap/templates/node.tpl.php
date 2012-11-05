@@ -9,10 +9,10 @@
     <?php print render($title_suffix); ?>
 
     <?php if ($display_submitted): ?>
-      <span class="submitted">
+      <p class="meta meta-date">
         <?php print $user_picture; ?>
         <?php print $submitted; ?>
-      </span>
+      </p>
     <?php endif; ?>
   </header>
 
