@@ -5050,6 +5050,11 @@ figure .caption,
   width: 60%;
   margin: 164px auto 10px;
 }
+.footnotes li {
+  font-size: 80%;
+  line-height: 18px;
+  color: #555555;
+}
 .navbar-inner {
   min-height: 70px;
 }
@@ -5536,7 +5541,6 @@ figure .caption,
 .entry h2,
 .entry h3 {
   font-weight: 300;
-  color: #5e8aa6;
 }
 .entry > p:first-of-type {
   font-size: 18.000000004px;
