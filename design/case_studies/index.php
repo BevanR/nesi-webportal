@@ -20,7 +20,7 @@
 						<header>
 							<h1 class="teaser-title">
 							<a href="/case_studies/modelling_glaciers_of_the_southern_alps.php">
-								<figure><img src="/assets/img/ice.png" alt="Ice" /></figure>
+								<figure class="teaser-preview-figure"><img src="/assets/img/ice.png" alt="Ice" /></figure>
 								Modelling glaciers of the Southern Alps
 							</a>
 							</h1>

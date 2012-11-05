@@ -1,10 +1,48 @@
-<?php include('_inc/_html_head.php') ?>
+<!DOCTYPE html>
+<!--[if IE 6 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]> <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>NeSI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link rel="icon" type="image/ico" href="/favicon.ico" />
+
+	<!-- Le styles -->
+	<link href="/assets/css/bootstrap.css" rel="stylesheet">
+	<link href="/assets/css/responsive.css" rel="stylesheet">
+		<link href="/assets/css/docs.css" rel="stylesheet">
+
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Le fav and touch icons -->
+	<link rel="shortcut icon" href="/assets/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+
+	<script src="/assets/js/modernizr.custom.39236.js"></script>
+
+</head>
+
 
 <body class="styleguide">
-	<?php include('_inc/_navbar.php') ?>
 
-	<header class="jumbotron subhead" id="overview">
+	<header class="subhead" id="overview">
 		<div class="container">
+		<a class="brand" href="/index.php"><span>NeSI &ndash; New Zealand eScience Infrastructure</span></a>
 			<h1>Base CSS</h1>
 			<p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
 		</div>
@@ -57,7 +95,7 @@
 			  <pre class="prettyprint">&lt;p&gt;...&lt;/p&gt;</pre>
 
 			  <h3>Lead body copy</h3>
-			  <p>Make a paragraph stand out by adding <code>.lead</code>.</p>
+			  <p>Make a paragraph stand out by adding <code>.lead</code>. This should only be applied to the very first paragraph that proceeds a major page heading.</p>
 			  <div class="bs-docs-example">
 				<p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
 			  </div>
@@ -125,7 +163,7 @@
 			  <hr class="bs-docs-separator">
 
 
-			  <h2 id="addresses">Addresses</h2>
+			  <!-- <h2 id="addresses">Addresses</h2>
 			  <p>Present contact information for the nearest ancestor or the entire body of work.</p>
 
 			  <h3><code>&lt;address&gt;</code></h3>
@@ -158,7 +196,7 @@
 
 
 			  <hr class="bs-docs-separator">
-
+-->
 
 			  <h2 id="blockquotes">Blockquotes</h2>
 			  <p>For quoting blocks of content from another source within your document.</p>
@@ -170,11 +208,11 @@
 				  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 				</blockquote>
 			  </div>
-	<pre class="prettyprint linenums">
-	&lt;blockquote&gt;
-	  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
-	&lt;/blockquote&gt;
-	</pre>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+&lt;/blockquote&gt;
+</pre>
 
 			  <h3>Blockquote options</h3>
 			  <p>Style and content changes for simple variations on a standard blockquote.</p>
@@ -187,12 +225,12 @@
 				  <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
 				</blockquote>
 			  </div>
-	<pre class="prettyprint linenums">
-	&lt;blockquote&gt;
-	  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
-	  &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
-	&lt;/blockquote&gt;
-	</pre>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
 
 			  <h4>Alternate displays</h4>
 			  <p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
@@ -202,11 +240,11 @@
 				  <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
 				</blockquote>
 			  </div>
-	<pre class="prettyprint linenums">
-	&lt;blockquote class="pull-right"&gt;
-	  ...
-	&lt;/blockquote&gt;
-	</pre>
+<pre class="prettyprint linenums">
+&lt;blockquote class="pull-right"&gt;
+  ...
+&lt;/blockquote&gt;
+</pre>
 
 
 			  <hr class="bs-docs-separator">
@@ -236,11 +274,11 @@
 				  <li>Eget porttitor lorem</li>
 				</ul>
 			  </div>
-	<pre class="prettyprint linenums">
-	&lt;ul&gt;
-	  &lt;li&gt;...&lt;/li&gt;
-	&lt;/ul&gt;
-	</pre>
+<pre class="prettyprint linenums">
+&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
 
 			  <h3>Ordered</h3>
 			  <p>A list of items in which the order <em>does</em> explicitly matter.</p>
@@ -256,11 +294,11 @@
 				  <li>Eget porttitor lorem</li>
 				</ol>
 			  </div>
-	<pre class="prettyprint linenums">
-	&lt;ol&gt;
-	  &lt;li&gt;...&lt;/li&gt;
-	&lt;/ol&gt;
-	</pre>
+<pre class="prettyprint linenums">
+&lt;ol&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
 
 			<h3>Unstyled</h3>
 			<p>A list of items with no <code>list-style</code> or additional left padding.</p>
@@ -283,11 +321,11 @@
 				<li>Eget porttitor lorem</li>
 			  </ul>
 			</div>
-	<pre class="prettyprint linenums">
-	&lt;ul class="unstyled"&gt;
-	  &lt;li&gt;...&lt;/li&gt;
-	&lt;/ul&gt;
-	</pre>
+<pre class="prettyprint linenums">
+&lt;ul class="unstyled"&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
 
 			<h3>Description</h3>
 			<p>A list of terms with their associated descriptions.</p>
@@ -302,12 +340,12 @@
 				<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
 			  </dl>
 			</div>
-	<pre class="prettyprint linenums">
-	&lt;dl&gt;
-	  &lt;dt&gt;...&lt;/dt&gt;
-	  &lt;dd&gt;...&lt;/dd&gt;
-	&lt;/dl&gt;
-	</pre>
+<pre class="prettyprint linenums">
+&lt;dl&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
 
 			<h4>Horizontal description</h4>
 			<p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
@@ -324,12 +362,12 @@
 				<dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
 			  </dl>
 			</div>
-	<pre class="prettyprint linenums">
-	&lt;dl class="dl-horizontal"&gt;
-	  &lt;dt&gt;...&lt;/dt&gt;
-	  &lt;dd&gt;...&lt;/dd&gt;
-	&lt;/dl&gt;
-	</pre>
+<pre class="prettyprint linenums">
+&lt;dl class="dl-horizontal"&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
 			<p>
 			  <span class="label label-info">Heads up!</span>
 			  Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
@@ -348,20 +386,20 @@
 		<div class="bs-docs-example">
 		  For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 		</div>
-		<pre class="prettyprint linenums">
-		For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inline.
-		</pre>
+<pre class="prettyprint linenums">
+For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inline.
+</pre>
 
 				  <h2>Basic block</h2>
 				  <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 		<div class="bs-docs-example">
 		  <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 		</div>
-		<pre class="prettyprint linenums" style="margin-bottom: 9px;">
-		&lt;pre&gt;
-		  &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
-		&lt;/pre&gt;
-		</pre>
+<pre class="prettyprint linenums" style="margin-bottom: 9px;">
+&lt;pre&gt;
+  &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
+&lt;/pre&gt;
+</pre>
 				  <p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
 				  <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
 				</section>
@@ -782,18 +820,18 @@
 					</label>
 					<button type="submit" class="btn">Submit</button>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;form&gt;
-		  &lt;legend&gt;Legend&lt;/legend&gt;
-		  &lt;label&gt;Label name&lt;/label&gt;
-		  &lt;input type="text" placeholder="Type something…"&gt;
-		  &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
-		  &lt;label class="checkbox"&gt;
-			&lt;input type="checkbox"&gt; Check me out
-		  &lt;/label&gt;
-		  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
-		&lt;/form&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;form&gt;
+  &lt;legend&gt;Legend&lt;/legend&gt;
+  &lt;label&gt;Label name&lt;/label&gt;
+  &lt;input type="text" placeholder="Type something…"&gt;
+  &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
+  &lt;label class="checkbox"&gt;
+	&lt;input type="checkbox"&gt; Check me out
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</pre>
 
 
 				  <hr class="bs-docs-separator">
@@ -808,12 +846,12 @@
 					<input type="text" class="input-medium search-query">
 					<button type="submit" class="btn">Search</button>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;form class="form-search"&gt;
-		  &lt;input type="text" class="input-medium search-query"&gt;
-		  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
-		&lt;/form&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;form class="form-search"&gt;
+  &lt;input type="text" class="input-medium search-query"&gt;
+  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+</pre>
 
 				  <h3>Inline form</h3>
 				  <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
@@ -825,16 +863,16 @@
 					</label>
 					<button type="submit" class="btn">Sign in</button>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;form class="form-inline"&gt;
-		  &lt;input type="text" class="input-small" placeholder="Email"&gt;
-		  &lt;input type="password" class="input-small" placeholder="Password"&gt;
-		  &lt;label class="checkbox"&gt;
-			&lt;input type="checkbox"&gt; Remember me
-		  &lt;/label&gt;
-		  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
-		&lt;/form&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;form class="form-inline"&gt;
+  &lt;input type="text" class="input-small" placeholder="Email"&gt;
+  &lt;input type="password" class="input-small" placeholder="Password"&gt;
+  &lt;label class="checkbox"&gt;
+	&lt;input type="checkbox"&gt; Remember me
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+&lt;/form&gt;
+</pre>
 
 				  <h3>Horizontal form</h3>
 				  <p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>
@@ -867,30 +905,30 @@
 					  </div>
 					</div>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;form class="form-horizontal"&gt;
-		  &lt;div class="control-group"&gt;
-			&lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
-			&lt;div class="controls"&gt;
-			  &lt;input type="text" id="inputEmail" placeholder="Email"&gt;
-			&lt;/div&gt;
-		  &lt;/div&gt;
-		  &lt;div class="control-group"&gt;
-			&lt;label class="control-label" for="inputPassword"&gt;Password&lt;/label&gt;
-			&lt;div class="controls"&gt;
-			  &lt;input type="password" id="inputPassword" placeholder="Password"&gt;
-			&lt;/div&gt;
-		  &lt;/div&gt;
-		  &lt;div class="control-group"&gt;
-			&lt;div class="controls"&gt;
-			  &lt;label class="checkbox"&gt;
-				&lt;input type="checkbox"&gt; Remember me
-			  &lt;/label&gt;
-			  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
-			&lt;/div&gt;
-		  &lt;/div&gt;
-		&lt;/form&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;form class="form-horizontal"&gt;
+  &lt;div class="control-group"&gt;
+	&lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
+	&lt;div class="controls"&gt;
+	  &lt;input type="text" id="inputEmail" placeholder="Email"&gt;
+	&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="control-group"&gt;
+	&lt;label class="control-label" for="inputPassword"&gt;Password&lt;/label&gt;
+	&lt;div class="controls"&gt;
+	  &lt;input type="password" id="inputPassword" placeholder="Password"&gt;
+	&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="control-group"&gt;
+	&lt;div class="controls"&gt;
+	  &lt;label class="checkbox"&gt;
+		&lt;input type="checkbox"&gt; Remember me
+	  &lt;/label&gt;
+	  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+	&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
 
 
 				  <hr class="bs-docs-separator">
@@ -905,18 +943,18 @@
 				  <form class="bs-docs-example form-inline">
 					<input type="text" placeholder="Text input">
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;input type="text" placeholder="Text input"&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;input type="text" placeholder="Text input"&gt;
+</pre>
 
 				  <h3>Textarea</h3>
 				  <p>Form control which supports multiple lines of text. Change <code>row</code> attribute as necessary.</p>
 				  <form class="bs-docs-example form-inline">
 					<textarea rows="3"></textarea>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;textarea rows="3"&gt;&lt;/textarea&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;textarea rows="3"&gt;&lt;/textarea&gt;
+</pre>
 
 				  <h3>Checkboxes and radios</h3>
 				  <p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
@@ -936,21 +974,21 @@
 					  Option two can be something else and selecting it will deselect option one
 					</label>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;label class="checkbox"&gt;
-		  &lt;input type="checkbox" value=""&gt;
-		  Option one is this and that&mdash;be sure to include why it's great
-		&lt;/label&gt;
+<pre class="prettyprint linenums">
+&lt;label class="checkbox"&gt;
+  &lt;input type="checkbox" value=""&gt;
+  Option one is this and that&mdash;be sure to include why it's great
+&lt;/label&gt;
 
-		&lt;label class="radio"&gt;
-		  &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
-		  Option one is this and that&mdash;be sure to include why it's great
-		&lt;/label&gt;
-		&lt;label class="radio"&gt;
-		  &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"&gt;
-		  Option two can be something else and selecting it will deselect option one
-		&lt;/label&gt;
-		</pre>
+&lt;label class="radio"&gt;
+  &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
+  Option one is this and that&mdash;be sure to include why it's great
+&lt;/label&gt;
+&lt;label class="radio"&gt;
+  &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"&gt;
+  Option two can be something else and selecting it will deselect option one
+&lt;/label&gt;
+</pre>
 
 				  <h4>Inline checkboxes</h4>
 				  <p>Add the <code>.inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
@@ -965,17 +1003,17 @@
 					  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
 					</label>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;label class="checkbox inline"&gt;
-		  &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
-		&lt;/label&gt;
-		&lt;label class="checkbox inline"&gt;
-		  &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
-		&lt;/label&gt;
-		&lt;label class="checkbox inline"&gt;
-		  &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
-		&lt;/label&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
+&lt;/label&gt;
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
+&lt;/label&gt;
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
+&lt;/label&gt;
+</pre>
 
 				  <h3>Selects</h3>
 				  <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
@@ -996,23 +1034,23 @@
 					  <option>5</option>
 					</select>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;select&gt;
-		  &lt;option&gt;1&lt;/option&gt;
-		  &lt;option&gt;2&lt;/option&gt;
-		  &lt;option&gt;3&lt;/option&gt;
-		  &lt;option&gt;4&lt;/option&gt;
-		  &lt;option&gt;5&lt;/option&gt;
-		&lt;/select&gt;
+<pre class="prettyprint linenums">
+&lt;select&gt;
+  &lt;option&gt;1&lt;/option&gt;
+  &lt;option&gt;2&lt;/option&gt;
+  &lt;option&gt;3&lt;/option&gt;
+  &lt;option&gt;4&lt;/option&gt;
+  &lt;option&gt;5&lt;/option&gt;
+&lt;/select&gt;
 
-		&lt;select multiple="multiple"&gt;
-		  &lt;option&gt;1&lt;/option&gt;
-		  &lt;option&gt;2&lt;/option&gt;
-		  &lt;option&gt;3&lt;/option&gt;
-		  &lt;option&gt;4&lt;/option&gt;
-		  &lt;option&gt;5&lt;/option&gt;
-		&lt;/select&gt;
-		</pre>
+&lt;select multiple="multiple"&gt;
+  &lt;option&gt;1&lt;/option&gt;
+  &lt;option&gt;2&lt;/option&gt;
+  &lt;option&gt;3&lt;/option&gt;
+  &lt;option&gt;4&lt;/option&gt;
+  &lt;option&gt;5&lt;/option&gt;
+&lt;/select&gt;
+</pre>
 
 
 				  <hr class="bs-docs-separator">
@@ -1037,14 +1075,14 @@
 					  <span class="add-on">.00</span>
 					</div>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;div class="input-prepend"&gt;
-		  &lt;span class="add-on"&gt;@&lt;/span&gt;&lt;input class="span2" id="prependedInput" size="16" type="text" placeholder="Username"&gt;
-		&lt;/div&gt;
-		&lt;div class="input-append"&gt;
-		  &lt;input class="span2" id="appendedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
-		&lt;/div&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;div class="input-prepend"&gt;
+  &lt;span class="add-on"&gt;@&lt;/span&gt;&lt;input class="span2" id="prependedInput" size="16" type="text" placeholder="Username"&gt;
+&lt;/div&gt;
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+</pre>
 
 				  <h4>Combined</h4>
 				  <p>Use both classes and two instances of <code>.add-on</code> to prepend and append an input.</p>
@@ -1055,11 +1093,11 @@
 					  <span class="add-on">.00</span>
 					</div>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;div class="input-prepend input-append"&gt;
-		  &lt;span class="add-on"&gt;$&lt;/span&gt;&lt;input class="span2" id="appendedPrependedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
-		&lt;/div&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;div class="input-prepend input-append"&gt;
+  &lt;span class="add-on"&gt;$&lt;/span&gt;&lt;input class="span2" id="appendedPrependedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+</pre>
 
 				  <h4>Buttons instead of text</h4>
 				  <p>Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.</p>
@@ -1075,15 +1113,15 @@
 					  <button class="btn" type="button">Options</button>
 					</div>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;div class="input-append"&gt;
-		  &lt;input class="span2" id="appendedInputButton" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
-		&lt;/div&gt;
+<pre class="prettyprint linenums">
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInputButton" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+&lt;/div&gt;
 
-		&lt;div class="input-append"&gt;
-		  &lt;input class="span2" id="appendedInputButtons" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Search&lt;/button&gt;&lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
-		&lt;/div&gt;
-		</pre>
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInputButtons" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Search&lt;/button&gt;&lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
+&lt;/div&gt;
+</pre>
 
 				  <h4>Search form</h4>
 				  <form class="bs-docs-example form-search">
@@ -1096,18 +1134,18 @@
 					  <input type="text" class="span2 search-query">
 					</div>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;form class="form-search"&gt;
-		  &lt;div class="input-append"&gt;
-			&lt;input type="text" class="span2 search-query"&gt;
-			&lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
-		  &lt;/div&gt;
-		  &lt;div class="input-prepend"&gt;
-			&lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
-			&lt;input type="text" class="span2 search-query"&gt;
-		  &lt;/div&gt;
-		&lt;/form&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;form class="form-search"&gt;
+  &lt;div class="input-append"&gt;
+	&lt;input type="text" class="span2 search-query"&gt;
+	&lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="input-prepend"&gt;
+	&lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+	&lt;input type="text" class="span2 search-query"&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
 
 				  <h3>Control sizing</h3>
 				  <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
@@ -1123,14 +1161,14 @@
 					  <input class="input-xxlarge" type="text" placeholder=".input-xxlarge">
 					</div>
 				  </form>
-		<pre class="prettyprint linenums">
-		&lt;input class="input-mini" type="text" placeholder=".input-mini"&gt;
-		&lt;input class="input-small" type="text" placeholder=".input-small"&gt;
-		&lt;input class="input-medium" type="text" placeholder=".input-medium"&gt;
-		&lt;input class="input-large" type="text" placeholder=".input-large"&gt;
-		&lt;input class="input-xlarge" type="text" placeholder=".input-xlarge"&gt;
-		&lt;input class="input-xxlarge" type="text" placeholder=".input-xxlarge"&gt;
-		</pre>
+<pre class="prettyprint linenums">
+&lt;input class="input-mini" type="text" placeholder=".input-mini"&gt;
+&lt;input class="input-small" type="text" placeholder=".input-small"&gt;
+&lt;input class="input-medium" type="text" placeholder=".input-medium"&gt;
+&lt;input class="input-large" type="text" placeholder=".input-large"&gt;
+&lt;input class="input-xlarge" type="text" placeholder=".input-xlarge"&gt;
+&lt;input class="input-xxlarge" type="text" placeholder=".input-xxlarge"&gt;
+</pre>
 				  <p>
 					<span class="label label-info">Heads up!</span> In future versions, we'll be altering the use of these relative input classes to match our button sizes. For example, <code>.input-large</code> will increase the padding and font-size of an input.
 				  </p>

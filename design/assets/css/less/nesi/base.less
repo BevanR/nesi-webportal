@@ -12,7 +12,7 @@ p{
 	margin: @baseLineHeight 0;
 }
 [role="main"] > header, .subhead{
-	margin-bottom: @baseLineHeight * 2;
+	// margin-bottom: @baseLineHeight * 2;
 }
 ul.unstyled{
 	.unstyled();
@@ -149,10 +149,9 @@ figure, .figure {
 	}
 	a{.muted-link-color;}
 }
-.single-post .sub-nav{
-	margin-top: @baseLineHeight*7;
-}
+
 .sub-nav{
+	margin-top: @baseLineHeight*2;
 	.active a{
 		color:@nesi-highlight-color2;
 		&:before{
@@ -220,6 +219,10 @@ figure, .figure {
 	a{
 		color: hsl(0, 0%, 21%);
 	}
+}
+.directorynav{
+	border-width: 3px 0 0 0;
+	border-color: #273945;
 }
 .collaborators li{
 	margin-right: 3%;
