@@ -43,8 +43,12 @@
 	<header class="subhead" id="overview">
 		<div class="container">
 		<a class="brand" href="/index.php"><span>NeSI &ndash; New Zealand eScience Infrastructure</span></a>
-			<h1>Base CSS</h1>
-			<p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
+			<h1>Style Guide</h1>
+
+			<p class="lead">
+				This style guide should provide a complete set of guidelines for including and styling content within your website. If you feel the need to add inline styles to any content, please consult with the <a href="mailto:daniel@incontrast.co.nz">author</a> of this guide first.
+			</p>
+
 		</div>
 	</header>
 
@@ -394,12 +398,6 @@
 			  <span class="label label-info">Heads up!</span>
 			  Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
 			</p>
-
-
-
-			 <h3>Footnotes</h3>
-			  <p>Add <code><ol class="footnotes"></code> to create a list of footnotes</p>
-
 
 		  </section>
 
