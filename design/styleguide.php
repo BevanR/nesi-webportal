@@ -43,8 +43,12 @@
 	<header class="subhead" id="overview">
 		<div class="container">
 		<a class="brand" href="/index.php"><span>NeSI &ndash; New Zealand eScience Infrastructure</span></a>
-			<h1>Base CSS</h1>
-			<p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
+			<h1>Style Guide</h1>
+
+			<p class="lead">
+				This style guide should provide a complete set of guidelines for including and styling content within your website. If you feel the need to add inline styles to any content, please consult with the <a href="mailto:daniel@incontrast.co.nz">author</a> of this guide first.
+			</p>
+
 		</div>
 	</header>
 
@@ -103,7 +107,6 @@
 
 			  <h3>Built with Less</h3>
 			  <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
-
 
 			  <hr class="bs-docs-separator">
 
@@ -300,6 +303,29 @@
 &lt;/ol&gt;
 </pre>
 
+
+		<h3>Ordered</h3>
+			  <p>A list of reference items in which the order <em>does</em> explicitly matter. Each item relates to superscript numbers further up the page.</p>
+			  <div class="bs-docs-example">
+				<ol class="footnotes">
+				  <li>Lorem ipsum dolor sit amet</li>
+				  <li>Consectetur adipiscing elit</li>
+				  <li>Integer molestie lorem at massa</li>
+				  <li>Facilisis in pretium nisl aliquet</li>
+				  <li>Nulla volutpat aliquam velit</li>
+				  <li>Faucibus porta lacus fringilla vel</li>
+				  <li>Aenean sit amet erat nunc</li>
+				  <li>Eget porttitor lorem</li>
+				</ol>
+			  </div>
+<pre class="prettyprint linenums">
+&lt;ol class="footnotes"&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+
+
 			<h3>Unstyled</h3>
 			<p>A list of items with no <code>list-style</code> or additional left padding.</p>
 			<div class="bs-docs-example">
@@ -372,6 +398,7 @@
 			  <span class="label label-info">Heads up!</span>
 			  Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
 			</p>
+
 		  </section>
 
 				<!-- Code

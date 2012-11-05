@@ -6,7 +6,9 @@ p{
 	#font > .shorthand(@baseFontSize, 400, 1.428571429);
 	color: hsl(0, 0%, 44%);
 }
-
+[role="main"]{
+	max-width: 800px;
+}
 [role="main"], .subhead{
 	.clearfix;
 	margin: @baseLineHeight 0;
@@ -51,7 +53,12 @@ img.figure{margin-bottom:13px;}
 	 float: right;
 	 margin-left: 20px; // so wrapped text doesn't sit flush against image border -- whitespace is good. Set this value to whatever you want
 }
-
+.a-center{
+	text-align: center;
+}
+td.a-center{
+	vertical-align: middle;
+}
 .small {
 	width: 30%;
 	//max-width: width of your small sized imgs
@@ -247,4 +254,30 @@ figure, .figure {
 .chromeless .modal-message{
 	width: 60%;
 	margin: 164px auto 10px;
+}
+.footnotes{
+	li{
+		font-size: 80%;
+		line-height: 18px;
+		color: @gray;
+	}
+}
+
+.notice{
+	padding: @baseLineHeight;
+	border: 6px solid @pink;
+	margin: (@baseLineHeight * 2) 0;
+
+	&:before{
+		content: 'note';
+		text-transform: uppercase;
+		font-size: 80%;
+		font-weight: 600;
+		float: left;
+	}
+	p{
+		color: black;
+		max-width: none !important;
+		padding-left: @baseLineHeight * 3;
+	}
 }
