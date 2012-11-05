@@ -20,7 +20,9 @@
 					</header>
 
 					<div class="entry">
-
+						<div class="notice">
+						<p>Applications for HPC access under the research allocation class are now open. The current call closes 2.</p>
+						</div>
 						<p>Our Access Policy defines the terms and conditions and mechanisms for providing allocations and access on our High Performance Computing facilities.</p>
 
 						<p>To advise us on the formation and reivew of this policy, we have an Access Policy Advisory Committee whose members represent computational science expertise alongside knowledge of the New Zealand research systems funding and management mechanisms.</p>

@@ -4759,6 +4759,9 @@ p {
   line-height: 1.428571429;
   color: #707070;
 }
+[role="main"] {
+  max-width: 800px;
+}
 [role="main"],
 .subhead {
   *zoom: 1;
@@ -4812,6 +4815,12 @@ img.figure {
 .a-right {
   float: right;
   margin-left: 20px;
+}
+.a-center {
+  text-align: center;
+}
+td.a-center {
+  vertical-align: middle;
 }
 .small {
   width: 30%;
@@ -5054,6 +5063,23 @@ figure .caption,
   font-size: 80%;
   line-height: 18px;
   color: #555555;
+}
+.notice {
+  padding: 20px;
+  border: 6px solid #c3325f;
+  margin: 40px 0;
+}
+.notice:before {
+  content: 'note';
+  text-transform: uppercase;
+  font-size: 80%;
+  font-weight: 600;
+  float: left;
+}
+.notice p {
+  color: black;
+  max-width: none !important;
+  padding-left: 60px;
 }
 .navbar-inner {
   min-height: 70px;
