@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * NeSI Config module.
+ * 
+ * @todo Provide config interface in admin.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function nesi_config_menu() {
+
+/*
+  Menu disabled until admin override options provided.
+  $items['admin/config/nesi/website'] = array(
+    'title' => 'NeSI Website Configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_website_admin_settings'),
+    'access arguments' => array('administer'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'nesi_config.admin.inc'
+  );
+
+  return $items;
+*/
+}
+
+function nesi_config_wysiwyg_editor_settings_alter(&$settings, $context) {
+  
+  if ($context['profile']->editor == 'ckeditor') {
+    // enable show blocks option by default on startup
+    $settings['startupOutlineBlocks'] = true;
+  }
+}

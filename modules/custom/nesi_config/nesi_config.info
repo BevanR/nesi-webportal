@@ -1,0 +1,7 @@
+name = NeSI Config
+description = Provides base configuration for NeSI website
+core = 7.x
+package = NeSI
+version = 7.x-0.5
+project = nesi_config
+configure = admin/config/nesi/website
