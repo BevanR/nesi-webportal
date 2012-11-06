@@ -20,14 +20,14 @@
             	<header>
             		<h1>Access Policy</h1>
             	</header>
-            	<div class="module bordered-module highlighted-module small-module a-right download">
+            	<div class="module centered-module bordered-module highlighted-module small-module a-right download">
             		<div class="field field-name-field-file field-type-file field-label-hidden">
             			<div class="field-items">
             				<div class="field-item even">
             					<h4>Download the guidelines for researchers PDF document</h4>
             					<span class="file">
             						<img class="file-icon" alt="" title="application/pdf" src="/modules/file/icons/application-pdf.png">
-            						<a href="http://web.dev.nesi.org.nz/sites/www.nesi.org.nz/files/NeSI%20Guidelines%20for%20Researchers%201.1.pdf" type="application/pdf; length=238781">NeSI Guidelines for Researchers 1.1.pdf</a>
+            						<a href="http://web.dev.nesi.org.nz/sites/www.nesi.org.nz/files/NeSI%20Guidelines%20for%20Researchers%201.1.pdf" type="application/pdf; length=238781" class="btn btn-primary btn-block">Download Now</a>
             					</span>
             				</div>
             			</div>
