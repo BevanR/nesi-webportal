@@ -5418,6 +5418,22 @@ figure .caption,
 .module {
   padding: 20px;
 }
+.module.download .file .file-icon {
+  display: none;
+}
+.module.download .file a[type^="application"] {
+  padding-left: 16px;
+  display: inline-block;
+}
+.module.download .file a[type^="application"]:before {
+  content: "\1F4E5";
+  font-family: ModernPictogramsNormal;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  margin-left: -20px;
+  margin-right: 6px;
+}
 .centered-module {
   text-align: center;
 }
@@ -5426,6 +5442,10 @@ figure .caption,
 }
 .highlighted-module {
   background-color: #eeeeee;
+}
+.small-module {
+  width: 30%;
+  margin-left: 3%;
 }
 .stats-pane {
   *zoom: 1;

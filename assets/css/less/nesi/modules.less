@@ -78,6 +78,24 @@
 // Modules/Widget
 .module{
 	padding: 20px;
+	&.download{
+		.file{
+			.file-icon{
+				display: none;
+			}
+			a[type^="application"]{
+				padding-left: 16px;
+				display: inline-block;
+				&:before{
+					content: "\1F4E5";
+					#font > .pictograms(14px, normal, 18px);
+					margin-left: -20px;
+					margin-right: 6px;
+
+				}
+			}
+		}
+	}
 }
 .centered-module{
 	text-align: center;
@@ -88,6 +106,11 @@
 .highlighted-module{
 	background-color: @grayLighter;
 }
+.small-module{
+	width: 30%;
+	margin-left: 3%;
+}
+
 .stats-pane{
 	.clearfix;
 	border-top: 1px solid @baseBorderColor;
