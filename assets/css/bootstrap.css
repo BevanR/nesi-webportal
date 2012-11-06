@@ -4978,7 +4978,7 @@ figure .caption,
 }
 .meta-date {
   color: #9d9d9d;
-  font-size: 0.785714286em;
+  font-size: 11px;
   font-weight: 300;
   line-height: 1.636;
   text-transform: uppercase;
@@ -5376,7 +5376,8 @@ figure .caption,
 }
 .teasers .teaser .meta {
   display: block;
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1.636em;
   color: #999;
 }
 .teasers .teaser a .teaser-title {
