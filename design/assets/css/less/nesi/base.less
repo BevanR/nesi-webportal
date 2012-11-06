@@ -159,6 +159,9 @@ figure, .figure {
 
 .sub-nav{
 	margin-top: @baseLineHeight*2;
+	a{
+		#font > .shorthand(@baseFontSize*.928571429, 400, 1.538461538);
+	}
 	.active a{
 		color:@nesi-highlight-color2;
 		&:before{
@@ -264,21 +267,30 @@ figure, .figure {
 }
 
 .notice{
-	padding: @baseLineHeight;
-	border: 6px solid @pink;
+	padding: (@baseLineHeight *1.5) @baseLineHeight;
+	border: 1px solid darken(@nesi-green, 10%);
 	margin: (@baseLineHeight * 2) 0;
+	.box-shadow(0 0 5px rgba(0, 0, 0, .25));
+	position: relative;
 
 	&:before{
-		content: 'note';
+		content: 'info';
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: darken(@nesi-green, 40%);
+		background: @nesi-green;
+		padding: 4px;
+		font-size: 10px;
+		text-decoration: 11px;
+		line-height: 18px;
 		text-transform: uppercase;
-		font-size: 80%;
-		font-weight: 600;
-		float: left;
+		display: block;
+		@textShadow: 0 -1px 0 rgba(0,0,0,.25);
 	}
 	p{
 		color: black;
 		max-width: none !important;
-		padding-left: @baseLineHeight * 3;
 	}
 }
 .project{
