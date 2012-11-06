@@ -6,9 +6,6 @@ p{
 	#font > .shorthand(@baseFontSize, 400, 1.428571429);
 	color: hsl(0, 0%, 44%);
 }
-[role="main"]{
-	max-width: 800px;
-}
 [role="main"], .subhead{
 	.clearfix;
 	margin: @baseLineHeight 0;
@@ -16,6 +13,11 @@ p{
 [role="main"] > header, .subhead{
 	// margin-bottom: @baseLineHeight * 2;
 }
+[role="main"]{
+	max-width: 800px;
+	margin-top: 0;
+}
+
 ul.unstyled{
 	.unstyled();
 }
@@ -295,8 +297,50 @@ figure, .figure {
 		padding-left: @baseLineHeight;
 	}
 }
+
+// Need to move this out into it's own less file at some point.
 .project{
 	padding-bottom: @baseLineHeight;
-	margin-bottom: @baseLineHeight;
-	border-bottom: 1px solid @defaultBorderColor;
+	margin-bottom: @baseLineHeight * 2;
+	position: relative;
+	margin-left: 20px;
+
+	table {
+		td, th{
+			font-size: 90%;
+		}
+		td:first-child{
+			width: 60%;
+		}
+	}
+	br{
+		height: 0;
+		font-size: 0;
+		line-height: 0;
+		font-family: 'a';
+	}
+	h4{
+		margin-top: -@baseLineHeight;
+		&:before{
+			content: "\1F4C1";
+			#font > .pictograms(14px, normal, 1);
+			position: absolute;
+			left: -20px;
+			top: 0;
+			color: rgb(176, 176, 176);
+		}
+		&+ p{
+			font-size: 90%;
+		}
+	}
+
+
 }
+
+
+
+
+
+
+
+
