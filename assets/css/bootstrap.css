@@ -5424,6 +5424,9 @@ figure .caption,
 .bordered-module {
   border: 1px solid #cccccc;
 }
+.highlighted-module {
+  background-color: #eeeeee;
+}
 .stats-pane {
   *zoom: 1;
   border-top: 1px solid #cccccc;

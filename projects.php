@@ -284,7 +284,14 @@
 
 </article> <!-- /.node -->
 	  </section>
-			<div class="span2 offset1">
+			<div class="span3 offset1">
+				<div class="module centered-module bordered-module highlighted-module">
+					<h4>Apply for access to HPC facilities</h4>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+					<p><a href="#" class="btn btn-primary">Apply now</a></p>
+
+
+				</div>
 				<nav class="sub-nav">
 					<h2>Access and Allocations</h2>
 					<ul>
