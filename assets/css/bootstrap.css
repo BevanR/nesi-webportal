@@ -5398,6 +5398,12 @@ figure .caption,
 .teasers .teaser a p {
   margin: 0 0 0 76px;
 }
+.teaser h1 a {
+  color: #333333;
+}
+.teaser h1 a:hover {
+  color: #2b5c8c;
+}
 .teaser-preview-figure {
   overflow: hidden;
   zoom: 1;
