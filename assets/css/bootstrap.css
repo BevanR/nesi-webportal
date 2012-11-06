@@ -5092,8 +5092,10 @@ figure .caption,
   display: block;
 }
 .notice p {
-  color: black;
   max-width: none !important;
+  font-size: 13px;
+  line-height: 18px;
+  padding-left: 20px;
 }
 .project {
   padding-bottom: 20px;
