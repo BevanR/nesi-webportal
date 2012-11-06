@@ -1625,6 +1625,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
               </tr>
             </tbody>
           </table>
+
+
+          <div class="notice">
+						<p>Applications for HPC access under the research allocation class are now open. The current call closes 2.</p>
+					</div>
+
 			</section>
 
 			</div>
