@@ -4327,10 +4327,13 @@ a.thumbnail:hover {
   letter-spacing: 1px;
 }
 .label {
-  padding: 1px 4px 2px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  padding: 4px 6px 6px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 18px;
 }
 .badge {
   padding: 1px 9px 2px;
@@ -4758,9 +4761,6 @@ p {
   line-height: 1.428571429;
   color: #707070;
 }
-[role="main"] {
-  max-width: 800px;
-}
 [role="main"],
 .subhead {
   *zoom: 1;
@@ -4777,6 +4777,10 @@ p {
 [role="main"]:after,
 .subhead:after {
   clear: both;
+}
+[role="main"] {
+  max-width: 800px;
+  margin-top: 0;
 }
 ul.unstyled {
   margin-left: 0;
@@ -5099,8 +5103,39 @@ figure .caption,
 }
 .project {
   padding-bottom: 20px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 40px;
+  position: relative;
+  margin-left: 20px;
+}
+.project table td,
+.project table th {
+  font-size: 90%;
+}
+.project table td:first-child {
+  width: 60%;
+}
+.project br {
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  font-family: 'a';
+}
+.project h4 {
+  margin-top: -20px;
+}
+.project h4:before {
+  content: "\1F4C1";
+  font-family: ModernPictogramsNormal;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  position: absolute;
+  left: -20px;
+  top: 0;
+  color: #b0b0b0;
+}
+.project h4 + p {
+  font-size: 90%;
 }
 .navbar-inner {
   min-height: 70px;
@@ -5312,9 +5347,6 @@ figure .caption,
   border-bottom: 1px solid #eee;
   list-style: none;
 }
-.teasers .teaser header {
-  margin-bottom: 0;
-}
 .teasers .teaser:before,
 .teasers .teaser:after {
   display: table;
@@ -5323,6 +5355,9 @@ figure .caption,
 }
 .teasers .teaser:after {
   clear: both;
+}
+.teasers .teaser header {
+  margin-bottom: 0;
 }
 .teasers .teaser:last-child {
   margin: 0;
@@ -5344,14 +5379,6 @@ figure .caption,
   font-size: 12px;
   color: #999;
 }
-.teasers .teaser .teaser-preview-figure {
-  overflow: hidden;
-  zoom: 1;
-  float: left;
-  margin: 0;
-  width: 25%;
-  border-bottom: 0;
-}
 .teasers .teaser a .teaser-title {
   font-size: 15.75px;
   font-weight: 400;
@@ -5369,6 +5396,14 @@ figure .caption,
 }
 .teasers .teaser a p {
   margin: 0 0 0 76px;
+}
+.teaser-preview-figure {
+  overflow: hidden;
+  zoom: 1;
+  float: left;
+  margin: 0;
+  width: 25%;
+  border-bottom: 0;
 }
 @media screen and (max-width: 700px) {
   .teasers .teaser a img {
@@ -5621,9 +5656,9 @@ figure .caption,
 .event-item .o-title:before {
   content: "";
   font-family: ModernPictogramsNormal;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: normal;
-  line-height: 1;
+  line-height: 22px;
   position: absolute;
   left: 0;
   top: 0;
@@ -5841,6 +5876,7 @@ h3.popover-title,
 .case-studies .featured {
   *zoom: 1;
   border-bottom: 1px solid #cccccc;
+  margin-bottom: 40px;
 }
 .case-studies .featured:before,
 .case-studies .featured:after {
@@ -5856,13 +5892,21 @@ h3.popover-title,
 }
 .case-studies .featured .teaser h1 {
   font-weight: 300;
+  margin-bottom: 0;
 }
 .case-studies .featured .teaser figure {
   float: right;
   width: 40%;
+  margin: 0 0 20px 5%;
+}
+.case-studies .featured p {
+  max-width: 500px;
 }
 .case-studies .teasers .teaser {
   max-width: 800px;
+}
+.case-studies .meta-date {
+  margin-bottom: 0;
 }
 #case-study-teasers > header {
   display: none;
