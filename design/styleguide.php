@@ -1562,6 +1562,77 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 			</section>
 
+			<section id="labels-notices">
+				  <div class="page-header">
+						<h1>Labels and notices</h1>
+				  </div>
+
+				<table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Labels</th>
+                <th>Markup</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="label">Default</span>
+                </td>
+                <td>
+                  <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="label label-success">Success</span>
+                </td>
+                <td>
+                  <code>&lt;span class="label label-success"&gt;Success&lt;/span&gt;</code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="label label-warning">Warning</span>
+                </td>
+                <td>
+                  <code>&lt;span class="label label-warning"&gt;Warning&lt;/span&gt;</code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="label label-important">Important</span>
+                </td>
+                <td>
+                  <code>&lt;span class="label label-important"&gt;Important&lt;/span&gt;</code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="label label-info">Info</span>
+                </td>
+                <td>
+                  <code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="label label-inverse">Inverse</span>
+                </td>
+                <td>
+                  <code>&lt;span class="label label-inverse"&gt;Inverse&lt;/span&gt;</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <div class="notice">
+						<p>Applications for HPC access under the research allocation class are now open. The current call closes 2.</p>
+					</div>
+
+			</section>
+
 			</div>
 		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->

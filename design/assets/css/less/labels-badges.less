@@ -6,14 +6,15 @@
 // Base classes
 .label,
 .badge {
-  font-size: @baseFontSize * .846;
-  font-weight: bold;
+  font-size: 11px;
+  font-weight: 400 !important;
   line-height: 14px; // ensure proper line-height if floated
   color: @white;
   vertical-align: baseline;
   white-space: nowrap;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  // text-shadow: 0 -1px 0 rgba(0,0,0,.15);
   background-color: @grayLight;
+  letter-spacing: 1px;
 }
 // Set unique padding and border-radii
 .label {
