@@ -24,11 +24,9 @@
 								Modelling glaciers of the Southern Alps
 							</a>
 							</h1>
+							<p class="meta meta-date">August 10, 2011</p>
 						</header>
 						<p>The University of Canterbury’s BlueFern supercomputer facilities have been helping Kiwi researchers tackle some big scientific problems. <a href="/case_studies/modelling_glaciers_of_the_southern_alps.php">Read more</a></p>
-						<footer>
-							<p class="meta">August 10, 2011</p>
-						</footer>
 					</article>
 				</section>
 			</div>
@@ -45,14 +43,15 @@
 						<header>
 							<h1 class="teaser-title">
 							<a href="advancing_computational_fluid_dynamics.php">
-								<figure><img src="/assets/img/advancing-computational-fluid-dynamics-tn.png" alt="thumbnail" /></figure>
+								<figure class="teaser-preview-figure"><img src="/assets/img/advancing-computational-fluid-dynamics-tn.png" alt="thumbnail" /></figure>
 								Advancing computational fluid dynamics
 							</a>
 							</h1>
+							<p class="meta meta-date">August 10, 2011</p>
 						</header>
 						<p>Researcher uses NeSI and discovers that his 24h computation takes 2.5min. <a href="advancing_computational_fluid_dynamics.php">Read more</a></p>
 						<footer>
-							<p class="meta">August 10, 2011</p>
+
 						</footer>
 					</article>
 
@@ -60,29 +59,25 @@
 						<header>
 							<h1 class="teaser-title">
 							<a href="case_study.php">
-								<figure><img src="/assets/img/digital-support-in-national-crisis-tn.jpeg" alt="thumbnail" /></figure>
+								<figure class="teaser-preview-figure"><img src="/assets/img/digital-support-in-national-crisis-tn.jpeg" alt="thumbnail" /></figure>
 								Digital support in a national crisis
 							</a>
 							</h1>
+							<p class="meta meta-date">August 10, 2011</p>
 						</header>
 						<p>In the two weeks immediately following the February earthquake, eResearch handled more than 660 GB of data storage and distribution requirements of various agencies and groups across New Zealand through the BeSTGRID DataFabric. <a href="case_study.php">Read more</a></p>
-						<footer>
-							<p class="meta">August 10, 2011</p>
-						</footer>
 					</article>
 					<article class="teaser">
 						<header>
 							<h1 class="teaser-title">
 							<a href="case_study.php">
-								<figure><img src="/assets/img/molecular-modelling-in-cancer-research-tn.png" alt="thumbnail" /></figure>
+								<figure class="teaser-preview-figure"><img src="/assets/img/molecular-modelling-in-cancer-research-tn.png" alt="thumbnail" /></figure>
 								Molecular modelling in cancer research
 							</a>
 							</h1>
+							<p class="meta meta-date">August 10, 2011</p>
 						</header>
 						<p>Advances in computing are vital to cancer research. They open up opportunities to discover new drugs from the molecular basis of disease. <a href="case_study.php">Read more</a></p>
-						<footer>
-							<p class="meta">August 10, 2011</p>
-						</footer>
 					</article>
 				</section>
 			</div>
