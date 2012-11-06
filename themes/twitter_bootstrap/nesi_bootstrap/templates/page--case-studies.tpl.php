@@ -50,7 +50,5 @@
 
   <?php print render($page['collaborators']); ?>
 
-  <footer class="footer container">
-    <?php print render($page['footer']); ?>
-  </footer>
+  <?php print render($page['footer']); ?>
 
