@@ -28,7 +28,8 @@
 		}
 		.meta {
 			display: block;
-			font-size: 12px;
+			font-size: 11px;
+			line-height: 1.636em;
 			color: #999;
 		}
 		//HTML5 Objects
@@ -39,7 +40,7 @@
 			}
 			img {
 				float: left;
-				margin: 0 10px 0 0;
+				margin: 0;
 				padding: 4px;
 				border: 1px solid #eee;
 			}
@@ -53,6 +54,12 @@
 		}
 	}
 }
+.teaser h1 a{
+	color: @textColor;
+	&:hover{
+		color: @linkColorHover;
+	}
+}
 .teaser-preview-figure{
 	overflow: hidden;
 	zoom:1;
@@ -60,6 +67,10 @@
 	margin: 0;
 	width: 25%;
 	border-bottom: 0;
+	margin-right: 20px;
+	img{
+		margin-right: 0 !important;
+	}
 
 }
 @media screen and (max-width: 700px) {

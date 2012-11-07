@@ -16,6 +16,8 @@ p{
 [role="main"]{
 	max-width: 800px;
 	margin-top: 0;
+	margin-bottom: @baseLineHeight * 4;
+	padding-bottom: @baseLineHeight * 4;
 }
 
 ul.unstyled{
@@ -183,7 +185,7 @@ figure, .figure {
 
 .meta-date{
 	color: lighten(rgb(106, 106, 106), 20%);
-	#font > .shorthand(.785714286em, 300, 1.636);
+	#font > .shorthand(11px, 300, 1.636);
 	text-transform: uppercase;
 }
 .author{
@@ -313,14 +315,7 @@ figure, .figure {
 			width: 60%;
 		}
 	}
-	br{
-		height: 0;
-		font-size: 0;
-		line-height: 0;
-		font-family: 'a';
-	}
 	h4{
-		margin-top: -@baseLineHeight;
 		&:before{
 			content: "\1F4C1";
 			#font > .pictograms(14px, normal, 1);
@@ -336,8 +331,21 @@ figure, .figure {
 
 
 }
-
-
+.contact-form{
+	input[type="text"],textarea {
+		width: 70%;
+	}
+	.form-submit{
+		margin-left: 160px;
+	}
+}
+#contact-address{
+	margin-top: @baseLineHeight * 2;
+	font-size: 90%;
+	dt{
+		text-align: left;
+	}
+}
 
 
 

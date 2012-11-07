@@ -575,11 +575,6 @@ h3 small {
 h4 small {
   font-size: 14px;
 }
-.page-header {
-  padding-bottom: 9px;
-  margin: 20px 0 30px;
-  border-bottom: 1px solid #eeeeee;
-}
 ul,
 ol {
   padding: 0;
@@ -4781,6 +4776,8 @@ p {
 [role="main"] {
   max-width: 800px;
   margin-top: 0;
+  margin-bottom: 80px;
+  padding-bottom: 80px;
 }
 ul.unstyled {
   margin-left: 0;
@@ -4978,7 +4975,7 @@ figure .caption,
 }
 .meta-date {
   color: #9d9d9d;
-  font-size: 0.785714286em;
+  font-size: 11px;
   font-weight: 300;
   line-height: 1.636;
   text-transform: uppercase;
@@ -5114,15 +5111,6 @@ figure .caption,
 .project table td:first-child {
   width: 60%;
 }
-.project br {
-  height: 0;
-  font-size: 0;
-  line-height: 0;
-  font-family: 'a';
-}
-.project h4 {
-  margin-top: -20px;
-}
 .project h4:before {
   content: "\1F4C1";
   font-family: ModernPictogramsNormal;
@@ -5136,6 +5124,20 @@ figure .caption,
 }
 .project h4 + p {
   font-size: 90%;
+}
+.contact-form input[type="text"],
+.contact-form textarea {
+  width: 70%;
+}
+.contact-form .form-submit {
+  margin-left: 160px;
+}
+#contact-address {
+  margin-top: 40px;
+  font-size: 90%;
+}
+#contact-address dt {
+  text-align: left;
 }
 .navbar-inner {
   min-height: 70px;
@@ -5376,7 +5378,8 @@ figure .caption,
 }
 .teasers .teaser .meta {
   display: block;
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1.636em;
   color: #999;
 }
 .teasers .teaser a .teaser-title {
@@ -5387,7 +5390,7 @@ figure .caption,
 }
 .teasers .teaser a img {
   float: left;
-  margin: 0 10px 0 0;
+  margin: 0;
   padding: 4px;
   border: 1px solid #eee;
 }
@@ -5397,6 +5400,12 @@ figure .caption,
 .teasers .teaser a p {
   margin: 0 0 0 76px;
 }
+.teaser h1 a {
+  color: #333333;
+}
+.teaser h1 a:hover {
+  color: #2b5c8c;
+}
 .teaser-preview-figure {
   overflow: hidden;
   zoom: 1;
@@ -5404,6 +5413,10 @@ figure .caption,
   margin: 0;
   width: 25%;
   border-bottom: 0;
+  margin-right: 20px;
+}
+.teaser-preview-figure img {
+  margin-right: 0 !important;
 }
 @media screen and (max-width: 700px) {
   .teasers .teaser a img {
