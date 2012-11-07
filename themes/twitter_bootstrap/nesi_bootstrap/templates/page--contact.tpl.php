@@ -1,7 +1,7 @@
   <?php print render($page['header']); ?>
   <?php print render($page['subheader']); ?>
 	
-<div class="container contact">
+<div class="container contact form-horizontal">
 	  
   <?php if ($breadcrumb): ?>
 	<div class="row-fluid">
