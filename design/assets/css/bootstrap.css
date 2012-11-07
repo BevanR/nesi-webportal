@@ -5696,6 +5696,11 @@ figure .caption,
   margin-right: 10%;
   color: #999999;
 }
+@media (min-width: 979px) {
+  .news .pagination {
+    margin-left: 10.5%;
+  }
+}
 .event-item .o-title:before {
   content: "";
   font-family: ModernPictogramsNormal;
