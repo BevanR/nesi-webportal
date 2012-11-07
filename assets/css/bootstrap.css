@@ -575,11 +575,6 @@ h3 small {
 h4 small {
   font-size: 14px;
 }
-.page-header {
-  padding-bottom: 9px;
-  margin: 20px 0 30px;
-  border-bottom: 1px solid #eeeeee;
-}
 ul,
 ol {
   padding: 0;
@@ -4781,6 +4776,8 @@ p {
 [role="main"] {
   max-width: 800px;
   margin-top: 0;
+  margin-bottom: 80px;
+  padding-bottom: 80px;
 }
 ul.unstyled {
   margin-left: 0;
@@ -5136,6 +5133,22 @@ figure .caption,
 }
 .project h4 + p {
   font-size: 90%;
+}
+.contact-form input[type="text"],
+.contact-form textarea {
+  width: 70%;
+}
+.contact-form .form-submit {
+  margin-left: 160px;
+}
+#contact-address {
+  margin-top: 60px;
+  border-left: 1px solid #e1e1e1;
+  padding-left: 10%;
+  font-size: 90%;
+}
+#contact-address dt {
+  text-align: left;
 }
 .navbar-inner {
   min-height: 70px;

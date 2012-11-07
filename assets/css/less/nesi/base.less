@@ -16,6 +16,8 @@ p{
 [role="main"]{
 	max-width: 800px;
 	margin-top: 0;
+	margin-bottom: @baseLineHeight * 4;
+	padding-bottom: @baseLineHeight * 4;
 }
 
 ul.unstyled{
@@ -336,8 +338,23 @@ figure, .figure {
 
 
 }
-
-
+.contact-form{
+	input[type="text"],textarea {
+		width: 70%;
+	}
+	.form-submit{
+		margin-left: 160px;
+	}
+}
+#contact-address{
+	margin-top: @baseLineHeight * 3;
+	border-left: 1px solid @defaultBorderColor;
+	padding-left: 10%;
+	font-size: 90%;
+	dt{
+		text-align: left;
+	}
+}
 
 
 
