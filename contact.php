@@ -49,6 +49,16 @@
 						<dd><a href="mailto:info@nesi.org.nz">info@nesi.org.nz</a></dd>
 					</dl>
 				</div>
+				<div class="module">
+					<h4>Other facilities</h4>
+					<p>NeSI supports HPC systems at three facilities</p>
+					<ol>
+					 	<li>The University of Auckland</li>
+					 	<li>Canterbury University </li>
+					 	<li>NIWA</li>
+					 </ol>
+					 <p>The groups supporting HPC at each site are the Centre for eResearch, BlueFern, and FitzRoy High Performance Computing Facility respectively. <a href="facilities">Learn more about our facilities.</a></p>
+				</div>
 			</div>
 		</div> <!-- /Row Fluid -->
 	</div> <!-- /container -->
