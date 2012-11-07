@@ -1,7 +1,7 @@
   <?php print render($page['header']); ?>
   <?php print render($page['subheader']); ?>
 	
-<div class="container">
+<div class="container news">
 	  
   <?php if ($breadcrumb): ?>
 	<div class="row-fluid">
