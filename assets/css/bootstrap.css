@@ -5111,15 +5111,6 @@ figure .caption,
 .project table td:first-child {
   width: 60%;
 }
-.project br {
-  height: 0;
-  font-size: 0;
-  line-height: 0;
-  font-family: 'a';
-}
-.project h4 {
-  margin-top: -20px;
-}
 .project h4:before {
   content: "\1F4C1";
   font-family: ModernPictogramsNormal;
@@ -5142,9 +5133,7 @@ figure .caption,
   margin-left: 160px;
 }
 #contact-address {
-  margin-top: 60px;
-  border-left: 1px solid #e1e1e1;
-  padding-left: 10%;
+  margin-top: 40px;
   font-size: 90%;
 }
 #contact-address dt {
