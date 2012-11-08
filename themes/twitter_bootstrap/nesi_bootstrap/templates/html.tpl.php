@@ -82,5 +82,20 @@
 	<footer>
 			<p class="legal">&copy;2011 New Zealand eScience Infrastructure. All rights reserved</p>
 	</footer>
+<script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.5/zenbox.js"></script>
+<style type="text/css" media="screen, projection">
+  @import url(//assets.zendesk.com/external/zenbox/v2.5/zenbox.css);
+</style>
+<script type="text/javascript">
+  if (typeof(Zenbox) !== "undefined") {
+    Zenbox.init({
+      dropboxID: "20110738",
+      url: "https://nesi.zendesk.com",
+      tabID: "Support",
+      tabColor: "black",
+      tabPosition: "Right"
+    });
+  }
+</script>
 </body>
 </html>
