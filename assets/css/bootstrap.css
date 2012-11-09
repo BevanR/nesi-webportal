@@ -5758,7 +5758,9 @@ figure .caption,
   .event-item {
     padding-left: 30px;
   }
-  .event-item .o-title:before {
+}
+@media (min-width: 979px) {
+  .o-title:before {
     content: "";
     font-family: ModernPictogramsNormal;
     font-size: 16px;
