@@ -5270,7 +5270,7 @@ figure .caption,
 #home-hero .slide-content {
   position: relative;
   z-index: 3;
-  margin-left: 40px;
+  margin-left: 80px;
   width: 80%;
   max-width: 660px;
 }
