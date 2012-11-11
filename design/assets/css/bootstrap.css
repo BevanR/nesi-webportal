@@ -639,7 +639,6 @@ abbr[title] {
 }
 abbr.initialism {
   font-size: 90%;
-  text-transform: uppercase;
 }
 blockquote {
   padding: 0 0 0 15px;
@@ -3047,7 +3046,6 @@ input[type="submit"].btn.btn-mini {
   line-height: 20px;
   color: #999999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
 }
 .nav li + .nav-header {
   margin-top: 9px;
@@ -4978,7 +4976,6 @@ figure .caption,
   font-size: 11px;
   font-weight: 300;
   line-height: 1.636;
-  text-transform: uppercase;
 }
 .author {
   text-transform: none;
@@ -5663,7 +5660,6 @@ figure .caption,
   font-weight: 600;
   line-height: 1.571428571;
   color: #22809b;
-  text-transform: uppercase;
 }
 .events-overview footer > a {
   margin-left: 30px;
@@ -5925,7 +5921,6 @@ h3.popover-title,
 }
 .platform_details h5 {
   font-size: 90%;
-  text-transform: uppercase;
   margin: 0;
   padding: 0;
 }
@@ -6089,7 +6084,6 @@ h3.popover-title,
   font-size: 9.999999996px;
   font-weight: 400;
   line-height: 1;
-  text-transform: uppercase;
   position: absolute;
   left: -65px;
   color: #999999;
@@ -6116,7 +6110,6 @@ h3.popover-title,
 .project-platform-title {
   font-size: 11px;
   line-height: 24px;
-  text-transform: uppercase;
   margin-bottom: 0;
   font-weight: 400;
   font-weight: 700;
@@ -6126,7 +6119,6 @@ h3.popover-title,
   font-weight: 400;
   line-height: 1.5;
   color: #555555;
-  text-transform: uppercase;
 }
 .proposal header,
 .project header {
