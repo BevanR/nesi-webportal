@@ -15,9 +15,6 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
 
-	<!-- Le styles -->
-	<link href="/<?php print $directory; ?>/assets/css/bootstrap.css" rel="stylesheet">
-	<link href="/<?php print $directory; ?>/assets/css/responsive.css" rel="stylesheet">
 
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
