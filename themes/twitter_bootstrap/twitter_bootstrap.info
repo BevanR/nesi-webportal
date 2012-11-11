@@ -12,7 +12,7 @@ regions[sidebar_second] = 'Secondary'
 regions[footer]         = 'Footer'
 
 stylesheets[all][] = nesi_bootstrap/assets/css/bootstrap.css
-stylesheets[all][] = nesi_bootstrap/assets/css/bootstrap-responsive.css
+stylesheets[all][] = nesi_bootstrap/assets/css/responsive.css
 stylesheets[all][] = css/twitter_bootstrap.css
 
 scripts[] = bootstrap/js/bootstrap.js
