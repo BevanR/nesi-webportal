@@ -5442,10 +5442,6 @@ figure .caption,
   float: left;
   margin: 0;
   padding: 4px;
-  border: 1px solid #eee;
-}
-.teasers .teaser a:hover img {
-  background: #eee;
 }
 .teasers .teaser a p {
   margin: 0 0 0 76px;
@@ -5467,6 +5463,7 @@ figure .caption,
 }
 .teaser-preview-figure img {
   margin-right: 0 !important;
+  border: 0;
 }
 @media screen and (max-width: 700px) {
   .teasers .teaser a img {
