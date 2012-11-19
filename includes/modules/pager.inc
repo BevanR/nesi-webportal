@@ -18,12 +18,13 @@
  *
  * @ingroup themeable
  */
-function twitter_bootstrap_pager($variables) {
+function bootstrap_pager($variables) {
   $output = "";
   $tags = $variables['tags'];
   $element = $variables['element'];
   $parameters = $variables['parameters'];
   $quantity = $variables['quantity'];
+
   global $pager_page_array, $pager_total;
 
   // Calculate various markers within this pager piece:
