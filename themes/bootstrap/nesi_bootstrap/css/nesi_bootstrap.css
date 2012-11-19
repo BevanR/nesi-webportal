@@ -1,0 +1,16 @@
+/* ------------------------------------------ */
+/* Styles specific to NeSI bootstrap subtheme */
+/* ------------------------------------------ */
+
+body { 
+  padding-top: 0px;
+}
+
+/* Admin menu fix */
+body.admin-menu .navbar-fixed-top {
+  top: 21px;
+  z-index: 499;
+}
+
+/* Remove underline from images on case-studies */
+.case-studies figure { border-bottom: none; }
