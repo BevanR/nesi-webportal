@@ -3,7 +3,7 @@
 /**
  * Returns HTML for primary and secondary local tasks.
  */
-function twitter_bootstrap_menu_local_tasks(&$variables) {
+function bootstrap_menu_local_tasks(&$variables) {
   $output = '';
 
   if ( !empty($variables['primary']) ) {
@@ -29,7 +29,7 @@ function twitter_bootstrap_menu_local_tasks(&$variables) {
  *
  * @ingroup themeable
  */
-function twitter_bootstrap_menu_local_task($variables) {
+function bootstrap_menu_local_task($variables) {
   $link = $variables['element']['#link'];
   $link_text = $link['title'];
   $classes = array();
@@ -59,24 +59,24 @@ function twitter_bootstrap_menu_local_task($variables) {
     $children = drupal_render_children($variables['element']);
     $children = '<ul class="secondary-tabs dropdown-menu">' . $children . "</ul>";
 
-    return '<li class="' . implode(' ', $classes) . '"><a href="#"' . drupal_attributes($link['localized_options']['attributes']) .'>' . $link_text . ' <b class="caret"></b></a>' . $children . "</li>\n";
+    return '<li class="' . implode(' ', $classes) . '"><a href="#"' . drupal_attributes($link['localized_options']['attributes']) .'>' . $link_text . ' <span class="caret"></span></a>' . $children . "</li>\n";
   }
   else {
     return '<li class="' . implode(' ', $classes) . '">' . l($link_text, $link['href'], $link['localized_options']) . $children . "</li>\n";
   }
 }
 
-function twitter_bootstrap_menu_tree(&$variables) {
+function bootstrap_menu_tree(&$variables) {
   return '<ul class="menu nav">' . $variables['tree'] . '</ul>';
 }
 
-function twitter_bootstrap_menu_link(array $variables) {
+function bootstrap_menu_link(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
   
   if ($element['#below']) {
-	  // Ad our own wrapper
-	  unset($element['#below']['#theme_wrappers']);
+    // Ad our own wrapper
+    unset($element['#below']['#theme_wrappers']);
     $sub_menu = '<ul>' . drupal_render($element['#below']) . '</ul>';
 
     //$element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
@@ -84,7 +84,7 @@ function twitter_bootstrap_menu_link(array $variables) {
     $element['#localized_options']['attributes']['data-target'] = '#';
     //$element['#attributes']['class'][] = 'dropdown';
     $element['#localized_options']['html'] = TRUE;
-    //$element['#title'] .= '<b class="caret"></b>';
+    //$element['#title'] .= '<span class="caret"></span>';
   }
   
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
@@ -94,17 +94,17 @@ function twitter_bootstrap_menu_link(array $variables) {
 /**
 * Get all primary tasks including subsets
 */
-function _twitter_bootstrap_local_tasks($tabs = FALSE) {
+function _bootstrap_local_tasks($tabs = FALSE) {
   if ($tabs == '') {
     return $tabs;
   }
   
   if (!$tabs) {
-  	$tabs = menu_primary_local_tasks();
-	}
+    $tabs = menu_primary_local_tasks();
+  }
   
-  foreach($tabs as $key => $element) {
-	  $result = db_select('menu_router', NULL, array('fetch' => PDO::FETCH_ASSOC))
+  foreach ($tabs as $key => $element) {
+    $result = db_select('menu_router', NULL, array('fetch' => PDO::FETCH_ASSOC))
       ->fields('menu_router')
       ->condition('tab_parent', $element['#link']['path'])
       ->condition('context', MENU_CONTEXT_INLINE, '<>')

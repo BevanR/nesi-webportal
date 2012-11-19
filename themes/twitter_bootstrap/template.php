@@ -1,7 +1,7 @@
 <?php
 
-$theme_path = drupal_get_path('theme', 'twitter_bootstrap');
-include_once($theme_path . '/includes/twitter_bootstrap.inc');
+$theme_path = drupal_get_path('theme', 'bootstrap');
+include_once($theme_path . '/includes/bootstrap.inc');
 include_once($theme_path . '/includes/modules/theme.inc');
 include_once($theme_path . '/includes/modules/pager.inc');
 include_once($theme_path . '/includes/modules/form.inc');
@@ -12,13 +12,13 @@ include_once($theme_path . '/includes/modules/menu.inc');
 $modules = module_list();
 
 foreach ($modules as $module) {
-  if (is_file(drupal_get_path('theme', 'twitter_bootstrap') . '/includes/modules/' . str_replace('_', '-', $module) . '.inc')) {
-    include_once(drupal_get_path('theme', 'twitter_bootstrap') . '/includes/modules/' . str_replace('_', '-', $module) . '.inc');
+  if (is_file(drupal_get_path('theme', 'bootstrap') . '/includes/modules/' . str_replace('_', '-', $module) . '.inc')) {
+    include_once(drupal_get_path('theme', 'bootstrap') . '/includes/modules/' . str_replace('_', '-', $module) . '.inc');
   }    
 }
 
 // Auto-rebuild the theme registry during theme development.
-if (theme_get_setting('twitter_bootstrap_rebuild_registry') && !defined('MAINTENANCE_MODE')) {
+if (theme_get_setting('bootstrap_rebuild_registry') && !defined('MAINTENANCE_MODE')) {
   // Rebuild .info data.
   system_rebuild_theme_data();
   // Rebuild theme registry.
@@ -28,24 +28,33 @@ if (theme_get_setting('twitter_bootstrap_rebuild_registry') && !defined('MAINTEN
 /**
  * hook_theme() 
  */
-function twitter_bootstrap_theme(&$existing, $type, $theme, $path) {
+function bootstrap_theme(&$existing, $type, $theme, $path) {
   // If we are auto-rebuilding the theme registry, warn about the feature.
   if (
     // Only display for site config admins.
     function_exists('user_access') && user_access('administer site configuration')
-    && theme_get_setting('twitter_bootstrap_rebuild_registry')
+    && theme_get_setting('bootstrap_rebuild_registry')
     // Always display in the admin section, otherwise limit to three per hour.
     && (arg(0) == 'admin' || flood_is_allowed($GLOBALS['theme'] . '_rebuild_registry_warning', 3))
   ) {
     flood_register_event($GLOBALS['theme'] . '_rebuild_registry_warning');
     drupal_set_message(t('For easier theme development, the theme registry is being rebuilt on every page request. It is <em>extremely</em> important to <a href="!link">turn off this feature</a> on production websites.', array('!link' => url('admin/appearance/settings/' . $GLOBALS['theme']))), 'warning', FALSE);
   }
+  
   return array(
-    'twitter_bootstrap_links' => array(
-      'variables' => array('links' => array(), 'attributes' => array(), 'heading' => NULL),
+    'bootstrap_links' => array(
+      'variables' => array(
+        'links' => array(),
+        'attributes' => array(),
+        'heading' => NULL
+      ),
     ),
-    'twitter_bootstrap_btn_dropdown' => array(
-      'variables' => array('links' => array(), 'attributes' => array(), 'type' => NULL),
+    'bootstrap_btn_dropdown' => array(
+      'variables' => array(
+        'links' => array(),
+        'attributes' => array(),
+        'type' => NULL
+      ),
     ), 
   );
 }
@@ -55,7 +64,7 @@ function twitter_bootstrap_theme(&$existing, $type, $theme, $path) {
  *
  * Print breadcrumbs as a list, with separators.
  */
-function twitter_bootstrap_breadcrumb($variables) {
+function bootstrap_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
 
   if (!empty($breadcrumb)) {
@@ -79,7 +88,7 @@ function twitter_bootstrap_breadcrumb($variables) {
 /**
  * Override or insert variables in the html_tag theme function.
  */
-function twitter_bootstrap_process_html_tag(&$variables) {
+function bootstrap_process_html_tag(&$variables) {
   $tag = &$variables['element'];
 
   if ($tag['#tag'] == 'style' || $tag['#tag'] == 'script') {
@@ -98,7 +107,7 @@ function twitter_bootstrap_process_html_tag(&$variables) {
  *
  * @see page.tpl.php
  */
-function twitter_bootstrap_preprocess_page(&$variables) {
+function bootstrap_preprocess_page(&$variables) {
   // Add information about the number of sidebars.
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
     $variables['columns'] = 3;
@@ -115,18 +124,19 @@ function twitter_bootstrap_preprocess_page(&$variables) {
   
   // Our custom search because its cool :)
   $variables['search'] = FALSE;
-  if(theme_get_setting('toggle_search') && module_exists('search'))
-    $variables['search'] = drupal_get_form('_twitter_bootstrap_search_form');
+  if (theme_get_setting('toggle_search') && module_exists('search')) {
+    $variables['search'] = drupal_get_form('_bootstrap_search_form');
+  }
 
   // Primary nav
   $variables['primary_nav'] = FALSE;
-  if($variables['main_menu']) {
+  if ($variables['main_menu']) {
     // Build links
     $tree = menu_tree_page_data(variable_get('menu_main_links_source', 'main-menu'));
-    $variables['main_menu'] = twitter_bootstrap_menu_navigation_links($tree);
+    $variables['main_menu'] = bootstrap_menu_navigation_links($tree);
     
     // Build list
-    $variables['primary_nav'] = theme('twitter_bootstrap_links', array(
+    $variables['primary_nav'] = theme('bootstrap_links', array(
       'links' => $variables['main_menu'],
       'attributes' => array(
         'id' => 'main-menu',
@@ -142,11 +152,11 @@ function twitter_bootstrap_preprocess_page(&$variables) {
   
   // Secondary nav
   $variables['secondary_nav'] = FALSE;
-  if(function_exists('menu_load') && $variables['secondary_menu']) {
+  if (function_exists('menu_load') && $variables['secondary_menu']) {
     $secondary_menu = menu_load(variable_get('menu_secondary_links_source', 'user-menu'));
 
     // Build list
-    $variables['secondary_nav'] = theme('twitter_bootstrap_btn_dropdown', array(
+    $variables['secondary_nav'] = theme('bootstrap_btn_dropdown', array(
       'links' => $variables['secondary_menu'],
       'label' => $secondary_menu['title'],
       'type' => 'success',
@@ -163,7 +173,7 @@ function twitter_bootstrap_preprocess_page(&$variables) {
   }
   
   // Replace tabs with drop down version
-  $variables['tabs']['#primary'] = _twitter_bootstrap_local_tasks($variables['tabs']['#primary']);
+  $variables['tabs']['#primary'] = _bootstrap_local_tasks($variables['tabs']['#primary']);
 }
 
 /**
@@ -171,7 +181,7 @@ function twitter_bootstrap_preprocess_page(&$variables) {
  *
  * @see node.tpl.php
  */
-function twitter_bootstrap_preprocess_node(&$variables) {
+function bootstrap_preprocess_node(&$variables) {
   if ($variables['teaser']) {
     $variables['classes_array'][] = 'row-fluid';
   }
@@ -182,14 +192,14 @@ function twitter_bootstrap_preprocess_node(&$variables) {
  *
  * @see region.tpl.php
  */
-function twitter_bootstrap_preprocess_region(&$variables, $hook) {
+function bootstrap_preprocess_region(&$variables, $hook) {
   if ($variables['region'] == 'content') {
     $variables['theme_hook_suggestions'][] = 'region__no_wrapper';
   }
   
-  // Me likes
-  if($variables['region'] == "sidebar_first")
+  if ($variables['region'] == "sidebar_first") {
     $variables['classes_array'][] = 'well';
+  }
 }
 
 /**
@@ -197,7 +207,7 @@ function twitter_bootstrap_preprocess_region(&$variables, $hook) {
  *
  * @see block.tpl.php
  */
-function twitter_bootstrap_preprocess_block(&$variables, $hook) {
+function bootstrap_preprocess_block(&$variables, $hook) {
   //$variables['classes_array'][] = 'row';
   // Use a bare template for the page's main content.
   if ($variables['block_html_id'] == 'block-system-main') {
@@ -214,12 +224,12 @@ function twitter_bootstrap_preprocess_block(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("block" in this case.)
  */
-function twitter_bootstrap_process_block(&$variables, $hook) {
+function bootstrap_process_block(&$variables, $hook) {
   // Drupal 7 should use a $title variable instead of $block->subject.
   $variables['title'] = $variables['block']->subject;
 }
 
-function _twitter_bootstrap_search_form($form, &$form_state) {
+function _bootstrap_search_form($form, &$form_state) {
   // Get custom search form for now
   $form = search_form($form, $form_state);
 
@@ -242,7 +252,7 @@ function _twitter_bootstrap_search_form($form, &$form_state) {
 /**
  * Returns the correct span class for a region
  */
-function _twitter_bootstrap_content_span($columns = 1) {
+function _bootstrap_content_span($columns = 1) {
   $class = FALSE;
   
   switch($columns) {

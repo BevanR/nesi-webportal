@@ -1,6 +1,0 @@
-lib/*
-!lib/README.txt
-bootstrap/*
-nesi_bootstrap/assets
-.DS_Store
-*.swp

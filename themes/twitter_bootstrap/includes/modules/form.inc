@@ -1,53 +1,9 @@
 <?php
 
-/*
-function twitter_bootstrap_button(&$vars) {
-  $element = $vars['element'];
-  $element['#attributes']['type'] = 'submit';
-  element_set_attributes($element, array('id', 'name', 'value'));
-  
-  $element['#attributes']['class'][] = 'btn'; // Add bootstrap class
-  $element['#attributes']['class'][] = 'form-' . $element['#button_type'];
-  if (!empty($element['#attributes']['disabled'])) {
-    $element['#attributes']['class'][] = 'form-button-disabled';
-  }
-
-  return '<input' . drupal_attributes($element['#attributes']) . ' />';
-}
-*/
-/*
- * Returns HTML for a form.
- *
- * @param $vars
- *   An associative array containing:
- *   - element: An associative array containing the properties of the element.
- *     Properties used: #action, #method, #attributes, #children
- *
- * @ingroup themeable
- 
-
-function twitter_bootstrap_preprocess_form(&$variables) {
-}  
-
-function twitter_bootstrap_form($variables) {
-  $element = $variables['element'];
-  if (isset($element['#action'])) {
-    $element['#attributes']['action'] = drupal_strip_dangerous_protocols($element['#action']);
-  }
-  
-  element_set_attributes($element, array('method', 'id'));
-  if (empty($element['#attributes']['accept-charset'])) {
-    $element['#attributes']['accept-charset'] = "UTF-8";
-  }
-
-  return '<form' . drupal_attributes($element['#attributes']) . '>' . $element['#children'] . '</form>';
-}
-*/
-
 /**
  * Implements hook_form_alter().
  */
-function twitter_bootstrap_form_alter(&$form, &$form_state, $form_id) {
+function bootstrap_form_alter(&$form, &$form_state, $form_id) {
   // Id's of forms that should be ignored
   // Make this configurable?
   $form_ids = array(
@@ -57,14 +13,15 @@ function twitter_bootstrap_form_alter(&$form, &$form_state, $form_id) {
   );
   
   // Only wrap in container for certain form
-  if(isset($form['#form_id']) && !in_array($form['#form_id'], $form_ids) && !isset($form['#node_edit_form']))
+  if (isset($form['#form_id']) && !in_array($form['#form_id'], $form_ids) && !isset($form['#node_edit_form'])) {
     $form['actions']['#theme_wrappers'] = array();
+  }
 }  
 
 /**
  * Returns HTML for a form element.
  */
-function twitter_bootstrap_form_element(&$variables) {
+function bootstrap_form_element(&$variables) {
   $element = &$variables['element'];
   // This is also used in the installer, pre-database setup.
   $t = get_t();
@@ -109,7 +66,7 @@ function twitter_bootstrap_form_element(&$variables) {
   $suffix = isset($element['#field_suffix']) ? ' <span class="field-suffix">' . $element['#field_suffix'] . '</span>' : '';
 
   // Prepare input whitelist - added to ensure ajax functions don't break
-  $whitelist = _twitter_bootstrap_element_whitelist();
+  $whitelist = _bootstrap_element_whitelist();
 
   switch ($element['#title_display']) {
     case 'before':
@@ -157,7 +114,7 @@ function twitter_bootstrap_form_element(&$variables) {
 /**
  * Returns HTML for a form element label and required marker.
  */
-function twitter_bootstrap_form_element_label(&$variables) {
+function bootstrap_form_element_label(&$variables) {
   $element = $variables['element'];
   // This is also used in the installer, pre-database setup.
   $t = get_t();
@@ -206,7 +163,7 @@ function twitter_bootstrap_form_element_label(&$variables) {
 /**
  * Preprocessor for theme('button').
  */
-function twitter_bootstrap_preprocess_button(&$vars) {
+function bootstrap_preprocess_button(&$vars) {
   $vars['element']['#attributes']['class'][] = 'btn';
 
   if (isset($vars['element']['#value'])) {
@@ -247,7 +204,7 @@ function twitter_bootstrap_preprocess_button(&$vars) {
 /**
  * Returns HTML for a button form element.
  */
-function twitter_bootstrap_button($variables) {
+function bootstrap_button($variables) {
   $element = $variables['element'];
   $label = check_plain($element['#value']);
   element_set_attributes($element, array('id', 'name', 'value', 'type'));
@@ -258,27 +215,25 @@ function twitter_bootstrap_button($variables) {
   }
 
   // Prepare input whitelist - added to ensure ajax functions don't break
-  $whitelist = _twitter_bootstrap_element_whitelist();
+  $whitelist = _bootstrap_element_whitelist();
 
   if (in_array($element['#id'], $whitelist)) {
-    return '<input' . drupal_attributes($element['#attributes']) . '>
-    '; // This line break adds inherent margin between multiple buttons
+    return '<input' . drupal_attributes($element['#attributes']) . ">\n"; // This line break adds inherent margin between multiple buttons
   }
   else {
-    return '<button' . drupal_attributes($element['#attributes']) . '>'. $label .'</button>
-    '; // This line break adds inherent margin between multiple buttons
+    return '<button' . drupal_attributes($element['#attributes']) . '>'. $label ."</button>\n"; // This line break adds inherent margin between multiple buttons
   }
 }
 
 /**
  * Returns an array containing ids of any whitelisted drupal elements
  */
-function _twitter_bootstrap_element_whitelist() {
+function _bootstrap_element_whitelist() {
 /**
  * Why whitelist an element?
  * The reason is to provide a list of elements we wish to exclude
- * from certain modifications made by the twitter bootstrap theme
- * which break core functionality - e.g. ajax.
+ * from certain modifications made by the bootstrap theme which
+ * break core functionality - e.g. ajax.
  */
   return array(
     'edit-refresh',
