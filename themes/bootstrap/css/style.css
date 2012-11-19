@@ -64,6 +64,20 @@ div#admin-toolbar {
   z-index: 500;
 }
 
+/* Admin_menu fix */
+#admin-menu {
+  z-index: 1100;
+  position: fixed; 
+}
+
+body.admin-menu .navbar-fixed-top {
+  top: 30px; 
+}
+
+#admin-menu .dropdown li {
+  line-height: normal;
+} 
+
 /* System base fix */
 .container-inline div, .container-inline label {
   display: block;
@@ -72,6 +86,14 @@ div#admin-toolbar {
 /* Default form fields to auto */
 input, textarea, select, .uneditable-input {
   width:auto;
+}
+
+/* Default textfield styles inside vertical tabs */
+.vertical-tabs .form-type-textfield input {
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+  width: auto;
 }
 
 /* throbber fix */
