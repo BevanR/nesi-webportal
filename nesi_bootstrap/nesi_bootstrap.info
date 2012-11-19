@@ -1,8 +1,8 @@
 name = nesi_bootstrap
-description = Twitter bootstrap subtheme
-version = 0.1
+description = Bootstrap subtheme
+version = 0.5
 core = 7.x
-base theme = twitter_bootstrap
+base theme = bootstrap
 
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'
