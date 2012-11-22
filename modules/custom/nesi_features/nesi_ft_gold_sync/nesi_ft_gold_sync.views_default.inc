@@ -67,11 +67,11 @@ function nesi_ft_gold_sync_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'project' => 'project',
   );
-  /* Filter criterion: Content: Project synchronised in GOLD (field_p_gold_sync) */
-  $handler->display->display_options['filters']['field_p_gold_sync_value']['id'] = 'field_p_gold_sync_value';
-  $handler->display->display_options['filters']['field_p_gold_sync_value']['table'] = 'field_data_field_p_gold_sync';
-  $handler->display->display_options['filters']['field_p_gold_sync_value']['field'] = 'field_p_gold_sync_value';
-  $handler->display->display_options['filters']['field_p_gold_sync_value']['value']['value'] = '1';
+  /* Filter criterion: Content: Project synchronised in GOLD (gold_sync) */
+  $handler->display->display_options['filters']['gold_sync_value']['id'] = 'gold_sync_value';
+  $handler->display->display_options['filters']['gold_sync_value']['table'] = 'field_data_gold_sync';
+  $handler->display->display_options['filters']['gold_sync_value']['field'] = 'gold_sync_value';
+  $handler->display->display_options['filters']['gold_sync_value']['value']['value'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

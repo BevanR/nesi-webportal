@@ -1,7 +1,7 @@
 name = nesi_ft_gold_sync
 core = 7.x
 package = NeSI
-version = 7.x-0.1
+version = 7.x-0.2
 project = nesi_ft_gold_sync
 dependencies[] = ctools
 dependencies[] = views
