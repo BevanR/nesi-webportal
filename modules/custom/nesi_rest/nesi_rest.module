@@ -11,6 +11,18 @@
  */
 
 /**
+ * Implementation of hook_perm().
+ */
+function nesi_rest_permission() {
+  return array(
+    'administer nesi rest' => array(
+      'title' => t('Administer NeSI REST'),
+      'description' => t('Configure NeSI REST module.')
+    )
+  );
+}
+
+/**
  * Implements hook_menu().
  */
 function nesi_rest_menu() {
@@ -19,8 +31,7 @@ function nesi_rest_menu() {
     'title' => 'NeSI REST Interface Configuration',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('nesi_rest_admin_settings'),
-    'access arguments' => array('administer'),
-    'type' => MENU_NORMAL_ITEM,
+    'access arguments' => array('administer nesi rest'),
     'file' => 'nesi_rest.admin.inc'
   );
 
