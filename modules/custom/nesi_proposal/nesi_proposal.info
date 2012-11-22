@@ -12,6 +12,7 @@ dependencies[] = list
 dependencies[] = nesi_rest
 dependencies[] = options
 dependencies[] = user_reference
+dependencies[] = nesi_project
 datestamp = 1348099294
 features[features_api][] = api:1
 features[field][] = node-proposal_development_class-field_pdc_additional_information
