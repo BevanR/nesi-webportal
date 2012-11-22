@@ -1019,14 +1019,14 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_research_class-field_prc_export_support_notes'.
-  $fields['node-proposal_research_class-field_prc_export_support_notes'] = array(
+  // Exported field: 'node-proposal_research_class-field_prc_expert_support_notes'.
+  $fields['node-proposal_research_class-field_prc_expert_support_notes'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_prc_export_support_notes',
+      'field_name' => 'field_prc_expert_support_notes',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -1067,7 +1067,7 @@ function nesi_proposal_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_prc_export_support_notes',
+      'field_name' => 'field_prc_expert_support_notes',
       'label' => 'Explanatory notes for "Expert support" section ',
       'required' => 0,
       'settings' => array(
