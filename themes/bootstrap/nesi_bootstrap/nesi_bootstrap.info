@@ -1,6 +1,6 @@
 name = nesi_bootstrap
 description = Bootstrap subtheme
-version = 0.5
+version = 0.6
 core = 7.x
 base theme = bootstrap
 
@@ -15,8 +15,18 @@ regions[directory]      = 'Directory'
 regions[collaborators]  = 'Collaborators'
 regions[footer]         = 'Footer'
 
+; Add custom bootstrap
+stylesheets[all][] = assets/css/bootstrap.css
+stylesheets[all][] = assets/css/responsive.css
+
+; Additional css for nesi_bootstrap
 stylesheets[all][] = css/nesi_bootstrap.css
 
 settings[toggle_name] = 1
 settings[toggle_search] = 0
 settings[toggle_logo] = 0
+
+; Remove parent theme declaration
+; Currently not working, investigating and disabled for now
+;exclude[css][] = bootstrap/css/bootstrap.css
+;exclude[css][] = bootstrap/css/bootstrap-responsive.css
