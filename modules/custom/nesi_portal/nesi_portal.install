@@ -30,17 +30,6 @@ function nesi_portal_install() {
      )
    );
 
-  /* Enable visitor account settings */
-  variable_set( 'user_register', '1' ); // 1 = allow visitors to register without approval
-
-  /* Turn off email verification */
-  variable_set( 'user_email_verification', '0' ); 
-
-  /* Set frontpage to user module */
-  variable_set( 'site_frontpage', 'user'); 
-
-  /* Set sitename */
-  variable_set( 'site_name', 'web.dev.nesi.org.nz');
 
   // Flag deletion doesn't use the machine names.  '1' is bookmarks.
   $flag = flag_get_flag(NULL, 1);
