@@ -11,23 +11,28 @@ function nesi_team_selector_menu_alter(&$items) {
 
   // Check access rules
 
-  $items['node/%node/team']['access callback'] = '_nesi_team_selector_team_access';
+  //dpm('exc'); 
+  $items['node/%/team']['access callback'] = '_nesi_team_selector_team_access';
+  $items['node/%/team']['access arguments'] = array(1);
+  //$items['node/%/team']['type'] = MENU_LOCAL_TASK;
+  //$items['node/%/team']['title'] = 'what';
   //$items['node/%node/team']['access arguments'] = array('view hidden tabs');
 
 }
 
-function _nesi_team_selector_team_access() {
-  
+function _nesi_team_selector_team_access($nid) {
   // Checks to see if a user has access to manage this team..
   global $user;
-  $node = menu_get_object();
-  // User owns proposal node?
-  if ($node->uid == $user->uid) {
-    return TRUE;
+  //dpm($user); 
+  $node = node_load($nid);
+  //dpm($node);
+  if ($user->uid > 0) {
+    // User owns proposal node?
+    if ($node->uid == $user->uid) {
+      return TRUE;
+    }
   }
-  else {
-    return FALSE;
-  }
+  return FALSE;
 }
 
 function nesi_team_selector_block_info() {    
@@ -115,5 +120,17 @@ function nesi_team_selector_argument_selector_action($entities, $context = array
 function nesi_team_selector_views_bulk_operations_form_alter(&$form, &$form_state, $vbo) {
   // Form alter placeholder to adjust / simplify the team member form
   
+}
+
+function nesi_team_selector_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'menu_alter') {
+    // Move helper_menu_alter() to the end of the list. module_implements()
+    // iterates through $implementations with a foreach loop which PHP iterates
+    // in the order that the items were added, so to move an item to the end of
+    // the array, we remove it and then add it.
+    $group = $implementations['nesi_team_selector'];
+    unset($implementations['nesi_team_selector']);
+    $implementations['nesi_team_selector'] = $group;
+  }
 }
 
