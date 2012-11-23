@@ -66,7 +66,7 @@ function nesi_portal_block_view($delta = '') {
             <li class="first leaf"><a title="Project History" href="'.$base_url.'/researcher/history">History</a></li>
             <li class="leaf"><a title="Live Projects" href="'.$base_url.'/researcher/projects">Live Projects</a></li>
             '.$current_proposal_link.'
-            <li class="last leaf"><a href="'.$base_url.'/hpc-calc">HPC Calculator</a></li>
+            <li class="last leaf"><a href="'.$base_url.'/hpc-calculator">HPC Calculator</a></li>
             </ul>';
         }
         break;
