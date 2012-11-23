@@ -13,21 +13,5 @@
 function nesi_portal_install() {
 
   /* Current actions on install:
-   * Sets the permission of the authenticated user... this should be migrated to 
-   * drush make install profile post install 
    */
-
-  user_role_change_permissions(2,
-    array(
-      'view own researcher_profile profile' => TRUE,
-      'edit own researcher_profile profile' => TRUE,
-      'create proposal_development_class content' => TRUE,
-      'create proposal_research_class content' => TRUE,
-      'edit own proposal_development_class content' => TRUE,
-      'edit own proposal_research_class content' => TRUE,
-      'delete own proposal_development_class content' => TRUE,
-      'delete own proposal_research_class content' => TRUE,
-     )
-   );
-
 }
