@@ -9,6 +9,7 @@ dependencies[] = field_sql_storage
 dependencies[] = user_reference
 dependencies[] = views
 dependencies[] = nesi_project
+dependencies[] = views_bulk_operations
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[field][] = node-project-field_p_teamlist
