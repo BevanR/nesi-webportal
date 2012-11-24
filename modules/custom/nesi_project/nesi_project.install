@@ -13,7 +13,11 @@
 function nesi_project_install() {
 
   /* Current actions on install:
+   * Set URI pattern for researcher project
    */
+
+  /* Set default URI pattern */
+  variable_set( 'pathauto_node_project_pattern', 'researcher/project/[node:nid]' );
 
 }
 
