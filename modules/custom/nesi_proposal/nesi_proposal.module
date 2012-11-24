@@ -138,7 +138,7 @@ function nesi_proposal_node_insert($node) {
 
     // User declared themselves as PI
     if ($node->field_sub_check == 1) {  
-      $project_node->field_p_principal_investigator[$project_node->language][0]['value'] = $node->uid;
+      $project_node->field_p_principal_investigator[$project_node->language][0]['uid'] = $node->uid;
     }
     else {
       // User has provided the PI details, we don't know yet exactly if they are a user in Portal so just store data
@@ -147,7 +147,7 @@ function nesi_proposal_node_insert($node) {
       $project_node->field_p_pi_phone[$project_node->language][0]['value'] = $node->field_pi_phone;
     }
     $project_node->field_p_proposed_schedule[$project_node->language][0]['value'] = $node->proposed_start_date;
-    $project_node->field_p_proposal_id[$project_node->language][0]['value'] = $node->nid;
+    $project_node->field_p_proposal_id[$project_node->language][0]['nid'] = $node->nid;
 
     dpm($project_node); 
     node_save($project_node);
