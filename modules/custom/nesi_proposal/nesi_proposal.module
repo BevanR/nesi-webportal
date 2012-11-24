@@ -135,6 +135,12 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
     _nesi_proposal_generate_pi_form($profile_emw, $form);
   } 
 
+  $form['proposed_start_date'] = array(
+    '#type' => 'date_popup',
+    '#date_format' => 'd-m-Y',
+    '#title' => t('Estimated start date'),
+  );
+
   dpm($form);
   // Add a cancel button.
   $form['actions']['cancel'] = array(
