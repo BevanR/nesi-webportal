@@ -206,7 +206,7 @@ function nesi_proposal_node_update($node) {
  */
 function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &$form_state, $form_id) {
   //dpm('* Implements hook_form_FORM_ID_alter()');
-  dpm($form_state);
+  //dpm($form_state);
   $form['#validate'][] = 'nesi_proposal_validate_proposal_development_class';
   
   global $user;
@@ -272,6 +272,7 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
   unset($form['actions']['preview']);
 
   // Hide unused fields below (currently none)
+  $form['field_p_project_id']['#access'] = FALSE;
 }
 
 /**
@@ -347,6 +348,7 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
   unset($form['actions']['preview']);
 
   // Hide unused fields below (currently none)
+  $form['field_p_project_id']['#access'] = FALSE;
 }
 
 /**
