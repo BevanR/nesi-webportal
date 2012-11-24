@@ -25,11 +25,15 @@ function _nesi_team_selector_team_access($nid) {
   global $user;
   //dpm($user); 
   $node = node_load($nid);
-  //dpm($node);
-  if ($user->uid > 0) {
-    // User owns proposal node?
-    if ($node->uid == $user->uid) {
-      return TRUE;
+
+  // Check that node is project or proposal
+  if (($node->type == 'project') || ($node->type == 'proposal_research_class') || ($node->type == 'proposal_development_class')) {
+    
+    if ($user->uid > 0) {
+      // User owns proposal node?
+      if ($node->uid == $user->uid) {
+        return TRUE;
+      }
     }
   }
   return FALSE;
