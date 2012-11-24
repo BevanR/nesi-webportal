@@ -2,6 +2,7 @@ name = nesi_ft_researcher_projects_active
 description = Provides summary of active projects.
 core = 7.x
 package = NeSI
+php = 5.2.4
 version = 7.x-0.1
 project = nesi_ft_researcher_projects_active
 dependencies[] = ctools

@@ -10,7 +10,7 @@
 function nesi_ft_researcher_projects_active_views_default_views() {
   $export = array();
 
-  $view = new view;
+  $view = new view();
   $view->name = 'researcher_projects_active';
   $view->description = 'Summary of moderated and unmoderated site content.';
   $view->tag = 'default';
@@ -23,9 +23,10 @@ function nesi_ft_researcher_projects_active_views_default_views() {
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->display->display_options['title'] = 'Live Projects';
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
-    2 => 2,
+    4 => '4',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -71,24 +72,18 @@ function nesi_ft_researcher_projects_active_views_default_views() {
       'separator' => '',
     ),
   );
-  $handler->display->display_options['style_options']['override'] = 1;
-  $handler->display->display_options['style_options']['sticky'] = 0;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['text']['id'] = 'text';
   $handler->display->display_options['header']['text']['table'] = 'views';
   $handler->display->display_options['header']['text']['field'] = 'area';
-  $handler->display->display_options['header']['text']['empty'] = FALSE;
   $handler->display->display_options['header']['text']['content'] = 'Review the status of your proposals below.';
   $handler->display->display_options['header']['text']['format'] = 'filtered_html';
-  $handler->display->display_options['header']['text']['tokenize'] = 0;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['text']['id'] = 'text';
   $handler->display->display_options['empty']['text']['table'] = 'views';
   $handler->display->display_options['empty']['text']['field'] = 'area';
-  $handler->display->display_options['empty']['text']['empty'] = FALSE;
   $handler->display->display_options['empty']['text']['content'] = 'You currently have no Live Projects available to view.';
   $handler->display->display_options['empty']['text']['format'] = 'filtered_html';
-  $handler->display->display_options['empty']['text']['tokenize'] = 0;
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
@@ -98,31 +93,13 @@ function nesi_ft_researcher_projects_active_views_default_views() {
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]/view';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -132,64 +109,12 @@ function nesi_ft_researcher_projects_active_views_default_views() {
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['label'] = 'Last updated';
-  $handler->display->display_options['fields']['changed']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['changed']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['changed']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['changed']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['changed']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['changed']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['changed']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['changed']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['changed']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   /* Field: Content: Has new content */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'history';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['label'] = '';
-  $handler->display->display_options['fields']['timestamp']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['timestamp']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['timestamp']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['timestamp']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['timestamp']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['timestamp']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['timestamp']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['timestamp']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['timestamp']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['timestamp']['link_to_node'] = 0;
-  $handler->display->display_options['fields']['timestamp']['comments'] = 0;
-  /* Field: Content: Proposal Status */
-  $handler->display->display_options['fields']['field_pdc_status']['id'] = 'field_pdc_status';
-  $handler->display->display_options['fields']['field_pdc_status']['table'] = 'field_data_field_pdc_status';
-  $handler->display->display_options['fields']['field_pdc_status']['field'] = 'field_pdc_status';
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_pdc_status']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_pdc_status']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_pdc_status']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_pdc_status']['field_api_classes'] = 0;
   /* Sort criterion: Content: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
@@ -201,30 +126,23 @@ function nesi_ft_researcher_projects_active_views_default_views() {
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
   $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
-  $handler->display->display_options['arguments']['uid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['uid']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['uid']['not'] = 0;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'OR',
   );
-  /* Filter criterion: Content: Proposal Status (field_prc_status) */
-  $handler->display->display_options['filters']['field_prc_status_value']['id'] = 'field_prc_status_value';
-  $handler->display->display_options['filters']['field_prc_status_value']['table'] = 'field_data_field_prc_status';
-  $handler->display->display_options['filters']['field_prc_status_value']['field'] = 'field_prc_status_value';
-  $handler->display->display_options['filters']['field_prc_status_value']['value'] = 'Complete';
-  $handler->display->display_options['filters']['field_prc_status_value']['group'] = 1;
-  /* Filter criterion: Content: Proposal Status (field_pdc_status) */
-  $handler->display->display_options['filters']['field_pdc_status_value']['id'] = 'field_pdc_status_value';
-  $handler->display->display_options['filters']['field_pdc_status_value']['table'] = 'field_data_field_pdc_status';
-  $handler->display->display_options['filters']['field_pdc_status_value']['field'] = 'field_pdc_status_value';
-  $handler->display->display_options['filters']['field_pdc_status_value']['value'] = 'Complete';
-  $handler->display->display_options['filters']['field_pdc_status_value']['group'] = 1;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'project' => 'project',
+  );
 
   /* Display: Live Projects */
-  $handler = $view->new_display('page', 'Live Projects', 'page_1');
+  $handler = $view->new_display('page', 'Live Projects', 'live_projects');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'researcher/projects';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Live Projects';
