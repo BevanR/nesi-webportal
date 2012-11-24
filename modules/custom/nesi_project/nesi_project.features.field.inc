@@ -680,6 +680,93 @@ function nesi_project_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-project-field_p_proposal_id'.
+  $fields['node-project-field_p_proposal_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_p_proposal_id',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'profile2_private' => FALSE,
+        'referenceable_types' => array(
+          'asset' => 0,
+          'call' => 0,
+          'casestudy' => 0,
+          'event' => 0,
+          'page' => 0,
+          'project' => 0,
+          'proposal_development_class' => 'proposal_development_class',
+          'proposal_research_class' => 'proposal_research_class',
+          'proposal_type' => 0,
+          'story' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'project',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_p_proposal_id',
+      'label' => 'Proposal Reference',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '6',
+      ),
+    ),
+  );
+
   // Exported field: 'node-project-field_p_proposed_schedule'.
   $fields['node-project-field_p_proposed_schedule'] = array(
     'field_config' => array(
@@ -764,6 +851,61 @@ function nesi_project_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-project-gold_sync'.
+  $fields['node-project-gold_sync'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'gold_sync',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '1',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'project',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'gold_sync',
+      'label' => 'Synchronised in GOLD',
+      'required' => FALSE,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '0',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Call ID');
@@ -775,7 +917,9 @@ function nesi_project_field_default_fields() {
   t('Peer Reviewer');
   t('Principal Investigator');
   t('Proposal Outcome Report');
+  t('Proposal Reference');
   t('Proposed Schedule');
+  t('Synchronised in GOLD');
 
   return $fields;
 }
