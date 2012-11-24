@@ -427,6 +427,9 @@ function nesi_user_user_delete($account) {
  */
 function nesi_user_user_login(&$edit, $account) {
 
+  // Set user login destination
+  $edit['redirect'] = 'user';
+
   $user_data = array(); 
   if (isset($edit['values']['profile_researcher_profile'])) {
     $profile = $edit['values']['profile_researcher_profile'];
