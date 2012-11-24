@@ -151,6 +151,10 @@ function nesi_proposal_node_insert($node) {
 
     dpm($project_node); 
     node_save($project_node);
+    
+    // Update Proposal with linking project back reference
+    $node->field_p_project_id[$node->language][0]['nid'] = $project_node->nid;
+    field_attach_update('node', $node);
   }
 }
 
