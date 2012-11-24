@@ -18,15 +18,43 @@ function nesi_project_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_p_call_id',
-      'foreign keys' => array(),
-      'indexes' => array(),
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
       'locked' => '0',
-      'module' => 'number',
+      'module' => 'node_reference',
       'settings' => array(
         'profile2_private' => FALSE,
+        'referenceable_types' => array(
+          'asset' => 0,
+          'call' => 'call',
+          'casestudy' => 0,
+          'event' => 0,
+          'page' => 0,
+          'project' => 0,
+          'proposal_development_class' => 0,
+          'proposal_research_class' => 0,
+          'proposal_type' => 0,
+          'story' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '0',
-      'type' => 'number_integer',
+      'type' => 'node_reference',
     ),
     'field_instance' => array(
       'bundle' => 'project',
@@ -36,15 +64,10 @@ function nesi_project_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => 0,
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 20,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -58,18 +81,18 @@ function nesi_project_field_default_fields() {
       'label' => 'Call ID',
       'required' => 1,
       'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '-4',
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '7',
       ),
     ),
   );
