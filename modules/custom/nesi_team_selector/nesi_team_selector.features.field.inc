@@ -75,7 +75,7 @@ function nesi_team_selector_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_p_teamlist',
-      'label' => 'p_teamlist',
+      'label' => 'Project Team',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -84,7 +84,7 @@ function nesi_team_selector_field_default_fields() {
         'active' => 1,
         'module' => 'user_reference',
         'settings' => array(
-          'autocomplete_match' => 'contains',
+          'autocomplete_match' => 'starts_with',
           'autocomplete_path' => 'user_reference/autocomplete',
           'size' => '60',
         ),
@@ -96,7 +96,7 @@ function nesi_team_selector_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('p_teamlist');
+  t('Project Team');
 
   return $fields;
 }

@@ -10,7 +10,7 @@
 function nesi_team_selector_views_default_views() {
   $export = array();
 
-  $view = new view;
+  $view = new view();
   $view->name = 'proposal_team_view';
   $view->description = '';
   $view->tag = 'default';
@@ -23,14 +23,14 @@ function nesi_team_selector_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'input_required';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['autosubmit'] = 1;
-  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Type in a first name, last name or email address and matching users will appear so that they can be added to your team.';
   $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
   $handler->display->display_options['pager']['type'] = 'some';
@@ -66,14 +66,11 @@ function nesi_team_selector_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['override'] = 1;
-  $handler->display->display_options['style_options']['sticky'] = 0;
-  $handler->display->display_options['style_options']['empty_table'] = 0;
   /* Relationship: User: Profile */
   $handler->display->display_options['relationships']['profile']['id'] = 'profile';
   $handler->display->display_options['relationships']['profile']['table'] = 'users';
   $handler->display->display_options['relationships']['profile']['field'] = 'profile';
-  $handler->display->display_options['relationships']['profile']['required'] = 1;
+  $handler->display->display_options['relationships']['profile']['required'] = TRUE;
   $handler->display->display_options['relationships']['profile']['bundle_types'] = array(
     'researcher_profile' => 'researcher_profile',
   );
@@ -81,24 +78,6 @@ function nesi_team_selector_views_default_views() {
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
-  $handler->display->display_options['fields']['mail']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['mail']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['mail']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['mail']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['mail']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['mail']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['mail']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['mail']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['mail']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['mail']['link_to_user'] = 'user';
   /* Field: Profile: First Name */
   $handler->display->display_options['fields']['field_user_firstname']['id'] = 'field_user_firstname';
@@ -110,48 +89,12 @@ function nesi_team_selector_views_default_views() {
   $handler->display->display_options['fields']['field_user_lastname']['table'] = 'field_data_field_user_lastname';
   $handler->display->display_options['fields']['field_user_lastname']['field'] = 'field_user_lastname';
   $handler->display->display_options['fields']['field_user_lastname']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_user_lastname']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_user_lastname']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_user_lastname']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_user_lastname']['field_api_classes'] = 0;
   /* Field: Bulk operations: User */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'users';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['alter']['html'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['views_bulk_operations']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 1;
@@ -266,8 +209,6 @@ function nesi_team_selector_views_default_views() {
   $handler->display->display_options['filters']['field_user_lastname_value']['expose']['label'] = 'Last Name';
   $handler->display->display_options['filters']['field_user_lastname_value']['expose']['operator'] = 'field_user_lastname_value_op';
   $handler->display->display_options['filters']['field_user_lastname_value']['expose']['identifier'] = 'field_user_lastname_value';
-  $handler->display->display_options['filters']['field_user_lastname_value']['expose']['required'] = 0;
-  $handler->display->display_options['filters']['field_user_lastname_value']['expose']['multiple'] = FALSE;
   /* Filter criterion: User: E-mail */
   $handler->display->display_options['filters']['mail']['id'] = 'mail';
   $handler->display->display_options['filters']['mail']['table'] = 'users';
@@ -278,11 +219,10 @@ function nesi_team_selector_views_default_views() {
   $handler->display->display_options['filters']['mail']['expose']['label'] = 'E-mail';
   $handler->display->display_options['filters']['mail']['expose']['operator'] = 'mail_op';
   $handler->display->display_options['filters']['mail']['expose']['identifier'] = 'mail';
-  $handler->display->display_options['filters']['mail']['expose']['required'] = 0;
-  $handler->display->display_options['filters']['mail']['expose']['multiple'] = FALSE;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'node/%/team';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Manage Team';

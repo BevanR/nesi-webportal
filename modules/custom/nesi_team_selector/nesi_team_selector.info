@@ -1,14 +1,15 @@
 name = NeSI Team Selector
 core = 7.x
 package = NeSI
+php = 5.2.4
 version = 7.x-0.2
 project = nesi_team_selector
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_sql_storage
+dependencies[] = nesi_project
 dependencies[] = user_reference
 dependencies[] = views
-dependencies[] = nesi_project
 dependencies[] = views_bulk_operations
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
