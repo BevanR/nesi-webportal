@@ -118,6 +118,42 @@ function _nesi_proposal_generate_pi_form($profile_emw, &$form) {
 }
 
 /**
+ * Implements hook_node_insert()
+ */
+function nesi_proposal_node_insert($node) {
+
+  dpm ($node);
+  // Create a reference project
+  if (($node->type == 'proposal_development_class') || ($node->type == 'proposal_research_class')) {
+    $project_node = new stdClass(); // Create a new node object
+    $project_node->type = 'project';
+    node_object_prepare($project_node); // Set some default values
+    $project_node->title = 'Project';
+    $project_node->language = LANGUAGE_NONE;
+    $project_node->uid = $node->uid;
+    
+    // Call Reference
+    $project_node->field_p_call_id[$project_node->language][0]['value'] = 1;
+    $project_node->field_p_nesi_id[$project_node->language][0]['value'] = 'UNDEFINED';
+
+    // User declared themselves as PI
+    if ($node->field_sub_check == 1) {  
+      $project_node->field_p_principal_investigator[$project_node->language][0]['value'] = $node->uid;
+    }
+    else {
+      // User has provided the PI details, we don't know yet exactly if they are a user in Portal so just store data
+      $project_node->field_p_pi_name[$project_node->language][0]['value'] = $node->field_pi_name;
+      $project_node->field_p_pi_email[$project_node->language][0]['value'] = $node->field_pi_email;
+      $project_node->field_p_pi_phone[$project_node->language][0]['value'] = $node->field_pi_phone;
+    }
+    $project_node->field_p_proposed_schedule[$project_node->language][0]['value'] = $node->proposed_start_date;
+
+    dpm($project_node); 
+    node_save($project_node);
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter()
  */
 function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &$form_state, $form_id) {
