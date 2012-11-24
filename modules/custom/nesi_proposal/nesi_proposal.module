@@ -163,7 +163,7 @@ function nesi_proposal_node_insert($node) {
  */
 function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &$form_state, $form_id) {
   //dpm('* Implements hook_form_FORM_ID_alter()');
-  //dpm($form_state);
+  dpm($form_state);
   $form['#validate'][] = 'nesi_proposal_validate_proposal_development_class';
   
   global $user;
@@ -176,12 +176,25 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
     _nesi_proposal_generate_pi_form($profile_emw, $form);
   } 
 
+  // Preload data if available
+  if (!empty($form['field_p_project_id'][LANGUAGE_NONE][0]['nid']['#default_value'])) {
+    $project_data = node_load($form['field_p_project_id'][LANGUAGE_NONE][0]['nid']['#default_value']);
+    dpm($project_data);
+    if (!empty($project_data->field_p_proposed_schedule[LANGUAGE_NONE][0]['value'])) {
+      
+    }
+  }
+
   $form['proposed_start_date'] = array(
     '#type' => 'date_popup',
     '#date_format' => 'd-m-Y',
     '#title' => t('Estimated start date'),
     '#required' => TRUE,
   );
+
+  if (!empty($project_data->field_p_proposed_schedule[LANGUAGE_NONE][0]['value'])) {
+    $form['proposed_start_date']['#default_value'] = $project_data->field_p_proposed_schedule[LANGUAGE_NONE][0]['value'];
+  }
 
   dpm($form);
   // Add a cancel button.
@@ -225,12 +238,25 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     _nesi_proposal_generate_pi_form($profile_emw, $form);
   }
 
+  // Preload data if available
+  if (!empty($form['field_p_project_id'][LANGUAGE_NONE][0]['nid']['#default_value'])) {
+    $project_data = node_load($form['field_p_project_id'][LANGUAGE_NONE][0]['nid']['#default_value']);
+    dpm($project_data);
+    if (!empty($project_data->field_p_proposed_schedule[LANGUAGE_NONE][0]['value'])) {
+      
+    }
+  }
+
   $form['proposed_start_date'] = array(
     '#type' => 'date_popup',
     '#date_format' => 'd-m-Y',
     '#title' => t('Estimated start date'),
     '#required' => TRUE,
   );
+
+  if (!empty($project_data->field_p_proposed_schedule[LANGUAGE_NONE][0]['value'])) {
+    $form['proposed_start_date']['#default_value'] = $project_data->field_p_proposed_schedule[LANGUAGE_NONE][0]['value'];
+  }
 
   dpm($form);
   // Add a cancel button.
