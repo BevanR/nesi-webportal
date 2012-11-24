@@ -147,6 +147,7 @@ function nesi_proposal_node_insert($node) {
       $project_node->field_p_pi_phone[$project_node->language][0]['value'] = $node->field_pi_phone;
     }
     $project_node->field_p_proposed_schedule[$project_node->language][0]['value'] = $node->proposed_start_date;
+    $project_node->field_p_proposal_id[$project_node->language][0]['value'] = $node->nid;
 
     dpm($project_node); 
     node_save($project_node);
