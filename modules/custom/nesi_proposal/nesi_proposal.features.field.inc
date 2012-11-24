@@ -10,6 +10,93 @@
 function nesi_proposal_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-proposal_development_class-field_p_project_id'.
+  $fields['node-proposal_development_class-field_p_project_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_p_project_id',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'profile2_private' => FALSE,
+        'referenceable_types' => array(
+          'asset' => 0,
+          'call' => 0,
+          'casestudy' => 0,
+          'event' => 0,
+          'page' => 0,
+          'project' => 'project',
+          'proposal_development_class' => 0,
+          'proposal_research_class' => 0,
+          'proposal_type' => 0,
+          'story' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_development_class',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 20,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_p_project_id',
+      'label' => 'Project Reference',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '14',
+      ),
+    ),
+  );
+
   // Exported field: 'node-proposal_development_class-field_pdc_additional_information'.
   $fields['node-proposal_development_class-field_pdc_additional_information'] = array(
     'field_config' => array(
@@ -473,6 +560,93 @@ function nesi_proposal_field_default_fields() {
         'settings' => array(),
         'type' => 'options_buttons',
         'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-proposal_research_class-field_p_project_id'.
+  $fields['node-proposal_research_class-field_p_project_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_p_project_id',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'profile2_private' => FALSE,
+        'referenceable_types' => array(
+          'asset' => 0,
+          'call' => 0,
+          'casestudy' => 0,
+          'event' => 0,
+          'page' => 0,
+          'project' => 'project',
+          'proposal_development_class' => 0,
+          'proposal_research_class' => 0,
+          'proposal_type' => 0,
+          'story' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_research_class',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 32,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_p_project_id',
+      'label' => 'Project Reference',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '25',
       ),
     ),
   );
@@ -2103,6 +2277,7 @@ function nesi_proposal_field_default_fields() {
   t('Please use this section to add any information which has not been covered elsewhere.');
   t('Project Deliverables');
   t('Project Description');
+  t('Project Reference');
   t('Project Team\'s HPC Experience');
   t('Reviewer Pool');
   t('Reviewer Selection Process');
