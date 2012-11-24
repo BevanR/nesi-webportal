@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * NeSI Call module - installation.
+ * 
+ * This file is executed on installation of the nesi_call module.
+ *
+ */
+
+/**
+ * Implements hook_install()
+ */
+function nesi_proposal_install() {
+
+  /* Current actions on install:
+   * Set URI pattern for research proposal
+   */
+
+  /* Set default URI pattern */
+  variable_set( 'pathauto_node_proposal_development_class_pattern', 'researcher/proposal/[node:nid]' );
+  variable_set( 'pathauto_node_proposal_research_class_pattern', 'researcher/proposal/[node:nid]' );
+
+}
