@@ -6,3 +6,8 @@ body {
   padding-top: 0px;
 }
 
+/* Styles - Dan to review */
+h2.block-title {
+  font-size: 14px;
+}
+
