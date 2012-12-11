@@ -584,6 +584,14 @@ function nesi_proposal_node_access($node, $op, $account) {
 // Limit access to proposal once submitted..
   global $user;
 
+  if ($op == 'view') {
+    if (($node->type == 'proposal_research_class') || ($node->type == 'proposal_development_class')) {
+      if ($user->uid < 1) {
+        return NODE_ACCESS_DENY;
+      }
+    }
+  }
+
   //dpm($node);
   if ($op == 'update') {
 
