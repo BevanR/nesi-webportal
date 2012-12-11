@@ -47,7 +47,7 @@ function nesi_team_selector_block_info() {
     'region' => 'sidebar_second',
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'cache' => DRUPAL_NO_CACHE,
-    'pages' => implode("\n",array('node/*'))
+    'pages' => implode("\n",array('researcher/proposal/*', 'researcher/project/*'))
   );
 
   return $blocks;
