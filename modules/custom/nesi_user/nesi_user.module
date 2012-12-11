@@ -403,6 +403,14 @@ function nesi_user_menu_alter(&$items) {
   );
 }
 
+/* Modify and place the user menu */ 
+function nesi_user_block_view_alter(&$data, $block) {
+  // Update User menu block
+  if ($block->delta == 'user-menu') {
+    $data['subject'] = '<none>'; 
+  }
+}
+
 /**
  * Implements hook_user_view_alter()
  */
