@@ -11,3 +11,16 @@ function nesi_project_cron() {
   // Find all projects with a set gold sync flag
 
 }
+
+function nesi_project_node_access($node, $op, $account) {
+// Limit access to proposal once submitted..
+  global $user;
+
+  if ($op == 'view') {
+    if (($node->type == 'project')) {
+      if ($user->uid < 1) {
+        return NODE_ACCESS_DENY;
+      }
+    }
+  }
+}
