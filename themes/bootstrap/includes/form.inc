@@ -251,5 +251,7 @@ function _bootstrap_element_whitelist() {
     'panels-ipe-cancel',
     'panels-ipe-customize-page',
     'panels-ipe-save',
+    'edit-fields-title-parent',
+    'edit-fields-title-weight',
   );
 }
