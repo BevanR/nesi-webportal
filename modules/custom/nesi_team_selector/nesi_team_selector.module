@@ -102,23 +102,26 @@ function nesi_team_selector_argument_selector_action($entities, $context = array
     $project = node_load($context['project'][1]);
 
     if ($project) {
-      dpm($project);
-      
       // Assign user
       foreach ($entities as $researcher) {
-        dpm($researcher);
         if ($project->type == 'project') {
           // Add check for user already being within the team
-          $project->field_p_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
-          node_save($project);
+          $user_check = _nesi_team_selector_uid_search($researcher->uid, $project->field_p_teamlist[LANGUAGE_NONE]);
+          if ($user_check === FALSE) {
+            $project->field_p_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
+            node_save($project);
+          }
         }
         // Add ability to add team member against prc and pdc
         if (($project->type == 'proposal_development_class') || ($project->type == 'proposal_research_class')) {
-          // Add check for user already being within the team
           // Load pdc project
           $team_node = node_load($project->field_p_project_id[LANGUAGE_NONE][0]);
-          $team_node->field_p_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
-          node_save($team_node);
+          // Add check for user already being within the team
+          $user_check = _nesi_team_selector_uid_search($researcher->uid, $team_node->field_p_teamlist[LANGUAGE_NONE]);
+          if ($user_check === FALSE) {
+            $team_node->field_p_teamlist[LANGUAGE_NONE][] = array('uid' => $researcher->uid);
+            node_save($team_node);
+          }
         }
       }        
  
@@ -144,5 +147,17 @@ function nesi_team_selector_module_implements_alter(&$implementations, $hook) {
     unset($implementations['nesi_team_selector']);
     $implementations['nesi_team_selector'] = $group;
   }
+}
+
+function _nesi_team_selector_uid_search($user_id, $user_field = array()) {
+  $user_exists = FALSE;
+  // Returns true if user exists in reference field.
+  foreach ($user_field as $team_member) {
+    // Check for match
+    if ($team_member['uid'] == $user_id) {
+      $user_exists = TRUE;
+    }
+  }
+  return $user_exists;
 }
 
