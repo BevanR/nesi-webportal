@@ -26,5 +26,4 @@ features[field][] = node-project-field_p_pi_phone
 features[field][] = node-project-field_p_principal_investigator
 features[field][] = node-project-field_p_proposal_id
 features[field][] = node-project-field_p_proposed_schedule
-features[field][] = node-project-gold_sync
 features[node][] = project
