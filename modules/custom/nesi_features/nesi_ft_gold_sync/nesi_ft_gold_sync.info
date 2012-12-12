@@ -9,4 +9,5 @@ dependencies[] = features
 dependencies[] = field_sql_storage
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
+features[field][] = node-project-gold_sync
 features[views_view][] = gold_sync_view
