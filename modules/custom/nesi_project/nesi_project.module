@@ -24,8 +24,13 @@ function nesi_project_node_access($node, $op, $account) {
       }
       // Check for ownership or appropriate role
       if ($user->uid != $node->uid) {
+        // Otherwise check if user has appropriate role 
         if (!in_array('reviewer', array_values($account->roles))) {
-          return NODE_ACCESS_DENY;
+          // Otherwise check if user included within Team 
+          $user_check = _nesi_team_selector_uid_search($user->uid, $node->field_p_teamlist[LANGUAGE_NONE]);
+          if ($user_check === FALSE) {
+            return NODE_ACCESS_DENY;
+          }
         }
       }
     }
