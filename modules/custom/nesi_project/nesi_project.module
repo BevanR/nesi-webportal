@@ -18,8 +18,15 @@ function nesi_project_node_access($node, $op, $account) {
 
   if ($op == 'view') {
     if (($node->type == 'project')) {
+      // Block anonymous
       if ($user->uid < 1) {
         return NODE_ACCESS_DENY;
+      }
+      // Check for ownership or appropriate role
+      if ($user->uid != $node->uid) {
+        if (!in_array('reviewer', array_values($account->roles))) {
+          return NODE_ACCESS_DENY;
+        }
       }
     }
   }
