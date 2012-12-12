@@ -21,31 +21,3 @@ function nesi_project_install() {
 
 }
 
-function nesi_project_enable() {
-
-  // Check if our field is not already created.
-  if (!field_info_field('gold_sync')) {
-    $field = array(
-      'field_name' => 'gold_sync', 
-      'type' => 'number_integer', 
-      'locked' => TRUE,
-    );
-
-    field_create_field($field);
-
-    // Create the instance on the bundle.
-    $instance = array(
-      'field_name' => 'gold_sync', 
-      'entity_type' => 'node', 
-      'label' => 'Synchronised in GOLD', 
-      'bundle' => 'project', 
-      'display' => array(
-         'default' => array(
-           'type' => 'hidden',
-         ),
-      ),
-    );
-    field_create_instance($instance);
-  }
-}
-
