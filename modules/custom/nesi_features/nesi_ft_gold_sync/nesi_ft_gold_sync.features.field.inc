@@ -344,6 +344,10 @@ function nesi_ft_gold_sync_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Synchronised in GOLD');
   t('Created in GOLD');
+  t('Synchronised in GOLD');
+  t('Created in GOLD');
+  t('Synchronised in GOLD');
+  t('Created in GOLD');
 
   return $fields;
 }
