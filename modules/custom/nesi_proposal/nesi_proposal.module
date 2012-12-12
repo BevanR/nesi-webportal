@@ -590,10 +590,21 @@ function nesi_proposal_node_access($node, $op, $account) {
       if ($user->uid < 1) {
         return NODE_ACCESS_DENY;
       }
-      // Check for ownership or appropriate role
+      // Check for ownership 
       if ($user->uid != $node->uid) {
+        // Otherwise check if user has appropriate role 
         if (!in_array('reviewer', array_values($account->roles))) {
-          return NODE_ACCESS_DENY;
+          // Otherwise check if user included within Team 
+          $team_node = node_load($node->field_p_project_id[LANGUAGE_NONE][0]);
+          if ($team_node) {
+            $user_check = _nesi_team_selector_uid_search($user->uid, $team_node->field_p_teamlist[LANGUAGE_NONE]);
+            if ($user_check === FALSE) {
+              return NODE_ACCESS_DENY;
+            }
+          }
+          else {
+            return NODE_ACCESS_DENY;
+          }
         }
       }
     }
