@@ -581,13 +581,20 @@ function _get_proposal_team_members($multi_form_field = array()) {
 }
 
 function nesi_proposal_node_access($node, $op, $account) {
-// Limit access to proposal once submitted..
+  // Limit access to proposal once submitted..
   global $user;
 
   if ($op == 'view') {
     if (($node->type == 'proposal_research_class') || ($node->type == 'proposal_development_class')) {
+      // Block anonymous
       if ($user->uid < 1) {
         return NODE_ACCESS_DENY;
+      }
+      // Check for ownership or appropriate role
+      if ($user->uid != $node->uid) {
+        if (!in_array('reviewer', array_values($account->roles))) {
+          return NODE_ACCESS_DENY;
+        }
       }
     }
   }
