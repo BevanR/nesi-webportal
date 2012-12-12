@@ -25,31 +25,3 @@ function nesi_user_install() {
 
 }
 
-function nesi_user_enable() {
-
-  // Check if our field is not already created.
-  if (!field_info_field('field_user_gold_create')) {
-    $field = array(
-      'field_name' => 'field_user_gold_create', 
-      'type' => 'number_integer', 
-      'locked' => TRUE,
-    );
-
-    field_create_field($field);
-
-    // Create the instance on the bundle.
-    $instance = array(
-      'field_name' => 'field_user_gold_create', 
-      'entity_type' => 'user', 
-      'label' => 'User created in GOLD', 
-      'bundle' => 'user', 
-      'display' => array(
-         'default' => array(
-           'type' => 'hidden',
-         ),
-      ),
-    );
-    field_create_instance($instance);
-  }
-}
-
