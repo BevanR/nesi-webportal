@@ -11,18 +11,18 @@ function nesi_ft_gold_sync_views_default_views() {
   $export = array();
 
   $view = new view;
-  $view->name = 'gold_sync';
+  $view->name = 'gold_sync_view';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'gold_sync';
+  $view->human_name = 'gold_sync_view';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'gold_sync';
+  $handler->display->display_options['title'] = 'gold_sync_view';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -76,7 +76,7 @@ function nesi_ft_gold_sync_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'gold-sync';
-  $export['gold_sync'] = $view;
+  $export['gold_sync_view'] = $view;
 
   return $export;
 }
