@@ -5,3 +5,10 @@
  */
 
 include_once 'nesi_ft_gold_sync.features.inc';
+
+function nesi_ft_gold_sync_field_access($op, $field, $entity_type, $entity, $account) {
+  // disable access to gold field flags
+  if (($field['field_name'] == 'gold_sync') || ($field['field_name'] == 'gold_create')) {
+    return FALSE;
+  }
+}
