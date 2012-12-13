@@ -69,42 +69,6 @@ function nesi_team_selector_preprocess_page(&$vars) {
   }
 }
 
-function nesi_team_selector_block_info() {    
-  $blocks['project_team_members'] = array(
-    // info: The name of the block.
-    'info' => t('Project Team Members'),
-    'status' => TRUE,
-    'region' => 'sidebar_second',
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'cache' => DRUPAL_NO_CACHE,
-    'pages' => implode("\n",array('researcher/proposal/*', 'researcher/project/*'))
-  );
-
-  return $blocks;
-}
-
-function nesi_team_selector_block_view($delta = '') {
-  global $base_url;
-  global $user;
-  $block = array();
-
-  // The $delta parameter tells us which block is being requested.
-    switch ($delta) {
-      case 'project_team_members':
-        // Create your block content here
-        if ($user->uid <> 0) {
-        $block['subject'] = t('Team Members');
-        $block['content'] = '<div>
-            <p></p>
-            </div>';
-        }
-        break;
-    }
-  
-  return $block;
-}
-
-
 /**
  * Implementation of hook_action_info().
  */
