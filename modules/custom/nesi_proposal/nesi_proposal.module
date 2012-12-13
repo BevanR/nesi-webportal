@@ -49,6 +49,17 @@ function nesi_proposal_page() {
 
 }
 
+function nesi_proposal_preprocess_node(&$vars) {
+  // Attach relevant project data to node
+  if (($vars['type'] == 'proposal_research_class') || ($vars['type'] == 'proposal_development_class')) {
+    $project_node = node_load($vars['field_p_project_id'][0]['nid']);
+    // Add project data to page
+    if ($project_node) {
+      $vars['content']['nesi_project'] = node_view($project_node);
+    }
+  }
+}
+
 function _nesi_proposal_generate_pi_form($profile_emw, &$form) {
   global $user;
   $account = $user;

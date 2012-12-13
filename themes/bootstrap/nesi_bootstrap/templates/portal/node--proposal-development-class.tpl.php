@@ -35,6 +35,11 @@
     <p><?php print render($content['field_pdc_storage_requirements'][0]['#markup']); ?></p>
     <!--<h4>Data Transfer</h4>
     <p>No Data Transfer required.</p>-->
+    <h4>Project Team</h4>
+    <?php 
+    $content['nesi_project']['field_p_teamlist']['#label_display'] = 'hidden'; 
+    print render($content['nesi_project']['field_p_teamlist']); 
+    ?>
   </aside>
   <div class="content proposal-details">
     <section>
