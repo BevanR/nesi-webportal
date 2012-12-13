@@ -39,6 +39,38 @@ function _nesi_team_selector_team_access($nid) {
   return FALSE;
 }
 
+function nesi_team_selector_preprocess_page(&$vars) {
+  //dpm(arg());
+  dpm($vars);
+  
+  $page_type = arg(0);
+  $delta = arg(1);
+  $indicator = arg(2);
+
+  // If node
+  if (!empty($page_type) && $page_type == 'node') {
+    // As well as team indicator
+    if (!empty($indicator) && $indicator == 'team') {
+      // load object
+      $node = node_load($delta); 
+      if ($node) {
+        // Check types
+        if ($node->type == 'project') {
+          // No need to load anything - just include project
+          $vars['page']['nesi_teamlist'] = render(field_view_field('node', $node, 'field_p_teamlist'));
+        }
+        if (($node->type == 'proposal_research_class') || ($node->type == 'proposal_development_class')) {
+          $team_node = node_load($node->field_p_project_id[LANGUAGE_NONE][0]);
+          // Add project data to page
+          if ($team_node) {
+            $vars['page']['nesi_teamlist'] = render(field_view_field('node', $team_node, 'field_p_teamlist'));
+          }
+        }
+      }
+    }
+  }
+}
+
 function nesi_team_selector_block_info() {    
   $blocks['project_team_members'] = array(
     // info: The name of the block.
