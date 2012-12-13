@@ -40,8 +40,6 @@ function _nesi_team_selector_team_access($nid) {
 }
 
 function nesi_team_selector_preprocess_page(&$vars) {
-  //dpm(arg());
-  dpm($vars);
   
   $page_type = arg(0);
   $delta = arg(1);
