@@ -23,10 +23,10 @@
     </div>
   </header>
   <aside class="proposal-allocation-requests">
-    <h3>Platform &amp; Allocation details</h3>
+    <h3>Platform details</h3>
     <ul class="unstyled">
       <li><strong>Desired HPC Platform:</strong> <?php print render($content['field_prc_proposed_hpc_platform'][0]['#markup']); ?></li>
-      <li><strong>CPU core hours:</strong> 150000</li>
+      <!--<li><strong>CPU core hours:</strong> 150000</li>-->
       <!--<li><strong>Storage Requirements:</strong> 5TB</li>-->
     </ul>
     <h4>Software Requirements:</h4>

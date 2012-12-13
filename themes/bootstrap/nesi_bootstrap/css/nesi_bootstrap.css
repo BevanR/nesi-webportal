@@ -7,8 +7,14 @@ body {
 }
 
 /* Styles - Dan to review */
+/* default block title */
 h2.block-title {
   font-size: 14px;
+}
+
+/* flag button links */
+#proposal-status ul.links li {
+  list-style: none;
 }
 
 a.tabledrag-handle .handle {
