@@ -47,14 +47,43 @@ function nesi_user_menu() {
   $items['user/dashboard'] = array(
     'title' => 'Dashboard',
     'page callback' => 'nesi_user_dashboard_callback',
-    'access callback' => TRUE,
+    'access callback' => 'user_is_logged_in',
     'type' => MENU_NORMAL_ITEM,
     'file' => 'nesi_user.pages.inc',
     'file path' => drupal_get_path('module', 'nesi_user'),
     'menu_name' => 'user-menu',
   ); 
-  
+
+  // Login with Tuakiri
+  $items['user/tuakiri'] = array(
+    'title' => 'Login via Tuakiri',
+    'page callback' => 'nesi_user_tuakiri_tab_callback',
+    'access callback' => 'user_is_anonymous',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 0,
+    'file' => 'nesi_user.pages.inc',
+    'file path' => drupal_get_path('module', 'nesi_user'),
+  );
+
+  $items['user/tuakiri/vho-request'] = array(
+    'title' => 'Tuakiri VHO Request',
+    'page callback' => 'nesi_user_tuakiri_vho_callback',
+    'access callback' => 'user_is_anonymous',
+    'type' => MENU_SUGGESTED_ITEM,
+    'weight' => 0,
+    'file' => 'nesi_user.pages.inc',
+    'file path' => drupal_get_path('module', 'nesi_user'),
+  );  
+
   return $items;
+}
+
+function nesi_user_menu_alter(&$items) {
+  // Disable access to request new password
+  $items['user/password']['access callback'] = FALSE;
+
+  // Login with Drupal
+  $items['user/login']['title'] = 'Login via Drupal';
 }
 
 /**
@@ -386,35 +415,6 @@ function nesi_user_field_access($op, $field, $entity_type, $entity, $account) {
      return FALSE;
    break;
  }
-}
-
-function nesi_user_menu_alter(&$items) {
-  // Disable access to request new password
-  $items['user/password']['access callback'] = FALSE;
-
-  // Login with Drupal
-  $items['user/login']['title'] = 'Login via Drupal';
-
-  // Login with Tuakiri
-  $items['user/tuakiri'] = array(
-    'title' => 'Login via Tuakiri',
-    'page callback' => 'nesi_user_tuakiri_tab_callback',
-    'access callback' => TRUE,
-    'type' => MENU_LOCAL_TASK,
-    'weight' => 0,
-    'file' => 'nesi_user.pages.inc',
-    'file path' => drupal_get_path('module', 'nesi_user'),
-  );
-
-  $items['user/tuakiri/vho-request'] = array(
-    'title' => 'Tuakiri VHO Request',
-    'page callback' => 'nesi_user_tuakiri_vho_callback',
-    'access callback' => TRUE,
-    'type' => MENU_NORMAL_ITEM,
-    'weight' => 0,
-    'file' => 'nesi_user.pages.inc',
-    'file path' => drupal_get_path('module', 'nesi_user'),
-  );
 }
 
 /* Modify and place the user menu */ 
