@@ -119,7 +119,7 @@ function nesi_team_selector_argument_selector_action($entities, $context = array
         }
       }        
  
-      drupal_goto('node/'.$project->nid);
+      drupal_goto('node/'.$project->nid.'/team');
     }
   }
   // Not a node... take user home 
@@ -128,7 +128,8 @@ function nesi_team_selector_argument_selector_action($entities, $context = array
 
 function nesi_team_selector_views_bulk_operations_form_alter(&$form, &$form_state, $vbo) {
   // Form alter placeholder to adjust / simplify the team member form
-  
+  //dpm($form);
+  $form['select']['#title'] = '';
 }
 
 function nesi_team_selector_module_implements_alter(&$implementations, $hook) {
