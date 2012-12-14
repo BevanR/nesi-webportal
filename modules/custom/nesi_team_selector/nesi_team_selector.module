@@ -156,3 +156,14 @@ function _nesi_team_selector_uid_search($user_id, $user_field = array()) {
   return $user_exists;
 }
 
+function _nesi_team_selector_uid_remove($user_id, $user_field = array()) {
+  // Removes a user from reference field.
+  foreach ($user_field as $key => $team_member) {
+    // Check for match
+    if ($team_member['uid'] == $user_id) {
+      unset($user_field[$key]);
+    }
+  }
+  return array_values($user_field);
+}
+
