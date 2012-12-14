@@ -53,6 +53,10 @@ HTML comment.
     <div class="field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
   <?php endif; ?>
   <div class="field-items"<?php print $content_attributes; ?>>
+    <?php 
+      $manageteam = arg(2); 
+      if ($manageteam == 'team') {
+    ?>
       <table class="table">
       <thead><tr><th></th><th>Name</th><th>Contact Email</th></tr></thead>
       <tbody>
@@ -72,5 +76,15 @@ HTML comment.
     <?php endforeach; ?>
       </tbody>
       </table>
+    <?php 
+      }
+      else {
+        ?><p><?php
+        foreach ($items as $delta => $item): 
+          print $item['#title'].'<br />'; 
+        endforeach;
+        ?></p><?php
+      }
+    ?>
   </div>
 </div>
