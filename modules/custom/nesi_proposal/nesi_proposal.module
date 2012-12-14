@@ -133,7 +133,7 @@ function _nesi_proposal_generate_pi_form($profile_emw, &$form) {
  */
 function nesi_proposal_node_insert($node) {
 
-  dpm ($node);
+  //dpm ($node);
   // Create a reference project
   if (($node->type == 'proposal_development_class') || ($node->type == 'proposal_research_class')) {
     $project_node = new stdClass(); // Create a new node object
@@ -165,7 +165,7 @@ function nesi_proposal_node_insert($node) {
     $project_node->field_p_proposed_schedule[$project_node->language][0]['value'] = $node->proposed_start_date;
     $project_node->field_p_proposal_id[$project_node->language][0]['nid'] = $node->nid;
 
-    dpm($project_node); 
+    //dpm($project_node); 
     node_save($project_node);
     
     // Update Proposal with linking project back reference
@@ -179,12 +179,12 @@ function nesi_proposal_node_insert($node) {
  */
 function nesi_proposal_node_update($node) {
 
-  dpm ($node);
+  //dpm ($node);
   // Create a reference project
   if (($node->type == 'proposal_development_class') || ($node->type == 'proposal_research_class')) {
 
     $project_node = node_load($node->field_p_project_id[$node->language][0]['nid']); 
-    dpm($project_node);
+    //dpm($project_node);
     // Call Reference
     $project_node->field_p_call_id[$project_node->language][0]['value'] = 1;
     $project_node->field_p_nesi_id[$project_node->language][0]['value'] = 'UNDEFINED';
@@ -207,7 +207,7 @@ function nesi_proposal_node_update($node) {
     }
     $project_node->field_p_proposed_schedule[$project_node->language][0]['value'] = $node->proposed_start_date;
 
-    dpm($project_node); 
+    //dpm($project_node); 
     node_save($project_node);    
   }
 }
@@ -240,7 +240,7 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
   // Preload data if available
   if (!empty($form['field_p_project_id'][LANGUAGE_NONE][0]['nid']['#default_value'])) {
     $project_data = node_load($form['field_p_project_id'][LANGUAGE_NONE][0]['nid']['#default_value']);
-    dpm($project_data);
+    //dpm($project_data);
   }
 
   if (!empty($project_data->field_p_proposed_schedule[LANGUAGE_NONE][0]['value'])) {
@@ -263,7 +263,7 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
     $form['submitter']['field_sub_check']['#default_value'] = 0;
   }
 
-  dpm($form);
+  //dpm($form);
   // Add a cancel button.
   $form['actions']['cancel'] = array(
     '#type' => 'submit',
@@ -316,7 +316,7 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
   // Preload data if available
   if (!empty($form['field_p_project_id'][LANGUAGE_NONE][0]['nid']['#default_value'])) {
     $project_data = node_load($form['field_p_project_id'][LANGUAGE_NONE][0]['nid']['#default_value']);
-    dpm($project_data);
+    //dpm($project_data);
   }
 
   if (!empty($project_data->field_p_proposed_schedule[LANGUAGE_NONE][0]['value'])) {
@@ -339,7 +339,7 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     $form['submitter']['field_sub_check']['#default_value'] = 0;
   }
 
-  dpm($form);
+  //dpm($form);
   // Add a cancel button.
   $form['actions']['cancel'] = array(
     '#type' => 'submit',
@@ -415,7 +415,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     $project_data['projectData'] = base64_encode(serialize($project_map));
 
     $project_json = json_encode($project_data);
-    dpm($project_json);
+    //dpm($project_json);
 
     // Attempt to send proposal to REST interface
     $rest_result = nesi_rest_insert_project($project_data);
@@ -518,7 +518,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     $project_data['projectData'] = base64_encode(serialize($project_map));
 
     $project_json = json_encode($project_data);
-    dpm($project_json);
+    //dpm($project_json);
 
     // Attempt to send proposal to REST interface
     $rest_result = nesi_rest_insert_project($project_data);

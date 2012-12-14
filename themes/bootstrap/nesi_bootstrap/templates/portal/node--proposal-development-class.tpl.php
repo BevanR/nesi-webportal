@@ -14,7 +14,15 @@
       </p>
       <p>Proposal Type: Proposal Development Class</p>
       <div id="proposal-status">
-        <p><em>Current Status:</em> <strong>In Draft</strong></p>
+        <p><em>Current Status:</em>&nbsp;<?php 
+          $flag = flag_get_flag('pdc_check_proposal');
+          if ($flag->is_flagged($node->nid)) {
+            ?><strong>Pending</strong><?php
+          }
+          else {
+            ?><strong>In Draft</strong><?php
+          }
+        ?></p>
         <?php if (!empty($content['links']['flag'])): ?>
           <?php print render($content['links']['flag']); ?>
         <?php endif; ?>

@@ -36,12 +36,13 @@
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
       <?php
-        kpr($page);
+        //kpr($page);
         // Render current team list
         if ($page['nesi_teamlist']) {
           print($page['nesi_teamlist']);
         }
       ?>
+      <h4>Search for other researchers to expand your team</h4>
       <?php print render($page['content']); ?>
 	  </section>
 
