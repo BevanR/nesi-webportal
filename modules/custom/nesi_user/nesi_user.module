@@ -51,7 +51,10 @@ function nesi_user_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'nesi_user.pages.inc',
     'file path' => drupal_get_path('module', 'nesi_user'),
+    'menu_name' => 'user-menu',
   ); 
+  
+  return $items;
 }
 
 /**
