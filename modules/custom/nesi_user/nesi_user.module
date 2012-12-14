@@ -68,7 +68,6 @@ function nesi_user_menu() {
   $items['user/tuakiri/vho-request'] = array(
     'title' => 'Tuakiri VHO Request',
     'page callback' => 'nesi_user_tuakiri_vho_callback',
-    'access callback' => 'user_is_anonymous',
     'type' => MENU_CALLBACK,
     'weight' => 0,
     'file' => 'nesi_user.pages.inc',
