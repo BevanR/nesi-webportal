@@ -14,6 +14,9 @@ function nesi_team_selector_menu_alter(&$items) {
   //dpm('exc'); 
   $items['node/%/team']['access callback'] = '_nesi_team_selector_team_access';
   $items['node/%/team']['access arguments'] = array(1);
+  $items['node/%/team/%/remove']['access callback'] = '_nesi_team_selector_team_access';
+  $items['node/%/team/%/remove']['access arguments'] = array(1);
+  $items['node/%/team/%/remove']['page callback'] = 'nesi_team_selector_unlink_member';
   //$items['node/%/team']['type'] = MENU_LOCAL_TASK;
   //$items['node/%/team']['title'] = 'what';
   //$items['node/%node/team']['access arguments'] = array('view hidden tabs');
@@ -37,6 +40,50 @@ function _nesi_team_selector_team_access($nid) {
     }
   }
   return FALSE;
+}
+
+function nesi_team_selector_unlink_member() {
+
+  $page_type = arg(0);
+  $delta = arg(1);
+  $indicator = arg(2);
+  
+  //Process
+  if (arg(4) == 'remove') {
+    // If node
+    if (!empty($page_type) && $page_type == 'node') {
+      // As well as team indicator
+      if (!empty($indicator) && $indicator == 'team') {
+        // load object
+        $node = node_load($delta); 
+        if ($node) {
+          // Check types
+          if ($node->type == 'project') {
+            // No need to load anything - just use project
+            $user_check = _nesi_team_selector_uid_search(arg(3), $node->field_p_teamlist[LANGUAGE_NONE]);
+            if ($user_check === TRUE) {
+              $node->field_p_teamlist[LANGUAGE_NONE] = _nesi_team_selector_uid_remove(arg(3), $node->field_p_teamlist[LANGUAGE_NONE]);
+              node_save($node);
+            }
+          }
+          if (($node->type == 'proposal_research_class') || ($node->type == 'proposal_development_class')) {
+            // Load pdc project
+            $team_node = node_load($node->field_p_project_id[LANGUAGE_NONE][0]);
+        
+            if ($team_node) {
+              $user_check = _nesi_team_selector_uid_search(arg(3), $team_node->field_p_teamlist[LANGUAGE_NONE]);
+              if ($user_check === TRUE) {
+                $team_node->field_p_teamlist[LANGUAGE_NONE] = _nesi_team_selector_uid_remove(arg(3), $team_node->field_p_teamlist[LANGUAGE_NONE]);
+                node_save($team_node);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  drupal_goto($page_type.'/'.$delta.'/'.$indicator);
 }
 
 function nesi_team_selector_preprocess_page(&$vars) {
