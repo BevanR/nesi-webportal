@@ -69,7 +69,7 @@ function nesi_user_menu() {
     'title' => 'Tuakiri VHO Request',
     'page callback' => 'nesi_user_tuakiri_vho_callback',
     'access callback' => 'user_is_anonymous',
-    'type' => MENU_SUGGESTED_ITEM,
+    'type' => MENU_CALLBACK,
     'weight' => 0,
     'file' => 'nesi_user.pages.inc',
     'file path' => drupal_get_path('module', 'nesi_user'),
@@ -95,6 +95,8 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
 
   // User Registration form alter
   if ($form['#form_id'] == 'user_register_form') {
+
+    $form_state['redirect'] = 'user/dashboard';
     $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];
 
     // Provide New Zealand and Australia as a primary option in nationality field.
@@ -107,6 +109,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
     $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
     $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
     //dpm($form['profile_researcher_profile']['field_user_nationality']);
+    $form['#validate'][] = 'nesi_user_validate_researcher_profile';
   }
 
   // User Profile form alter
@@ -174,6 +177,18 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
   }
 }
 
+function nesi_user_validate_researcher_profile(&$form, &$form_state) {
+  //dpm($form_state);  
+
+  // First we need to verify form specific validation  
+  if(form_get_errors()) {
+    return;
+  }  
+
+  // Once complete
+  $form_state['redirect'] = 'user/dashboard';
+}
+
 function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
   // Prevent tuakiri users from modifying their Drupal account password or email
   // Inspired by userprotect.module (http://drupal.org/project/userprotect)
@@ -203,6 +218,14 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
       unset($form['account']['pass'], $form['account']['current_pass'], $form['account']['current_pass_required_values']['#value']['pass']);
     }  
   }
+}
+
+/**
+ * Implements hook_user_insert()
+ */
+function nesi_user_user_insert(&$edit, $account, $category) {
+  // Set landing page for new user
+  $edit['redirect'] = 'user/dashboard';
 }
 
 /**
@@ -450,7 +473,7 @@ function nesi_user_user_delete($account) {
 function nesi_user_user_login(&$edit, $account) {
 
   // Set user login destination
-  $edit['redirect'] = 'user';
+  $edit['redirect'] = 'user/dashboard';
 
   $user_data = array(); 
   if (isset($edit['values']['profile_researcher_profile'])) {
