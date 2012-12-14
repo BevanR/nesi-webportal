@@ -58,19 +58,17 @@ HTML comment.
       if ($manageteam == 'team') {
     ?>
       <table class="table">
-      <thead><tr><th></th><th>Name</th><th>Contact Email</th></tr></thead>
+      <thead></th><th>Name</th><th>Contact Email</th><th>Options</th></tr></thead>
       <tbody>
     <?php foreach ($items as $delta => $item): 
       //kpr($item); 
       /* ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>> */ ?>
-      <?php /* <a href="/<?php print current_path(); ?>/<?php print($item['#options']['entity']->uid); ?>/remove">Remove from Team</a> */ ?>
-      <tr>
-      <td><a href="#">[ x ]</a></td>
       <?php //print render($item); ?>
+      <tr>
       <td><?php print $item['#title']; ?></td>
       <td><?php print $item['#options']['entity']->mail; ?></td>
-      </td>
+      <td><a class="btn" href="/<?php print current_path(); ?>/<?php print($item['#options']['entity']->uid); ?>/remove">Remove</a></td>
       </tr>
       <?php //</div> ?>
     <?php endforeach; ?>
