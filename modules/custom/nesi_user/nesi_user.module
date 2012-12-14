@@ -43,6 +43,17 @@ function nesi_user_init(){
   }
 }
 
+function nesi_user_menu() {
+  $items['user/dashboard'] = array(
+    'title' => 'Dashboard',
+    'page callback' => 'nesi_user_dashboard_callback',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'nesi_user.pages.inc',
+    'file path' => drupal_get_path('module', 'nesi_user'),
+  ); 
+}
+
 /**
  * Implements hook_form_profile2_form_alter()
  */

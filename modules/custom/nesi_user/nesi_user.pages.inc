@@ -1,5 +1,18 @@
 <?php
 
+function nesi_user_dashboard_callback() {
+
+  $output = '
+    <article role="main">
+      <header>
+        <h1>Dashboard</h1>
+      </header>
+      <p>Explore the dashboard below.</p>
+    </article>';
+
+  return $output;
+}
+
 function nesi_user_tuakiri_vho_callback() {
 
   $output = '
