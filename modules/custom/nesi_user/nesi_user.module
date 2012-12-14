@@ -86,6 +86,20 @@ function nesi_user_menu_alter(&$items) {
   $items['user/login']['title'] = 'Login via Drupal';
 }
 
+
+function nesi_user_form_alter(&$form, &$form_state, $form_id) {
+
+  /* Override flag options on node administration */
+  if ($form['#form_id'] == 'node_admin_content') {
+    foreach ($form['admin']['options']['operation']['#options'] as $key => $node_operation) {
+      // If flag operation - remove
+      if ((substr($key, 0,5) === 'flag_') || (substr($key, 0,7) === 'unflag_') ) {
+        unset($form['admin']['options']['operation']['#options'][$key]);
+      } 
+    }
+  }
+}
+
 /**
  * Implements hook_form_profile2_form_alter()
  */
