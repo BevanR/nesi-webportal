@@ -8,19 +8,6 @@
  *
  */
 
-function nesi_portal_menu_alter(&$items) {
-
-  //global $user;
-  //dpm($user);
-
-  //if (in_array("researcher", $user->roles)) { 
-  $items['node/add']['title'] = 'Add Proposal';
-  //}
-  //if (in_array("administrator", $user->roles)) { 
-  //  $items['node/add']['title'] = 'Add Proposal/Content';
-  //}
-}
-
 function nesi_portal_block_info() {    
   $blocks['researcher_navigation'] = array(
     // info: The name of the block.
@@ -63,8 +50,9 @@ function nesi_portal_block_view($delta = '') {
         if ($user->uid <> 0) {
         $block['subject'] = t('Researcher menu');
         $block['content'] = '<ul class="menu nav">
+            <li class="first leaf"><a title="Dashboard" href="'.$base_url.'/user/dashboard">Dashboard</a></li>
             <li class="first leaf"><a title="Project History" href="'.$base_url.'/researcher/history">History</a></li>
-            <li class="leaf"><a title="Live Projects" href="'.$base_url.'/researcher/projects">Live Projects</a></li>
+            <!--<li class="leaf"><a title="Live Projects" href="'.$base_url.'/researcher/projects">Live Projects</a></li>-->
             '.$current_proposal_link.'
             <li class="last leaf"><a href="'.$base_url.'/hpc-calculator">HPC Calculator</a></li>
             </ul>';
