@@ -46,7 +46,13 @@
     <h4>Project Team</h4>
     <?php 
     $content['nesi_project']['field_p_teamlist']['#label_display'] = 'hidden'; 
-    print render($content['nesi_project']['field_p_teamlist']); 
+    $team = render($content['nesi_project']['field_p_teamlist']); 
+    if (!empty($team)) { 
+      print $team; 
+    }
+    else {
+      print "<p>No current team members.</p>";
+    }
     ?>
   </aside>
   <div class="content proposal-details">
