@@ -247,6 +247,7 @@ function nesi_user_user_insert(&$edit, $account, $category) {
  */
 function nesi_user_user_update(&$edit, $account, $category) {
 
+  /* --- Update to new gold hook ---
   if ($category == 'researcher_profile') {
     if ($account->uid > 1) {
 
@@ -286,6 +287,7 @@ function nesi_user_user_update(&$edit, $account, $category) {
       }
     }
   }
+  */
 }
 
 /**
@@ -293,6 +295,7 @@ function nesi_user_user_update(&$edit, $account, $category) {
  */
 function nesi_user_user_view($account, $view_mode, $langcode) {
 
+  /* --- Update to new gold hook ---
   // Exclude superadmin
   if ($account->uid > 1) {
 
@@ -351,6 +354,7 @@ function nesi_user_user_view($account, $view_mode, $langcode) {
       }
     }
   }
+  */
 }
 
 function nesi_user_username_alter(&$name, $account) {
@@ -495,10 +499,13 @@ function nesi_user_user_login(&$edit, $account) {
     $user_data['altEmail'] = (!empty($profile['field_user_altemail'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_altemail'][LANGUAGE_NONE][0]['value'] : "";
     $user_data['nationality'] = (!empty($profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'])) ? $profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'] : "";  
   }
+  /* --- Update to new gold hook ---
   // Check user had been created in GOLD
   _gold_user_create($account, $user_data);
+  */
 }
 
+  /* --- Update to new gold hook ---
 function _gold_user_create($account, $user_data = array()) {
   // Skip if superadmin
   if ($account->uid > 1) {
@@ -508,13 +515,14 @@ function _gold_user_create($account, $user_data = array()) {
 
     // If gold_flag is not set, then attempt to create user in GOLD for the first time...
     if (empty($gold_flag)) {
-
+  */
       /* ***************************************************** */
       /* CREATE OR UPDATE OF USERS IN GOLD                     */
       /* We set user data based on reverse order of authority: */ 
       /* (core -> researcher profile -> tuakiri)               */
       /* ***************************************************** */
       // Set user data based on known attributes
+/*
       $user_data['email'] = $account->mail;
       // Set presupplied fields ready for override - not so nice but required for unset attributes
       $user_data['firstName'] = (!empty($user_data['firstName'])) ? $user_data['firstName'] : "";
@@ -586,4 +594,5 @@ function _gold_user_create($account, $user_data = array()) {
     }
   }
 }
+*/
 
