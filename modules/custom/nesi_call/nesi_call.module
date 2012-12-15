@@ -6,9 +6,36 @@
 
 include_once 'nesi_call.features.inc';
 
+function nesi_call_menu() {
+  $items['nesi/open'] = array(
+    'title' => 'Apply for Access',
+    'page callback' => 'nesi_call_timetable_callback',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  ); 
+  
+  return $items;
+}
+
 function nesi_call_form_call_node_form_alter(&$form, &$form_state, $form_id) {
   // Calls do not require a title
   $form['title']['#default_value'] = 'Open Call';
   $form['title']['#access'] = FALSE;
 
 }
+
+function nesi_call_timetable_callback() {
+
+  $display_id = 'page';
+  $view = views_get_view('open_calls');
+  dpm($view);
+  //unset($view->display['default']->display_options['filters']['field_call_allocation_class_value']]['value']['proposal_development_class']);
+  $view->set_display($display_id);
+  //$view->set_arguments();
+  $view->pre_execute();
+  $view->execute();
+  $view_result = $view->result;  
+  dpm($view_result);
+  return '';
+}
+
