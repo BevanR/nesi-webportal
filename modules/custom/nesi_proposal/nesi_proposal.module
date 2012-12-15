@@ -373,6 +373,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
     return;
   }  
 
+  /* --- Update to new gold hook ---
   if ($form_state['clicked_button']['#value'] <> 'Cancel') {
 
     global $user;
@@ -442,7 +443,7 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
       form_set_error('nesi_proposal','There was a problem saving your proposal information. Try to submit again. if you continue to experience problems, please try again later.');
     }
   }
-
+  */
 }
 
 /**
@@ -456,6 +457,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
     return;
   }  
 
+  /* --- Update to new gold hook ---
   if ($form_state['clicked_button']['#value'] <> 'Cancel') {
 
     global $user;
@@ -545,6 +547,7 @@ function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
       form_set_error('nesi_proposal','There was a problem saving your proposal information. Try to submit again. if you continue to experience problems, please try again later.');
     }
   }
+  */
 }
 
 function nesi_proposal_form_cancel(&$form, &$form_state) {
