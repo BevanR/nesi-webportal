@@ -125,6 +125,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
     $form['#validate'][] = 'nesi_user_validate_researcher_profile';
   }
 
+  /* --- Update to new gold hook ---
   // User Profile form alter
   if ($form['#form_id'] == 'user_profile_form') {
     
@@ -187,7 +188,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
       }
       
     } 
-  }
+  } */
 }
 
 function nesi_user_validate_researcher_profile(&$form, &$form_state) {
