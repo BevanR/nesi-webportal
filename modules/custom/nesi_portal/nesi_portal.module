@@ -40,7 +40,7 @@ function nesi_portal_block_view($delta = '') {
     }
   }
   else {
-    $current_proposal_link = '<li class="collapsed"><a href="'.$base_url.'/node/add">Add Proposal</a></li>';
+    $current_proposal_link = '<li class="collapsed"><a href="'.$base_url.'/researcher/proposal/add">Add Proposal</a></li>';
   }
 
   // The $delta parameter tells us which block is being requested.
@@ -51,7 +51,7 @@ function nesi_portal_block_view($delta = '') {
         $block['subject'] = t('Researcher menu');
         $block['content'] = '<ul class="menu nav">
             <li class="first leaf"><a title="Dashboard" href="'.$base_url.'/user/dashboard">Dashboard</a></li>
-            <li class="first leaf"><a title="Project History" href="'.$base_url.'/researcher/history">History</a></li>
+            <!--<li class="first leaf"><a title="Project History" href="'.$base_url.'/researcher/history">History</a></li>-->
             <!--<li class="leaf"><a title="Live Projects" href="'.$base_url.'/researcher/projects">Live Projects</a></li>-->
             '.$current_proposal_link.'
             <li class="last leaf"><a href="'.$base_url.'/hpc-calculator">HPC Calculator</a></li>
