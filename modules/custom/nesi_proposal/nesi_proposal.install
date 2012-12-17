@@ -1,9 +1,9 @@
 <?php
 /**
  * @file
- * NeSI Call module - installation.
+ * NeSI Proposal module - installation.
  * 
- * This file is executed on installation of the nesi_call module.
+ * This file is executed on installation of the nesi_proposal module.
  *
  */
 
