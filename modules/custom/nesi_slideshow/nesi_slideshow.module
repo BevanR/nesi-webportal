@@ -7,7 +7,81 @@
 include_once 'nesi_slideshow.features.inc';
 
 function nesi_slideshow_form_slideshow_item_node_form_alter(&$form, &$form_state, $form_id) {
-  // Calls do not require a title
+  // Slides do not have a standard editable title
   $form['title']['#default_value'] = 'Slideshow Banner Item';
   $form['title']['#access'] = FALSE;
 }
+
+function nesi_slideshow_block_info() {    
+  $blocks['nesi_slideshow'] = array(
+    // info: The name of the block.
+    'info' => t('NeSI Slideshow Banner'),
+    'status' => TRUE,
+    'region' => 'subheader',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_NO_CACHE,
+    'pages' => implode("\n",array('<front>')),
+  );
+
+  return $blocks;
+}
+
+function nesi_slideshow_block_view($delta = '') {
+
+  $block = array();
+  // Load content
+  $view = views_get_view('nesi_slideshow');
+  $view->execute();
+  $response = $view->result; 
+  //dpm($response);
+
+  $slide_prefix = '
+  <div class="hero hero-full">
+    <div id="home-hero" class="carousel slide">
+    <div class="carousel-inner">
+  ';
+
+  $slide_suffix = '
+    </div>
+    <a data-slide="prev" href="#home-hero" class="carousel-control left">‹</a>
+    <a data-slide="next" href="#home-hero" class="carousel-control right">›</a>
+    </div>
+  </div>
+  ';
+
+  $output = '';
+  $count = 0;
+
+  if (!empty($response)) {
+    foreach ($response as $slide) {
+      $url = file_create_url($slide->field_field_ns_banner_image[0]['rendered']['#item']['uri']);
+      $url = parse_url($url);
+      $active = (empty($count)) ? ' active' : '';  
+      $output .= '
+      <div class="item'.$active.'" style="background-color:#'.$slide->field_field_ns_banner_bg_color[0]['rendered']['#item'].';">
+        <div class="container">
+          <img src="'.$url['path'].'">
+          <div class="slide-content">
+            <h2 class="slide-title">
+              <span class="line1" style="color:#fff; background-color:#'.$slide->field_field_ns_title_bg_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_title_primary[0]['rendered']['#markup'].' <br /></span>
+              <span class="line2" style="color:#fff; background-color:#'.$slide->field_field_ns_title_bg_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_title_secondary[0]['rendered']['#markup'].'</span>
+            </h2>
+            <p><a class="slide-link" href="#" style="color:#'.$slide->field_field_ns_link_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_link_title[0]['rendered']['#markup'].'</a></p>
+          </div>
+        </div>
+      </div>';
+      $count++;
+    } 
+  }
+  // The $delta parameter tells us which block is being requested.
+    switch ($delta) {
+      case 'nesi_slideshow':
+        // Set block content
+        $block['subject'] = t('<none>');
+        $block['content'] = $slide_prefix.$output.$slide_suffix;
+        break;
+    }
+  
+  return $block;
+}
+
