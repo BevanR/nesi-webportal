@@ -5,3 +5,9 @@
  */
 
 include_once 'nesi_slideshow.features.inc';
+
+function nesi_slideshow_form_slideshow_item_node_form_alter(&$form, &$form_state, $form_id) {
+  // Calls do not require a title
+  $form['title']['#default_value'] = 'Slideshow Banner Item';
+  $form['title']['#access'] = FALSE;
+}
