@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the nesi_slideshow feature.
+ */
+
+include_once 'nesi_slideshow.features.inc';
