@@ -1,6 +1,7 @@
 
   <?php print render($page['header']); ?>
 
+  <?php //print $messages; ?>
   <?php print render($page['subheader']); ?>
 
   <?php print render($page['directory']); ?>
@@ -13,6 +14,6 @@
     jQuery(document).ready(function() {
       jQuery('[rel="tooltip"]').tooltip();
       jQuery('#home-hero').carousel();
-      jQuery('#home-hero .slide-title').lettering('lines').children('words');
+      //jQuery('#home-hero .slide-title').lettering('lines').children('words');
     });
 	</script>
