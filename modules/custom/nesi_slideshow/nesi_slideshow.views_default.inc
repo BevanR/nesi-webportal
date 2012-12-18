@@ -79,11 +79,16 @@ function nesi_slideshow_views_default_views() {
   $handler->display->display_options['fields']['field_ns_title_secondary']['table'] = 'field_data_field_ns_title_secondary';
   $handler->display->display_options['fields']['field_ns_title_secondary']['field'] = 'field_ns_title_secondary';
   $handler->display->display_options['fields']['field_ns_title_secondary']['element_default_classes'] = FALSE;
-  /* Field: Content: Title Background Colour */
-  $handler->display->display_options['fields']['field_ns_title_bg_color']['id'] = 'field_ns_title_bg_color';
-  $handler->display->display_options['fields']['field_ns_title_bg_color']['table'] = 'field_data_field_ns_title_bg_color';
-  $handler->display->display_options['fields']['field_ns_title_bg_color']['field'] = 'field_ns_title_bg_color';
-  $handler->display->display_options['fields']['field_ns_title_bg_color']['element_default_classes'] = FALSE;
+  /* Field: Content: Primary Title Background Colour */
+  $handler->display->display_options['fields']['field_ns_primary_bg_color']['id'] = 'field_ns_primary_bg_color';
+  $handler->display->display_options['fields']['field_ns_primary_bg_color']['table'] = 'field_data_field_ns_primary_bg_color';
+  $handler->display->display_options['fields']['field_ns_primary_bg_color']['field'] = 'field_ns_primary_bg_color';
+  $handler->display->display_options['fields']['field_ns_primary_bg_color']['element_default_classes'] = FALSE;
+  /* Field: Content: Secondary Title Background Colour */
+  $handler->display->display_options['fields']['field_ns_secondary_bg_color']['id'] = 'field_ns_secondary_bg_color';
+  $handler->display->display_options['fields']['field_ns_secondary_bg_color']['table'] = 'field_data_field_ns_secondary_bg_color';
+  $handler->display->display_options['fields']['field_ns_secondary_bg_color']['field'] = 'field_ns_secondary_bg_color';
+  $handler->display->display_options['fields']['field_ns_secondary_bg_color']['element_default_classes'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

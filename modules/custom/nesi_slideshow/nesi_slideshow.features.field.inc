@@ -60,7 +60,7 @@ function nesi_slideshow_field_default_fields() {
         'module' => 'jquery_colorpicker',
         'settings' => array(),
         'type' => 'jquery_colorpicker',
-        'weight' => '8',
+        'weight' => '10',
       ),
     ),
   );
@@ -141,7 +141,7 @@ function nesi_slideshow_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '7',
+        'weight' => '9',
       ),
     ),
   );
@@ -196,7 +196,7 @@ function nesi_slideshow_field_default_fields() {
         'module' => 'jquery_colorpicker',
         'settings' => array(),
         'type' => 'jquery_colorpicker',
-        'weight' => '6',
+        'weight' => '8',
       ),
     ),
   );
@@ -284,7 +284,7 @@ function nesi_slideshow_field_default_fields() {
           'size' => '120',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '5',
+        'weight' => '7',
       ),
     ),
   );
@@ -354,19 +354,19 @@ function nesi_slideshow_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '6',
       ),
     ),
   );
 
-  // Exported field: 'node-slideshow_item-field_ns_title_bg_color'.
-  $fields['node-slideshow_item-field_ns_title_bg_color'] = array(
+  // Exported field: 'node-slideshow_item-field_ns_primary_bg_color'.
+  $fields['node-slideshow_item-field_ns_primary_bg_color'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_ns_title_bg_color',
+      'field_name' => 'field_ns_primary_bg_color',
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
@@ -381,14 +381,14 @@ function nesi_slideshow_field_default_fields() {
       'bundle' => 'slideshow_item',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Sets the colour of the background for the Primary Title.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'module' => 'jquery_colorpicker',
           'settings' => array(),
           'type' => 'jquery_colorpicker_color_display',
-          'weight' => 8,
+          'weight' => 9,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -398,8 +398,8 @@ function nesi_slideshow_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_ns_title_bg_color',
-      'label' => 'Title Background Colour',
+      'field_name' => 'field_ns_primary_bg_color',
+      'label' => 'Primary Title Background Colour',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -409,7 +409,62 @@ function nesi_slideshow_field_default_fields() {
         'module' => 'jquery_colorpicker',
         'settings' => array(),
         'type' => 'jquery_colorpicker',
-        'weight' => '3',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-slideshow_item-field_ns_secondary_bg_color'.
+  $fields['node-slideshow_item-field_ns_secondary_bg_color'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ns_secondary_bg_color',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'jquery_colorpicker',
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'jquery_colorpicker',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow_item',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Sets the colour of the background for the Secondary Title.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'jquery_colorpicker',
+          'settings' => array(),
+          'type' => 'jquery_colorpicker_color_display',
+          'weight' => 10,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ns_secondary_bg_color',
+      'label' => 'Secondary Title Background Colour',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'jquery_colorpicker',
+        'settings' => array(),
+        'type' => 'jquery_colorpicker',
+        'weight' => '4',
       ),
     ),
   );
@@ -549,7 +604,7 @@ function nesi_slideshow_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -562,11 +617,14 @@ function nesi_slideshow_field_default_fields() {
   t('Link Target Node');
   t('Link Title');
   t('Primary Title');
+  t('Primary Title Background Colour');
   t('Secondary Title');
+  t('Secondary Title Background Colour');
+  t('Sets the colour of the background for the Primary Title.');
+  t('Sets the colour of the background for the Secondary Title.');
   t('Text to appear as the clickable link below the slideshow title.');
   t('The first title displayed on the slideshow banner.');
   t('The second title line to appear on the slideshow banner.');
-  t('Title Background Colour');
   t('Title of the node, page, case study, event you wish link to from the slideshow banner.');
 
   return $fields;
