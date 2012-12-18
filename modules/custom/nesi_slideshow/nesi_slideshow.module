@@ -71,8 +71,8 @@ function nesi_slideshow_block_view($delta = '') {
           <img src="'.$url['path'].'">
           <div class="slide-content">
             <h2 class="slide-title">
-              <span class="line1" style="color:#fff; background-color:#'.$slide->field_field_ns_title_bg_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_title_primary[0]['rendered']['#markup'].' <br /></span>
-              <span class="line2" style="color:#fff; background-color:#'.$slide->field_field_ns_title_bg_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_title_secondary[0]['rendered']['#markup'].'</span>
+              <span class="line1" style="color:#fff; background-color:#'.$slide->field_field_ns_primary_bg_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_title_primary[0]['rendered']['#markup'].' <br /></span>
+              <span class="line2" style="color:#fff; background-color:#'.$slide->field_field_ns_secondary_bg_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_title_secondary[0]['rendered']['#markup'].'</span>
             </h2>
             <p><a class="slide-link" href="#" style="color:#'.$slide->field_field_ns_link_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_link_title[0]['rendered']['#markup'].'</a></p>
           </div>
