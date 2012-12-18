@@ -10,6 +10,14 @@ function nesi_slideshow_form_slideshow_item_node_form_alter(&$form, &$form_state
   // Slides do not have a standard editable title
   $form['title']['#default_value'] = 'Slideshow Banner Item';
   $form['title']['#access'] = FALSE;
+  $form['options']['promote']['#default_value'] = 0;
+  $form['options']['sticky']['#default_value'] = 0;
+
+  // Uncomment next line if no need for configuration tabs
+  //$form['additional_settings']['#access'] = FALSE;
+
+  // Hide menu config tab
+  $form['menu']['#access'] = FALSE;
 }
 
 function nesi_slideshow_block_info() {    
