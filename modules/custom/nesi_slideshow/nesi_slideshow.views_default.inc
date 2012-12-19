@@ -89,11 +89,11 @@ function nesi_slideshow_views_default_views() {
   $handler->display->display_options['fields']['field_ns_secondary_bg_color']['table'] = 'field_data_field_ns_secondary_bg_color';
   $handler->display->display_options['fields']['field_ns_secondary_bg_color']['field'] = 'field_ns_secondary_bg_color';
   $handler->display->display_options['fields']['field_ns_secondary_bg_color']['element_default_classes'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
