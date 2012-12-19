@@ -30,7 +30,11 @@ function nesi_slideshow_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'slideshow_item',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'jquery_colorpicker' => 'e1e1e1',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -166,7 +170,11 @@ function nesi_slideshow_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'slideshow_item',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'jquery_colorpicker' => '2b9fc2',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -379,7 +387,11 @@ function nesi_slideshow_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'slideshow_item',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'jquery_colorpicker' => '2b9fc2',
+        ),
+      ),
       'deleted' => '0',
       'description' => 'Sets the colour of the background for the Primary Title.',
       'display' => array(
@@ -434,7 +446,11 @@ function nesi_slideshow_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'slideshow_item',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'jquery_colorpicker' => '2b9fc2',
+        ),
+      ),
       'deleted' => '0',
       'description' => 'Sets the colour of the background for the Secondary Title.',
       'display' => array(
