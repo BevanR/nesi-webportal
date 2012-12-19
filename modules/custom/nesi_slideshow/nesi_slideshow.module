@@ -41,55 +41,71 @@ function nesi_slideshow_block_view($delta = '') {
   $view = views_get_view('nesi_slideshow');
   $view->execute();
   $response = $view->result; 
-  //dpm($response);
-
-  $slide_prefix = '
-  <div class="hero hero-full">
-    <div id="home-hero" class="carousel slide">
-    <div class="carousel-inner">
-  ';
-
-  $slide_suffix = '
-    </div>
-    <a data-slide="prev" href="#home-hero" class="carousel-control left">‹</a>
-    <a data-slide="next" href="#home-hero" class="carousel-control right">›</a>
-    </div>
-  </div>
-  ';
-
-  $output = '';
+  //init  
+  $slides = '';
   $count = 0;
 
   if (!empty($response)) {
     foreach ($response as $slide) {
+      // Get image
       $url = file_create_url($slide->field_field_ns_banner_image[0]['rendered']['#item']['uri']);
       $url = parse_url($url);
+      // Set active item
       $active = (empty($count)) ? ' active' : '';  
-      $output .= '
-      <div class="item'.$active.'" style="background-color:#'.$slide->field_field_ns_banner_bg_color[0]['rendered']['#item'].';">
-        <div class="container">
-          <img src="'.$url['path'].'">
-          <div class="slide-content">
-            <h2 class="slide-title">
-              <span class="line1" style="color:#fff; background-color:#'.$slide->field_field_ns_primary_bg_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_title_primary[0]['rendered']['#markup'].' <br /></span>
-              <span class="line2" style="color:#fff; background-color:#'.$slide->field_field_ns_secondary_bg_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_title_secondary[0]['rendered']['#markup'].'</span>
-            </h2>
-            <p><a class="slide-link" href="#" style="color:#'.$slide->field_field_ns_link_color[0]['rendered']['#item'].';">'.$slide->field_field_ns_link_title[0]['rendered']['#markup'].'</a></p>
-          </div>
-        </div>
-      </div>';
+      // Prep content variables
+      $variables = array(
+        'banner_bg_color' => $slide->field_field_ns_banner_bg_color[0]['rendered']['#item'], 
+        'primary_bg_color' => $slide->field_field_ns_primary_bg_color[0]['rendered']['#item'], 
+        'secondary_bg_color' => $slide->field_field_ns_secondary_bg_color[0]['rendered']['#item'], 
+        'primary_title' => $slide->field_field_ns_title_primary[0]['rendered']['#markup'],
+        'secondary_title' => $slide->field_field_ns_title_secondary[0]['rendered']['#markup'],
+        'link_title' => $slide->field_field_ns_link_title[0]['rendered']['#markup'],
+        'link_target' => url($slide->field_field_ns_link_target_node[0]['rendered']['#href']),
+        'link_color' => $slide->field_field_ns_link_color[0]['rendered']['#item'],
+        'image_path' => $url['path'],
+        'active' => $active,
+      );
+      $slides .= theme('nesi_slideshow_item', $variables);
       $count++;
     } 
   }
   // The $delta parameter tells us which block is being requested.
-    switch ($delta) {
-      case 'nesi_slideshow':
-        // Set block content
-        $block['subject'] = t('<none>');
-        $block['content'] = $slide_prefix.$output.$slide_suffix;
-        break;
-    }
+  switch ($delta) {
+    case 'nesi_slideshow':
+      // Set block content
+      $block['subject'] = t('<none>');
+      $block['content'] = theme('nesi_slideshow_wrapper', array('content' => $slides));
+      break;
+  }
   
   return $block;
 }
 
+function nesi_slideshow_theme($existing, $type, $theme, $path) {
+  
+  $variables = array(
+    'banner_bg_color' => 'E1E1E1', 
+    'primary_bg_color' => '000000', 
+    'secondary_bg_color' => '000000', 
+    'primary_title' => NULL,
+    'secondary_title' => NULL,
+    'link_title' => NULL,
+    'link_target' => '#',
+    'link_color' => 'FFFFFF',
+    'image_path' => NULL,
+    'active' => FALSE,
+  );
+
+  return array(
+    'nesi_slideshow_item' => array(
+      'variables' => $variables,
+      'template' => 'nesi-slideshow-item', 
+      'path' => drupal_get_path('module', 'nesi_slideshow') .'/templates'
+    ),
+    'nesi_slideshow_wrapper' => array(
+      'variables' => array('content' => NULL),
+      'template' => 'nesi-slideshow-wrapper', 
+      'path' => drupal_get_path('module', 'nesi_slideshow') .'/templates'
+    )
+  );  
+}
