@@ -1,4 +1,4 @@
-<div class="item<?php print $active; ?>" style="background-color:#<?php print $banner_bg_color; ?>;">
+<div class="item<?php if ($active) { print(' active'); } ?>" style="background-color:#<?php print $banner_bg_color; ?>;">
   <div class="container">
     <img src="<?php print $image_path; ?>">
     <div class="slide-content">
