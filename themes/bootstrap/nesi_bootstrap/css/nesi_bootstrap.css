@@ -27,3 +27,23 @@ a.tabledrag-handle .handle {
     position: relative;
 }
 
+/* jQuery Colorpicker fix inputs */
+.colorpicker input {
+	background-color: transparent;
+	border: 1px solid transparent;
+	position: absolute;
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #898989;
+	top: 4px;
+	right: 11px;
+	text-align: right;
+	margin: 0;
+	padding: 0;
+	height: 11px;
+  width: auto;
+}
+.colorpicker_hex input {
+	right: 6px;
+}
+
