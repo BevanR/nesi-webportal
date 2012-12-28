@@ -403,6 +403,7 @@ function nesi_rest_update_user($user_data = array()) {
     "projectId" : "..." 
   }
  *
+ * Note: project users can not be updated via rest_update_project
  */
 function nesi_rest_update_project($project_data = array()) {
 
