@@ -456,6 +456,7 @@ function nesi_rest_get_principal_projects($user_id) {
     return FALSE;
   }
 }
+*/
 
 /* Queries and returns all projects for this user. 
  * REST URI /rest/goldwrap/users/{username}/projects
@@ -626,6 +627,33 @@ function nesi_rest_project_add_allocation($project_id, $allocation = array()) {
 
   // Communicate with REST api
   $rest_result = nesi_rest_connection_process($connection_uri, 'POST');
+
+  // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
+  // Valid response is  
+  if ($response_check) {
+    return $rest_result;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/* Get allocations of a project
+ * REST URI /rest/goldwrap/projects/{projectId}/allocations
+ * http method GET
+ *
+ */
+function nesi_rest_get_project_allocations($project_id) {
+
+  $rest_api_call = 'projects/'.$project_id.'/allocations';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
 
   // Check response for failure
   $response_check = nesi_rest_verify_response($rest_result);
