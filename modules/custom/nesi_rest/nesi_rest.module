@@ -392,14 +392,23 @@ function nesi_rest_update_user($user_data = array()) {
 }
 
 /* Takes updated project object as array, converts to json and posts to rest server
- * REST URI /rest/goldwrap/projects/{username}
+ * REST URI /rest/goldwrap/projects
  * http method POST
+ *
+  json map {
+    "clazz" : "...", 
+    "machines" : [ "...", ... ], 
+    "users" : [ "...", ... ], 
+    "description" : "...", 
+    "projectId" : "..." 
+  }
+ *
  */
 function nesi_rest_update_project($project_data = array()) {
 
   $json_data = json_encode($project_data);
 
-  $rest_api_call = 'projects/'.$project_data['projectName'];
+  $rest_api_call = 'projects';
 
   // Construct REST api call 
   $connection_uri = nesi_rest_connection_uri().$rest_api_call;
