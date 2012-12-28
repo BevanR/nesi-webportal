@@ -344,8 +344,18 @@ function nesi_rest_insert_user($user_data = array()) {
 }
 
 /* Takes updated user object as array, converts to json and posts to rest server
- * REST URI /rest/goldwrap/users/{username}
+ * REST URI /rest/goldwrap/users/{userId}
  * http method POST
+ *
+   json map {
+    "affiliation" : "...", 
+    "email" : "...",
+    "fullName" : "...",
+    "organization" : "...", 
+    "phone" : "...", 
+    "userId" : "..."
+   }
+ *
  */
 function nesi_rest_update_user($user_data = array()) {
 
