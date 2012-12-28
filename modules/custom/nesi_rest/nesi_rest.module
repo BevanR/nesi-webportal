@@ -432,7 +432,9 @@ function nesi_rest_update_project($project_data = array()) {
 /* Queries and returns all projects where this user is the principal. 
  * REST URI /rest/goldwrap/users/{username}/principal
  * http method GET
- */
+
+ REMOVED get_principal_projects no longer has related goldwrap function
+
 function nesi_rest_get_principal_projects($user_id) {
 
   $rest_api_call = 'users/'.$user_id.'/principal';
