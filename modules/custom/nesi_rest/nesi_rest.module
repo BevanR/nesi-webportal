@@ -256,6 +256,16 @@ function nesi_rest_get_users() {
 /* Return user information
  * REST URI /rest/goldwrap/users/{userId}
  * http method GET
+ *
+   json map {
+    "affiliation" : "...", 
+    "email" : "...",
+    "fullName" : "...",
+    "organization" : "...", 
+    "phone" : "...", 
+    "userId" : "..."
+   }
+ *
  */
 function nesi_rest_get_user($user_id) {
 
