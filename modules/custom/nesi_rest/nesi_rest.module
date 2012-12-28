@@ -458,7 +458,9 @@ function nesi_rest_get_principal_projects($user_id) {
 /* Queries and returns all projects for this user. 
  * REST URI /rest/goldwrap/users/{username}/projects
  * http method GET
- */
+ 
+ REMOVED get_user_projects no longer has related goldwrap function
+
 function nesi_rest_get_user_projects($user_id) {
 
   $rest_api_call = 'users/'.$user_id.'/projects';
@@ -480,6 +482,7 @@ function nesi_rest_get_user_projects($user_id) {
     return FALSE;
   }
 }
+*/
 
 /* Creates a project
  * REST URI /rest/goldwrap/projects
