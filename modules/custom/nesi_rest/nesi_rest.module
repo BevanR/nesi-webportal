@@ -473,7 +473,16 @@ function nesi_rest_get_user_projects($user_id) {
 
 /* Creates a project
  * REST URI /rest/goldwrap/projects
- * http method POST
+ * http method PUT
+ *
+  json map {
+    "clazz" : "...", 
+    "machines" : [ "...", ... ], 
+    "users" : [ "...", ... ], 
+    "description" : "...", 
+    "projectId" : "..." 
+  }
+ *
  */
 function nesi_rest_insert_project($project_data = array()) {
 
@@ -485,7 +494,7 @@ function nesi_rest_insert_project($project_data = array()) {
   $connection_uri = nesi_rest_connection_uri().$rest_api_call;
 
   // Communicate with REST api
-  $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
+  $rest_result = nesi_rest_connection_process($connection_uri, 'PUT', $json_data);
 
   // Check response for failure
   $response_check = nesi_rest_verify_response($rest_result);
