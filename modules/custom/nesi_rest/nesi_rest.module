@@ -305,9 +305,19 @@ function nesi_rest_get_projects() {
   } 
 }
 
-/* Takes user object as array, converts to json and posts to rest server
- * REST URI /rest/goldwrap/users/{username}
- * http method POST
+/* Takes user object as array, converts to json -> PUT to rest server
+ * REST URI /rest/goldwrap/users
+ * http method PUT
+ *
+   json map {
+    "affiliation" : "...", 
+    "email" : "...",
+    "fullName" : "...",
+    "organization" : "...", 
+    "phone" : "...", 
+    "userId" : "..."
+   }
+ *
  */
 function nesi_rest_insert_user($user_data = array()) {
 
@@ -319,7 +329,7 @@ function nesi_rest_insert_user($user_data = array()) {
   $connection_uri = nesi_rest_connection_uri().$rest_api_call;
 
   // Communicate with REST api
-  $rest_result = nesi_rest_connection_process($connection_uri, 'POST', $json_data);
+  $rest_result = nesi_rest_connection_process($connection_uri, 'PUT', $json_data);
 
   // Check response for failure
   $response_check = nesi_rest_verify_response($rest_result);
@@ -331,7 +341,6 @@ function nesi_rest_insert_user($user_data = array()) {
   else {
     return FALSE;
   }
- 
 }
 
 /* Takes updated user object as array, converts to json and posts to rest server
