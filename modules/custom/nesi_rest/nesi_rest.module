@@ -567,14 +567,14 @@ function nesi_rest_delete_project($project_name) {
 }
 
 /* Add a user to a project
- * REST URI /rest/goldwrap/projects/{projectName}/deposit
+ * REST URI /rest/goldwrap/projects/{projectId}/add_user
  * http method POST
  */
-function nesi_rest_project_add_user($project_name, $user_id) {
+function nesi_rest_project_add_user($project_id, $user_id) {
 
   $json_data = json_encode($user_id);
 
-  $rest_api_call = 'projects/'.$project_name.'/add_user';
+  $rest_api_call = 'projects/'.$project_id.'/add_user';
 
   // Construct REST api call 
   $connection_uri = nesi_rest_connection_uri().$rest_api_call;
@@ -595,18 +595,32 @@ function nesi_rest_project_add_user($project_name, $user_id) {
 }
 
 /* Add an allocation to a project
- * REST URI /rest/goldwrap/projects/{projectName}/users
+ * REST URI /rest/goldwrap/projects/{projectId}/deposit
  * http method POST
+ *
+  allocation json map { 
+  "accountId" : ..., 
+  "allocationId" : ..., 
+  "amount" : ..., 
+  "clazz" : "...", 
+  "creditLimit" : ..., 
+  "deposited" : ..., 
+  "description" : "...", 
+  "endDate" : "...", 
+  "machines" : [ "...", ... ], 
+  "startDate" : "...", 
+  "active" : false 
+  }
  */
-function nesi_rest_get_project_users($project_name) {
+function nesi_rest_project_add_allocation($project_id, $allocation = array()) {
 
-  $rest_api_call = 'projects/'.$project_name.'/users';
+  $rest_api_call = 'projects/'.$project_id.'/deposit';
 
   // Construct REST api call 
   $connection_uri = nesi_rest_connection_uri().$rest_api_call;
 
   // Communicate with REST api
-  $rest_result = nesi_rest_connection_process($connection_uri, 'GET');
+  $rest_result = nesi_rest_connection_process($connection_uri, 'POST');
 
   // Check response for failure
   $response_check = nesi_rest_verify_response($rest_result);
