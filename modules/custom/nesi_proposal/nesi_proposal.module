@@ -244,6 +244,11 @@ function nesi_proposal_node_update($node) {
 function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &$form_state, $form_id) {
   //dpm('* Implements hook_form_FORM_ID_alter()');
   //dpm($form_state);
+
+  // Default sticky and promote to frontpage to unchecked
+  $form['options']['promote']['#default_value'] = 0;
+  $form['options']['sticky']['#default_value'] = 0;
+
   $form['#validate'][] = 'nesi_proposal_validate_proposal_development_class';
   
   global $user;
