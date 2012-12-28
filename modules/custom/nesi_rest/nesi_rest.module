@@ -519,12 +519,21 @@ function nesi_rest_insert_project($project_data = array()) {
 }
 
 /* Return project information
- * REST URI /rest/goldwrap/projects/{projectName}
+ * REST URI /rest/goldwrap/projects/{projectId}
  * http method GET
+ *
+  json map {
+    "clazz" : "...", 
+    "machines" : [ "...", ... ], 
+    "users" : [ "...", ... ], 
+    "description" : "...", 
+    "projectId" : "..." 
+  }
+ *
  */
-function nesi_rest_get_project($project_name) {
+function nesi_rest_get_project($project_id) {
 
-  $rest_api_call = 'projects/'.$project_name;
+  $rest_api_call = 'projects/'.$project_id;
 
   // Construct REST api call 
   $connection_uri = nesi_rest_connection_uri().$rest_api_call;
