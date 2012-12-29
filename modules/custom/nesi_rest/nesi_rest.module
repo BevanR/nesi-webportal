@@ -89,6 +89,9 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
       // Initialise
       $ch = curl_init();
 
+      // default headers
+      $request_headers = array('Content-Type: application/json', 'Accept: application/json');
+
       // default request method to GET unless specified otherwise
       curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
 
@@ -97,10 +100,14 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
       }
 
+      if ($request_method == 'PUT') {
+        $request_headers[] = 'X-HTTP-Method-Override: PUT';
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+      }
+
       // set REST URL and other appropriate options
       curl_setopt($ch, CURLOPT_URL, $request_uri);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json')); 
-
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers); 
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
       curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 
@@ -127,25 +134,21 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
    
         watchdog('nesi_rest', 'REST response: HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_INFO, $link = NULL);
         return $response_data;
-
       }
 
       // Finished - close handle
       curl_close($ch);  
-
     }
     else {
       // Artificial restriction on size of dataset
       watchdog('nesi_rest', 'REST request size error: JSON exceeds 4k', NULL , WATCHDOG_ERROR, $link = NULL);
     }
-
   }
   else {
     // REST API is disabled - call currently supressed
     watchdog('nesi_rest', 'REST communication disabled.', NULL , WATCHDOG_NOTICE, $link = NULL);
     return FALSE;
   }
-
 }
 
 /* Takes the API response and identifies a successful or failed response based on http_code.
