@@ -247,6 +247,10 @@ function nesi_user_user_insert(&$edit, $account, $category) {
  */
 function nesi_user_user_update(&$edit, $account, $category) {
 
+  $queue = DrupalQueue::get('nesi_gold_user_queue');
+
+  $queue->createItem($account);
+
   /* --- Update to new gold hook ---
   if ($category == 'researcher_profile') {
     if ($account->uid > 1) {
