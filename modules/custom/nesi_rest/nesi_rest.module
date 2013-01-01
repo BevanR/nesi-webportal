@@ -101,12 +101,9 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
       }
       
       if ($request_method == 'PUT') {
-        // Seriously? Does it make sense to do this? ARGH
-        $put_data = json_decode($json_data);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        //curl_setopt($ch, CURLOPT_PUT, TRUE);
+        curl_setopt($cddh, CURLOPT_HTTPGET, FALSE);
+        // Default curl PUT setting failed to work, set the PUT request manually
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-        //$request_headers[] = 'X-HTTP-Method-Override: PUT';
         $request_headers = array('Content-Type: application/json', 'Accept: application/json', 'Content-Length: ' . strlen($json_data));
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
       }
