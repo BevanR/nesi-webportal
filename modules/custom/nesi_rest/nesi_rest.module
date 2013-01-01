@@ -675,9 +675,25 @@ function nesi_rest_get_project_allocations($project_id) {
 */
 function nesi_rest_cron_queue_info() {
   $queues = array();
+  // Queue definition for feeding new users and updated user data to GOLD
   $queues['nesi_rest_user_queue'] = array(
-    'worker callback' => 'nesi_rest_process_user_queue', //function to call for each item
+    'worker callback' => 'nesi_rest_process_user_queue',
     'time' => 60, //seconds to spend working on the queue
+  );
+  // Queue definition for feeding new projects to GOLD
+  $queues['nesi_rest_project_queue'] = array(
+    'worker callback' => 'nesi_rest_process_project_queue', 
+    'time' => 60, 
+  );
+  // Queue definition for feeding project team members to GOLD
+  $queues['nesi_rest_team_queue'] = array(
+    'worker callback' => 'nesi_rest_process_project_team_queue', 
+    'time' => 60, 
+  );
+  // Queue definition for feeding allocations to GOLD
+  $queues['nesi_rest_allocation_queue'] = array(
+    'worker callback' => 'nesi_rest_process_allocation_queue', 
+    'time' => 60, 
   );
   return $queues;
 }
@@ -780,3 +796,16 @@ function nesi_rest_process_user_queue($item) {
     watchdog('nesi_rest', 'REST: Unable to load user from queue - UID ( '.$tmp_user->uid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
   }
 }
+
+function nesi_rest_process_project_queue($item) {
+
+}
+
+function nesi_rest_process_project_team_queue($item) {
+
+}
+
+function nesi_rest_process_allocation_queue($item) {
+
+}
+
