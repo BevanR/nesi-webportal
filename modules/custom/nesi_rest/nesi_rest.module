@@ -686,7 +686,7 @@ function nesi_rest_cron_queue_info() {
     'time' => 60, 
   );
   // Queue definition for feeding project team members to GOLD
-  $queues['nesi_rest_team_queue'] = array(
+  $queues['nesi_rest_project_team_queue'] = array(
     'worker callback' => 'nesi_rest_process_project_team_queue', 
     'time' => 60, 
   );
