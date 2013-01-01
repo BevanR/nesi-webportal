@@ -117,7 +117,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
       // Check if any error occured
       if(curl_errno($ch) > 0) {
         // Set error message in drupal watchdog
-        watchdog('nesi_rest', 'REST communication error: '.curl_error($ch), NULL , WATCHDOG_ERROR, $link = NULL);
+        watchdog('nesi_rest', 'REST: Communication error: '.curl_error($ch), NULL , WATCHDOG_ERROR, $link = NULL);
         //drupal_set_message('Curl error: ' . curl_error($ch));
 
         return FALSE;
@@ -132,7 +132,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
         $response_data['http_code'] = $result_status['http_code'];
         $response_data['json_data'] = $rest_response;
    
-        watchdog('nesi_rest', 'REST response: HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_INFO, $link = NULL);
+        watchdog('nesi_rest', 'REST: Response HTTPCODE " '.$result_status['http_code'].' " CONTENT " '.$rest_response.' "', NULL , WATCHDOG_INFO, $link = NULL);
         return $response_data;
       }
 
@@ -141,12 +141,12 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
     }
     else {
       // Artificial restriction on size of dataset
-      watchdog('nesi_rest', 'REST request size error: JSON exceeds 4k', NULL , WATCHDOG_ERROR, $link = NULL);
+      watchdog('nesi_rest', 'REST: Request size error: JSON exceeds 4k', NULL , WATCHDOG_ERROR, $link = NULL);
     }
   }
   else {
     // REST API is disabled - call currently supressed
-    watchdog('nesi_rest', 'REST communication disabled.', NULL , WATCHDOG_NOTICE, $link = NULL);
+    watchdog('nesi_rest', 'REST: Communication disabled.', NULL , WATCHDOG_NOTICE, $link = NULL);
     return FALSE;
   }
 }
@@ -163,11 +163,11 @@ function nesi_rest_verify_response($response_data = array()) {
     // Check http_code - currently we only check for success codes
     // Error codes will be logged/handled but hidden from the end user
     if (($response_data['http_code'] >= 200) && ($response_data['http_code'] <= 204)) {
-      watchdog('nesi_rest', 'REST response success - '.$response_data['http_code'], NULL , WATCHDOG_INFO, $link = NULL);
+      watchdog('nesi_rest', 'REST: Response success - '.$response_data['http_code'], NULL , WATCHDOG_INFO, $link = NULL);
       return TRUE;  
     }
     else {
-      watchdog('nesi_rest', 'REST response failure - '.$response_data['http_code'], NULL , WATCHDOG_ERROR, $link = NULL);
+      watchdog('nesi_rest', 'REST: Response failure - '.$response_data['http_code'], NULL , WATCHDOG_ERROR, $link = NULL);
       return FALSE;
     }
   }
@@ -670,3 +670,113 @@ function nesi_rest_get_project_allocations($project_id) {
   }
 }
 
+/**
+* Implements hook_cron_queue_info().
+*/
+function nesi_rest_cron_queue_info() {
+  $queues = array();
+  $queues['nesi_rest_user_queue'] = array(
+    'worker callback' => 'nesi_rest_process_user_queue', //function to call for each item
+    'time' => 60, //seconds to spend working on the queue
+  );
+  return $queues;
+}
+
+function nesi_rest_process_user_queue($item) {
+  // Let's try send this to GOLD.
+  $tmp_user = (object) $item; 
+  //Load latest user data regardless
+  $account = user_load($tmp_user->uid, TRUE);
+
+  if ($account) {
+    // Send to GOLD...
+    drupal_set_message('User '.$account->uid.' processed by GOLD queue','status');
+    watchdog('nesi_rest', 'REST: User processed by GOLD queue - UID ( '.$account->uid.' ) ', NULL , WATCHDOG_INFO, $link = NULL);
+    dpm($account);
+
+    // Default userdata
+    $user_data = array(
+      'affiliation' => "", 
+      'email' => $account->mail,
+      'fullName' => "",
+      'organization' => "", 
+      'phone' => "",
+      'userId' => $account->uid,
+    );
+
+    // Check for research profile data added by user
+    $profile = profile2_load_by_user($account->uid);
+    if (is_object($profile)) {
+
+      $profile_emw = entity_metadata_wrapper('profile2', $profile); 
+      dpm($profile_emw);
+
+      $fullname = $profile_emw->field_user_firstname->value();
+      $fullname .= ' '.$profile_emw->field_user_middlename->value();
+      $fullname .= ' '.$profile_emw->field_user_lastname->value();
+
+      $user_data['fullName'] = $fullname;
+      $user_data['organization'] = $profile_emw->field_user_institution->value();
+      $user_data['phone'] = $profile_emw->field_user_phone->value();
+      $user_data['affiliation'] = $profile_emw->field_user_department->value();
+    }
+
+    // Process existing user
+    if (!empty($account->gold_create[LANGUAGE_NONE][0]['value'])) {
+      dpm('User is created - syncing user');
+      
+      // Send via REST
+      // Attempt to connect to REST and create account
+      $rest_result = nesi_rest_update_user($user_data);  
+
+      // Check for error or http response
+      if ($rest_result <> FALSE) {
+        //dpm('User was updated successfully in GOLD.');
+        //dpm($rest_result);
+        watchdog('nesi_rest', 'REST: User updated - UID ( '.$account->uid.' ) ', NULL , WATCHDOG_INFO, $link = NULL);
+      }
+      else {
+        // If http response failure, add to watchdog and notify admin
+        watchdog('nesi_rest', 'REST: Update user failure - UID ( '.$account->uid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
+        dpm('It appears that there may have been a problem updating the user in GOLD.');
+      }
+    }
+    else {
+      // User not created
+      dpm('User not created - creating user');
+      
+      // Send via REST
+      // Attempt to connect to REST and create account
+      $rest_result = nesi_rest_insert_user($user_data); 
+
+      // Check for error or http response
+      if ($rest_result) {
+        watchdog('nesi_rest', 'REST: User created - UID ( '.$account->uid.' ) ', NULL , WATCHDOG_INFO, $link = NULL);
+        
+        // If created in GOLD, set flag in drupal
+        $account->gold_create[LANGUAGE_NONE][0]['value'] = 1;
+
+        // Set researcher role
+        $researcher_role = user_role_load_by_name('researcher');
+        if ($researcher_role) {
+          $account->roles += array($researcher_role->rid => $researcher_role->name);
+        }
+
+        // Save changes to user.
+        user_save($account);
+      }
+      else {
+        watchdog('nesi_rest', 'REST: Create user failure - UID ( '.$account->uid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
+        
+        // Log and flag for admin
+        dpm('It appears that there may have been a problem creating the user in GOLD.');
+      }
+    }
+  }
+  else {
+    // Edge case - unable to load account?
+    // Potentially deleted (before queue processed)
+    // Log and flag for admin
+    watchdog('nesi_rest', 'REST: Unable to load user from queue - UID ( '.$tmp_user->uid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
+  }
+}

@@ -85,7 +85,6 @@ function nesi_user_menu_alter(&$items) {
   $items['user/login']['title'] = 'Login via Drupal';
 }
 
-
 function nesi_user_form_alter(&$form, &$form_state, $form_id) {
 
   /* Override flag options on node administration */
@@ -247,7 +246,7 @@ function nesi_user_user_insert(&$edit, $account, $category) {
  */
 function nesi_user_user_update(&$edit, $account, $category) {
 
-  $queue = DrupalQueue::get('nesi_gold_user_queue');
+  $queue = DrupalQueue::get('nesi_rest_user_queue');
 
   $queue->createItem($account);
 
@@ -507,6 +506,10 @@ function nesi_user_user_login(&$edit, $account) {
   // Check user had been created in GOLD
   _gold_user_create($account, $user_data);
   */
+
+  // On login, check for updates to tuakiri information (if applicable)
+  // If updated, save to drupal user profile 
+
 }
 
   /* --- Update to new gold hook ---
