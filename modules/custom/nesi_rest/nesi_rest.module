@@ -907,10 +907,10 @@ function nesi_rest_process_project_team_queue($item) {
 
     // Check for error or http response
     if ($rest_result) {
-      watchdog('nesi_rest', 'REST: Team updated - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_INFO, $link = NULL);
+      watchdog('nesi_rest', 'REST: Project Team updated - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_INFO, $link = NULL);
     }
     else {
-      watchdog('nesi_rest', 'REST: Team update failure - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);  
+      watchdog('nesi_rest', 'REST: Project Team update failure - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);  
       // Log and flag for admin
       dpm('It appears that there may have been a problem updating the team in GOLD.');
     }
@@ -919,7 +919,7 @@ function nesi_rest_process_project_team_queue($item) {
     // Edge case - bad data passed?
     // Potentially deleted project node (before queue processed)
     // Log and flag for admin
-    watchdog('nesi_rest', 'REST: Unable to load team or project from project_team queue - NID ( '.$tmp_node->nid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
+    watchdog('nesi_rest', 'REST: Unable to load team or project from project_team queue - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
   }
 }
 
