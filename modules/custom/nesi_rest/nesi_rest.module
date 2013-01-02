@@ -985,6 +985,7 @@ function nesi_rest_process_project_team_queue($item) {
   // Expects $item array()
   // user_id
   // project_id
+  // action {add|remove}
 
   // Let's try send this to GOLD.
   $team = $item;
@@ -993,39 +994,50 @@ function nesi_rest_process_project_team_queue($item) {
   $team_member = user_load($item['user_id'],TRUE);
   $project = node_load($item['project_id']);
 
-  if (!empty($team_member) && !empty($project)) {
+  if (($item['action'] == 'add') || ($item['action'] == 'remove')) {
+    if (!empty($team_member) && !empty($project)) {
 
-    // Send to GOLD...
-    drupal_set_message('Team Member '.$team['user_id'].' '.$team['project_id'].' processed by GOLD queue','status');
-    watchdog('nesi_rest', 'REST: Project Team processed by GOLD queue - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' )  ', NULL , WATCHDOG_INFO, $link = NULL);
-    dpm($project);
+      // Send to GOLD...
+      drupal_set_message('Team Member '.$team['user_id'].' '.$team['project_id'].' processed by GOLD queue','status');
+      watchdog('nesi_rest', 'REST: Project Team processed by GOLD queue - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' )  ', NULL , WATCHDOG_INFO, $link = NULL);
+      dpm($project);
 
-    // Default data - assign user
-    //$team_data = array (
-    //  'userId' => 'd-'.$team['user_id'], 
-    //);
-    $user_id = 'd-'.$team_member->uid;
-    $project_id = 'd-'.$project->nid;
-    
-    // Send via REST
-    // Attempt to connect to REST and add user to project
-    $rest_result = nesi_rest_project_add_user($project_id, $user_id); 
+      // Default data - assign user
+      //$team_data = array (
+      //  'userId' => 'd-'.$team['user_id'], 
+      //);
+      $user_id = 'd-'.$team_member->uid;
+      $project_id = 'd-'.$project->nid;
+      
+      // Send via REST
+      if ($item['action'] == 'add') {
+        // Attempt to connect to REST and add user to project
+        $rest_result = nesi_rest_project_add_user($project_id, $user_id); 
+      }
+      else {
+        // Attempt to connect to REST and remove user from project
+        $rest_result = nesi_rest_project_remove_user($project_id, $user_id); 
+      }
 
-    // Check for error or http response
-    if ($rest_result) {
-      watchdog('nesi_rest', 'REST: Project Team updated - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_INFO, $link = NULL);
+      // Check for error or http response
+      if ($rest_result) {
+        watchdog('nesi_rest', 'REST: Project Team updated ( '.$item['action'].' ) - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_INFO, $link = NULL);
+      }
+      else {
+        watchdog('nesi_rest', 'REST: Project Team update failure ( '.$item['action'].' ) - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);  
+        // Log and flag for admin
+        dpm('It appears that there may have been a problem updating the team in GOLD.');
+      }
     }
     else {
-      watchdog('nesi_rest', 'REST: Project Team update failure - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);  
+      // Edge case - bad data passed?
+      // Potentially deleted project node (before queue processed)
       // Log and flag for admin
-      dpm('It appears that there may have been a problem updating the team in GOLD.');
+      watchdog('nesi_rest', 'REST: _process_team_queue_ Unable to load team or project - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
     }
   }
   else {
-    // Edge case - bad data passed?
-    // Potentially deleted project node (before queue processed)
-    // Log and flag for admin
-    watchdog('nesi_rest', 'REST: Unable to load team or project from project_team queue - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
+    watchdog('nesi_rest', 'REST: _process_team_queue_ No defined action provided - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
   }
 }
 
