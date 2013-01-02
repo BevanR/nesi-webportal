@@ -336,14 +336,6 @@ function nesi_user_block_view_alter(&$data, $block) {
 }
 
 /**
- * Implements hook_user_view_alter()
- */
-function nesi_user_user_view_alter(&$build) {
-  //dpm('* Implements hook_user_view_alter()');
-  //dpm($build);
-}
-
-/**
  * Implements hook_user_delete()
  */
 function nesi_user_user_delete($account) {
