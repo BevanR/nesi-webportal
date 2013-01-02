@@ -825,7 +825,7 @@ function nesi_rest_process_user_queue($item) {
       'fullName' => "",
       'organization' => "", 
       'phone' => "",
-      'userId' => $account->uid,
+      'userId' => 'd-'.$account->uid,
     );
 
     // Check for research profile data added by user
@@ -922,7 +922,7 @@ function nesi_rest_process_project_queue($item) {
     // Default data - set projectId (if defined) and description only
     $project_data = array (
       'description' => '', 
-      'projectId' => $project->nid, 
+      'projectId' => 'd-'.$project->nid, 
     );
 
     // Process existing project
@@ -972,7 +972,6 @@ function nesi_rest_process_project_queue($item) {
         dpm('It appears that there may have been a problem creating the project in GOLD.');
       }
     }
-
   }
   else {
     // Edge case - unable to load node?
@@ -1001,14 +1000,16 @@ function nesi_rest_process_project_team_queue($item) {
     watchdog('nesi_rest', 'REST: Project Team processed by GOLD queue - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' )  ', NULL , WATCHDOG_INFO, $link = NULL);
     dpm($project);
 
-    // Default data - assign user (currently awaiting format to POST to GOLD) so this may not work
-    $team_data = array (
-      'userId' => $team['user_id'], 
-    );
-
+    // Default data - assign user
+    //$team_data = array (
+    //  'userId' => 'd-'.$team['user_id'], 
+    //);
+    $user_id = 'd-'.$team_member->uid;
+    $project_id = 'd-'.$project->nid;
+    
     // Send via REST
     // Attempt to connect to REST and add user to project
-    $rest_result = nesi_rest_project_add_user($team_data); 
+    $rest_result = nesi_rest_project_add_user($project_id, $user_id); 
 
     // Check for error or http response
     if ($rest_result) {
