@@ -1021,10 +1021,10 @@ function nesi_rest_process_project_team_queue($item) {
 
       // Check for error or http response
       if ($rest_result) {
-        watchdog('nesi_rest', 'REST: Project Team updated ( '.$item['action'].' ) - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_INFO, $link = NULL);
+        watchdog('nesi_rest', 'REST: _project_team_queue_ Process Complete ( '.$item['action'].' ) - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_INFO, $link = NULL);
       }
       else {
-        watchdog('nesi_rest', 'REST: Project Team update failure ( '.$item['action'].' ) - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);  
+        watchdog('nesi_rest', 'REST: _project_team_queue_ Process Failure ( '.$item['action'].' ) - UID ( '.$team['user_id'].' ) NID ( '.$team['project_id'].' ) ', NULL , WATCHDOG_ERROR, $link = NULL);  
         // Log and flag for admin
         dpm('It appears that there may have been a problem updating the team in GOLD.');
       }
