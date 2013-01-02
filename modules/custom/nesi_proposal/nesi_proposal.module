@@ -417,104 +417,16 @@ function nesi_proposal_validate_proposal_development_class(&$form, &$form_state)
  * Validation of REST submission prior to Drupal saving research proposal
  */
 function nesi_proposal_validate_proposal_research_class(&$form, &$form_state) {
-  //dpm($form_state);  
 
   // First we need to verify form specific validation  
   if(form_get_errors()) {
     return;
   }  
 
-  /* --- Update to new gold hook ---
+  // We can process further checks here if user has not clicked Cancel button
   if ($form_state['clicked_button']['#value'] <> 'Cancel') {
 
-    global $user;
-    $account = $user;
-
-    $project_data = array();
-    $project_map = array();
-
-    // Prep proposal data for REST interface
-    //Project ID - this will be returned by GOLD
-
-    $identifier = nesi_user_tuakiri_identifier(); 
-
-    //Project Title
-    $project_data['projectTitle'] = $form_state['values']['title'];
-    $project_data['principal'] = $identifier;
-
-    // Set PI as member
-    $members = array();
-    $members[]['userId'] = $identifier;
-    //PI Team Members
-    $project_data['users'] = $members; 
-
-    $project_map['type'] = 'proposal_research_class'; 
-    $project_map['prefix'] = 'prc'; 
-    $project_map['drupal_uid'] = $account->uid; 
-
-    //Scientific Goals
-    $project_map['scientific_goals'] = $form_state['values']['field_prc_scientific_goals'][LANGUAGE_NONE][0]['value'];
-    //Benefits from HPC
-    $project_map['hpc_benefits'] = $form_state['values']['field_prc_hpc_benefits'][LANGUAGE_NONE][0]['value'];
-    //Project Deliverables
-    $project_map['project_deliverables'] = $form_state['values']['field_prc_project_deliverables'][LANGUAGE_NONE][0]['value'];
-    //Profile of usage through Allocation
-    $project_map['allocation_profile'] = $form_state['values']['field_prc_allocation_profile'][LANGUAGE_NONE][0]['value'];
-    //Desired HPC Platform
-    $project_map['proposed_hpc_platform'] = $form_state['values']['field_prc_proposed_hpc_platform'][LANGUAGE_NONE][0]['value'];
-    //CPU Core Hours
-    $project_map['cpu_core_hours'] = $form_state['values']['field_prc_cpu_core_hours'][LANGUAGE_NONE][0]['value'];
-    //Storage Requirements
-    $project_map['storage_requirements'] = $form_state['values']['field_prc_storage_requirements'][LANGUAGE_NONE][0]['value'];
-    //Software Requirements
-    $project_map['software_requirements'] = $form_state['values']['field_prc_software_requirements'][LANGUAGE_NONE][0]['value'];
-    //Data transfer
-    $project_map['data_transfer'] = $form_state['values']['field_prc_data_transfer'][LANGUAGE_NONE][0]['value'];
-    //Project Team's HPC Experience
-    $project_map['hpc_background'] = $form_state['values']['field_prc_hpc_background'][LANGUAGE_NONE][0]['value'];
-    //Expert Support
-    $project_map['expert_support'] = $form_state['values']['field_prc_expert_support'][LANGUAGE_NONE][0]['value'];
-    //Explanatory notes for "Expert support" section
-    $project_map['expert_support_notes'] = $form_state['values']['field_prc_export_support_notes'][LANGUAGE_NONE][0]['value'];
-    //Funding Provider
-    $project_map['funding_provider'] = $form_state['values']['field_prc_funding_provider'][LANGUAGE_NONE][0]['value'];
-    //Funding Amount
-    $project_map['funding_amount'] = $form_state['values']['field_prc_funding_amount'][LANGUAGE_NONE][0]['value'];
-    //Further Information
-    $project_map['additional_information'] = $form_state['values']['field_prc_additional_information'][LANGUAGE_NONE][0]['value'];
-
-    // Map project data
-    $project_data['projectData'] = base64_encode(serialize($project_map));
-
-    $project_json = json_encode($project_data);
-    //dpm($project_json);
-
-    // Attempt to send proposal to REST interface
-    $rest_result = nesi_rest_insert_project($project_data);
-    $rest_result = TRUE;
-    // Check for error or http response
-    if ($rest_result <> FALSE) {
-      //dpm('Project was created successfully in GOLD.');
-      //dpm($rest_result);
-      watchdog('nesi_proposal', 'REST project created - DUID " '.$account->uid.' " ', NULL , WATCHDOG_INFO, $link = NULL);
-      $json_result = json_decode($rest_result['json_data']);
-      if (!empty($json_result->projectId)) { 
-        $form_state['values']['field_proposal_nesi_id'][LANGUAGE_NONE][0]['value'] = $json_result->projectId; 
-      }
-      else {
-        // No projectId returned... major problem
-        watchdog('nesi_proposal', 'REST failed to return expected result [projectId missing]', NULL , WATCHDOG_ERROR, $link = NULL);
-      }
-    }
-    else {
-      // If http response failure, add to watchdog and notify admin
-      watchdog('nesi_proposal', 'REST create project failure - DUID " '.$account->uid.' " ', NULL , WATCHDOG_ERROR, $link = NULL);
-
-      // Need to prepare config so NeSI can manage all end-user response text.
-      form_set_error('nesi_proposal','There was a problem saving your proposal information. Try to submit again. if you continue to experience problems, please try again later.');
-    }
   }
-  */
 }
 
 function nesi_proposal_form_cancel(&$form, &$form_state) {
