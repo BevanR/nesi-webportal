@@ -290,6 +290,25 @@ function nesi_user_tuakiri_attributes() {
   return $attributes;
 }
 
+function nesi_user_tuakiri_attribute_change() {
+  // Compares tuakiri session attributes with Drupal user profile
+  // Returns TRUE if any tuakiri attributes are different from Drupal profile for this user
+  // Full list of attributes found here - https://tuakiri.ac.nz/confluence/display/Tuakiri/Attributes
+  global $user;
+
+  $change_detected = FALSE;
+
+  if (!empty($user->uid)) {
+    // Load account
+    $account = user_load($user->uid, TRUE);
+
+    // Compare profile data against supplied session variables
+
+  }
+
+  return $change_detected;
+}
+
 function nesi_user_tuakiri_validate() {
   // Checks for a valid tuakiri session
   // Returns true or false based on session data available.
@@ -343,119 +362,33 @@ function nesi_user_user_login(&$edit, $account) {
   // Set user login destination
   $edit['redirect'] = 'user/dashboard';
 
-  $user_data = array(); 
-  if (isset($edit['values']['profile_researcher_profile'])) {
-    $profile = $edit['values']['profile_researcher_profile'];
-    // Send in profile form data if supplied
-    $user_data['firstName'] = (!empty($profile['field_user_firstname'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_firstname'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['lastName'] = (!empty($profile['field_user_lastname'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_lastname'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['middleName'] = (!empty($profile['field_user_middlename'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_middlename'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['institution'] = (!empty($profile['field_user_institution'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_institution'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['department'] = (!empty($profile['field_user_department'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_department'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['position'] = (!empty($profile['field_user_position'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_position'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['phone'] = (!empty($profile['field_user_phone'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_phone'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['address'] = (!empty($profile['field_user_address'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_address'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['altEmail'] = (!empty($profile['field_user_altemail'][LANGUAGE_NONE][0]['value'])) ? $profile['field_user_altemail'][LANGUAGE_NONE][0]['value'] : "";
-    $user_data['nationality'] = (!empty($profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'])) ? $profile['field_user_nationality'][LANGUAGE_NONE][0]['iso2'] : "";  
-  }
-  /* --- Update to new gold hook ---
-  // Check user had been created in GOLD
-  _gold_user_create($account, $user_data);
-  */
-
   // On login, check for updates to tuakiri information (if applicable)
   // If updated, save to drupal user profile 
 
-}
+  if (!empty($account->gold_create[LANGUAGE_NONE][0]['value'])) {
+    // Check for changes in Tuakiri session for shib users
+    if (nesi_user_tuakiri_validate()) {
+      // If session user profile has changed, save to drupal profile and queue
+      if (nesi_user_tuakiri_attribute_change()) {
+        // Fetch tuakiri attribute information from session
+        $tk_attributes = nesi_user_tuakiri_attributes();
 
-  /* --- Update to new gold hook ---
-function _gold_user_create($account, $user_data = array()) {
-  // Skip if superadmin
-  if ($account->uid > 1) {
-    // Bootstrap any required user login operations
-    $gold_emw = entity_metadata_wrapper('user', $account)->field_user_gold_create;
-    $gold_flag = $gold_emw->value();
+        // Override stored data with "current" data supplied by tuakiri
+        /*  - Needs tidy up
+        $user_data['email'] = (!empty($tk_attributes['mail'])) ? $tk_attributes['mail'] : $user_data['email'];
+        $user_data['firstName'] = (!empty($tk_attributes['givenName'])) ? $tk_attributes['givenName'] : $user_data['firstName'];
+        $user_data['lastName'] = (!empty($tk_attributes['sn'])) ? $tk_attributes['sn'] : $user_data['lastName'];
+        $user_data['institution'] = (!empty($tk_attributes['organizationName'])) ? $tk_attributes['organizationName'] : $user_data['institution'];
+        // Second attempt to capture organisations using 'o' vs 'organizationName' as attribute
+        $user_data['institution'] = (!empty($tk_attributes['o'])) ? $tk_attributes['o'] : $user_data['institution'];
+        */
 
-    // If gold_flag is not set, then attempt to create user in GOLD for the first time...
-    if (empty($gold_flag)) {
-  */
-      /* ***************************************************** */
-      /* CREATE OR UPDATE OF USERS IN GOLD                     */
-      /* We set user data based on reverse order of authority: */ 
-      /* (core -> researcher profile -> tuakiri)               */
-      /* ***************************************************** */
-      // Set user data based on known attributes
-/*
-      $user_data['email'] = $account->mail;
-      // Set presupplied fields ready for override - not so nice but required for unset attributes
-      $user_data['firstName'] = (!empty($user_data['firstName'])) ? $user_data['firstName'] : "";
-      $user_data['lastName'] = (!empty($user_data['lastName'])) ? $user_data['lastName'] : "";
-      $user_data['middleName'] = (!empty($user_data['middleName'])) ? $user_data['middleName'] : "";
-      $user_data['institution'] = (!empty($user_data['institution'])) ? $user_data['institution'] : "";
-      $user_data['department'] = (!empty($user_data['department'])) ? $user_data['department'] : "";
-      $user_data['position'] = (!empty($user_data['position'])) ? $user_data['position'] : "";
-      $user_data['phone'] = (!empty($user_data['phone'])) ? $user_data['phone'] : "";
-      $user_data['address'] = (!empty($user_data['address'])) ? $user_data['address'] : "";
-      $user_data['altEmail'] = (!empty($user_data['altEmail'])) ? $user_data['altEmail'] : "";
-      $user_data['nationality'] = (!empty($user_data['nationality'])) ? $user_data['nationality'] : "";
+        // Save changes to drupal user profile
+        // user_save() ...
 
-      // Check for research profile data setup by user
-      $profile = profile2_load_by_user($account->uid);
-      if (is_object($profile)) {
-        $profile_emw = entity_metadata_wrapper('profile2', $profile); 
-        dpm($profile_emw);
-        $user_data['firstName'] = $profile_emw->field_user_firstname->value();
-        $user_data['middleName'] = $profile_emw->field_user_middlename->value();
-        $user_data['lastName'] = $profile_emw->field_user_lastname->value();
-        $user_data['institution'] = $profile_emw->field_user_institution->value();
-        $user_data['department'] = $profile_emw->field_user_department->value();
-        $user_data['position'] = $profile_emw->field_user_position->value();
-        $user_data['phone'] = $profile_emw->field_user_phone->value();
-        $user_data['address'] = $profile_emw->field_user_address->value();
-        $user_data['altEmail'] = $profile_emw->field_user_altemail->value();
-        $user_data['nationality'] = $profile_emw->field_user_nationality->value();
-      }
-
-      $rest_user_id = nesi_user_tuakiri_identifier();
-      $user_data['userId'] = $rest_user_id;
-
-      // Fetch tuakiri attribute information if it exists
-      $tk_attributes = nesi_user_tuakiri_attributes();
-
-      // Override stored data with "current" data supplied by tuakiri
-      $user_data['email'] = (!empty($tk_attributes['mail'])) ? $tk_attributes['mail'] : $user_data['email'];
-      $user_data['firstName'] = (!empty($tk_attributes['givenName'])) ? $tk_attributes['givenName'] : $user_data['firstName'];
-      $user_data['lastName'] = (!empty($tk_attributes['sn'])) ? $tk_attributes['sn'] : $user_data['lastName'];
-      $user_data['institution'] = (!empty($tk_attributes['organizationName'])) ? $tk_attributes['organizationName'] : $user_data['institution'];
-      // Second attempt to capture organisations using 'o' vs 'organizationName' as attribute
-      $user_data['institution'] = (!empty($tk_attributes['o'])) ? $tk_attributes['o'] : $user_data['institution'];
-      
-      // Attempt to connect to REST and create account
-      $rest_result = nesi_rest_insert_user($user_data); 
-
-      // Check for error or http response
-      if ($rest_result) {
-        watchdog('nesi_user', 'REST user created - UID " '.$rest_user_id.' " ', NULL , WATCHDOG_INFO, $link = NULL);
-        // Attempt to update gold_flag
-        $gold_emw->set('1');
-        
-        // Set researcher role
-        $researcher_role = user_role_load_by_name('researcher');
-        if ($researcher_role) {
-          $account->roles += array($researcher_role->rid => $researcher_role->name);
-        }
-
-        // Save changes to user.
-        user_save($account);
-      }
-      else {
-        watchdog('nesi_user', 'REST create user failure - UID " '.$rest_user_id.' " ', NULL , WATCHDOG_ERROR, $link = NULL);
-        
-        // Nothing to do - user creat failed. Attempt to create again later.
-        dpm('It appears that there may have been a problem creating the user in GOLD.');
+        // No need to do anything more - hook_user_update will now be executed and feed change to GOLD
       }
     }
   }
 }
-*/
 
