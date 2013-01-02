@@ -102,8 +102,6 @@ function nesi_user_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_form_profile2_form_alter()
  */
 function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
-  //drupal_set_message(print_r($form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'], TRUE));  // print array to messages
-  //drupal_set_message(print_r($form['profile_researcher_profile'], TRUE));  // print array to messages
 
   // User Registration form alter
   if ($form['#form_id'] == 'user_register_form') {
@@ -124,51 +122,13 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
     $form['#validate'][] = 'nesi_user_validate_researcher_profile';
   }
 
-  /* --- Update to new gold hook ---
   // User Profile form alter
   if ($form['#form_id'] == 'user_profile_form') {
     
-    // Check user
     global $user;
      
     if ($user->uid > 1) {
-      // Get user data from GOLD
-      $rest_user_id = nesi_user_tuakiri_identifier();
-      $rest_result = nesi_rest_get_user($rest_user_id);  
       
-      // Check for error or http response
-      if ($rest_result) {
-        dpm('User was successfully retrieved from GOLD.');
-        dpm($rest_result);
-        // Display nesi_rest data instead of Drupal data... (GOLD is considered "up to date")
-        
-        // Convert from json
-        $user_data = json_decode($rest_result['json_data']);
-        
-        if ($user_data) {
-          $form['profile_researcher_profile']['field_user_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->firstName;
-          $form['profile_researcher_profile']['field_user_middlename'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->middleName;
-          $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->lastName;
-          $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->institution;
-          $form['profile_researcher_profile']['field_user_department'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->department;
-          $form['profile_researcher_profile']['field_user_position'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->position;
-          $form['profile_researcher_profile']['field_user_phone'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->phone;
-          $form['profile_researcher_profile']['field_user_address'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->address;
-          $form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#default_value'] = $user_data->altEmail;
-        }
-        else {
-          // Problem with return json or conversion. Log and Notify.
-          watchdog('nesi_user', 'REST response issue - check json for compliance.', NULL , WATCHDOG_CRITICAL, $link = NULL);
-        }
-      }
-      else {
-        // Need to handle this: 
-        // Decision has been made to prevent access to account if REST connection fails. (as of 02082012).
-        dpm('It appears that there may have been a problem querying the user in GOLD.');
-
-        // If http response failure, add to watchdog and notify admin
-      }
-
       // As we are now sourcing data from tuakiri. Some data must be updated from tuakiri
       if (nesi_user_tuakiri_validate()) {
         $tk_attributes = nesi_user_tuakiri_attributes();
@@ -183,11 +143,9 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
         $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         //$form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
-        
       }
-      
     } 
-  } */
+  } 
 }
 
 function nesi_user_validate_researcher_profile(&$form, &$form_state) {
