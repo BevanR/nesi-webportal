@@ -242,7 +242,7 @@ function nesi_user_username_alter(&$name, $account) {
 }
 
 function nesi_user_tuakiri_identifier() {
-  // Returns identifier to be used for userId in REST calls
+  // Returns tuakiri identifier if available for current user
   global $user;
   $account = $user;
 
