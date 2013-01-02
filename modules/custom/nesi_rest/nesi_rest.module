@@ -750,7 +750,7 @@ function nesi_rest_process_user_queue($item) {
 
       // Check for error or http response
       if ($rest_result <> FALSE) {
-        //dpm('User was updated successfully in GOLD.');
+        dpm('User was updated successfully in GOLD.');
         //dpm($rest_result);
         watchdog('nesi_rest', 'REST: User updated - UID ( '.$account->uid.' ) ', NULL , WATCHDOG_INFO, $link = NULL);
       }
@@ -816,18 +816,15 @@ function nesi_rest_process_project_queue($item) {
 
     // Default data - set projectId (if defined) and description only
     $project_data = array (
-      //'clazz' => "...", 
-      //'machines' => [ "...", ... ], 
-      //'users' => [ "...", ... ], 
-      'description' => 'Project Description', 
-      //'projectId' => "", 
+      'description' => '', 
+      'projectId' => $project->nid, 
     );
 
     // Process existing project
     if (!empty($project->gold_create[LANGUAGE_NONE][0]['value'])) {
       dpm('Project gold_create enabled - attempting to update project data in GOLD');
       
-      // Check whether GOLD has provided Project ID 
+      // Check whether GOLD has provided Project ID ?? GOLD is not assigning an ID ? 
 
       // Send via REST
       // Attempt to connect to REST and update project
@@ -835,8 +832,6 @@ function nesi_rest_process_project_queue($item) {
 
       // Check for error or http response
       if ($rest_result <> FALSE) {
-        //dpm('Project was updated successfully in GOLD.');
-        //dpm($rest_result);
         watchdog('nesi_rest', 'REST: Project updated - NID ( '.$project->nid.' ) ', NULL , WATCHDOG_INFO, $link = NULL);
       }
       else {
@@ -860,7 +855,7 @@ function nesi_rest_process_project_queue($item) {
         // If created in GOLD, set flag in drupal
         $project->gold_create[LANGUAGE_NONE][0]['value'] = 1;
 
-        // Update project with GOLD provided Project ID
+        // Update project with GOLD provided Project ID ?? GOLD doesn't appear to assign an ID anymore...
 
         // Save changes to project node.
         node_save($project);
