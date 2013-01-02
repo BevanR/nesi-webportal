@@ -652,6 +652,7 @@ function nesi_rest_delete_project($project_name) {
 /* Add a user to a project
  * REST URI /rest/goldwrap/projects/{projectId}/add_user
  * http method POST
+ * Requires 'plain/text' content instead of 'application/json'
  */
 function nesi_rest_project_add_user($project_id, $user_id) {
 
@@ -660,6 +661,37 @@ function nesi_rest_project_add_user($project_id, $user_id) {
   $plaintext_data = $user_id;
 
   $rest_api_call = 'projects/'.$project_id.'/add_user';
+
+  // Construct REST api call 
+  $connection_uri = nesi_rest_connection_uri().$rest_api_call;
+
+  // Communicate with REST api
+  $rest_result = nesi_rest_connection_process_plaintext($connection_uri, 'POST', $plaintext_data);
+
+  // Check response for failure
+  $response_check = nesi_rest_verify_response($rest_result);
+
+  // Valid response is  
+  if ($response_check) {
+    return $rest_result;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/* Remove a user to a project
+ * REST URI /rest/goldwrap/projects/{projectId}/remove_user
+ * http method POST
+ * Requires 'plain/text' content instead of 'application/json'
+ */
+function nesi_rest_project_remove_user($project_id, $user_id) {
+
+  // We don't encode in json as this method requires plain/text
+  //$json_data = json_encode($user_id);
+  $plaintext_data = $user_id;
+
+  $rest_api_call = 'projects/'.$project_id.'/remove_user';
 
   // Construct REST api call 
   $connection_uri = nesi_rest_connection_uri().$rest_api_call;
