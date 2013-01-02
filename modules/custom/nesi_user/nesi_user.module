@@ -212,66 +212,8 @@ function nesi_user_user_update(&$edit, $account, $category) {
  */
 function nesi_user_user_view($account, $view_mode, $langcode) {
 
-  /* --- Update to new gold hook ---
-  // Exclude superadmin
-  if ($account->uid > 1) {
-
-    // Check user had been created in GOLD
-    _gold_user_create($account);
-
-    $profile = profile2_load_by_user($account, 'researcher_profile');
-
-    if (is_object($profile)) {
-      $profile_emw = entity_metadata_wrapper('profile2', $profile); 
-
-      // Attempt to connect to REST and retrieve account information
-      $rest_user_id = nesi_user_tuakiri_identifier();
-
-      if ($rest_user_id) {
-        $rest_result = nesi_rest_get_user($rest_user_id);  
-      }
-      else {
-        $rest_result = FALSE;
-      }
-
-      // Check for error or http response
-      if ($rest_result <> FALSE) {
-        dpm('User was successfully retrieved from GOLD.');
-        dpm($rest_result);
-        // Display nesi_rest data instead of Drupal data... (GOLD is considered "up to date")
-        
-        // Convert from json
-        $user_data = json_decode($rest_result['json_data']);
-        
-        if ($user_data) {
-          //dpm($user_data);
-          $profile_emw->field_user_firstname->set($user_data->firstName); 
-          $profile_emw->field_user_middlename->set($user_data->middleName); 
-          $profile_emw->field_user_lastname->set($user_data->lastName); 
-          $profile_emw->field_user_institution->set($user_data->institution); 
-          $profile_emw->field_user_department->set($user_data->department); 
-          $profile_emw->field_user_phone->set($user_data->phone); 
-          $profile_emw->field_user_position->set($user_data->position); 
-          $profile_emw->field_user_address->set($user_data->address); 
-          $profile_emw->field_user_altemail->set($user_data->altEmail); 
-         // $profile->field_user_nationality->set('TestN'); 
-        }
-        else {
-          // Problem with return json or conversion. Log and Notify.
-          watchdog('nesi_user', 'REST response issue - check json for compliance.', NULL , WATCHDOG_CRITICAL, $link = NULL);
-        }
-      }
-      else {
-
-        // Need to handle this: 
-        // Decision has been made to prevent access to account if REST connection fails. (as of 02082012).
-        dpm('It appears that there may have been a problem querying the user in GOLD.');
-
-        // If http response failure, add to watchdog and notify admin
-      }
-    }
-  }
-  */
+  // Removed direct call to pull user data from nesi_rest / GOLD
+  // Could be worth adding a user->gold_create flag check here?
 }
 
 function nesi_user_username_alter(&$name, $account) {
