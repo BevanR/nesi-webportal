@@ -335,7 +335,7 @@ function nesi_rest_get_projects() {
    }
  *
  */
-function nesi_rest_insert_user($user_data = array()) {
+function nesi_rest_create_user($user_data = array()) {
 
   $json_data = json_encode($user_data);
 
@@ -506,7 +506,7 @@ function nesi_rest_get_user_projects($user_id) {
   }
  *
  */
-function nesi_rest_insert_project($project_data = array()) {
+function nesi_rest_create_project($project_data = array()) {
 
   $json_data = json_encode($project_data);
 
@@ -766,7 +766,7 @@ function nesi_rest_process_user_queue($item) {
       dpm($user_data); 
       // Send via REST
       // Attempt to connect to REST and create account
-      $rest_result = nesi_rest_insert_user($user_data); 
+      $rest_result = nesi_rest_create_user($user_data); 
 
       // Check for error or http response
       if ($rest_result) {
@@ -846,7 +846,7 @@ function nesi_rest_process_project_queue($item) {
       
       // Send via REST
       // Attempt to connect to REST and create project
-      $rest_result = nesi_rest_insert_project($project_data); 
+      $rest_result = nesi_rest_create_project($project_data); 
 
       // Check for error or http response
       if ($rest_result) {
