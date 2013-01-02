@@ -6,12 +6,6 @@
 
 include_once 'nesi_project.features.inc';
 
-function nesi_project_cron() {
-
-  // Find all projects with a set gold sync flag
-
-}
-
 function nesi_project_node_access($node, $op, $account) {
 // Limit access to proposal once submitted..
   global $user;
