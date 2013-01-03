@@ -66,7 +66,7 @@ function nesi_user_dashboard_callback() {
                 <div class="module-actions">
                   <a class="btn btn-large" href="/node/add/proposal-development-class">Development Proposal</a>
                   <a class="btn btn-large" href="/node/add/proposal-research-class">Research Proposal</a>
-                  <a class="learn-more" href="/proposals">Learn more about the different proposals</a>
+                  <a class="learn-more" href="/allocations">Learn more about the different proposals</a>
                 </div>
               </div>
             </article>
