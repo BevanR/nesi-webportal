@@ -333,8 +333,6 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
  * Implements hook_form_FORM_ID_alter()
  */
 function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$form_state, $form_id) {
-  //dpm('* Implements hook_form_FORM_ID_alter()');
-  dpm($form_state);
   
   // Default sticky and promote to frontpage to unchecked
   $form['options']['promote']['#default_value'] = 0;
@@ -395,7 +393,9 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     }
   }
 
-  //dpm($form);
+  // Set hide/show on Expert Support toggle
+  $form['field_prc_expert_support_notes']['#states']['visible'][':input[name="field_prc_expert_support[und]"]'] = array('value' => (string)'yes');
+
   // Add a cancel button.
   $form['actions']['cancel'] = array(
     '#type' => 'submit',
