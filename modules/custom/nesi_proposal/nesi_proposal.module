@@ -289,9 +289,15 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
   if (!empty($project_data->field_p_pi_phone[LANGUAGE_NONE][0]['value'])) {
     $form['pi']['field_pi_phone']['#default_value'] = $project_data->field_p_pi_phone[LANGUAGE_NONE][0]['value'];
   }
-
+  
+  $state_check = arg(2);
   if (empty($project_data->field_p_principal_investigator[LANGUAGE_NONE][0]['uid'])) {
-    $form['submitter']['field_sub_check']['#default_value'] = 0;
+    if ($state_check == 'edit') {
+      $form['submitter']['field_sub_check']['#default_value'] = 0;
+    }
+    else {
+      $form['submitter']['field_sub_check']['#default_value'] = 1;
+    }
   }
 
   //dpm($form);
@@ -322,8 +328,8 @@ function nesi_proposal_form_proposal_development_class_node_form_alter(&$form, &
  */
 function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$form_state, $form_id) {
   //dpm('* Implements hook_form_FORM_ID_alter()');
-  //dpm($form_state);
-
+  dpm($form_state);
+  
   // Default sticky and promote to frontpage to unchecked
   $form['options']['promote']['#default_value'] = 0;
   $form['options']['sticky']['#default_value'] = 0;
@@ -370,8 +376,17 @@ function nesi_proposal_form_proposal_research_class_node_form_alter(&$form, &$fo
     $form['pi']['field_pi_phone']['#default_value'] = $project_data->field_p_pi_phone[LANGUAGE_NONE][0]['value'];
   }
 
+
+  $state_check = arg(2);
+  // Set the state for PI specified
   if (empty($project_data->field_p_principal_investigator[LANGUAGE_NONE][0]['uid'])) {
-    $form['submitter']['field_sub_check']['#default_value'] = 0;
+
+    if ($state_check == 'edit') {
+      $form['submitter']['field_sub_check']['#default_value'] = 0;
+    }
+    else {
+      $form['submitter']['field_sub_check']['#default_value'] = 1;
+    }
   }
 
   //dpm($form);
