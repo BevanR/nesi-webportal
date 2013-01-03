@@ -386,9 +386,11 @@ function nesi_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'proposal_development_class',
@@ -422,9 +424,9 @@ function nesi_proposal_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'size' => '60',
         ),
-        'type' => 'text_textarea',
+        'type' => 'text_textfield',
         'weight' => '11',
       ),
     ),
@@ -879,9 +881,11 @@ function nesi_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'proposal_research_class',
@@ -915,9 +919,9 @@ function nesi_proposal_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'size' => '60',
         ),
-        'type' => 'text_textarea',
+        'type' => 'text_textfield',
         'weight' => '14',
       ),
     ),
@@ -947,10 +951,10 @@ function nesi_proposal_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'profile2_private' => FALSE,
+        'max_length' => '255',
       ),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'proposal_research_class',
@@ -984,9 +988,9 @@ function nesi_proposal_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'size' => '60',
         ),
-        'type' => 'text_textarea',
+        'type' => 'text',
         'weight' => '7',
       ),
     ),
@@ -1016,10 +1020,10 @@ function nesi_proposal_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'profile2_private' => FALSE,
+        'max_length' => '255',
       ),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'proposal_research_class',
@@ -1053,9 +1057,9 @@ function nesi_proposal_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'size' => '60',
         ),
-        'type' => 'text_textarea',
+        'type' => 'text_textfield',
         'weight' => '6',
       ),
     ),
@@ -1085,10 +1089,10 @@ function nesi_proposal_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'profile2_private' => FALSE,
+        'max_length' => '255',
       ),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'proposal_research_class',
@@ -1122,9 +1126,9 @@ function nesi_proposal_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'size' => '60',
         ),
-        'type' => 'text_textarea',
+        'type' => 'text_textfield',
         'weight' => '8',
       ),
     ),
