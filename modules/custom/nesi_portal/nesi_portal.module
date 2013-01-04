@@ -50,11 +50,13 @@ function nesi_portal_block_view($delta = '') {
         if ($user->uid <> 0) {
         $block['subject'] = t('Researcher menu');
         $block['content'] = '<ul class="menu nav">
-            <li class="first leaf"><a title="Dashboard" href="'.$base_url.'/user/dashboard">Dashboard</a></li>
+            <li class="first leaf"><a title="Dashboard" href="'.$base_url.'/user/dashboard">Proposals</a></li>
             <!--<li class="first leaf"><a title="Project History" href="'.$base_url.'/researcher/history">History</a></li>-->
             <!--<li class="leaf"><a title="Live Projects" href="'.$base_url.'/researcher/projects">Live Projects</a></li>-->
-            '.$current_proposal_link.'
-            <li class="last leaf"><a href="'.$base_url.'/hpc-calculator">HPC Calculator</a></li>
+            <!--'.$current_proposal_link.'-->
+            <li class="leaf"><a href="'.$base_url.'/hpc-calculator">HPC Calculator</a></li>
+            <li class="leaf"><a href="'.$base_url.'/user">My Account</a></li>
+            <li class="last leaf"><a href="'.$base_url.'/user/logout">Logout</a></li>
             </ul>';
         }
         break;
