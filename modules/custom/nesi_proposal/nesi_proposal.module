@@ -10,13 +10,15 @@ include_once 'nesi_proposal.features.inc';
  * Implements hook_menu().
  */
 function nesi_proposal_menu() {
-   
+
+  /* This may not be required with recent change request 
   $items['researcher/proposal/add'] = array(
     'title' => 'Add Proposal',
     'page callback' => 'nesi_proposal_page',
     'access callback' => 'user_is_logged_in',
     'type' => MENU_CALLBACK,
-  ); 
+  );
+  */ 
 
   $items['admin/config/nesi/proposal'] = array(
     'title' => 'NeSI Proposal Configuration',
