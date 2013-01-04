@@ -72,6 +72,21 @@ function nesi_user_dashboard_callback() {
             </article>
           </div>
         </div>
+        <div>
+          <section>
+            <h2>Apply for access to HPC facilities</h2>
+              <article>
+                <h3>Development Proposal</h3>
+                <p>Easy to request with fast review cycles, open to receiving proposals on an ongoing on demand basis. PIs may request a single computational resource or a combination of resources. 
+                <a href="/allocations#proposal-development">Learn more</a></p>
+              </article>
+              <article>
+                <h3>Research Proposal</h3>
+                <p>Research allocations often follow successful completion of Proposal Development allocations. A PI must either successfully complete a Proposal Development allocation or be able to demonstrate prior relevant experience and success in running their codes on HPC facilities prior to receiving a Research allocation. Research allocations can be proposed to any public research funding body and for any of our HPC facilities.
+                <a href="/allocations#research">Learn more</a></p>
+              </article>
+          </section>
+        </div>
       </article>
       <!--<h2>Projects in progress</h2>
       <article class="project-outline">
