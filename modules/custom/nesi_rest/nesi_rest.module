@@ -101,7 +101,7 @@ function nesi_rest_connection_process($request_uri, $request_method = 'GET', $js
       }
       
       if ($request_method == 'PUT') {
-        curl_setopt($cd, CURLOPT_HTTPGET, FALSE);
+        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
         // Default curl PUT setting failed to work, set the PUT request manually
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
         $request_headers = array('Content-Type: application/json', 'Accept: application/json', 'Content-Length: ' . strlen($json_data));
@@ -926,11 +926,14 @@ function nesi_rest_process_project_queue($item) {
     );
 
     // Add project title to description
-    $proposal = node_load($project->field_p_proposal_id[LANGUAGE_NONE][0]); 
+    $proposal = node_load($project->field_p_proposal_id[LANGUAGE_NONE][0]['nid']); 
 
     if ($proposal) {
       $project_data['description'] = $proposal->title;
     }
+
+    dpm($project_data);
+
 
     // Process existing project
     if (!empty($project->gold_create[LANGUAGE_NONE][0]['value'])) {
@@ -978,7 +981,7 @@ function nesi_rest_process_project_queue($item) {
         // Log and flag for admin
         dpm('It appears that there may have been a problem creating the project in GOLD.');
       }
-    }
+    }  
   }
   else {
     // Edge case - unable to load node?

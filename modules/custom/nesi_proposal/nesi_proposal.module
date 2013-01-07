@@ -193,11 +193,11 @@ function nesi_proposal_node_insert($node) {
     $project_node->field_p_proposed_schedule[$project_node->language][0]['value'] = $node->proposed_start_date;
     $project_node->field_p_proposal_id[$project_node->language][0]['nid'] = $node->nid;
 
-    // Add submitter to the team by default
-    $user_check = _nesi_proposal_uid_search($node->uid, $project_node->field_p_teamlist[LANGUAGE_NONE]);
-    if ($user_check === FALSE) {
+    // Add submitter to the team by default 
+    //$user_check = _nesi_proposal_uid_search($node->uid, $project_node->field_p_teamlist[LANGUAGE_NONE]);
+    //if ($user_check === FALSE) {
       $project_node->field_p_teamlist[LANGUAGE_NONE][] = array('uid' => $node->uid);
-    }
+    //}
 
     //dpm($project_node); 
     node_save($project_node);
@@ -243,6 +243,11 @@ function nesi_proposal_node_update($node) {
 
     //dpm($project_node); 
     node_save($project_node);    
+
+    // Get project queue
+    $queue = DrupalQueue::get('nesi_rest_project_queue');
+    // Add this project update to the queue to be sent to GOLD
+    $queue->createItem($project_node);  
   }
 }
 
