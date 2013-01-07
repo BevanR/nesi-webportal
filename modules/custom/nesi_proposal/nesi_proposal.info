@@ -10,7 +10,6 @@ dependencies[] = features
 dependencies[] = file
 dependencies[] = list
 dependencies[] = nesi_ft_submit_proposal_flag
-dependencies[] = nesi_ft_submit_proposal_rules
 dependencies[] = nesi_project
 dependencies[] = nesi_rest
 dependencies[] = node_reference
