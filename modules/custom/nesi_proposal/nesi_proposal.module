@@ -209,7 +209,7 @@ function nesi_proposal_node_insert($node) {
 }
 
 /**
- * Implements hook_node_insert()
+ * Implements hook_node_update()
  */
 function nesi_proposal_node_update($node) {
 
