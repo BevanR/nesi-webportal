@@ -44,7 +44,6 @@ function nesi_proposal_field_default_fields() {
           'project' => 'project',
           'proposal_development_class' => 0,
           'proposal_research_class' => 0,
-          'proposal_type' => 0,
           'story' => 0,
         ),
         'view' => array(
@@ -600,7 +599,6 @@ function nesi_proposal_field_default_fields() {
           'project' => 'project',
           'proposal_development_class' => 0,
           'proposal_research_class' => 0,
-          'proposal_type' => 0,
           'story' => 0,
         ),
         'view' => array(
@@ -1874,384 +1872,13 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_type-body'.
-  $fields['node-proposal_type-body'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
-      ),
-      'field_name' => 'body',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
-      'translatable' => '0',
-      'type' => 'text_with_summary',
-    ),
-    'field_instance' => array(
-      'bundle' => 'proposal_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Description',
-      'required' => 0,
-      'settings' => array(
-        'display_summary' => 1,
-        'text_processing' => '1',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '10',
-          'summary_rows' => 5,
-        ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-proposal_type-field_pt_add_content_url'.
-  $fields['node-proposal_type-field_pt_add_content_url'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_pt_add_content_url',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-        'profile2_private' => FALSE,
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'proposal_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Please provide the Add Content URL for the Proposal Type.',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_pt_add_content_url',
-      'label' => 'Add Content URL',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '4',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-proposal_type-field_pt_reviewer_selection'.
-  $fields['node-proposal_type-field_pt_reviewer_selection'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_pt_reviewer_selection',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'manual' => 'Assign reviewer by chair',
-          'random' => 'Assign reviewer randomly',
-          'roundrobin' => 'Assign reviewer by round robin',
-          'selfselection' => 'Assign by self selection (first in first served)',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'proposal_type',
-      'default_value' => array(
-        0 => array(
-          'value' => 'manual',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => 'Please select a method in which a reviewer is assigned to a proposal.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 3,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_pt_reviewer_selection',
-      'label' => 'Reviewer Selection Process',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-proposal_type-field_pt_reviewers'.
-  $fields['node-proposal_type-field_pt_reviewers'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_pt_reviewers',
-      'foreign keys' => array(
-        'uid' => array(
-          'columns' => array(
-            'uid' => 'uid',
-          ),
-          'table' => 'users',
-        ),
-      ),
-      'indexes' => array(
-        'uid' => array(
-          0 => 'uid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'user_reference',
-      'settings' => array(
-        'profile2_private' => FALSE,
-        'referenceable_roles' => array(
-          2 => 0,
-          3 => 0,
-          4 => 0,
-          5 => '5',
-          6 => 0,
-        ),
-        'referenceable_status' => array(
-          0 => 0,
-          1 => '1',
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'user_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'proposal_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Users checked as a reviewer will be part of the randomised review allocation pool. Those not checked will not be allocated any proposals for review of this type.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'user_reference',
-          'settings' => array(),
-          'type' => 'user_reference_default',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_pt_reviewers',
-      'label' => 'Reviewer Pool',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '1',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-proposal_type-field_pt_workflow_states'.
-  $fields['node-proposal_type-field_pt_workflow_states'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_pt_workflow_states',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-        'profile2_private' => FALSE,
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'proposal_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 4,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_pt_workflow_states',
-      'label' => 'Workflow States',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '5',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add Content URL');
   t('Additional usage information');
   t('Background');
   t('Benefits from HPC');
   t('CPU core Hours');
   t('Data Transfer');
-  t('Description');
   t('Desired HPC Platform');
   t('Estimated average length of each run (in wall-clock hours)');
   t('Estimated average number of CPUs per run');
@@ -2275,23 +1902,17 @@ function nesi_proposal_field_default_fields() {
   t('Please outline the team\'s experience with HPC. This should include HPC architectures, programming languages, parallelisation methods and packages the team has experience with. Please also include names of HPC facilities that the research team has collaborated with in the past.');
   t('Please provide a description of the project such as the scientific goals.');
   t('Please provide any additional information on usage requirements.');
-  t('Please provide the Add Content URL for the Proposal Type.');
   t('Please provide the name of your institutional, national or international grant provider.');
-  t('Please select a method in which a reviewer is assigned to a proposal.');
   t('Please use this section to add any information which has not been covered elsewhere.');
   t('Project Deliverables');
   t('Project Description');
   t('Project Reference');
   t('Project Team\'s HPC Experience');
-  t('Reviewer Pool');
-  t('Reviewer Selection Process');
   t('Scientific Goals');
   t('See also http://www.nesi.org.nz/facilities');
   t('Software Requirements');
   t('Storage Requirements');
   t('The amount of funding approved for HPC.');
-  t('Users checked as a reviewer will be part of the randomised review allocation pool. Those not checked will not be allocated any proposals for review of this type.');
-  t('Workflow States');
 
   return $fields;
 }
