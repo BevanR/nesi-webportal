@@ -44,7 +44,6 @@ function nesi_project_field_default_fields() {
           'project' => 0,
           'proposal_development_class' => 0,
           'proposal_research_class' => 0,
-          'proposal_type' => 0,
           'story' => 0,
         ),
         'view' => array(
@@ -737,7 +736,6 @@ function nesi_project_field_default_fields() {
           'project' => 0,
           'proposal_development_class' => 'proposal_development_class',
           'proposal_research_class' => 'proposal_research_class',
-          'proposal_type' => 0,
           'story' => 0,
         ),
         'view' => array(
