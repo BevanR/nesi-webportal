@@ -243,7 +243,6 @@ function nesi_slideshow_field_default_fields() {
           'project' => 0,
           'proposal_development_class' => 0,
           'proposal_research_class' => 0,
-          'proposal_type' => 0,
           'slideshow_item' => 0,
           'story' => 'story',
         ),
