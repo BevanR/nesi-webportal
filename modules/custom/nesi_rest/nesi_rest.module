@@ -925,9 +925,16 @@ function nesi_rest_process_project_queue($item) {
       'projectId' => 'd-'.$project->nid, 
     );
 
+    // Add project title to description
+    $proposal = node_load($project->field_p_proposal_id[LANGUAGE_NONE][0]); 
+
+    if ($proposal) {
+      $project_data['description'] = $proposal->title;
+    }
+
     // Process existing project
     if (!empty($project->gold_create[LANGUAGE_NONE][0]['value'])) {
-      dpm('Project gold_create enabled - attempting to update project data in GOLD');
+      dpm('Project is created - syncing project data');
       
       // Check whether GOLD has provided Project ID ?? GOLD is not assigning an ID ? 
 
