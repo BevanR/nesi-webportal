@@ -501,6 +501,17 @@ function _get_proposal_team_members($multi_form_field = array()) {
   return $member_data;
 }
 
+function nesi_proposal_node_delete($node) {
+
+  // Clean up reference project data
+  if (($node->type == 'proposal_development_class') || ($node->type == 'proposal_research_class')) {
+   
+    $reference_nid = $node->field_p_project_id[LANGUAGE_NONE][0]['nid']; 
+    // Remove associated project data
+    node_delete($reference_nid);
+  }
+}
+
 function nesi_proposal_node_access($node, $op, $account) {
   // Limit access to proposal once submitted..
   global $user;
