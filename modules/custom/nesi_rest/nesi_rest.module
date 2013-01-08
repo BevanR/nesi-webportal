@@ -987,7 +987,7 @@ function nesi_rest_process_project_queue($item) {
     // Edge case - unable to load node?
     // Potentially deleted project node (before queue processed)
     // Log and flag for admin
-    watchdog('nesi_rest', 'REST: Unable to load project node from queue - NID ( '.$tmp_node->nid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
+    watchdog('nesi_rest', 'REST: Unable to load project node from queue - NID ( '.$tmp_node->nid.' ) - UID ( '.$tmp_node->uid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
   }
 }
 
