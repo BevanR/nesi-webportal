@@ -1,0 +1,95 @@
+.navbar-inner{
+	min-height: 70px;
+}
+.brand span{
+	.hide-text();
+	display: block;
+	background: url(../img/nesi-logo.png) no-repeat 0 0;
+	height: 70px;
+	width: 190px;
+	@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+		background-image: url(../img/nesi-logo@2x.png);
+		background-size: 173px 70px;
+  }
+}
+
+.account-summary .avatar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	}
+
+.avatar {
+	width: 48px;
+	height: 48px;
+	.border-radius(5px);
+}
+
+.size32 {
+	width: 32px;
+	height: 32px;
+	.border-radius(4px);
+}
+
+
+#pnav, #global-nav{
+	@media (min-width: 979px) {
+		a{
+			padding-top: 35px;
+			padding-bottom: 35px;
+		}
+	}
+	.dropdown-menu {
+		margin-top: -25px;
+		a{
+			padding: 3px 20px;
+		}
+	}
+}
+
+#pnav
+{
+	a{
+		color: rgb(142, 170, 178);
+		&:hover{
+			color: darken(rgb(142, 170, 178), 30%);
+		}
+	}
+	.active a{
+		color:@nesi-highlight-color2;
+		background: none;
+		.box-shadow(none);
+	}
+}
+
+#global-nav{
+	font-size: 12px;
+	>ul > li > a{
+		color:lighten(hsl(0, 0%, 33%), 10%);
+	}
+	.dropdown-toggle{
+		background: none;
+	}
+	.current-user .metadata {
+		display: block;
+		font-size: 11px;
+	}
+	a.account-summary {
+		min-height: 32px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-bottom: 0;
+		.content {
+			padding-right: 15px;
+			margin-top: 1px;
+			margin-right: 0;
+			line-height: 14px;
+			margin-left: 42px;
+		}
+		.avatar {
+			top: 10px;
+			left: 22px;
+			.box-shadow(none);
+		}
+	}
+}

@@ -1,0 +1,142 @@
+#home-hero {
+	border-bottom: 1px double #e1e1e1;
+	padding-bottom: 1px;
+	@height:240px;
+.item{
+		min-height: @height;
+		.clearfix();
+	.lt-ie8 & {
+		height: @height;
+		}
+	img{
+		position: absolute;
+		z-index: 2;
+		}
+	}
+	.slide-content{
+		position: relative;
+		z-index: 3;
+		margin-left:80px;
+		width: 80%;
+		max-width: 660px;
+	}
+	.slide-content{
+		@top: @height/2;
+		top: @top;
+		margin-top: -@top/2.4;
+	}
+	.slide-title{
+		font-size: 24px;
+		font-weight: 100;
+		letter-spacing: 2px;
+		span{
+			line-height: 1;
+			display: inline-block;
+			margin-bottom: .2em;
+			padding-left: .25em;
+			padding-right: .25em;
+			&.line1{
+				white-space: nowrap;
+			}
+		}
+	}
+	.slide-link{
+		font-weight: 600;
+
+		.text-shadow;
+	}
+	.carousel-control{
+		display: none;
+	}
+}
+@media (min-width: 540px) {
+	#home-hero{
+		@height: 340px;
+		.item{
+			min-height: @height;
+
+			.lt-ie8 & {
+				height: @height;
+			}
+		}
+		.slide-content{
+			width: 80%;
+		}
+		.slide-title{
+			font-size: 40px;
+		}
+		.slide-link{
+			font-size: 120%;
+		}
+	}
+}
+@media (min-width: 760px) {
+	#home-hero{
+		@height: 360px;
+		.item{
+			min-height: @height;
+
+			.lt-ie8 & {
+				height: @height;
+			}
+		}
+		.slide-content{
+			max-width: 660px;
+		}
+		.carousel-control{
+			display: block;
+		}
+	}
+}
+
+@media (min-width: 960px) {
+	#home-hero{
+		@height: 420px;
+		.item{
+			min-height: @height;
+
+			.lt-ie8 & {
+				height: @height;
+			}
+		}
+		.slide-title{
+			font-size: 60px;
+			font-weight: 100;
+			letter-spacing: 2px;
+		}
+		.slide-link{
+			font-size: 120%;
+		}
+
+	}
+}
+// Specific Hero items
+#slide-research-application{
+	#hero-slide > .background(rgb(225,225,225));
+	.slide-title span{#hero-slide > .title();}
+	.slide-link{#hero-slide > .link-color();}
+	.slide-title .line1{background-color: @nesi-highlight-color2;}
+	img{
+		top: 50%;
+		left: -20px;
+		margin-top: -(340px/2);
+	}
+}
+#slide-case-study{
+	#hero-slide > .background();
+	.slide-title span{#hero-slide > .title();}
+	.slide-link{#hero-slide > .link-color(#f9cc02);}
+	img{
+		top: 10px;
+		left: -20px;
+	}
+}
+#slide-national-roadshow{
+	#hero-slide > .background(#54b1cc);
+	.slide-title span{#hero-slide > .title();}
+	.slide-link{#hero-slide > .link-color(#f9cc02);}
+	img{
+		top: -24%;
+		left: -20px;
+	}
+}
