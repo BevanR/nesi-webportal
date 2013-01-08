@@ -634,6 +634,33 @@ function nesi_proposal_node_access($node, $op, $account) {
   }
 }
 
+function nesi_proposal_flag_access($flag, $entity_id, $action, $account) {
+
+  if ($flag->name == 'pdc_check_proposal') {
+    
+    if ($flag->is_flagged($entity_id)) {
+      $proposal = node_load($entity_id);
+      if ($proposal) { 
+        if ($account->uid == $proposal->uid) {
+            return FALSE;
+        }
+      }
+    }
+  }
+
+  if ($flag->name == 'prc_check_proposal') {
+    
+    if ($flag->is_flagged($entity_id)) {
+      $proposal = node_load($entity_id);
+      if ($proposal) { 
+        if ($account->uid == $proposal->uid) {
+            return FALSE;
+        }
+      }
+    }
+  }
+}
+
 function _nesi_proposal_uid_search($user_id, $user_field = array()) {
   $user_exists = FALSE;
   // Returns true if user exists in reference field.
