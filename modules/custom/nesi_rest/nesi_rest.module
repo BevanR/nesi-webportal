@@ -917,7 +917,7 @@ function nesi_rest_process_project_queue($item) {
     // Send to GOLD...
     drupal_set_message('Project '.$project->nid.' processed by GOLD queue','status');
     watchdog('nesi_rest', 'REST: Project processed by GOLD queue - NID ( '.$project->nid.' ) ', NULL , WATCHDOG_INFO, $link = NULL);
-    dpm($project);
+    //dpm($project);
 
     // Default data - set projectId (if defined) and description only
     $project_data = array (
@@ -932,12 +932,11 @@ function nesi_rest_process_project_queue($item) {
       $project_data['description'] = $proposal->title;
     }
 
-    dpm($project_data);
-
+    //dpm($project_data);
 
     // Process existing project
     if (!empty($project->gold_create[LANGUAGE_NONE][0]['value'])) {
-      dpm('Project is created - syncing project data');
+      //dpm('Project is created - syncing project data');
       
       // Check whether GOLD has provided Project ID ?? GOLD is not assigning an ID ? 
 
@@ -952,12 +951,12 @@ function nesi_rest_process_project_queue($item) {
       else {
         // If http response failure, add to watchdog and notify admin
         watchdog('nesi_rest', 'REST: Project update failure - NID ( '.$project->nid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
-        dpm('It appears that there may have been a problem updating the project in GOLD.');
+        //dpm('It appears that there may have been a problem updating the project in GOLD.');
       }
     }
     else {
       // Project not created
-      dpm('Project gold_create is not enabled - attempting to create project in GOLD');
+      //dpm('Project gold_create is not enabled - attempting to create project in GOLD');
       
       // Send via REST
       // Attempt to connect to REST and create project
@@ -979,7 +978,7 @@ function nesi_rest_process_project_queue($item) {
         watchdog('nesi_rest', 'REST: Project creation failure - NID ( '.$project->nid.' ) ', NULL , WATCHDOG_ERROR, $link = NULL);
         
         // Log and flag for admin
-        dpm('It appears that there may have been a problem creating the project in GOLD.');
+        //dpm('It appears that there may have been a problem creating the project in GOLD.');
       }
     }  
   }
