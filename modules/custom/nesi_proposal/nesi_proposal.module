@@ -244,6 +244,25 @@ function nesi_proposal_node_update($node) {
     //dpm($project_node); 
     node_save($project_node);    
 
+    if ($node->type == 'proposal_development_class') {
+      $flag = flag_get_flag('pdc_check_proposal');
+      if ($flag->is_flagged($node->nid)) { 
+        // Get project queue
+        $queue = DrupalQueue::get('nesi_rest_project_queue');
+        // Add this project update to the queue to be sent to GOLD
+        $queue->createItem($project_node);
+      }
+    }
+
+    if ($node->type == 'proposal_research_class') {
+      $flag = flag_get_flag('prc_check_proposal');
+      if ($flag->is_flagged($node->nid)) { 
+        // Get project queue
+        $queue = DrupalQueue::get('nesi_rest_project_queue');
+        // Add this project update to the queue to be sent to GOLD
+        $queue->createItem($project_node);
+      }
+    }
   }
 }
 
