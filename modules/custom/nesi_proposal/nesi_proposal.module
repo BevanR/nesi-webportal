@@ -244,12 +244,42 @@ function nesi_proposal_node_update($node) {
     //dpm($project_node); 
     node_save($project_node);    
 
-    // Get project queue
-    $queue = DrupalQueue::get('nesi_rest_project_queue');
-    // Add this project update to the queue to be sent to GOLD
-    $queue->createItem($project_node);  
   }
 }
+
+function nesi_proposal_flag($action, $flag, $content_id, $account) {
+  // Process submission to NESI
+
+  if ($flag->action == 'flag') {
+    if ($flag->name == 'pdc_check_proposal') {
+
+      $proposal = node_load($content_id);
+      
+      $reference_nid = $proposal->field_p_project_id[LANGUAGE_NONE][0]['nid'];
+      $project_node = node_load($reference_nid);
+      // Get project queue
+      $queue = DrupalQueue::get('nesi_rest_project_queue');
+      // Add this project update to the queue to be sent to GOLD
+      $queue->createItem($project_node);
+
+    }
+  }
+
+  if ($flag->action == 'flag') {
+    if ($flag->name == 'prc_check_proposal') {
+      
+      $proposal = node_load($content_id);
+      
+      $reference_nid = $proposal->field_p_project_id[LANGUAGE_NONE][0]['nid'];
+      $project_node = node_load($reference_nid);
+      // Get project queue
+      $queue = DrupalQueue::get('nesi_rest_project_queue');
+      // Add this project update to the queue to be sent to GOLD
+      $queue->createItem($project_node);
+    }
+  }
+}
+
 
 /**
  * Implements hook_form_FORM_ID_alter()
