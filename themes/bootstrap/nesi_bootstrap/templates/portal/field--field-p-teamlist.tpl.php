@@ -48,17 +48,50 @@ See http://api.drupal.org/api/function/theme_field/7 for details.
 After copying this file to your theme's folder and customizing it, remove this
 HTML comment.
 -->
+<?php 
+  $node_item = FALSE;
+  $project_node = FALSE;
+  $project_pi = FALSE;
+  $manage_team = arg(2); 
+  if (arg(0) == 'node') {
+    $node_item = node_load(arg(1));
+    if (($node_item->type == 'proposal_development_class') || ($node_item->type == 'proposal_research_class') ) {
+      $project_node = node_load($node_item->field_p_project_id[LANGUAGE_NONE][0]['nid']);
+      if (!empty($project_node->field_p_principal_investigator[LANGUAGE_NONE][0]['uid'])) {
+        $project_pi = user_load($project_node->field_p_principal_investigator[LANGUAGE_NONE][0]['uid']);
+      }
+    }
+  }
+?>
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if (!$label_hidden): ?>
+    <?php if ($manage_team == 'team') { ?>
+      <h2><?php print $label ?>&nbsp;</h2>
+      <?php if ($node_item) { ?>
+        <div class="team-members"> <!-- begin team-members -->
+        <?php if (($project_node) && ($project_pi)) { ?>
+          <div id="principal">
+            <strong>Principal Investigator:</strong>
+            <?php
+            $pi_member_profile = profile2_load_by_user($project_pi->uid);
+            if (!empty($pi_member_profile['researcher_profile'])) {
+              $name = $pi_member_profile['researcher_profile']->field_user_firstname[LANGUAGE_NONE][0]['value'].' '.$pi_member_profile['researcher_profile']->field_user_lastname[LANGUAGE_NONE][0]['value'];
+              print $name.'&nbsp;&nbsp;';
+              print '<a href="mailto:'.$project_pi->mail.'">'.$project_pi->mail.'</a>'.'&nbsp;&nbsp;';
+              print 'Phone: '.$pi_member_profile['researcher_profile']->field_user_phone[LANGUAGE_NONE][0]['value'];
+            }
+            ?>
+          </div> 
+        <?php } ?>
+      <?php } ?>
+    <?php } else { ?>
     <div class="field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
+    <?php } ?>
   <?php endif; ?>
   <div class="field-items"<?php print $content_attributes; ?>>
-    <?php 
-      $manageteam = arg(2); 
-      if ($manageteam == 'team') {
-    ?>
+    <?php if ($manage_team == 'team') { ?>
       <table class="table">
-      <thead></th><th>Name</th><th>Contact Email</th><th>Options</th></tr></thead>
+      <thead></th><th>Name</th><th>Contact Email</th><th>&nbsp;</th></tr></thead>
       <tbody>
     <?php foreach ($items as $delta => $item): 
       /* ?>
@@ -76,21 +109,17 @@ HTML comment.
 		      print $name;
 	      }
 	  ?></td>
-      <td><?php print $item['#options']['entity']->mail; ?></td>
+      <td><?php print '<a href="mailto:'.$item['#options']['entity']->mail.'">'.$item['#options']['entity']->mail.'</a>'; ?></td>
       <td>
       <?php 
-      if (arg(0) == 'node') {
-        //Load node
-        $this_node = node_load(arg(1));
-        if ($this_node) {
-          if ($this_node->uid == $item['#options']['entity']->uid) {
-            ?><p>Project Owner</p><?php
+        if ($node_item) {
+          if ($node_item->uid == $item['#options']['entity']->uid) {
+            ?><p>Project Submitter</p><?php
           }
           else {
             ?><a class="btn" href="/<?php print current_path(); ?>/<?php print($item['#options']['entity']->uid); ?>/remove">Remove</a><?php
           }
         }
-      }
       ?>
       </td>
       </tr>
@@ -98,6 +127,7 @@ HTML comment.
     <?php endforeach; ?>
       </tbody>
       </table>
+      </div> <!-- end team-members -->
     <?php 
       }
       else {
