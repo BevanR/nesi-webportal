@@ -71,7 +71,7 @@ HTML comment.
         <div class="team-members"> <!-- begin team-members -->
         <?php if (($project_node) && ($project_pi)) { ?>
           <div id="principal">
-            <strong>Principal Investigator:</strong>
+            <strong>Principal Investigator</strong>
             <?php
             $pi_member_profile = profile2_load_by_user($project_pi->uid);
             if (!empty($pi_member_profile['researcher_profile'])) {
@@ -91,7 +91,7 @@ HTML comment.
   <div class="field-items"<?php print $content_attributes; ?>>
     <?php if ($manage_team == 'team') { ?>
       <table class="table">
-      <thead></th><th>Name</th><th>Contact Email</th><th>&nbsp;</th></tr></thead>
+      <thead></th><th>Team Members</th><th></th><th>&nbsp;</th></tr></thead>
       <tbody>
     <?php foreach ($items as $delta => $item): 
       /* ?>
