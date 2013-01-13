@@ -462,3 +462,15 @@ function nesi_user_user_login(&$edit, $account) {
   }
 }
 
+function nesi_user_preprocess_page(&$variables) {
+  global $user;
+
+  // Set login/register page title for unauthenticated users
+  if ($user->uid < 1) {
+
+    if (arg(0) == 'user') {
+      $variables['title'] = t('Researcher Access');
+    }
+  }
+}
+
