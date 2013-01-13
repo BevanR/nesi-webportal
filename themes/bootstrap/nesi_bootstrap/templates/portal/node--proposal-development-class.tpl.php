@@ -4,6 +4,26 @@
     <?php print render($title_prefix); ?>
     <?php //if (!$page && $title): ?>
       <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
+      <div style="padding:20px;">
+        <?php 
+          $flag = flag_get_flag('pdc_check_proposal');
+          if ($flag->is_flagged($node->nid)) {
+            ?>
+            <div class="project-status">
+              <small>Status</small>
+              <span class="label label-info">Pending</span>
+            </div>
+            <?php
+          }
+          else {
+            ?><div class="project-status">
+              <small>Status</small>
+              <span class="label label-info">In Draft</span>
+            </div>
+            <?php
+          }
+        ?>
+      </div>
     <?php //endif; ?>
     <?php print render($title_suffix); ?>
     <div class="meta">
@@ -13,20 +33,11 @@
         <?php print $submitted; ?>
       </p>
       <p>Proposal Type: Proposal Development Class</p>
-      <div id="proposal-status">
-        <p><em>Current Status:</em>&nbsp;<?php 
-          $flag = flag_get_flag('pdc_check_proposal');
-          if ($flag->is_flagged($node->nid)) {
-            ?><strong>Pending</strong><?php
-          }
-          else {
-            ?><strong>In Draft</strong><?php
-          }
-        ?></p>
+        <div id="proposal-status" style="top:45px;">
         <?php if (!empty($content['links']['flag'])): ?>
           <?php print render($content['links']['flag']); ?>
         <?php endif; ?>
-      </div>
+        </div>
     <?php endif; ?>
     </div>
   </header>
