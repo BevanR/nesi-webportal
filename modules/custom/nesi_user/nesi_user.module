@@ -235,6 +235,14 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
     profile2_attach_form($form, $form_state); 
   }
 
+  // Set forms to be displayed with a fieldset...
+  $form['account']['#type'] = 'fieldset';
+  $form['account']['#title'] = 'Account Information';
+  $form['account']['#collapsible'] = TRUE;
+  $form['account']['#collapsed'] = TRUE;
+  $form['profile_researcher_profile']['#type'] = 'fieldset';
+  $form['profile_researcher_profile']['#title'] = 'Researcher Profile';
+  $form['profile_researcher_profile']['#collapsible'] = TRUE;
 }
 
 /**
