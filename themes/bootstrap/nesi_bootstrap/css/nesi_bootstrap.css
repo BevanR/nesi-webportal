@@ -64,3 +64,20 @@ a.tabledrag-handle .handle {
   padding-top: 15px;
 }
 
+.project-status {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  right: 5px;
+}
+
+.project-status small {
+  font-size: 9.999999996px;
+  font-weight: 400;
+  line-height: 1;
+  position: absolute;
+  left: -65px;
+  color: #999999;
+  margin-top: 5px;
+}
+
