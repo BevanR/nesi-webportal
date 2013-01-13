@@ -47,3 +47,20 @@ a.tabledrag-handle .handle {
 	right: 6px;
 }
 
+.profile2-researcher-profile .field-label {
+  color: #777;
+  width: 150px;
+}
+
+.profile2-researcher-profile .content {
+  margin-top: 5px;
+}
+
+.form-actions {
+  background-color: #fff;
+}
+
+#edit-profile-researcher-profile .fieldset-wrapper {
+  padding-top: 15px;
+}
+
