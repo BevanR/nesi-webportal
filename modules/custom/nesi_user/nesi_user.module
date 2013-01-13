@@ -213,6 +213,13 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
       unset($form['account']['pass'], $form['account']['current_pass'], $form['account']['current_pass_required_values']['#value']['pass']);
     }  
   }
+
+  // No one should have Personal Contact enabled 
+  if (!empty($form['contact'])) { 
+    $form['contact']['#access'] = FALSE;
+  }
+
+
 }
 
 /**
