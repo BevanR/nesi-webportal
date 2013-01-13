@@ -272,6 +272,28 @@ function nesi_user_user_view($account, $view_mode, $langcode) {
   // Could be worth adding a user->gold_create flag check here?
 }
 
+/**
+ * Implements hook_profile2_view()
+ */
+function nesi_user_profile2_view($profile, $view_mode, $langcode) {
+
+  // Tidy up profile listing on account view
+  if ($profile->type == 'researcher_profile') {
+    
+    $profile->content['field_user_firstname']['#access'] = FALSE;
+    $profile->content['field_user_middlename']['#access'] = FALSE;
+    $profile->content['field_user_lastname']['#access'] = FALSE;
+    $profile->content['field_user_institution']['#label_display'] = 'inline';
+    $profile->content['field_user_department']['#label_display'] = 'inline';
+    $profile->content['field_user_position']['#label_display'] = 'inline';
+    $profile->content['field_user_phone']['#label_display'] = 'inline';
+    $profile->content['field_user_address']['#label_display'] = 'inline';
+    $profile->content['field_user_altemail']['#label_display'] = 'inline';
+    $profile->content['field_user_nationality']['#label_display'] = 'inline';
+    
+  }
+}
+
 function nesi_user_username_alter(&$name, $account) {
 
   if ($account->uid > 1) {
