@@ -121,8 +121,19 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
 
     $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
     $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
-    //dpm($form['profile_researcher_profile']['field_user_nationality']);
     $form['#validate'][] = 'nesi_user_validate_researcher_profile';
+
+    // Set inline class for form layout
+    $form['profile_researcher_profile']['field_user_firstname']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_middlename']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_lastname']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_institution']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_department']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_position']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_phone']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_address']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_altemail']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_nationality']['#attributes']['class'][] = 'form-horizontal';
   }
 
   // User Profile form alter
