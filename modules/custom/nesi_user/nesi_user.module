@@ -83,6 +83,9 @@ function nesi_user_menu_alter(&$items) {
 
   // Login with Drupal
   $items['user/login']['title'] = 'Login via Drupal';
+
+  // Remove researcher profile as separate form (include in standard user account edit form)
+  $items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
 }
 
 function nesi_user_form_alter(&$form, &$form_state, $form_id) {
