@@ -15,6 +15,21 @@ function nesi_user_dashboard_callback() {
       $current_proposal = node_load($response[0]->nid);
       $options = array('absolute' => TRUE);
       $nodeurl = url('node/'. $current_proposal->nid, $options);
+
+      // Get status for display
+      if ($current_proposal->type == 'proposal_development_class') {
+        $flag = flag_get_flag('pdc_check_proposal');
+      }
+      else {
+        $flag = flag_get_flag('prc_check_proposal');
+      }
+      if ($flag->is_flagged($node->nid)) {
+        $proposal_state = 'Pending';
+      }
+      else {
+        $proposal_state = 'In Draft';
+      }
+
     }
   }
   if ($in_progress) {
@@ -32,9 +47,11 @@ function nesi_user_dashboard_callback() {
           </div>-->
           <div class="allocation-stats">
             <!--<h2 class="project-platform-title">Platform: POWER 7</h2>-->
-            <div class="project-progress">
-              <small>Progress</small>
-              <div style="width: 20%;" class="bar"></div>
+            <div class="project-status">
+              <small>Status</small>
+              <span class="label label-info">'.$proposal_state.'</span>
+              <!--<small>Progress</small>
+              <div style="width: 20%;" class="bar"></div>-->
             </div>
             <!--<ul class="stats-tabs">
               <li>12 <span>CPUs</span></li>
