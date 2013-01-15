@@ -61,14 +61,38 @@ HTML comment.
       <thead></th><th>Name</th><th>Contact Email</th><th>Options</th></tr></thead>
       <tbody>
     <?php foreach ($items as $delta => $item): 
-      //kpr($item); 
       /* ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>> */ ?>
-      <?php //print render($item); ?>
+      <?php 
+        //print render($item); 
+	      // Load researcher profile
+	      $team_member_profile = profile2_load_by_user($item['#options']['entity']->uid);
+	    ?>
       <tr>
-      <td><?php print $item['#title']; ?></td>
+      <td><?php 
+        //print $item['#title'];
+	      if (!empty($team_member_profile['researcher_profile'])) {
+		      $name = $team_member_profile['researcher_profile']->field_user_firstname[LANGUAGE_NONE][0]['value'].' '.$team_member_profile['researcher_profile']->field_user_lastname[LANGUAGE_NONE][0]['value'];
+		      print $name;
+	      }
+	  ?></td>
       <td><?php print $item['#options']['entity']->mail; ?></td>
-      <td><a class="btn" href="/<?php print current_path(); ?>/<?php print($item['#options']['entity']->uid); ?>/remove">Remove</a></td>
+      <td>
+      <?php 
+      if (arg(0) == 'node') {
+        //Load node
+        $this_node = node_load(arg(1));
+        if ($this_node) {
+          if ($this_node->uid == $item['#options']['entity']->uid) {
+            ?><p>Project Owner</p><?php
+          }
+          else {
+            ?><a class="btn" href="/<?php print current_path(); ?>/<?php print($item['#options']['entity']->uid); ?>/remove">Remove</a><?php
+          }
+        }
+      }
+      ?>
+      </td>
       </tr>
       <?php //</div> ?>
     <?php endforeach; ?>
@@ -79,7 +103,12 @@ HTML comment.
       else {
         ?><p><?php
         foreach ($items as $delta => $item): 
-          print $item['#title'].'<br />'; 
+	        $team_member_profile = profile2_load_by_user($item['#options']['entity']->uid);
+	        if (!empty($team_member_profile['researcher_profile'])) {
+		        $name = $team_member_profile['researcher_profile']->field_user_firstname[LANGUAGE_NONE][0]['value'].' '.$team_member_profile['researcher_profile']->field_user_lastname[LANGUAGE_NONE][0]['value'];
+		        print $name.'<br />';
+	        }
+          //print $item['#title'].'<br />'; 
         endforeach;
         ?></p><?php
       }
