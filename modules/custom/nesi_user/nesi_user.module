@@ -492,5 +492,14 @@ function nesi_user_preprocess_page(&$variables) {
 	    unset($variables['tabs']['#secondary']);
     }
   }
+
+  if ((arg(0) =='user') ) {
+    // Build Breadcrumbs
+    $breadcrumb = array();
+    $breadcrumb[] = l('Home', '<front>');
+
+    // Set Breadcrumbs
+    drupal_set_breadcrumb($breadcrumb);
+  }
 }
 
