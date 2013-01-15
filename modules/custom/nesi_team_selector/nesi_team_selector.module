@@ -175,8 +175,16 @@ function nesi_team_selector_argument_selector_action($entities, $context = array
 
 function nesi_team_selector_views_bulk_operations_form_alter(&$form, &$form_state, $vbo) {
   // Form alter placeholder to adjust / simplify the team member form
-  //dpm($form);
+
   $form['select']['#title'] = '';
+  // Adjust confirmation form for adding team member
+  if ($form_state['step'] == 'views_bulk_operations_confirm_form') {
+    $team_member_profile = profile2_load_by_user($form_state['selection'][0]);
+    if (!empty($team_member_profile['researcher_profile'])) {	
+      $prompt = '<p>You selected the following person to add to your team:</p><p>'.$team_member_profile['researcher_profile']->field_user_firstname[LANGUAGE_NONE][0]['value'].' '.$team_member_profile['researcher_profile']->field_user_lastname[LANGUAGE_NONE][0]['value'].'</p>';
+      $form['description']['#markup'] = $prompt;
+    }
+  }
 }
 
 function nesi_team_selector_module_implements_alter(&$implementations, $hook) {
