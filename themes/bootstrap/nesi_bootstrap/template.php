@@ -24,14 +24,14 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
   $output = '';
   $output .= '<ul id="user-menu" class="menu nav dropdown">';
   $output .= '<li>';
-  $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#">My Account<span class="caret"></span></a>';
+  $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#">User Menu<span class="caret"></span></a>';
   $output .= '<ul class="dropdown-menu">' . $variables['tree'] . '</ul>';
   $output .= '</li>';
   $output .= '</ul>';
   return $output;
 }
 
-function nesi_bootstrap_menu_tree__researcher_menu($variables) {
+function nesi_bootstrap_menu_tree__menu_researcher_menu($variables) {
   $output = '';
   $output .= '<ul id="user-menu" class="menu nav dropdown">';
   $output .= '<li>';
