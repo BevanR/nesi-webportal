@@ -1,9 +1,14 @@
 name = nesi_ft_researcher_menu
 core = 7.x
 package = NeSI
-version = 7.x-0.1
+version = 7.x-0.2
 project = nesi_ft_researcher_menu
 dependencies[] = features
 dependencies[] = menu
 features[features_api][] = api:1
 features[menu_custom][] = menu-researcher-menu
+features[menu_links][] = menu-researcher-menu:hpc-calculator
+features[menu_links][] = menu-researcher-menu:http://support.nesi.org.nz
+features[menu_links][] = menu-researcher-menu:user
+features[menu_links][] = menu-researcher-menu:user/dashboard
+features[menu_links][] = menu-researcher-menu:user/logout
