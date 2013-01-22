@@ -81,3 +81,9 @@ a.tabledrag-handle .handle {
   margin-top: 5px;
 }
 
+/* Homepage banner image position */
+
+#home-hero .item img {
+  left:-20px;
+}
+
