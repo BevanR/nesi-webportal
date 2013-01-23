@@ -17,19 +17,17 @@ function nesi_user_dashboard_callback() {
       $nodeurl = url('node/'. $current_proposal->nid, $options);
 
       // Get status for display
-      if ($current_proposal->type == 'proposal_development_class') {
-        $flag = flag_get_flag('pdc_check_proposal');
+      if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
+        $flag = flag_get_flag('p_submit_proposal');
       }
-      else {
-        $flag = flag_get_flag('prc_check_proposal');
+      if($flag) {
+        if ($flag->is_flagged($node->nid)) {
+          $proposal_state = 'Pending';
+        }
+        else {
+          $proposal_state = 'In Draft';
+        }
       }
-      if ($flag->is_flagged($node->nid)) {
-        $proposal_state = 'Pending';
-      }
-      else {
-        $proposal_state = 'In Draft';
-      }
-
     }
   }
   if ($in_progress) {
