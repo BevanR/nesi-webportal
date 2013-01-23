@@ -244,18 +244,8 @@ function nesi_proposal_node_update($node) {
     //dpm($project_node); 
     node_save($project_node);    
 
-    if ($node->type == 'proposal_development_class') {
-      $flag = flag_get_flag('pdc_check_proposal');
-      if ($flag->is_flagged($node->nid)) { 
-        // Get project queue
-        $queue = DrupalQueue::get('nesi_rest_project_queue');
-        // Add this project update to the queue to be sent to GOLD
-        $queue->createItem($project_node);
-      }
-    }
-
-    if ($node->type == 'proposal_research_class') {
-      $flag = flag_get_flag('prc_check_proposal');
+    if (($node->type == 'proposal_development_class') || ($node->type == 'proposal_research_class')) {
+      $flag = flag_get_flag('p_submit_proposal');
       if ($flag->is_flagged($node->nid)) { 
         // Get project queue
         $queue = DrupalQueue::get('nesi_rest_project_queue');
@@ -270,7 +260,7 @@ function nesi_proposal_flag($action, $flag, $content_id, $account) {
   // Process submission to NESI
 
   if ($action == 'flag') {
-    if ($flag->name == 'pdc_check_proposal') {
+    if ($flag->name == 'p_submit_proposal') {
 
       $proposal = node_load($content_id);
       
@@ -281,20 +271,6 @@ function nesi_proposal_flag($action, $flag, $content_id, $account) {
       // Add this project update to the queue to be sent to GOLD
       $queue->createItem($project_node);
 
-    }
-  }
-
-  if ($action == 'flag') {
-    if ($flag->name == 'prc_check_proposal') {
-      
-      $proposal = node_load($content_id);
-      
-      $reference_nid = $proposal->field_p_project_id[LANGUAGE_NONE][0]['nid'];
-      $project_node = node_load($reference_nid);
-      // Get project queue
-      $queue = DrupalQueue::get('nesi_rest_project_queue');
-      // Add this project update to the queue to be sent to GOLD
-      $queue->createItem($project_node);
     }
   }
 }
@@ -591,21 +567,9 @@ function nesi_proposal_node_access($node, $op, $account) {
     }
   }
 
-  //dpm($node);
   if ($op == 'update') {
 
-    $flag = flag_get_flag('pdc_check_proposal');
-
-    if ($flag->is_flagged($node->nid)) {
-
-      if (!in_array('reviewer', array_values($account->roles))) {
-
-        return NODE_ACCESS_DENY;
-
-      }
-    }
-
-    $flag = flag_get_flag('prc_check_proposal');
+    $flag = flag_get_flag('p_submit_proposal');
 
     if ($flag->is_flagged($node->nid)) {
 
@@ -619,36 +583,17 @@ function nesi_proposal_node_access($node, $op, $account) {
 
   if ($op == 'delete') {
 
-    $flag = flag_get_flag('pdc_check_proposal');
+    $flag = flag_get_flag('p_submit_proposal');
 
     if ($flag->is_flagged($node->nid)) {
       return NODE_ACCESS_DENY;
     }
-
-    $flag = flag_get_flag('prc_check_proposal');
-
-    if ($flag->is_flagged($node->nid)) {
-      return NODE_ACCESS_DENY;
-    }
-
   }
 }
 
 function nesi_proposal_flag_access($flag, $entity_id, $action, $account) {
 
-  if ($flag->name == 'pdc_check_proposal') {
-    
-    if ($flag->is_flagged($entity_id)) {
-      $proposal = node_load($entity_id);
-      if ($proposal) { 
-        if ($account->uid == $proposal->uid) {
-            return FALSE;
-        }
-      }
-    }
-  }
-
-  if ($flag->name == 'prc_check_proposal') {
+  if ($flag->name == 'p_submit_proposal') {
     
     if ($flag->is_flagged($entity_id)) {
       $proposal = node_load($entity_id);
