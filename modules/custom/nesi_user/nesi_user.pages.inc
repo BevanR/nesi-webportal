@@ -11,36 +11,39 @@ function nesi_user_dashboard_callback() {
   
   $in_progress = FALSE;
   if (!empty($response)) {
-    // Need to get link to the exact proposal for this user...
-    if (!empty($response[0]->nid)) { 
-      $in_progress = TRUE;
-      $current_proposal = node_load($response[0]->nid);
-      $options = array('absolute' => TRUE);
-      $nodeurl = url('node/'. $current_proposal->nid, $options);
+    // Display all proposals
+    foreach ($response as $item) {
+      // Need to get link to the exact proposal for this user...
+      if (!empty($item->nid)) { 
+        $in_progress = TRUE;
+        $current_proposal = node_load($item->nid);
+        $options = array('absolute' => TRUE);
+        $nodeurl = url('node/'. $current_proposal->nid, $options);
 
-      $proposal_state = 'In Draft';
+        $proposal_state = 'In Draft';
 
-      // Get status for display
-      if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
-        $flag = flag_get_flag('p_submit_proposal');
-    
-        if ($flag->is_flagged($node->nid)) {
-          $proposal_state = 'Pending';
+        // Get status for display
+        if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
+          $flag = flag_get_flag('p_submit_proposal');
+      
+          if ($flag->is_flagged($node->nid)) {
+            $proposal_state = 'Pending';
+          }
         }
+
+        $proposal_variables = array(
+         'proposal_title' => $current_proposal->title,
+         'proposal_link' => $nodeurl,
+         'proposal_state' => $proposal_state,
+        );
+
+        $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
       }
     }
   }
-  if ($in_progress) {
 
-    $proposal_variables = array(
-     'proposal_title' => $current_proposal->title,
-     'proposal_link' => $nodeurl,
-     'proposal_state' => $proposal_state,
-    );
-
-    $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
-  }
-  else {
+  // Show message if no proposals
+  if (!$in_progress) {
     drupal_set_message(t('It doesn\'t look like you have any saved or pending proposals yet, get started by creating one.'), 'info');
   }
 
