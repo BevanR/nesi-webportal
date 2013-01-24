@@ -26,7 +26,7 @@ function nesi_user_dashboard_callback() {
         if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
           $flag = flag_get_flag('p_submit_proposal');
       
-          if ($flag->is_flagged($node->nid)) {
+          if ($flag->is_flagged($current_proposal->nid)) {
             $proposal_state = 'Pending';
           }
         }
