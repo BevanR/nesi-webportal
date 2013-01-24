@@ -3,6 +3,8 @@
 function nesi_user_dashboard_callback() {
   // Dashboard
   // Needs to be switched to a themeable template 
+
+  $output = '';
   $view = views_get_view('researcher_my_proposals');
   $view->execute();
   $response = $view->result; 
@@ -16,101 +18,35 @@ function nesi_user_dashboard_callback() {
       $options = array('absolute' => TRUE);
       $nodeurl = url('node/'. $current_proposal->nid, $options);
 
+      $proposal_state = 'In Draft';
+
       // Get status for display
       if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
         $flag = flag_get_flag('p_submit_proposal');
-      }
-      if($flag) {
+    
         if ($flag->is_flagged($node->nid)) {
           $proposal_state = 'Pending';
-        }
-        else {
-          $proposal_state = 'In Draft';
         }
       }
     }
   }
   if ($in_progress) {
-    $output = '
-      <h2>Proposals in progress</h2>
-      <article class="project-outline">
-        <header>
-          <h1 class="project-title"><a href="'.$nodeurl.'">'.$current_proposal->title.'</a></h1>
-        </header>
-        <div class="stats-pane">
-          <!--<div class="project-allocation-summary">
-            <h3 class="allocation-title">Allocation Summary</h3>
-            <p class="date">Allocation begins: 12/10/2012</p>
-            <p class="date">Allocation ends: 12/11/2012</p>
-          </div>-->
-          <div class="allocation-stats">
-            <!--<h2 class="project-platform-title">Platform: POWER 7</h2>-->
-            <div class="project-status">
-              <small>Status</small>
-              <span class="label label-info">'.$proposal_state.'</span>
-              <!--<small>Progress</small>
-              <div style="width: 20%;" class="bar"></div>-->
-            </div>
-            <!--<ul class="stats-tabs">
-              <li>12 <span>CPUs</span></li>
-              <li>7680 <span>CPU hours</span></li>
-              <li>80 <span>Wall clock hours</span></li>
-            </ul>-->
-          </div>
-        </div>
-      </article>
-      <h2>Projects in progress</h2>
-      <article class="project-outline">
-        <div class="alert alert-info">
-          It doesn\'t look like you have any live projects yet. Projects will appear here once an allocation is granted.
-        </div>
-      </article>
-    ';
+
+    $proposal_variables = array(
+     'proposal_title' => $current_proposal->title,
+     'proposal_link' => $nodeurl,
+     'proposal_state' => $proposal_state,
+    );
+
+    $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
   }
   else {
-    $output = '
-      <article role="main">
-        <div class="alert alert-info">
-          It doesn\'t look like you have any saved or pending proposals yet, get started by creating one.
-        </div>
-        <div class="module centered-module bordered-module">
-          <div>
-            <article id="create-proposal">
-              <h1>Create a proposal</h1>
-              <div class="content">
-                <div class="module-actions">
-                  <a class="btn btn-large" href="/node/add/proposal-development-class">Development Proposal</a>
-                  <a class="btn btn-large" href="/node/add/proposal-research-class">Research Proposal</a>
-                  <a class="learn-more" href="/allocations">Learn more about the different proposals</a>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div>
-          <section>
-            <h2>Apply for access to HPC facilities</h2>
-              <article>
-                <h3>Development Proposal</h3>
-                <p>Easy to request with fast review cycles, open to receiving proposals on an ongoing on demand basis. PIs may request a single computational resource or a combination of resources. 
-                <a href="/allocations#proposal-development">Learn more</a></p>
-              </article>
-              <article>
-                <h3>Research Proposal</h3>
-                <p>Research allocations often follow successful completion of Proposal Development allocations. A PI must either successfully complete a Proposal Development allocation or be able to demonstrate prior relevant experience and success in running their codes on HPC facilities prior to receiving a Research allocation. Research allocations can be proposed to any public research funding body and for any of our HPC facilities.
-                <a href="/allocations#research">Learn more</a></p>
-              </article>
-          </section>
-        </div>
-      </article>
-      <!--<h2>Projects in progress</h2>
-      <article class="project-outline">
-        <div class="alert alert-info">
-          It doesn\'t look like you have any live projects yet. Projects will appear here once an allocation is granted.
-        </div>
-      </article>-->
-    ';
+    drupal_set_message(t('It doesn\'t look like you have any saved or pending proposals yet, get started by creating one.'), 'info');
   }
+
+  // Show create options
+  $create_variables = array();
+  $output .= theme('nesi_user_dashboard_create_proposal', $create_variables);
 
   return $output;
 }
