@@ -24,9 +24,3 @@
     </div>
   </div>
 </article>
-<h2>Projects in progress</h2>
-<article class="project-outline">
-  <div class="alert alert-info">
-    It doesn\'t look like you have any live projects yet. Projects will appear here once an allocation is granted.
-  </div>
-</article>
