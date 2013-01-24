@@ -17,6 +17,7 @@ function nesi_user_dashboard_callback() {
       if (!empty($item->nid)) { 
         $in_progress = TRUE;
         $current_proposal = node_load($item->nid);
+        dpm($current_proposal);
         $options = array('absolute' => TRUE);
         $nodeurl = url('node/'. $current_proposal->nid, $options);
 
@@ -31,10 +32,17 @@ function nesi_user_dashboard_callback() {
           }
         }
 
+        $proposal_operations = '';
+        $access = node_access('update', $current_proposal);
+        if ($access) {
+          $proposal_operations = '<a href="'.$base_url.'/node/'.$current_proposal->nid.'/edit" class="btn">Edit</a>';
+        }
+
         $proposal_variables = array(
-         'proposal_title' => $current_proposal->title,
-         'proposal_link' => $nodeurl,
-         'proposal_state' => $proposal_state,
+          'proposal_title' => $current_proposal->title,
+          'proposal_link' => $nodeurl,
+          'proposal_state' => $proposal_state,
+          'proposal_operations' => $proposal_operations,
         );
 
         $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);

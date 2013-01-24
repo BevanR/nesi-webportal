@@ -5,5 +5,6 @@
   <div class="proposal-status">
     <small>Status</small>
     <span class="label label-info"><?php print $proposal_state; ?></span>
+    <?php print $proposal_operations; ?>
   </div>
 </article>
