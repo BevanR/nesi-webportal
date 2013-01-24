@@ -87,3 +87,34 @@ a.tabledrag-handle .handle {
   left:-20px;
 }
 
+.proposal-outline {
+  position: relative;
+  border-top: 1px solid #cccccc;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.proposal-status {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  right: 5px;
+}
+
+.proposal-status small {
+  font-size: 9.999999996px;
+  font-weight: 400;
+  line-height: 1;
+  position: absolute;
+  left: -65px;
+  color: #999999;
+  margin-top: 5px;
+}
+
+.proposal-title {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 10px 220px 10px 5px;
+  padding: 0;
+  font-weight: 400;
+}
