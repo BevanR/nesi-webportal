@@ -6,7 +6,7 @@
       <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
       <div style="padding:20px;">
         <?php 
-          $flag = flag_get_flag('pdc_check_proposal');
+          $flag = flag_get_flag('p_submit_proposal');
           if ($flag->is_flagged($node->nid)) {
             ?>
             <div class="project-status">
