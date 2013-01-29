@@ -22,13 +22,14 @@ function nesi_user_dashboard_callback() {
         $nodeurl = url('node/'. $current_proposal->nid, $options);
 
         $proposal_state = 'In Draft';
-
+        $is_flagged = FALSE;
         // Get status for display
         if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
           $flag = flag_get_flag('p_submit_proposal');
       
           if ($flag->is_flagged($current_proposal->nid)) {
             $proposal_state = 'Pending';
+            $is_flagged = TRUE;
           }
         }
 
@@ -36,6 +37,10 @@ function nesi_user_dashboard_callback() {
         $access = node_access('update', $current_proposal);
         if ($access) {
           $proposal_operations = '<a href="'.$base_url.'/node/'.$current_proposal->nid.'/edit" class="btn">Edit</a>';
+          if (!$is_flagged) {
+            $temp_link = flag_create_link('p_submit_proposal', $current_proposal->nid);
+            $proposal_operations .= $temp_link;
+          }
         }
 
         $proposal_variables = array(
