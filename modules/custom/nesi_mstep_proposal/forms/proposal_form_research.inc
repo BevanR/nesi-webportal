@@ -157,28 +157,24 @@ function nesi_mstep_proposal_research_form() {
   $form['resource']['prc-cpu-hours-intel'] = array(
     '#type' => 'textfield',
     '#title' => t('CPU core hours required using the Intel cluster'),
-    '#title' => t('Please indicate the CPU core hours needed using the Intel cluster (indicate 0 if no hours are required). See also http://www.nesi.org.nz/facilities for further details on the platforms.'),
     '#required' => TRUE,
   );
 
   $form['resource']['prc-cpu-hours-power6'] = array(
     '#type' => 'textfield',
     '#title' => t('CPU core hours required using P575/POWER6'),
-    '#title' => t('Please indicate the CPU core hours needed using P575/POWER6 (indicate 0 if no hours are required). See also http://www.nesi.org.nz/facilities for further details on the platforms.'),
     '#required' => TRUE,
   );
 
   $form['resource']['prc-cpu-hours-power7'] = array(
     '#type' => 'textfield',
     '#title' => t('CPU core hours required using P755/POWER7'),
-    '#title' => t('Please indicate the CPU core hours needed using P755/POWER7 (indicate 0 if no hours are required). See also http://www.nesi.org.nz/facilities for further details on the platforms.'),
     '#required' => TRUE,
   );
 
   $form['resource']['prc-cpu-hours-bluegene'] = array(
     '#type' => 'textfield',
     '#title' => t('CPU core hours required using BlueGene/P'),
-    '#title' => t('Please indicate the CPU core hours needed using BlueGene/P (indicate 0 if no hours are required). See also http://www.nesi.org.nz/facilities for further details on the platforms.'),
     '#required' => TRUE,
   );
 
