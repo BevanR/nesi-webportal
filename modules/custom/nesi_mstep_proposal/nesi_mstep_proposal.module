@@ -23,8 +23,25 @@ function nesi_mstep_proposal_menu() {
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
-  
+
+  $items['admin/config/nesi/proposal-settings'] = array(
+    'title' => 'NeSI Proposal Configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_mstep_proposal_admin_settings'),
+    'access arguments' => array('nesi proposal config'),
+    'file' => 'nesi_mstep_proposal.admin.inc',
+  );
+
   return $items;
+}
+
+function nesi_mstep_proposal_permission() {
+  return array(
+    'nesi proposal config' => array(
+      'title' => t('NeSI Proposal Configuration'),
+      'description' => t('Configure NeSI Proposal module.')
+    )
+  );
 }
 
 /**
