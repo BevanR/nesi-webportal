@@ -207,3 +207,47 @@ body {
 #pnav li.menu-832 {
   border-bottom: 4px solid #bea8ce;
 }
+
+#home-hero .slide-title {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+#home-hero .slide-content {
+  margin-left: 0;
+}
+
+#home-hero .item {
+  height: 316px;
+}
+
+#home-hero .item img {
+  height: 100%;
+  left: auto;
+  margin-left: 10%;
+  width: auto;
+}
+
+#home-hero h3 {
+  margin: 0;
+}
+
+#home-hero h3 .line2 {
+  clear: both;
+  display: block;
+  float: left;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 0 5px 0;
+  padding: 12px 20px;
+}
+
+#home-hero .slide-title {
+  margin: 0 0 13px 0;
+}
+
+#home-hero .slide-title span {
+  margin-bottom: 0;
+  padding: 12px 20px;
+}
