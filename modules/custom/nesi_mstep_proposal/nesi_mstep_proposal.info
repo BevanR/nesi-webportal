@@ -1,0 +1,6 @@
+name = NeSI Multistep Proposal
+description = "A basic multi step proposal form for anonymous proposal submission"
+package = NeSI
+core = 7.x
+
+dependencies[] = ctools
