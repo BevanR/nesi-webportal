@@ -1,0 +1,251 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Ctools hooks for a multi step form
+ */
+
+include_once 'forms/proposal_form_intro.inc';
+include_once 'forms/proposal_form_development.inc';
+include_once 'forms/proposal_form_research.inc';
+
+/**
+ * Implementation of hook_menu()
+ */
+function nesi_mstep_proposal_menu() {
+  $items = array();
+  
+  $items['apply/%ctools_js/create-proposal'] = array(
+    'title' => t('Apply for Access to HPC Facilities'),
+    'page callback' => 'nesi_mstep_proposal_page',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  
+  return $items;
+}
+
+/**
+ * Page callback for apply/%ctools_js/create-proposal
+ */
+function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
+  
+  $form_info = array(
+    'id' => 'nesi-mstep-proposal-form', //form id
+    'path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step", //pass the step we're on to the form, step1, step2, ..etc
+    'show trail' => TRUE, //show the breadcrumb / path trail for the forms
+    'show back' => TRUE, //show the back button
+    'show cancel' => TRUE, //show the cancel button
+    'show return' => FALSE, //show the update and return button
+    'next callback' =>  'nesi_mstep_proposal_wizard_next', //a callback function to run when the next button is pressed
+    'finish callback' => 'nesi_mstep_proposal_wizard_finish', //callback when finish button is pressed
+    'cancel callback' => 'nesi_mstep_proposal_wizard_cancel', //callback when cancel button is pressed
+    'cancel path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
+    'return path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
+    'finish text' => 'Finish',
+    'order' => _nesi_mstep_proposal_steps(),
+    'forms' => _nesi_mstep_proposal_forms(), 
+  );
+  
+  $object_id = 'nesi_mstep_proposal';
+  
+  if (empty($step)) {
+    nesi_mstep_proposal_cache_clear($object_id);
+  }
+
+  $object = nesi_mstep_proposal_cache_get($object_id);
+  $form_state = array(
+    'ajax' => $js,
+    'object_id' => $object_id,
+    'object' => &$object,
+  );
+
+  // Send this all off to our form. This is like drupal_get_form only wizardy.
+  ctools_include('wizard');
+  $form = ctools_wizard_multistep_form($form_info, $step, $form_state);
+  $output = drupal_render($form);
+  
+  return $output;
+}
+
+/**
+ * Returns array of steps (in order of display) for use within the multistep wizard.
+ */
+function _nesi_mstep_proposal_steps() {
+  return array( 
+    'step1' => t('Get Started'),
+    'step2' => t('Proposal Information'),
+    'step3' => t('Completion'),
+  );
+}
+
+/**
+ * Returns array of forms to be utilised by multistep wizard.
+ */
+function _nesi_mstep_proposal_forms() {
+  // Each step relates to a form callback
+  return array(     
+    'step1' => array( 
+      'form id' => 'nesi_mstep_proposal_step_1'
+    ),
+    'step2' => array(
+      'form id' => 'nesi_mstep_proposal_step_2'
+    ),
+    'step3' => array(
+      'form id' => 'nesi_mstep_proposal_step_3'
+    ), 
+  );
+}
+
+/**
+ * Returns array of proposal types available for completion.
+ */
+function nesi_mstep_proposal_class_types() {
+  return array(
+    'proposal_development_class' => 'Proposal Development',
+    'research_proposal_class' => 'Research Proposal',
+  );
+}
+
+/**
+ * Returns available cluster platform options for use within proposal forms.
+ */
+function nesi_mstep_proposal_platform_options() {
+  return array(
+    'power6' => 'Power 6',
+    'power7' => 'Power 7',
+    'intel' => 'Intel',
+    'bluegene' => 'Bluegene',
+    'unspecified' => 'Don\'t know',
+  );
+}
+
+function nesi_mstep_proposal_step_1($form, &$form_state) {
+  $form_state['object'] = nesi_mstep_proposal_cache_get('nesi_mstep_proposal'); 
+  $form_state['title'] = t('Apply for Access to HPC Facilities');
+  
+  $form['intro'] = nesi_mstep_proposal_intro_form(); 
+  
+  return $form;
+}
+
+function nesi_mstep_proposal_step_2($form, &$form_state) {
+  
+  $name = $form_state['object']['name'];
+  $options = nesi_mstep_proposal_class_types();
+  $choice = $options[$form_state['object']['proposal-type']];
+
+  if ($choice == 'Proposal Development') {
+    $form['pdc'] = nesi_mstep_proposal_development_form();
+  }
+ 
+  if ($choice == 'Research Proposal') {
+    $form['prc'] = nesi_mstep_proposal_research_form();
+  }
+  
+  return $form;
+}
+
+function nesi_mstep_proposal_step_3($form, &$form_state) {
+  
+  $name = $form_state['object']['name'];
+  $options = nesi_mstep_proposal_class_types();
+
+  $form['proposal-complete'] = array(
+    '#markup' => '<div><h2>Proposal Complete</h2>
+                  <p>Thanks for submitting your proposal.<p>
+                  <p>We will be in touch to confirm once the proposal has been reviewed by our team.</p>
+                  <p>Shortly, you should receive an email to confirm receipt of the proposal.</p>
+                  </div>',
+  );
+  
+  return $form;
+}
+
+/*
+function nesi_mstep_proposal_step_1_validate(&$form, &$form_state) {
+  // Check for cancel
+  if ($form_state['clicked_button']['#next'] != $form_state['next']) {
+    nesi_mstep_proposal_wizard_cancel($form_state);
+    drupal_get_messages('error');
+    form_set_error(NULL, '', TRUE);
+    return;
+  }
+}
+*/
+
+/*
+function nesi_mstep_proposal_step_2_submit($form, &$form_state) {
+  $form_state['object'] = $form_state['values'];
+  nesi_mstep_proposal_cache_set($form_state['object_id'], $form_state['object']);
+}
+*/
+
+/**
+ * Next callback
+ */
+function nesi_mstep_proposal_wizard_next(&$form_state) {
+  $form_state['object'] = $form_state['values'];
+  nesi_mstep_proposal_cache_set($form_state['object_id'], $form_state['object']);
+}
+
+function nesi_mstep_proposal_wizard_finish(&$form_state) {
+  $form_state['complete'] = TRUE;
+}
+
+function nesi_mstep_proposal_wizard_cancel(&$form_state) {
+  nesi_mstep_proposal_cache_clear($form_state['object_id']);
+  $form_state['cancel'] = TRUE;
+}
+
+/**
+ * Cache helpers
+ */
+function nesi_mstep_proposal_cache_set($id, $object) {
+  ctools_include('object-cache');
+  ctools_object_cache_set('nesi_mstep_proposal', $id, $object);
+}
+
+/**
+ * Get the current object from the cache, or default.
+ */
+function nesi_mstep_proposal_cache_get($id) {
+  ctools_include('object-cache');
+  $object = ctools_object_cache_get('nesi_mstep_proposal', $id);
+
+  if (!$object) {
+    // Create a default object.
+    $object = new stdClass;
+  }
+ 
+  return $object;
+}
+
+/**
+ * Clear the wizard cache.
+ */
+function nesi_mstep_proposal_cache_clear($id) {
+  ctools_include('object-cache');
+  ctools_object_cache_clear('nesi_mstep_proposal', $id);
+}
+
+function nesi_mstep_proposal_theme($existing, $type, $theme, $path) {
+
+  $variables = array();
+
+  return array(
+    'nesi_mstep_proposal_step' => array(
+      'variables' => $variables,
+      'template' => 'nesi-mstep-proposal-step',
+      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
+    ),
+    'nesi_mstep_proposal_wrapper' => array(
+      'variables' => array('content' => NULL),
+      'template' => 'nesi-mstep-proposal-wrapper',
+      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
+    )
+  ); 
+}
+
