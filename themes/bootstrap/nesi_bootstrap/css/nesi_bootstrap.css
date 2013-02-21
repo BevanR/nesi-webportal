@@ -130,3 +130,21 @@ a.tabledrag-handle .handle {
   vertical-align: middle;
   color: #999999;
 }
+
+/* Global */
+.navbar {
+  overflow: hidden;
+}
+
+.navbar-inner {
+  background-image: none;
+  border: 0;
+  border-bottom: 1px solid #D4D4D4;
+  border-radius: 0;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  height: 87px;
+}
+
+#pnav a {
+  border-left: 1px solid #e0e0e0;
+}
