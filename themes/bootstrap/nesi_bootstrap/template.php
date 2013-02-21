@@ -65,3 +65,10 @@ function nesi_bootstrap_menu_link(array $variables) {
   $output = l($element['#title'] . '<span>' . $element['#localized_options']['attributes']['title'] . '</span>', $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
+
+function nesi_bootstrap_preprocess_page(&$vars, $hook) {
+  drupal_add_js('http://use.typekit.net/fmw6ovn.js', 'external');
+  drupal_add_js('try{Typekit.load();}catch(e){}',
+    array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
+  );
+}
