@@ -52,3 +52,14 @@ function nesi_bootstrap_menu_tree($variables) {
   return '<ul class="menu">' . $variables['tree'] . '</ul>';
 }*/
 
+function nesi_bootstrap_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  $element['#localized_options']['html'] = TRUE;
+  $output = l($element['#title'] . '<span>' . $element['#localized_options']['attributes']['title'] . '</span>', $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}

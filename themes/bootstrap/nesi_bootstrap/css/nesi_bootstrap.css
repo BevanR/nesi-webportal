@@ -147,4 +147,29 @@ a.tabledrag-handle .handle {
 
 #pnav a {
   border-left: 1px solid #e0e0e0;
+  color: #4b5b68;
+  font-size: 14px;
+  line-height: 18px;
+  max-width: 112px;
+  padding: 20px 44px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#pnav .last a {
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 135px;
+}
+
+#pnav a span {
+  color: #565757;
+  display: block;
+  font-size: 10px;
+  line-height: 12px;
+  margin: 5px auto 0;
+}
+
+#pnav .last a span {
+  max-width: 110px;
 }
