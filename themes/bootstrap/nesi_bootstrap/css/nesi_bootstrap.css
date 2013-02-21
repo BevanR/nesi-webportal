@@ -131,6 +131,7 @@ a.tabledrag-handle .handle {
   color: #999999;
 }
 
+/* KATIE'S CHANGES - TO MERGE BACK INTO .LESS FILES */
 /* Global */
 body {
   font-family: 'open-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -208,6 +209,7 @@ body {
   border-bottom: 4px solid #bea8ce;
 }
 
+/* Home page */
 #home-hero .slide-title {
   font-size: 36px;
   font-weight: 300;
@@ -250,4 +252,8 @@ body {
 #home-hero .slide-title span {
   margin-bottom: 0;
   padding: 12px 20px;
+}
+
+.page-intro {
+  margin-top: 0;
 }
