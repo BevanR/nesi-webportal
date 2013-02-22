@@ -141,6 +141,10 @@ body {
   overflow: hidden;
 }
 
+.navbar .nav {
+  margin: 0;
+}
+
 .navbar-inner {
   background-image: none;
   border: 0;
@@ -150,14 +154,19 @@ body {
   height: 87px;
 }
 
+.nav-collapse {
+  clear: none; /* Hope this doesn't break anything else */
+}
+
 #pnav a {
   border-left: 1px solid #e0e0e0;
   color: #4b5b68;
   font-size: 14px;
+  font-weight: normal;
   height: 47px;
   line-height: 18px;
   max-width: 112px;
-  padding: 20px 44px 16px;
+  /* padding: 20px 44px 16px; */
   text-align: center;
   text-transform: uppercase;
 }
@@ -165,7 +174,7 @@ body {
 #pnav li.menu-1750 {
   border-left: 1px solid #e0e0e0;
   height: 75px;
-  padding: 12px 0 0 19px;
+  /* padding: 12px 0 0 19px; */
 }
 
 #pnav li.menu-1750 a {
@@ -173,7 +182,7 @@ body {
   border-left: 0;
   border-radius: 3px;
   color: #fdfeff;
-  padding: 7px 15px 10px;
+  /* padding: 7px 15px 10px; */
   max-width: 135px;
   text-shadow: 0 0 0 transparent;
 }
@@ -295,9 +304,11 @@ body {
   width: 660px;
 }
 
+/*
 .container .row-fluid .span4 {
-  width: 23.078%;
+  width: 22.930%;
 }
+*/
 
 .container .row-fluid .span4 h1 {
   color: #4b5b68;
