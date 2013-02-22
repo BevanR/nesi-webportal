@@ -209,6 +209,15 @@ body {
   border-bottom: 4px solid #bea8ce;
 }
 
+.legal {
+  background: #4b5b68;
+  color: #feffff;
+  font-size: 11px;
+  height: 53px;
+  line-height: 53px;
+  text-align: left;
+}
+
 /* Home page */
 #home-hero {
   margin-bottom: 0;
@@ -288,4 +297,59 @@ body {
 
 .container .row-fluid .span4 {
   width: 23.078%;
+}
+
+.container .row-fluid .span4 h1 {
+  color: #4b5b68;
+  font-size: 24px;
+}
+
+.container .row-fluid .span4 .sub-feature {
+  padding-top: 56px;
+}
+
+.container .row-fluid .span4 #apply-intro {
+  background: url(../assets/img/apply-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .span4 #nesi-intro {
+  background: url(../assets/img/nesi-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .span4 #projects-intro {
+  background: url(../assets/img/projects-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .span4 #news-intro {
+  background: url(../assets/img/news-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .span4 p {
+  color: #404040;
+  font-size: 13px;
+  line-height: 18px;
+  margin-bottom: 6px;
+}
+
+.container .row-fluid .span4 p.sub {
+  color: #7c7a7a;
+}
+
+.container .row-fluid .span4 p.sub a {
+  color: #2b9fc2;
+  font-weight: bold;
+}
+
+.container .row-fluid .span4 p.sub a:hover {
+  color: #4b5b68;
+}
+
+.directorynav,
+.collaborators {
+  border-top: 1px solid #aaa;
+}
+
+.directorynav h3,
+.collaborators h3 {
+  color: #4B5B68;
 }

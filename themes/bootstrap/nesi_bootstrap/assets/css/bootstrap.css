@@ -5590,6 +5590,7 @@ figure .caption,
   font-size: 21px;
   margin-bottom: 0;
 }
+/*
 .sub-feature .feature-title:before {
   font-family: ModernPictogramsNormal;
   font-size: 70px;
@@ -5607,6 +5608,7 @@ figure .caption,
   color: rgba(24, 128, 155, 0.8);
   cursor: pointer;
 }
+*/
 .sub-feature p {
   color: #777;
 }

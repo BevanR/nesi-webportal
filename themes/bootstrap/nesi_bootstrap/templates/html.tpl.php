@@ -76,7 +76,9 @@
 		</div>
 	</div>
 	<footer>
-			<p class="legal">&copy;2011 New Zealand eScience Infrastructure. All rights reserved</p>
+    <div class="legal">
+      <div class="container">&copy;<?php print date('Y'); ?> New Zealand eScience Infrastructure. All rights reserved</div>
+    </div>
 	</footer>
 <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.5/zenbox.js"></script>
 <style type="text/css" media="screen, projection">
