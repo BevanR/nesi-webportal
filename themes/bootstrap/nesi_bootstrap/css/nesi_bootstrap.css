@@ -259,7 +259,7 @@ body {
 }
 
 .page-intro {
-  background: #fafafa;
+  background: #fafafa url(../assets/img/intro-bg-left.png) bottom left no-repeat;
   border: 0;
   border-bottom: 1px solid #cfcfcf;
   border-radius: 0;
@@ -276,8 +276,16 @@ body {
   width: 100%;
 }
 
+.page-intro .page-intro-inner {
+  background: transparent url(../assets/img/intro-bg-right.png) top right no-repeat;
+}
+
 .page-intro .home-intro {
   margin: 0 auto;
-  padding: 25px 0;
+  padding: 22px 0;
   width: 660px;
+}
+
+.container .row-fluid .span4 {
+  width: 23.078%;
 }
