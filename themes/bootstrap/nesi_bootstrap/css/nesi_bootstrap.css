@@ -364,3 +364,49 @@ body {
 .collaborators h3 {
   color: #4B5B68;
 }
+
+/* Theme the form */
+#nesi-mstep-proposal-step-1 h2 {
+  color: #4b5b68;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+#nesi-mstep-proposal-step-1 h3 {
+  color: #4b5b68;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+#nesi-mstep-proposal-step-1 h3 a {
+  color: #2b9fc2;
+}
+
+#nesi-mstep-proposal-step-1 p {
+  color: #404040;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#nesi-mstep-proposal-step-1 p a {
+  color: #d14f63;
+  font-weight: bold;
+}
+
+#nesi-mstep-proposal-step-1 h3.num {
+  color: #2b9fc2;
+  float: left;
+  font-size: 44px;
+  line-height: 36px;
+}
+
+#edit-intro-text {
+  float: left;
+  width: 530px;
+}
+
+#edit-intro-form {
+  float: right;
+  width: 410px;
+}
