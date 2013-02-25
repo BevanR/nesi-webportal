@@ -11,22 +11,32 @@ function nesi_config_admin_settings() {
     '#title'  => t('Front page HPC stats'),
   ); 
 
-  $form['front_stats']['available_cpus'] = array(
+  $form['front_stats']['cpu_cores'] = array(
     '#type' => 'textfield',
-    '#title' => t('Available CPUs'),
-    '#default_value' => variable_get('available_cpus', 10),
+    '#title' => t('CPU Cores'),
+    '#default_value' => variable_get('stats_cpu_cores', 10),
     '#size' => 10,
-    '#description' => t('A text field will be available on these content types to make user-specific notes.'),
   );
 
-  $form['front_stats']['available_ram'] = array(
+  $form['front_stats']['memory'] = array(
     '#type' => 'textfield',
-    '#title' => t('Available RAM'),
-    '#default_value' => variable_get('available_ram', 10),
+    '#title' => t('Memory'),
+    '#default_value' => variable_get('stats_memory', 10),
     '#size' => 10,
-    '#description' => t('A text field will be available on these content types to make user-specific notes.'),
   );
 
-  
+  $form['front_stats']['peak_speeds'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Peak Speeds'),
+    '#default_value' => variable_get('stats_peak_speeds', 10),
+    '#size' => 10,
+  );
+
+  $form['front_stats']['disk_storage'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Disk Storage'),
+    '#default_value' => variable_get('stats_disk_storage', 10),
+    '#size' => 10,
+  );
   return system_settings_form( $form );
 }
