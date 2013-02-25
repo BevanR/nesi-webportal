@@ -316,6 +316,7 @@ body {
 }
 
 .container .row-fluid .span4 .sub-feature {
+  padding-bottom: 62px;
   padding-top: 56px;
 }
 
@@ -353,17 +354,27 @@ body {
 
 .container .row-fluid .span4 p.sub a:hover {
   color: #4b5b68;
+  text-decoration: none;
 }
 
 .directorynav,
-.collaborators {
+.collaborators,
+#block-nesi-stats-front-stats {
   border-top: 1px solid #aaa;
+}
+
+#block-nesi-stats-front-stats {
+  padding: 6px 0 100px 0;
 }
 
 .directorynav h3,
 .collaborators h3,
 #block-nesi-stats-front-stats h2 {
   color: #4B5B68;
+}
+
+#block-nesi-stats-front-stats h2 {
+  margin-bottom: 24px;
 }
 
 #block-nesi-stats-front-stats .span4 {
