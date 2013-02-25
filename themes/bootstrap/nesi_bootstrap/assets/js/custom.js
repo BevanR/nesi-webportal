@@ -8,7 +8,7 @@
   	$('#home-hero .slide-title').lettering('lines').children('words');
   	*/
   
-  	/* Forms */
+  	/* Form labels */
   	$('#nesi-mstep-proposal-step-1 .form-text').each(function() {
     	$('#nesi-mstep-proposal-step-1 .form-type-textfield label').hide();
     	$('.form-required').remove();
@@ -25,6 +25,19 @@
         	$(this).val(label);
       	}
     	});
+  	});
+
+  	/* Tooltips */
+  	$('.ws-tooltip').each(function() {
+    	var text = $(this).attr('title');
+    	$(this).hover(
+        function() {
+      	  $(this).append('<span class="ws-tooltip-active">' + text + '</span>');
+    	  },
+    	  function() {
+      	  $(this).find('.ws-tooltip-active').remove();
+    	  }
+    	);
   	});
 
 	});

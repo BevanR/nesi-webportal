@@ -36,38 +36,34 @@ function nesi_mstep_proposal_intro_form() {
 */
 
   $form['intro-text']['#type'] = 'fieldset';
-  $form['intro-text']['read_prefix'] = array(
-    '#markup' => '<div><h3 class="num">1.</h3>'
-  );
   $form['intro-text']['read'] = array(
-    '#markup' => '<h3>Read our <a href="#">Frequently Asked Questions</a> below and <a href="#">Access policy</a>.</h3>
-                  <p>Once you fill in your email address and click NEXT the access Policy will be sent to you. <a href="#">Read online here</a></p>
+    '#markup' => '<div class="intro-text-1">
+                    <h3 class="num">1.</h3>
+                    <h3>Read our <a href="#">Frequently Asked Questions</a> below and <a href="#">Access policy</a>.</h3>
+                    <p>Once you fill in your email address and click NEXT the access Policy will be sent to you. <a href="#">Read online here</a></p>
                   </div>'
-  );
-  $form['intro-text']['decide_prefix'] = array(
-    '#markup' => '<div><h3 class="num">2.</h3>'
   );
   $form['intro-text']['decide'] = array(
-    '#markup' => '<h3>Decide which Allocation you\'re applying for.</h3>
-                  <p>Hover over title for more information</p>
-                  <p><a href="#">Development:</a> Vivamus et turpis vel urna auctor auctor ut sed massa. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.</p>
-                  <p><a href="#">Research:</a> Vivamus et turpis vel urna auctor auctor ut sed massa. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.</p>
+    '#markup' => '<div class="intro-text-2">
+                    <h3 class="num">2.</h3>
+                    <h3>Decide which Allocation you\'re applying for.</h3>
+                    <p>Hover over title for more information</p>
+                    <p><a href="#" class="ws-tooltip" title="Tooltip text to go here. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.">Development:</a> <span>Vivamus et turpis vel urna auctor auctor ut sed massa. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.</span></p>
+                    <p><a href="#" class="ws-tooltip" title="Tooltip text to go here. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.">Research:</a> <span>Vivamus et turpis vel urna auctor auctor ut sed massa. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.</span></p>
                   </div>'
-  );
-  $form['intro-text']['complete_prefix'] = array(
-    '#markup' => '<div><h3 class="num">3.</h3>'
   );
   $form['intro-text']['complete'] = array(
-    '#markup' => '<h3>Fill in proposal application form online.</h3>
-                  <p>All submissions will receive a confirmation email.</p>
+    '#markup' => '<div class="intro-text-3">
+                    <h3 class="num">3.</h3>
+                    <h3>Fill in proposal application form online.</h3>
+                    <p>All submissions will receive a confirmation email.</p>
                   </div>'
   );
-  $form['intro-text']['review_prefix'] = array(
-    '#markup' => '<div><h3 class="num">4.</h3>'
-  );
   $form['intro-text']['review'] = array(
-    '#markup' => '<h3>Your proposal will be reviewed.</h3>
-                  <p>A member of UoA will be in contact to discuss next steps. If you have any questions in the meantime please use our support form at <url>.</p>
+    '#markup' => '<div class="intro-text-4">
+                    <h3 class="num">4.</h3>
+                    <h3>Your proposal will be reviewed.</h3>
+                    <p>A member of UoA will be in contact to discuss next steps. If you have any questions in the meantime please use our support form at <url>.</p>
                   </div>'
   );
 

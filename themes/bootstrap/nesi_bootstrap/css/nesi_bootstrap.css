@@ -436,6 +436,14 @@ body {
 }
 */
 
+#nesi-mstep-proposal-step-1 {
+  margin-top: 18px;
+}
+
+#nesi-mstep-proposal-step-1 .wizard-trail {
+  display: none;
+}
+
 #nesi-mstep-proposal-step-1 h2 {
   color: #4b5b68;
   font-size: 24px;
@@ -485,6 +493,32 @@ body {
   width: 53%;
 }
 
+#nesi-mstep-proposal-step-1 p a.ws-tooltip {
+  color: #2B9FC2;
+  display: block;
+  float: left;
+  position: relative;
+}
+
+.ws-tooltip-active {
+  background: #fff;
+  border: 1px solid #aaa;
+  color: #666;
+  cursor: default;
+  display: block;
+  font-weight: normal;
+  padding: 12px;
+  position: absolute;
+  text-decoration: none;
+  margin-top: -50px;
+  width: 200px;
+}
+
+.intro-text-2 span {
+  display: block;
+  margin-left: 115px;
+}
+
 #edit-intro-form {
   /* border-left: 1px solid #aaa; */
   margin-left: 56%;
@@ -511,6 +545,11 @@ body {
   color: #606162;
   font-size: 18px;
   margin-bottom: 18px;
+}
+
+#edit-intro-form .radio input[type="radio"],
+#edit-intro-form .checkbox input[type="checkbox"] {
+  margin-right: 12px;
 }
 
 #edit-intro-form .fieldset-wrapper .form-text {
