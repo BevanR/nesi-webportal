@@ -11,8 +11,7 @@
  */
 function nesi_config_menu() {
 
-/*
-  Menu disabled until admin override options provided.
+  #Menu disabled until admin override options provided.
   $items['admin/config/nesi/website'] = array(
     'title' => 'NeSI Website Configuration',
     'page callback' => 'drupal_get_form',
@@ -23,7 +22,6 @@ function nesi_config_menu() {
   );
 
   return $items;
-*/
 }
 
 function nesi_config_wysiwyg_editor_settings_alter(&$settings, $context) {
