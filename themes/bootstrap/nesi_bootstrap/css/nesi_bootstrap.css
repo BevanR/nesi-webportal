@@ -361,21 +361,34 @@ body {
 }
 
 .directorynav h3,
-.collaborators h3 {
+.collaborators h3,
+#block-nesi-stats-front-stats h2 {
   color: #4B5B68;
 }
 
 /* Theme the form */
+/*
+.page-apply-nojs .span12 {
+  margin: 0 20px;
+}
+*/
+
 #nesi-mstep-proposal-step-1 h2 {
   color: #4b5b68;
   font-size: 24px;
   line-height: 36px;
 }
 
+#nesi-mstep-proposal-step-1 h3,
+#nesi-mstep-proposal-step-1 p {
+  margin-left: 55px;
+}
+
 #nesi-mstep-proposal-step-1 h3 {
   color: #4b5b68;
   font-size: 18px;
   line-height: 24px;
+  margin-bottom: 6px;
 }
 
 #nesi-mstep-proposal-step-1 h3 a {
@@ -398,15 +411,73 @@ body {
   color: #2b9fc2;
   float: left;
   font-size: 44px;
-  line-height: 36px;
+  font-weight: bold;
+  margin-left: 0;
 }
 
 #edit-intro-text {
+  border-right: 1px solid #aaa;
   float: left;
-  width: 530px;
+  padding-right: 3%;
+  width: 53%;
 }
 
 #edit-intro-form {
+  /* border-left: 1px solid #aaa; */
+  margin-left: 56%;
+/*
   float: right;
-  width: 410px;
+  min-height: 430px;
+  padding-left: 3%;
+  width: 40%;
+*/
+}
+
+#edit-intro-text div {
+  margin-bottom: 28px;
+}
+
+#edit-intro-form .fieldset-wrapper {
+  background: url(../assets/img/form-icon-edit.png) top center no-repeat;
+  margin: 30px auto 0;
+  padding: 105px 0 0 0;
+  width: 175px;
+}
+
+#edit-intro-form .fieldset-wrapper label {
+  color: #606162;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+#edit-intro-form .fieldset-wrapper .form-text {
+  color: #606162;
+  font-size: 15px;
+  height: 28px;
+  text-align: center;
+  width: 160px;
+}
+
+#nesi-mstep-proposal-step-1 .form-actions {
+  border-top: 0;
+  clear: none;
+  margin: 0 0 0 56%;
+  padding: 0;
+}
+
+#nesi-mstep-proposal-step-1 #edit-cancel {
+  display: none;
+}
+
+#nesi-mstep-proposal-step-1 .form-submit {
+  background: #2b9fc2;
+  border: 0;
+  color: #fff;
+  display: block;
+  font-size: 23px;
+  height: 45px;
+  margin: 0 auto;
+  padding: 0;
+  text-shadow: 0 0 0 transparent;
+  width: 175px;
 }

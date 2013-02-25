@@ -104,8 +104,8 @@ function _nesi_mstep_proposal_forms() {
  */
 function nesi_mstep_proposal_class_types() {
   return array(
-    'proposal_development_class' => 'Proposal Development',
-    'research_proposal_class' => 'Research Proposal',
+    'proposal_development_class' => 'Development',
+    'research_proposal_class' => 'Research',
   );
 }
 

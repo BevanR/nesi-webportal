@@ -1,0 +1,7 @@
+name = NeSI Stats
+description = Provides front page stats block
+core = 7.x
+package = NeSI
+version = 7.x-0
+project = nesi_stats
+files[] = nesi_stats.module
