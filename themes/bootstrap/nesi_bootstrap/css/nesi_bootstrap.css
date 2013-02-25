@@ -370,7 +370,6 @@ body {
   background: url(../assets/img/stats-bg-wide.png);
   color: #666;
   height: 118px;
-  padding: 13px 0;
   text-shadow: 0 1px 0 #fff;
 }
 
@@ -379,20 +378,44 @@ body {
 }
 
 #block-nesi-stats-front-stats .span4 div.stats-header {
-  background: url(../assets/img/stats-icon.png) 17px center no-repeat;
+  background: url(../assets/img/stats-icon.png) 17px 14px no-repeat;
   font-size: 12px;
   font-weight: bold;
-  height: 20px;
-  line-height: 20px;
+  height: 33px;
+  line-height: 35px;
   padding-left: 40px;
 }
 
 #block-nesi-stats-front-stats .span4 div.stats-stat {
   font-size: 40px;
   font-weight: bold;
-  height: 47px;
+  height: 50px;
   line-height: 47px;
+  margin: 0 3px;
   padding-left: 40px;
+}
+
+#block-nesi-stats-front-stats .span4 div.stats-description {
+  font-size: 12px;
+  height: 33px;
+  line-height: 29px;
+  text-align: center;
+}
+
+#stats_cpu_cores .stats-stat {
+  background: url(../assets/img/stats-bg-1.png);
+}
+
+#stats_memory .stats-stat {
+  background: url(../assets/img/stats-bg-2.png);
+}
+
+#stats_peak_speeds .stats-stat {
+  background: url(../assets/img/stats-bg-3.png);
+}
+
+#stats_disk_storage .stats-stat {
+  background: url(../assets/img/stats-bg-4.png);
 }
 
 /* Theme the form */
