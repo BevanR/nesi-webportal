@@ -168,23 +168,6 @@ body {
   max-width: 112px;
   /* padding: 20px 44px 16px; */
   text-align: center;
-  text-transform: uppercase;
-}
-
-#pnav li.menu-1750 {
-  border-left: 1px solid #e0e0e0;
-  height: 75px;
-  /* padding: 12px 0 0 19px; */
-}
-
-#pnav li.menu-1750 a {
-  background: #4b5b68;
-  border-left: 0;
-  border-radius: 3px;
-  color: #fdfeff;
-  /* padding: 7px 15px 10px; */
-  max-width: 135px;
-  text-shadow: 0 0 0 transparent;
 }
 
 #pnav a span {
@@ -193,11 +176,6 @@ body {
   font-size: 10px;
   line-height: 12px;
   margin: 5px auto 0;
-}
-
-#pnav li.menu-1750 a span {
-  color: #fbfcfd;
-  max-width: 110px;
 }
 
 #pnav a:hover,
@@ -216,6 +194,10 @@ body {
 
 #pnav li.menu-832 {
   border-bottom: 4px solid #bea8ce;
+}
+
+#pnav li.menu-1750 {
+  border-bottom: 4px solid #4b5b68;
 }
 
 .legal {
