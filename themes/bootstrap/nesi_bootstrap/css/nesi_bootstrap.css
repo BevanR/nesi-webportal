@@ -361,7 +361,8 @@ body {
 }
 
 .directorynav h3,
-.collaborators h3 {
+.collaborators h3,
+#block-nesi-stats-front-stats h2 {
   color: #4B5B68;
 }
 
