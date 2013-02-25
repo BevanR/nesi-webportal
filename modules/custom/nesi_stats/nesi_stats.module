@@ -27,7 +27,7 @@ function nesi_stats_block_view($delta = '') {
 
   switch ($delta) {
     case 'front_stats':
-      $block['subject'] = t('Front stats');
+      $block['subject'] = t('NeSI Stats');
       $block['content'] = nesi_stats_content();
       return $block;
     break;
