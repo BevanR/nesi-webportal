@@ -15,8 +15,8 @@ function nesi_config_menu() {
   $items['admin/config/nesi/website'] = array(
     'title' => 'NeSI Website Configuration',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('nesi_website_admin_settings'),
-    'access arguments' => array('administer'),
+    'page arguments' => array('nesi_config_admin_settings'),
+    'access arguments' => array('nesi website config'),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'nesi_config.admin.inc'
   );
@@ -24,6 +24,16 @@ function nesi_config_menu() {
   return $items;
 }
 
+function nesi_config_permission() {
+
+  return array(
+      'nesi website config' => array(
+          'title' => 'Nesi config',
+          'description' => t('A description'),
+        ),
+    );
+}
+  
 function nesi_config_wysiwyg_editor_settings_alter(&$settings, $context) {
   
   if ($context['profile']->editor == 'ckeditor') {

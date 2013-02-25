@@ -6,13 +6,27 @@
  */
 
 function nesi_config_admin_settings() {
-  $form['available_cpus'] = array(
+  $form['front_stats'] = array(
+    '#type'   => 'fieldset',
+    '#title'  => t('Front page HPC stats'),
+  ); 
+
+  $form['front_stats']['available_cpus'] = array(
     '#type' => 'textfield',
     '#title' => t('Available CPUs'),
-    #'#default_value' => variable_get('annotate_node_types', array('page')),
+    '#default_value' => variable_get('available_cpus', 10),
+    '#size' => 10,
     '#description' => t('A text field will be available on these content types to make user-specific notes.'),
   );
-  $form['#submit'][] = 'nesi_config_admin_settings';
 
+  $form['front_stats']['available_ram'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Available RAM'),
+    '#default_value' => variable_get('available_ram', 10),
+    '#size' => 10,
+    '#description' => t('A text field will be available on these content types to make user-specific notes.'),
+  );
+
+  
   return system_settings_form( $form );
 }
