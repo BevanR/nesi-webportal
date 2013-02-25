@@ -1,0 +1,55 @@
+<?php
+/**
+ * @file
+ * NeSI Stats block
+ * 
+ * Provides a block that displays theHPC stats on the front page
+ */
+
+/**
+* Implements hook_block_info().
+*/
+function nesi_stats_block_info() {
+  $blocks['front_stats'] = array(
+    'info'   => t('Front page stats'),
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+    'weight'    => 0,
+    'visibility' => 1,
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function nesi_stats_block_view($delta = '') {
+
+  switch ($delta) {
+    case 'front_stats':
+      $block['subject'] = t('Front stats');
+      $block['content'] = nesi_stats_content();
+      return $block;
+    break;
+  }
+}
+
+function nesi_stats_theme() {
+  return array(
+    'nesi_stats_block' => array(
+      'template' => 'nesi_stats_block' ,
+      'path' => drupal_get_path('module', 'nesi_stats'),
+      'variables' => array('data' => NULL), 
+      ), 
+    );
+}
+
+function nesi_stats_content() {
+  
+  $data['stats_cpu_cores']    = variable_get('stats_cpu_cores' , 3);
+  $data['stats_memory']       = variable_get('stats_memory' , 3);
+  $data['stats_peak_speeds']  = variable_get('stats_peak_speeds' , 3);
+  $data['stats_disk_storage'] = variable_get('stats_disk_storage' , 3);
+
+  return theme('nesi_stats_block' , array('data' => $data));
+}
