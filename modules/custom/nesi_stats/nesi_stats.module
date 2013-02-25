@@ -12,8 +12,8 @@
 function nesi_stats_block_info() {
   $blocks['front_stats'] = array(
     'info'   => t('Front page stats'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
     'status' => TRUE,
-    'region' => 'sidebar_first',
     'weight'    => 0,
     'visibility' => 1,
   );
