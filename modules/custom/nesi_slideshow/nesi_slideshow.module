@@ -59,6 +59,7 @@ function nesi_slideshow_block_view($delta = '') {
         'secondary_bg_color' => $slide->field_field_ns_secondary_bg_color[0]['rendered']['#item'], 
         'primary_title' => $slide->field_field_ns_title_primary[0]['rendered']['#markup'],
         'secondary_title' => $slide->field_field_ns_title_secondary[0]['rendered']['#markup'],
+        'secondary_title_line_2' => $slide->field_field_secondary_title_line_2[0]['rendered']['#markup'],
         'link_title' => $slide->field_field_ns_link_title[0]['rendered']['#markup'],
         'link_target' => url($slide->field_field_ns_link_target_node[0]['rendered']['#href']),
         'link_color' => $slide->field_field_ns_link_color[0]['rendered']['#item'],

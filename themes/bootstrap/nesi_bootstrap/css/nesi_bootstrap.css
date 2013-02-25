@@ -131,6 +131,7 @@ a.tabledrag-handle .handle {
   color: #999999;
 }
 
+/* KATIE'S CHANGES - TO MERGE BACK INTO .LESS FILES */
 /* Global */
 body {
   font-family: 'open-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -138,6 +139,10 @@ body {
 
 .navbar {
   overflow: hidden;
+}
+
+.navbar .nav {
+  margin: 0;
 }
 
 .navbar-inner {
@@ -149,14 +154,19 @@ body {
   height: 87px;
 }
 
+.nav-collapse {
+  clear: none; /* Hope this doesn't break anything else */
+}
+
 #pnav a {
   border-left: 1px solid #e0e0e0;
   color: #4b5b68;
   font-size: 14px;
+  font-weight: normal;
   height: 47px;
   line-height: 18px;
   max-width: 112px;
-  padding: 20px 44px 16px;
+  /* padding: 20px 44px 16px; */
   text-align: center;
   text-transform: uppercase;
 }
@@ -164,7 +174,7 @@ body {
 #pnav li.menu-1750 {
   border-left: 1px solid #e0e0e0;
   height: 75px;
-  padding: 12px 0 0 19px;
+  /* padding: 12px 0 0 19px; */
 }
 
 #pnav li.menu-1750 a {
@@ -172,7 +182,7 @@ body {
   border-left: 0;
   border-radius: 3px;
   color: #fdfeff;
-  padding: 7px 15px 10px;
+  /* padding: 7px 15px 10px; */
   max-width: 135px;
   text-shadow: 0 0 0 transparent;
 }
@@ -206,4 +216,151 @@ body {
 
 #pnav li.menu-832 {
   border-bottom: 4px solid #bea8ce;
+}
+
+.legal {
+  background: #4b5b68;
+  color: #feffff;
+  font-size: 11px;
+  height: 53px;
+  line-height: 53px;
+  text-align: left;
+}
+
+/* Home page */
+#home-hero {
+  margin-bottom: 0;
+}
+
+#home-hero .slide-title {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+#home-hero .slide-content {
+  margin-left: 0;
+}
+
+#home-hero .item {
+  height: 316px;
+}
+
+#home-hero .item img {
+  height: 100%;
+  left: auto;
+  margin-left: 10%;
+  width: auto;
+}
+
+#home-hero h3 {
+  margin: 0;
+}
+
+#home-hero h3 .line2 {
+  clear: both;
+  display: block;
+  float: left;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 0 5px 0;
+  padding: 12px 20px;
+}
+
+#home-hero .slide-title {
+  margin: 0 0 13px 0;
+}
+
+#home-hero .slide-title span {
+  margin-bottom: 0;
+  padding: 12px 20px;
+}
+
+.page-intro {
+  background: #fafafa url(../assets/img/intro-bg-left.png) bottom left no-repeat;
+  border: 0;
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: #4b5b68;
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.page-intro.full-width {
+  width: 100%;
+}
+
+.page-intro .page-intro-inner {
+  background: transparent url(../assets/img/intro-bg-right.png) top right no-repeat;
+}
+
+.page-intro .home-intro {
+  margin: 0 auto;
+  padding: 22px 0;
+  width: 660px;
+}
+
+/*
+.container .row-fluid .span4 {
+  width: 22.930%;
+}
+*/
+
+.container .row-fluid .span4 h1 {
+  color: #4b5b68;
+  font-size: 24px;
+}
+
+.container .row-fluid .span4 .sub-feature {
+  padding-top: 56px;
+}
+
+.container .row-fluid .span4 #apply-intro {
+  background: url(../assets/img/apply-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .span4 #nesi-intro {
+  background: url(../assets/img/nesi-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .span4 #projects-intro {
+  background: url(../assets/img/projects-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .span4 #news-intro {
+  background: url(../assets/img/news-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .span4 p {
+  color: #404040;
+  font-size: 13px;
+  line-height: 18px;
+  margin-bottom: 6px;
+}
+
+.container .row-fluid .span4 p.sub {
+  color: #7c7a7a;
+}
+
+.container .row-fluid .span4 p.sub a {
+  color: #2b9fc2;
+  font-weight: bold;
+}
+
+.container .row-fluid .span4 p.sub a:hover {
+  color: #4b5b68;
+}
+
+.directorynav,
+.collaborators {
+  border-top: 1px solid #aaa;
+}
+
+.directorynav h3,
+.collaborators h3 {
+  color: #4B5B68;
 }

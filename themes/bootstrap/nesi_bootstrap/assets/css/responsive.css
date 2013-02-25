@@ -59,6 +59,15 @@
 .visible-desktop {
   display: inherit !important;
 }
+#pnav li.menu-1750 {
+  padding: 12px 0 0 19px;
+}
+#pnav li.menu-1750 a {
+  padding: 7px 15px 10px;
+}
+.container .row-fluid .span4 {
+  width: 100%;
+}
 @media (min-width: 768px) and (max-width: 979px) {
   .hidden-desktop {
     display: inherit !important;
@@ -72,8 +81,14 @@
   .hidden-tablet {
     display: none !important;
   }
+  .container .row-fluid .span4 {
+    width: 22.930%;
+  }
 }
 @media (max-width: 767px) {
+  #pnav a {
+    padding: 20px 19% 16px;
+  }
   .hidden-desktop {
     display: inherit !important;
   }
@@ -87,7 +102,22 @@
     display: none !important;
   }
 }
+@media (min-width: 980px) {
+  #pnav a {
+    padding: 20px 19% 16px;
+  }
+  .nav-collapse.collapse {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .container .row-fluid .span4 {
+    width: 22.930%;
+  }
+}
 @media (min-width: 1200px) {
+  #pnav a {
+    padding: 20px 22% 16px;
+  }
   .row {
     margin-left: -30px;
     *zoom: 1;
@@ -409,6 +439,16 @@
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
+  #pnav a {
+    /* padding: 20px 7% 16px; */
+    padding: 20px 1% 16px;
+  }
+  #pnav li.menu-1750 {
+    padding: 12px 0 0 12px;
+  }
+  #pnav li.menu-1750 a {
+    padding: 7px 10px 10px;
+  }
   .row {
     margin-left: -20px;
     *zoom: 1;
@@ -970,11 +1010,5 @@
   .navbar-static .navbar-inner {
     padding-left: 10px;
     padding-right: 10px;
-  }
-}
-@media (min-width: 980px) {
-  .nav-collapse.collapse {
-    height: auto !important;
-    overflow: visible !important;
   }
 }
