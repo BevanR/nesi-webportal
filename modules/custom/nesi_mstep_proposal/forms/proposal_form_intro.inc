@@ -74,12 +74,15 @@ function nesi_mstep_proposal_intro_form() {
   $form['intro-form']['#type'] = 'fieldset';
   $form['intro-form']['proposal-type'] = array(
     '#type' => 'radios',
-    '#title' => t('Proposal Type'),
-    '#description' => t('Please indicate the type of proposal for this application'),
+    //'#title' => t('Proposal Type'),
+    //'#description' => t('Please indicate the type of proposal for this application'),
     '#options' => nesi_mstep_proposal_class_types(),
     '#default_value' => '',
     '#required' => TRUE,
   );
+  $form['intro-form']['sub_email']['#title'] = 'Email address';
+  $form['intro-form']['sub_email']['#type'] = 'textfield';
+  $form['intro-form']['sub_email']['#required'] = TRUE;
 
   return $form;
 }

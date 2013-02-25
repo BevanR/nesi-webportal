@@ -366,16 +366,28 @@ body {
 }
 
 /* Theme the form */
+/*
+.page-apply-nojs .span12 {
+  margin: 0 20px;
+}
+*/
+
 #nesi-mstep-proposal-step-1 h2 {
   color: #4b5b68;
   font-size: 24px;
   line-height: 36px;
 }
 
+#nesi-mstep-proposal-step-1 h3,
+#nesi-mstep-proposal-step-1 p {
+  margin-left: 55px;
+}
+
 #nesi-mstep-proposal-step-1 h3 {
   color: #4b5b68;
   font-size: 18px;
   line-height: 24px;
+  margin-bottom: 6px;
 }
 
 #nesi-mstep-proposal-step-1 h3 a {
@@ -398,15 +410,40 @@ body {
   color: #2b9fc2;
   float: left;
   font-size: 44px;
-  line-height: 36px;
+  font-weight: bold;
+  margin-left: 0;
 }
 
 #edit-intro-text {
   float: left;
-  width: 530px;
+  padding-right: 3%;
+  width: 53%;
 }
 
 #edit-intro-form {
+  border-left: 1px solid #aaa;
+  margin-left: 56%;
+/*
   float: right;
-  width: 410px;
+  min-height: 430px;
+  padding-left: 3%;
+  width: 40%;
+*/
+}
+
+#edit-intro-text div {
+  margin-bottom: 28px;
+}
+
+#edit-intro-form .fieldset-wrapper {
+  background: url(../assets/img/form-icon-edit.png) top center no-repeat;
+  margin: 30px auto;
+  padding: 105px 0 0 0;
+  width: 175px;
+}
+
+#nesi-mstep-proposal-step-1 .form-actions {
+  border-top: 0;
+  clear: none;
+  margin-left: 56%;
 }
