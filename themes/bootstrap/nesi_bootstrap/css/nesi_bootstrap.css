@@ -437,13 +437,42 @@ body {
 
 #edit-intro-form .fieldset-wrapper {
   background: url(../assets/img/form-icon-edit.png) top center no-repeat;
-  margin: 30px auto;
+  margin: 30px auto 0;
   padding: 105px 0 0 0;
   width: 175px;
+}
+
+#edit-intro-form .fieldset-wrapper label {
+  color: #606162;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+#edit-intro-form .fieldset-wrapper .form-text {
+  height: 28px;
+  width: 160px;
 }
 
 #nesi-mstep-proposal-step-1 .form-actions {
   border-top: 0;
   clear: none;
-  margin-left: 56%;
+  margin: 0 0 0 56%;
+  padding: 0;
+}
+
+#nesi-mstep-proposal-step-1 #edit-cancel {
+  display: none;
+}
+
+#nesi-mstep-proposal-step-1 .form-submit {
+  background: #2b9fc2;
+  border: 0;
+  color: #fff;
+  display: block;
+  font-size: 23px;
+  height: 45px;
+  margin: 0 auto;
+  padding: 0;
+  text-shadow: 0 0 0 transparent;
+  width: 175px;
 }
