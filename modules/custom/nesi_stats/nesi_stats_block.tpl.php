@@ -7,23 +7,23 @@
 ?>
 <div class="row-fluid">
   <div id="stats_cpu_cores" class="span4">
-    <span class="stats-header">CPU Cores</span>
+    <div class="stats-header">CPU Cores</div>
     <div class="stats-stat"><?php print $data['stats_cpu_cores'] ?></div>
-    <span class="stats-description">Distributed across facilities</span>
+    <div class="stats-description">Distributed across facilities</div>
   </div>
   <div id="stats_memory" class="span4">
-    <span class="stats-header">Memory</span>
+    <div class="stats-header">Memory</div>
     <div class="stats-stat"><?php print $data['stats_memory'] ?></div>
-    <span class="stats-description">GB of RAM</span>
+    <div class="stats-description">GB of RAM</div>
   </div>
   <div id="stats_peak_speeds" class="span4">
-    <span class="stats-header">Peak Speeds</span>
+    <div class="stats-header">Peak Speeds</div>
     <div class="stats-stat"><?php print $data['stats_peak_speeds'] ?></div>
-    <span class="stats-description">&nbsp;</span>
+    <div class="stats-description">&nbsp;</div>
   </div>
   <div id="stats_disk_storage" class="span4">
-    <span class="stats-header">Disk Storage</span>
+    <div class="stats-header">Disk Storage</div>
     <div class="stats-stat"><?php print $data['stats_disk_storage'] ?></div>
-    <span class="stats-description">Distributed across facilities</span>
+    <div class="stats-description">Distributed across facilities</div>
   </div>
 </div>
