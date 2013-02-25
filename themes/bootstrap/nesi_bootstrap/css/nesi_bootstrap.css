@@ -436,44 +436,48 @@ body {
 }
 */
 
-#nesi-mstep-proposal-step-1 {
+#nesi-mstep-proposal-step-1,
+#nesi-mstep-proposal-step-2 {
   margin-top: 18px;
 }
 
-#nesi-mstep-proposal-step-1 .wizard-trail {
-  display: none;
-}
-
-#nesi-mstep-proposal-step-1 h2 {
+#nesi-mstep-proposal-step-1 h2,
+#nesi-mstep-proposal-step-2 h2 {
   color: #4b5b68;
   font-size: 24px;
   line-height: 36px;
 }
 
 #nesi-mstep-proposal-step-1 h3,
-#nesi-mstep-proposal-step-1 p {
+#nesi-mstep-proposal-step-1 p,
+#nesi-mstep-proposal-step-2 h3,
+#nesi-mstep-proposal-step-2 h3 {
   margin-left: 55px;
 }
 
-#nesi-mstep-proposal-step-1 h3 {
+#nesi-mstep-proposal-step-1 h3,
+#nesi-mstep-proposal-step-2 h3 {
   color: #4b5b68;
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 6px;
 }
 
-#nesi-mstep-proposal-step-1 h3 a {
+#nesi-mstep-proposal-step-1 h3 a,
+#nesi-mstep-proposal-step-2 h3 a {
   color: #2b9fc2;
 }
 
-#nesi-mstep-proposal-step-1 p {
+#nesi-mstep-proposal-step-1 p,
+#nesi-mstep-proposal-step-2 p {
   color: #404040;
   font-weight: 300;
   font-size: 14px;
   line-height: 20px;
 }
 
-#nesi-mstep-proposal-step-1 p a {
+#nesi-mstep-proposal-step-1 p a,
+#nesi-mstep-proposal-step-2 p a {
   color: #d14f63;
   font-weight: bold;
 }
@@ -567,10 +571,6 @@ body {
   padding: 0;
 }
 
-#nesi-mstep-proposal-step-1 #edit-cancel {
-  display: none;
-}
-
 #nesi-mstep-proposal-step-1 .form-submit {
   background: #2b9fc2;
   border: 0;
@@ -582,4 +582,28 @@ body {
   padding: 0;
   text-shadow: 0 0 0 transparent;
   width: 175px;
+}
+
+#nesi-mstep-proposal-step-2 legend {
+  border-bottom: 0;
+  border-top: 1px solid #aaa;
+  color: #4b5b68;
+  font-size: 24px;
+  line-height: 36px;
+  padding-top: 32px;
+}
+
+#nesi-mstep-proposal-step-2 label {
+  float: left;
+  width: 220px;
+}
+
+#nesi-mstep-proposal-step-2 .controls {
+  float: left;
+}
+
+#nesi-mstep-proposal-step-2 .control-group {
+  clear: both;
+  float: left;
+  width: 100%;
 }
