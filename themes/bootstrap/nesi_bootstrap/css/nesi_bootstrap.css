@@ -415,13 +415,14 @@ body {
 }
 
 #edit-intro-text {
+  border-right: 1px solid #aaa;
   float: left;
   padding-right: 3%;
   width: 53%;
 }
 
 #edit-intro-form {
-  border-left: 1px solid #aaa;
+  /* border-left: 1px solid #aaa; */
   margin-left: 56%;
 /*
   float: right;
@@ -449,7 +450,10 @@ body {
 }
 
 #edit-intro-form .fieldset-wrapper .form-text {
+  color: #606162;
+  font-size: 15px;
   height: 28px;
+  text-align: center;
   width: 160px;
 }
 
