@@ -54,21 +54,6 @@ function nesi_slideshow_views_default_views() {
     'image_style' => '',
     'image_link' => '',
   );
-  /* Field: Content: Link Colour */
-  $handler->display->display_options['fields']['field_ns_link_color']['id'] = 'field_ns_link_color';
-  $handler->display->display_options['fields']['field_ns_link_color']['table'] = 'field_data_field_ns_link_color';
-  $handler->display->display_options['fields']['field_ns_link_color']['field'] = 'field_ns_link_color';
-  $handler->display->display_options['fields']['field_ns_link_color']['element_default_classes'] = FALSE;
-  /* Field: Content: Link Target Node */
-  $handler->display->display_options['fields']['field_ns_link_target_node']['id'] = 'field_ns_link_target_node';
-  $handler->display->display_options['fields']['field_ns_link_target_node']['table'] = 'field_data_field_ns_link_target_node';
-  $handler->display->display_options['fields']['field_ns_link_target_node']['field'] = 'field_ns_link_target_node';
-  $handler->display->display_options['fields']['field_ns_link_target_node']['element_default_classes'] = FALSE;
-  /* Field: Content: Link Title */
-  $handler->display->display_options['fields']['field_ns_link_title']['id'] = 'field_ns_link_title';
-  $handler->display->display_options['fields']['field_ns_link_title']['table'] = 'field_data_field_ns_link_title';
-  $handler->display->display_options['fields']['field_ns_link_title']['field'] = 'field_ns_link_title';
-  $handler->display->display_options['fields']['field_ns_link_title']['element_default_classes'] = FALSE;
   /* Field: Content: Primary Title */
   $handler->display->display_options['fields']['field_ns_title_primary']['id'] = 'field_ns_title_primary';
   $handler->display->display_options['fields']['field_ns_title_primary']['table'] = 'field_data_field_ns_title_primary';
@@ -79,6 +64,12 @@ function nesi_slideshow_views_default_views() {
   $handler->display->display_options['fields']['field_ns_title_secondary']['table'] = 'field_data_field_ns_title_secondary';
   $handler->display->display_options['fields']['field_ns_title_secondary']['field'] = 'field_ns_title_secondary';
   $handler->display->display_options['fields']['field_ns_title_secondary']['element_default_classes'] = FALSE;
+  /* Field: Content: Secondary Title line 2 */
+  $handler->display->display_options['fields']['field_secondary_title_line_2']['id'] = 'field_secondary_title_line_2';
+  $handler->display->display_options['fields']['field_secondary_title_line_2']['table'] = 'field_data_field_secondary_title_line_2';
+  $handler->display->display_options['fields']['field_secondary_title_line_2']['field'] = 'field_secondary_title_line_2';
+  $handler->display->display_options['fields']['field_secondary_title_line_2']['label'] = '';
+  $handler->display->display_options['fields']['field_secondary_title_line_2']['element_label_colon'] = FALSE;
   /* Field: Content: Primary Title Background Colour */
   $handler->display->display_options['fields']['field_ns_primary_bg_color']['id'] = 'field_ns_primary_bg_color';
   $handler->display->display_options['fields']['field_ns_primary_bg_color']['table'] = 'field_data_field_ns_primary_bg_color';

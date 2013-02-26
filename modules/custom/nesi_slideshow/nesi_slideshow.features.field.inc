@@ -236,13 +236,9 @@ function nesi_slideshow_field_default_fields() {
         'profile2_private' => FALSE,
         'referenceable_types' => array(
           'asset' => 'asset',
-          'call' => 0,
           'casestudy' => 'casestudy',
           'event' => 'event',
           'page' => 'page',
-          'project' => 0,
-          'proposal_development_class' => 0,
-          'proposal_research_class' => 0,
           'slideshow_item' => 0,
           'story' => 'story',
         ),
@@ -278,7 +274,7 @@ function nesi_slideshow_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_ns_link_target_node',
       'label' => 'Link Target Node',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -349,7 +345,7 @@ function nesi_slideshow_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_ns_link_title',
       'label' => 'Link Title',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -479,7 +475,7 @@ function nesi_slideshow_field_default_fields() {
         'module' => 'jquery_colorpicker',
         'settings' => array(),
         'type' => 'jquery_colorpicker',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -578,7 +574,7 @@ function nesi_slideshow_field_default_fields() {
       'locked' => '0',
       'module' => 'text',
       'settings' => array(
-        'max_length' => '40',
+        'max_length' => '255',
         'profile2_private' => FALSE,
       ),
       'translatable' => '0',
@@ -624,6 +620,75 @@ function nesi_slideshow_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-slideshow_item-field_secondary_title_line_2'.
+  $fields['node-slideshow_item-field_secondary_title_line_2'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_secondary_title_line_2',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow_item',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 11,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_secondary_title_line_2',
+      'label' => 'Secondary Title line 2',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '4',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Banner Background Colour');
@@ -635,6 +700,7 @@ function nesi_slideshow_field_default_fields() {
   t('Primary Title Background Colour');
   t('Secondary Title');
   t('Secondary Title Background Colour');
+  t('Secondary Title line 2');
   t('Sets the colour of the background for the Primary Title.');
   t('Sets the colour of the background for the Secondary Title.');
   t('Text to appear as the clickable link below the slideshow title.');
