@@ -597,13 +597,18 @@ body {
   border-top: 1px solid #aaa;
   clear: both;
   color: #4b5b68;
+  display: block;
+  float: left;
   font-size: 24px;
   line-height: 36px;
+  margin-top: 150px;
   padding-top: 32px;
+  width: 100%;
 }
 
-#nesi-mstep-proposal-step-2 div div h2 {
-  margin-top: 150px;
+#nesi-mstep-proposal-step-2 #edit-project legend,
+#nesi-mstep-proposal-step-2 #edit-grant legend {
+  margin-top: 0;
 }
 
 #nesi-mstep-proposal-step-2 label {
