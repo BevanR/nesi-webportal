@@ -23,25 +23,8 @@ function nesi_mstep_proposal_menu() {
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
-
-  $items['admin/config/nesi/proposal-settings'] = array(
-    'title' => 'NeSI Proposal Configuration',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('nesi_mstep_proposal_admin_settings'),
-    'access arguments' => array('nesi proposal config'),
-    'file' => 'nesi_mstep_proposal.admin.inc',
-  );
-
+  
   return $items;
-}
-
-function nesi_mstep_proposal_permission() {
-  return array(
-    'nesi proposal config' => array(
-      'title' => t('NeSI Proposal Configuration'),
-      'description' => t('Configure NeSI Proposal module.')
-    )
-  );
 }
 
 /**
@@ -171,10 +154,12 @@ function nesi_mstep_proposal_step_3($form, &$form_state) {
   $options = nesi_mstep_proposal_class_types();
 
   $form['proposal-complete'] = array(
-    '#markup' => '<div><h2>Proposal Complete</h2>
-                  <p>Thanks for submitting your proposal.<p>
-                  <p>We will be in touch to confirm once the proposal has been reviewed by our team.</p>
-                  <p>Shortly, you should receive an email to confirm receipt of the proposal.</p>
+    '#markup' => '<div>
+                    <h1>Confirmation</h1>
+                    <h2>Thank you. Your Development Allocation Proposal has been placed and will now go into the review stage. A copy of the Access Policy will be in your email inbox. You will receive a confirmation email shortly.</h2>
+                    <p>&nbsp;</p>
+                    <h3>What happens next?</h3>
+                    <p>One of the NeSI staff will be in contact with you shortly to guide you through the process. If you have any queries, please use the <a href="#">contact form here</a>.</p>
                   </div>',
   );
   
