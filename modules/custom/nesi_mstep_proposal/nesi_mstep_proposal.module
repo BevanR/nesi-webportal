@@ -188,9 +188,11 @@ function nesi_mstep_proposal_complete() {
 
 function nesi_mstep_proposal_step_1($form, &$form_state) {
   $form_state['title'] = t('Apply for Access to HPC Facilities');
-  
+   
   $form['intro'] = nesi_mstep_proposal_intro_form(); 
-  
+
+  $form['buttons']['next']['#value'] = 'Start';  
+
   return $form;
 }
 
