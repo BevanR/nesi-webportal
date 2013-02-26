@@ -693,3 +693,56 @@ input, button, select, textarea {
   font-size: 12px;
   line-height: 15px;
 }
+
+/* FAQs block */
+#block-nesi-config-nesi-faq {
+  border-top: 1px solid #aaa;
+  margin-top: 90px;
+  padding: 65px 0;
+}
+
+#block-nesi-config-nesi-faq h2,
+#block-nesi-config-nesi-faq h3 {
+  color: #4b5b68;
+  font-weight: normal;
+  margin: 0;
+  text-align: center;
+}
+
+#block-nesi-config-nesi-faq h2 {
+  font-size: 24px;
+  line-height: 23px;
+}
+
+#block-nesi-config-nesi-faq h3 {
+  font-size: 19px;
+  line-height: 23px;
+}
+
+#block-nesi-config-nesi-faq h3 a {
+  color: #4b5b68;
+}
+
+.faq {
+  margin-top: 45px;
+}
+
+#block-nesi-config-nesi-faq h4 {
+  color: #4b5b68;
+  float: left;
+  font-size: 23px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 32px;
+  margin-right: 1%;
+  margin-top: 0;
+  text-align: right;
+  width: 49%;
+}
+
+#block-nesi-config-nesi-faq p {
+  color: #404040;
+  font-size: 12px;
+  line-height: 23px;
+  margin-left: 52%;
+}
