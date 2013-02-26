@@ -48,7 +48,7 @@ function nesi_mstep_proposal_intro_form() {
                     <h3 class="num">2.</h3>
                     <h3>Decide which Allocation you\'re applying for.</h3>
                     <p>Hover over title for more information</p>
-                    <p><a href="#" class="ws-tooltip" title="Tooltip text to go here. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.">Development:</a> <span>Vivamus et turpis vel urna auctor auctor ut sed massa. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.</span></p>
+                    <p><a href="#" class="ws-tooltip" title="Tooltip text to go here. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.">Proposal Development:</a> <span>Vivamus et turpis vel urna auctor auctor ut sed massa. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.</span></p>
                     <p><a href="#" class="ws-tooltip" title="Tooltip text to go here. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.">Research:</a> <span>Vivamus et turpis vel urna auctor auctor ut sed massa. Nullam tristique neque at diam porttitor vitae malesuada dolor eleifend.</span></p>
                   </div>'
   );

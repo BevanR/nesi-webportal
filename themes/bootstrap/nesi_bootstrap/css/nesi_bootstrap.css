@@ -527,7 +527,7 @@ body {
 
 .intro-text-2 span {
   display: block;
-  margin-left: 115px;
+  margin-left: 175px;
 }
 
 #edit-intro-form {
@@ -558,10 +558,12 @@ body {
   margin-bottom: 18px;
 }
 
+/*
 #edit-intro-form .radio input[type="radio"],
 #edit-intro-form .checkbox input[type="checkbox"] {
   margin-right: 12px;
 }
+*/
 
 #edit-intro-form .fieldset-wrapper .form-text {
   color: #606162;
