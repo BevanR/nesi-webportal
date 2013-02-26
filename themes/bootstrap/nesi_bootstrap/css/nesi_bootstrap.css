@@ -206,11 +206,13 @@ body {
   border-bottom: 4px solid #bea8ce;
 }
 
-#pnav li.menu-1750 {
+#pnav li.menu-1750,
+#pnav li.menu-1732 {
   border-bottom: 4px solid #4b5b68;
 }
 
-#pnav li.menu-1750 span {
+#pnav li.menu-1750 span,
+#pnav li.menu-1732 span {
   background: url(../assets/img/nav-apply.png) top center no-repeat;
   font-size: 0;
   height: 27px;
