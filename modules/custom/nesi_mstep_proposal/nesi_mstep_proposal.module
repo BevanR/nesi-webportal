@@ -35,9 +35,9 @@ function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
   $form_info = array(
     'id' => 'nesi-mstep-proposal-form', //form id
     'path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step", //pass the step we're on to the form, step1, step2, ..etc
-    'show trail' => TRUE, //show the breadcrumb / path trail for the forms
+    'show trail' => FALSE, //show the breadcrumb / path trail for the forms
     'show back' => TRUE, //show the back button
-    'show cancel' => TRUE, //show the cancel button
+    'show cancel' => FALSE, //show the cancel button
     'show return' => FALSE, //show the update and return button
     'next callback' =>  'nesi_mstep_proposal_wizard_next', //a callback function to run when the next button is pressed
     'finish callback' => 'nesi_mstep_proposal_wizard_finish', //callback when finish button is pressed
@@ -137,11 +137,11 @@ function nesi_mstep_proposal_step_2($form, &$form_state) {
   $options = nesi_mstep_proposal_class_types();
   $choice = $options[$form_state['object']['proposal-type']];
 
-  if ($choice == 'Proposal Development') {
+  if ($choice == 'Development') {
     $form['pdc'] = nesi_mstep_proposal_development_form();
   }
  
-  if ($choice == 'Research Proposal') {
+  if ($choice == 'Research') {
     $form['prc'] = nesi_mstep_proposal_research_form();
   }
   
@@ -154,10 +154,12 @@ function nesi_mstep_proposal_step_3($form, &$form_state) {
   $options = nesi_mstep_proposal_class_types();
 
   $form['proposal-complete'] = array(
-    '#markup' => '<div><h2>Proposal Complete</h2>
-                  <p>Thanks for submitting your proposal.<p>
-                  <p>We will be in touch to confirm once the proposal has been reviewed by our team.</p>
-                  <p>Shortly, you should receive an email to confirm receipt of the proposal.</p>
+    '#markup' => '<div>
+                    <h1>Confirmation</h1>
+                    <h2>Thank you. Your Development Allocation Proposal has been placed and will now go into the review stage. A copy of the Access Policy will be in your email inbox. You will receive a confirmation email shortly.</h2>
+                    <p>&nbsp;</p>
+                    <h3>What happens next?</h3>
+                    <p>One of the NeSI staff will be in contact with you shortly to guide you through the process. If you have any queries, please use the <a href="#">contact form here</a>.</p>
                   </div>',
   );
   

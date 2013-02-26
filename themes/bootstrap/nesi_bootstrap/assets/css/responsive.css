@@ -59,12 +59,6 @@
 .visible-desktop {
   display: inherit !important;
 }
-#pnav li.menu-1750 {
-  padding: 12px 0 0 19px;
-}
-#pnav li.menu-1750 a {
-  padding: 7px 15px 10px;
-}
 .container .row-fluid .span4 {
   width: 100%;
 }
@@ -442,12 +436,6 @@
   #pnav a {
     /* padding: 20px 7% 16px; */
     padding: 20px 1% 16px;
-  }
-  #pnav li.menu-1750 {
-    padding: 12px 0 0 12px;
-  }
-  #pnav li.menu-1750 a {
-    padding: 7px 10px 10px;
   }
   .row {
     margin-left: -20px;

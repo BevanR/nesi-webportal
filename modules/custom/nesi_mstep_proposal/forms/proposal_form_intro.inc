@@ -40,7 +40,7 @@ function nesi_mstep_proposal_intro_form() {
     '#markup' => '<div class="intro-text-1">
                     <h3 class="num">1.</h3>
                     <h3>Read our <a href="#">Frequently Asked Questions</a> below and <a href="#">Access policy</a>.</h3>
-                    <p>Once you fill in your email address and click NEXT the access Policy will be sent to you. <a href="#">Read online here</a></p>
+                    <p>Once you fill in your email address and click START the access Policy will be sent to you. <a href="#">Read online here</a></p>
                   </div>'
   );
   $form['intro-text']['decide'] = array(
