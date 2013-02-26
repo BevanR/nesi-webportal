@@ -697,6 +697,10 @@ input, button, select, textarea {
   line-height: 15px;
 }
 
+.page-apply-proposal-complete h1.page-header {
+  display: none;
+}
+
 /* Errors */
 .control-group.error .radio {
   box-shadow: 0 0 0 transparent;
