@@ -63,7 +63,7 @@ function nesi_config_block_view($delta = '') {
 
   switch ($delta) {
     case 'nesi_faq':
-      $block['subject'] = t('Frequently Asked Questions: NeSI High Performance Computing');
+      $block['subject'] = t('FAQ: "See <a href="https://support.nesi.org.nz/">Support</a> for more details"');
       $block['content'] = nesi_faq_content();
       return $block;
     break;
@@ -73,7 +73,6 @@ function nesi_config_block_view($delta = '') {
 function nesi_faq_content() {
 
   $faqs = variable_get('nesi_faqs');
-  $content = '<h3>or see <a href="https://support.nesi.org.nz/">https://support.nesi.org.nz/</a></h3>';
 
   $i = 0;
   foreach ( $faqs as $faq ) {
