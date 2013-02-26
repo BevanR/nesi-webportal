@@ -142,6 +142,7 @@ body {
 }
 
 .navbar .nav {
+  float: right;
   margin: 0;
 }
 
@@ -158,6 +159,10 @@ body {
   clear: none; /* Hope this doesn't break anything else */
 }
 
+#pnav li {
+  width: auto;
+}
+
 #pnav a {
   border-left: 1px solid #e0e0e0;
   color: #4b5b68;
@@ -169,6 +174,10 @@ body {
   /* padding: 20px 44px 16px; */
   text-align: center;
   width: 110px;
+}
+
+#pnav .last a {
+  border-right: 1px solid #e0e0e0;
 }
 
 #pnav a span {
