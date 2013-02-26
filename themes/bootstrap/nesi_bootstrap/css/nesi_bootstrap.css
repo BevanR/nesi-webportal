@@ -703,26 +703,17 @@ input, button, select, textarea {
   padding: 65px 0;
 }
 
-#block-nesi-config-nesi-faq h2,
-#block-nesi-config-nesi-faq h3 {
+#block-nesi-config-nesi-faq h2 {
   color: #4b5b68;
+  font-size: 24px;
   font-weight: normal;
+  line-height: 23px;
   margin: 0;
   text-align: center;
 }
 
-#block-nesi-config-nesi-faq h2 {
-  font-size: 24px;
-  line-height: 23px;
-}
-
-#block-nesi-config-nesi-faq h3 {
-  font-size: 19px;
-  line-height: 23px;
-}
-
-#block-nesi-config-nesi-faq h3 a {
-  color: #4b5b68;
+#block-nesi-config-nesi-faq h2 a {
+  color: #2B9FC2;
 }
 
 .faq {
