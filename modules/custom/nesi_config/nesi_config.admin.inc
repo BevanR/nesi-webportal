@@ -61,8 +61,8 @@ function nesi_config_admin_settings($form, &$form_state) {
  */
 function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
   $form['description'] = array(
-    '#markup' => '<div>' . t('This example shows an add-more and a remove-last button. The <a href="!ajax">AJAX version</a> does it without page reloads; the <a href="!multistep">non-js version</a> is the same code but simulates a non-javascript environment, showing it with page reloads.',
-      array('!ajax' => url('examples/nesi_config/add_more'), '!multistep' => url('examples/ajax_example/add_more_no_js')))
+    '#markup' => '<div>' . t('Add or remove FAQs to <a href="!apply">the apply page</a> ',
+      array('!apply' => url('apply')))
     . '</div>',
   );
 
@@ -71,7 +71,7 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
   $form['#tree'] = TRUE;
   $form['faqs_fieldset'] = array(
     '#type' => 'fieldset',
-    '#title' => t('People coming to the picnic'),
+    '#title' => t('FAQs'),
     // Set up the wrapper so that AJAX will be able to replace the fieldset.
     '#prefix' => '<div id="faqs-fieldset-wrapper">',
     '#suffix' => '</div>',
@@ -83,10 +83,19 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
     $form_state['num_faqs'] = variable_get('config_form_step_num',1);
   }
   for ($i = 0; $i < $form_state['num_faqs']; $i++) {
-    $form['faqs_fieldset']['name'][$i] = array(
+    $faqs_vals = nesi_config_faq($i);
+    //dsm($faqs_vals);
+    $form['faqs_fieldset']['qs_fieldset_' . $i]['question'][$i] = array(
       '#type' => 'textfield',
-      '#title' => t('Name'),
-      '#default_value' => nesi_config_faq($i), 
+      '#title' => t('Question'),
+      '#default_value' => $faqs_vals['question'], 
+    );
+    $form['faqs_fieldset']['qs_fieldset_' . $i]['answer'][$i] = array(
+      '#type' => 'textarea',
+      '#title' => t('Answer'),
+      '#cols' => 30,
+      '#size' => 3,
+      '#default_value' => $faqs_vals['answer'], 
     );
   }
   $form['faqs_fieldset']['add_faq'] = array(
@@ -147,10 +156,15 @@ function nesi_config_add_more_callback($form, $form_state) {
  * Increments the max counter and causes a rebuild.
  */
 function nesi_config_add_more_add_one($form, &$form_state) {
+
+  $num = $form_state['num_faqs']-1;
+  dsm("The NUM : $num");
+  $q_val   = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['question'];
+  $ans_val = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['answer'];
+  nesi_config_faq_save($num, array('question' => $q_val , 'answer' => $ans_val));
+
   $form_state['num_faqs']++;
   nesi_config_var_inc('config_form_step_num');
-  //dsm($form_state);
-  nesi_config_faq_save($form_state['num_faqs'], 'Saving num : ' . $form_state['num_faqs']);
   $form_state['rebuild'] = TRUE;
 }
 
@@ -160,26 +174,27 @@ function nesi_config_add_more_add_one($form, &$form_state) {
  * Decrements the max counter and causes a form rebuild.
  */
 function nesi_config_add_more_remove_one($form, &$form_state) {
+  $num = $form_state['num_faqs'];
+  nesi_config_faq_del($num);
   if ($form_state['num_faqs'] > 1) {
     $form_state['num_faqs']--;
   }
   //dsm($form_state);
   nesi_config_var_dec('config_form_step_num');
-  nesi_config_faq_del();
   $form_state['rebuild'] = TRUE;
 }
 
-function nesi_config_faq_save($num, $str) {
+function nesi_config_faq_save($num, $vals) {
 
-  $faqs = variable_get('nesi_faqs', array(''));
-  $faqs[] = $str;
-  dsm('In save faqs');
+  $faqs = variable_get('nesi_faqs', array(array('question' => '' , 'answer' => '')));
+  $faqs[$num] = $vals;
+  //dsm('In save faqs');
   variable_set('nesi_faqs' , $faqs);
 }
 
-function nesi_config_faq_del() {
-  $faqs = variable_get('nesi_faqs', array(''));
-  array_pop($faqs);
+function nesi_config_faq_del($num) {
+  $faqs = variable_get('nesi_faqs', array(array('question' => '' , 'answer' => '')));
+  if(count($faqs) == $num) array_pop($faqs);
   variable_set('nesi_faqs' , $faqs);
 }
 
@@ -210,7 +225,7 @@ function nesi_config_var_inc($var_name) {
   $val = variable_get($var_name , 1)+1;
   variable_set($var_name, $val);
   
-  dsm("Inc : $val");
+  //dsm("Inc : $val");
 }
 
 /**
@@ -219,5 +234,5 @@ function nesi_config_var_inc($var_name) {
 function nesi_config_var_dec($var_name) {
   $val = variable_get($var_name , 1)-1;
   variable_set($var_name, $val);
-  dsm("Dec : $val");
+  //dsm("Dec : $val");
 }
