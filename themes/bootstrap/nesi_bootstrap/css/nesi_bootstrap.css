@@ -701,6 +701,13 @@ input, button, select, textarea {
   display: none;
 }
 
+.page-apply-proposal-complete .span12 h1 {
+  color: #4b5b68;
+  font-size: 51px;
+  line-height: 51px;
+  text-align: center;
+}
+
 /* Errors */
 .control-group.error .radio {
   box-shadow: 0 0 0 transparent;

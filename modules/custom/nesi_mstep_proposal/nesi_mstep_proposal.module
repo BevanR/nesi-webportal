@@ -176,11 +176,13 @@ function nesi_mstep_proposal_platform_options() {
 function nesi_mstep_proposal_complete() {
   
   return array(
-    '#markup' => '<div>
+    '#markup' => '<div class="nesi-confirmation-left"></div>
+                  <div class="nesi-confirmation-center">
                     <h1>Thank you</h1>
                     <h2>Your Proposal Development submission has been placed and will now go into the review stage.</h2>
                     <p>A copy of the Access Policy will be in your email inbox.<br />You will receive a confirmation email shortly.</p>
-                  </div>',
+                  </div>
+                  <div class="nesi-confirmation-right"></div>',
   );
 }
 
@@ -233,25 +235,6 @@ function nesi_mstep_proposal_step_4($form, &$form_state) {
 
 function nesi_mstep_proposal_step_1_validate($form, &$form_state) {
 
-  // Check for standard errors
-  if(form_get_errors()) {
-    return;
-  }  
-
-  // Check that a proposal type has been selected
-  $proposal_selection = $form_state['values']['proposal-type'];
-
-  $options = array('proposal_development_class','research_proposal_class');
-   
-  if (!in_array($proposal_selection, $options)) {
-    form_set_error('proposal-type', 'Please select a proposal type.');
-  }
-
-  // Check validation on email address
-  $submitter_email = $form_state['values']['sub_email'];
-  if (!valid_email_address($submitter_email)) {
-    form_set_error('sub_email', 'Please supply a valid email address to begin proposal submission.');
-  }
 }
 
 function nesi_mstep_proposal_step_2_validate($form, &$form_state) {
@@ -271,7 +254,6 @@ function nesi_mstep_proposal_step_2_validate($form, &$form_state) {
 function nesi_mstep_proposal_step_1_submit($form, &$form_state) {
 
   $form_state['ctools_object']->data['proposal-type'] = $form_state['values']['proposal-type'];
-  $form_state['ctools_object']->data['sub-email'] = $form_state['values']['sub_email'];
 
   // Collect extra steps for research proposal
   if ($form_state['ctools_object']->data['proposal-type'] == 'research_proposal_class') {
