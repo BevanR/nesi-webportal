@@ -643,14 +643,9 @@ body {
   float: left;
   font-size: 24px;
   line-height: 36px;
-  margin-top: 150px;
+  margin-top: 0;
   padding-top: 32px;
   width: 100%;
-}
-
-#nesi-mstep-proposal-step-2 #edit-project legend,
-#nesi-mstep-proposal-step-2 #edit-grant legend {
-  margin-top: 0;
 }
 
 #nesi-mstep-proposal-step-2 label {
@@ -671,6 +666,10 @@ body {
   clear: both;
   float: left;
   width: 100%;
+}
+
+#nesi-mstep-proposal-step-2 fieldset {
+  padding-bottom: 150px;
 }
 
 #nesi-mstep-proposal-step-2 label .help-block,
