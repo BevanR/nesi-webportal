@@ -196,7 +196,7 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
 }
 
 function nesi_mstep_proposal_wizard_cancel(&$form_state) {
-  nesi_mstep_proposal_cache_clear('nesi_mstep_proposal');
+  nesi_mstep_proposal_cache_clear('nesi_mstep');
   $form_state['cancel'] = TRUE;
 }
 
