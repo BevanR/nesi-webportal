@@ -71,7 +71,6 @@ function nesi_mstep_proposal_development_form() {
     '#title' => t('Desired HPC Platform'),
     '#options' => nesi_mstep_proposal_platform_options(),
     '#default_value' => '',
-    '#required' => TRUE,
   ); 
 
   $form['requirements']['pdc-software'] = array(
