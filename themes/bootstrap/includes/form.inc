@@ -253,5 +253,8 @@ function _bootstrap_element_whitelist() {
     'panels-ipe-save',
     'edit-fields-title-parent',
     'edit-fields-title-weight',
+    'edit-next',
+    'edit-return',
+    'edit-previous',
   );
 }

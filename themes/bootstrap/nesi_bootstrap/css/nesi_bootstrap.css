@@ -584,6 +584,7 @@ input, button, select, textarea {
   color: #606162;
   font-size: 15px;
   height: 28px;
+  padding: 4px 10px;
   width: 160px;
 }
 
@@ -686,7 +687,7 @@ input, button, select, textarea {
 }
 
 #nesi-mstep-proposal-step-2 fieldset {
-  padding-bottom: 150px;
+  padding-bottom: 80px;
 }
 
 #nesi-mstep-proposal-step-2 label .help-block,
@@ -696,6 +697,16 @@ input, button, select, textarea {
   line-height: 15px;
 }
 
+.page-apply-proposal-complete h1.page-header {
+  display: none;
+}
+
+/* Errors */
+.control-group.error .radio {
+  box-shadow: 0 0 0 transparent;
+  -webkit-box-shadow: 0 0 0 transparent;
+}
+
 /* FAQs block */
 #block-nesi-config-nesi-faq {
   border-top: 1px solid #aaa;
@@ -703,26 +714,17 @@ input, button, select, textarea {
   padding: 65px 0;
 }
 
-#block-nesi-config-nesi-faq h2,
-#block-nesi-config-nesi-faq h3 {
+#block-nesi-config-nesi-faq h2 {
   color: #4b5b68;
+  font-size: 24px;
   font-weight: normal;
+  line-height: 23px;
   margin: 0;
   text-align: center;
 }
 
-#block-nesi-config-nesi-faq h2 {
-  font-size: 24px;
-  line-height: 23px;
-}
-
-#block-nesi-config-nesi-faq h3 {
-  font-size: 19px;
-  line-height: 23px;
-}
-
-#block-nesi-config-nesi-faq h3 a {
-  color: #4b5b68;
+#block-nesi-config-nesi-faq h2 a {
+  color: #2B9FC2;
 }
 
 .faq {
