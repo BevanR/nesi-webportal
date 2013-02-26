@@ -268,6 +268,20 @@ function nesi_mstep_proposal_step_2_validate($form, &$form_state) {
   }  
 }
 
+function nesi_mstep_proposal_step_4_validate($form, &$form_state) {
+
+  // Check for standard errors
+  if(form_get_errors()) {
+    return;
+  }  
+  
+  // User needs to indicate if they need support
+  $support = $form_state['values']['prc-expert-support']; 
+  if (empty($support)) {
+    form_set_error('prc-expert-support', 'Please indicate if you need expert support from NeSI');
+  }
+}
+
 function nesi_mstep_proposal_step_1_submit($form, &$form_state) {
 
   $form_state['ctools_object']->data['proposal-type'] = $form_state['values']['proposal-type'];
