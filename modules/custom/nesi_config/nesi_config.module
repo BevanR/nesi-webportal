@@ -41,3 +41,46 @@ function nesi_config_wysiwyg_editor_settings_alter(&$settings, $context) {
     $settings['startupOutlineBlocks'] = true;
   }
 }
+
+/**
+* Implements hook_block_info().
+*/
+function nesi_config_block_info() {
+  $blocks['nesi_faq'] = array(
+    'info'   => t('Application page FAQ'),
+    'status' => TRUE,
+    'region' => 'content',
+    'weight'    => 0,
+    'visibility' => 1,
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function nesi_config_block_view($delta = '') {
+
+  switch ($delta) {
+    case 'nesi_faq':
+      $block['subject'] = t('Frequently Asked Questions: NeSI High Performance Computing');
+      $block['content'] = nesi_faq_content();
+      return $block;
+    break;
+  }
+}
+
+function nesi_faq_content() {
+
+  $faqs = variable_get('nesi_faqs');
+  $content = '<h3>or see <a href="https://support.nesi.org.nz/">https://support.nesi.org.nz/</a></h3>';
+
+  $i = 0;
+  foreach ( $faqs as $faq ) {
+    $content .= '<h4>' . $faq['question'][$i] . '</h4><p>' . $faq['answer'][$i] . '</p>';
+    $i++;
+  }
+
+  return $content;
+
+}
