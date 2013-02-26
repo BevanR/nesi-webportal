@@ -31,41 +31,39 @@ function nesi_mstep_proposal_menu() {
  * Page callback for apply/%ctools_js/create-proposal
  */
 function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
-  
-  $form_info = array(
-    'id' => 'nesi-mstep-proposal-form', //form id
-    'path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step", //pass the step we're on to the form, step1, step2, ..etc
-    'show trail' => FALSE, //show the breadcrumb / path trail for the forms
-    'show back' => TRUE, //show the back button
-    'show cancel' => FALSE, //show the cancel button
-    'show return' => FALSE, //show the update and return button
-    'next callback' =>  'nesi_mstep_proposal_wizard_next', //a callback function to run when the next button is pressed
-    'finish callback' => 'nesi_mstep_proposal_wizard_finish', //callback when finish button is pressed
-    'cancel callback' => 'nesi_mstep_proposal_wizard_cancel', //callback when cancel button is pressed
-    'cancel path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
-    'return path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
-    'finish text' => 'Finish',
-    'order' => _nesi_mstep_proposal_steps(),
-    'forms' => _nesi_mstep_proposal_forms(), 
-  );
-  
-  $object_id = 'nesi_mstep_proposal';
-  
-  if (empty($step)) {
-    nesi_mstep_proposal_cache_clear($object_id);
-  }
+ 
+  ctools_include('wizard');
+  ctools_include('object-cache');
 
-  $object = nesi_mstep_proposal_cache_get($object_id);
-  $form_state = array(
-    'ajax' => $js,
-    'object_id' => $object_id,
-    'object' => &$object,
-  );
+  // Get form from cache
+  $ctools_object = nesi_mstep_proposal_cache_get('nesi_mstep');
+
+  if (empty($ctools_object->form_info)) {
+ 
+    $ctools_object->form_info = array(
+      'id' => 'nesi_mstep', //form id
+      'path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step", //pass the step we're on to the form, step1, step2, ..etc
+      'show trail' => FALSE, //show the breadcrumb / path trail for the forms
+      'show back' => TRUE, //show the back button
+      'show cancel' => FALSE, //show the cancel button
+      'show return' => FALSE, //show the update and return button
+      'next callback' =>  'nesi_mstep_proposal_wizard_next', //a callback function to run when the next button is pressed
+      'finish callback' => 'nesi_mstep_proposal_wizard_finish', //callback when finish button is pressed
+      'cancel callback' => 'nesi_mstep_proposal_wizard_cancel', //callback when cancel button is pressed
+      'cancel path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
+      'return path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
+      'finish text' => 'Finish',
+      'order' => _nesi_mstep_proposal_steps(),
+      'forms' => _nesi_mstep_proposal_forms(), 
+    );
+
+  }
+  
+  $form_state['ctools_object'] = $ctools_object;
 
   // Send this all off to our form. This is like drupal_get_form only wizardy.
-  ctools_include('wizard');
-  $form = ctools_wizard_multistep_form($form_info, $step, $form_state);
-  $output = drupal_render($form);
+  $ctools_form = ctools_wizard_multistep_form($ctools_object->form_info, $step, $form_state);
+  $output = drupal_render($ctools_form);
   
   return $output;
 }
@@ -123,7 +121,6 @@ function nesi_mstep_proposal_platform_options() {
 }
 
 function nesi_mstep_proposal_step_1($form, &$form_state) {
-  $form_state['object'] = nesi_mstep_proposal_cache_get('nesi_mstep_proposal'); 
   $form_state['title'] = t('Apply for Access to HPC Facilities');
   
   $form['intro'] = nesi_mstep_proposal_intro_form(); 
@@ -133,9 +130,8 @@ function nesi_mstep_proposal_step_1($form, &$form_state) {
 
 function nesi_mstep_proposal_step_2($form, &$form_state) {
   
-  $name = $form_state['object']['name'];
   $options = nesi_mstep_proposal_class_types();
-  $choice = $options[$form_state['object']['proposal-type']];
+  $choice = $options[$form_state['ctools_object']->data['proposal-type']];
 
   if ($choice == 'Proposal Development') {
     $form['pdc'] = nesi_mstep_proposal_development_form();
@@ -178,19 +174,21 @@ function nesi_mstep_proposal_step_1_validate(&$form, &$form_state) {
 }
 */
 
-/*
-function nesi_mstep_proposal_step_2_submit($form, &$form_state) {
-  $form_state['object'] = $form_state['values'];
-  nesi_mstep_proposal_cache_set($form_state['object_id'], $form_state['object']);
+function nesi_mstep_proposal_step_1_submit($form, &$form_state) {
+  $form_state['ctools_object']->data['proposal-type'] = $form_state['values']['proposal-type'];
 }
-*/
+
+
+function nesi_mstep_proposal_step_2_submit($form, &$form_state) {
+  $form_state['ctools_object']->data['proposal-type'] = $form_state['values']['proposal-type'];
+}
+
 
 /**
  * Next callback
  */
 function nesi_mstep_proposal_wizard_next(&$form_state) {
-  $form_state['object'] = $form_state['values'];
-  nesi_mstep_proposal_cache_set($form_state['object_id'], $form_state['object']);
+  nesi_mstep_proposal_cache_set('nesi_mstep', $form_state['ctools_object']);
 }
 
 function nesi_mstep_proposal_wizard_finish(&$form_state) {
@@ -198,39 +196,38 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
 }
 
 function nesi_mstep_proposal_wizard_cancel(&$form_state) {
-  nesi_mstep_proposal_cache_clear($form_state['object_id']);
+  nesi_mstep_proposal_cache_clear('nesi_mstep_proposal');
   $form_state['cancel'] = TRUE;
 }
 
 /**
  * Cache helpers
  */
-function nesi_mstep_proposal_cache_set($id, $object) {
+function nesi_mstep_proposal_cache_set($name, $data) {
   ctools_include('object-cache');
-  ctools_object_cache_set('nesi_mstep_proposal', $id, $object);
+  $cache = ctools_object_cache_set('nesi_mstep_proposal', $name, $data);
 }
 
 /**
  * Get the current object from the cache, or default.
  */
-function nesi_mstep_proposal_cache_get($id) {
+function nesi_mstep_proposal_cache_get($name) {
   ctools_include('object-cache');
-  $object = ctools_object_cache_get('nesi_mstep_proposal', $id);
 
-  if (!$object) {
-    // Create a default object.
-    $object = new stdClass;
+  $cache = ctools_object_cache_get('nesi_mstep_proposal', $name);
+  if (!$cache) {
+    $cache = new stdClass();
+    $cache->locked = ctools_object_cache_test('nesi_mstep_proposal', $name);
   }
- 
-  return $object;
+  return $cache;
 }
 
 /**
  * Clear the wizard cache.
  */
-function nesi_mstep_proposal_cache_clear($id) {
+function nesi_mstep_proposal_cache_clear($name) {
   ctools_include('object-cache');
-  ctools_object_cache_clear('nesi_mstep_proposal', $id);
+  ctools_object_cache_clear('nesi_mstep_proposal', $name);
 }
 
 function nesi_mstep_proposal_theme($existing, $type, $theme, $path) {
