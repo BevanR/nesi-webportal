@@ -19,7 +19,7 @@ function nesi_config_admin_settings($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Destination email address for proposals'),
     '#default_value' => variable_get('destination_email', ''),
-    '#size' => 60,
+    '#size' => 40,
   );
 
   $form['front_stats'] = array(
@@ -56,8 +56,6 @@ function nesi_config_admin_settings($form, &$form_state) {
   );
 
   $form = nesi_config_add_more($form, $form_state);
-  //dsm($form);
-  //dsm($form_state);
   return system_settings_form( $form );
 }
 

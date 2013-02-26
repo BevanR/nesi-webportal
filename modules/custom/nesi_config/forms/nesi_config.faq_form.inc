@@ -19,15 +19,14 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
     . '</div>',
   );
 
-  // Because we have many fields with the same values, we have to set
-  // #tree to be able to access them.
-  $form['#tree'] = TRUE;
-  $form['faqs_fieldset'] = array(
+   $form['faqs_fieldset'] = array(
     '#type' => 'fieldset',
     '#title' => t('FAQs'),
     // Set up the wrapper so that AJAX will be able to replace the fieldset.
     '#prefix' => '<div id="faqs-fieldset-wrapper">',
     '#suffix' => '</div>',
+                      // Because we have many fields with the same values, we have to set
+    '#tree' => TRUE, // #tree to be able to access them.
   );
 
   // Build the fieldset with the proper number of names. We'll use
@@ -43,6 +42,7 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
     $form['faqs_fieldset']['qs_fieldset_' . $i]['question'][$i] = array(
       '#type' => 'textfield',
       '#title' => t('Question'),
+       '#maxlength' => 600,
       '#default_value' => $question, 
     );
 
@@ -86,7 +86,7 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
  *
  * Selects and returns the fieldset with the names in it.
  */
-function nesi_config_add_more_callback($form, $form_state) {
+function nesi_config_add_more_callback($form, &$form_state) {
   return $form['faqs_fieldset'];
 }
 
