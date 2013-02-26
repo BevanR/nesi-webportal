@@ -165,9 +165,10 @@ body {
   font-weight: normal;
   height: 47px;
   line-height: 18px;
-  max-width: 115px;
+  /* max-width: 115px; */
   /* padding: 20px 44px 16px; */
   text-align: center;
+  width: 110px;
 }
 
 #pnav a span {
@@ -214,6 +215,10 @@ body {
   height: 53px;
   line-height: 53px;
   text-align: left;
+}
+
+input, button, select, textarea {
+  font-family: 'open-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* Home page */
@@ -566,7 +571,6 @@ body {
   color: #606162;
   font-size: 15px;
   height: 28px;
-  text-align: center;
   width: 160px;
 }
 
