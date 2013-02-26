@@ -45,7 +45,6 @@ function nesi_mstep_proposal_intro_form() {
     //'#description' => t('Please indicate the type of proposal for this application'),
     '#options' => nesi_mstep_proposal_class_types(),
     '#default_value' => '',
-    '#required' => TRUE,
   );
   $form['intro-form']['sub_email']['#title'] = 'Email address';
   $form['intro-form']['sub_email']['#type'] = 'textfield';
