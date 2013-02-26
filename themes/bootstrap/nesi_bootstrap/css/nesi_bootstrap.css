@@ -583,7 +583,10 @@ body {
 }
 
 #nesi-mstep-proposal-step-2 label {
+  color: #606162;
   float: left;
+  font-size: 14px;
+  margin-right: 20px;
   width: 220px;
 }
 
@@ -595,4 +598,10 @@ body {
   clear: both;
   float: left;
   width: 100%;
+}
+
+#nesi-mstep-proposal-step-2 label .help-block {
+  color: #838485;
+  font-size: 12px;
+  line-height: 15px;
 }

@@ -40,6 +40,12 @@
     	);
   	});
 
+  	/* Move form descriptions to be part of labels */
+  	/* TODO: handle this in nese_mstep_proposal module instead? */
+  	$('#nesi-mstep-proposal-step-2 .help-block').each(function() {
+    	$(this).appendTo($(this).parent().prev('label'));
+  	});
+
 	});
 
 } ) ( jQuery );
