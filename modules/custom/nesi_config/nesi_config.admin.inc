@@ -40,24 +40,17 @@ function nesi_config_admin_settings($form, &$form_state) {
   );
 
   $form = nesi_config_add_more($form, $form_state);
+  //dsm($form);
+  //dsm($form_state);
   return system_settings_form( $form );
 }
 
 /**
- * This example shows a button to "add more" - add another textfield, and
- * the corresponding "remove" button.
- *
- * It works equivalently with javascript or not, and does the same basic steps
- * either way.
  *
  * The basic idea is that we build the form based on the setting of
  * $form_state['num_faqs']. The custom submit functions for the "add-one"
  * and "remove-one" buttons increment and decrement $form_state['num_faqs']
  * and then force a rebuild of the form.
- *
- * The $no_js_use argument is simply for demonstration: When set, it prevents
- * '#ajax' from being set, thus making the example behave as if javascript
- * were disabled in the browser.
  */
 function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
   $form['description'] = array(
@@ -84,18 +77,22 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
   }
   for ($i = 0; $i < $form_state['num_faqs']; $i++) {
     $faqs_vals = nesi_config_faq($i);
-    //dsm($faqs_vals);
+    // yes this is horrible - TODO - tidy up dude
+    $question = $faqs_vals['question'][$i];
+    $answer   = $faqs_vals['answer'][$i];
     $form['faqs_fieldset']['qs_fieldset_' . $i]['question'][$i] = array(
       '#type' => 'textfield',
       '#title' => t('Question'),
-      '#default_value' => $faqs_vals['question'], 
+      '#default_value' => $question, 
     );
+
     $form['faqs_fieldset']['qs_fieldset_' . $i]['answer'][$i] = array(
       '#type' => 'textarea',
       '#title' => t('Answer'),
-      '#cols' => 30,
-      '#size' => 3,
-      '#default_value' => $faqs_vals['answer'], 
+      //'#cols' => 30,
+      //'#size' => 3,
+      '#default_value' => $answer,
+      //'#default_value' => "some value", 
     );
   }
   $form['faqs_fieldset']['add_faq'] = array(
@@ -120,24 +117,7 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
       ),
     );
   }
-  //$form['submit'] = array(
-    //'#type' => 'submit',
-    //'#value' => t('Submit'),
-  //);
-
-  // This simply allows us to demonstrate no-javascript use without
-  // actually turning off javascript in the browser. Removing the #ajax
-  // element turns off AJAX behaviors on that element and as a result
-  // ajax.js doesn't get loaded.
-  // For demonstration only! You don't need this.
-  if ($no_js_use) {
-    // Remove the #ajax from the above, so ajax.js won't be loaded.
-    if (!empty($form['faqs_fieldset']['remove_name']['#ajax'])) {
-      unset($form['faqs_fieldset']['remove_name']['#ajax']);
-    }
-    unset($form['faqs_fieldset']['add_faq']['#ajax']);
-  }
-
+  
   return $form;
 }
 
@@ -158,7 +138,6 @@ function nesi_config_add_more_callback($form, $form_state) {
 function nesi_config_add_more_add_one($form, &$form_state) {
 
   $num = $form_state['num_faqs']-1;
-  dsm("The NUM : $num");
   $q_val   = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['question'];
   $ans_val = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['answer'];
   nesi_config_faq_save($num, array('question' => $q_val , 'answer' => $ans_val));
@@ -179,7 +158,6 @@ function nesi_config_add_more_remove_one($form, &$form_state) {
   if ($form_state['num_faqs'] > 1) {
     $form_state['num_faqs']--;
   }
-  //dsm($form_state);
   nesi_config_var_dec('config_form_step_num');
   $form_state['rebuild'] = TRUE;
 }
@@ -188,7 +166,6 @@ function nesi_config_faq_save($num, $vals) {
 
   $faqs = variable_get('nesi_faqs', array(array('question' => '' , 'answer' => '')));
   $faqs[$num] = $vals;
-  //dsm('In save faqs');
   variable_set('nesi_faqs' , $faqs);
 }
 
@@ -199,7 +176,7 @@ function nesi_config_faq_del($num) {
 }
 
 function nesi_config_faq($num) {
-  $faqs = variable_get('nesi_faqs', array('in nesi_config_fag'));
+  $faqs = variable_get('nesi_faqs', array('question' => 'No text' , 'answer' => 'No text'));
   return $faqs[$num];
 }
 
@@ -213,9 +190,6 @@ function nesi_config_add_more_submit($form, &$form_state) {
     array('@names' => implode(', ', $form_state['values']['faqs_fieldset']['name'])) );
   drupal_set_message($output);
 }
-/**
- * @} End of "defgroup ajax_degradation_example".
- */
 
 /**
  * Increment persistant variable
@@ -225,7 +199,6 @@ function nesi_config_var_inc($var_name) {
   $val = variable_get($var_name , 1)+1;
   variable_set($var_name, $val);
   
-  //dsm("Inc : $val");
 }
 
 /**
@@ -234,5 +207,4 @@ function nesi_config_var_inc($var_name) {
 function nesi_config_var_dec($var_name) {
   $val = variable_get($var_name , 1)-1;
   variable_set($var_name, $val);
-  //dsm("Dec : $val");
 }
