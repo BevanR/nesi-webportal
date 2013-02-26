@@ -63,6 +63,9 @@
   width: 100%;
 }
 @media (min-width: 768px) and (max-width: 979px) {
+  #pnav .menu {
+    width: 515px;
+  }
   .hidden-desktop {
     display: inherit !important;
   }
@@ -80,6 +83,9 @@
   }
 }
 @media (max-width: 767px) {
+  #pnav .menu {
+    width: 515px;
+  }
   #pnav a {
     padding: 20px 19% 16px;
   }
@@ -97,6 +103,9 @@
   }
 }
 @media (min-width: 980px) {
+  #pnav .menu {
+    width: 700px;
+  }
   #pnav a {
     padding: 20px 19% 16px;
   }
@@ -109,6 +118,9 @@
   }
 }
 @media (min-width: 1200px) {
+  #pnav .menu {
+    width: 800px;
+  }
   #pnav a {
     padding: 20px 22% 16px;
   }

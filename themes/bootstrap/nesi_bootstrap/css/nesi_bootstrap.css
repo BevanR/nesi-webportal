@@ -160,7 +160,8 @@ body {
 }
 
 #pnav li {
-  width: auto;
+  display: block;
+  width: 25%;
 }
 
 #pnav a {
@@ -192,6 +193,7 @@ body {
 #pnav a.active,
 #pnav a.active-trail {
   background-image: linear-gradient(to bottom, #fcfdfe, #dedddd);
+  background-image: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
 }
 
 #pnav li.menu-696 {
