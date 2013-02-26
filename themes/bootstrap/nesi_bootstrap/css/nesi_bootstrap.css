@@ -597,11 +597,41 @@ body {
   text-shadow: 0 0 0 transparent;
 }
 
+#nesi-mstep-proposal-step-2 .form-actions button#edit-previous,
+#nesi-mstep-proposal-step-3 .form-actions button#edit-previous {
+  background: #bebfbf;
+  margin-right: 40px;
+}
+
 #nesi-mstep-proposal-step-1 .form-submit {
   display: block;
   margin: 0 auto;
   padding: 0;
   width: 175px;
+}
+
+#nesi-mstep-proposal-step-2 .form-text,
+#nesi-mstep-proposal-step-3 .form-text {
+  width: 430px;
+}
+
+#nesi-mstep-proposal-step-2 textarea,
+#nesi-mstep-proposal-step-3 textarea {
+  width: 442px;
+}
+
+#nesi-mstep-proposal-step-2 #edit-pdc-start-date,
+#nesi-mstep-proposal-step-2 #edit-prc-start-date {
+  width: 220px;
+}
+
+#nesi-mstep-proposal-step-2 #edit-prc-funding-amount {
+  width: 160px;
+}
+
+#nesi-mstep-proposal-step-2 .grippie,
+#nesi-mstep-proposal-step-3 .grippie {
+  display: none;
 }
 
 #nesi-mstep-proposal-step-2 legend,
