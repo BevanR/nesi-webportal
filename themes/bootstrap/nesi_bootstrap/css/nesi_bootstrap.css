@@ -584,6 +584,7 @@ input, button, select, textarea {
   color: #606162;
   font-size: 15px;
   height: 28px;
+  padding: 4px 10px;
   width: 160px;
 }
 
