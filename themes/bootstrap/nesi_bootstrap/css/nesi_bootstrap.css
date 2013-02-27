@@ -456,6 +456,10 @@ input, button, select, textarea {
   margin-top: 18px;
 }
 
+.page-apply-nojs-create-proposal-step3 h1.page-header {
+  display: none;
+}
+
 #nesi-mstep-proposal-step-1 h2,
 #nesi-mstep-proposal-step-2 h2,
 #nesi-mstep-proposal-step-3 h2,
@@ -748,7 +752,7 @@ input, button, select, textarea {
 .nesi-confirmation-left {
   background: url(../assets/img/confirmation-bg-left.png);
   float: left;
-  height: 362px;
+  height: 358px;
   width: 25px;
 }
 
@@ -767,7 +771,7 @@ input, button, select, textarea {
 
 .nesi-confirmation-center-inner {
   background: url(../assets/img/confirmation-bg-inner.png);
-  height: 306px;
+  height: 302px;
   padding: 6px 0 0 0;
 }
 
@@ -780,18 +784,17 @@ input, button, select, textarea {
 .nesi-confirmation-right {
   background: url(../assets/img/confirmation-bg-right.png);
   float: left;
-  height: 362px;
+  height: 358px;
   width: 25px;
 }
 
 .nesi-confirmation-center h1 {
-  background: url(../assets/img/confirmation-icon.png) left center no-repeat;
   color: #4b5b68;
   display: inline-block;
   font-size: 51px;
   line-height: 51px;
   margin: 0;
-  padding: 0 80px;
+  padding: 0;
 }
 
 .nesi-confirmation-center h2 {
@@ -812,6 +815,27 @@ input, button, select, textarea {
   padding: 0 95px;
   text-align: left;
   width: 40%;
+}
+
+.confirmation-block {
+  float: left;
+  margin-top: 70px;
+  width: 48%;
+}
+
+.confirmation-block-1 {
+  margin-right: 2%;
+}
+
+.confirmation-block h2 {
+  color: #4b5b68;
+  font-size: 18px;
+  line-height: 36px;
+}
+
+.confirmation-block p a {
+  color: #2b9fc2;
+  font-weight: bold;
 }
 
 /* Errors */

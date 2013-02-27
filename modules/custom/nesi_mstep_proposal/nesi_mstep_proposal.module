@@ -194,7 +194,17 @@ function nesi_mstep_proposal_complete() {
                     </div>
                     <div class="nesi-confirmation-center-bottom"></div>
                   </div>
-                  <div class="nesi-confirmation-right"></div>',
+                  <div class="nesi-confirmation-right"></div>
+                  <div class="confirmation-block confirmation-block-1">
+                    <h2>What happens next</h2>
+                    <p>One of the NeSI staff will be in contact with you shortly to guide you through the process. Alternatively you can contact us here.</p>
+                    <p><a href="">Contact us</a>.</p>
+                  </div>
+                  <div class="confirmation-block confirmation-block-2">
+                    <h2>Take a look at who uses NeSI</h2>
+                    <p>NeSI is used by researchers nationwide. Take a look at who uses NeSI and some of the current computing allocations.</p>
+                    <p><a href="/projects">Read more</a>.</p>
+                  </div>',
   );
 }
 
