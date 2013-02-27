@@ -191,7 +191,6 @@ function nesi_mstep_proposal_complete() {
 }
 
 function nesi_mstep_proposal_step_1($form, &$form_state) {
-  $form_state['title'] = t('Apply for Access to HPC Facilities');
    
   $form['intro'] = nesi_mstep_proposal_intro_form(); 
 
@@ -201,14 +200,17 @@ function nesi_mstep_proposal_step_1($form, &$form_state) {
 }
 
 function nesi_mstep_proposal_step_2($form, &$form_state) {
-  
+
   $proposal_selection = $form_state['ctools_object']->data['proposal-type'];
 
   if ($proposal_selection == 'proposal_development_class') {
+    drupal_set_title('Development Class: Technical Project Proposal'); 
     $form['pdc'] = nesi_mstep_proposal_development_form();
   }
  
   if ($proposal_selection == 'research_proposal_class') {
+    drupal_set_title('Research Class: Technical Project Proposal'); 
+    $form['buttons']['next']['#value'] = 'Next: Part 2';  
     $form['prc'] = nesi_mstep_proposal_research_form($form_state);
   }
   
@@ -216,10 +218,12 @@ function nesi_mstep_proposal_step_2($form, &$form_state) {
 }
 
 function nesi_mstep_proposal_step_3($form, &$form_state) {
- 
+
   $proposal_selection = $form_state['ctools_object']->data['proposal-type'];
 
   if ($proposal_selection == 'research_proposal_class') {
+    drupal_set_title('Research Class: Technical Project Proposal'); 
+    $form['buttons']['next']['#value'] = 'Next: Part 3';  
     $form['prc'] = nesi_mstep_proposal_research_form_part_2($form_state);
   }
  
@@ -231,6 +235,7 @@ function nesi_mstep_proposal_step_4($form, &$form_state) {
   $proposal_selection = $form_state['ctools_object']->data['proposal-type'];
 
   if ($proposal_selection == 'research_proposal_class') {
+    drupal_set_title('Research Class: Technical Project Proposal'); 
     $form['prc'] = nesi_mstep_proposal_research_form_part_3();
   }
   
@@ -305,12 +310,10 @@ function nesi_mstep_proposal_step_1_submit($form, &$form_state) {
 
 function nesi_mstep_proposal_step_2_submit($form, &$form_state) {
   $form_state['ctools_object']->data['p1'] = $form_state['values'];
-  dpm ($form_state);
 }
 
 function nesi_mstep_proposal_step_3_submit($form, &$form_state) {
   $form_state['ctools_object']->data['p2'] = $form_state['values'];
-  dpm ($form_state);
 }
 
 /**
