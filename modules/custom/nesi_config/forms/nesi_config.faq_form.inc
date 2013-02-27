@@ -13,15 +13,11 @@
  * and then force a rebuild of the form.
  */
 function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
-  $form['description'] = array(
-    '#markup' => '<div>' . t('Add or remove FAQs to <a href="!apply">the apply page</a> ',
-      array('!apply' => url('apply')))
-    . '</div>',
-  );
-
+ 
    $form['faqs_fieldset'] = array(
     '#type' => 'fieldset',
     '#title' => t('FAQs'),
+    '#description' => 'Automatically add more FAQS. (NOTE : There is a minor bug at present, add more needs a blank field set to save - ask Sam) ',
     // Set up the wrapper so that AJAX will be able to replace the fieldset.
     '#prefix' => '<div id="faqs-fieldset-wrapper">',
     '#suffix' => '</div>',

@@ -44,7 +44,15 @@ function nesi_mstep_proposal_menu() {
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
- 
+
+  $items['apply/email-testing'] = array(
+    'title' => t('Email testing'),
+    'page callback' => 'nesi_mstep_proposal_email_test_page',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -326,30 +334,39 @@ function nesi_mstep_proposal_wizard_next(&$form_state) {
 function nesi_mstep_proposal_wizard_finish(&$form_state) {
   $form_state['complete'] = TRUE;
  
-  // Save stuff here
-  // TODO;
-  // $from in admin config
-  // $subject in admin config
-  // $message in admin config
-  // $path to attachment
-  //
-  // Two emails 
-  // - Submitter
-  // - Nesi admin
+  $to      = $form_state['ctools_object']->data['sub-email'];
+  // TODO need to send nesi admin and email
+  nesi_mstep_proposal_email($to);
+   // Clear the form data cache from the session
+
+  // Send user to confirmation page
+  drupal_goto('apply/proposal-complete');
+}
+
+/**
+ * Using third party lib to send emails with attachments
+ */
+function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
 
   // Notify submitter via email
   include_once 'includes/attachment_email/attachment_email.php';
 
-  $to = $form_state['ctools_object']->data['sub-email'];
-  $from = variable_get('destination_email', '');
-  $subject = 'Your proposal has been submitted to NeSI';
-  $message = "Thanks for your submission.\n\n
-              This email is confirm receipt of your proposal. We will be in touch with further information soon.\n\n
-              Please contact us if you have any questions.\n\n
-              NeSI";
+  $from    = variable_get('destination_email', '');
+  $subject = variable_get('submission_subject', '');
+  $message = variable_get('submission_message', '');
+
+  $fid = variable_get('submission_attached_pdf', 999); 
+  $file = file_load($fid);
+  if(FALSE === $file) continue;
+  $attachment = array(
+    'name' => $file->filename, 
+    'path' => drupal_realpath($file->uri), 
+    'type' => file_get_mimetype($file->uri), 
+  );
+  $attachments[] = $attachment;
 
   //Send Email!
-  $email = new AttachmentEmail($to, $from, $subject, $message);
+  $email = new AttachmentEmail($to, $from, $subject, $message, $attachments);
   
   // Watchdog any errors
   if(!$email->send()) {
@@ -358,12 +375,18 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   else {
     watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
   } 
-
-  // Clear the form data cache from the session
-
-  // Send user to confirmation page
-  drupal_goto('apply/proposal-complete');
 }
+
+/**
+ * Testing page to call email function when building
+ */
+function nesi_mstep_proposal_email_test_page() {
+  $fid = variable_get('submission_attached_pdf', 999); 
+  dsm($fid);
+  nesi_mstep_proposal_email();
+  return "Email testing page";
+}
+
 
 function nesi_mstep_proposal_wizard_cancel(&$form_state) {
   nesi_mstep_proposal_cache_clear('nesi_mstep');
