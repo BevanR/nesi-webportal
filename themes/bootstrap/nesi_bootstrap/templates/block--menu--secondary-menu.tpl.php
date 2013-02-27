@@ -1,4 +1,4 @@
-<nav class="sub-nav">
+<nav class="span3">
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
     <h2>Access and Allocations</h2>
