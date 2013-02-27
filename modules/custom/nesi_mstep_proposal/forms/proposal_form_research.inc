@@ -149,21 +149,21 @@ function nesi_mstep_proposal_research_form_part_2($form_state) {
   );
 
   $form['usage']['prc-num-simulations'] = array(
-    '#type' => 'textarea',
+    '#type' => 'textfield',
     '#title' => t('Estimated number of runs/simulations.'),
     '#required' => TRUE,
     '#default_value' => $form_state['ctools_object']->data['p2']['prc-num-simulations'] ? $form_state['ctools_object']->data['p2']['prc-num-simulations'] : '',
   );
 
   $form['usage']['prc-num-cpus'] = array(
-    '#type' => 'textarea',
+    '#type' => 'textfield',
     '#title' => t('Estimated average number of CPUs per run.'),
     '#required' => TRUE,
     '#default_value' => $form_state['ctools_object']->data['p2']['prc-num-cpus'] ? $form_state['ctools_object']->data['p2']['prc-num-cpus'] : '',
   );
 
   $form['usage']['prc-wchours-per-run'] = array(
-    '#type' => 'textarea',
+    '#type' => 'textfield',
     '#title' => t('Estimated average length of each run (in wall-clock hours).'),
     '#required' => TRUE,
     '#default_value' => $form_state['ctools_object']->data['p2']['prc-wchours-per-run'] ? $form_state['ctools_object']->data['p2']['prc-wchours-per-run'] : '',
