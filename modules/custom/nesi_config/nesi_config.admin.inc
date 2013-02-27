@@ -27,13 +27,15 @@ function nesi_config_proposal_submission_email($form) {
   ); 
   $form['apply']['destination_email'] = array(
     '#type' => 'textfield',
-    '#title' => t('Nesi admin email address. Notification of submission will be sent to this address'),
+    '#title' => t('Nesi admin email address.'),
+    '#description' => 'Notification of the proposal submission will be sent to this address.',
     '#default_value' => variable_get('destination_email', ''),
     '#size' => 40,
   );
   $form['apply']['submission_subject'] = array(
     '#type' => 'textfield',
     '#title' => t('Subject'),
+    '#description' => 'Subject heading for the email.',
     '#default_value' => variable_get('submission_subject', ''),
     '#size' => 40,
   );
@@ -41,20 +43,15 @@ function nesi_config_proposal_submission_email($form) {
   $form['apply']['submission_message'] = array(
     '#type' => 'textarea',
     '#title' => t('Message'),
+    '#description' => 'Main message text for the email.',
     '#default_value' => variable_get('submission_message', ''),
     '#size' => 40,
   );
-  $form['apply']['submission_file_path'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Path to Access Policy pdf file'),
-    '#default_value' => variable_get('submission_file_path', ''),
-    '#size' => 40,
-  );
 
- $form['apply']['submission_attached_pdf'] = array(
+  $form['apply']['submission_attached_pdf'] = array(
     '#title' => 'Access Policy pdf',
     '#type' => 'managed_file',
-    '#description' => 'This pdf is automatically sent at the end of a proposal submission.',
+    '#description' => 'This pdf is automatically attached to the email, sent at the end of a proposal submission.',
     '#default_value' => variable_get('submission_attached_pdf'),
     '#required' => TRUE,
     '#upload_location' => 'public://admin_pdfs',

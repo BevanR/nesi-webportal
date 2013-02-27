@@ -295,6 +295,7 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   $form_state['complete'] = TRUE;
  
   $to      = $form_state['ctools_object']->data['sub-email'];
+  // TODO need to send nesi admin and email
   nesi_mstep_proposal_email($to);
    // Clear the form data cache from the session
 
@@ -303,14 +304,13 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
 }
 
 /**
- *
+ * Using third party lib to send emails with attachments
  */
-function nesi_mstep_proposal_email() {
+function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
 
   // Notify submitter via email
   include_once 'includes/attachment_email/attachment_email.php';
 
-  $to      = 'sam+nesitesting@webscope.co.nz'; 
   $from    = variable_get('destination_email', '');
   $subject = variable_get('submission_subject', '');
   $message = variable_get('submission_message', '');
