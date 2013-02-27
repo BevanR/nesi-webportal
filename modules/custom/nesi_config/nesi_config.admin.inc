@@ -51,7 +51,61 @@ function nesi_config_proposal_submission_email($form) {
     '#size' => 40,
   );
 
+ $form['apply']['submission_attached_pdf'] = array(
+    '#title' => 'Access Policy pdf',
+    '#type' => 'managed_file',
+    '#description' => 'This pdf is automatically sent at the end of a proposal submission.',
+    '#default_value' => variable_get('submission_attached_pdf'),
+    '#required' => TRUE,
+    '#upload_location' => 'public://admin_pdfs',
+  );
+
+  $form['#submit'][] = 'nesi_config_admin_submit';
   return $form;
+}
+
+/**
+ * Need to patch core to get this to work
+ * What a load of bollox....
+ *
+ * http://drupal.org/node/1090198
+ *
+ * Custom submit to handle the managed_file fapi element
+ * Saves and deletes the files
+ */
+function nesi_config_admin_submit($form, &$form_state) {
+
+  global $user;
+  $save_file = function($fid, $form_id) use($user) {
+    $file = file_load($fid);
+    if ($file) {
+      // Change status to permanent.
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      file_usage_add($file, 'mm_admin', 'user', $user->uid);
+      variable_set($form_id, $file->fid);
+    } 
+  };
+
+  $delete_file = function($fid) {
+    $file = file_load($fid);
+    if ($file) {
+      $success = file_delete($file);
+      if(FALSE == $success) {
+        drupal_set_message(t('There was a problem deleting the file'), 'error');
+      }
+    } 
+  };
+
+  if(0 != $form_state['values']['submission_attached_pdf']) {
+    $fid = $form_state['values']['submission_attach_pdf'];
+    $save_file($fid, 'submission_attach_pdf'); 
+  }
+  elseif(0 == $form_state['values']['submission_attached_pdf']){
+    $fid = variable_get('submission_attach_pdf');
+    $delete_file($fid); 
+  }
+
 }
 
 /**
