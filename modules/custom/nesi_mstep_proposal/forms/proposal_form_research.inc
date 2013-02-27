@@ -3,7 +3,7 @@
 function nesi_mstep_proposal_research_form($form_state) {
 
   $form['prc-form-title'] = array(
-    '#markup' => '<h1>Part 1 - Project and Team details</h1>',
+    '#markup' => '<h1>Part 1 of 3 - Project and Team details</h1>',
   );
 
   $form['project']['#type'] = 'fieldset';
@@ -136,7 +136,7 @@ function nesi_mstep_proposal_research_form($form_state) {
 function nesi_mstep_proposal_research_form_part_2($form_state) {
  
   $form['prc-form-title'] = array(
-    '#markup' => '<h1>Part 2 - Technical details</h1>',
+    '#markup' => '<h1>Part 2 of 3 - Technical details</h1>',
   );
 
   $form['usage']['#type'] = 'fieldset';
@@ -235,7 +235,7 @@ function nesi_mstep_proposal_research_form_part_2($form_state) {
 function nesi_mstep_proposal_research_form_part_3() {
 
   $form['prc-form-title'] = array(
-    '#markup' => '<h1>Part 3 - Support and additional information</h1>',
+    '#markup' => '<h1>Part 3 of 3 - Support and additional information</h1>',
   );
 
   $form['additional']['#type'] = 'fieldset';
