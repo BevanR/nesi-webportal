@@ -819,18 +819,26 @@ input, button, select, textarea {
 
 .confirmation-block {
   float: left;
-  margin-top: 70px;
-  width: 48%;
+  margin: 70px 0;
+  padding: 0 2% 0 13%;
+  width: 33%;
 }
 
 .confirmation-block-1 {
-  margin-right: 2%;
+  background: url(../assets/img/confirmation-arrow.png) 6% 12px no-repeat;
+  margin-right: 4%;
+}
+
+.confirmation-block-2 {
+  background: url(../assets/img/confirmation-note.png) 6% 12px no-repeat;
 }
 
 .confirmation-block h2 {
   color: #4b5b68;
   font-size: 18px;
+  font-weight: normal;
   line-height: 36px;
+  margin-top: 0;
 }
 
 .confirmation-block p a {
