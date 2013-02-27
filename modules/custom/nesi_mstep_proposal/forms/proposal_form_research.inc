@@ -2,8 +2,8 @@
 
 function nesi_mstep_proposal_research_form($form_state) {
 
-  $form['prc'] = array(
-    '#markup' => '<h2>Research Proposal</h2>',
+  $form['prc-form-title'] = array(
+    '#markup' => '<h1>Part 1 - Project and Team details</h1>',
   );
 
   $form['project']['#type'] = 'fieldset';
@@ -135,6 +135,10 @@ function nesi_mstep_proposal_research_form($form_state) {
 
 function nesi_mstep_proposal_research_form_part_2($form_state) {
  
+  $form['prc-form-title'] = array(
+    '#markup' => '<h1>Part 2 - Technical details</h1>',
+  );
+
   $form['usage']['#type'] = 'fieldset';
   $form['usage']['#title'] = 'NeSI HPC Usage Details';
 
@@ -229,6 +233,10 @@ function nesi_mstep_proposal_research_form_part_2($form_state) {
 }
 
 function nesi_mstep_proposal_research_form_part_3() {
+
+  $form['prc-form-title'] = array(
+    '#markup' => '<h1>Part 3 - Support and additional information</h1>',
+  );
 
   $form['additional']['#type'] = 'fieldset';
   $form['additional']['#title'] = 'Additional Information';

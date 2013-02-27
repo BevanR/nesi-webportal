@@ -2,10 +2,6 @@
 
 function nesi_mstep_proposal_development_form() {
 
-  $form['pdc-introduction'] = array(
-    '#markup' => '<h2>Proposal Development</h2>',
-  );
-
   $form['project']['#type'] = 'fieldset';
   $form['project']['#title'] = 'Project';
 
