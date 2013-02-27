@@ -62,10 +62,14 @@ function nesi_config_proposal_submission_email($form) {
 }
 
 /**
- * Need to patch core to get this to work
- * What a load of bollox....
+ * NOTE: Didn't patch core and seems to be working
+ * looks like this patch has been rolled into the latest core.
+ * Leaving this note here until testing is over. 
+ * (function was ripped from mm)
  *
- * http://drupal.org/node/1090198
+ * {Need to patch core to get this to work
+ * What a load of bollox....
+ * http://drupal.org/node/1090198}
  *
  * Custom submit to handle the managed_file fapi element
  * Saves and deletes the files
@@ -102,7 +106,6 @@ function nesi_config_admin_submit($form, &$form_state) {
     $fid = variable_get('submission_attach_pdf');
     $delete_file($fid); 
   }
-
 }
 
 /**

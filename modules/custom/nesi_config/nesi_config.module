@@ -81,5 +81,4 @@ function nesi_faq_content() {
   }
 
   return $content;
-
 }
