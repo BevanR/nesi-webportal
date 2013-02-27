@@ -186,11 +186,22 @@ function nesi_mstep_proposal_complete() {
                     </div>
                     <div class="nesi-confirmation-center-bottom"></div>
                   </div>
-                  <div class="nesi-confirmation-right"></div>',
+                  <div class="nesi-confirmation-right"></div>
+                  <div class="confirmation-block confirmation-block-1">
+                    <h2>What happens next</h2>
+                    <p>One of the NeSI staff will be in contact with you shortly to guide you through the process. Alternatively you can contact us here.</p>
+                    <p><a href="">Contact us</a>.</p>
+                  </div>
+                  <div class="confirmation-block confirmation-block-2">
+                    <h2>Take a look at who uses NeSI</h2>
+                    <p>NeSI is used by researchers nationwide. Take a look at who uses NeSI and some of the current computing allocations.</p>
+                    <p><a href="/projects">Read more</a>.</p>
+                  </div>',
   );
 }
 
 function nesi_mstep_proposal_step_1($form, &$form_state) {
+  $form_state['title'] = t('Apply for Access to HPC Facilities');
    
   $form['intro'] = nesi_mstep_proposal_intro_form(); 
 
@@ -200,17 +211,14 @@ function nesi_mstep_proposal_step_1($form, &$form_state) {
 }
 
 function nesi_mstep_proposal_step_2($form, &$form_state) {
-
+  
   $proposal_selection = $form_state['ctools_object']->data['proposal-type'];
 
   if ($proposal_selection == 'proposal_development_class') {
-    drupal_set_title('Development Class: Technical Project Proposal'); 
     $form['pdc'] = nesi_mstep_proposal_development_form();
   }
  
   if ($proposal_selection == 'research_proposal_class') {
-    drupal_set_title('Research Class: Technical Project Proposal'); 
-    $form['buttons']['next']['#value'] = 'Next: Part 2';  
     $form['prc'] = nesi_mstep_proposal_research_form($form_state);
   }
   
@@ -218,12 +226,10 @@ function nesi_mstep_proposal_step_2($form, &$form_state) {
 }
 
 function nesi_mstep_proposal_step_3($form, &$form_state) {
-
+ 
   $proposal_selection = $form_state['ctools_object']->data['proposal-type'];
 
   if ($proposal_selection == 'research_proposal_class') {
-    drupal_set_title('Research Class: Technical Project Proposal'); 
-    $form['buttons']['next']['#value'] = 'Next: Part 3';  
     $form['prc'] = nesi_mstep_proposal_research_form_part_2($form_state);
   }
  
@@ -235,7 +241,6 @@ function nesi_mstep_proposal_step_4($form, &$form_state) {
   $proposal_selection = $form_state['ctools_object']->data['proposal-type'];
 
   if ($proposal_selection == 'research_proposal_class') {
-    drupal_set_title('Research Class: Technical Project Proposal'); 
     $form['prc'] = nesi_mstep_proposal_research_form_part_3();
   }
   
@@ -243,25 +248,7 @@ function nesi_mstep_proposal_step_4($form, &$form_state) {
 }
 
 function nesi_mstep_proposal_step_1_validate($form, &$form_state) {
-  // Check for standard errors
-  if(form_get_errors()) {
-    return;
-  }
 
-  // Check that a proposal type has been selected
-  $proposal_selection = $form_state['values']['proposal-type'];
-
-  $options = array('proposal_development_class','research_proposal_class');
-   
-  if (!in_array($proposal_selection, $options)) {
-    form_set_error('proposal-type', 'Please select a proposal type.');
-  }
-
-  // Check validation on email address
-  $submitter_email = $form_state['values']['sub_email'];
-  if (!valid_email_address($submitter_email)) {
-    form_set_error('sub_email', 'Please supply a valid email address to begin proposal submission.');
-  }
 }
 
 function nesi_mstep_proposal_step_2_validate($form, &$form_state) {
@@ -273,33 +260,14 @@ function nesi_mstep_proposal_step_2_validate($form, &$form_state) {
     return;
   }
 
-  if ($form_state['ctools_object']->data['proposal-type'] == 'proposal_development_class') {
-    // User needs to choose a platform
-    $platform = $form_state['values']['pdc-platform'];
-    if (empty($platform)) {
-      form_set_error('pdc-platform', 'Please select an HPC platform.');
-    }
-  }
-}
-
-function nesi_mstep_proposal_step_4_validate($form, &$form_state) {
-
-  // Check for standard errors
   if(form_get_errors()) {
     return;
-  }
-  
-  // User needs to indicate if they need support
-  $support = $form_state['values']['prc-expert-support'];
-  if (empty($support)) {
-    form_set_error('prc-expert-support', 'Please indicate if you need expert support from NeSI');
-  }
+  }  
 }
 
 function nesi_mstep_proposal_step_1_submit($form, &$form_state) {
 
   $form_state['ctools_object']->data['proposal-type'] = $form_state['values']['proposal-type'];
-  $form_state['ctools_object']->data['sub-email'] = $form_state['values']['sub_email'];
 
   // Collect extra steps for research proposal
   if ($form_state['ctools_object']->data['proposal-type'] == 'research_proposal_class') {
@@ -310,10 +278,12 @@ function nesi_mstep_proposal_step_1_submit($form, &$form_state) {
 
 function nesi_mstep_proposal_step_2_submit($form, &$form_state) {
   $form_state['ctools_object']->data['p1'] = $form_state['values'];
+  dpm ($form_state);
 }
 
 function nesi_mstep_proposal_step_3_submit($form, &$form_state) {
   $form_state['ctools_object']->data['p2'] = $form_state['values'];
+  dpm ($form_state);
 }
 
 /**
@@ -327,41 +297,10 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   $form_state['complete'] = TRUE;
  
   // Save stuff here
-  // TODO;
-  // $from in admin config
-  // $subject in admin config
-  // $message in admin config
-  // $path to attachment
-  //
-  // Two emails 
-  // - Submitter
-  // - Nesi admin
+  dpm('finish');
 
-  // Notify submitter via email
-  include_once 'includes/attachment_email/attachment_email.php';
+  // clear the cache
 
-  $to = $form_state['ctools_object']->data['sub-email'];
-  $from = variable_get('destination_email', '');
-  $subject = 'Your proposal has been submitted to NeSI';
-  $message = "Thanks for your submission.\n\n
-              This email is confirm receipt of your proposal. We will be in touch with further information soon.\n\n
-              Please contact us if you have any questions.\n\n
-              NeSI";
-
-  //Send Email!
-  $email = new AttachmentEmail($to, $from, $subject, $message);
-  
-  // Watchdog any errors
-  if(!$email->send()) {
-    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email - " '.$to.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
-  } 
-  else {
-    watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
-  } 
-
-  // Clear the form data cache from the session
-
-  // Send user to confirmation page
   drupal_goto('apply/proposal-complete');
 }
 
