@@ -209,7 +209,7 @@ function nesi_mstep_proposal_complete($proposal_type = NULL) {
                   <div class="confirmation-block confirmation-block-1">
                     <h2>What happens next</h2>
                     <p>One of the NeSI staff will be in contact with you shortly to guide you through the process. Alternatively you can contact us here.</p>
-                    <p><a href="#contact">Contact us</a>.</p>
+                    <p><a href="">Contact us</a>.</p>
                   </div>
                   <div class="confirmation-block confirmation-block-2">
                     <h2>Take a look at who uses NeSI</h2>
@@ -360,10 +360,21 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   nesi_mstep_proposal_email($to);
   $to = variable_get('submission_nesi_admin_email', 'sam+nesiadmin@webscope.co.nz');
   nesi_mstep_admin_email($to);
+
+  // Append proposal type flag to url for completion page
+  $proposal_redirect = '';
+  $proposal_type = $form_state['ctools_object']->data['proposal-type'];
+  if ($proposal_type == 'proposal_development_class') {
+    $proposal_redirect = '/pdc';
+  }  
+  if ($proposal_type == 'research_proposal_class') {
+    $proposal_redirect = '/prc';
+  }  
+
    // Clear the form data cache from the session
 
   // Send user to confirmation page
-  drupal_goto('apply/proposal-complete');
+  drupal_goto('apply/proposal-complete'.$proposal_redirect);
 }
 
 /**
