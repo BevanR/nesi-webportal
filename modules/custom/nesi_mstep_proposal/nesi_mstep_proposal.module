@@ -287,10 +287,41 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   $form_state['complete'] = TRUE;
  
   // Save stuff here
-  dpm('finish');
+  // TODO;
+  // $from in admin config
+  // $subject in admin config
+  // $message in admin config
+  // $path to attachment
+  //
+  // Two emails 
+  // - Submitter
+  // - Nesi admin
 
-  // clear the cache
+  // Notify submitter via email
+  include_once 'includes/attachment_email/attachment_email.php';
 
+  $to = $form_state['ctools_object']->data['sub-email'];
+  $from = variable_get('destination_email', '');
+  $subject = 'Your proposal has been submitted to NeSI';
+  $message = "Thanks for your submission.\n\n
+              This email is confirm receipt of your proposal. We will be in touch with further information soon.\n\n
+              Please contact us if you have any questions.\n\n
+              NeSI";
+
+  //Send Email!
+  $email = new AttachmentEmail($to, $from, $subject, $message);
+  
+  // Watchdog any errors
+  if(!$email->send()) {
+    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email - " '.$to.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
+  } 
+  else {
+    watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
+  } 
+
+  // Clear the form data cache from the session
+
+  // Send user to confirmation page
   drupal_goto('apply/proposal-complete');
 }
 
