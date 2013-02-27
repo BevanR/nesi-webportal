@@ -134,7 +134,13 @@ a.tabledrag-handle .handle {
 /* KATIE'S CHANGES - TO MERGE BACK INTO .LESS FILES */
 /* Global */
 body {
+  color: #404040;
   font-family: 'open-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+p {
+  color: #404040;
 }
 
 .navbar {
