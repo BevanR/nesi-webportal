@@ -445,7 +445,8 @@ input, button, select, textarea {
 
 #nesi-mstep-proposal-step-1,
 #nesi-mstep-proposal-step-2,
-#nesi-mstep-proposal-step-3 {
+#nesi-mstep-proposal-step-3,
+#nesi-mstep-proposal-step-4 {
   margin-top: 18px;
 }
 
@@ -455,7 +456,8 @@ input, button, select, textarea {
 
 #nesi-mstep-proposal-step-1 h2,
 #nesi-mstep-proposal-step-2 h2,
-#nesi-mstep-proposal-step-3 h2 {
+#nesi-mstep-proposal-step-3 h2,
+#nesi-mstep-proposal-step-4 h2 {
   color: #4b5b68;
   font-size: 24px;
   font-weight: normal;
@@ -463,15 +465,23 @@ input, button, select, textarea {
 }
 
 #nesi-mstep-proposal-step-1 h3,
-#nesi-mstep-proposal-step-1 p,
+#nesi-mstep-proposal-step-1 p/*
+,
 #nesi-mstep-proposal-step-2 h3,
-#nesi-mstep-proposal-step-2 h3 {
+#nesi-mstep-proposal-step-2 p,
+#nesi-mstep-proposal-step-3 h3,
+#nesi-mstep-proposal-step-3 p,
+#nesi-mstep-proposal-step-4 h3,
+#nesi-mstep-proposal-step-4 p
+*/ {
   margin-left: 55px;
 }
 
 #nesi-mstep-proposal-step-1 h3,
 #nesi-mstep-proposal-step-2 h3,
-#nesi-mstep-proposal-step-3 h3 {
+#nesi-mstep-proposal-step-3 h3,
+#nesi-mstep-proposal-step-4 h3,
+#nesi-mstep-proposal-step-5 h3 {
   color: #4b5b68;
   font-size: 18px;
   line-height: 24px;
@@ -480,13 +490,17 @@ input, button, select, textarea {
 
 #nesi-mstep-proposal-step-1 h3 a,
 #nesi-mstep-proposal-step-2 h3 a,
-#nesi-mstep-proposal-step-3 h3 a {
+#nesi-mstep-proposal-step-3 h3 a,
+#nesi-mstep-proposal-step-4 h3 a,
+#nesi-mstep-proposal-step-5 h3 a {
   color: #2b9fc2;
 }
 
 #nesi-mstep-proposal-step-1 p,
 #nesi-mstep-proposal-step-2 p,
-#nesi-mstep-proposal-step-3 p {
+#nesi-mstep-proposal-step-3 p,
+#nesi-mstep-proposal-step-4 p,
+#nesi-mstep-proposal-step-5 p {
   color: #404040;
   font-weight: 300;
   font-size: 14px;
@@ -495,7 +509,9 @@ input, button, select, textarea {
 
 #nesi-mstep-proposal-step-1 p a,
 #nesi-mstep-proposal-step-2 p a,
-#nesi-mstep-proposal-step-3 p a {
+#nesi-mstep-proposal-step-3 p a,
+#nesi-mstep-proposal-step-4 p a,
+#nesi-mstep-proposal-step-5 p a {
   color: #d14f63;
   font-weight: bold;
 }
@@ -596,7 +612,8 @@ input, button, select, textarea {
 }
 
 #nesi-mstep-proposal-step-2 .form-actions,
-#nesi-mstep-proposal-step-3 .form-actions {
+#nesi-mstep-proposal-step-3 .form-actions,
+#nesi-mstep-proposal-step-4 .form-actions {
   border-top: 1px solid #aaa;
   margin: 40px 0 0 0;
   padding: 55px 0;
@@ -604,8 +621,9 @@ input, button, select, textarea {
 }
 
 #nesi-mstep-proposal-step-1 .form-submit,
-#nesi-mstep-proposal-step-2 .form-actions button,
-#nesi-mstep-proposal-step-3 .form-actions button {
+#nesi-mstep-proposal-step-2 .form-actions input,
+#nesi-mstep-proposal-step-3 .form-actions input,
+#nesi-mstep-proposal-step-4 .form-actions input {
   background: #2b9fc2;
   border: 0;
   color: #fff;
@@ -614,8 +632,9 @@ input, button, select, textarea {
   text-shadow: 0 0 0 transparent;
 }
 
-#nesi-mstep-proposal-step-2 .form-actions button#edit-previous,
-#nesi-mstep-proposal-step-3 .form-actions button#edit-previous {
+#nesi-mstep-proposal-step-2 .form-actions #edit-previous,
+#nesi-mstep-proposal-step-3 .form-actions #edit-previous,
+#nesi-mstep-proposal-step-4 .form-actions #edit-previous {
   background: #bebfbf;
   margin-right: 40px;
 }
@@ -628,12 +647,14 @@ input, button, select, textarea {
 }
 
 #nesi-mstep-proposal-step-2 .form-text,
-#nesi-mstep-proposal-step-3 .form-text {
+#nesi-mstep-proposal-step-3 .form-text,
+#nesi-mstep-proposal-step-4 .form-text {
   width: 430px;
 }
 
 #nesi-mstep-proposal-step-2 textarea,
-#nesi-mstep-proposal-step-3 textarea {
+#nesi-mstep-proposal-step-3 textarea,
+#nesi-mstep-proposal-step-4 textarea {
   width: 442px;
 }
 
@@ -647,12 +668,17 @@ input, button, select, textarea {
 }
 
 #nesi-mstep-proposal-step-2 .grippie,
-#nesi-mstep-proposal-step-3 .grippie {
+#nesi-mstep-proposal-step-3 .grippie,
+#nesi-mstep-proposal-step-4 .grippie {
   display: none;
 }
 
 #nesi-mstep-proposal-step-2 legend,
-#nesi-mstep-proposal-step-2 div div h2 {
+#nesi-mstep-proposal-step-2 div div h2,
+#nesi-mstep-proposal-step-3 legend,
+#nesi-mstep-proposal-step-3 div div h2,
+#nesi-mstep-proposal-step-4 legend,
+#nesi-mstep-proposal-step-4 div div h2 {
   border-bottom: 0;
   border-top: 1px solid #aaa;
   clear: both;
@@ -666,7 +692,9 @@ input, button, select, textarea {
   width: 100%;
 }
 
-#nesi-mstep-proposal-step-2 label {
+#nesi-mstep-proposal-step-2 label,
+#nesi-mstep-proposal-step-3 label,
+#nesi-mstep-proposal-step-4 label {
   color: #606162;
   float: left;
   font-size: 14px;
@@ -674,24 +702,38 @@ input, button, select, textarea {
   width: 220px;
 }
 
-#nesi-mstep-proposal-step-2 .controls {
+#nesi-mstep-proposal-step-2 .controls,
+#nesi-mstep-proposal-step-3 .controls,
+#nesi-mstep-proposal-step-4 .controls {
   float: left;
 }
 
 #nesi-mstep-proposal-step-2 fieldset,
 #nesi-mstep-proposal-step-2 .control-group,
-#nesi-mstep-proposal-step-2 > div > div {
+#nesi-mstep-proposal-step-2 > div > div,
+#nesi-mstep-proposal-step-3 fieldset,
+#nesi-mstep-proposal-step-3 .control-group,
+#nesi-mstep-proposal-step-3 > div > div,
+#nesi-mstep-proposal-step-4 fieldset,
+#nesi-mstep-proposal-step-4 .control-group,
+#nesi-mstep-proposal-step-4 > div > div {
   clear: both;
   float: left;
   width: 100%;
 }
 
-#nesi-mstep-proposal-step-2 fieldset {
+#nesi-mstep-proposal-step-2 fieldset,
+#nesi-mstep-proposal-step-3 fieldset,
+#nesi-mstep-proposal-step-4 fieldset {
   padding-bottom: 80px;
 }
 
 #nesi-mstep-proposal-step-2 label .help-block,
-#nesi-mstep-proposal-step-2 div div p {
+#nesi-mstep-proposal-step-2 div div p,
+#nesi-mstep-proposal-step-3 label .help-block,
+#nesi-mstep-proposal-step-3 div div p,
+#nesi-mstep-proposal-step-4 label .help-block,
+#nesi-mstep-proposal-step-4 div div p {
   color: #838485;
   font-size: 12px;
   line-height: 15px;
