@@ -1,7 +1,7 @@
 <nav class="span3">
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
-    <h2>Access and Allocations</h2>
+    <h3>Access and Allocations</h3>
   <?php endif;?>
   <?php print render($title_suffix); ?>
 
