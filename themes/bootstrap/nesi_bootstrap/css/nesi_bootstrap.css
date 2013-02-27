@@ -789,13 +789,12 @@ input, button, select, textarea {
 }
 
 .nesi-confirmation-center h1 {
-  background: url(../assets/img/confirmation-icon.png) left center no-repeat;
   color: #4b5b68;
   display: inline-block;
   font-size: 51px;
   line-height: 51px;
   margin: 0;
-  padding: 0 80px;
+  padding: 0;
 }
 
 .nesi-confirmation-center h2 {
