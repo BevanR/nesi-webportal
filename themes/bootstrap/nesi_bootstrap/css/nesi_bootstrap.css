@@ -595,19 +595,39 @@ input, button, select, textarea {
   margin-bottom: 18px;
 }
 
-/*
-#edit-intro-form .radio input[type="radio"],
-#edit-intro-form .checkbox input[type="checkbox"] {
+div.radio {
+  float: left;
   margin-right: 12px;
 }
-*/
+
+div.radio,
+div.radio span,
+div.radio input {
+  height: 23px;
+  width: 23px;
+}
+
+div.radio span {
+  background: url(../assets/img/form-radio.png);
+  cursor: pointer;
+}
+
+div.radio.focus:active span,
+div.radio:hover:active span,
+div.radio.focus.active span,
+div.radio.active:hover span,
+div.radio.focus span.checked,
+div.radio:hover span,
+div.radio span.checked {
+  background-position: 0 -23px !important;
+}
 
 #edit-intro-form .fieldset-wrapper .form-text {
   color: #606162;
   font-size: 15px;
   height: 28px;
   padding: 4px 10px;
-  width: 160px;
+  width: 152px;
 }
 
 #nesi-mstep-proposal-step-1 .form-actions {
