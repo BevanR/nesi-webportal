@@ -31,6 +31,7 @@
   	$('.form-type-radio input').uniform();
 
   	/* Tooltips */
+/*
   	$('.ws-tooltip').each(function() {
     	var text = $(this).attr('title');
     	$(this).hover(
@@ -42,6 +43,7 @@
     	  }
     	);
   	});
+*/
 
   	/* Move form descriptions to be part of labels */
   	/* TODO: handle this in nese_mstep_proposal module instead? */
