@@ -82,7 +82,7 @@ function nesi_mstep_proposal_research_form($form_state) {
   );
 
   $form['funding']['#type'] = 'fieldset';
-  $form['funding']['#title'] = 'Funding';
+  $form['funding']['#title'] = 'Budget';
 
   $form['funding']['prc-funding-amount'] = array(
     '#type' => 'textfield',
