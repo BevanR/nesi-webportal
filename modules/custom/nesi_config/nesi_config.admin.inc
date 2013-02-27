@@ -25,11 +25,11 @@ function nesi_config_proposal_submission_email($form) {
     '#type'   => 'fieldset',
     '#title'  => t('Proposal submission email'),
   ); 
-  $form['apply']['destination_email'] = array(
+  $form['apply']['submission_nesi_admin_email'] = array(
     '#type' => 'textfield',
     '#title' => t('Nesi admin email address.'),
     '#description' => 'Notification of the proposal submission will be sent to this address.',
-    '#default_value' => variable_get('destination_email', ''),
+    '#default_value' => variable_get('submission_nesi_admin_email', 'sam+nesiadmin3@webscope.net.nz'),
     '#size' => 40,
   );
   $form['apply']['submission_subject'] = array(

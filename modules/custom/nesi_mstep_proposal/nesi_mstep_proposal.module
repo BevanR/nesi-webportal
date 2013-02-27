@@ -347,10 +347,38 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   $to      = $form_state['ctools_object']->data['sub-email'];
   // TODO need to send nesi admin and email
   nesi_mstep_proposal_email($to);
+  $to = variable_get('submission_nesi_admin_email', 'sam+nesiadmin@webscope.co.nz');
+  nesi_mstep_admin_email($to);
    // Clear the form data cache from the session
 
   // Send user to confirmation page
   drupal_goto('apply/proposal-complete');
+}
+
+/**
+ * Using third party lib to send emails with attachments
+ *
+ * Attaches 
+ */
+function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz') {
+
+  // Notify submitter via email
+  include_once 'includes/attachment_email/attachment_email.php';
+
+  // These are set in the website config admin page
+  $from    = 'sam@webscope.co.nz'; 
+  $subject = 'A new proposal has been submitted'; 
+  $message = 'View the submission LINK HERE'; 
+   //Send Email!
+  $email = new AttachmentEmail($to, $from, $subject, $message);
+  
+  // Watchdog any errors
+  if(!$email->send()) {
+    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email - " '.$to.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
+  } 
+  else {
+    watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
+  } 
 }
 
 /**
@@ -361,13 +389,15 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
   // Notify submitter via email
   include_once 'includes/attachment_email/attachment_email.php';
 
+  // These are set in the website config admin page
   $from    = variable_get('destination_email', '');
   $subject = variable_get('submission_subject', '');
   $message = variable_get('submission_message', '');
+  $fid     = variable_get('submission_attached_pdf', 999); 
 
-  $fid = variable_get('submission_attached_pdf', 999); 
   $file = file_load($fid);
-  if(FALSE === $file) continue;
+  // Needs to be some testing around this
+  // if(FALSE === $file) continue;
   $attachment = array(
     'name' => $file->filename, 
     'path' => drupal_realpath($file->uri), 
@@ -391,9 +421,11 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
  * Testing page to call email function when building
  */
 function nesi_mstep_proposal_email_test_page() {
-  $fid = variable_get('submission_attached_pdf', 999); 
-  dsm($fid);
-  nesi_mstep_proposal_email();
+  $to = variable_get('submission_nesi_admin_email', 999); 
+  //nesi_mstep_proposal_email();
+  $the_time = date('l G:i:s A' , time());
+  //dsm("The time : $the_time");
+  nesi_mstep_admin_email($to);
   return "Email testing page";
 }
 
