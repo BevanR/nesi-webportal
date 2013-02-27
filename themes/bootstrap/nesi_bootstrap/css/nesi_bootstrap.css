@@ -541,10 +541,12 @@ input, button, select, textarea {
   width: 53%;
 }
 
-#nesi-mstep-proposal-step-1 p a.ws-tooltip {
+#nesi-mstep-proposal-step-1 p .ws-tooltip {
   color: #2B9FC2;
   display: block;
   float: left;
+  font-weight: bold;
+  margin-left: 0;
   position: relative;
 }
 
