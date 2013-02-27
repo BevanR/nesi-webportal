@@ -597,6 +597,11 @@ input, button, select, textarea {
   margin-bottom: 18px;
 }
 
+.form-type-radio {
+  clear: both;
+  display: block;
+}
+
 div.radio {
   float: left;
   margin-right: 12px;
