@@ -326,26 +326,26 @@ input, button, select, textarea {
 .container .row-fluid .span4 h1 {
   color: #4b5b68;
   font-size: 24px;
+  padding-top: 56px;
 }
 
 .container .row-fluid .span4 .sub-feature {
   padding-bottom: 62px;
-  padding-top: 56px;
 }
 
-.container .row-fluid .span4 #apply-intro {
+.container .row-fluid .span4 #apply-intro h1 {
   background: url(../assets/img/apply-intro.png) top center no-repeat;
 } 
 
-.container .row-fluid .span4 #nesi-intro {
+.container .row-fluid .span4 #nesi-intro h1 {
   background: url(../assets/img/nesi-intro.png) top center no-repeat;
 } 
 
-.container .row-fluid .span4 #projects-intro {
+.container .row-fluid .span4 #projects-intro h1 {
   background: url(../assets/img/projects-intro.png) top center no-repeat;
 } 
 
-.container .row-fluid .span4 #news-intro {
+.container .row-fluid .span4 #news-intro h1 {
   background: url(../assets/img/news-intro.png) top center no-repeat;
 } 
 
