@@ -38,6 +38,10 @@ class AttachmentEmail {
    * Send the email.
    **/
   public function send() {
+
+    require_once('class.phpmailer.php');
+    
+    /*
     $header = "From: ".($this->from)." <".($this->from).">" . PHP_EOL;
     $header .= "Reply-To: ".($this->from). PHP_EOL;
 
@@ -57,12 +61,44 @@ class AttachmentEmail {
       $this->message = $message;
     }
 
+    */
+
+    $mail = new PHPMailer();
+    $mail->IsSMTP(); // telling the class to use SMTP
+    $mail->Host = "mailhost.auckland.ac.nz"; // SMTP server
+
+    $mail->SetFrom($this->from, "NeSI");
+    $mail->Subject = $this->subject;
+    $mail->MsgHTML($this->message);
+
+    $address = $this->to;
+    $mail->AddAddress($address, "");
+
+    // Process attachments
+    if (!empty($this->attachments)) {
+
+      foreach($this->attachments as $attachment) {
+
+        $mail->AddAttachment($attachment['path']);      // attachment
+      }
+    }
+
+    if(!$mail->Send()) {
+      //echo "Mailer Error: " . $mail->ErrorInfo;
+      return false;
+    } 
+    else {
+      return true;
+    }
+
+    /*
     if (mail($this->to, $this->subject, $this->message, $header)) {
       return true;
     }
     else {
       return false;
     }
+    */
   }
 
   /**
