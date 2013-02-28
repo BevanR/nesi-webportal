@@ -693,12 +693,23 @@ div.radio span.checked {
 }
 
 #nesi-mstep-proposal-step-2 #edit-pdc-start-date,
-#nesi-mstep-proposal-step-2 #edit-prc-start-date {
+#nesi-mstep-proposal-step-2 #edit-prc-start-date,
+#nesi-mstep-proposal-step-2 #edit-pdc-start-date-datepicker-popup-0,
+#nesi-mstep-proposal-step-2 #edit-prc-start-date-datepicker-popup-0,
+#nesi-mstep-proposal-step-2 #edit-prc-grant-start-date-datepicker-popup-0 {
   width: 220px;
+}
+
+.container-inline-date .date-padding {
+  padding: 0;
 }
 
 #nesi-mstep-proposal-step-2 #edit-prc-funding-amount {
   width: 160px;
+}
+
+.control-group .control-group .control-label {
+  display: none;
 }
 
 #nesi-mstep-proposal-step-2 .grippie,
