@@ -1,0 +1,86 @@
+<?php
+/**
+ * @file
+ * Code for the nesi_base_proposal feature.
+ */
+
+include_once 'nesi_base_proposal.features.inc';
+
+
+function nesi_base_proposal_form_base_proposal_node_form_alter(&$form, &$form_state, $form_id) {
+  //  do not require a title
+  //$form['title']['#default_value'] = 'Proposal';
+
+  $form['bp_container']['#access'] = FALSE;
+}
+
+function nesi_base_proposal_node_view($node, $view_mode, $langcode) {
+
+  if ($view_mode == 'full') {
+    if ($node->type == 'base_proposal') {
+      $proposal_data = json_decode($node->bp_container[LANGUAGE_NONE][0]['value']);
+
+      $proposal_type = $proposal_data->proposal-type;
+
+      $pdc_map = array(
+        'pdc-title' => 'Proposal Title', 
+        'pdc-start-date' => 'Estimated project start date', 
+        'pdc-description' => 'Project Description',
+        'pdc-pi-name' => 'Principal\'s name',
+        'pdc-pi-email' => 'Principal\'s email',
+        'pdc-pi-phone' => 'Principal\'s phone',
+        'pdc-team-access' => 'Project team members requiring access to the NeSI systems',
+        'pdc-team-experience' => 'Project team\'s HPC experience',
+        'pdc-platform' => 'Desired HPC Platform',
+        'pdc-software' => 'Software requirements',
+        'pdc-storage' => 'Storage requirements',
+        'pdc-expert-support' => 'Expert support',
+        'pdc-further-information' => 'Further Information',
+      );
+
+      $prc_map = array(
+        'prc-title' => 'Proposal Title', 
+        'prc-start-date' => 'Estimated project start date', 
+        'prc-scientific-goals' => 'Scientific Goals',
+        'prc-hpc-benefits' => 'Benefits from HPC',
+        'prc-deliverables' => 'Project deliverables',
+        'prc-grant-provider' => 'Name of peer-reviewed research grant provider',
+        'prc-grant-title' => 'Title of research grant',
+        'prc-grant-start-date' => 'Start date of the grant',
+        'prc-grant-duration' => 'Duration of the grant',
+        'prc-funding-amount' => 'The amount of funding approved for HPC',
+        'prc-pi-name' => 'Principal\'s name',
+        'prc-pi-email' => 'Principal\'s email',
+        'prc-pi-phone' => 'Principal\'s phone number',
+        'prc-team-access' => 'Project team members requiring access to the NeSI systems',
+        'prc-team-experience' => 'Project team\'s HPC experience',
+      );
+
+      if ($proposal_type == 'proposal_development_class') {
+        $map = $pdc_map;
+      }
+      else {
+        $map = $prc_map;
+      }
+
+      $output = '';
+      $data = $proposal_data->p1;
+
+      foreach($data as $key=>$val) {
+        
+        $title = $map[$key];
+        if (!empty($title)) {
+          $output .= '<div>';
+          $output .= '<h3>'.$title.'</h3>';
+          $output .= '<p>'.$val.'</p>';
+          $output .= '</div>';
+        }
+      }
+
+      $node->content['proposal-data'] = array(
+        '#markup' => '<h1>Proposal Content</h1>'.$output,
+      );
+    }
+  }
+}
+
