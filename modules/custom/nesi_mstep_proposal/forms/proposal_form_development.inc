@@ -12,7 +12,8 @@ function nesi_mstep_proposal_development_form() {
   );
 
   $form['project']['pdc-start-date'] = array(
-    '#type' => 'textfield',
+    '#type' => 'date_popup',
+    '#date_format' => 'd-m-Y',
     '#title' => t('Estimated project start date'),
     '#description' => t('Please indicate the approximate date from which the HPC resource will be required.'),
     '#required' => TRUE,

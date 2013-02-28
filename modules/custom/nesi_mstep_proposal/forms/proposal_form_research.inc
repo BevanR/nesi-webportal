@@ -17,10 +17,12 @@ function nesi_mstep_proposal_research_form($form_state) {
   );
 
   $form['project']['prc-start-date'] = array(
-    '#type' => 'textfield',
+    '#type' => 'date_popup',
+    '#date_format' => 'd-m-y',
     '#title' => t('Estimated project start date'),
     '#description' => t('Please indicate the approximate date from which the HPC resource will be required.'),
     '#required' => TRUE,
+    '#default_value' => $form_state['ctools_object']->data['p1']['prc-start-date'] ? $form_state['ctools_object']->data['p1']['prc-start-date'] : '',
   );
 
   $form['project']['prc-scientific-goals'] = array(
@@ -68,7 +70,8 @@ function nesi_mstep_proposal_research_form($form_state) {
   $form['grant']['prc-grant-start-date'] = array(  
     '#title' => 'Start date of the grant',
     '#description' => 'Please provide the start date of the grant or award.',
-    '#type' => 'textfield',
+    '#type' => 'date_popup',
+    '#date_format' => 'd-m-Y',
     '#required' => TRUE,
     '#default_value' => $form_state['ctools_object']->data['p1']['prc-grant-start-date'] ? $form_state['ctools_object']->data['p1']['prc-grant-start-date'] : '',
   );
