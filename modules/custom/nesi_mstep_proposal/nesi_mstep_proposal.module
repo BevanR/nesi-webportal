@@ -40,7 +40,7 @@ function nesi_mstep_proposal_menu() {
   $items['apply/proposal-complete'] = array(
     'title' => t('Proposal Complete'),
     'page callback' => 'nesi_mstep_proposal_complete',
-    'page arguments' => array(1),
+    'page arguments' => array(2),
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
@@ -181,15 +181,26 @@ function nesi_mstep_proposal_platform_options() {
   );
 }
 
-function nesi_mstep_proposal_complete() {
+function nesi_mstep_proposal_complete($proposal_type = NULL) {
   
+  $proposal_label = '';
+  
+  if (!empty($proposal_type)) {
+    if ($proposal_type == 'pdc') {
+      $proposal_label = 'Proposal Development ';
+    }
+    if ($proposal_type == 'prc') {
+      $proposal_label = 'Research Proposal ';
+    }
+  }
+
   return array(
     '#markup' => '<div class="nesi-confirmation-left"></div>
                   <div class="nesi-confirmation-center">
                     <div class="nesi-confirmation-center-top"></div>
                     <div class="nesi-confirmation-center-inner">
                       <h1>Thank you</h1>
-                      <h2>Your Proposal Development submission has been placed and will now go into the review stage.</h2>
+                      <h2>Your '.$proposal_label.'submission has been placed and will now go into the review stage.</h2>
                       <p>A copy of the Access Policy will be in your email inbox.<br />You will receive a confirmation email shortly.</p>
                     </div>
                     <div class="nesi-confirmation-center-bottom"></div>
@@ -430,7 +441,10 @@ function nesi_mstep_proposal_email_test_page() {
   //nesi_mstep_proposal_email();
   $the_time = date('l G:i:s A' , time());
   //dsm("The time : $the_time");
-  nesi_mstep_admin_email($to);
+  //nesi_mstep_admin_email($to);
+  global $user;
+  $formats = filter_formats($user);
+  dsm($formats);
   return "Email testing page";
 }
 

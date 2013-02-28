@@ -33,22 +33,24 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
   for ($i = 0; $i < $form_state['num_faqs']; $i++) {
     $faqs_vals = nesi_config_faq($i);
     // yes this is horrible - TODO - tidy up dude
-    $question = $faqs_vals['question'][$i];
-    $answer   = $faqs_vals['answer'][$i];
-    $form['faqs_fieldset']['qs_fieldset_' . $i]['question'][$i] = array(
+    $question = $faqs_vals['question'];
+    $answer   = $faqs_vals['answer'];
+    $form['faqs_fieldset']['qs_fieldset_' . $i]['question'][] = array(
       '#type' => 'textfield',
       '#title' => t('Question'),
        '#maxlength' => 600,
       '#default_value' => $question, 
     );
-
-    $form['faqs_fieldset']['qs_fieldset_' . $i]['answer'][$i] = array(
-      '#type' => 'textarea',
+    //http://drupal.org/update/modules/6/7#text_format
+    $form['faqs_fieldset']['qs_fieldset_' . $i]['answer'][] = array(
+      //'#type' => 'textarea',
+      '#type' => 'text_format',
+      '#base_type' => 'textarea',
       '#title' => t('Answer'),
-      //'#cols' => 30,
-      //'#size' => 3,
+      '#cols' => 30,
+      '#size' => 3,
       '#default_value' => $answer,
-      //'#default_value' => "some value", 
+      '#format' => 2,
     );
   }
   $form['faqs_fieldset']['add_faq'] = array(
@@ -94,8 +96,8 @@ function nesi_config_add_more_callback($form, &$form_state) {
 function nesi_config_add_more_add_one($form, &$form_state) {
 
   $num = $form_state['num_faqs']-1;
-  $q_val   = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['question'];
-  $ans_val = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['answer'];
+  $q_val   = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['question'][0];
+  $ans_val = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['answer'][0]['value'];
   nesi_config_faq_save($num, array('question' => $q_val , 'answer' => $ans_val));
 
   $form_state['num_faqs']++;
