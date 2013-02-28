@@ -17,7 +17,7 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
    $form['faqs_fieldset'] = array(
     '#type' => 'fieldset',
     '#title' => t('FAQs'),
-    '#description' => 'Automatically add more FAQS. (NOTE : There is a minor bug at present, add more needs a blank field set to save - ask Sam) ',
+    '#description' => 'Automatically add more FAQS.',
     // Set up the wrapper so that AJAX will be able to replace the fieldset.
     '#prefix' => '<div id="faqs-fieldset-wrapper">',
     '#suffix' => '</div>',
@@ -156,7 +156,6 @@ function nesi_config_var_inc($var_name) {
 
   $val = variable_get($var_name , 1)+1;
   variable_set($var_name, $val);
-  
 }
 
 /**
@@ -165,4 +164,24 @@ function nesi_config_var_inc($var_name) {
 function nesi_config_var_dec($var_name) {
   $val = variable_get($var_name , 1)-1;
   variable_set($var_name, $val);
+}
+
+/**
+ * Insures that faqs are saved properly
+ * when 'Save configuration' button is clicked
+ */
+function nesi_config_final_save(&$form_state) {
+
+  $faqs = $form_state['values']['faqs_fieldset'];
+  $i = 0;
+  $faqs_to_save = array();
+  unset($faqs['add_faq']);
+  unset($faqs['remove_name']);
+  foreach($faqs as $faq) {
+    $question = $faqs['qs_fieldset_' . $i]['question'][0];  
+    $answer   = $faqs['qs_fieldset_' . $i]['answer'][0]['value'];  
+    $faqs_to_save[] = array('question' => $question, 'answer' => $answer);
+  $i++; 
+  }
+  variable_set('nesi_faqs' , $faqs_to_save);
 }

@@ -76,6 +76,8 @@ function nesi_config_proposal_submission_email($form) {
  */
 function nesi_config_admin_submit($form, &$form_state) {
 
+  nesi_config_final_save($form_state);
+
   global $user;
   $save_file = function($fid, $form_id) use($user) {
     $file = file_load($fid);
