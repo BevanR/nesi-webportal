@@ -430,7 +430,10 @@ function nesi_mstep_proposal_email_test_page() {
   //nesi_mstep_proposal_email();
   $the_time = date('l G:i:s A' , time());
   //dsm("The time : $the_time");
-  nesi_mstep_admin_email($to);
+  //nesi_mstep_admin_email($to);
+  global $user;
+  $formats = filter_formats($user);
+  dsm($formats);
   return "Email testing page";
 }
 
