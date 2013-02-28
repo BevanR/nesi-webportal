@@ -354,6 +354,9 @@ function nesi_mstep_proposal_wizard_next(&$form_state) {
 
 function nesi_mstep_proposal_wizard_finish(&$form_state) {
   $form_state['complete'] = TRUE;
+
+  // Save Proposal
+  _nesi_mstep_proposal_save($form_state);
  
   $to      = $form_state['ctools_object']->data['sub-email'];
   // TODO need to send nesi admin and email
@@ -375,6 +378,33 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
 
   // Send user to confirmation page
   drupal_goto('apply/proposal-complete'.$proposal_redirect);
+}
+
+/**
+ * Creates a base proposal node
+ * Serialises proposal form values into bp_container field
+ */
+function _nesi_mstep_proposal_save(&$form_state) {
+
+  $proposal_type = $form_state['ctools_object']->data['proposal-type'];
+
+  // Get Title
+  $p_title = $form_state['ctools_object']->data['p1']['prc-title'] ? $form_state['ctools_object']->data['p1']['prc-title'] : 'Proposal Title'; 
+  $p_title = $form_state['ctools_object']->data['p1']['pdc-title'] ? $form_state['ctools_object']->data['p1']['pdc-title'] : $title; 
+
+  // Prepare data to be saved
+  $proposal_json = json_encode($form_state['ctools_object']->data);
+
+  $p_node = new stdClass(); // Create a new node object
+  $p_node->type = 'base_proposal';
+  node_object_prepare($p_node); // Set some default values
+  $p_node->title = $p_title;
+  $p_node->language = LANGUAGE_NONE;
+  $p_node->uid = 0;
+
+  $p_node->bp_container[$p_node->language][0]['value'] = $proposal_json;
+
+  node_save($p_node); 
 }
 
 /**
