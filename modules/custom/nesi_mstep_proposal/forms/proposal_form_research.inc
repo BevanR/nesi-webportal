@@ -82,7 +82,7 @@ function nesi_mstep_proposal_research_form($form_state) {
   );
 
   $form['funding']['#type'] = 'fieldset';
-  $form['funding']['#title'] = 'Funding';
+  $form['funding']['#title'] = 'Budget';
 
   $form['funding']['prc-funding-amount'] = array(
     '#type' => 'textfield',
@@ -183,28 +183,28 @@ function nesi_mstep_proposal_research_form_part_2($form_state) {
     '#type' => 'textfield',
     '#title' => t('CPU core hours required using the Intel cluster'),
     '#required' => TRUE,
-    '#default_value' => $form_state['ctools_object']->data['p2']['prc-cpu-hours-intel'] ? $form_state['ctools_object']->data['p2']['prc-cpu-hours-intel'] : '',
+    '#default_value' => $form_state['ctools_object']->data['p2']['prc-cpu-hours-intel'] ? $form_state['ctools_object']->data['p2']['prc-cpu-hours-intel'] : '0',
   );
 
   $form['resource']['prc-cpu-hours-power6'] = array(
     '#type' => 'textfield',
     '#title' => t('CPU core hours required using P575/POWER6'),
     '#required' => TRUE,
-    '#default_value' => $form_state['ctools_object']->data['p2']['prc-cpu-hours-power6'] ? $form_state['ctools_object']->data['p2']['prc-cpu-hours-power6'] : '',
+    '#default_value' => $form_state['ctools_object']->data['p2']['prc-cpu-hours-power6'] ? $form_state['ctools_object']->data['p2']['prc-cpu-hours-power6'] : '0',
   );
 
   $form['resource']['prc-cpu-hours-power7'] = array(
     '#type' => 'textfield',
     '#title' => t('CPU core hours required using P755/POWER7'),
     '#required' => TRUE,
-    '#default_value' => $form_state['ctools_object']->data['p2']['prc-cpu-hours-power7'] ? $form_state['ctools_object']->data['p2']['prc-cpu-hours-power7'] : '',
+    '#default_value' => $form_state['ctools_object']->data['p2']['prc-cpu-hours-power7'] ? $form_state['ctools_object']->data['p2']['prc-cpu-hours-power7'] : '0',
   );
 
   $form['resource']['prc-cpu-hours-bluegene'] = array(
     '#type' => 'textfield',
     '#title' => t('CPU core hours required using BlueGene/P'),
     '#required' => TRUE,
-    '#default_value' => $form_state['ctools_object']->data['p2']['prc-cpu-hours-bluegene'] ? $form_state['ctools_object']->data['p2']['prc-cpu-hours-bluegene'] : '',
+    '#default_value' => $form_state['ctools_object']->data['p2']['prc-cpu-hours-bluegene'] ? $form_state['ctools_object']->data['p2']['prc-cpu-hours-bluegene'] : '0',
   );
 
   $form['resource']['prc-storage-requirements'] = array(

@@ -456,10 +456,6 @@ input, button, select, textarea {
   margin-top: 18px;
 }
 
-.page-apply-nojs-create-proposal-step3 h1.page-header {
-  display: none;
-}
-
 #nesi-mstep-proposal-step-1 h2,
 #nesi-mstep-proposal-step-2 h2,
 #nesi-mstep-proposal-step-3 h2,
