@@ -33,8 +33,8 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
   for ($i = 0; $i < $form_state['num_faqs']; $i++) {
     $faqs_vals = nesi_config_faq($i);
     // yes this is horrible - TODO - tidy up dude
-    $question = $faqs_vals['question'][$i];
-    $answer   = $faqs_vals['answer'][$i];
+    $question = $faqs_vals['question'];
+    $answer   = $faqs_vals['answer'];
     $form['faqs_fieldset']['qs_fieldset_' . $i]['question'][] = array(
       '#type' => 'textfield',
       '#title' => t('Question'),
