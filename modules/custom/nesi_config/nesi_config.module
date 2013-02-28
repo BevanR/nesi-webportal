@@ -76,7 +76,7 @@ function nesi_faq_content() {
 
   $i = 0;
   foreach ( $faqs as $faq ) {
-    $content .= '<div class="faq"><h4>' . $faq['question'][$i] . '</h4><p>' . $faq['answer'][$i] . '</p></div>';
+    $content .= '<div class="faq"><h4>' . $faq['question'] . '</h4><p>' . $faq['answer'] . '</p></div>';
     $i++;
   }
 
