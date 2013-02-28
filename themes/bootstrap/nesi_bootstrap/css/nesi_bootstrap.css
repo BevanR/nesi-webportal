@@ -143,6 +143,11 @@ p {
   color: #404040;
 }
 
+a,
+a:hover {
+  color: #2b9fc2;
+}
+
 .navbar {
   overflow: hidden;
 }
