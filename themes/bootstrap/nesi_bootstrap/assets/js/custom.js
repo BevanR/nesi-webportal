@@ -51,6 +51,12 @@
     	$(this).appendTo($(this).parent().prev('label'));
   	});
 
+  	/* Open Support modal when Contact links are clicked */
+  	$('a[href="#contact"]').click(function() {
+    	$('#feedback_tab_text').click();
+    	return false;
+  	});
+
 	});
 
 } ) ( jQuery );
