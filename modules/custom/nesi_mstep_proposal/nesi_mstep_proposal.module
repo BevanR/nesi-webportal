@@ -392,9 +392,14 @@ function _nesi_mstep_proposal_save(&$form_state) {
 
   $proposal_type = $form_state['ctools_object']->data['proposal-type'];
 
-  // Get Title
-  $p_title = $form_state['ctools_object']->data['p1']['prc-title'] ? $form_state['ctools_object']->data['p1']['prc-title'] : 'Proposal Title'; 
-  $p_title = $form_state['ctools_object']->data['p1']['pdc-title'] ? $form_state['ctools_object']->data['p1']['pdc-title'] : $title; 
+  $p_title = 'Proposal Title';
+
+  if ($proposal_type == 'proposal_development_class') {
+    $p_title = $form_state['ctools_object']->data['p1']['pdc-title'];
+  }  
+  if ($proposal_type == 'research_proposal_class') {
+    $p_title = $form_state['ctools_object']->data['p1']['prc-title'];
+  } 
 
   // Prepare data to be saved
   $proposal_json = json_encode($form_state['ctools_object']->data);
