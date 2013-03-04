@@ -66,15 +66,8 @@ function nesi_base_proposal_node_view($node, $view_mode, $langcode) {
 
         $output = '';
         $data = $proposal_data->p1;
-        foreach($data as $key=>$val) {
-          $title = $map[$key];
-          if (!empty($title)) {
-            $output .= '<div>';
-            $output .= '<h3>'.$title.'</h3>';
-            $output .= '<p>'.$val.'</p>';
-            $output .= '</div>';
-          }
-        }
+
+        $output = _nesi_base_proposal_map_proposal_data($map, $data);  
 
         $node->content['proposal-data'] = array(
           '#markup' => '<h1>Proposal Content</h1>'.$output,
@@ -88,5 +81,24 @@ function nesi_base_proposal_node_view($node, $view_mode, $langcode) {
       }
     }
   }
+}
+
+function _nesi_base_proposal_map_proposal_data($map = array(), $data = NULL) {
+
+  $output = '';
+
+  if (!empty($data)) {
+    foreach($data as $key=>$val) {
+      $title = $map[$key];
+      if (!empty($title)) {
+        $output .= '<div>';
+        $output .= '<h3>'.$title.'</h3>';
+        $output .= '<p>'.$val.'</p>';
+        $output .= '</div>';
+      }
+    }
+  }
+
+  return $output;
 }
 
