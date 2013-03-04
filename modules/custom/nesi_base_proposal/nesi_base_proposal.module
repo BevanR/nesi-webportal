@@ -22,9 +22,7 @@ function nesi_base_proposal_node_view($node, $view_mode, $langcode) {
     if ($node->type == 'base_proposal') {
       if ($user->uid > 0) {      
         $proposal_data = json_decode($node->bp_container[LANGUAGE_NONE][0]['value']);
-
-        $proposal_type = $proposal_data->proposal-type;
-
+        $proposal_type = $proposal_data->{'proposal-type'};
         $pdc_map = array(
           'pdc-title' => 'Proposal Title', 
           'pdc-start-date' => 'Estimated project start date', 
@@ -68,9 +66,7 @@ function nesi_base_proposal_node_view($node, $view_mode, $langcode) {
 
         $output = '';
         $data = $proposal_data->p1;
-
         foreach($data as $key=>$val) {
-          
           $title = $map[$key];
           if (!empty($title)) {
             $output .= '<div>';
