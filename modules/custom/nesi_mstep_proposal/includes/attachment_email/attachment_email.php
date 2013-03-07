@@ -69,7 +69,7 @@ class AttachmentEmail {
 
     $mail->SetFrom($this->from, "NeSI");
     $mail->Subject = $this->subject;
-    $mail->MsgHTML($this->message);
+    $mail->MsgHTML(nl2br($this->message));
 
     $address = $this->to;
     $mail->AddAddress($address, "");
@@ -78,8 +78,12 @@ class AttachmentEmail {
     if (!empty($this->attachments)) {
 
       foreach($this->attachments as $attachment) {
-
-        $mail->AddAttachment($attachment['path']);      // attachment
+        if(empty($attachment['isStringAttachment'])) {
+          $mail->AddAttachment($attachment['path']);      // attachment
+        }
+        else {
+          $mail->AddStringAttachment($attachment['data'], $attachment['name']);
+        }
       }
     }
 
