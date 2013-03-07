@@ -17,7 +17,7 @@ function nesi_mstep_proposal_intro_form() {
   $form['intro-text']['decide'] = array(
     '#markup' => '<div class="intro-text-2">
                     <h3 class="num">2.</h3>
-                    <h3>Decide which Allocation you\'re applying for.</h3>
+                    <h3>Decide which allocation you\'re applying for, fill in your email and click the Start button.</h3>
                     <p><a href="/allocations" class="ws-tooltip">Proposal Development:</a> <span>Proposal Development allocations represent a preparatory phase for a larger project(s), These proposals provide a limited allocation to build a case for a Research allocation.</span></p>
                     <p><a href="/allocations" class="ws-tooltip">Research:</a> <span>Research allocations often follow successful completion of Proposal Development allocations. Relevant experience and success in running their codes must be demonstrated on HPC facilities prior to receiving a Research allocation.</span></p>
                   </div>'

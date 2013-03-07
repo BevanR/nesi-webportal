@@ -345,6 +345,10 @@ function nesi_mstep_proposal_step_3_submit($form, &$form_state) {
   $form_state['ctools_object']->data['p2'] = $form_state['values'];
 }
 
+function nesi_mstep_proposal_step_4_submit($form, &$form_state) {
+  $form_state['ctools_object']->data['p3'] = $form_state['values'];
+}
+
 /**
  * Next callback
  */
@@ -356,13 +360,13 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   $form_state['complete'] = TRUE;
 
   // Save Proposal
-  _nesi_mstep_proposal_save($form_state);
+  $node_id = _nesi_mstep_proposal_save($form_state);
  
-  $to      = $form_state['ctools_object']->data['sub-email'];
-  // TODO need to send nesi admin and email
+  // Send emails 
+  $to = $form_state['ctools_object']->data['sub-email'];
   nesi_mstep_proposal_email($to);
   $to = variable_get('submission_nesi_admin_email', 'sam+nesiadmin@webscope.co.nz');
-  nesi_mstep_admin_email($to);
+  nesi_mstep_admin_email($to , $node_id);
 
   // Append proposal type flag to url for completion page
   $proposal_redirect = '';
@@ -374,7 +378,7 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
     $proposal_redirect = '/prc';
   }  
 
-   // Clear the form data cache from the session
+  // Clear the form data cache from the session
 
   // Send user to confirmation page
   drupal_goto('apply/proposal-complete'.$proposal_redirect);
@@ -388,9 +392,14 @@ function _nesi_mstep_proposal_save(&$form_state) {
 
   $proposal_type = $form_state['ctools_object']->data['proposal-type'];
 
-  // Get Title
-  $p_title = $form_state['ctools_object']->data['p1']['prc-title'] ? $form_state['ctools_object']->data['p1']['prc-title'] : 'Proposal Title'; 
-  $p_title = $form_state['ctools_object']->data['p1']['pdc-title'] ? $form_state['ctools_object']->data['p1']['pdc-title'] : $title; 
+  $p_title = 'Proposal Title';
+
+  if ($proposal_type == 'proposal_development_class') {
+    $p_title = $form_state['ctools_object']->data['p1']['pdc-title'];
+  }  
+  if ($proposal_type == 'research_proposal_class') {
+    $p_title = $form_state['ctools_object']->data['p1']['prc-title'];
+  } 
 
   // Prepare data to be saved
   $proposal_json = json_encode($form_state['ctools_object']->data);
@@ -405,22 +414,26 @@ function _nesi_mstep_proposal_save(&$form_state) {
   $p_node->bp_container[$p_node->language][0]['value'] = $proposal_json;
 
   node_save($p_node); 
+
+  $node_id = $p_node->nid;
+
+  return $node_id;
 }
 
 /**
- * Using third party lib to send emails with attachments
- *
- * Attaches 
+ * Sends notification to Nesi admin that a new proposal
+ * has been submitted
  */
-function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz') {
+function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id) {
 
+  global $base_url;
   // Notify submitter via email
   include_once 'includes/attachment_email/attachment_email.php';
-
+  $proposal_url = $base_url . '/node/' . $node_id;
   // These are set in the website config admin page
-  $from    = 'sam@webscope.co.nz'; 
+  $from    = 'support@nesi.org.nz';
   $subject = 'A new proposal has been submitted'; 
-  $message = 'View the submission LINK HERE'; 
+  $message = 'View the submission ' . $proposal_url . ' here.'; 
    //Send Email!
   $email = new AttachmentEmail($to, $from, $subject, $message);
   
@@ -442,7 +455,7 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
   include_once 'includes/attachment_email/attachment_email.php';
 
   // These are set in the website config admin page
-  $from    = variable_get('destination_email', '');
+  $from    = variable_get('submission_nesi_admin_email', '');
   $subject = variable_get('submission_subject', '');
   $message = variable_get('submission_message', '');
   $fid     = variable_get('submission_attached_pdf', 999); 
