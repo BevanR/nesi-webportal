@@ -421,7 +421,7 @@ input, button, select, textarea {
   height: 50px;
   line-height: 47px;
   margin: 0 3px;
-  padding-left: 40px;
+  text-align: center;
 }
 
 #block-nesi-stats-front-stats .span4 div.stats-description {

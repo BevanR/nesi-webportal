@@ -19,11 +19,11 @@
   <div id="stats_peak_speeds" class="span4">
     <div class="stats-header">Peak Speeds</div>
     <div class="stats-stat"><?php print $data['stats_peak_speeds'] ?></div>
-    <div class="stats-description">&nbsp;</div>
+    <div class="stats-description">Teraflops</div>
   </div>
   <div id="stats_disk_storage" class="span4">
     <div class="stats-header">Disk Storage</div>
     <div class="stats-stat"><?php print $data['stats_disk_storage'] ?></div>
-    <div class="stats-description">Distributed across facilities</div>
+    <div class="stats-description">Petabytes</div>
   </div>
 </div>
