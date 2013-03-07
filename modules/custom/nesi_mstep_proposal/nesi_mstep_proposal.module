@@ -483,14 +483,14 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
  
   //Send Email!
   $email = new AttachmentEmail($to, $from, $subject, $message, $attachments);
-  
+ 
   // Watchdog any errors
   if(!$email->send()) {
     watchdog('nesi_mstep_proposal', 'Problem sending confirmation email - " '.$to.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
   } 
   else {
     watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
-  } 
+  }
 }
 
 /**
