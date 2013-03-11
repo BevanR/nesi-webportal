@@ -10,8 +10,8 @@ function nesi_mstep_proposal_intro_form() {
   $form['intro-text']['read'] = array(
     '#markup' => '<div class="intro-text-1">
                     <h3 class="num">1.</h3>
-                    <h3>Read our <a href="#block-nesi-config-nesi-faq">Frequently Asked Questions</a> below and <a href="/access-policy">Access policy</a>.</h3>
-                    <p>Once you fill in your email address and click START the access Policy will be sent to you. <a href="/access-policy">Read online here</a></p>
+                    <h3>Read our <a href="#block-nesi-config-nesi-faq">Frequently Asked Questions</a> below and <a href="/access-policy">Access Policy</a>.</h3>
+                    <p>Once you fill in your email address and click START the Access Policy will be sent to you. <a href="/access-policy">Read online here</a></p>
                   </div>'
   );
   $form['intro-text']['decide'] = array(
@@ -33,7 +33,7 @@ function nesi_mstep_proposal_intro_form() {
     '#markup' => '<div class="intro-text-4">
                     <h3 class="num">4.</h3>
                     <h3>Your proposal will be reviewed.</h3>
-                    <p>A member of UoA will be in contact to discuss next steps. If you have any questions in the meantime please use our support form at <url>.</p>
+                    <p>A member of NeSI will be in contact to discuss next steps. If you have any questions in the meantime please use our <a href="#contact">support form</a>.</p>
                   </div>'
   );
 
