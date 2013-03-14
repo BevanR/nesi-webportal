@@ -12,6 +12,7 @@ function nesi_config_admin_settings($form, &$form_state) {
   $form = nesi_config_proposal_submission_email($form);
   $form = nesi_config_front_stats($form);
   $form = nesi_config_add_more($form, $form_state);
+  $form = nesi_config_call_management($form);
 
   return system_settings_form( $form );
 }
@@ -58,6 +59,17 @@ function nesi_config_proposal_submission_email($form) {
   );
 
   $form['#submit'][] = 'nesi_config_admin_submit';
+  return $form;
+}
+
+function nesi_config_manage_open_calls($form) {
+
+  $form['calls']['nesi_call_prc_status'] = array(
+    '#title' => t('Enable NeSI Research Proposal submissions).'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get( 'nesi_call_prc_status', '0' ), // 1 = enabled
+  );
+
   return $form;
 }
 
