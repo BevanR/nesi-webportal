@@ -497,9 +497,18 @@ function _nesi_mstep_proposal_map_proposal_data($map = array(), $data = NULL) {
   if (!empty($data)) {
     foreach($data as $key=>$val) {
       $title = $map[$key];
+
+      // Clean line breaks 
+      $order   = array("\r\n", "\n", "\r");
+      $replace = ' ';
+      
       if (!empty($title)) {
-        $output .= '| '.$title;
-        $output .= ' | '.$val;
+
+        $clean_title = str_replace($order, $replace, $title);
+        $clean_val = str_replace($order, $replace, $val);
+
+        $output .= '| '.$clean_title;
+        $output .= ' | '.$clean_val;
         $output .= ' | |'."\n";
       }
     }
