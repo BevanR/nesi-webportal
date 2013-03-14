@@ -12,7 +12,7 @@ function nesi_config_admin_settings($form, &$form_state) {
   $form = nesi_config_proposal_submission_email($form);
   $form = nesi_config_front_stats($form);
   $form = nesi_config_add_more($form, $form_state);
-  $form = nesi_config_call_management($form);
+  $form = nesi_config_manage_open_calls($form);
 
   return system_settings_form( $form );
 }
