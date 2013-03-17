@@ -431,14 +431,14 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_pdc_team_hpcexperience'.
-  $fields['node-proposal_development_class-field_pdc_team_hpcexperience'] = array(
+  // Exported field: 'node-proposal_development_class-field_pdc_team_experience'.
+  $fields['node-proposal_development_class-field_pdc_team_experience'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_pdc_team_hpcexperience',
+      'field_name' => 'field_pdc_team_experience',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -479,7 +479,7 @@ function nesi_proposal_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_pdc_team_hpcexperience',
+      'field_name' => 'field_pdc_team_experience',
       'label' => 'Project Team\'s HPC Experience',
       'required' => 0,
       'settings' => array(
@@ -498,14 +498,14 @@ function nesi_proposal_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-proposal_development_class-field_prc_proposed_hpc_platform'.
-  $fields['node-proposal_development_class-field_prc_proposed_hpc_platform'] = array(
+  // Exported field: 'node-proposal_development_class-field_pdc_proposed_hpc_platform'.
+  $fields['node-proposal_development_class-field_pdc_proposed_hpc_platform'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_prc_proposed_hpc_platform',
+      'field_name' => 'field_pdc_proposed_hpc_platform',
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -549,7 +549,7 @@ function nesi_proposal_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_prc_proposed_hpc_platform',
+      'field_name' => 'field_pdc_proposed_hpc_platform',
       'label' => 'Desired HPC Platform',
       'required' => 1,
       'settings' => array(
