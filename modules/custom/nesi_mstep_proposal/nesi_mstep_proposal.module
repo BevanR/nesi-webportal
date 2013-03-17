@@ -591,7 +591,7 @@ function _nesi_mstep_proposal_prc_map() {
     'prc-usage-additional' => 'Please provide any additional information on usage requirements.', 
     'prc-cpu-hours-intel' => 'CPU core hours required using the Intel cluster', 
     'prc-cpu-hours-power6' => 'CPU core hours required using P575/POWER6', 
-    'prc-cpu-hours-power7' => 'CPU core hours required using P575/POWER7', 
+    'prc-cpu-hours-power7' => 'CPU core hours required using P755/POWER7', 
     'prc-cpu-hours-bluegene' => 'CPU core hours required using BlueGene/P',
     'prc-storage-requirements' => 'Storage requirements',
     'prc-software' => 'Software requirements',
