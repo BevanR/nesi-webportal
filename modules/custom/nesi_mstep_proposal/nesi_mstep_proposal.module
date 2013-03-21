@@ -722,6 +722,59 @@ function nesi_mstep_proposal_email_test_page() {
   return "Email testing page";
 }
 
+/**
+ * For this to work there can't be any htaccess on the site
+ * at the moment.
+ * wkhtmltopdf can be used with htaccess but we aren't set up 
+ * for that at the moment
+ */
+function nesi_mstep_generate_proposal_pdf() { 
+  
+  global $conf, $base_url;
+  // This is set in local.settings.php
+  $wkhtmltopdf_files_path  = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/files';
+  $wkhtmltopdf_header_html = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/themes/ws_mm/templates/pdf-header.html';
+  $wkhtmltopdf_footer_html = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/themes/ws_mm/templates/pdf-footer.html';
+  $wkhtmltopdf_margins = array('top' => '26', 'bottom' => '15', 'left' => null, 'right' => null);
+  $file_name = $report_title . '-' . $uid;
+  $app = new CalcResults($uid, TRUE);
+
+  $node  = node_load($app->nid);
+  $print = array();
+  $print['language']       = 'en';
+  $print['head']           = '';
+  $print['base_href']      = ''; 
+  $print['title']          = $report_title; 
+  $print['scripts']        = drupal_get_js();
+  $print['sendtoprinter']  = ''; 
+  $print['robots_meta']    = ''; 
+  $print['favicon']        = ''; 
+  $print['css']            = drupal_get_css();
+  $print['node']           = $node; 
+  $print['nid']            = $node->nid; 
+  $print['from_email']     = TRUE;
+  $print['footer_scripts'] = ''; 
+
+
+  $html = theme('print', array('print' => $print, 'type' => 'pdf', 'node' => $node));
+  try {
+    $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path));
+    $wkhtmltopdf->setMargins($wkhtmltopdf_margins);
+    $wkhtmltopdf->setHeaderHtml($wkhtmltopdf_header_html);
+    $wkhtmltopdf->setFooterHtml($wkhtmltopdf_footer_html);
+    $wkhtmltopdf->setTitle($report_title);
+    $wkhtmltopdf->setHtml($html);
+    $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
+  } catch (Exception $e) {
+    echo $e->getMessage();
+    drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
+  }
+
+  $file = file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);
+  return $file;
+}
+
+
 
 function nesi_mstep_proposal_wizard_cancel(&$form_state) {
   nesi_mstep_proposal_cache_clear('nesi_mstep');
