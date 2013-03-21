@@ -954,6 +954,30 @@ div.radio span.checked {
   margin: 0 0 32px 0;
 }
 
+.page-user-dashboard .module-inner {
+  border: 1px solid #eaeded;
+  border-bottom: 0;
+}
+
 .page-user-dashboard .proposal-outline {
+  border: 0;
+  border-bottom: 1px solid #eaeded;
+  height: 86px;
   margin: 0;
+}
+
+.page-user-dashboard .module h1 {
+  background: url(../assets/img/dashboard-proposal-icon.png) left center no-repeat;
+  margin: 15px 0 0 20px;
+  padding: 0 0 0 40px;
+}
+
+.page-user-dashboard .module h1 a {
+  color: #4b5b68;
+  font-size: 14px;
+  line-height: 48px;
+}
+
+.page-user-dashboard .proposal-outline .proposal-title:before {
+  display: none;
 }
