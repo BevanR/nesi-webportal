@@ -835,6 +835,11 @@ function nesi_mstep_proposal_theme($existing, $type, $theme, $path) {
       'template' => 'nesi-mstep-proposal-wrapper',
       'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
     )
+    'nesi_proposal_pdf' => array(
+      'variables' => $variables, 
+      'template' => 'nesi-mstep-proposal-pdf',
+      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
+    )
   ); 
 }
 
