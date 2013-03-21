@@ -11,6 +11,8 @@ function nesi_user_dashboard_callback() {
   
   $in_progress = FALSE;
   if (!empty($response)) {
+    $output .= '<h2>Submitted Proposals</h2>';
+    $output .= '<div class="module centered-module bordered-module">';
     // Display all proposals
     foreach ($response as $item) {
       // Need to get link to the exact proposal for this user...
@@ -53,6 +55,7 @@ function nesi_user_dashboard_callback() {
         $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
       }
     }
+    $output .= '</div>';
   }
 
   // Show message if no proposals
