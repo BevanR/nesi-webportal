@@ -719,10 +719,24 @@ function nesi_mstep_proposal_email_test_page() {
   $the_time = date('l G:i:s A' , time());
   dsm("The time : $the_time");
   //nesi_mstep_admin_email($to);
-  nesi_mstep_generate_proposal_pdf();
+  nesi_mstep_proposal_pdf_attachement($nid = 121);
   //nesi_mstep_proposal_data();
 
   return "Email testing page";
+}
+
+/**
+ *
+ */
+function nesi_mstep_proposal_pdf_attachement($nid) {
+
+  $file = nesi_mstep_generate_proposal_pdf($nid);
+  $attachment = array(
+    'name' => $file->filename, 
+    'path' => drupal_realpath($file->uri), 
+    'type' => file_get_mimetype($file->uri), 
+  );
+  return $attachment; 
 }
 
 /**
@@ -733,10 +747,8 @@ function nesi_mstep_proposal_email_test_page() {
  * This is an alternative to using entity'
  * left here as note.
  * http://drupal.org/project/field_extract
- *
- * returns array populated with proposal field data
  */
-function nesi_mstep_proposal_data($nid = 121) {
+function nesi_mstep_proposal_data($nid) {
 
   $node = node_load($nid);
   $content_type = $node->type;
@@ -771,7 +783,7 @@ function nesi_mstep_sort_fields($a,$b){
  * wkhtmltopdf can be used with htaccess but we aren't set up 
  * for that at the moment
  */
-function nesi_mstep_generate_proposal_pdf() { 
+function nesi_mstep_generate_proposal_pdf($nid) { 
   
   global $conf, $base_url;
   // nid 120 for testing
@@ -803,7 +815,7 @@ function nesi_mstep_generate_proposal_pdf() {
 
 
   // Need to pass in $nid here
-  $data['data'] = nesi_mstep_proposal_data();
+  $data['data'] = nesi_mstep_proposal_data($nid);
   $html = theme('nesi_mstep_proposal_pdf' , $data);
   dsm($html);
   try {
