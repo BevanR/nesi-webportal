@@ -934,3 +934,26 @@ div.radio span.checked {
   line-height: 23px;
   margin-left: 52%;
 }
+
+/* Dashboard */
+.page-user-dashboard {
+  background: #f1f1f1;
+}
+
+.page-user-dashboard h2 {
+  color: #4b5b68;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 36px;
+}
+
+.page-user-dashboard .module {
+  background: #fff;
+  -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+  box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+  margin: 0 0 32px 0;
+}
+
+.page-user-dashboard .proposal-outline {
+  margin: 0;
+}

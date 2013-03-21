@@ -12,49 +12,51 @@ function nesi_user_dashboard_callback() {
   $in_progress = FALSE;
   if (!empty($response)) {
     $output .= '<h2>Submitted Proposals</h2>';
-    $output .= '<div class="module centered-module bordered-module">';
-    // Display all proposals
-    foreach ($response as $item) {
-      // Need to get link to the exact proposal for this user...
-      if (!empty($item->nid)) { 
-        $in_progress = TRUE;
-        $current_proposal = node_load($item->nid);
-        dpm($current_proposal);
-        $options = array('absolute' => TRUE);
-        $nodeurl = url('node/'. $current_proposal->nid, $options);
-
-        $proposal_state = 'In Draft';
-        $is_flagged = FALSE;
-        // Get status for display
-        if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
-          $flag = flag_get_flag('p_submit_proposal');
-      
-          if ($flag->is_flagged($current_proposal->nid)) {
-            $proposal_state = 'Pending';
-            $is_flagged = TRUE;
+    $output .= '<div class="module">';
+      $output .= '<div class="module-inner">';
+      // Display all proposals
+      foreach ($response as $item) {
+        // Need to get link to the exact proposal for this user...
+        if (!empty($item->nid)) { 
+          $in_progress = TRUE;
+          $current_proposal = node_load($item->nid);
+          dpm($current_proposal);
+          $options = array('absolute' => TRUE);
+          $nodeurl = url('node/'. $current_proposal->nid, $options);
+  
+          $proposal_state = 'In Draft';
+          $is_flagged = FALSE;
+          // Get status for display
+          if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
+            $flag = flag_get_flag('p_submit_proposal');
+        
+            if ($flag->is_flagged($current_proposal->nid)) {
+              $proposal_state = 'Pending';
+              $is_flagged = TRUE;
+            }
           }
-        }
-
-        $proposal_operations = '';
-        $access = node_access('update', $current_proposal);
-        if ($access) {
-          $proposal_operations = '<a href="'.$base_url.'/node/'.$current_proposal->nid.'/edit" class="btn">Edit</a>';
-          if (!$is_flagged) {
-            $temp_link = flag_create_link('p_submit_proposal', $current_proposal->nid);
-            $proposal_operations .= $temp_link;
+  
+          $proposal_operations = '';
+          $access = node_access('update', $current_proposal);
+          if ($access) {
+            $proposal_operations = '<a href="'.$base_url.'/node/'.$current_proposal->nid.'/edit" class="btn">Edit</a>';
+            if (!$is_flagged) {
+              $temp_link = flag_create_link('p_submit_proposal', $current_proposal->nid);
+              $proposal_operations .= $temp_link;
+            }
           }
+  
+          $proposal_variables = array(
+            'proposal_title' => $current_proposal->title,
+            'proposal_link' => $nodeurl,
+            'proposal_state' => $proposal_state,
+            'proposal_operations' => $proposal_operations,
+          );
+  
+          $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
         }
-
-        $proposal_variables = array(
-          'proposal_title' => $current_proposal->title,
-          'proposal_link' => $nodeurl,
-          'proposal_state' => $proposal_state,
-          'proposal_operations' => $proposal_operations,
-        );
-
-        $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
       }
-    }
+      $output .= '</div>';
     $output .= '</div>';
   }
 
