@@ -720,27 +720,48 @@ function nesi_mstep_proposal_email_test_page() {
   dsm("The time : $the_time");
   //nesi_mstep_admin_email($to);
   nesi_mstep_generate_proposal_pdf();
-  //do_something('proposal_development_class');
+  //nesi_mstep_proposal_data();
+
   return "Email testing page";
 }
-//http://drupal.org/project/field_extract
-function nesi_mstep_proposal_data($content_type) {
-    $fields = field_info_instances("node",$content_type);
-    usort($fields,"sort_stuff");
-    $node = node_load(121);
-    $node_wrapper = entity_metadata_wrapper('node', $node);
-    //$field_val = $node_wrapper->field_pdc_pi_email->value();
-    //dsm("Field cal : $field_val");
-    foreach($fields as $field_name=>$value){
-        dsm($value['field_name']);
-        $the_field_name = $value['field_name'];
-        $field_val = $node_wrapper->{$the_field_name}->value();
-        dsm("Field val : $field_val");
 
-    }
+/**
+ * Returns that data for a proposal to be 
+ * displayed in a pdf. Makes the enitity 
+ * module a dependancy
+ *
+ * This is an alternative to using entity'
+ * left here as note.
+ * http://drupal.org/project/field_extract
+ *
+ * returns array populated with proposal field data
+ */
+function nesi_mstep_proposal_data($nid = 121) {
+
+  $node = node_load($nid);
+  $content_type = $node->type;
+  
+  // Get information about all the fields attached to the content type
+  $fields = field_info_instances("node",$content_type);
+  // Sort those fields so that are returned correctly weighted
+  usort($fields,"nesi_mstep_sort_fields");
+  // Use entity api
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  
+  $data = array();
+  $field_val    = $node_wrapper->title->value();
+  $data['title'] = array('field_label' => 'Title', 'field_val' => $field_val);
+  // Loop through fields and attach data
+  foreach($fields as $field=>$value){
+    $field_name   = $value['field_name'];
+    $field_label  = $value['label'];
+    $field_val    = $node_wrapper->{$field_name}->value();
+    $data[$field_name] = array('field_label' => $field_label, 'field_val' => $field_val);
+  }
+  return $data;
 }
 
-function sort_stuff($a,$b){
+function nesi_mstep_sort_fields($a,$b){
     return $a['widget']['weight']-$b['widget']['weight'];
 }
 
@@ -781,9 +802,8 @@ function nesi_mstep_generate_proposal_pdf() {
   //$print['footer_scripts'] = ''; 
 
 
-  //$html = theme('print', array('print' => $print, 'type' => 'pdf', 'node' => $node));
-  //$html = "<h1>Yeehaa dis is printing</h1>";
-  $data = array('one', 'two');
+  // Need to pass in $nid here
+  $data['data'] = nesi_mstep_proposal_data();
   $html = theme('nesi_mstep_proposal_pdf' , $data);
   dsm($html);
   try {
@@ -794,7 +814,6 @@ function nesi_mstep_generate_proposal_pdf() {
     //$wkhtmltopdf->setTitle($report_title);
     $wkhtmltopdf->setHtml($html);
     $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
-    dsm(" In try block ");
   } catch (Exception $e) {
     echo $e->getMessage();
     drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
