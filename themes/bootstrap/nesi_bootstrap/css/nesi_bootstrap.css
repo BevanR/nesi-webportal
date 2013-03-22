@@ -981,7 +981,12 @@ div.radio span.checked {
 
 .page-user-dashboard .module h1 a strong {
   display: block;
+  font-weight: normal;
   text-transform: uppercase;
+}
+
+.page-user-dashboard .module h1 a span {
+  color: #f91005
 }
 
 .page-user-dashboard .proposal-outline .proposal-title:before {

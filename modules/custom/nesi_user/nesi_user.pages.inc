@@ -24,7 +24,7 @@ function nesi_user_dashboard_callback() {
           $options = array('absolute' => TRUE);
           $nodeurl = url('node/'. $current_proposal->nid, $options);
   
-          $proposal_state = 'In Draft';
+          $proposal_state = 'Draft';
           $is_flagged = FALSE;
           // Get status for display
           if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
