@@ -736,7 +736,7 @@ function nesi_mstep_proposal_email_test_page() {
 function nesi_mstep_proposal_pdf_attachement($nid) {
 
   // For testing
-  $nid = 121;
+  //$nid = 121;
   $file = nesi_mstep_generate_proposal_pdf($nid);
   $attachment = array(
     'name' => $file->filename, 
@@ -838,7 +838,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
   }
   $secs = date('s' , time());
-  $file_name = 'wazzer-' . $secs;
+  $file_name = 'proposal-' . $secs;
   $file = file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);
   dsm($file);
   return $file;
