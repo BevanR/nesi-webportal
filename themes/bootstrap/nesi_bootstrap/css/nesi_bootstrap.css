@@ -978,6 +978,11 @@ div.radio span.checked {
   line-height: 48px;
 }
 
+.page-user-dashboard .module h1 a strong {
+  display: block;
+  text-transform: uppercase;
+}
+
 .page-user-dashboard .proposal-outline .proposal-title:before {
   display: none;
 }

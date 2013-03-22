@@ -46,11 +46,21 @@ function nesi_user_dashboard_callback() {
             }
           }
   
+          $proposal_platform = '';
+          if ($current_proposal->type == 'proposal_development_class') {
+            $proposal_platform = $current_proposal->field_pdc_proposed_hpc_platform['und'][0]['value'];
+          }
+          elseif ($current_proposal->type == 'proposal_research_class') {
+            $proposal_platform = $current_proposal->field_prc_proposed_hpc_platform['und'][0]['value'];
+          }
+  
           $proposal_variables = array(
             'proposal_title' => $current_proposal->title,
             'proposal_link' => $nodeurl,
             'proposal_state' => $proposal_state,
             'proposal_operations' => $proposal_operations,
+            'proposal_type' => $current_proposal->type,
+            'proposal_platform' => $proposal_platform,
           );
   
           $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
