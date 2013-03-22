@@ -960,14 +960,15 @@ div.radio span.checked {
 }
 
 .page-user-dashboard .proposal-outline {
+  background: url(../assets/img/dashboard-proposal-bg.png) repeat-x;
   border: 0;
   border-bottom: 1px solid #eaeded;
-  height: 86px;
+  height: 87px;
   margin: 0;
 }
 
 .page-user-dashboard .module h1 {
-  background: url(../assets/img/dashboard-proposal-icon.png) left center no-repeat;
+  background: url(../assets/img/dashboard-proposal-icon.png) left 3px no-repeat;
   margin: 15px 0 0 20px;
   padding: 0 0 0 40px;
 }
@@ -975,7 +976,7 @@ div.radio span.checked {
 .page-user-dashboard .module h1 a {
   color: #4b5b68;
   font-size: 14px;
-  line-height: 48px;
+  line-height: 24px;
 }
 
 .page-user-dashboard .module h1 a strong {
