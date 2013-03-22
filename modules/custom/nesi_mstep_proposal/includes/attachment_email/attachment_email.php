@@ -12,6 +12,8 @@ class AttachmentEmail {
   private $message = '';
   private $attachments = '';
 
+  public  $errorMsg = '';
+
   /**
    * Constructor.
    *
@@ -64,8 +66,9 @@ class AttachmentEmail {
     */
 
     $mail = new PHPMailer();
-    $mail->IsSMTP(); // telling the class to use SMTP
-    $mail->Host = "mailhost.auckland.ac.nz"; // SMTP server
+    // Taken out for testing
+    //$mail->IsSMTP(); // telling the class to use SMTP
+    //$mail->Host = "mailhost.auckland.ac.nz"; // SMTP server
 
     $mail->SetFrom($this->from, "NeSI");
     $mail->Subject = $this->subject;
@@ -89,6 +92,7 @@ class AttachmentEmail {
 
     if(!$mail->Send()) {
       //echo "Mailer Error: " . $mail->ErrorInfo;
+      $this->errorMsg = $mail->ErrorInfo;
       return false;
     } 
     else {

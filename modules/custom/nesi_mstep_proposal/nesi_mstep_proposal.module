@@ -364,7 +364,7 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
  
   // Send emails 
   $to = $form_state['ctools_object']->data['sub-email'];
-  nesi_mstep_proposal_email($to);
+  nesi_mstep_proposal_email($to,$node_id);
   $to = variable_get('submission_nesi_admin_email', 'sam+nesiadmin@webscope.co.nz');
   nesi_mstep_admin_email($to , $node_id, $form_state['ctools_object']);
 
@@ -487,7 +487,8 @@ function _nesi_mstep_proposal_save(&$form_state) {
  * has been submitted
  */
 function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id, $form_data = NULL) {
-
+  
+  $to = 'sam+nesi@webscope.co.nz';
   global $base_url;
   // Notify submitter via email
   include_once 'includes/attachment_email/attachment_email.php';
@@ -501,6 +502,7 @@ function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id
 
   // Generate attachments
   $attachments[] = _nesi_mstep_proposal_generate_submission_file($form_data); 
+  $attachments[] = nesi_mstep_proposal_pdf_attachement($node_id); 
 
    //Send Email!
   $email = new AttachmentEmail($to, $from, $subject, $message, $attachments);
@@ -672,8 +674,9 @@ function _nesi_mstep_proposal_prc_map() {
 /**
  * Using third party lib to send emails with attachments
  */
-function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
+function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) {
 
+  $to = 'sam+nesi@webscope.co.nz';
   // Notify submitter via email
   include_once 'includes/attachment_email/attachment_email.php';
 
@@ -696,6 +699,7 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
       'type' => file_get_mimetype($file->uri), 
     );
     $attachments[] = $attachment;
+    $attachments[] = nesi_mstep_proposal_pdf_attachement($nid);
   }
  
   //Send Email!
@@ -703,7 +707,7 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz') {
  
   // Watchdog any errors
   if(!$email->send()) {
-    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email - " '.$to.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
+    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email." '.$to.' .Debug message ' . $email->errorMsg , NULL , WATCHDOG_ERROR, $link = NULL);
   } 
   else {
     watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
@@ -719,9 +723,10 @@ function nesi_mstep_proposal_email_test_page() {
   $the_time = date('l G:i:s A' , time());
   dsm("The time : $the_time");
   //nesi_mstep_admin_email($to);
-  nesi_mstep_proposal_pdf_attachement($nid = 121);
+  //nesi_mstep_proposal_pdf_attachement($nid = 121);
   //nesi_mstep_proposal_data();
-
+  $nid = 121;
+  nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid);
   return "Email testing page";
 }
 
@@ -730,6 +735,8 @@ function nesi_mstep_proposal_email_test_page() {
  */
 function nesi_mstep_proposal_pdf_attachement($nid) {
 
+  // For testing
+  $nid = 121;
   $file = nesi_mstep_generate_proposal_pdf($nid);
   $attachment = array(
     'name' => $file->filename, 
