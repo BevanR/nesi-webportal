@@ -45,9 +45,19 @@ function nesi_mstep_proposal_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  // For testing
   $items['apply/email-testing'] = array(
     'title' => t('Email testing'),
     'page callback' => 'nesi_mstep_proposal_email_test_page',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  
+  // for development
+  $items['apply/pdf-theme'] = array(
+    'title' => t('Email testing'),
+    'page callback' => 'nesi_mstep_proposal_email_theme_page',
     'page arguments' => array(1),
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
@@ -733,6 +743,39 @@ function nesi_mstep_proposal_email_test_page() {
 /**
  *
  */
+function nesi_mstep_proposal_entity_info_alter(&$entity_info) {
+
+  $entity_info['node']['view modes']['proposal_pdf'] = array(
+    'label' => t('Proposal Pdf'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function nesi_mstep_proposal_preprocess_node(&$vars) {
+  dsm('In pre process hook');
+  dpm(entity_get_info());
+  if($vars['view_mode'] == 'proposal_pdf') {
+    $vars['theme_hook_suggestions'][] = 'page-pdf-proposal';
+  }
+}
+
+/**
+ * Page call back for themeing proposal pdf
+ */
+function nesi_mstep_proposal_email_theme_page() {
+
+  $nid = 125;
+  $data = nesi_mstep_proposal_data($nid);
+  return theme('nesi_mstep_proposal_pdf' , array('type' => 'proposal_pdf', 'data' => $data));
+
+}
+
+/**
+ *
+ */
 function nesi_mstep_proposal_pdf_attachement($nid) {
 
   // For testing
@@ -898,7 +941,7 @@ function nesi_mstep_proposal_theme($existing, $type, $theme, $path) {
       'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
     ),
     'nesi_mstep_proposal_pdf' => array(
-      'variables' => $variables, 
+      'variables' => array('data' => NULL), 
       'template' => 'nesi-mstep-proposal-pdf',
       'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
     )
