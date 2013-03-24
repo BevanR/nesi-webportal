@@ -136,7 +136,7 @@ function nesi_ft_researcher_proposals_views_default_views() {
   $handler->display->display_options['fields']['field_pdc_start_date']['label'] = 'Start';
   $handler->display->display_options['fields']['field_pdc_start_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_pdc_start_date']['settings'] = array(
-    'format_type' => 'short',
+    'format_type' => 'user_dashboard',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -149,7 +149,7 @@ function nesi_ft_researcher_proposals_views_default_views() {
   $handler->display->display_options['fields']['field_prc_start_date']['label'] = 'Start';
   $handler->display->display_options['fields']['field_prc_start_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_prc_start_date']['settings'] = array(
-    'format_type' => 'short',
+    'format_type' => 'user_dashboard',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',

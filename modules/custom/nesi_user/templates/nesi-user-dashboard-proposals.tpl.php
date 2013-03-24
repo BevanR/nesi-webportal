@@ -16,6 +16,13 @@ switch ( $proposal_type ) {
     <h1 class="proposal-title"><a href="<?php print $proposal_link; ?>"><strong><?php print $type; ?> - <?php print $proposal_platform; ?><?php if ($proposal_state) : ?> - <span><?php print $proposal_state; ?></span><?php endif; ?></strong><?php print $proposal_title; ?></a></h1>
   </header>
   <div class="proposal-status">
-    <?php print $proposal_operations; ?>
+    <div>
+      <div class="dashboard-label">START</div>
+      <?php print $proposal_start_date; ?>
+    </div>
+    <div>
+      <div class="dashboard-label">CPU HOURS</div>
+      <?php print $proposal_cpu_hours; ?>
+    </div>
   </div>
 </article>

@@ -53,6 +53,14 @@ function nesi_user_dashboard_callback() {
           elseif ($current_proposal->type == 'proposal_research_class') {
             $proposal_platform = $current_proposal->field_prc_proposed_hpc_platform['und'][0]['value'];
           }
+
+          $proposal_start_date = '';
+          if ($current_proposal->type == 'proposal_development_class') {
+            $proposal_start_date = $current_proposal->field_pdc_start_date['und'][0]['value'];
+          }
+          elseif ($current_proposal->type == 'proposal_research_class') {
+            $proposal_start_date = $current_proposal->field_prc_start_date['und'][0]['value'];
+          }
   
           $proposal_variables = array(
             'proposal_title' => $current_proposal->title,
@@ -61,6 +69,8 @@ function nesi_user_dashboard_callback() {
             'proposal_operations' => $proposal_operations,
             'proposal_type' => $current_proposal->type,
             'proposal_platform' => $proposal_platform,
+            'proposal_start_date' => $proposal_start_date,
+            'proposal_cpu_hours' => $current_proposal->field_prc_cpu_core_hours['und'][0]['value'],
           );
   
           $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
