@@ -94,6 +94,7 @@ a.tabledrag-handle .handle {
   margin-bottom: 30px;
 }
 
+/*
 .proposal-status {
   position: absolute;
   right: 0;
@@ -110,6 +111,7 @@ a.tabledrag-handle .handle {
   color: #999999;
   margin-top: 5px;
 }
+*/
 
 .proposal-title {
   font-size: 18px;
@@ -119,6 +121,7 @@ a.tabledrag-handle .handle {
   font-weight: 400;
 }
 
+/*
 .proposal-outline .proposal-title:before {
   font-family: ModernPictogramsNormal;
   font-size: 12px;
@@ -130,6 +133,7 @@ a.tabledrag-handle .handle {
   vertical-align: middle;
   color: #999999;
 }
+*/
 
 /* KATIE'S CHANGES - TO MERGE BACK INTO .LESS FILES */
 /* Global */
@@ -965,11 +969,12 @@ div.radio span.checked {
   border-bottom: 1px solid #eaeded;
   height: 87px;
   margin: 0;
+  padding: 0 20px;
 }
 
 .page-user-dashboard .module h1 {
   background: url(../assets/img/dashboard-proposal-icon.png) left 3px no-repeat;
-  margin: 15px 0 0 20px;
+  margin: 15px 0 0 0;
   padding: 0 0 0 40px;
 }
 
@@ -991,4 +996,21 @@ div.radio span.checked {
 
 .page-user-dashboard .proposal-outline .proposal-title:before {
   display: none;
+}
+
+.page-user-dashboard .proposal-outline header {
+  float: left;
+  width: 70%;
+}
+
+.page-user-dashboard .proposal-status {
+  float: right;
+  margin: 15px 0 0 0;
+  width: 300px;
+}
+
+.page-user-dashboard .proposal-status div {
+  float: left;
+  text-align: center;
+  width: 100px;
 }

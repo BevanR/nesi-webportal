@@ -21,6 +21,10 @@ switch ( $proposal_type ) {
       <?php print $proposal_start_date; ?>
     </div>
     <div>
+      <div class="dashboard-label">END</div>
+      <?php // TODO ?>
+    </div>
+    <div>
       <div class="dashboard-label">CPU HOURS</div>
       <?php print $proposal_cpu_hours; ?>
     </div>
