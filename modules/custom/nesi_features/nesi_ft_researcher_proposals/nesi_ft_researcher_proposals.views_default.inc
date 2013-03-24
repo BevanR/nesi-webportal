@@ -123,6 +123,38 @@ function nesi_ft_researcher_proposals_views_default_views() {
   $handler->display->display_options['fields']['field_pdc_proposed_hpc_platform']['id'] = 'field_pdc_proposed_hpc_platform';
   $handler->display->display_options['fields']['field_pdc_proposed_hpc_platform']['table'] = 'field_data_field_pdc_proposed_hpc_platform';
   $handler->display->display_options['fields']['field_pdc_proposed_hpc_platform']['field'] = 'field_pdc_proposed_hpc_platform';
+  /* Field: Content: CPU core Hours */
+  $handler->display->display_options['fields']['field_prc_cpu_core_hours']['id'] = 'field_prc_cpu_core_hours';
+  $handler->display->display_options['fields']['field_prc_cpu_core_hours']['table'] = 'field_data_field_prc_cpu_core_hours';
+  $handler->display->display_options['fields']['field_prc_cpu_core_hours']['field'] = 'field_prc_cpu_core_hours';
+  $handler->display->display_options['fields']['field_prc_cpu_core_hours']['label'] = 'CPU Hours';
+  $handler->display->display_options['fields']['field_prc_cpu_core_hours']['element_label_colon'] = FALSE;
+  /* Field: Content: Start Date */
+  $handler->display->display_options['fields']['field_pdc_start_date']['id'] = 'field_pdc_start_date';
+  $handler->display->display_options['fields']['field_pdc_start_date']['table'] = 'field_data_field_pdc_start_date';
+  $handler->display->display_options['fields']['field_pdc_start_date']['field'] = 'field_pdc_start_date';
+  $handler->display->display_options['fields']['field_pdc_start_date']['label'] = 'Start';
+  $handler->display->display_options['fields']['field_pdc_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_pdc_start_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Start Date */
+  $handler->display->display_options['fields']['field_prc_start_date']['id'] = 'field_prc_start_date';
+  $handler->display->display_options['fields']['field_prc_start_date']['table'] = 'field_data_field_prc_start_date';
+  $handler->display->display_options['fields']['field_prc_start_date']['field'] = 'field_prc_start_date';
+  $handler->display->display_options['fields']['field_prc_start_date']['label'] = 'Start';
+  $handler->display->display_options['fields']['field_prc_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_prc_start_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   /* Sort criterion: Content: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
