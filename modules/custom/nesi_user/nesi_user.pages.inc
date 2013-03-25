@@ -223,4 +223,3 @@ function nesi_user_tuakiri_tab_callback() {
 
   return $output;
 }
-
