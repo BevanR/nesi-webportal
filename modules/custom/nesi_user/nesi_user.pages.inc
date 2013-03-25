@@ -5,6 +5,17 @@ function nesi_user_dashboard_callback() {
   // Needs to be switched to a themeable template 
 
   $output = '';
+
+  // Submit a proposal button
+  $output .= l('Submit a proposal', 'apply/nojs/create-proposal', array('attributes' => array('id' => 'submit-proposal', 'class' => 'btn')));
+
+  $output .= '
+    <h2>Activity</h2>
+    <div class="module">
+      
+    </div>
+  ';
+
   $view = views_get_view('researcher_my_proposals');
   $view->execute();
   $response = $view->result; 
@@ -86,10 +97,17 @@ function nesi_user_dashboard_callback() {
   }
 
   // Show create options
-  $create_variables = array();
-  $output .= theme('nesi_user_dashboard_create_proposal', $create_variables);
+  //$create_variables = array();
+  //$output .= theme('nesi_user_dashboard_create_proposal', $create_variables);
 
   return $output;
+}
+
+function nesi_user_dashboard_name_callback() {
+  global $user;
+  $uid = user_load($user->uid);
+  $profile = profile2_load_by_user($uid, 'researcher_profile');
+  return 'Dashboard - ' . $profile->field_user_firstname['und'][0]['safe_value'] . ' ' . $profile->field_user_lastname['und'][0]['safe_value'];
 }
 
 function nesi_user_tuakiri_vho_callback() {
