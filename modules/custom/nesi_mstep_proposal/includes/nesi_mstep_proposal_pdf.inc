@@ -9,6 +9,7 @@
  * @file nesi_mstep_proposal_pdf.inc 
  */
 
+
 /**
  * Creating a new node view for proposal data
  */
@@ -37,6 +38,7 @@ function nesi_mstep_proposal_preprocess_page(&$vars) {
 
 }
 
+
 /**
  * Page call back for themeing proposal pdf
  * Presents a view of the proposal that can be 
@@ -49,8 +51,9 @@ function nesi_mstep_proposal_email_theme_page() {
 
   $nid = 125;
   $data = nesi_mstep_proposal_data($nid);
-  return theme('nesi_mstep_proposal_pdf' , array( 'data' => $data));
-
+  $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data));
+  echo $node_html;
+  drupal_exit();
 }
 
 /**
@@ -104,7 +107,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   // nid 120 for testing
   // This is set in local.settings.php
   //
-  include_once 'includes/Wkhtmltopdf.php';
+  include_once 'Wkhtmltopdf.php';
   $wkhtmltopdf_files_path =  '/var/aegir/platforms/nesi-drupal-7.19/sites/nesi-sam.webscope.net.nz/files';
   //$wkhtmltopdf_files_path  = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/files';
   //$wkhtmltopdf_header_html = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/themes/ws_mm/templates/pdf-header.html';
