@@ -944,11 +944,16 @@ div.radio span.checked {
   background: #f1f1f1;
 }
 
+.page-user-dashboard h1.page-header {
+  text-indent: 20px;
+}
+
 .page-user-dashboard h2 {
   color: #4b5b68;
   font-size: 18px;
   font-weight: normal;
   line-height: 36px;
+  text-indent: 20px;
 }
 
 .page-user-dashboard .module {
@@ -1060,7 +1065,7 @@ div.radio span.checked {
 }
 
 /* User profile page */
-.page-user {
+.page-user-profile {
   background: #f1f1f1;
 }
 
@@ -1070,6 +1075,10 @@ div.radio span.checked {
 
 .page-user .span12 {
   position: relative;
+}
+
+.page-user-profile h1.page-header {
+  text-indent: 20px;
 }
 
 .page-user-profile .module-wrapper {
