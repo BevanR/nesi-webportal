@@ -84,6 +84,6 @@
     </div>
   </div>
 
-  <?php print l('Edit profile', 'user/' . $user->uid . '/edit', array('attributes' => array('id' => 'edit-profile', 'class' => 'btn'))); ?>
+  <?php print l('Edit profile', 'user/' . $user->uid . '/edit', array('attributes' => array('id' => 'edit-profile', 'class' => 'btn nesi-btn'))); ?>
 
 </div>

@@ -1147,7 +1147,7 @@ div.radio span.checked {
   line-height: 36px;
 }
 
-#edit-profile {
+.nesi-btn {
   background: #faf9f9;
   border: 1px solid #e7e6e6;
   border-radius: 0;
@@ -1173,6 +1173,57 @@ div.radio span.checked {
   display: none;
 }
 
-.node-type-proposal-research-class .meta-date {
-  display: none;
+.node-type-proposal-research-class header h1 {
+  text-indent: 20px;
+}
+
+.node-type-proposal-research-class .node {
+  max-width: 100%;
+  width: 100%;
+}
+
+.node-proposal-research-class .field-group-fieldset {
+  float: left;
+  width: 50%;
+}
+
+.node-proposal-research-class .field-group-fieldset legend {
+  border: 0;
+  line-height: 36px;
+  margin: 0;
+}
+
+.node-proposal-research-class .field-group-fieldset legend span {
+  color: #4b5b68;
+  display: block;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 36px;
+  margin: 10px 0;
+  text-indent: 20px;
+}
+
+.node-proposal-research-class .field-group-fieldset .fieldset-wrapper {
+  background: #fff;
+  border: 1px solid #e7e6e6;
+  -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+  box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+  color: #606162;
+  margin: 0 20px 34px 0;
+  padding: 20px;
+}
+
+.node-proposal-research-class .field-group-fieldset:nth-child(2n+2) .fieldset-wrapper {
+  margin-right: 0;
+}
+
+.node-proposal-research-class .field-group-fieldset .fieldset-wrapper > .field {
+  margin: 0 0 6px 0;
+}
+
+.node-proposal-research-class .field-group-fieldset .field-label {
+  color: #4b5b68;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 36px;
 }
