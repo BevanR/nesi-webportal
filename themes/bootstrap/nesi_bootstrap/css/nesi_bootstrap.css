@@ -1163,3 +1163,16 @@ div.radio span.checked {
   text-align: center;
   width: 111px;
 }
+
+/* View proposal */
+.node-type-proposal-research-class {
+  background: #f1f1f1;
+}
+
+.node-type-proposal-research-class ul.nav-tabs {
+  display: none;
+}
+
+.node-type-proposal-research-class .meta-date {
+  display: none;
+}
