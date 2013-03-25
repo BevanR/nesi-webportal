@@ -9,33 +9,6 @@
  * @file nesi_mstep_proposal_pdf.inc 
  */
 
-/**
- * Creating a new node view for proposal data
- */
-function nesi_mstep_proposal_entity_info_alter(&$entity_info) {
-
-  $entity_info['node']['view modes']['proposal_pdf'] = array(
-    'label' => t('Proposal Pdf'),
-    'custom settings' => TRUE,
-  );
-}
-
-/**
- * Not working...
- *
- * Implements hook_preprocess_node().
- * http://www.wunderkraut.com/blog/drupal-7-custom-node-view-modes/2010-12-20
- */
-function nesi_mstep_proposal_preprocess_page(&$vars) {
-  //dpm(entity_get_info());
-  //if($vars['view_mode'] == 'proposal_pdf') {
-    //unset($vars['theme_hook_suggestions']);
-    $vars['theme_hook_suggestions'][] = 'page__pdf_proposal';
-    $vars['theme_hook_suggestions'] = array_reverse($vars['theme_hook_suggestions']);
-    
-  //}
-
-}
 
 /**
  * Page call back for themeing proposal pdf
@@ -49,8 +22,9 @@ function nesi_mstep_proposal_email_theme_page() {
 
   $nid = 125;
   $data = nesi_mstep_proposal_data($nid);
-  return theme('nesi_mstep_proposal_pdf' , array( 'data' => $data));
-
+  $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data));
+  echo $node_html;
+  drupal_exit();
 }
 
 /**
@@ -104,7 +78,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   // nid 120 for testing
   // This is set in local.settings.php
   //
-  include_once 'includes/Wkhtmltopdf.php';
+  include_once 'Wkhtmltopdf.php';
   $wkhtmltopdf_files_path =  '/var/aegir/platforms/nesi-drupal-7.19/sites/nesi-sam.webscope.net.nz/files';
   //$wkhtmltopdf_files_path  = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/files';
   //$wkhtmltopdf_header_html = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/themes/ws_mm/templates/pdf-header.html';

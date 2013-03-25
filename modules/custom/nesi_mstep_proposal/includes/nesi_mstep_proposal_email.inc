@@ -12,6 +12,8 @@
  *
  * The menu hook testing item can be commented out
  * when development is finished
+ *
+ * apply/email-testing
  */
 function nesi_mstep_proposal_email_test_page() {
   $to = variable_get('submission_nesi_admin_email', 999); 
@@ -21,7 +23,7 @@ function nesi_mstep_proposal_email_test_page() {
   //nesi_mstep_admin_email($to);
   //nesi_mstep_proposal_pdf_attachement($nid = 121);
   //nesi_mstep_proposal_data();
-  $nid = 121;
+  $nid = 125;
   nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid);
   return "Email testing page";
 }
@@ -36,7 +38,7 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) 
 
   $to = 'sam+nesi@webscope.co.nz';
   // Notify submitter via email
-  include_once 'includes/attachment_email/attachment_email.php';
+  include_once 'attachment_email/attachment_email.php';
 
   // These are set in the website config admin page
   $from    = variable_get('submission_nesi_admin_email', '');
@@ -48,6 +50,8 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) 
   // Needs to be some testing around this
   if(FALSE === $file) {
     drupal_set_message(t('A copy of the Access Policy was not attached to the email, please contact support'), 'warning');
+    watchdog('nesi_mstep_proposal', 'There are no attachments going out on emails. There maybe no Access Policy PDF uploaded to the nesi config admin page' , NULL , WATCHDOG_ERROR);
+
     $attachments[] = array() ;
   } 
   else {
