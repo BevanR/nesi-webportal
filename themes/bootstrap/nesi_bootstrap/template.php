@@ -67,10 +67,22 @@ function nesi_bootstrap_menu_link(array $variables) {
 }
 
 function nesi_bootstrap_preprocess_page(&$vars, $hook) {
+  // Add Typekit
   drupal_add_js('http://use.typekit.net/fmw6ovn.js', 'external');
   drupal_add_js('try{Typekit.load();}catch(e){}',
     array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
   );
+  // Change h1 title on user profile page
+  if ( arg(0) == 'user' && is_numeric(arg(1)) && !arg(3) ) {
+    $vars['title'] = t('Profile');
+  }
+}
+
+function nesi_bootstrap_preprocess_html(&$variables) {
+  // Change h1 title on user profile page
+  if ( arg(0) == 'user' && is_numeric(arg(1)) && !arg(3) ) {
+    $variables['classes_array'][] = 'page-user-profile';
+  }
 }
 
 //function nesi_bootstrap_preprocess_node(&$vars) {

@@ -70,10 +70,10 @@ function nesi_user_dashboard_callback() {
 
           $proposal_start_date = '';
           if ($current_proposal->type == 'proposal_development_class') {
-            $proposal_start_date = $current_proposal->field_pdc_start_date['und'][0]['value'];
+            $proposal_start_date = format_date(strtotime($current_proposal->field_pdc_start_date['und'][0]['value']), 'custom', 'j/m/Y');
           }
           elseif ($current_proposal->type == 'proposal_research_class') {
-            $proposal_start_date = $current_proposal->field_prc_start_date['und'][0]['value'];
+            $proposal_start_date = format_date(strtotime($current_proposal->field_prc_start_date['und'][0]['value']), 'custom', 'j/m/Y');
           }
   
           $proposal_variables = array(
