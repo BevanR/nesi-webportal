@@ -11,41 +11,16 @@
 
 
 /**
- * Creating a new node view for proposal data
- */
-function nesi_mstep_proposal_entity_info_alter(&$entity_info) {
-
-  $entity_info['node']['view modes']['proposal_pdf'] = array(
-    'label' => t('Proposal Pdf'),
-    'custom settings' => TRUE,
-  );
-}
-
-/**
- * Not working...
- *
- * Implements hook_preprocess_node().
- * http://www.wunderkraut.com/blog/drupal-7-custom-node-view-modes/2010-12-20
- */
-function nesi_mstep_proposal_preprocess_page(&$vars) {
-  //dpm(entity_get_info());
-  //if($vars['view_mode'] == 'proposal_pdf') {
-    //unset($vars['theme_hook_suggestions']);
-    //$vars['theme_hook_suggestions'][] = 'page__pdf_proposal';
-    //$vars['theme_hook_suggestions'] = array_reverse($vars['theme_hook_suggestions']);
-    
-  //}
-
-}
-
-
-/**
  * Page call back for themeing proposal pdf
  * Presents a view of the proposal that can be 
  * styled for pdf export.
  *
  * This is can be disabled in the menu hook 
  * when development is complete
+ *
+ * Completely by passes the Drupal theme and directly output the html.
+ * In the future creating a node view will provide and more flexible approach.
+ * http://www.wunderkraut.com/blog/drupal-7-custom-node-view-modes/2010-12-20
  */
 function nesi_mstep_proposal_email_theme_page() {
 
