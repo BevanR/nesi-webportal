@@ -45,7 +45,8 @@ function nesi_user_init(){
 
 function nesi_user_menu() {
   $items['user/dashboard'] = array(
-    'title' => 'Proposals',
+    'title' => 'Dashboard',
+    'title callback' => 'nesi_user_dashboard_name_callback',
     'page callback' => 'nesi_user_dashboard_callback',
     'access callback' => 'user_is_logged_in',
     'type' => MENU_NORMAL_ITEM,

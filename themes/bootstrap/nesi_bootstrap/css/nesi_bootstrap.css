@@ -987,7 +987,6 @@ div.radio span.checked {
 .page-user-dashboard .module h1 a strong {
   display: block;
   font-weight: normal;
-  text-transform: uppercase;
 }
 
 .page-user-dashboard .module h1 a span {
@@ -1013,4 +1012,25 @@ div.radio span.checked {
   float: left;
   text-align: center;
   width: 100px;
+}
+
+.page-user-dashboard .span12 {
+  position: relative;
+}
+
+#submit-proposal {
+  background: url(../assets/img/dashboard-button.png) no-repeat;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 transparent;
+  color: #4b5b68;
+  font-size: 15px;
+  height: 39px;
+  line-height: 37px;
+  padding: 0 39px 0 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 10px;
+  width: 185px;
 }
