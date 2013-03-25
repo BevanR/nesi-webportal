@@ -1,15 +1,30 @@
 <?php
-
+/**
+ * This file is used to output the pdf proposal conent.
+ *
+ * @file nesi-mstep-proposal-pdf.tpl.php
+ */
 $data = $variables['data'];
+//print_r($data);
 ?>
-<h1>Coming from the Proposal Pdf template</h1>
-
 <?php foreach($data as $field => $val) :?>
 
-<h3><?php print $val['field_label']  ?></h3>
-<p><?php print $val['field_val']  ?></p>
+  <?php// print_r($field)  ?>
+  <h3><?php print $val['field_label']  ?></h3>
 
+  <?php
+    if(is_array($val['field_val'])):
+      // Need to know how this is going to be formated
+      // speak with Sam 
+      print_r($val['field_val']);
+    else:
+  ?>
+  <p><?php print $val['field_val']  ?></p>
+  <?php  
+    endif;
+  ?>
+
+  
 <?php
   endforeach;
-
 ?>
