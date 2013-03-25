@@ -8,6 +8,10 @@
     <?php print render($title_suffix); ?>
   </header>
 
+  <div id="proposal-statistics">
+    <?php print $submitted; ?>
+  </div>
+
   <?php
     // Hide comments, tags, and links now so that we can render them later.
     hide($content['comments']);
@@ -17,7 +21,7 @@
   ?>
 
   <footer>
-    <?php print l('Edit proposal', 'node/' . $node->nid . '/edit', array('attributes' => array('id' => 'edit-proposal', 'class' => 'btn nesi-btn'))); ?>
+    <?php print l('Edit proposal', 'node/' . $nid . '/edit', array('attributes' => array('id' => 'edit-proposal', 'class' => 'btn nesi-btn'))); ?>
   </footer>
 
 </article> <!-- /.node -->
