@@ -2,7 +2,7 @@
 
 $data = $variables['data'];
 ?>
-<h1>Coming from the Proposal Pdf template</h1>
+<h1>Coming from the Proposal Pdf template - yeah!!</h1>
 
 <?php foreach($data as $field => $val) :?>
 

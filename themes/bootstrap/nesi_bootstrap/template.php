@@ -72,3 +72,11 @@ function nesi_bootstrap_preprocess_page(&$vars, $hook) {
     array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
   );
 }
+
+//function nesi_bootstrap_preprocess_node(&$vars) {
+  //dsm('In preprocess');
+
+  //dpr('In the mo fo!!');
+
+  //print_r('Commooonnnnn');
+//}
