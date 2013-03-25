@@ -9,6 +9,8 @@
 include_once 'forms/proposal_form_intro.inc';
 include_once 'forms/proposal_form_development.inc';
 include_once 'forms/proposal_form_research.inc';
+include_once 'includes/nesi_mstep_proposal_email.inc';
+include_once 'includes/nesi_mstep_proposal_pdf.inc';
 
 /**
  * Implementation of hook init
@@ -64,6 +66,32 @@ function nesi_mstep_proposal_menu() {
   );
 
   return $items;
+}
+
+/**
+ * hook_theme
+ */
+function nesi_mstep_proposal_theme($existing, $type, $theme, $path) {
+
+  $variables = array();
+
+  return array(
+    'nesi_mstep_proposal_step' => array(
+      'variables' => $variables,
+      'template' => 'nesi-mstep-proposal-step',
+      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
+    ),
+    'nesi_mstep_proposal_wrapper' => array(
+      'variables' => array('content' => NULL),
+      'template' => 'nesi-mstep-proposal-wrapper',
+      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
+    ),
+    'nesi_mstep_proposal_pdf' => array(
+      'variables' => array('data' => NULL), 
+      'template' => 'nesi-mstep-proposal-pdf',
+      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
+    )
+  ); 
 }
 
 /**
@@ -492,152 +520,6 @@ function _nesi_mstep_proposal_save(&$form_state) {
   return $node_id;
 }
 
-/**
- * Sends notification to Nesi admin that a new proposal
- * has been submitted
- */
-function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id, $form_data = NULL) {
-  
-  $to = 'sam+nesi@webscope.co.nz';
-  global $base_url;
-  // Notify submitter via email
-  include_once 'includes/attachment_email/attachment_email.php';
-  $proposal_url = $base_url . '/node/' . $node_id;
-  // These are set in the website config admin page
-  $from    = 'support@nesi.org.nz';
-  $subject = 'A new proposal has been submitted'; 
-  $message = 'View the submission <a href="' . $proposal_url . '">here</a>.'."\n\n\n"; 
-
-  $message .= _nesi_mstep_proposal_generate_email_body($form_data); 
-
-  // Generate attachments
-  $attachments[] = _nesi_mstep_proposal_generate_submission_file($form_data); 
-  $attachments[] = nesi_mstep_proposal_pdf_attachement($node_id); 
-
-   //Send Email!
-  $email = new AttachmentEmail($to, $from, $subject, $message, $attachments);
-  
-  // Watchdog any errors
-  if(!$email->send()) {
-    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email - " '.$to.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
-  } 
-  else {
-    watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
-  } 
-}
-
-/**
- * Include attachment file to be sent to administrator
- */
-function _nesi_mstep_proposal_generate_submission_file($form_data) {
-
-  $attachment_filename = 'submission.txt';
-
-  // File content header
-  $header = '|| Field || Value || Comments ||'."\n"; 
-
-  // Proposal
-  $output = '';
-  $output .= $header;
-
-  if ($form_data->data['proposal-type'] == 'proposal_development_class') {
-    $map = _nesi_mstep_proposal_pdc_map();
-  }
-  else {
-    $map = _nesi_mstep_proposal_prc_map();
-  }
-
-  $output .= _nesi_mstep_proposal_map_proposal_data($map['p1'], $form_data->data['p1']);  
-
-  if ($form_data->data['proposal-type'] == 'research_proposal_class') {
-    // Get additional response information   
-    $output .= _nesi_mstep_proposal_map_proposal_data($map['p2'], $form_data->data['p2']);  
-    $output .= _nesi_mstep_proposal_map_proposal_data($map['p3'], $form_data->data['p3']);  
-  }
-
-  return array(
-    'name' => $attachment_filename,
-    'data' => $output,
-    'isStringAttachment' => TRUE,
-  );
-}
-
-/**
- * Maps proposal data into separator format
- */
-function _nesi_mstep_proposal_map_proposal_data($map = array(), $data = NULL) {
-  
-  $output = '';
-  if (!empty($data)) {
-    foreach($data as $key=>$val) {
-      $title = $map[$key];
-
-      // Clean line breaks 
-      $order   = array("\r\n", "\n", "\r");
-      $replace = ' ';
-      
-      if (!empty($title)) {
-
-        $clean_title = str_replace($order, $replace, $title);
-        $clean_val = str_replace($order, $replace, $val);
-
-        $output .= '| '.$clean_title;
-        $output .= ' | '.$clean_val;
-        $output .= ' | |'."\n";
-      }
-    }
-  }
-
-  return $output;
-}
-
-/**
- * Include proposal data in body of admin email
- */
-function _nesi_mstep_proposal_generate_email_body($form_data) {
-
-  $output = '';
-
-  $proposal_type = $form_data->data['proposal-type'];
-
-  $title = '';
-  if ($proposal_type == 'proposal_development_class') {
-    $title = $form_data->data['p1']['pdc-title'];
-    $output = '***Notification of Proposal Development submission to NeSI***'."\n\n\n";
-  }
-  
-  if ($proposal_type == 'research_proposal_class') {
-    $title = $form_data->data['p1']['prc-title'];
-    $output = '***Notification of Research Proposal submission to NeSI***'."\n\n\n";
-  }
- 
-  $output .= 'Title: '.$title."\n\n\n";
-
-  $output .= "\n\n\n\n Thank you\n\n";
- 
-  return $output;
-}
-
-function _nesi_mstep_proposal_pdc_map() {
-  $pdc_map['p1'] = array(
-    'pdc-title' => 'Proposal Title', 
-    'pdc-start-date' => 'Estimated project start date', 
-    'pdc-description' => 'Project Description',
-    'pdc-pi-name' => 'Principal\'s name',
-    'pdc-pi-email' => 'Principal\'s email',
-    'pdc-pi-phone' => 'Principal\'s phone',
-    'pdc-team-access' => 'Project team members requiring access to the NeSI systems',
-    'pdc-team-experience' => 'Project team\'s HPC experience',
-    'pdc-platform' => 'Desired HPC Platform',
-    'pdc-software' => 'Software requirements',
-    'pdc-storage' => 'Storage requirements',
-    'pdc-expert-support' => 'Expert support',
-    'pdc-further-information' => 'Further Information',
-  );
-  
-  return $pdc_map;
-}
-
 function _nesi_mstep_proposal_prc_map() {
 
   $prc_map['p1'] = array(
@@ -681,213 +563,25 @@ function _nesi_mstep_proposal_prc_map() {
   return $prc_map;
 }
 
-/**
- * Using third party lib to send emails with attachments
- */
-function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) {
-
-  $to = 'sam+nesi@webscope.co.nz';
-  // Notify submitter via email
-  include_once 'includes/attachment_email/attachment_email.php';
-
-  // These are set in the website config admin page
-  $from    = variable_get('submission_nesi_admin_email', '');
-  $subject = variable_get('submission_subject', '');
-  $message = variable_get('submission_message', '');
-  $fid     = variable_get('submission_attached_pdf', 999); 
-
-  $file = file_load($fid);
-  // Needs to be some testing around this
-  if(FALSE === $file) {
-    drupal_set_message(t('A copy of the Access Policy was not attached to the email, please contact support'), 'warning');
-    $attachments[] = array() ;
-  } 
-  else {
-    $attachment = array(
-      'name' => $file->filename, 
-      'path' => drupal_realpath($file->uri), 
-      'type' => file_get_mimetype($file->uri), 
-    );
-    $attachments[] = $attachment;
-    $attachments[] = nesi_mstep_proposal_pdf_attachement($nid);
-  }
- 
-  //Send Email!
-  $email = new AttachmentEmail($to, $from, $subject, $message, $attachments);
- 
-  // Watchdog any errors
-  if(!$email->send()) {
-    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email." '.$to.' .Debug message ' . $email->errorMsg , NULL , WATCHDOG_ERROR, $link = NULL);
-  } 
-  else {
-    watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
-  }
-}
-
-/**
- * Testing page to call email function when building
- */
-function nesi_mstep_proposal_email_test_page() {
-  $to = variable_get('submission_nesi_admin_email', 999); 
-  //nesi_mstep_proposal_email();
-  $the_time = date('l G:i:s A' , time());
-  dsm("The time : $the_time");
-  //nesi_mstep_admin_email($to);
-  //nesi_mstep_proposal_pdf_attachement($nid = 121);
-  //nesi_mstep_proposal_data();
-  $nid = 121;
-  nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid);
-  return "Email testing page";
-}
-
-/**
- *
- */
-function nesi_mstep_proposal_entity_info_alter(&$entity_info) {
-
-  $entity_info['node']['view modes']['proposal_pdf'] = array(
-    'label' => t('Proposal Pdf'),
-    'custom settings' => TRUE,
+function _nesi_mstep_proposal_pdc_map() {
+  $pdc_map['p1'] = array(
+    'pdc-title' => 'Proposal Title', 
+    'pdc-start-date' => 'Estimated project start date', 
+    'pdc-description' => 'Project Description',
+    'pdc-pi-name' => 'Principal\'s name',
+    'pdc-pi-email' => 'Principal\'s email',
+    'pdc-pi-phone' => 'Principal\'s phone',
+    'pdc-team-access' => 'Project team members requiring access to the NeSI systems',
+    'pdc-team-experience' => 'Project team\'s HPC experience',
+    'pdc-platform' => 'Desired HPC Platform',
+    'pdc-software' => 'Software requirements',
+    'pdc-storage' => 'Storage requirements',
+    'pdc-expert-support' => 'Expert support',
+    'pdc-further-information' => 'Further Information',
   );
-}
-
-/**
- * Implements hook_preprocess_node().
- */
-function nesi_mstep_proposal_preprocess_node(&$vars) {
-  dsm('In pre process hook');
-  dpm(entity_get_info());
-  if($vars['view_mode'] == 'proposal_pdf') {
-    $vars['theme_hook_suggestions'][] = 'page-pdf-proposal';
-  }
-}
-
-/**
- * Page call back for themeing proposal pdf
- */
-function nesi_mstep_proposal_email_theme_page() {
-
-  $nid = 125;
-  $data = nesi_mstep_proposal_data($nid);
-  return theme('nesi_mstep_proposal_pdf' , array('type' => 'proposal_pdf', 'data' => $data));
-
-}
-
-/**
- *
- */
-function nesi_mstep_proposal_pdf_attachement($nid) {
-
-  // For testing
-  //$nid = 121;
-  $file = nesi_mstep_generate_proposal_pdf($nid);
-  $attachment = array(
-    'name' => $file->filename, 
-    'path' => drupal_realpath($file->uri), 
-    'type' => file_get_mimetype($file->uri), 
-  );
-  return $attachment; 
-}
-
-/**
- * Returns that data for a proposal to be 
- * displayed in a pdf. Makes the enitity 
- * module a dependancy
- *
- * This is an alternative to using entity'
- * left here as note.
- * http://drupal.org/project/field_extract
- */
-function nesi_mstep_proposal_data($nid) {
-
-  $node = node_load($nid);
-  $content_type = $node->type;
   
-  // Get information about all the fields attached to the content type
-  $fields = field_info_instances("node",$content_type);
-  // Sort those fields so that are returned correctly weighted
-  usort($fields,"nesi_mstep_sort_fields");
-  // Use entity api
-  $node_wrapper = entity_metadata_wrapper('node', $node);
-  
-  $data = array();
-  $field_val    = $node_wrapper->title->value();
-  $data['title'] = array('field_label' => 'Title', 'field_val' => $field_val);
-  // Loop through fields and attach data
-  foreach($fields as $field=>$value){
-    $field_name   = $value['field_name'];
-    $field_label  = $value['label'];
-    $field_val    = $node_wrapper->{$field_name}->value();
-    $data[$field_name] = array('field_label' => $field_label, 'field_val' => $field_val);
-  }
-  return $data;
+  return $pdc_map;
 }
-
-function nesi_mstep_sort_fields($a,$b){
-    return $a['widget']['weight']-$b['widget']['weight'];
-}
-
-/**
- * For this to work there can't be any htaccess on the site
- * at the moment.
- * wkhtmltopdf can be used with htaccess but we aren't set up 
- * for that at the moment
- */
-function nesi_mstep_generate_proposal_pdf($nid) { 
-  
-  global $conf, $base_url;
-  // nid 120 for testing
-  // This is set in local.settings.php
-  //
-  include_once 'includes/Wkhtmltopdf.php';
-  $wkhtmltopdf_files_path =  '/var/aegir/platforms/nesi-drupal-7.19/sites/nesi-sam.webscope.net.nz/files';
-  //$wkhtmltopdf_files_path  = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/files';
-  //$wkhtmltopdf_header_html = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/themes/ws_mm/templates/pdf-header.html';
-  //$wkhtmltopdf_footer_html = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/themes/ws_mm/templates/pdf-footer.html';
-  $wkhtmltopdf_margins = array('top' => '26', 'bottom' => '15', 'left' => null, 'right' => null);
-//  $file_name = $report_title . '-' . $uid;
-
- // $node  = node_load($app->nid);
-  //$print = array();
-  //$print['language']       = 'en';
-  //$print['head']           = '';
-  //$print['base_href']      = ''; 
-  //$print['title']          = $report_title; 
-  //$print['scripts']        = drupal_get_js();
-  //$print['sendtoprinter']  = ''; 
-  //$print['robots_meta']    = ''; 
-  //$print['favicon']        = ''; 
-  //$print['css']            = drupal_get_css();
-  //$print['node']           = $node; 
-  //$print['nid']            = $node->nid; 
-  //$print['from_email']     = TRUE;
-  //$print['footer_scripts'] = ''; 
-
-
-  // Need to pass in $nid here
-  $data['data'] = nesi_mstep_proposal_data($nid);
-  $html = theme('nesi_mstep_proposal_pdf' , $data);
-  dsm($html);
-  try {
-    $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path));
-    $wkhtmltopdf->setMargins($wkhtmltopdf_margins);
-    //$wkhtmltopdf->setHeaderHtml($wkhtmltopdf_header_html);
-    //$wkhtmltopdf->setFooterHtml($wkhtmltopdf_footer_html);
-    //$wkhtmltopdf->setTitle($report_title);
-    $wkhtmltopdf->setHtml($html);
-    $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
-  } catch (Exception $e) {
-    echo $e->getMessage();
-    drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
-  }
-  $secs = date('s' , time());
-  $file_name = 'proposal-' . $secs;
-  $file = file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);
-  dsm($file);
-  return $file;
-}
-
-
 
 function nesi_mstep_proposal_wizard_cancel(&$form_state) {
   nesi_mstep_proposal_cache_clear('nesi_mstep');
@@ -925,26 +619,4 @@ function nesi_mstep_proposal_cache_clear($name) {
   ctools_object_cache_clear('nesi_mstep_proposal', $name);
 }
 
-function nesi_mstep_proposal_theme($existing, $type, $theme, $path) {
-
-  $variables = array();
-
-  return array(
-    'nesi_mstep_proposal_step' => array(
-      'variables' => $variables,
-      'template' => 'nesi-mstep-proposal-step',
-      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
-    ),
-    'nesi_mstep_proposal_wrapper' => array(
-      'variables' => array('content' => NULL),
-      'template' => 'nesi-mstep-proposal-wrapper',
-      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
-    ),
-    'nesi_mstep_proposal_pdf' => array(
-      'variables' => array('data' => NULL), 
-      'template' => 'nesi-mstep-proposal-pdf',
-      'path' => drupal_get_path('module', 'nesi_mstep_proposal') .'/templates'
-    )
-  ); 
-}
 
