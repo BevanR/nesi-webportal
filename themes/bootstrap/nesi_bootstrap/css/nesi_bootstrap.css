@@ -1034,3 +1034,27 @@ div.radio span.checked {
   top: 10px;
   width: 185px;
 }
+
+#dashboard-activity > div {
+  font-size: 14px;
+  height: 33px;
+  line-height: 33px;
+  margin: 0 0 14px 0;
+  padding: 0 0 0 50px;
+}
+
+#dashboard-activity > div strong {
+  font-size: 25px;
+}
+
+#dashboard-projects {
+  background: url(../assets/img/dashboard-projects-icon.png) left center no-repeat;
+}
+
+#dashboard-active-members {
+  background: url(../assets/img/dashboard-active-members-icon.png) left center no-repeat;
+}
+
+#dashboard-cpu-hours {
+  background: url(../assets/img/dashboard-cpu-hours-icon.png) left center no-repeat;
+}

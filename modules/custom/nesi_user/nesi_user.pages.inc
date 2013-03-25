@@ -9,10 +9,13 @@ function nesi_user_dashboard_callback() {
   // Submit a proposal button
   $output .= l('Submit a proposal', 'apply/nojs/create-proposal', array('attributes' => array('id' => 'submit-proposal', 'class' => 'btn')));
 
+  // Activity section
   $output .= '
     <h2>Activity</h2>
-    <div class="module">
-      
+    <div class="module" id="dashboard-activity">
+      <div id="dashboard-projects"><strong>X</strong> Projects submitted</div>
+      <div id="dashboard-active-members"><strong>XX</strong> active members from your institution</div>
+      <div id="dashboard-cpu-hours"><strong>X,XXX</strong> CPU hours used</div>
     </div>
   ';
 
