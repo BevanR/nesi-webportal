@@ -26,12 +26,17 @@ function nesi_mstep_proposal_entity_info_alter(&$entity_info) {
  * Implements hook_preprocess_node().
  * http://www.wunderkraut.com/blog/drupal-7-custom-node-view-modes/2010-12-20
  */
-function nesi_mstep_proposal_preprocess_node(&$vars) {
-  //dsm('In pre process hook');
+function nesi_mstep_proposal_preprocess_page(&$vars) {
+  dsm('In pre process hook');
   //dpm(entity_get_info());
-  if($vars['view_mode'] == 'proposal_pdf') {
-    $vars['theme_hook_suggestions'][] = 'page-pdf-proposal';
-  }
+  //if($vars['view_mode'] == 'proposal_pdf') {
+    //unset($vars['theme_hook_suggestions']);
+    $vars['theme_hook_suggestions'][] = 'page__pdf_proposal';
+    $vars['theme_hook_suggestions'] = array_reverse($vars['theme_hook_suggestions']);
+    
+  //}
+
+  dsm($vars);
 }
 
 /**
@@ -46,7 +51,7 @@ function nesi_mstep_proposal_email_theme_page() {
 
   $nid = 125;
   $data = nesi_mstep_proposal_data($nid);
-  return theme('nesi_mstep_proposal_pdf' , array('type' => 'proposal_pdf', 'data' => $data));
+  return theme('nesi_mstep_proposal_pdf' , array( 'data' => $data));
 
 }
 
