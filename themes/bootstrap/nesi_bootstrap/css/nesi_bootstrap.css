@@ -1058,3 +1058,98 @@ div.radio span.checked {
 #dashboard-cpu-hours {
   background: url(../assets/img/dashboard-cpu-hours-icon.png) left center no-repeat;
 }
+
+/* User profile page */
+.page-user {
+  background: #f1f1f1;
+}
+
+.page-user ul.nav-tabs {
+  display: none;
+}
+
+.page-user .span12 {
+  position: relative;
+}
+
+.page-user .module-wrapper {
+  float: left;
+  margin: 0 2% 46px 0;
+  width: 32%;
+}
+
+.page-user .module-wrapper-last {
+  margin: 0;
+}
+
+.page-user .module-wrapper h2 {
+  color: #4b5b68;
+  font-size: 18px;
+  font-weight: normal;
+  text-indent: 20px;
+}
+
+.page-user .module {
+  background: #fff;
+  border: 1px solid #e7e6e6;
+  -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+  box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+  color: #606162;
+  height: 295px;
+}
+
+.module-account {
+  text-align: center;
+}
+
+.module-account .account-photo {
+  margin: 0 0 30px 0;
+}
+
+.module-account .account-name {
+  color: #4b5b68;
+  font-size: 17px;
+  line-height: 36px;
+}
+
+.module-account .account-history * {
+  display: inline;
+  margin: 0;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.module-researcher > div,
+.module-contact > div {
+  margin: 0 0 6px 0;
+}
+
+.module-researcher .researcher-logo {
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.module-researcher strong,
+.module-contact strong {
+  color: #4b5b68;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 36px;
+}
+
+#edit-profile {
+  background: #faf9f9;
+  border: 1px solid #e7e6e6;
+  border-radius: 0;
+  clear: both;
+  color: #4b5b68;
+  display: block;
+  font-size: 15px;
+  height: 37px;
+  line-height: 36px;
+  margin: 46px auto;
+  padding: 0;
+  text-align: center;
+  width: 111px;
+}
