@@ -22,7 +22,7 @@ switch ( $proposal_type ) {
     </div>
     <div>
       <div class="dashboard-label">END</div>
-      <?php // TODO ?>
+      TODO
     </div>
     <div>
       <div class="dashboard-label">CPU HOURS</div>
