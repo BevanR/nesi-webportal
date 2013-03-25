@@ -27,7 +27,6 @@ function nesi_mstep_proposal_entity_info_alter(&$entity_info) {
  * http://www.wunderkraut.com/blog/drupal-7-custom-node-view-modes/2010-12-20
  */
 function nesi_mstep_proposal_preprocess_page(&$vars) {
-  dsm('In pre process hook');
   //dpm(entity_get_info());
   //if($vars['view_mode'] == 'proposal_pdf') {
     //unset($vars['theme_hook_suggestions']);
@@ -36,7 +35,6 @@ function nesi_mstep_proposal_preprocess_page(&$vars) {
     
   //}
 
-  dsm($vars);
 }
 
 /**
