@@ -30,8 +30,8 @@ function nesi_mstep_proposal_preprocess_page(&$vars) {
   //dpm(entity_get_info());
   //if($vars['view_mode'] == 'proposal_pdf') {
     //unset($vars['theme_hook_suggestions']);
-    $vars['theme_hook_suggestions'][] = 'page__pdf_proposal';
-    $vars['theme_hook_suggestions'] = array_reverse($vars['theme_hook_suggestions']);
+    //$vars['theme_hook_suggestions'][] = 'page__pdf_proposal';
+    //$vars['theme_hook_suggestions'] = array_reverse($vars['theme_hook_suggestions']);
     
   //}
 

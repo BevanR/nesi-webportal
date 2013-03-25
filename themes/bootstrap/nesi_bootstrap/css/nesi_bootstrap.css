@@ -1064,7 +1064,7 @@ div.radio span.checked {
   background: #f1f1f1;
 }
 
-.page-user ul.nav-tabs {
+.page-user-profile ul.nav-tabs {
   display: none;
 }
 
@@ -1072,24 +1072,24 @@ div.radio span.checked {
   position: relative;
 }
 
-.page-user .module-wrapper {
+.page-user-profile .module-wrapper {
   float: left;
   margin: 0 2% 46px 0;
   width: 32%;
 }
 
-.page-user .module-wrapper-last {
+.page-user-profile .module-wrapper-last {
   margin: 0;
 }
 
-.page-user .module-wrapper h2 {
+.page-user-profile .module-wrapper h2 {
   color: #4b5b68;
   font-size: 18px;
   font-weight: normal;
   text-indent: 20px;
 }
 
-.page-user .module {
+.page-user-profile .module {
   background: #fff;
   border: 1px solid #e7e6e6;
   -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
@@ -1142,6 +1142,7 @@ div.radio span.checked {
   background: #faf9f9;
   border: 1px solid #e7e6e6;
   border-radius: 0;
+  box-shadow: 0 0 0 transparent;
   clear: both;
   color: #4b5b68;
   display: block;

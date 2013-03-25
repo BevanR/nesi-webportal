@@ -73,8 +73,15 @@ function nesi_bootstrap_preprocess_page(&$vars, $hook) {
     array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
   );
   // Change h1 title on user profile page
-  if ( arg(0) == 'user' ) {
+  if ( arg(0) == 'user' && is_numeric(arg(1)) && !arg(3) ) {
     $vars['title'] = t('Profile');
+  }
+}
+
+function nesi_bootstrap_preprocess_html(&$variables) {
+  // Change h1 title on user profile page
+  if ( arg(0) == 'user' && is_numeric(arg(1)) && !arg(3) ) {
+    $variables['classes_array'][] = 'page-user-profile';
   }
 }
 
