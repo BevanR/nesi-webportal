@@ -92,7 +92,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   $css = drupal_get_css();
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
-  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css);
+  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css));
   //dsm($html);
   try {
     $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path));
