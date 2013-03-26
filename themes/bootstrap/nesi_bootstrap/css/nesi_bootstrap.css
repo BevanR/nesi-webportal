@@ -1023,7 +1023,8 @@ div.radio span.checked {
   position: relative;
 }
 
-#submit-proposal {
+#submit-proposal,
+#back-to-dashboard {
   background: url(../assets/img/dashboard-button.png) no-repeat;
   border: 0;
   border-radius: 0;
@@ -1038,6 +1039,13 @@ div.radio span.checked {
   text-align: center;
   top: 10px;
   width: 185px;
+}
+
+#back-to-dashboard {
+  background: #FAF9F9;
+  border: 1px solid #E7E6E6;
+  margin: 0;
+  padding: 0;
 }
 
 #dashboard-activity > div {
@@ -1169,12 +1177,20 @@ div.radio span.checked {
   background: #f1f1f1;
 }
 
+.node-type-proposal-research-class .span12 {
+  position: relative;
+}
+
 .node-type-proposal-research-class ul.nav-tabs {
   display: none;
 }
 
 .node-type-proposal-research-class header h1 {
   text-indent: 20px;
+}
+
+.node-type-proposal-research-class header h1 span {
+  color: #f00;
 }
 
 .node-type-proposal-research-class .node {
@@ -1203,7 +1219,8 @@ div.radio span.checked {
   text-indent: 20px;
 }
 
-.node-proposal-research-class .field-group-fieldset .fieldset-wrapper {
+.node-proposal-research-class .field-group-fieldset .fieldset-wrapper,
+#proposal-statistics {
   background: #fff;
   border: 1px solid #e7e6e6;
   -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
@@ -1222,6 +1239,28 @@ div.radio span.checked {
 }
 
 .node-proposal-research-class .field-group-fieldset .field-label {
+  color: #4b5b68;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 36px;
+}
+
+#proposal-statistics {
+  margin: 40px 0 34px;
+}
+
+#proposal-statistics > div {
+  display: inline-block;
+  width: 24.75%;
+}
+
+#proposal-statistics h2 {
+  color: #4b5b68;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+#proposal-statistics h3 {
   color: #4b5b68;
   font-size: 17px;
   font-weight: normal;

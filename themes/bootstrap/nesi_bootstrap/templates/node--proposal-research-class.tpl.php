@@ -2,14 +2,33 @@
 
   <header>
     <?php print render($title_prefix); ?>
-    <?php //if (!$page && $title): ?>
-      <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
-    <?php //endif; ?>
+      <h1<?php print $title_attributes; ?>><?php print $title; ?> - Proposal #<?php print $node->nid; ?> <span>- <?php print nesi_bootstrap_proposal_status($node->nid); ?></span></h1>
     <?php print render($title_suffix); ?>
+    <?php print l('Back to Dashboard', 'user/dashboard', array('attributes' => array('id' => 'back-to-dashboard', 'class' => 'btn nesi-btn'))); ?>
   </header>
 
   <div id="proposal-statistics">
-    <?php print $submitted; ?>
+
+    <div>
+      <h2>Proposal statistics</h2>
+      <h3>Research Proposal</h3>
+    </div>
+
+    <div>
+      <h3>Submitted on</h3>
+      <?php print format_date($node->created, 'custom', 'jS F Y'); ?>
+    </div>
+
+    <div>
+      <h3>Submitted by</h3>
+      <?php print $node->name; ?>
+    </div>
+
+    <div>
+      <h3>Assigned to</h3>
+      TODO
+    </div>
+
   </div>
 
   <?php
