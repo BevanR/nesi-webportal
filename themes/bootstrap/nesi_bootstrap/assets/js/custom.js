@@ -71,7 +71,7 @@
   		});
   	}
 
-    $('.node-proposal-research-class .fieldset-wrapper').equalHeights();
+    $('.node-proposal-research-class .fieldset-wrapper, .node-proposal-development-class .fieldset-wrapper').equalHeights();
 
 	});
 
