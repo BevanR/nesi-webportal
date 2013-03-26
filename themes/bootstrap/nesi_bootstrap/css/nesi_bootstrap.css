@@ -941,7 +941,7 @@ div.radio span.checked {
 
 /* Dashboard */
 .page-user-dashboard {
-  background: #f1f1f1;
+  /* background: #f1f1f1; */
 }
 
 .page-user-dashboard h1.page-header {
@@ -957,24 +957,35 @@ div.radio span.checked {
 }
 
 .page-user-dashboard .module {
+/*
   background: #fff;
   -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
   box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+*/
   margin: 0 0 32px 0;
+  padding: 0;
 }
 
 .page-user-dashboard .module-inner {
-  border: 1px solid #eaeded;
   border-bottom: 0;
+}
+
+.proposal-outline-wrapper {
+  clear: both;
+  float: left;
+  height: 88px;
+  width: 100%;
 }
 
 .page-user-dashboard .proposal-outline {
   background: url(../assets/img/dashboard-proposal-bg.png) repeat-x;
   border: 0;
-  border-bottom: 1px solid #eaeded;
+  border: 1px solid #eaeded;
+  float: left;
   height: 87px;
   margin: 0;
   padding: 0 20px;
+  width: 1079px;
 }
 
 .page-user-dashboard .module h1 {
@@ -985,13 +996,12 @@ div.radio span.checked {
 
 .page-user-dashboard .module h1 a {
   color: #4b5b68;
+  display: block;
   font-size: 14px;
-  line-height: 24px;
+  line-height: 21px;
 }
 
 .page-user-dashboard .module h1 a strong {
-  display: block;
-  font-weight: normal;
 }
 
 .page-user-dashboard .module h1 a span {
@@ -1007,13 +1017,16 @@ div.radio span.checked {
   width: 70%;
 }
 
-.page-user-dashboard .proposal-status {
+.page-user-dashboard .proposal-meta {
+  color: #4a4848;
   float: right;
+  line-height: 21px;
   margin: 15px 0 0 0;
   width: 300px;
 }
 
-.page-user-dashboard .proposal-status div {
+.page-user-dashboard .proposal-meta div {
+  color: #4B5B68;
   float: left;
   text-align: center;
   width: 100px;
@@ -1070,6 +1083,15 @@ div.radio span.checked {
 
 #dashboard-cpu-hours {
   background: url(../assets/img/dashboard-cpu-hours-icon.png) left center no-repeat;
+}
+
+.proposal-operations {
+  border-top: 1px solid #eaeded;
+  border-right: 1px solid #eaeded;
+  border-bottom: 1px solid #eaeded;
+  float: left;
+  overflow: hidden;
+  width: 46px;
 }
 
 /* User profile page */

@@ -7,9 +7,10 @@ function nesi_user_dashboard_callback() {
   $output = '';
 
   // Submit a proposal button
-  $output .= l('Submit a proposal', 'apply/nojs/create-proposal', array('attributes' => array('id' => 'submit-proposal', 'class' => 'btn')));
+  //$output .= l('Submit a proposal', 'apply/nojs/create-proposal', array('attributes' => array('id' => 'submit-proposal', 'class' => 'btn')));
 
   // Activity section
+/*
   $output .= '
     <h2>Activity</h2>
     <div class="module" id="dashboard-activity">
@@ -18,6 +19,7 @@ function nesi_user_dashboard_callback() {
       <div id="dashboard-cpu-hours"><strong>X,XXX</strong> CPU hours used</div>
     </div>
   ';
+*/
 
   $view = views_get_view('researcher_my_proposals');
   $view->execute();
@@ -51,13 +53,20 @@ function nesi_user_dashboard_callback() {
           }
   
           $proposal_operations = '';
-          $access = node_access('update', $current_proposal);
-          if ($access) {
-            $proposal_operations = '<a href="'.$base_url.'/node/'.$current_proposal->nid.'/edit" class="btn">Edit</a>';
+          $access_edit = node_access('update', $current_proposal);
+          $access_delete = node_access('delete', $current_proposal);
+          $proposal_operations = l('View', 'node/' . $current_proposal->nid, array('attributes' => array('class' => 'btn')));
+          if ($access_edit) {
+            $proposal_operations .= l('Edit', 'node/' . $current_proposal->nid . '/edit', array('attributes' => array('class' => 'btn')));
+            /*
             if (!$is_flagged) {
               $temp_link = flag_create_link('p_submit_proposal', $current_proposal->nid);
               $proposal_operations .= $temp_link;
             }
+            */
+          }
+          if ($access_delete) {
+            $proposal_operations .= l('Delete', 'node/' . $current_proposal->nid . '/delete', array('attributes' => array('class' => 'btn')));
           }
   
           $proposal_platform = '';
@@ -110,7 +119,7 @@ function nesi_user_dashboard_name_callback() {
   global $user;
   $uid = user_load($user->uid);
   $profile = profile2_load_by_user($uid, 'researcher_profile');
-  return 'Dashboard - ' . $profile->field_user_firstname['und'][0]['safe_value'] . ' ' . $profile->field_user_lastname['und'][0]['safe_value'];
+  return $profile->field_user_firstname['und'][0]['safe_value'] . ' ' . $profile->field_user_lastname['und'][0]['safe_value'] . ' - Projects/ Proposals';
 }
 
 function nesi_user_tuakiri_vho_callback() {
