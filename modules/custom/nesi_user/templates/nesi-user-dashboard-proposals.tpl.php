@@ -11,22 +11,27 @@ switch ( $proposal_type ) {
     break;
 }
 ?>
-<article class="proposal-outline">
-  <header>
-    <h1 class="proposal-title"><a href="<?php print $proposal_link; ?>"><strong><?php print strtoupper($type); ?> - <?php print strtoupper($proposal_platform); ?><?php if ($proposal_state) : ?> - <span><?php print $proposal_state; ?></span><?php endif; ?></strong><?php print $proposal_title; ?></a></h1>
-  </header>
-  <div class="proposal-status">
-    <div>
-      <div class="dashboard-label">START</div>
-      <?php print $proposal_start_date; ?>
+<div class="proposal-outline-wrapper">
+  <article class="proposal-outline">
+    <header>
+      <h1 class="proposal-title"><a href="<?php print $proposal_link; ?>"><strong><?php print $type; ?> - <?php print strtoupper($proposal_platform); ?></strong><?php if ($proposal_state) : ?> - <span><?php print $proposal_state; ?></span><?php endif; ?><br /><?php print $proposal_title; ?></a></h1>
+    </header>
+    <div class="proposal-meta">
+      <div>
+        <div class="dashboard-label">START</div>
+        <?php print $proposal_start_date; ?>
+      </div>
+      <div>
+        <div class="dashboard-label">END</div>
+        TODO
+      </div>
+      <div>
+        <div class="dashboard-label">CPU HOURS</div>
+        <?php print $proposal_cpu_hours; ?>
+      </div>
     </div>
-    <div>
-      <div class="dashboard-label">END</div>
-      TODO
-    </div>
-    <div>
-      <div class="dashboard-label">CPU HOURS</div>
-      <?php print $proposal_cpu_hours; ?>
-    </div>
+  </article>
+  <div class="proposal-operations">
+    <?php print $proposal_operations; ?>
   </div>
-</article>
+</div>
