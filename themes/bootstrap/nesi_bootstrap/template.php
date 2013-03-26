@@ -92,3 +92,20 @@ function nesi_bootstrap_preprocess_html(&$variables) {
 
   //print_r('Commooonnnnn');
 //}
+
+/* Return the proposal status */
+function nesi_bootstrap_proposal_status($nid) {
+  $current_proposal = node_load($nid);
+  $proposal_state = 'Draft';
+  $is_flagged = FALSE;
+  // Get status for display
+  if (($current_proposal->type == 'proposal_development_class') || ($current_proposal->type == 'proposal_research_class')) {
+    $flag = flag_get_flag('p_submit_proposal');
+
+    if ($flag->is_flagged($current_proposal->nid)) {
+      $proposal_state = 'Pending';
+      $is_flagged = TRUE;
+    }
+  }
+  return $proposal_state;
+}

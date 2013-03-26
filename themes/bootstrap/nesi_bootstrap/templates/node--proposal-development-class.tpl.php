@@ -11,7 +11,7 @@
 
     <div>
       <h2>Proposal statistics</h2>
-      <h3>Research Proposal</h3>
+      <h3>Technical Development Proposal</h3>
     </div>
 
     <div>
