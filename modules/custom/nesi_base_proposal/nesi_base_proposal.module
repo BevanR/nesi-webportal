@@ -7,6 +7,119 @@
 include_once 'nesi_base_proposal.features.inc';
 
 
+/**
+ * Implements hook_permission().
+ */
+function nesi_base_proposal_permission() {
+  return array(
+    'nesi download proposal submission file wiki' => array(
+      'title' => t('Allow download of Proposal submission file (txt/format)'),
+      'description' => t('Provides a link for user to download .txt file containing proposal submission in wiki format.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function nesi_base_proposal_menu() {
+  $items['base-proposal/%node/download/txt'] = array(
+    'page callback' => 'nesi_base_proposal_generate_txt_file_download',
+    'page arguments' => array(1),
+    'access arguments' => array('nesi download proposal submission file wiki'),
+    'type' => MENU_CALLBACK,
+  );
+ 
+  return $items;
+}
+
+/**
+ * Show proposal submission file in txt format.
+ */
+function nesi_base_proposal_generate_txt_file_download($node_item) {
+  
+  if ($node_item) {
+    $proposal_data = json_decode($node_item->bp_container[LANGUAGE_NONE][0]['value']);
+    $proposal_type = $proposal_data->{'proposal-type'};
+
+    $content = _nesi_base_proposal_generate_submission_file($proposal_data);
+   
+    // Trim any extra whitespace and filter out empty strings.
+    //$content = array_map('trim', $content);
+    //$content = array_filter($content);
+   
+    drupal_add_http_header('Pragma', 'public');
+    drupal_add_http_header('Expires', '0');
+    drupal_add_http_header('Cache-Control', 'must-revalidate, post-check=0, pre-check=0');
+    drupal_add_http_header('Content-type', 'text/plain');
+    drupal_add_http_header('Content-Disposition', 'attachment; filename=submission-'.$node_item->nid.'.txt;');
+    drupal_add_http_header('Content-Transfer-Encoding', 'binary');
+    //echo implode("\n", $content);
+    echo $content.'| Submitted on: | '.date("D, j M Y \a\\t G:i", $node_item->created). ' | |';
+    drupal_exit();
+
+  }
+}
+
+/**
+ * Include attachment file to be sent to administrator
+ */
+function _nesi_base_proposal_generate_submission_file($proposal_data) {
+
+  // File content header
+  $header = '|| Field || Value || Comments ||'."\n"; 
+
+  // Proposal
+  $output = '';
+  $output .= $header;
+
+  if ($proposal_data->{'proposal-type'} == 'proposal_development_class') {
+    $map = _nesi_base_proposal_pdc_map();
+  }
+  else {
+    $map = _nesi_base_proposal_prc_map();
+  }
+
+  $output .= _nesi_base_proposal_map_proposal_data_txt_format($map['p1'], $proposal_data->p1);  
+
+  if ($proposal_data->{'proposal-type'} == 'research_proposal_class') {
+    // Get additional response information   
+    $output .= _nesi_base_proposal_map_proposal_data_txt_format($map['p2'], $proposal_data->p1);  
+    $output .= _nesi_base_proposal_map_proposal_data_txt_format($map['p3'], $proposal_data->p1);  
+  }
+
+  return $output;
+}
+
+/**
+ * Maps proposal data into separator format
+ */
+function _nesi_base_proposal_map_proposal_data_txt_format($map = array(), $data = NULL) {
+  
+  $output = '';
+  if (!empty($data)) {
+    foreach($data as $key=>$val) {
+      $title = $map[$key];
+
+      // Clean line breaks 
+      $order   = array("\r\n", "\n", "\r");
+      $replace = ' ';
+      
+      if (!empty($title)) {
+
+        $clean_title = str_replace($order, $replace, $title);
+        $clean_val = str_replace($order, $replace, $val);
+
+        $output .= '| '.$clean_title;
+        $output .= ' | '.$clean_val;
+        $output .= ' | |'."\n";
+      }
+    }
+  }
+
+  return $output;
+}
+
 function nesi_base_proposal_form_base_proposal_node_form_alter(&$form, &$form_state, $form_id) {
   //  do not require a title
   //$form['title']['#default_value'] = 'Proposal';
@@ -23,78 +136,31 @@ function nesi_base_proposal_node_view($node, $view_mode, $langcode) {
       if ($user->uid > 0) {      
         $proposal_data = json_decode($node->bp_container[LANGUAGE_NONE][0]['value']);
         $proposal_type = $proposal_data->{'proposal-type'};
-        $pdc_map = array(
-          'pdc-title' => 'Proposal Title', 
-          'pdc-start-date' => 'Estimated project start date', 
-          'pdc-description' => 'Project Description',
-          'pdc-pi-name' => 'Principal\'s name',
-          'pdc-pi-email' => 'Principal\'s email',
-          'pdc-pi-phone' => 'Principal\'s phone',
-          'pdc-team-access' => 'Project team members requiring access to the NeSI systems',
-          'pdc-team-experience' => 'Project team\'s HPC experience',
-          'pdc-platform' => 'Desired HPC Platform',
-          'pdc-software' => 'Software requirements',
-          'pdc-storage' => 'Storage requirements',
-          'pdc-expert-support' => 'Expert support',
-          'pdc-further-information' => 'Further Information',
-        );
-
-        $prc_map = array(
-          'prc-title' => 'Proposal Title', 
-          'prc-start-date' => 'Estimated project start date', 
-          'prc-scientific-goals' => 'Scientific Goals',
-          'prc-hpc-benefits' => 'Benefits from HPC',
-          'prc-deliverables' => 'Project deliverables',
-          'prc-grant-provider' => 'Name of peer-reviewed research grant provider',
-          'prc-grant-title' => 'Title of research grant',
-          'prc-grant-start-date' => 'Start date of the grant',
-          'prc-grant-duration' => 'Duration of the grant',
-          'prc-funding-amount' => 'The amount of funding approved for HPC',
-          'prc-pi-name' => 'Principal\'s name',
-          'prc-pi-email' => 'Principal\'s email',
-          'prc-pi-phone' => 'Principal\'s phone number',
-          'prc-team-access' => 'Project team members requiring access to the NeSI systems',
-          'prc-team-experience' => 'Project team\'s HPC experience',
-        );
-
-        $prc_map_p2 = array(
-          'prc-num-simulations' => 'Estimated number of runs/simulations.', 
-          'prc-num-cpus' => 'Estimated average number of CPUs per run.', 
-          'prc-wchours-per-run' => 'Estimated average length of each run (in wall-clock hours).', 
-          'prc-usage-additional' => 'Please provide any additional information on usage requirements.', 
-          'prc-cpu-hours-intel' => 'CPU core hours required using the Intel cluster', 
-          'prc-cpu-hours-power6' => 'CPU core hours required using P575/POWER6', 
-          'prc-cpu-hours-power7' => 'CPU core hours required using P755/POWER7', 
-          'prc-cpu-hours-bluegene' => 'CPU core hours required using BlueGene/P',
-          'prc-storage-requirements' => 'Storage requirements',
-          'prc-software' => 'Software requirements',
-          'prc-data-transfer' => 'Data transfer',
-        );
-
-        $prc_map_p3 = array(
-          'prc-expert-support' => 'Expert support',
-          'prc-expert-support-notes' => 'Explanatory notes for "Expert support" section',
-          'prc-expert-further-information' => 'Further information',
-        );
 
         $proposal_type_label = '';
         if ($proposal_type == 'proposal_development_class') {
-          $map = $pdc_map;
+          $map = _nesi_base_proposal_pdc_map();
           $proposal_type_label = 'Proposal Development';
         }
         else {
-          $map = $prc_map;
+          $map = _nesi_base_proposal_prc_map();
           $proposal_type_label = 'Research Proposal';
         }
 
         $output = '';
-        $output = _nesi_base_proposal_map_proposal_data($map, $proposal_data->p1);  
+        $output = _nesi_base_proposal_map_proposal_data($map['p1'], $proposal_data->p1);  
 
         if ($proposal_type == 'research_proposal_class') {
           // Get additional response information   
-          $output .= _nesi_base_proposal_map_proposal_data($prc_map_p2, $proposal_data->p2);  
-          $output .= _nesi_base_proposal_map_proposal_data($prc_map_p3, $proposal_data->p3);  
+          $output .= _nesi_base_proposal_map_proposal_data($map['p2'], $proposal_data->p2);  
+          $output .= _nesi_base_proposal_map_proposal_data($map['p3'], $proposal_data->p3);  
         }
+
+        // Download wiki format 
+        global $base_url;
+        $node->content['proposal-download-wiki'] = array(
+          '#markup' => '<div class="pull-right"> <a href="'.$base_url.'/base-proposal/'.$node->nid.'/download/txt">Wiki/TXT markup</a></div>',
+        );
 
         $node->content['proposal-data'] = array(
           '#markup' => '<h1>Content: '.$proposal_type_label.'</h1>'.$output,
@@ -126,5 +192,68 @@ function _nesi_base_proposal_map_proposal_data($map = array(), $data = NULL) {
   }
 
   return $output;
+}
+
+function _nesi_base_proposal_pdc_map() {
+  $pdc_map['p1'] = array(
+    'pdc-title' => 'Proposal Title', 
+    'pdc-start-date' => 'Estimated project start date', 
+    'pdc-description' => 'Project Description',
+    'pdc-pi-name' => 'Principal\'s name',
+    'pdc-pi-email' => 'Principal\'s email',
+    'pdc-pi-phone' => 'Principal\'s phone',
+    'pdc-team-access' => 'Project team members requiring access to the NeSI systems',
+    'pdc-team-experience' => 'Project team\'s HPC experience',
+    'pdc-platform' => 'Desired HPC Platform',
+    'pdc-software' => 'Software requirements',
+    'pdc-storage' => 'Storage requirements',
+    'pdc-expert-support' => 'Expert support',
+    'pdc-further-information' => 'Further Information',
+  );
+  
+  return $pdc_map;
+}
+
+function _nesi_base_proposal_prc_map() {
+
+  $prc_map['p1'] = array(
+    'prc-title' => 'Proposal Title', 
+    'prc-start-date' => 'Estimated project start date', 
+    'prc-scientific-goals' => 'Scientific Goals',
+    'prc-hpc-benefits' => 'Benefits from HPC',
+    'prc-deliverables' => 'Project deliverables',
+    'prc-grant-provider' => 'Name of peer-reviewed research grant provider',
+    'prc-grant-title' => 'Title of research grant',
+    'prc-grant-start-date' => 'Start date of the grant',
+    'prc-grant-duration' => 'Duration of the grant',
+    'prc-funding-amount' => 'The amount of funding approved for HPC',
+    'prc-pi-name' => 'Principal\'s name',
+    'prc-pi-email' => 'Principal\'s email',
+    'prc-pi-phone' => 'Principal\'s phone number',
+    'prc-team-access' => 'Project team members requiring access to the NeSI systems',
+    'prc-team-experience' => 'Project team\'s HPC experience',
+  );
+
+  $prc_map['p2'] = array(
+    'prc-num-simulations' => 'Estimated number of runs/simulations.', 
+    'prc-num-cpus' => 'Estimated average number of CPUs per run.', 
+    'prc-wchours-per-run' => 'Estimated average length of each run (in wall-clock hours).', 
+    'prc-usage-additional' => 'Please provide any additional information on usage requirements.', 
+    'prc-cpu-hours-intel' => 'CPU core hours required using the Intel cluster', 
+    'prc-cpu-hours-power6' => 'CPU core hours required using P575/POWER6', 
+    'prc-cpu-hours-power7' => 'CPU core hours required using P755/POWER7', 
+    'prc-cpu-hours-bluegene' => 'CPU core hours required using BlueGene/P',
+    'prc-storage-requirements' => 'Storage requirements',
+    'prc-software' => 'Software requirements',
+    'prc-data-transfer' => 'Data transfer',
+  );
+
+  $prc_map['p3'] = array(
+    'prc-expert-support' => 'Expert support',
+    'prc-expert-support-notes' => 'Explanatory notes for "Expert support" section',
+    'prc-further-information' => 'Further information',
+  );
+  
+  return $prc_map;
 }
 
