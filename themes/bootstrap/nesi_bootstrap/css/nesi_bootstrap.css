@@ -1025,9 +1025,11 @@ div.radio span.checked {
   width: 300px;
 }
 
-.page-user-dashboard .proposal-meta div {
+.page-user-dashboard .proposal-meta > div {
+  background: url(../assets/img/dashboard-delimiter.png) left center no-repeat;
   color: #4B5B68;
   float: left;
+  height: 47px;
   text-align: center;
   width: 100px;
 }
@@ -1091,6 +1093,16 @@ div.radio span.checked {
   border-bottom: 1px solid #eaeded;
   float: left;
   overflow: hidden;
+  width: 46px;
+}
+
+.proposal-operations a {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 transparent;
+  height: 28px;
+  padding: 0;
   width: 46px;
 }
 
