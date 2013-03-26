@@ -23,10 +23,12 @@
  * http://www.wunderkraut.com/blog/drupal-7-custom-node-view-modes/2010-12-20
  */
 function nesi_mstep_proposal_email_theme_page() {
-
-  $nid = 125;
+  
+  global $base_url;
+  $css = drupal_get_css(); 
+  $nid = 126;
   $data = nesi_mstep_proposal_data($nid);
-  $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data));
+  $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css));
   echo $node_html;
   drupal_exit();
 }
@@ -78,38 +80,19 @@ function nesi_mstep_sort_fields($a,$b){
  */
 function nesi_mstep_generate_proposal_pdf($nid) { 
   
-  global $conf, $base_url;
-  // nid 120 for testing
-  // This is set in local.settings.php
-  //
   include_once 'Wkhtmltopdf.php';
-  $wkhtmltopdf_files_path =  '/var/aegir/platforms/nesi-drupal-7.19/sites/nesi-sam.webscope.net.nz/files';
-  //$wkhtmltopdf_files_path  = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/files';
-  //$wkhtmltopdf_header_html = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/themes/ws_mm/templates/pdf-header.html';
-  //$wkhtmltopdf_footer_html = $conf['absolute_path_to_site'] . '/sites/' . $conf['sites_folder']. '/themes/ws_mm/templates/pdf-footer.html';
+
+  $absolute_path =  DRUPAL_ROOT . conf_path() . '/files';
+  $wkhtmltopdf_files_path =  $absolute_path . '/files';
+  //$wkhtmltopdf_header_html = $absolute_path . '/themes/ws_mm/templates/pdf-header.html';
+  //$wkhtmltopdf_footer_html = $absolute_path . '/themes/ws_mm/templates/pdf-footer.html';
   $wkhtmltopdf_margins = array('top' => '26', 'bottom' => '15', 'left' => null, 'right' => null);
 //  $file_name = $report_title . '-' . $uid;
 
- // $node  = node_load($app->nid);
-  //$print = array();
-  //$print['language']       = 'en';
-  //$print['head']           = '';
-  //$print['base_href']      = ''; 
-  //$print['title']          = $report_title; 
-  //$print['scripts']        = drupal_get_js();
-  //$print['sendtoprinter']  = ''; 
-  //$print['robots_meta']    = ''; 
-  //$print['favicon']        = ''; 
-  //$print['css']            = drupal_get_css();
-  //$print['node']           = $node; 
-  //$print['nid']            = $node->nid; 
-  //$print['from_email']     = TRUE;
-  //$print['footer_scripts'] = ''; 
-
-
+  $css = drupal_get_css();
   // Need to pass in $nid here
-  $data['data'] = nesi_mstep_proposal_data($nid);
-  $html = theme('nesi_mstep_proposal_pdf' , $data);
+  $data = nesi_mstep_proposal_data($nid);
+  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css);
   //dsm($html);
   try {
     $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path));

@@ -4,8 +4,9 @@
  *
  * @file nesi-mstep-proposal-pdf.tpl.php
  */
+print $variables['css'];
+
 $data = $variables['data'];
-//print_r($data);
 $development_class_map = array(
   'software_installation' => 'Software Installation',
   'software_porting'      => 'Software Porting',
