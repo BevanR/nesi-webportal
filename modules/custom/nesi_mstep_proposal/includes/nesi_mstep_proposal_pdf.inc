@@ -33,6 +33,12 @@ function nesi_mstep_proposal_email_theme_page() {
   drupal_exit();
 }
 
+function nesi_mstep_proposal_pdf_generate_page() {
+  $nid = 126;
+  nesi_mstep_generate_proposal_pdf($nid);
+  return 'In pdf generate page';
+}
+
 /**
  * Returns that data for a proposal to be 
  * displayed in a pdf. Makes the enitity 
@@ -82,34 +88,34 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   
   include_once 'Wkhtmltopdf.php';
 
-  $absolute_path =  DRUPAL_ROOT . conf_path() . '/files';
+  $absolute_path =  DRUPAL_ROOT . '/' . conf_path();
   $wkhtmltopdf_files_path =  $absolute_path . '/files';
   //$wkhtmltopdf_header_html = $absolute_path . '/themes/ws_mm/templates/pdf-header.html';
   //$wkhtmltopdf_footer_html = $absolute_path . '/themes/ws_mm/templates/pdf-footer.html';
   $wkhtmltopdf_margins = array('top' => '26', 'bottom' => '15', 'left' => null, 'right' => null);
-//  $file_name = $report_title . '-' . $uid;
 
+  $node = node_load($nid);
+  $file_name = $node->type . '-' . $nid;
+
+  $title_map = array('proposal_development_class' => 'Development Proposal' , 'proposal_research_class' => 'Research Proposal' );
+  $report_title = $title_map[$node->type];
   $css = drupal_get_css();
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
-  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css);
-  //dsm($html);
+  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css));
   try {
     $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path));
     $wkhtmltopdf->setMargins($wkhtmltopdf_margins);
     //$wkhtmltopdf->setHeaderHtml($wkhtmltopdf_header_html);
     //$wkhtmltopdf->setFooterHtml($wkhtmltopdf_footer_html);
-    //$wkhtmltopdf->setTitle($report_title);
+    $wkhtmltopdf->setTitle($report_title);
     $wkhtmltopdf->setHtml($html);
     $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
   } catch (Exception $e) {
     echo $e->getMessage();
     drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
   }
-  $secs = date('s' , time());
-  $file_name = 'proposal-' . $secs;
   $file = file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);
-  //dsm($file);
   return $file;
 }
 
