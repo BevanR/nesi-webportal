@@ -109,3 +109,19 @@ function nesi_bootstrap_proposal_status($nid) {
   }
   return $proposal_state;
 }
+
+/* Add templates for editing proposal nodes */
+function nesi_bootstrap_theme() {
+  return array(
+    'proposal_research_class_node_form' => array(
+        'arguments' => array('form' => NULL),
+        'template' => 'templates/node--proposal-research-class--edit',
+        'render element' => 'form',
+    ),
+    'proposal_development_class_node_form' => array(
+        'arguments' => array('form' => NULL),
+        'template' => 'templates/node--proposal-development-class--edit',
+        'render element' => 'form',
+    ),
+  );
+}
