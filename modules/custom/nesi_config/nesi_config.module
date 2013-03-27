@@ -5,23 +5,110 @@
  * 
  * @todo Provide config interface in admin.
  */
+/**
+ * * Implements hook_menu().
+ * */
+
+
+
+//include_once 'forms/nesi_config.faq_form.inc';
+/**
+* Implements hook_menu().
+*/
+function nesi_config_menu() {
+  $items['nesi-config'] = array(
+    'title' => 'Nesi Admin',
+    'page callback' => 'nesi_config_overview',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_NORMAL_ITEM,
+    );
+  $items['nesi-config/submissions'] = array(
+    'title' => 'Submissions',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    );
+  $items['nesi-config/site'] = array(
+    'title' => 'Configure system',
+    'page callback' => 'nesi_config_add',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+  $items['nesi-config/site/submission-email'] = array(
+    'title' => 'Submission email',
+    'page callback' => 'nesi_config_list',
+    'page arguments' => array(2), // Pass 'fruity'.
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    );
+  $items['nesi-config/site/faqs'] = array(
+    'title' => 'FAQs',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_config_front_stats'), // Pass 'candy'.
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'nesi_config.admin.inc',
+    );
+  return $items;
+}
+
+function nesi_config_overview() {
+$output = t('This will be a list of submitted proposals');
+// ... more code here
+return $output;
+}
+function nesi_config_add() {
+return t('Testing.');
+}
+function nesi_config_list($type) {
+return t('List @type flavors', array('@type' => $type));
+}
 
 /**
  * Implements hook_menu().
  */
-function nesi_config_menu() {
+function nesi_config_menu_removed() {
 
-  #Menu disabled until admin override options provided.
-  $items['admin/config/nesi/website'] = array(
+  // List of submitted proposals
+  // Submission email
+  // Front page HPC stats
+  // FAQS
+  $items['admin/config/nesi'] = array(
     'title' => 'NeSI Website Configuration',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('nesi_config_admin_settings'),
+    //'page callback' => 'drupal_get_form',
+    'page callback' => 'nesi_config_page1',
+    //'page arguments' => array('nesi_config_admin_settings'),
     'access arguments' => array('nesi website config'),
     'type' => MENU_NORMAL_ITEM,
-    'file' => 'nesi_config.admin.inc'
+    //'file' => 'nesi_config.admin.inc'
+  );
+  $items['admin/config/list'] = array(
+    'title' => 'List flavors',
+    'access arguments' => TRUE,
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+  );
+
+  $items['admin/config/list/faqs'] = array(
+    'title' => 'NeSI FAQS',
+    'page callback' => 'nesi_config_page2',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    //'file' => 'nesi_config.admin.inc'
   );
 
   return $items;
+}
+
+function nesi_config_page1() {
+  return "Page 1";
+}
+function nesi_config_page2() {
+  return "Page 2";
+}
+function nesi_config_page3() {
+  return "Page 3";
 }
 
 function nesi_config_permission() {
