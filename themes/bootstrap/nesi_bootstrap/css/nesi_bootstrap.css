@@ -1347,3 +1347,65 @@ div.radio span.checked {
 .node-type-proposal-research-class.page-node-edit .node {
   max-width: 100%;
 }
+
+#proposal-research-class-node-form fieldset,
+#proposal-development-class-node-form fieldset {
+  border-bottom: 1px solid #aaa;
+  padding: 30px 100px;
+}
+
+#proposal-research-class-node-form fieldset fieldset,
+#proposal-development-class-node-form fieldset fieldset {
+  border: 0;
+  padding: 0;
+}
+
+#proposal-research-class-node-form fieldset legend,
+#proposal-development-class-node-form fieldset legend {
+  border: 0;
+  color: #4b5b68;
+  float: left;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+#proposal-research-class-node-form fieldset > .fieldset-wrapper > .form-item,
+#proposal-development-class-node-form fieldset > .fieldset-wrapper > .form-item,
+#proposal-research-class-node-form fieldset > .fieldset-wrapper > .form-wrapper,
+#proposal-development-class-node-form fieldset > .fieldset-wrapper > .form-wrapper {
+  clear: both;
+  float: left;
+  width: 100%;
+}
+
+#proposal-research-class-node-form fieldset label,
+#proposal-development-class-node-form fieldset label,
+#proposal-research-class-node-form fieldset fieldset legend,
+#proposal-development-class-node-form fieldset fieldset legend {
+  color: #606162;
+  float: left;
+  font-size: 14px;
+  /* line-height: 39px; */
+  width: 240px;
+}
+
+#proposal-research-class-node-form fieldset .controls,
+#proposal-development-class-node-form fieldset .controls,
+#proposal-research-class-node-form fieldset > .fieldset-wrapper > .form-wrapper .fieldset-wrapper,
+#proposal-development-class-node-form fieldset > .fieldset-wrapper > .form-wrapper .fieldset-wrapper {
+  float: left;
+  overflow: hidden;
+  width: 428px;
+}
+
+#proposal-research-class-node-form fieldset .grippie,
+#proposal-development-class-node-form fieldset .grippie {
+  display: none;
+}
+
+#proposal-research-class-node-form fieldset .help-block,
+#proposal-development-class-node-form fieldset .help-block {
+  color: #838485;
+  font-size: 12px;
+  line-height: 15px;
+}
