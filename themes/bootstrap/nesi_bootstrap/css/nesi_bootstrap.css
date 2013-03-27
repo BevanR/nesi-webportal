@@ -1319,9 +1319,13 @@ div.radio span.checked {
   width: 24.75%;
 }
 
+#proposal-statistics * {
+  line-height: 30px;
+  margin: 0;
+}
+
 #proposal-statistics h2 {
   color: #4b5b68;
-  font-size: 24px;
   font-weight: normal;
 }
 
@@ -1329,5 +1333,8 @@ div.radio span.checked {
   color: #4b5b68;
   font-size: 17px;
   font-weight: normal;
-  line-height: 36px;
+}
+
+.node-type-proposal-research-class.page-node-edit .node {
+  max-width: 100%;
 }

@@ -16,17 +16,17 @@
 
     <div>
       <h3>Submitted on</h3>
-      <?php print format_date($node->created, 'custom', 'jS F Y'); ?>
+      <p><?php print format_date($node->created, 'custom', 'jS F Y'); ?></p>
     </div>
 
     <div>
       <h3>Submitted by</h3>
-      <?php print $node->name; ?>
+      <p><?php print $node->name; ?></p>
     </div>
 
     <div>
       <h3>Assigned to</h3>
-      TODO
+      <p>TODO</p>
     </div>
 
   </div>
