@@ -55,9 +55,9 @@ function nesi_user_dashboard_callback() {
           $proposal_operations = '';
           $access_edit = node_access('update', $current_proposal);
           $access_delete = node_access('delete', $current_proposal);
-          $proposal_operations = l('View', 'node/' . $current_proposal->nid, array('attributes' => array('class' => 'btn')));
+          $proposal_operations = l('View', 'node/' . $current_proposal->nid, array('attributes' => array('class' => 'btn btn-dash-view')));
           if ($access_edit) {
-            $proposal_operations .= l('Edit', 'node/' . $current_proposal->nid . '/edit', array('attributes' => array('class' => 'btn')));
+            $proposal_operations .= l('Edit', 'node/' . $current_proposal->nid . '/edit', array('attributes' => array('class' => 'btn btn-dash-edit')));
             /*
             if (!$is_flagged) {
               $temp_link = flag_create_link('p_submit_proposal', $current_proposal->nid);
@@ -66,7 +66,7 @@ function nesi_user_dashboard_callback() {
             */
           }
           if ($access_delete) {
-            $proposal_operations .= l('Delete', 'node/' . $current_proposal->nid . '/delete', array('attributes' => array('class' => 'btn')));
+            $proposal_operations .= l('Delete', 'node/' . $current_proposal->nid . '/delete', array('attributes' => array('class' => 'btn btn-dash-delete')));
           }
   
           $proposal_platform = '';

@@ -1091,9 +1091,14 @@ div.radio span.checked {
   border-top: 1px solid #eaeded;
   border-right: 1px solid #eaeded;
   border-bottom: 1px solid #eaeded;
+  display: none;
   float: left;
   overflow: hidden;
   width: 46px;
+}
+
+.proposal-outline-wrapper:hover .proposal-operations {
+  display: block;
 }
 
 .proposal-operations a {
@@ -1101,9 +1106,22 @@ div.radio span.checked {
   border: 0;
   border-radius: 0;
   box-shadow: 0 0 0 transparent;
-  height: 28px;
+  height: 29px;
   padding: 0;
+  text-indent: -9999em;
   width: 46px;
+}
+
+.proposal-operations a.btn-dash-view {
+  background: url(../assets/img/dashboard-icon-view.png) center no-repeat;
+}
+
+.proposal-operations a.btn-dash-edit {
+  background: url(../assets/img/dashboard-icon-edit.png) center no-repeat;
+}
+
+.proposal-operations a.btn-dash-delete {
+  background: url(../assets/img/dashboard-icon-delete.png) center no-repeat;
 }
 
 /* User profile page */
