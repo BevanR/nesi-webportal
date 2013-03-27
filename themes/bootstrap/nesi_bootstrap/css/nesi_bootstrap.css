@@ -1038,6 +1038,14 @@ div.radio span.checked {
   position: relative;
 }
 
+.page-nesi-config-site-faqs .cke_contents { 
+  height: 100px !important;
+}
+
+.page-nesi-config-site-faqs input { 
+  width: auto; 
+}
+
 #submit-proposal,
 #back-to-dashboard {
   background: url(../assets/img/dashboard-button.png) no-repeat;
@@ -1333,6 +1341,7 @@ div.radio span.checked {
   color: #4b5b68;
   font-size: 17px;
   font-weight: normal;
+  line-height: 36px;
 }
 
 .node-type-proposal-research-class.page-node-edit .node {

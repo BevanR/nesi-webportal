@@ -1,4 +1,4 @@
-<?php print_r($form['#node']); ?>
+<?php //print_r($form['#node']); ?>
 <?php
 $nid = $form['#node']->nid;
 $created = $form['#node']->created;
