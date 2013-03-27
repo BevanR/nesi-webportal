@@ -27,7 +27,7 @@ function nesi_config_menu() {
     );
   $items['nesi-config/site'] = array(
     'title' => 'Configure system',
-    'page callback' => 'nesi_config_add',
+    'page callback' => 'nesi_config_site',
     'access arguments' => array('nesi website config'),
     'type' => MENU_LOCAL_TASK,
     'weight' => 1,
@@ -58,6 +58,14 @@ function nesi_config_menu() {
     );
 
   return $items;
+}
+
+function nesi_config_overview() {
+  return 'Going to be a list of submissions here';
+}
+
+function nesi_config_site() {
+  return 'Going to be a list of submissions here';
 }
 
 function nesi_config_permission() {
