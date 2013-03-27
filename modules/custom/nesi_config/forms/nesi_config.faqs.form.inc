@@ -12,7 +12,7 @@
  * and "remove-one" buttons increment and decrement $form_state['num_faqs']
  * and then force a rebuild of the form.
  */
-function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
+function nesi_config_faqs($form, &$form_state, $no_js_use = FALSE) {
  
    $form['faqs_fieldset'] = array(
     '#type' => 'fieldset',
@@ -56,11 +56,11 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
   $form['faqs_fieldset']['add_faq'] = array(
     '#type' => 'submit',
     '#value' => t('Add one more'),
-    '#submit' => array('nesi_config_add_more_add_one'),
+    '#submit' => array('nesi_config_faqs_add_one'),
     // See the examples in nesi_config.module for more details on the
     // properties of #ajax.
     '#ajax' => array(
-      'callback' => 'nesi_config_add_more_callback',
+      'callback' => 'nesi_config_faqs_callback',
       'wrapper' => 'faqs-fieldset-wrapper',
     ),
   );
@@ -68,14 +68,14 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
     $form['faqs_fieldset']['remove_name'] = array(
       '#type' => 'submit',
       '#value' => t('Remove one'),
-      '#submit' => array('nesi_config_add_more_remove_one'),
+      '#submit' => array('nesi_config_faqs_remove_one'),
       '#ajax' => array(
-        'callback' => 'nesi_config_add_more_callback',
+        'callback' => 'nesi_config_faqs_callback',
         'wrapper' => 'faqs-fieldset-wrapper',
       ),
     );
   }
-  
+  $form['submit'] = array('#type' => 'submit', '#value' => t('Save')); 
   return $form;
 }
 
@@ -84,7 +84,7 @@ function nesi_config_add_more($form, &$form_state, $no_js_use = FALSE) {
  *
  * Selects and returns the fieldset with the names in it.
  */
-function nesi_config_add_more_callback($form, &$form_state) {
+function nesi_config_faqs_callback($form, &$form_state) {
   return $form['faqs_fieldset'];
 }
 
@@ -93,7 +93,7 @@ function nesi_config_add_more_callback($form, &$form_state) {
  *
  * Increments the max counter and causes a rebuild.
  */
-function nesi_config_add_more_add_one($form, &$form_state) {
+function nesi_config_faqs_add_one($form, &$form_state) {
 
   $num = $form_state['num_faqs']-1;
   $q_val   = $form_state['values']['faqs_fieldset']['qs_fieldset_' . $num]['question'][0];
@@ -110,7 +110,7 @@ function nesi_config_add_more_add_one($form, &$form_state) {
  *
  * Decrements the max counter and causes a form rebuild.
  */
-function nesi_config_add_more_remove_one($form, &$form_state) {
+function nesi_config_faqs_remove_one($form, &$form_state) {
   $num = $form_state['num_faqs'];
   nesi_config_faq_del($num);
   if ($form_state['num_faqs'] > 1) {
@@ -143,10 +143,8 @@ function nesi_config_faq($num) {
  *
  * Reports what values were finally set.
  */
-function nesi_config_add_more_submit($form, &$form_state) {
-  $output = t('These people are coming to the picnic: @names',
-    array('@names' => implode(', ', $form_state['values']['faqs_fieldset']['name'])) );
-  drupal_set_message($output);
+function nesi_config_faqs_submit($form, &$form_state) {
+  nesi_config_final_save($form_state);
 }
 
 /**
