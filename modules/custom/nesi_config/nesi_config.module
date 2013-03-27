@@ -60,18 +60,6 @@ function nesi_config_menu() {
   return $items;
 }
 
-function nesi_config_overview() {
-$output = t('This will be a list of submitted proposals');
-// ... more code here
-return $output;
-}
-function nesi_config_add() {
-return t('Testing.');
-}
-function nesi_config_list($type) {
-return t('List @type flavors', array('@type' => $type));
-}
-
 function nesi_config_permission() {
 
   return array(

@@ -38,7 +38,8 @@ function nesi_config_faqs($form, &$form_state, $no_js_use = FALSE) {
     $form['faqs_fieldset']['qs_fieldset_' . $i]['question'][] = array(
       '#type' => 'textfield',
       '#title' => t('Question'),
-       '#maxlength' => 600,
+      '#size' => 100,
+      '#maxlength' => 200,
       '#default_value' => $question, 
     );
     //http://drupal.org/update/modules/6/7#text_format
