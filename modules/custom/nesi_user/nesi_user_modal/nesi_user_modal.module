@@ -1,0 +1,113 @@
+<?php
+
+/**
+* Implements hook_block_info().
+*/
+function nesi_user_modal_block_info() {
+  $blocks = array();
+  $blocks['nesi-user-modal-login'] = array(
+    'info' => t('NeSI User Login/Register Menu'),
+    'status' => TRUE,
+    'region' => 'navigation',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function nesi_user_modal_block_view($delta = '') {
+  switch ($delta) {
+    case 'nesi-user-modal-login':
+      return user_is_logged_in() ? NULL : _nesi_user_modal_login_block_view();
+  }
+  return NULL;
+}
+
+/**
+* Implements hook_form_alter().
+*/
+function nesi_user_modal_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'user_login':
+    case 'user_register_form':
+      // Add ajax wrapper to form.
+      $html_id = str_replace('_', '-', $form_id);
+      $form['#prefix'] = '<div id="ajax-' . $html_id . '-wrapper">';
+      $form['#suffix'] = '</div>';
+      // Add ajax functionality to form submit button.
+      $form['actions']['submit']['#ajax'] = array(
+        'callback' => '_nesi_user_modal_ajax_callback',
+        'wrapper' => 'ajax-' . $html_id . '-wrapper',
+        'event' => 'click',
+      );
+      break;
+  }
+}
+
+function _nesi_user_modal_ajax_callback($form, $form_state) {
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+
+  if (form_get_errors()) {
+    return $form; // Reload form if it didn't pass validation.
+  }
+
+  if ($form['#id'] === 'user-login') {
+    drupal_set_message(check_plain('Successful login'));
+  }
+
+  $commands = array();
+  $commands[] = ctools_ajax_command_reload();
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands
+  );
+}
+
+function _nesi_user_modal_login_block_view() {
+  global $base_url;
+  $asset_path = drupal_get_path('theme', variable_get('theme_default', NULL));
+
+  $content = '<ul class="nav pull-right">';
+  $content .= '<li>';
+  $content .= '<a href="user/login" role="button" data-toggle="modal" data-target="#nesiLoginModal" data-remote="false">' . t('Apply for Access/Login') . '</a>';
+  $content .= '<style type="text/css"> #nesiLoginModal { width: 750px; margin-left: -375px; } </style>';
+  $content .= '<div id="nesiLoginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nesiLoginModalLabel" aria-hidden="true">
+
+  <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3 id="nesiLoginModelLabel">Login / Register</h3>
+  </div>
+    <div class="modal-body">
+          <div class="pull-left" id="login-via-tuakiri">
+            <div>
+            <h1>{Institution Logos} <img alt="Tuakiri Logo" src="/'.$asset_path.'/assets/img/tuakiri.png"> &nbsp;</h1>
+            <div class="tuakiri">
+              <p>Tuakiri enables students, academics, alumni and researchers to get secure and seamless access to their computing resources and collaboration environments using one set of credentials granted by their home organisation.</p>
+              <p><a class="" href="'.shib_auth_generate_login_url().'">Login with Tuakiri</a></p>
+            </div>
+            </div>
+          </div>
+          <div id="login-via-drupal">
+            <div>
+              ' . drupal_render(drupal_get_form('user_login')) . '
+            </div>
+          </div>
+    </div>
+    <div class="modal-footer">
+      <a class="pull-left" href="#">Click here to register</a>
+    </div>
+  </div>';
+
+  $content .= '</li>';
+  $content .= '</ul>';
+
+  return array(
+    'subject' => NULL,
+    'content' => $content,
+  );
+}
+

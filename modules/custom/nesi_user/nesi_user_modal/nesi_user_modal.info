@@ -1,0 +1,5 @@
+name = NeSI User Modal
+core = 7.x
+package = NeSI
+version = 7.x-0.1
+project = nesi_user_modal
