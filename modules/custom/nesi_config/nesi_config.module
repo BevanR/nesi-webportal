@@ -5,21 +5,57 @@
  * 
  * @todo Provide config interface in admin.
  */
+/**
+ * * Implements hook_menu().
+ * */
 
 /**
- * Implements hook_menu().
- */
+* Implements hook_menu().
+*/
 function nesi_config_menu() {
-
-  #Menu disabled until admin override options provided.
-  $items['admin/config/nesi/website'] = array(
-    'title' => 'NeSI Website Configuration',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('nesi_config_admin_settings'),
+  $items['nesi-config'] = array(
+    'title' => 'Nesi Admin',
+    'page callback' => 'nesi_config_overview',
     'access arguments' => array('nesi website config'),
     'type' => MENU_NORMAL_ITEM,
-    'file' => 'nesi_config.admin.inc'
-  );
+    );
+  $items['nesi-config/submissions'] = array(
+    'title' => 'Submissions',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    );
+  $items['nesi-config/site'] = array(
+    'title' => 'Configure system',
+    'page callback' => 'nesi_config_add',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+  $items['nesi-config/site/submission-email'] = array(
+    'title' => 'Submission email',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_config_proposal_submission_email'),     
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'forms/nesi_config.submission_email.form.inc',
+    );
+  $items['nesi-config/site/front-stats'] = array(
+    'title' => 'Front Page Stats',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_config_front_stats'), 
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'forms/nesi_config.front_stats.form.inc',
+    );
+  $items['nesi-config/site/faqs'] = array(
+    'title' => 'FAQs',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_config_faqs'), 
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'forms/nesi_config.faqs.form.inc',
+    );
 
   return $items;
 }
