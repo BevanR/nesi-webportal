@@ -16,7 +16,7 @@ function nesi_config_faqs($form, &$form_state, $no_js_use = FALSE) {
  
    $form['faqs_fieldset'] = array(
     '#type' => 'fieldset',
-    '#title' => t('FAQs'),
+#    '#title' => t('FAQs'),
     '#description' => 'Automatically add more FAQS.',
     // Set up the wrapper so that AJAX will be able to replace the fieldset.
     '#prefix' => '<div id="faqs-fieldset-wrapper">',
@@ -58,8 +58,6 @@ function nesi_config_faqs($form, &$form_state, $no_js_use = FALSE) {
     '#type' => 'submit',
     '#value' => t('Add one more'),
     '#submit' => array('nesi_config_faqs_add_one'),
-    // See the examples in nesi_config.module for more details on the
-    // properties of #ajax.
     '#ajax' => array(
       'callback' => 'nesi_config_faqs_callback',
       'wrapper' => 'faqs-fieldset-wrapper',
