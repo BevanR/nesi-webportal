@@ -1409,3 +1409,15 @@ div.radio span.checked {
   font-size: 12px;
   line-height: 15px;
 }
+
+/* Dropdown menu */
+#block-system-main-menu ul.dropdown-menu {
+  border: 1px solid #000000;
+  margin-top: 5px;
+  width: 300px;
+  border-radius: 0px;
+}
+
+#block-system-main-menu .dropdown-menu li {
+}
+
