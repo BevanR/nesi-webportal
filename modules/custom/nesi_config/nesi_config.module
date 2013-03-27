@@ -37,10 +37,11 @@ function nesi_config_menu() {
     );
   $items['nesi-config/site/submission-email'] = array(
     'title' => 'Submission email',
-    'page callback' => 'nesi_config_list',
-    'page arguments' => array(2), // Pass 'fruity'.
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_config_proposal_submission_email'),     
     'access arguments' => array('nesi website config'),
     'type' => MENU_LOCAL_TASK,
+    'file' => 'forms/nesi_config.submission_email.form.inc',
     );
   $items['nesi-config/site/faqs'] = array(
     'title' => 'FAQs',
@@ -48,7 +49,7 @@ function nesi_config_menu() {
     'page arguments' => array('nesi_config_front_stats'), // Pass 'candy'.
     'access arguments' => array('nesi website config'),
     'type' => MENU_LOCAL_TASK,
-    'file' => 'nesi_config.admin.inc',
+    'file' => 'forms/nesi_config.front_stats.form.inc',
     );
   return $items;
 }
@@ -63,52 +64,6 @@ return t('Testing.');
 }
 function nesi_config_list($type) {
 return t('List @type flavors', array('@type' => $type));
-}
-
-/**
- * Implements hook_menu().
- */
-function nesi_config_menu_removed() {
-
-  // List of submitted proposals
-  // Submission email
-  // Front page HPC stats
-  // FAQS
-  $items['admin/config/nesi'] = array(
-    'title' => 'NeSI Website Configuration',
-    //'page callback' => 'drupal_get_form',
-    'page callback' => 'nesi_config_page1',
-    //'page arguments' => array('nesi_config_admin_settings'),
-    'access arguments' => array('nesi website config'),
-    'type' => MENU_NORMAL_ITEM,
-    //'file' => 'nesi_config.admin.inc'
-  );
-  $items['admin/config/list'] = array(
-    'title' => 'List flavors',
-    'access arguments' => TRUE,
-    'type' => MENU_DEFAULT_LOCAL_TASK,
-    'weight' => 0,
-  );
-
-  $items['admin/config/list/faqs'] = array(
-    'title' => 'NeSI FAQS',
-    'page callback' => 'nesi_config_page2',
-    'access arguments' => array('nesi website config'),
-    'type' => MENU_LOCAL_TASK,
-    //'file' => 'nesi_config.admin.inc'
-  );
-
-  return $items;
-}
-
-function nesi_config_page1() {
-  return "Page 1";
-}
-function nesi_config_page2() {
-  return "Page 2";
-}
-function nesi_config_page3() {
-  return "Page 3";
 }
 
 function nesi_config_permission() {
