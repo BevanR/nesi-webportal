@@ -65,6 +65,8 @@ function nesi_config_overview() {
 }
 
 function nesi_config_site() {
+
+  drupal_goto('nesi-config/site/faqs');
   return 'Going to be a list of submissions here';
 }
 
