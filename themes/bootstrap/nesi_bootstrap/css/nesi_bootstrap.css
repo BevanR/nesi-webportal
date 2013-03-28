@@ -156,6 +156,10 @@ a:hover {
   /* overflow: hidden;  -disabled for profile dropdown menu -njd */
 }
 
+.navbar .brand {
+  padding: 8px 20px;
+}
+
 .navbar .nav {
   float: right;
   margin: 0;
@@ -163,8 +167,10 @@ a:hover {
 
 .navbar-inner {
   background: transparent;
-  background-image: none;
-  height: 145px;
+  background-image: url(../assets/img/header-bg.png);
+  border: 0;
+  border-radius: 0;
+  height: 150px;
 }
 
 .nav-collapse {
@@ -172,11 +178,16 @@ a:hover {
 }
 
 #block-system-main-menu {
-  background: #fafafa;
+/*
   border: 0;
   border-bottom: 1px solid #D4D4D4;
   border-radius: 0;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+*/
+}
+
+#pnav .menu {
+  width: 100%;
 }
 
 #pnav li {
@@ -189,12 +200,13 @@ a:hover {
   color: #4b5b68;
   font-size: 14px;
   font-weight: normal;
-  height: 47px;
+  height: 36px;
   line-height: 18px;
   /* max-width: 115px; */
   /* padding: 20px 44px 16px; */
+  padding: 8px 0 10px;
   text-align: center;
-  width: 110px;
+  width: 99%;
 }
 
 #pnav .last a {
