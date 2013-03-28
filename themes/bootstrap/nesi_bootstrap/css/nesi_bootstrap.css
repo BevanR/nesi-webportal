@@ -1569,10 +1569,12 @@ div.radio span.checked {
   margin-top: 5px;
   width: 400px;
   border-radius: 0px;
+  padding: 0px;
 }
 
 #nesi-user-profile-dropdown li {
   width: 100%;
+  float: right;
 }
 
 #nesi-user-profile-dropdown ul.nesi-base-actions {
