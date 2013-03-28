@@ -8,7 +8,13 @@ function nesi_user_modal_block_info() {
   $blocks['nesi-user-modal-login'] = array(
     'info' => t('NeSI User Login/Register Menu'),
     'status' => TRUE,
-    'region' => 'navigation',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+  );
+
+  $blocks['nesi-user-modal-edit-profile'] = array(
+    'info' => t('NeSI User Edit Profile'),
+    'status' => TRUE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => '',
   );
@@ -21,7 +27,7 @@ function nesi_user_modal_block_info() {
 function nesi_user_modal_block_view($delta = '') {
   switch ($delta) {
     case 'nesi-user-modal-login':
-      return user_is_logged_in() ? NULL : _nesi_user_modal_login_block_view();
+      return user_is_logged_in() ? _nesi_user_modal_logged_in_block_view() : _nesi_user_modal_login_block_view();
   }
   return NULL;
 }
@@ -102,6 +108,27 @@ function _nesi_user_modal_login_block_view() {
     </div>
   </div>';
 
+  $content .= '</li>';
+  $content .= '</ul>';
+
+  return array(
+    'subject' => NULL,
+    'content' => $content,
+  );
+}
+
+function _nesi_user_modal_logged_in_block_view() {
+  global $base_url;
+  global $user;
+  $asset_path = drupal_get_path('theme', variable_get('theme_default', NULL));
+
+  $content = '<ul class="nav pull-right">';
+  $content .= '<li>';
+  $content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#">' . t('Dashboard and Settings') . '</a>';
+      $dropdown_menu = menu_tree_all_data('user-menu');
+      $output_menu = menu_tree_output($dropdown_menu);
+      $sub_menu = drupal_render($output_menu);
+  $content .= $sub_menu;
   $content .= '</li>';
   $content .= '</ul>';
 
