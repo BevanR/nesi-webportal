@@ -1,9 +1,14 @@
-<?php print_r($form); ?>
-<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?> role="main">
+<?php //print_r($form['#node']); ?>
+<?php
+$nid = $form['#node']->nid;
+$created = $form['#node']->created;
+$name = $form['#node']->name;
+?>
+<article id="node-<?php print $nid; ?>" class="node clearfix"<?php print $attributes; ?> role="main">
 
   <header>
     <?php print render($title_prefix); ?>
-      <h1<?php print $title_attributes; ?>>Edit Proposal #<?php print $node->nid; ?> <span>- <?php print nesi_bootstrap_proposal_status($node->nid); ?></span></h1>
+      <h1<?php print $title_attributes; ?>>Edit Proposal #<?php print $nid; ?> <span>- <?php print nesi_bootstrap_proposal_status($nid); ?></span></h1>
     <?php print render($title_suffix); ?>
   </header>
 
@@ -11,22 +16,22 @@
 
     <div>
       <h2>Proposal statistics</h2>
-      <h3>Research Proposal</h3>
+      <h3>Technical Development Proposal</h3>
     </div>
 
     <div>
       <h3>Submitted on</h3>
-      <?php print format_date($node->created, 'custom', 'jS F Y'); ?>
+      <p><?php print format_date($created, 'custom', 'jS F Y'); ?></p>
     </div>
 
     <div>
       <h3>Submitted by</h3>
-      <?php print $node->name; ?>
+      <p><?php print $name; ?></p>
     </div>
 
     <div>
       <h3>Assigned to</h3>
-      TODO
+      <p>TODO</p>
     </div>
 
   </div>
