@@ -1288,6 +1288,19 @@ div.radio span.checked {
   text-indent: 20px;
 }
 
+.node-proposal-research-class #proposal-research-class-node-form .field-group-fieldset legend span,
+.node-type-proposal-development-class #proposal-development-class-node-form .field-group-fieldset legend span {
+  font-size: 24px;
+  margin: 0;
+  text-indent: 0;
+}
+
+.node-proposal-research-class #proposal-research-class-node-form .field-group-fieldset .field-widget-date-popup legend span,
+.node-type-proposal-development-class #proposal-development-class-node-form .field-group-fieldset .field-widget-date-popup legend span {
+  color: #606162;
+  font-size: 14px;
+}
+
 .node-proposal-research-class .field-group-fieldset .fieldset-wrapper,
 .node-type-proposal-development-class .field-group-fieldset .fieldset-wrapper,
 #proposal-statistics {
@@ -1298,6 +1311,16 @@ div.radio span.checked {
   color: #606162;
   margin: 0 20px 34px 0;
   padding: 20px;
+}
+
+.node-proposal-research-class #proposal-research-class-node-form .field-group-fieldset .fieldset-wrapper,
+.node-type-proposal-development-class #proposal-development-class-node-form .field-group-fieldset .fieldset-wrapper {
+  background: transparent;
+  border: 0;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
+  margin: 0;
+  padding: 0;
 }
 
 .node-proposal-research-class .field-group-fieldset:nth-child(2n+2) .fieldset-wrapper,
@@ -1351,7 +1374,10 @@ div.radio span.checked {
 #proposal-research-class-node-form fieldset,
 #proposal-development-class-node-form fieldset {
   border-bottom: 1px solid #aaa;
+  clear: both;
+  float: none;
   padding: 30px 100px;
+  width: auto;
 }
 
 #proposal-research-class-node-form fieldset fieldset,
@@ -1367,6 +1393,7 @@ div.radio span.checked {
   float: left;
   font-size: 24px;
   line-height: 36px;
+  margin-bottom: 20px;
 }
 
 #proposal-research-class-node-form fieldset > .fieldset-wrapper > .form-item,
@@ -1437,7 +1464,12 @@ div.radio span.checked {
   float: right;
   font-size: 23px;
   height: 45px;
+  margin: 18px 0 0;
   text-shadow: 0 0 0 transparent;
+}
+
+#edit-field-p-project-id {
+  display: none;
 }
 
 /* Dropdown menu */
