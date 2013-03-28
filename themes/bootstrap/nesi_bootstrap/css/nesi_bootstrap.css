@@ -196,7 +196,7 @@ a:hover {
 }
 
 #pnav a {
-  border-left: 1px solid #e0e0e0;
+  background: url(../assets/img/menu-delimiter.png) left bottom no-repeat;
   color: #4b5b68;
   font-size: 14px;
   font-weight: normal;
@@ -206,7 +206,7 @@ a:hover {
   /* padding: 20px 44px 16px; */
   padding: 8px 0 10px;
   text-align: center;
-  width: 99.75%;
+  width: 100%;
 }
 
 #pnav .last a {
@@ -269,6 +269,14 @@ a:hover {
 
 input, button, select, textarea {
   font-family: 'open-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#block-nesi-user-modal-nesi-user-modal-login ul li a {
+  border: 0 none;
+  color: #A1A3A4;
+  font-size: 14px;
+  height: auto;
+  margin: 24px 0;
 }
 
 /* Home page */
