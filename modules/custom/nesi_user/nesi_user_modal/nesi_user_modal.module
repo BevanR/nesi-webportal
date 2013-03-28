@@ -105,7 +105,7 @@ function _nesi_user_modal_login_block_view() {
           </div>
     </div>
     <div class="modal-footer">
-      <div class="pull-left">or <a class="nesi-register-link" href="/user/register">click here to register</a> for an account.</div>
+      <div class="pull-left">or <a class="nesi-register-link" href="/user/register">click here to register</a> for a NeSI account.</div>
     </div>
   </div>
  ';

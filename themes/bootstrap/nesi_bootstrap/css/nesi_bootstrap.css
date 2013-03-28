@@ -187,16 +187,19 @@ a:hover {
 }
 
 #pnav .menu {
+  background: url(../assets/img/menu-delimiter.png) right bottom no-repeat;
   width: 100%;
 }
 
 #pnav li {
+  background: url(../assets/img/menu-delimiter.png) left bottom no-repeat;
   display: block;
-  width: 25%;
+  padding: 0 0 0 2px;
+  width: 24.8%;
 }
 
 #pnav a {
-  background: url(../assets/img/menu-delimiter.png) left bottom no-repeat;
+  /* border-left: 1px solid #e0e0e0; */
   color: #4b5b68;
   font-size: 14px;
   font-weight: normal;
@@ -210,7 +213,7 @@ a:hover {
 }
 
 #pnav .last a {
-  border-right: 1px solid #e0e0e0;
+  /* border-right: 1px solid #e0e0e0; */
 }
 
 #pnav a span {
@@ -271,12 +274,26 @@ input, button, select, textarea {
   font-family: 'open-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+#block-nesi-user-modal-nesi-user-modal-login ul li {
+  background-image: none;
+}
+
 #block-nesi-user-modal-nesi-user-modal-login ul li a {
   border: 0 none;
   color: #A1A3A4;
   font-size: 14px;
   height: auto;
   margin: 24px 0;
+}
+
+#block-nesi-user-modal-nesi-user-modal-login ul li a:hover {
+  background-image: none;
+}
+
+/* Login Modal */
+.modal-footer {
+  background: transparent;
+  text-align: center;
 }
 
 /* Home page */
@@ -1519,7 +1536,7 @@ div.radio span.checked {
 }
 
 /* Login Modal njd */
-#nesiLoginModal { width: 770px; margin-left: -375px; }
+#nesiLoginModal { width: 750px; margin-left: -375px; }
 #nesiLoginModal .modal-header { border-bottom: none; }  
 #nesiLoginModal .modal-body { }  
 #nesiLoginModal .modal-footer { }  
