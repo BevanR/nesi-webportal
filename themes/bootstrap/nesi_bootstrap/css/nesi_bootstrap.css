@@ -1386,7 +1386,8 @@ div.radio span.checked {
   float: left;
   font-size: 14px;
   /* line-height: 39px; */
-  width: 240px;
+  margin: 0 20px 0 0;
+  width: 220px;
 }
 
 #proposal-research-class-node-form fieldset .controls,
@@ -1408,6 +1409,35 @@ div.radio span.checked {
   color: #838485;
   font-size: 12px;
   line-height: 15px;
+}
+
+#proposal-research-class-node-form .vertical-tabs,
+#proposal-development-class-node-form .vertical-tabs {
+  display: none; /* Just hide the whole thing for now */
+}
+
+#proposal-research-class-node-form #edit-actions,
+#proposal-development-class-node-form #edit-actions {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+#proposal-research-class-node-form #edit-actions *,
+#proposal-development-class-node-form #edit-actions * {
+  display: none; /* Just hide everything for now */
+}
+
+#proposal-research-class-node-form #edit-submit,
+#proposal-development-class-node-form #edit-submit {
+  background: none repeat scroll 0 0 #2B9FC2;
+  border: 0 none;
+  color: #fff;
+  display: block;
+  float: right;
+  font-size: 23px;
+  height: 45px;
+  text-shadow: 0 0 0 transparent;
 }
 
 /* Dropdown menu */

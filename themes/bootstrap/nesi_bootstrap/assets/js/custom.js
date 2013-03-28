@@ -46,8 +46,12 @@
 */
 
   	/* Move form descriptions to be part of labels */
-  	/* TODO: handle this in nese_mstep_proposal module instead? */
+  	/* TODO: handle this in nese_mstep_proposal module and proposal node module using PHP instead */
   	$('#nesi-mstep-proposal-step-2 .help-block, #nesi-mstep-proposal-step-3 .help-block, #nesi-mstep-proposal-step-4 .help-block').each(function() {
+    	$(this).appendTo($(this).parent().prev('label'));
+  	});
+
+  	$('#proposal-research-class-node-form .help-block, #proposal-development-class-node-form .help-block').each(function() {
     	$(this).appendTo($(this).parent().prev('label'));
   	});
 
