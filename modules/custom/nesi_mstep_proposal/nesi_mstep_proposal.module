@@ -435,7 +435,8 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
  * Serialises proposal form values into bp_container field
  */
 function _nesi_mstep_proposal_save(&$form_state) {
-
+  
+  global $user;
   $proposal_type = $form_state['ctools_object']->data['proposal-type'];
 
   $p_title = 'Proposal Title';
@@ -459,7 +460,7 @@ function _nesi_mstep_proposal_save(&$form_state) {
     node_object_prepare($p_node); // Set some default values
     $p_node->title = $p_title;
     $p_node->language = LANGUAGE_NONE;
-    $p_node->uid = 0;
+    $p_node->uid = $user->uid;
 
     // Proposal Development Class
     $p_node->field_pdc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-start-date'];
@@ -483,7 +484,7 @@ function _nesi_mstep_proposal_save(&$form_state) {
     node_object_prepare($p_node); // Set some default values
     $p_node->title = $p_title;
     $p_node->language = LANGUAGE_NONE;
-    $p_node->uid = 0;
+    $p_node->uid = $user->uid;
     
     // Research Proposal Class
     $p_node->field_prc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['prc-start-date'];
