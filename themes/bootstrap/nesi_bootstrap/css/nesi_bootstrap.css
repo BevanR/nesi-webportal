@@ -152,10 +152,6 @@ a:hover {
   color: #2b9fc2;
 }
 
-.navbar {
-  /* overflow: hidden;  -disabled for profile dropdown menu -njd */
-}
-
 .navbar .brand {
   padding: 8px 20px;
 }
@@ -177,15 +173,6 @@ a:hover {
   clear: none; /* Hope this doesn't break anything else */
 }
 
-#block-system-main-menu {
-/*
-  border: 0;
-  border-bottom: 1px solid #D4D4D4;
-  border-radius: 0;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-*/
-}
-
 #pnav .menu {
   background: url(../assets/img/menu-delimiter.png) right bottom no-repeat;
   width: 100%;
@@ -199,21 +186,14 @@ a:hover {
 }
 
 #pnav a {
-  /* border-left: 1px solid #e0e0e0; */
   color: #4b5b68;
   font-size: 14px;
   font-weight: normal;
   height: 36px;
   line-height: 18px;
-  /* max-width: 115px; */
-  /* padding: 20px 44px 16px; */
   padding: 8px 0 10px;
   text-align: center;
   width: 100%;
-}
-
-#pnav .last a {
-  /* border-right: 1px solid #e0e0e0; */
 }
 
 #pnav a span {
