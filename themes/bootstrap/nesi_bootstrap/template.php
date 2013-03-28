@@ -21,8 +21,18 @@ function nesi_bootstrap_breadcrumb($variables) {
 }
 
 function nesi_bootstrap_menu_tree__user_menu($variables) {
+
+  global $user;
   $output = '';
-  $output .= '<ul class="dropdown-menu pull-right">' . $variables['tree'] . '</ul>';
+  $output .= '<ul id="nesi-user-profile-dropdown" class="dropdown-menu pull-right">';
+  $output .= '<li><div class="nesi-user-picture"><div class="pull-left">'.theme('user_picture',  array('account' => $user)).'</div>
+              <h3>'.$user->name.'</h3>
+              <p>Institution</p>
+              </div></li>';
+  $output .= '<li><a href="/user/dashboard">Projects and Proposals -> add to user-menu</a></li>';
+  $output .=  $variables['tree'];
+  $output .= '<li><ul class="nav nav-pills nesi-base-actions"><li><a href="/user">Profile</a></li><li><a href="/user/logout">Log out</a></li></ul></li>';
+  $output .= '</ul>';
   return $output;
 }
 
