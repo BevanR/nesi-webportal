@@ -1497,18 +1497,6 @@ div.radio span.checked {
   display: none;
 }
 
-/* User profile dropdown menu */
-#block-nesi-user-modal-nesi-user-modal-login ul.dropdown-menu {
-  border: 1px solid #000000;
-  margin-top: 5px;
-  width: 300px;
-  border-radius: 0px;
-  overflow:
-}
-
-#block-nesi-user-modal-nesi-user-modal-login .dropdown-menu li {
-}
-
 /* Login Modal njd */
 #nesiLoginModal { width: 955px; margin-left: -477px; text-align: center; outline: 0; }
 #nesiLoginModal .modal-header { border-bottom: none; }  
@@ -1574,3 +1562,30 @@ div.radio span.checked {
   font-size: 18px;
   line-height: 36px;
 }
+
+/* User profile dropdown menu */
+#block-nesi-user-modal-nesi-user-modal-login ul.dropdown-menu {
+  border: 1px solid #000000;
+  margin-top: 5px;
+  width: 400px;
+  border-radius: 0px;
+}
+
+#nesi-user-profile-dropdown li {
+  width: 100%;
+}
+
+#nesi-user-profile-dropdown ul.nesi-base-actions {
+  background: #cccccc;
+  width: 400px;
+}
+#nesi-user-profile-dropdown ul.nesi-base-actions li {
+  background: #e3e3e3;
+  width: 150px;
+  margin-right: 30px;
+}
+
+.nesi-user-picture {
+  height:150px;
+}
+
