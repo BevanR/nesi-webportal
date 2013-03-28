@@ -22,8 +22,7 @@ function nesi_bootstrap_breadcrumb($variables) {
 
 function nesi_bootstrap_menu_tree__user_menu($variables) {
   $output = '';
-  $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#">User Menu<span class="caret"></span></a>';
-  $output .= '<ul class="dropdown-menu">' . $variables['tree'] . '</ul>';
+  $output .= '<ul class="dropdown-menu pull-right">' . $variables['tree'] . '</ul>';
   return $output;
 }
 
