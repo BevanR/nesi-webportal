@@ -162,16 +162,21 @@ a:hover {
 }
 
 .navbar-inner {
+  background: transparent;
   background-image: none;
-  border: 0;
-  border-bottom: 1px solid #D4D4D4;
-  border-radius: 0;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-  height: 87px;
+  height: 145px;
 }
 
 .nav-collapse {
   clear: none; /* Hope this doesn't break anything else */
+}
+
+#block-system-main-menu {
+  background: #fafafa;
+  border: 0;
+  border-bottom: 1px solid #D4D4D4;
+  border-radius: 0;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 #pnav li {
@@ -942,6 +947,10 @@ div.radio span.checked {
 /* Dashboard */
 .page-user-dashboard {
   /* background: #f1f1f1; */
+}
+
+.page-user-dashboard .breadcrumbs {
+  display: none;
 }
 
 .page-user-dashboard h1.page-header {
