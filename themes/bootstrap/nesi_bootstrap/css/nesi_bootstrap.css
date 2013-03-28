@@ -1483,3 +1483,37 @@ div.radio span.checked {
 #block-system-main-menu .dropdown-menu li {
 }
 
+/* Login Modal njd */
+#nesiLoginModal { width: 750px; margin-left: -375px; }
+#nesiLoginModal .modal-header { border-bottom: none; }  
+#nesiLoginModal .modal-body { }  
+#nesiLoginModal .modal-footer { }  
+#nesiLoginModal .login-via-tuakiri { width: 46%; padding: 15px; }
+#nesiLoginModal .login-via-drupal { padding: 15px; }
+#nesiLoginModal a { border-left:none; padding:3px; }
+#nesiLoginModal a { border-left:none; padding:3px; }
+#nesiLoginModal .login-via-tuakiri a { 
+  background: #2b9fc2;
+  border: 0;
+  color: #fff;
+  font-size: 23px;
+  height: 25px;
+  text-shadow: 0 0 0 transparent;
+  padding: 10px;
+}
+#nesiLoginModal .login-via-drupal button { 
+  background: #2b9fc2;
+  border: 0;
+  color: #fff;
+  font-size: 23px;
+  height: 45px;
+  text-shadow: 0 0 0 transparent;
+  padding: 10px;
+}
+#nesiLoginModal h2 { 
+  color: #4b5b68;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 36px;
+} 
+
