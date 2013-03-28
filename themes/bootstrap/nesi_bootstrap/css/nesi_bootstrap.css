@@ -245,12 +245,17 @@ a:hover {
   border-bottom: 4px solid #4b5b68;
 }
 
-#pnav li.menu-1685 span,
-#pnav li.menu-1732 span {
-  background: url(../assets/img/nav-apply.png) top center no-repeat;
-  font-size: 0;
-  height: 27px;
-  text-indent: -9999em;
+#pnav li.menu-1685 a,
+#pnav li.menu-1732 a {
+  background: url(../assets/img/nav-apply.png) 169px center no-repeat;
+  text-align: left;
+  text-indent: 38px;
+}
+
+#pnav li.menu-1685:hover,
+#pnav li.menu-1732:hover {
+  background: linear-gradient(to bottom, #fcfdfe, #dedddd);
+  background: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
 }
 
 .legal {
