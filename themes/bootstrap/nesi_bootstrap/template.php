@@ -31,7 +31,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
               </div></li>';
   $output .= '<li><a href="/user/dashboard">Projects and Proposals -> add to user-menu</a></li>';
   $output .=  $variables['tree'];
-  $output .= '<li><ul class="nav nav-pills nesi-base-actions"><li><a href="#">Profile</a></li><li><a href="#">Log out</a></li></ul></li>';
+  $output .= '<li><ul class="nav nav-pills nesi-base-actions"><li><a href="/user">Profile</a></li><li><a href="/user/logout">Log out</a></li></ul></li>';
   $output .= '</ul>';
   return $output;
 }
