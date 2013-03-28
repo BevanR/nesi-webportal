@@ -60,8 +60,12 @@ function nesi_config_menu() {
   return $items;
 }
 
+/**
+ * View of all submitted proposals
+ */
 function nesi_config_overview() {
-  return 'Going to be a list of submissions here';
+  $view = views_get_view('all_proposals');
+  return $view->preview('default');
 }
 
 function nesi_config_site() {
