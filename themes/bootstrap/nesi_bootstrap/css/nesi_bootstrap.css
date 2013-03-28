@@ -1501,12 +1501,34 @@ div.radio span.checked {
 #block-nesi-user-modal-nesi-user-modal-login ul.dropdown-menu {
   border: 1px solid #000000;
   margin-top: 5px;
-  width: 300px;
+  width: 400px;
   border-radius: 0px;
-  overflow:
+  padding: 0px;
 }
 
-#block-nesi-user-modal-nesi-user-modal-login .dropdown-menu li {
+#nesi-user-profile-dropdown li {
+  width: 100%;
+  float: right;
+}
+
+#nesi-user-profile-dropdown ul.nesi-base-actions {
+  background: #cccccc;
+  width: 400px;
+}
+#nesi-user-profile-dropdown .nesi-base-actions li {
+  background: #e3e3e3;
+  width: 150px;
+  margin-right: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#nesi-user-profile-dropdown .nesi-base-actions li>a {
+  height: 24px;
+}
+
+.nesi-user-picture {
+  height:150px;
 }
 
 /* Login Modal njd */
