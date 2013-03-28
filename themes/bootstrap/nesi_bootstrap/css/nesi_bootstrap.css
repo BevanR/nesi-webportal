@@ -152,10 +152,6 @@ a:hover {
   color: #2b9fc2;
 }
 
-.navbar {
-  /* overflow: hidden;  -disabled for profile dropdown menu -njd */
-}
-
 .navbar .brand {
   padding: 8px 20px;
 }
@@ -177,40 +173,27 @@ a:hover {
   clear: none; /* Hope this doesn't break anything else */
 }
 
-#block-system-main-menu {
-/*
-  border: 0;
-  border-bottom: 1px solid #D4D4D4;
-  border-radius: 0;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-*/
-}
-
 #pnav .menu {
+  background: url(../assets/img/menu-delimiter.png) right bottom no-repeat;
   width: 100%;
 }
 
 #pnav li {
+  background: url(../assets/img/menu-delimiter.png) left bottom no-repeat;
   display: block;
-  width: 25%;
+  padding: 0 0 0 2px;
+  width: 24.8%;
 }
 
 #pnav a {
-  border-left: 1px solid #e0e0e0;
   color: #4b5b68;
   font-size: 14px;
   font-weight: normal;
   height: 36px;
   line-height: 18px;
-  /* max-width: 115px; */
-  /* padding: 20px 44px 16px; */
   padding: 8px 0 10px;
   text-align: center;
-  width: 99%;
-}
-
-#pnav .last a {
-  border-right: 1px solid #e0e0e0;
+  width: 100%;
 }
 
 #pnav a span {
@@ -245,12 +228,17 @@ a:hover {
   border-bottom: 4px solid #4b5b68;
 }
 
-#pnav li.menu-1685 span,
-#pnav li.menu-1732 span {
-  background: url(../assets/img/nav-apply.png) top center no-repeat;
-  font-size: 0;
-  height: 27px;
-  text-indent: -9999em;
+#pnav li.menu-1685 a,
+#pnav li.menu-1732 a {
+  background: url(../assets/img/nav-apply.png) 169px center no-repeat;
+  text-align: left;
+  text-indent: 38px;
+}
+
+#pnav li.menu-1685:hover,
+#pnav li.menu-1732:hover {
+  background: linear-gradient(to bottom, #fcfdfe, #dedddd);
+  background: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
 }
 
 .legal {
@@ -264,6 +252,22 @@ a:hover {
 
 input, button, select, textarea {
   font-family: 'open-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#block-nesi-user-modal-nesi-user-modal-login ul li {
+  background-image: none;
+}
+
+#block-nesi-user-modal-nesi-user-modal-login ul li a {
+  border: 0 none;
+  color: #A1A3A4;
+  font-size: 14px;
+  height: auto;
+  margin: 24px 0;
+}
+
+#block-nesi-user-modal-nesi-user-modal-login ul li a:hover {
+  background-image: none;
 }
 
 /* Home page */
@@ -1506,15 +1510,17 @@ div.radio span.checked {
 }
 
 /* Login Modal njd */
-#nesiLoginModal { width: 750px; margin-left: -375px; }
+#nesiLoginModal { width: 955px; margin-left: -477px; text-align: center; outline: 0; }
 #nesiLoginModal .modal-header { border-bottom: none; }  
 #nesiLoginModal .modal-body { }  
 #nesiLoginModal .modal-footer { }  
-#nesiLoginModal .login-via-tuakiri { width: 46%; padding: 15px; }
+#nesiLoginModal .login-via-tuakiri { width: 488px; padding: 15px; }
 #nesiLoginModal .login-via-drupal { padding: 15px; }
 #nesiLoginModal a { border-left:none; padding:3px; }
 #nesiLoginModal a { border-left:none; padding:3px; }
-#nesiLoginModal .login-via-tuakiri a { 
+
+#nesiLoginModal .login-via-tuakiri a,
+#nesiLoginModal .login-via-drupal button { 
   background: #2b9fc2;
   border: 0;
   color: #fff;
@@ -1522,20 +1528,49 @@ div.radio span.checked {
   height: 25px;
   text-shadow: 0 0 0 transparent;
   padding: 10px;
+  width: 171px;
 }
 #nesiLoginModal .login-via-drupal button { 
-  background: #2b9fc2;
-  border: 0;
-  color: #fff;
-  font-size: 23px;
   height: 45px;
-  text-shadow: 0 0 0 transparent;
-  padding: 10px;
 }
 #nesiLoginModal h2 { 
   color: #4b5b68;
   font-size: 24px;
   font-weight: normal;
   line-height: 36px;
-} 
+}
 
+#nesiLoginModal p {
+  font-weight: 100;
+}
+
+.modal {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 transparent;
+}
+
+.modal-body {
+  background: #fff;
+}
+
+.modal-footer {
+  background: transparent;
+  border: 0;
+  box-shadow: 0 0 0 transparent;
+  color: #fff;
+  font-size: 18px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.modal-footer .pull-left {
+  width: 100%;
+}
+
+#block-nesi-user-modal-nesi-user-modal-login ul li .modal-footer a {
+  color: #2b9fc2;
+  font-size: 18px;
+  line-height: 36px;
+}

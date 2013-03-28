@@ -79,25 +79,24 @@ function _nesi_user_modal_login_block_view() {
 
   $content = '<ul class="nav pull-right">';
   $content .= '<li>';
-  $content .= '<a href="user/login" role="button" data-toggle="modal" data-target="#nesiLoginModal" data-remote="false">' . t('Apply for Access/Login') . '</a>';
+  $content .= '<a href="user/login" role="button" data-toggle="modal" data-target="#nesiLoginModal" data-remote="false">' . t('Login') . '</a>';
   $content .= '<div id="nesiLoginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nesiLoginModalLabel" aria-hidden="true">
 
   <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  <!--<h3 id="nesiLoginModelLabel">Login / Register</h3>-->
   </div>
     <div class="modal-body">
           <div class="pull-left login-via-tuakiri">
             <div>
-            <h2>Login using Institution Credentials</h2>
-            <!-- <img alt="Tuakiri Logo" src="/'.$asset_path.'/assets/img/tuakiri.png"> &nbsp; -->
+            <h2>Login using your institutions credentials</h2>
             <div class="tuakiri">
-              <p>We allow students, academics, alumni and researchers to get secure and seamless access to our computing resources using one set of credentials granted by their home organisation.</p>
+              <p>We allow students, academics, alumni and researchers to get secure and seamless access to our computer resources using one set of credentials granted by their home organisation.</p>
+              <img alt="Logos" src="/'.$asset_path.'/assets/img/uni-logos.gif">
               <p><a class="btn" href="'.shib_auth_generate_login_url().'">Log in</a></p>
             </div>
             </div>
           </div>
-          <div class="login-via-drupal">
+          <div class="pull-right login-via-drupal">
             <h2>Login using NeSI Account</h2>
             <div class="pull-right">
               ' . drupal_render(drupal_get_form('user_login')) . '
@@ -105,7 +104,7 @@ function _nesi_user_modal_login_block_view() {
           </div>
     </div>
     <div class="modal-footer">
-      <div class="pull-left">or <a class="nesi-register-link" href="/user/register">click here to register</a> for an account.</div>
+      <div class="pull-left">or <a class="nesi-register-link" href="/user/register">click here to register</a> for a NeSI account.</div>
     </div>
   </div>
  ';
