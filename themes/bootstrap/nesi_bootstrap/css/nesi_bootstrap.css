@@ -1515,7 +1515,7 @@ div.radio span.checked {
 #nesiLoginModal .modal-body { }  
 #nesiLoginModal .modal-footer { }  
 #nesiLoginModal .login-via-tuakiri { width: 488px; padding: 15px; background: url(../assets/img/login-modal-delimiter.gif) right center no-repeat; }
-#nesiLoginModal .login-via-drupal { padding: 15px; }
+#nesiLoginModal .login-via-drupal { padding: 15px; width: 334px; }
 #nesiLoginModal a { border-left:none; padding:3px; }
 #nesiLoginModal a { border-left:none; padding:3px; }
 
@@ -1523,12 +1523,17 @@ div.radio span.checked {
 #nesiLoginModal .login-via-drupal button { 
   background: #2b9fc2;
   border: 0;
+  bottom: 0;
   color: #fff;
   font-size: 23px;
+  left: 0;
   height: 25px;
   line-height: 25px;
   text-shadow: 0 0 0 transparent;
+  margin: 0 auto;
   padding: 10px;
+  position: absolute;
+  right: 0;
   width: 171px;
 }
 #nesiLoginModal .login-via-drupal button { 
@@ -1592,7 +1597,21 @@ div.radio span.checked {
 #nesiLoginModal .close {
   background: url(../assets/img/login-modal-close.png);
   display: block;
-  height: 30px;
+  height: 28px;
+  opacity: 1;
+  position: relative;
+  right: 14px;
   text-indent: -9999em;
-  width: 30px;
+  top: -8px;
+  width: 28px;
+}
+
+#nesiLoginModal #ajax-user-login-wrapper {
+  margin-top: 5px;
+}
+
+#nesiLoginModal .tuakiri,
+#nesiLoginModal #ajax-user-login-wrapper {
+  height: 211px;
+  position: relative;
 }
