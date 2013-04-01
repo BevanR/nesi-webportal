@@ -54,34 +54,16 @@ function nesi_config_proposal_submission_email($form) {
 function nesi_config_proposal_submission_email_submit($form, &$form_state) {
 
   global $user;
-  $save_file = function($fid, $form_id) use($user) {
+
+  if(0 != $form_state['values']['submission_attached_pdf']) {
+    $fid = $form_state['values']['submission_attached_pdf'];
     $file = file_load($fid);
     if ($file) {
       // Change status to permanent.
       $file->status = FILE_STATUS_PERMANENT;
       file_save($file);
-      file_usage_add($file, 'mm_admin', 'user', $user->uid);
-      variable_set($form_id, $file->fid);
+      file_usage_add($file, 'nesi_config', 'user', $user->uid);
     } 
-  };
-
-  $delete_file = function($fid) {
-    $file = file_load($fid);
-    if ($file) {
-      $success = file_delete($file);
-      if(FALSE == $success) {
-        drupal_set_message(t('There was a problem deleting the file'), 'error');
-      }
-    } 
-  };
-
-  if(0 != $form_state['values']['submission_attached_pdf']) {
-    $fid = $form_state['values']['submission_attach_pdf'];
-    $save_file($fid, 'submission_attach_pdf'); 
-  }
-  elseif(0 == $form_state['values']['submission_attached_pdf']){
-    $fid = variable_get('submission_attach_pdf');
-    $delete_file($fid); 
   }
 }
 
