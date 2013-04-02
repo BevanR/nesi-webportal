@@ -28,7 +28,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
 
   $output = '';
   $output .= '<ul id="nesi-user-profile-dropdown" class="dropdown-menu pull-right">';
-  $output .= '<li><div class="nesi-user-picture"><div class="pull-left">'.theme('user_picture',  array('account' => $user)).'</div>
+  $output .= '<li id="nesi-user-picture"><div class="nesi-user-picture"><div class="pull-left">'.theme('user_picture',  array('account' => $user)).'</div>
               <h2>' . format_username($user_data) . '</h2>
               <h3>Institution</h3>
               <p>'.$user->name.'</p>
@@ -36,7 +36,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
               </div></li>';
   $output .= '<li><a href="/user/dashboard">Projects and Proposals -> add to user-menu</a></li>';
   $output .=  $variables['tree'];
-  $output .= '<li><ul class="nav nav-pills nesi-base-actions"><li><a href="/user">Profile</a></li><li><a href="/user/logout">Log out</a></li></ul></li>';
+  $output .= '<li id="nesi-base-actions"><ul class="nav nav-pills nesi-base-actions"><li class="pull-left"><a href="/user">Profile</a></li><li class="pull-right"><a href="/user/logout">Log out</a></li></ul></li>';
   $output .= '</ul>';
   return $output;
 }
