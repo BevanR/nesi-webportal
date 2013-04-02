@@ -9,24 +9,26 @@
 
   <div id="proposal-statistics">
 
-    <div>
+    <div class="labels">
       <h2>Proposal statistics</h2>
       <h3>Research Proposal</h3>
     </div>
 
-    <div>
-      <h3>Submitted on</h3>
-      <p><?php print format_date($node->created, 'custom', 'jS F Y'); ?></p>
-    </div>
-
-    <div>
-      <h3>Submitted by</h3>
-      <p><?php print $node->name; ?></p>
-    </div>
-
-    <div>
-      <h3>Assigned to</h3>
-      <p>TODO</p>
+    <div class="inner">
+      <div>
+        <h3>Submitted on</h3>
+        <p><?php print format_date($node->created, 'custom', 'jS F Y'); ?></p>
+      </div>
+  
+      <div>
+        <h3>Submitted by</h3>
+        <p><?php print $node->name; ?></p>
+      </div>
+  
+      <div>
+        <h3>Assigned to</h3>
+        <p>TODO</p>
+      </div>
     </div>
 
   </div>
