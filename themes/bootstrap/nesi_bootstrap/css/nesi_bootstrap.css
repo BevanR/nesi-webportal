@@ -980,10 +980,19 @@ div.radio span.checked {
 
 .page-user-dashboard h2 {
   color: #4b5b68;
+  float: left;
   font-size: 18px;
   font-weight: normal;
   line-height: 36px;
   text-indent: 20px;
+  width: 60%;
+}
+
+.page-user-dashboard .stats-labels {
+  color: #4b5b68;
+  float: right;
+  margin: 10px 20px 10px 0;
+  width: 420px;
 }
 
 .page-user-dashboard .module {
@@ -1004,18 +1013,18 @@ div.radio span.checked {
   clear: both;
   float: left;
   height: 88px;
+  margin: 0 0 5px 0;
   width: 100%;
 }
 
 .page-user-dashboard .proposal-outline {
-  background: url(../assets/img/dashboard-proposal-bg.png) repeat-x;
   border: 0;
   border: 1px solid #eaeded;
   float: left;
   height: 87px;
   margin: 0;
   padding: 0 20px;
-  width: 1079px;
+  width: 1130px;
 }
 
 .page-user-dashboard .module h1 {
@@ -1044,7 +1053,7 @@ div.radio span.checked {
 
 .page-user-dashboard .proposal-outline header {
   float: left;
-  width: 70%;
+  width: 60%;
 }
 
 .page-user-dashboard .proposal-meta {
@@ -1052,16 +1061,21 @@ div.radio span.checked {
   float: right;
   line-height: 21px;
   margin: 15px 0 0 0;
-  width: 300px;
+  width: 420px;
 }
 
-.page-user-dashboard .proposal-meta > div {
-  background: url(../assets/img/dashboard-delimiter.png) left center no-repeat;
-  color: #4B5B68;
+.page-user-dashboard .proposal-meta > div,
+.page-user-dashboard .stats-labels > div {
   float: left;
   height: 47px;
   text-align: center;
-  width: 100px;
+  width: 105px;
+}
+
+.page-user-dashboard .stats-labels > div {
+  color: #4B5B68;
+  height: auto;
+  line-height: 36px;
 }
 
 .page-user-dashboard .span12 {
@@ -1386,6 +1400,7 @@ div.radio span.checked {
 
 #proposal-statistics {
   margin: 40px 0 34px;
+  padding: 20px 0 20px 20px;
 }
 
 #proposal-statistics > div {

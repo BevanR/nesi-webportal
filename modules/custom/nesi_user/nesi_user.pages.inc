@@ -27,7 +27,7 @@ function nesi_user_dashboard_callback() {
   
   $in_progress = FALSE;
   if (!empty($response)) {
-    $output .= '<h2>Submitted Proposals</h2>';
+    $output .= '<h2>Submitted Proposals</h2><div class="stats-labels"><div class="dashboard-label">ID</div><div class="dashboard-label">Start</div><div class="dashboard-label">End</div><div class="dashboard-label">CPU core hours</div></div>';
     $output .= '<div class="module">';
       $output .= '<div class="module-inner">';
       // Display all proposals
@@ -51,7 +51,7 @@ function nesi_user_dashboard_callback() {
               $is_flagged = TRUE;
             }
           }
-  
+
           $proposal_operations = '';
           $access_edit = node_access('update', $current_proposal);
           $access_delete = node_access('delete', $current_proposal);
@@ -68,7 +68,7 @@ function nesi_user_dashboard_callback() {
           if ($access_delete) {
             $proposal_operations .= l('Delete', 'node/' . $current_proposal->nid . '/delete', array('attributes' => array('class' => 'btn btn-dash-delete')));
           }
-  
+
           $proposal_platform = '';
           if ($current_proposal->type == 'proposal_development_class') {
             $proposal_platform = $current_proposal->field_pdc_proposed_hpc_platform['und'][0]['value'];
@@ -84,7 +84,7 @@ function nesi_user_dashboard_callback() {
           elseif ($current_proposal->type == 'proposal_research_class') {
             $proposal_start_date = format_date(strtotime($current_proposal->field_prc_start_date['und'][0]['value']), 'custom', 'j/m/Y');
           }
-  
+
           $proposal_variables = array(
             'proposal_title' => $current_proposal->title,
             'proposal_link' => $nodeurl,
@@ -92,10 +92,11 @@ function nesi_user_dashboard_callback() {
             'proposal_operations' => $proposal_operations,
             'proposal_type' => $current_proposal->type,
             'proposal_platform' => $proposal_platform,
+            'proposal_id' => $current_proposal->nid,
             'proposal_start_date' => $proposal_start_date,
             'proposal_cpu_hours' => $current_proposal->field_prc_cpu_core_hours['und'][0]['value'],
           );
-  
+
           $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);
         }
       }
@@ -116,10 +117,7 @@ function nesi_user_dashboard_callback() {
 }
 
 function nesi_user_dashboard_name_callback() {
-  global $user;
-  $uid = user_load($user->uid);
-  $profile = profile2_load_by_user($uid, 'researcher_profile');
-  return $profile->field_user_firstname['und'][0]['safe_value'] . ' ' . $profile->field_user_lastname['und'][0]['safe_value'] . ' - Projects/ Proposals';
+  return 'Projects/ Proposals';
 }
 
 function nesi_user_tuakiri_vho_callback() {
