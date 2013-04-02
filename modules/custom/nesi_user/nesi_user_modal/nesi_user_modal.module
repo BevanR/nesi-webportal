@@ -119,11 +119,13 @@ function _nesi_user_modal_login_block_view() {
 function _nesi_user_modal_logged_in_block_view() {
   global $base_url;
   global $user;
+  $uid = user_load($user->uid);
+  $profile = profile2_load_by_user($uid, 'researcher_profile');
   $asset_path = drupal_get_path('theme', variable_get('theme_default', NULL));
 
   $content = '<ul class="nav pull-right">';
   $content .= '<li>';
-  $content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#">' . t('Dashboard and Settings') . '</a>';
+  $content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#">' . $profile->field_user_firstname['und'][0]['safe_value'] . ' ' . $profile->field_user_lastname['und'][0]['safe_value'] . '</a>';
       $dropdown_menu = menu_tree_all_data('user-menu');
       $output_menu = menu_tree_output($dropdown_menu);
       $sub_menu = drupal_render($output_menu);
