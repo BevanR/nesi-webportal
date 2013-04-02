@@ -4,29 +4,31 @@
     <?php print render($title_prefix); ?>
       <h1<?php print $title_attributes; ?>><?php print $title; ?> - Proposal #<?php print $node->nid; ?> <span>- <?php print nesi_bootstrap_proposal_status($node->nid); ?></span></h1>
     <?php print render($title_suffix); ?>
-    <?php print l('Back to Dashboard', 'user/dashboard', array('attributes' => array('id' => 'back-to-dashboard', 'class' => 'btn nesi-btn'))); ?>
+    <?php //print l('Back to Dashboard', 'user/dashboard', array('attributes' => array('id' => 'back-to-dashboard', 'class' => 'btn nesi-btn'))); ?>
   </header>
 
   <div id="proposal-statistics">
 
-    <div>
+    <div class="labels">
       <h2>Proposal statistics</h2>
       <h3>Technical Development Proposal</h3>
     </div>
 
-    <div>
-      <h3>Submitted on</h3>
-      <?php print format_date($node->created, 'custom', 'jS F Y'); ?>
-    </div>
-
-    <div>
-      <h3>Submitted by</h3>
-      <?php print $node->name; ?>
-    </div>
-
-    <div>
-      <h3>Assigned to</h3>
-      TODO
+    <div class="inner">
+      <div>
+        <h3>Submitted on</h3>
+        <p><?php print format_date($node->created, 'custom', 'jS F Y'); ?></p>
+      </div>
+  
+      <div>
+        <h3>Submitted by</h3>
+        <p><?php print $node->name; ?></p>
+      </div>
+  
+      <div>
+        <h3>Assigned to</h3>
+        <p>TODO</p>
+      </div>
     </div>
 
   </div>

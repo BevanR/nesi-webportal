@@ -18,15 +18,15 @@ switch ( $proposal_type ) {
     </header>
     <div class="proposal-meta">
       <div>
-        <div class="dashboard-label">START</div>
+        <?php print $proposal_id; ?>
+      </div>
+      <div>
         <?php print $proposal_start_date; ?>
       </div>
       <div>
-        <div class="dashboard-label">END</div>
         TODO
       </div>
       <div>
-        <div class="dashboard-label">CPU HOURS</div>
         <?php print $proposal_cpu_hours; ?>
       </div>
     </div>

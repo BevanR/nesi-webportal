@@ -980,10 +980,19 @@ div.radio span.checked {
 
 .page-user-dashboard h2 {
   color: #4b5b68;
+  float: left;
   font-size: 18px;
   font-weight: normal;
   line-height: 36px;
   text-indent: 20px;
+  width: 60%;
+}
+
+.page-user-dashboard .stats-labels {
+  color: #4b5b68;
+  float: right;
+  margin: 10px 20px 10px 0;
+  width: 420px;
 }
 
 .page-user-dashboard .module {
@@ -1004,18 +1013,18 @@ div.radio span.checked {
   clear: both;
   float: left;
   height: 88px;
+  margin: 0 0 5px 0;
   width: 100%;
 }
 
 .page-user-dashboard .proposal-outline {
-  background: url(../assets/img/dashboard-proposal-bg.png) repeat-x;
   border: 0;
   border: 1px solid #eaeded;
   float: left;
   height: 87px;
   margin: 0;
   padding: 0 20px;
-  width: 1079px;
+  width: 1130px;
 }
 
 .page-user-dashboard .module h1 {
@@ -1044,7 +1053,7 @@ div.radio span.checked {
 
 .page-user-dashboard .proposal-outline header {
   float: left;
-  width: 70%;
+  width: 60%;
 }
 
 .page-user-dashboard .proposal-meta {
@@ -1052,16 +1061,21 @@ div.radio span.checked {
   float: right;
   line-height: 21px;
   margin: 15px 0 0 0;
-  width: 300px;
+  width: 420px;
 }
 
-.page-user-dashboard .proposal-meta > div {
-  background: url(../assets/img/dashboard-delimiter.png) left center no-repeat;
-  color: #4B5B68;
+.page-user-dashboard .proposal-meta > div,
+.page-user-dashboard .stats-labels > div {
   float: left;
   height: 47px;
   text-align: center;
-  width: 100px;
+  width: 105px;
+}
+
+.page-user-dashboard .stats-labels > div {
+  color: #4B5B68;
+  height: auto;
+  line-height: 36px;
 }
 
 .page-user-dashboard .span12 {
@@ -1164,7 +1178,7 @@ div.radio span.checked {
 
 /* User profile page */
 .page-user-profile {
-  background: #f1f1f1;
+  background: #fff;
 }
 
 .page-user-profile ul.nav-tabs {
@@ -1180,27 +1194,30 @@ div.radio span.checked {
 }
 
 .page-user-profile .module-wrapper {
+  background: url(../assets/img/boxes-bg-center.png) center top repeat-x;
   float: left;
-  margin: 0 2% 46px 0;
-  width: 32%;
+  margin: 28px 0 46px;
+  padding: 18px 2% 0;
+  width: 29.33%;
+}
+
+.page-user-profile .module-wrapper-first {
+  background: url(../assets/img/boxes-bg-left.png) right top no-repeat;
 }
 
 .page-user-profile .module-wrapper-last {
-  margin: 0;
+  background: url(../assets/img/boxes-bg-right.png) left top no-repeat;
 }
 
 .page-user-profile .module-wrapper h2 {
   color: #4b5b68;
   font-size: 18px;
   font-weight: normal;
+  text-align: center;
   text-indent: 20px;
 }
 
 .page-user-profile .module {
-  background: #fff;
-  border: 1px solid #e7e6e6;
-  -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
-  box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
   color: #606162;
   height: 295px;
 }
@@ -1265,7 +1282,7 @@ div.radio span.checked {
 /* View proposal */
 .node-type-proposal-research-class,
 .node-type-proposal-development-class {
-  background: #f1f1f1;
+  background: #fff;
 }
 
 .node-type-proposal-research-class .span12,
@@ -1296,25 +1313,33 @@ div.radio span.checked {
 
 .node-proposal-research-class .field-group-fieldset,
 .node-type-proposal-development-class .field-group-fieldset {
+  border: 1px solid #e7e6e6;
   float: left;
-  width: 50%;
+  margin: 0 2% 2% 0;
+  width: 48.83%;
+}
+
+.node-proposal-research-class .field-group-fieldset.odd,
+.node-type-proposal-development-class .field-group-fieldset.odd {
+  margin-right: 0;
 }
 
 .node-proposal-research-class .field-group-fieldset legend,
 .node-type-proposal-development-class .field-group-fieldset legend {
-  border: 0;
-  line-height: 36px;
-  margin: 0;
+  border: 1px solid #e7e6e6;
+  height: 57px;
+  line-height: 57px;
+  margin: 0 -1px;
 }
 
 .node-proposal-research-class .field-group-fieldset legend span,
 .node-type-proposal-development-class .field-group-fieldset legend span {
   color: #4b5b68;
   display: block;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: normal;
-  line-height: 36px;
-  margin: 10px 0;
+  line-height: 57px;
+  margin: 0;
   text-indent: 20px;
 }
 
@@ -1334,12 +1359,14 @@ div.radio span.checked {
 .node-proposal-research-class .field-group-fieldset .fieldset-wrapper,
 .node-type-proposal-development-class .field-group-fieldset .fieldset-wrapper,
 #proposal-statistics {
+/*
   background: #fff;
   border: 1px solid #e7e6e6;
   -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
   box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+*/
   color: #606162;
-  margin: 0 20px 34px 0;
+  margin: 0;
   padding: 20px;
 }
 
@@ -1359,7 +1386,7 @@ div.radio span.checked {
 }
 
 .node-proposal-research-class .field-group-fieldset .fieldset-wrapper > .field,
-.node-type-proposal-development-class .field-group-fieldset .fieldset-wrapper, > .field {
+.node-type-proposal-development-class .field-group-fieldset .fieldset-wrapper > .field {
   margin: 0 0 6px 0;
 }
 
@@ -1373,11 +1400,31 @@ div.radio span.checked {
 
 #proposal-statistics {
   margin: 40px 0 34px;
+  padding: 20px 0 20px 20px;
 }
 
 #proposal-statistics > div {
   display: inline-block;
+  height: 93px;
   width: 24.75%;
+}
+
+#proposal-statistics .inner {
+  border: 1px solid #e7e6e6;
+  float: right;
+  padding: 0 60px;
+  width: 60%;
+}
+
+#proposal-statistics .inner > div {
+  display: inline-block;
+  width: 32.9%;
+}
+
+#proposal-statistics .labels,
+#proposal-statistics .inner > div {
+  height: 69px;
+  padding: 12px 0;
 }
 
 #proposal-statistics * {

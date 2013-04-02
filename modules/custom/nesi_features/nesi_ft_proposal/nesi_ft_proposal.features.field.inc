@@ -200,7 +200,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '14',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -334,7 +334,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -403,7 +403,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '10',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -472,7 +472,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '12',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -542,7 +542,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '7',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -606,7 +606,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -681,7 +681,7 @@ function nesi_ft_proposal_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '13',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -758,7 +758,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -825,7 +825,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -892,7 +892,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '14',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -976,7 +976,7 @@ function nesi_ft_proposal_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1001,7 +1001,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '11',
+        'weight' => '13',
       ),
     ),
   );
@@ -1044,7 +1044,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1068,7 +1068,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '9',
+        'weight' => '11',
       ),
     ),
   );
@@ -1113,7 +1113,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '15',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1182,7 +1182,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1206,7 +1206,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -1251,7 +1251,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1275,7 +1275,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -1320,7 +1320,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '10',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1344,7 +1344,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -1389,7 +1389,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1413,7 +1413,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -1458,7 +1458,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '12',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1482,7 +1482,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -1527,7 +1527,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '16',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1551,7 +1551,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -1596,7 +1596,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '12',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1665,7 +1665,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '14',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1689,7 +1689,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
@@ -1734,7 +1734,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1803,7 +1803,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1827,7 +1827,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -1869,7 +1869,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '11',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1890,7 +1890,7 @@ function nesi_ft_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '7',
+        'weight' => '9',
       ),
     ),
   );
@@ -1933,7 +1933,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '12',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1957,7 +1957,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '10',
       ),
     ),
   );
@@ -2002,7 +2002,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2072,7 +2072,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '10',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2096,7 +2096,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -2141,7 +2141,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2165,7 +2165,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -2216,7 +2216,7 @@ function nesi_ft_proposal_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '12',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2248,7 +2248,7 @@ function nesi_ft_proposal_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -2293,7 +2293,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2317,7 +2317,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '3',
       ),
     ),
   );
@@ -2360,7 +2360,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '28',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2384,7 +2384,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '12',
+        'weight' => '15',
       ),
     ),
   );
@@ -2427,7 +2427,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '22',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2496,7 +2496,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '25',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2520,7 +2520,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '12',
       ),
     ),
   );
@@ -2565,7 +2565,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '24',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2589,7 +2589,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '11',
       ),
     ),
   );
@@ -2634,7 +2634,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '26',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2658,7 +2658,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '13',
       ),
     ),
   );
@@ -2701,7 +2701,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '23',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2771,7 +2771,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '8',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2792,7 +2792,7 @@ function nesi_ft_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -2835,7 +2835,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '21',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2902,7 +2902,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '15',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2926,7 +2926,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -2977,7 +2977,7 @@ function nesi_ft_proposal_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '20',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3054,7 +3054,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '14',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3078,7 +3078,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -3121,7 +3121,7 @@ function nesi_ft_proposal_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '27',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3145,7 +3145,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '11',
+        'weight' => '14',
       ),
     ),
   );
