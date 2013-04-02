@@ -975,6 +975,7 @@ div.radio span.checked {
 }
 
 .page-user-dashboard h1.page-header {
+  margin: 28px 0;
   text-indent: 20px;
 }
 
@@ -1033,9 +1034,9 @@ div.radio span.checked {
   padding: 0 0 0 40px;
 }
 
+.page-user-dashboard .module h1,
 .page-user-dashboard .module h1 a {
   color: #4b5b68;
-  display: block;
   font-size: 14px;
   line-height: 21px;
 }
@@ -1068,6 +1069,7 @@ div.radio span.checked {
 .page-user-dashboard .stats-labels > div {
   float: left;
   height: 47px;
+  line-height: 47px;
   text-align: center;
   width: 105px;
 }
@@ -1140,17 +1142,13 @@ div.radio span.checked {
 }
 
 .proposal-operations {
-  border-top: 1px solid #eaeded;
-  border-right: 1px solid #eaeded;
-  border-bottom: 1px solid #eaeded;
   display: none;
-  float: left;
+  margin: 0 0 0 38px;
   overflow: hidden;
-  width: 46px;
 }
 
 .proposal-outline-wrapper:hover .proposal-operations {
-  display: block;
+  display: inline;
 }
 
 .proposal-operations a {
@@ -1158,22 +1156,19 @@ div.radio span.checked {
   border: 0;
   border-radius: 0;
   box-shadow: 0 0 0 transparent;
-  height: 29px;
+  height: 15px;
+  margin: 0 7px;
   padding: 0;
   text-indent: -9999em;
-  width: 46px;
+  width: 22px;
 }
 
 .proposal-operations a.btn-dash-view {
-  background: url(../assets/img/dashboard-icon-view.png) center no-repeat;
+  background: url(../assets/img/dashboard-icon-view-small.png) center no-repeat;
 }
 
 .proposal-operations a.btn-dash-edit {
-  background: url(../assets/img/dashboard-icon-edit.png) center no-repeat;
-}
-
-.proposal-operations a.btn-dash-delete {
-  background: url(../assets/img/dashboard-icon-delete.png) center no-repeat;
+  background: url(../assets/img/dashboard-icon-edit-small.png) center no-repeat;
 }
 
 /* User profile page */

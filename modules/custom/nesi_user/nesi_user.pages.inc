@@ -65,9 +65,11 @@ function nesi_user_dashboard_callback() {
             }
             */
           }
+          /*
           if ($access_delete) {
             $proposal_operations .= l('Delete', 'node/' . $current_proposal->nid . '/delete', array('attributes' => array('class' => 'btn btn-dash-delete')));
           }
+          */
 
           $proposal_platform = '';
           if ($current_proposal->type == 'proposal_development_class') {

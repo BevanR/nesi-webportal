@@ -14,7 +14,7 @@ switch ( $proposal_type ) {
 <div class="proposal-outline-wrapper">
   <article class="proposal-outline">
     <header>
-      <h1 class="proposal-title"><a href="<?php print $proposal_link; ?>"><strong><?php print $type; ?> - <?php print strtoupper($proposal_platform); ?></strong><?php if ($proposal_state) : ?> - <span><?php print $proposal_state; ?></span><?php endif; ?><br /><?php print $proposal_title; ?></a></h1>
+      <h1 class="proposal-title"><a href="<?php print $proposal_link; ?>"><strong><?php print $type; ?> - <?php print strtoupper($proposal_platform); ?></strong><?php if ($proposal_state) : ?> - <span><?php print $proposal_state; ?></span><?php endif; ?></a><span class="proposal-operations"><?php print $proposal_operations; ?></span><br /><?php print $proposal_title; ?></h1>
     </header>
     <div class="proposal-meta">
       <div>
@@ -31,7 +31,4 @@ switch ( $proposal_type ) {
       </div>
     </div>
   </article>
-  <div class="proposal-operations">
-    <?php print $proposal_operations; ?>
-  </div>
 </div>
