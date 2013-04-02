@@ -34,10 +34,10 @@
  * @ingroup themeable
  */
 ?>
-<?php print l('Submit a proposal', 'apply/nojs/create-proposal', array('attributes' => array('id' => 'submit-proposal', 'class' => 'btn'))); ?>
+<?php //print l('Submit a proposal', 'apply/nojs/create-proposal', array('attributes' => array('id' => 'submit-proposal', 'class' => 'btn'))); ?>
 <div class="profile"<?php print $attributes; ?>>
 
-  <div class="module-wrapper">
+  <div class="module-wrapper module-wrapper-first">
     <h2>Account information</h2>
     <div class="module module-account">
       <div class="account-photo"><?php print render($user_profile['user_picture']); ?></div>

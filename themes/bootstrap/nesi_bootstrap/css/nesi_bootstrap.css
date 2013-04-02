@@ -1164,7 +1164,7 @@ div.radio span.checked {
 
 /* User profile page */
 .page-user-profile {
-  background: #f1f1f1;
+  background: #fff;
 }
 
 .page-user-profile ul.nav-tabs {
@@ -1180,27 +1180,30 @@ div.radio span.checked {
 }
 
 .page-user-profile .module-wrapper {
+  background: url(../assets/img/boxes-bg-center.png) center top repeat-x;
   float: left;
-  margin: 0 2% 46px 0;
-  width: 32%;
+  margin: 28px 0 46px;
+  padding: 30px 2% 0;
+  width: 29.33%;
+}
+
+.page-user-profile .module-wrapper-first {
+  background: url(../assets/img/boxes-bg-left.png) right top no-repeat;
 }
 
 .page-user-profile .module-wrapper-last {
-  margin: 0;
+  background: url(../assets/img/boxes-bg-right.png) left top no-repeat;
 }
 
 .page-user-profile .module-wrapper h2 {
   color: #4b5b68;
   font-size: 18px;
   font-weight: normal;
+  text-align: center;
   text-indent: 20px;
 }
 
 .page-user-profile .module {
-  background: #fff;
-  border: 1px solid #e7e6e6;
-  -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
-  box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
   color: #606162;
   height: 295px;
 }
