@@ -23,11 +23,16 @@ function nesi_bootstrap_breadcrumb($variables) {
 function nesi_bootstrap_menu_tree__user_menu($variables) {
 
   global $user;
+
+  $user_data = $user;
+
   $output = '';
   $output .= '<ul id="nesi-user-profile-dropdown" class="dropdown-menu pull-right">';
   $output .= '<li><div class="nesi-user-picture"><div class="pull-left">'.theme('user_picture',  array('account' => $user)).'</div>
-              <h3>'.$user->name.'</h3>
-              <p>Institution</p>
+              <h2>' . format_username($user_data) . '</h2>
+              <h3>Institution</h3>
+              <p>'.$user->name.'</p>
+              <p><em>Member for ' . format_interval(REQUEST_TIME - $user_data->created) . '</em></p>
               </div></li>';
   $output .= '<li><a href="/user/dashboard">Projects and Proposals -> add to user-menu</a></li>';
   $output .=  $variables['tree'];

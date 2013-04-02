@@ -260,15 +260,19 @@ input, button, select, textarea {
 }
 
 #block-nesi-user-modal-nesi-user-modal-login ul li a {
+  background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
   border: 0 none;
   color: #A1A3A4;
   font-size: 14px;
   height: auto;
-  margin: 24px 0;
+  margin: 24px 10px 24px 0;
+  padding: 0 29px 0 0;
+  text-align: left;
+  width: auto;
 }
 
 #block-nesi-user-modal-nesi-user-modal-login ul li a:hover {
-  background-image: none;
+  background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
 }
 
 /* Home page */
@@ -1500,16 +1504,53 @@ div.radio span.checked {
 
 /* User profile dropdown menu */
 #block-nesi-user-modal-nesi-user-modal-login ul.dropdown-menu {
-  border: 1px solid #000000;
+  border: 1px solid #e7e6e6;
   margin-top: 5px;
   width: 400px;
   border-radius: 0px;
-  padding: 0px;
+  padding: 29px 18px 26px;
+}
+
+.navbar .nav > li > .dropdown-menu:after,
+.navbar .pull-right > li > .dropdown-menu:before, .navbar .nav > li > .dropdown-menu.pull-right:before {
+  display: none;
 }
 
 #nesi-user-profile-dropdown li {
+  margin: 0;
+  padding: 0;
   width: 100%;
   float: right;
+}
+
+#nesi-user-profile-dropdown li .user-picture a {
+  background: transparent;
+  margin: 0 18px 0 0;
+  padding: 0;
+}
+
+#nesi-user-profile-dropdown .nesi-user-picture {
+  color: #4b5b68;
+}
+
+#nesi-user-profile-dropdown .nesi-user-picture h2 {
+  color: #4b5b68;
+  font-size: 17px;
+  line-height: 36px;
+}
+
+#nesi-user-profile-dropdown .nesi-user-picture h3 {
+  color: #4b5b68;
+  font-size: 13px;
+  line-height: 20px;
+  margin-bottom: 0;
+}
+
+#nesi-user-profile-dropdown .nesi-user-picture p {
+  color: #404040;
+  font-size: 11px;
+  line-height: 20px;
+  margin-bottom: 12px;
 }
 
 #nesi-user-profile-dropdown ul.nesi-base-actions {
