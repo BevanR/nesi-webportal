@@ -1183,7 +1183,7 @@ div.radio span.checked {
   background: url(../assets/img/boxes-bg-center.png) center top repeat-x;
   float: left;
   margin: 28px 0 46px;
-  padding: 30px 2% 0;
+  padding: 18px 2% 0;
   width: 29.33%;
 }
 
@@ -1268,7 +1268,7 @@ div.radio span.checked {
 /* View proposal */
 .node-type-proposal-research-class,
 .node-type-proposal-development-class {
-  background: #f1f1f1;
+  background: #fff;
 }
 
 .node-type-proposal-research-class .span12,
@@ -1337,10 +1337,12 @@ div.radio span.checked {
 .node-proposal-research-class .field-group-fieldset .fieldset-wrapper,
 .node-type-proposal-development-class .field-group-fieldset .fieldset-wrapper,
 #proposal-statistics {
+/*
   background: #fff;
   border: 1px solid #e7e6e6;
   -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
   box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, .1);
+*/
   color: #606162;
   margin: 0 20px 34px 0;
   padding: 20px;

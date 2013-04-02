@@ -1001,7 +1001,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '11',
+        'weight' => '13',
       ),
     ),
   );
@@ -1068,7 +1068,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '9',
+        'weight' => '11',
       ),
     ),
   );
@@ -1206,7 +1206,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -1275,7 +1275,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -1344,7 +1344,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -1413,7 +1413,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -1482,7 +1482,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -1551,7 +1551,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -1689,7 +1689,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
@@ -1827,7 +1827,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -1890,7 +1890,7 @@ function nesi_ft_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '7',
+        'weight' => '9',
       ),
     ),
   );
@@ -1957,7 +1957,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '10',
       ),
     ),
   );
@@ -2096,7 +2096,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -2165,7 +2165,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -2248,7 +2248,7 @@ function nesi_ft_proposal_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -2317,7 +2317,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '3',
       ),
     ),
   );
@@ -2384,7 +2384,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '12',
+        'weight' => '15',
       ),
     ),
   );
@@ -2520,7 +2520,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '12',
       ),
     ),
   );
@@ -2589,7 +2589,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '11',
       ),
     ),
   );
@@ -2658,7 +2658,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '13',
       ),
     ),
   );
@@ -2792,7 +2792,7 @@ function nesi_ft_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -2926,7 +2926,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -3078,7 +3078,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -3145,7 +3145,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '11',
+        'weight' => '14',
       ),
     ),
   );
