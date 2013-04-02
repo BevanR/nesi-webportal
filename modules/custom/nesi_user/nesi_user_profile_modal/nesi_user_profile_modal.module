@@ -1,0 +1,109 @@
+<?php
+
+/**
+* Implements hook_block_info().
+*/
+function nesi_user_profile_modal_block_info() {
+  $blocks = array();
+
+  $blocks['nesi-user-profile-modal-edit'] = array(
+    'info' => t('NeSI User Edit Profile'),
+    'status' => TRUE,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+    'region' => 'navigation',
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function nesi_user_profile_modal_block_view($delta = '') {
+  switch ($delta) {
+    case 'nesi-user-profile-modal-edit':
+      return user_is_logged_in() ? _nesi_user_profile_modal_edit_profile_view() : NULL;
+  }
+  return NULL;
+}
+
+/**
+* Implements hook_form_alter().
+*/
+function nesi_user_profile_modal_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'user_profile_form':
+      // Add ajax wrapper to form.
+      $html_id = str_replace('_', '-', $form_id);
+      $form['#prefix'] = '<div id="ajax-' . $html_id . '-wrapper">';
+      $form['#suffix'] = '</div>';
+      // Add ajax functionality to form submit button.
+      $form['actions']['submit']['#ajax'] = array(
+        'callback' => '_nesi_user_profile_modal_ajax_callback',
+        'wrapper' => 'ajax-' . $html_id . '-wrapper',
+        'event' => 'click',
+      );
+      break;
+  }
+}
+
+function _nesi_user_profile_modal_ajax_callback($form, $form_state) {
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+
+  if (form_get_errors()) {
+    return $form; // Reload form if it didn't pass validation.
+  }
+
+  if ($form['#id'] === 'user-profile-form') {
+    //drupal_set_message(check_plain('Changes saved'));
+  }
+
+  $commands = array();
+  $commands[] = ctools_ajax_command_reload();
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands
+  );
+}
+
+function _nesi_user_profile_modal_edit_profile_view() {
+  global $base_url;
+  global $user;
+
+  $form_id = 'user_profile_form';
+  $form_state = array();
+  $form_state['build_info']['args'] = array($user);
+
+  // Load user.pages.inc and ensure it is automatically reloaded if
+  // this form is rebuilt via AJAX or other means.
+  form_load_include($form_state, 'inc', 'user', 'user.pages');
+
+  $form = drupal_build_form($form_id, $form_state);
+
+  $content = '<ul class="nav pull-right">';
+  $content .= '<li>';
+  $content .= '<a href="user/" role="button" data-toggle="modal" data-target="#nesiProfileModal" data-remote="false">' . t('Edit Profile') . '</a>';
+  $content .= '<div id="nesiProfileModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nesiProfileModalLabel" aria-hidden="true">
+
+  <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3 id="nesiProfileModelLabel">Edit Profile</h3>
+  </div>
+    <div class="modal-body">
+      '.drupal_render($form).'
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+ ';
+
+  $content .= '</li>';
+  $content .= '</ul>';
+
+  return array(
+    'subject' => NULL,
+    'content' => $content,
+  );
+}
+
