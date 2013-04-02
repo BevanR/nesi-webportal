@@ -979,7 +979,7 @@ div.radio span.checked {
   text-indent: 20px;
 }
 
-.page-user-dashboard h2 {
+.page-user-dashboard .span12 h2 {
   color: #4b5b68;
   float: left;
   font-size: 18px;
