@@ -1683,8 +1683,14 @@ div.radio span.checked {
   padding: 10px;
   position: absolute;
   right: 0;
+  text-align: center;
   width: 171px;
 }
+
+#nesiLoginModal .login-via-tuakiri a:hover {
+  background: #2b9fc2;
+}
+
 #nesiLoginModal .login-via-drupal button { 
   height: 45px;
 }
@@ -1725,9 +1731,16 @@ div.radio span.checked {
 }
 
 #block-nesi-user-modal-nesi-user-modal-login ul li .modal-footer a {
+  background: transparent;
   color: #2b9fc2;
   font-size: 18px;
   line-height: 36px;
+  margin: 0;
+  padding: 0;
+}
+
+#block-nesi-user-modal-nesi-user-modal-login ul li .modal-footer a:hover {
+  background: transparent;
 }
 
 #nesiLoginModal .help-block,
