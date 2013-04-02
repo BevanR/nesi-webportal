@@ -558,6 +558,37 @@ function nesi_ft_proposal_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_team|node|proposal_research_class|default';
+  $field_group->group_name = 'group_team';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'proposal_research_class';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Principal Investigator and Team',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_prc_hpc_background',
+      1 => 'field_prc_pi_email',
+      2 => 'field_prc_pi_name',
+      3 => 'field_prc_pi_phone',
+      4 => 'field_prc_team_access',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Principal Investigator and Team',
+      'instance_settings' => array(
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_team|node|proposal_research_class|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_team|node|proposal_research_class|form';
   $field_group->group_name = 'group_team';
   $field_group->entity_type = 'node';

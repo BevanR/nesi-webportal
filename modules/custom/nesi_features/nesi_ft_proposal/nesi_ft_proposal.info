@@ -75,6 +75,7 @@ features[field_group][] = group_software|node|proposal_research_class|default
 features[field_group][] = group_software|node|proposal_research_class|form
 features[field_group][] = group_team|node|proposal_development_class|default
 features[field_group][] = group_team|node|proposal_development_class|form
+features[field_group][] = group_team|node|proposal_research_class|default
 features[field_group][] = group_team|node|proposal_research_class|form
 features[field_group][] = group_usage|node|proposal_research_class|default
 features[field_group][] = group_usage|node|proposal_research_class|form
