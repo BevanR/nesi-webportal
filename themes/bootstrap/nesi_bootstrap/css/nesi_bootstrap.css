@@ -1021,7 +1021,7 @@ div.radio span.checked {
 .proposal-outline-wrapper {
   clear: both;
   float: left;
-  height: 88px;
+  height: 72px;
   margin: 0 0 5px 0;
   width: 100%;
 }
@@ -1030,7 +1030,7 @@ div.radio span.checked {
   border: 0;
   border: 1px solid #eaeded;
   float: left;
-  height: 87px;
+  height: 70px;
   margin: 0;
   padding: 0 20px;
   width: 1130px;
@@ -1069,15 +1069,15 @@ div.radio span.checked {
   color: #4a4848;
   float: right;
   line-height: 21px;
-  margin: 15px 0 0 0;
+  margin: 0;
   width: 420px;
 }
 
 .page-user-dashboard .proposal-meta > div,
 .page-user-dashboard .stats-labels > div {
   float: left;
-  height: 47px;
-  line-height: 47px;
+  height: 70px;
+  line-height: 70px;
   text-align: center;
   width: 105px;
 }
