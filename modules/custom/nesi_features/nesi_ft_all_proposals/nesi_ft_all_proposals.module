@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the nesi_ft_all_proposals feature.
+ */
+
+include_once 'nesi_ft_all_proposals.features.inc';
