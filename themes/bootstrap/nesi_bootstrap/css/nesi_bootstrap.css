@@ -166,6 +166,7 @@ a:hover {
   background-image: url(../assets/img/header-bg.png);
   border: 0;
   border-radius: 0;
+  box-shadow: 0 0 0 transparent;
   height: 150px;
 }
 
