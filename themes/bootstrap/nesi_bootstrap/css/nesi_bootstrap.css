@@ -231,7 +231,8 @@ a:hover {
 
 #pnav li.menu-1685 a,
 #pnav li.menu-1732 a {
-  background: url(../assets/img/nav-apply.png) 240px center no-repeat;
+  background: url(../assets/img/nav-apply.png) 190px center no-repeat;
+  text-indent: -37px;
 }
 
 #pnav li.menu-1685:hover,
