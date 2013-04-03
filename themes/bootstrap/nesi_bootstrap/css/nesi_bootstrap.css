@@ -1316,7 +1316,6 @@ div.radio span.checked {
 
 .node-proposal-research-class .field-group-fieldset,
 .node-type-proposal-development-class .field-group-fieldset {
-  border: 1px solid #e7e6e6;
   float: left;
   margin: 0 2% 2% 0;
   width: 48.83%;
@@ -1329,10 +1328,9 @@ div.radio span.checked {
 
 .node-proposal-research-class .field-group-fieldset legend,
 .node-type-proposal-development-class .field-group-fieldset legend {
-  border: 1px solid #e7e6e6;
+  border: 0;
   height: 57px;
   line-height: 57px;
-  margin: 0 -1px;
 }
 
 .node-proposal-research-class .field-group-fieldset legend span,
@@ -1413,7 +1411,6 @@ div.radio span.checked {
 }
 
 #proposal-statistics .inner {
-  border: 1px solid #e7e6e6;
   float: right;
   padding: 0 60px;
   width: 60%;
