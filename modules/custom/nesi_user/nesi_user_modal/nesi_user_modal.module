@@ -5,19 +5,15 @@
 */
 function nesi_user_modal_block_info() {
   $blocks = array();
+
   $blocks['nesi-user-modal-login'] = array(
     'info' => t('NeSI User Login/Register Menu'),
     'status' => TRUE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => '',
+    'region' => 'navigation',
   );
 
-  $blocks['nesi-user-modal-edit-profile'] = array(
-    'info' => t('NeSI User Edit Profile'),
-    'status' => TRUE,
-    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-    'pages' => '',
-  );
   return $blocks;
 }
 
