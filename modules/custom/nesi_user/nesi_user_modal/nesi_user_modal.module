@@ -5,19 +5,15 @@
 */
 function nesi_user_modal_block_info() {
   $blocks = array();
+
   $blocks['nesi-user-modal-login'] = array(
     'info' => t('NeSI User Login/Register Menu'),
     'status' => TRUE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => '',
+    'region' => 'navigation',
   );
 
-  $blocks['nesi-user-modal-edit-profile'] = array(
-    'info' => t('NeSI User Edit Profile'),
-    'status' => TRUE,
-    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-    'pages' => '',
-  );
   return $blocks;
 }
 
@@ -70,7 +66,7 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
     if ($account->uid > 0) {
       // Redirect based on role  
       if (in_array('portal-admin', $account->roles) || in_array('administrator', $account->roles )) {
-        $commands[] = ctools_ajax_command_redirect('admin/config/nesi/website');
+        $commands[] = ctools_ajax_command_redirect('nesi-config');
       }
       else {
         $commands[] = ctools_ajax_command_redirect('user/dashboard');
