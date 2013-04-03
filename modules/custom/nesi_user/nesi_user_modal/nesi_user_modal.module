@@ -57,16 +57,20 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
   ctools_include('ajax');
   ctools_add_js('ajax-responder');
 
+  $commands = array();
+
   if (form_get_errors()) {
     return $form; // Reload form if it didn't pass validation.
   }
 
   if ($form['#id'] === 'user-login') {
     drupal_set_message(check_plain('Successful login'));
+    $commands[] = ctools_ajax_command_redirect('user/dashboard');
+  }
+  else {
+    $commands[] = ctools_ajax_command_reload();
   }
 
-  $commands = array();
-  $commands[] = ctools_ajax_command_reload();
   return array(
     '#type' => 'ajax',
     '#commands' => $commands

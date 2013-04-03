@@ -166,6 +166,7 @@ a:hover {
   background-image: url(../assets/img/header-bg.png);
   border: 0;
   border-radius: 0;
+  box-shadow: 0 0 0 transparent;
   height: 150px;
 }
 
@@ -230,8 +231,7 @@ a:hover {
 
 #pnav li.menu-1685 a,
 #pnav li.menu-1732 a {
-  background: url(../assets/img/nav-apply.png) 169px center no-repeat;
-  text-align: left;
+  background: url(../assets/img/nav-apply.png) 240px center no-repeat;
   text-indent: 38px;
 }
 
@@ -260,18 +260,26 @@ input, button, select, textarea {
 }
 
 #block-nesi-user-modal-nesi-user-modal-login ul li a {
-  background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
+  background-image: none;
   border: 0 none;
   color: #A1A3A4;
   font-size: 14px;
   height: auto;
   margin: 24px 10px 24px 0;
-  padding: 0 29px 0 0;
   text-align: left;
   width: auto;
 }
 
 #block-nesi-user-modal-nesi-user-modal-login ul li a:hover {
+  background-image: none;
+}
+
+.logged-in #block-nesi-user-modal-nesi-user-modal-login ul li a {
+  background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
+  padding: 0 29px 0 0;
+}
+
+.logged-in #block-nesi-user-modal-nesi-user-modal-login ul li a:hover {
   background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
 }
 
@@ -1206,7 +1214,7 @@ div.radio span.checked {
 
 .page-user-profile .module-wrapper h2 {
   color: #4b5b68;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: normal;
   text-align: center;
   text-indent: 20px;
@@ -1683,8 +1691,14 @@ div.radio span.checked {
   padding: 10px;
   position: absolute;
   right: 0;
+  text-align: center;
   width: 171px;
 }
+
+#nesiLoginModal .login-via-tuakiri a:hover {
+  background: #2b9fc2;
+}
+
 #nesiLoginModal .login-via-drupal button { 
   height: 45px;
 }
@@ -1725,9 +1739,16 @@ div.radio span.checked {
 }
 
 #block-nesi-user-modal-nesi-user-modal-login ul li .modal-footer a {
+  background: transparent;
   color: #2b9fc2;
   font-size: 18px;
   line-height: 36px;
+  margin: 0;
+  padding: 0;
+}
+
+#block-nesi-user-modal-nesi-user-modal-login ul li .modal-footer a:hover {
+  background: transparent;
 }
 
 #nesiLoginModal .help-block,

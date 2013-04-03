@@ -139,7 +139,6 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
   // User Registration form alter
   if ($form['#form_id'] == 'user_register_form') {
 
-    $form_state['redirect'] = 'user/dashboard';
     $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];
 
     // Provide New Zealand and Australia as a primary option in nationality field.
@@ -273,14 +272,6 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
   $form['profile_researcher_profile']['#type'] = 'fieldset';
   $form['profile_researcher_profile']['#title'] = 'Researcher Profile';
   $form['profile_researcher_profile']['#collapsible'] = TRUE;
-}
-
-/**
- * Implements hook_user_insert()
- */
-function nesi_user_user_insert(&$edit, $account, $category) {
-  // Set landing page for new user
-  $edit['redirect'] = 'user/dashboard';
 }
 
 /**
@@ -458,9 +449,6 @@ function nesi_user_user_delete($account) {
  * Implements hook_user_login()
  */
 function nesi_user_user_login(&$edit, $account) {
-
-  // Set user login destination
-  $edit['redirect'] = 'user/dashboard';
 
   // On login, check for updates to tuakiri information (if applicable)
   // If updated, save to drupal user profile 
