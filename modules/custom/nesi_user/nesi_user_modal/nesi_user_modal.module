@@ -65,7 +65,17 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
 
   if ($form['#id'] === 'user-login') {
     drupal_set_message(check_plain('Successful login'));
-    $commands[] = ctools_ajax_command_redirect('user/dashboard');
+    global $user;
+    $account = $user;
+    if ($account->uid > 0) {
+      // Redirect based on role  
+      if (in_array('portal-admin', $account->roles) || in_array('administrator', $account->roles )) {
+        $commands[] = ctools_ajax_command_redirect('admin/config/nesi/website');
+      }
+      else {
+        $commands[] = ctools_ajax_command_redirect('user/dashboard');
+      }
+    }
   }
   else {
     $commands[] = ctools_ajax_command_reload();
