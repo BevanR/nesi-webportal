@@ -259,18 +259,26 @@ input, button, select, textarea {
 }
 
 #block-nesi-user-modal-nesi-user-modal-login ul li a {
-  background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
+  background-image: none;
   border: 0 none;
   color: #A1A3A4;
   font-size: 14px;
   height: auto;
   margin: 24px 10px 24px 0;
-  padding: 0 29px 0 0;
   text-align: left;
   width: auto;
 }
 
 #block-nesi-user-modal-nesi-user-modal-login ul li a:hover {
+  background-image: none;
+}
+
+.logged-in #block-nesi-user-modal-nesi-user-modal-login ul li a {
+  background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
+  padding: 0 29px 0 0;
+}
+
+.logged-in #block-nesi-user-modal-nesi-user-modal-login ul li a:hover {
   background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
 }
 
