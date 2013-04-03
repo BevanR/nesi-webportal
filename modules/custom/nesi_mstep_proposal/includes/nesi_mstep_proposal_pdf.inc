@@ -34,7 +34,7 @@ function nesi_mstep_proposal_email_theme_page() {
 }
 
 function nesi_mstep_proposal_pdf_generate_page() {
-  $nid = 126;
+  $nid = 125;
   nesi_mstep_generate_proposal_pdf($nid);
   return 'In pdf generate page';
 }
