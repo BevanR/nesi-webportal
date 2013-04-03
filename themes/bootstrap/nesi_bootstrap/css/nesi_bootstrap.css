@@ -282,6 +282,11 @@ input, button, select, textarea {
   background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
 }
 
+#block-nesi-user-modal-nesi-user-modal-login ul li .alert a {
+  color: #4B5B68;
+  margin: 0;
+}
+
 /* Home page */
 #home-hero {
   margin-bottom: 0;
@@ -1772,12 +1777,21 @@ div.radio span.checked {
   width: 28px;
 }
 
+#nesiLoginModal .alert .close {
+  display: none;
+}
+
 #nesiLoginModal #ajax-user-login-wrapper {
   margin-top: 5px;
 }
 
 #nesiLoginModal .tuakiri,
 #nesiLoginModal #ajax-user-login-wrapper {
-  height: 211px;
+  min-height: 168px;
+  padding-bottom: 65px;
   position: relative;
+}
+
+#nesiLoginModal label {
+  display: none;
 }
