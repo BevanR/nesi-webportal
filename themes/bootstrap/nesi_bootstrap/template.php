@@ -28,7 +28,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
   $user_data = $user;
 
   $admin_links = '';
-  if (in_array('nesi-admin', $account->roles) || in_array('administrator', $account->roles )) {
+  if (in_array('nesi-admin', $user_data->roles) || in_array('administrator', $user_data->roles )) {
     $admin_links .= '<li><a href="'.$base_url.'/nesi-config">Administration Dashboard</a></li>';
   } 
 
