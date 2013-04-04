@@ -21,10 +21,16 @@ function nesi_bootstrap_breadcrumb($variables) {
 }
 
 function nesi_bootstrap_menu_tree__user_menu($variables) {
-
+  
+  global $base_url;
   global $user;
 
   $user_data = $user;
+
+  $admin_links = '';
+  if (in_array('nesi-admin', $account->roles) || in_array('administrator', $account->roles )) {
+    $admin_links .= '<li><a href="'.$base_url.'/nesi-config">Administration Dashboard</a></li>';
+  } 
 
   $output = '';
   $output .= '<ul id="nesi-user-profile-dropdown" class="dropdown-menu pull-right">';
@@ -34,8 +40,9 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
               <p>'.$user->name.'</p>
               <p><em>Member for ' . format_interval(REQUEST_TIME - $user_data->created) . '</em></p>
               </div></li>';
+  $output .=  $admin_links;
   $output .=  $variables['tree'];
-  $output .= '<li id="nesi-base-actions"><ul class="nav nav-pills nesi-base-actions"><li class="pull-left"><a href="/user">Profile</a></li><li class="pull-right"><a href="/user/logout">Log out</a></li></ul></li>';
+  $output .= '<li id="nesi-base-actions"><ul class="nav nav-pills nesi-base-actions"><li class="pull-left"><a href="'.$base_url.'/user">Profile</a></li><li class="pull-right"><a href="/user/logout">Log out</a></li></ul></li>';
   $output .= '</ul>';
   return $output;
 }
