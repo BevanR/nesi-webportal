@@ -82,6 +82,30 @@ function nesi_bootstrap_menu_link(array $variables) {
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
+function nesi_bootstrap_menu_link__main_menu(array $variables) {
+
+  global $user;
+  
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  if ($element['#href'] == 'apply/nojs/create-proposal') {
+    if ($user->uid == 0) {
+      $element['#localized_options']['attributes']['data-toggle'] = 'modal';
+      $element['#localized_options']['attributes']['data-target'] = '#nesiLoginModal';
+      $element['#localized_options']['attributes']['data-remote'] = 'false';
+    }
+  }
+  $element['#attributes']['class'][] = 'menu-' . $element['#original_link']['mlid'];
+  $element['#localized_options']['html'] = TRUE;
+  $output = l($element['#title'] . '<span>' . $element['#localized_options']['attributes']['title'] . '</span>', $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
 function nesi_bootstrap_preprocess_page(&$vars, $hook) {
   // Add Typekit
   drupal_add_js('http://use.typekit.net/fmw6ovn.js', 'external');
