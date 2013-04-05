@@ -45,8 +45,12 @@ function nesi_mstep_proposal_intro_form() {
     '#options' => nesi_mstep_proposal_class_types(),
     '#default_value' => '',
   );
+  
+  global $user;
+
   $form['intro-form']['sub_email']['#title'] = 'Email address';
-  $form['intro-form']['sub_email']['#type'] = 'textfield';
+  $form['intro-form']['sub_email']['#type'] = 'hidden';
+  $form['intro-form']['sub_email']['#default_value'] = $user->mail;
   $form['intro-form']['sub_email']['#required'] = TRUE;
 
   return $form;
