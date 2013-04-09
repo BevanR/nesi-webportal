@@ -272,8 +272,9 @@ $aliases['prod'] = array(
   ),
 );
 
-// Inherits from @prod.
 $aliases['dev'] = array(
+  // Inherit configuration from @prod.
+  'parent' => '@prod',
   'remote-host' => 'web.dev.nesi.org.nz',
   'uri' => 'http://web.dev.nesi.org.nz',
-) + $aliases['prod'];
+);
