@@ -258,14 +258,22 @@
 
 $aliases['prod'] = array(
   'remote-host' => 'www.nesi.org.nz',
-  // Configure SSH usernames in ~/.ssh/config.
+  // Configure SSH username in ~/.ssh/config.
+  // 'remote-user' => 'brud046',
   'root' => '/srv/www/platforms/drupal',
   'uri' => 'http://www.nesi.org.nz',
+  'path-aliases' => array(
+     '%dump-dir' => '/tmp',
+   ),
+  'command-specific' => array(
+    'sql-sync' => array(
+      'structure-tables-key' => 'common',
+    ),
+  ),
 );
 
+// Inherits from @prod.
 $aliases['dev'] = array(
   'remote-host' => 'web.dev.nesi.org.nz',
-  // Configure SSH usernames in ~/.ssh/config.
-  'root' => '/srv/www/platforms/drupal',
   'uri' => 'http://web.dev.nesi.org.nz',
-);
+) + $aliases['prod'];
