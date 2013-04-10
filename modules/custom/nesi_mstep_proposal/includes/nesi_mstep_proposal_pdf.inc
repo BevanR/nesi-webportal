@@ -26,15 +26,16 @@ function nesi_mstep_proposal_email_theme_page() {
   
   global $base_url;
   $css = drupal_get_css(); 
-  $nid = 126;
+  $nid = 122;
   $data = nesi_mstep_proposal_data($nid);
   $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css));
   echo $node_html;
   drupal_exit();
+  // return 'pdf theme page';
 }
 
 function nesi_mstep_proposal_pdf_generate_page() {
-  $nid = 125;
+  $nid = 122;
   nesi_mstep_generate_proposal_pdf($nid);
   return 'In pdf generate page';
 }
@@ -55,6 +56,7 @@ function nesi_mstep_proposal_data($nid) {
   
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
+  //dsm($fields);
   // Sort those fields so that are returned correctly weighted
   usort($fields,"nesi_mstep_sort_fields");
   // Use entity api
@@ -70,7 +72,30 @@ function nesi_mstep_proposal_data($nid) {
     $field_val    = $node_wrapper->{$field_name}->value();
     $data[$field_name] = array('field_label' => $field_label, 'field_val' => $field_val);
   }
-  return $data;
+
+  // using field_group api
+  $groups = field_group_info_groups('node', $content_type, 'default', TRUE);
+
+  // creating a map for sorting
+  $group_map = array();
+  foreach($groups as $group) {
+    foreach($group->children as $index=>$group_field) {
+      $group_map[$group_field] = $group->group_name;
+    }
+  }
+  
+  // put the field data into the correct field group
+  $ndata = array();
+  foreach($data as $field=>$data) {
+    if($group_map[$field]) {
+      $group_name = $group_map[$field];
+      $ndata[$group_name][$field] = $data;
+    } 
+    else {
+      $ndata['non-field-group'][$field] = $data;
+    }
+  }
+  return $ndata;
 }
 
 function nesi_mstep_sort_fields($a,$b){
