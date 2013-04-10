@@ -70,6 +70,7 @@ These additional requirements and assumptions apply to the *Import Content*, *Up
   * Configure `$options['dump-dir']` to optimise `drush sql-sync` through it's use of `rsync`.  E.g.  
       Linux: `$options['dump-dir'] = '/home/brud046/sql-dumps';`  
       Mac OS X: `$options['dump-dir'] = '/Users/brud046/sql-dumps';`
+  * The directories must exist.  Drush will not create them.
 
 ## Import Content
 
@@ -77,7 +78,7 @@ Use this process to pull the website's content (non version-controlled dynamic d
 
 `@prod` or `@test` can be used instead of `@dev` to pull content from the corresponding environments.
 
-> These aliases are version-controlled in `aliases.drushrc.php`.  They are available when Drush executes in the Drupal root directory or any sub-directory.  To use these aliases from any directory on the filesystem in the form `@nesi.dev` instead of shorthand `@dev`, create a symlink to the file from `~/.drush/nesi.aliases.drushrc.php`.
+> These aliases are version-controlled in `aliases.drushrc.php`.  They are available when Drush executes in the Drupal root directory or any sub-directory.  To use these aliases from any directory on the filesystem in the form `@nesi.dev` instead of shorthand `@dev`, create a symlink to the file from `~/.drush/nesi.aliases.drushrc.php`. Note however that this breaks `sql-sync` from inside the doc root.  See [this issue in the drush issue queue](http://drupal.org/node/1966160#comment-7279594).
 
 1. `cd` to the web document root.
 1. `cd sites/default/`
@@ -106,7 +107,7 @@ This process updates the database schema, rebuilds registries, clears caches and
 1. If not production: `drush sql-query 'UPDATE users SET mail = "user@example.com" WHERE uid > 1'`  
   This prevents email notifications being sent from staging and sandbox environments.  It may be useful to use a real email address instead of `user@example.com`.  
 
-> Some email providers support [address tags](http://en.wikipedia.org/wiki/Email_address#Address_tags).  E.g. `brud046+foobar@nesi.org.nz`.  Gmail, Google Apps and `@nesi.org.nz` support this feature.  `@auckland.ac.nz` does not.  To take advantage of this feature, consider `SET mail = CONCAT("bevan.rudge+", name, "@nesi.org.nz")`.
+> Some email providers support [address tags](http://en.wikipedia.org/wiki/Email_address#Address_tags).  E.g. `bevan.rudge+foobar@nesi.org.nz`.  Gmail, Google Apps and `@nesi.org.nz` support this feature.  `@auckland.ac.nz` does not.  To take advantage of this feature, consider `SET mail = CONCAT("bevan.rudge+", name, "@nesi.org.nz")`.
 
 ## Import & Update Content
 
