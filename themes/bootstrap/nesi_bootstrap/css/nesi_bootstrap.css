@@ -1796,3 +1796,8 @@ div.radio span.checked {
 #nesiLoginModal label {
   display: none;
 }
+
+/* PDF */
+.nesi-pdf #logo {
+  margin: 24px 0;
+}
