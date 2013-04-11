@@ -6,6 +6,8 @@
  */
 
 $data = $variables['data'];
+$nid = $variables['nid'];
+$node = node_load($nid);
 
 $development_class_map = array(
   'software_installation' => 'Software Installation',
@@ -13,6 +15,15 @@ $development_class_map = array(
   'software_optimisation' => 'Software Optimisation',
   'scaling_performance'   => 'Scaling Performance',
 );
+
+switch ($node->type) {
+  case 'proposal_development_class' :
+    $proposal_type = 'Technical Development';
+    break;
+  default :
+    $proposal_type = '';
+}
+
 ?>
 <!DOCTYPE html>
 <!--[if IE 6 ]> <html class="ie6"> <![endif]-->

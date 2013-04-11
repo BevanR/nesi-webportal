@@ -28,7 +28,7 @@ function nesi_mstep_proposal_email_theme_page() {
   $css = drupal_get_css(); 
   $nid = 122;
   $data = nesi_mstep_proposal_data($nid);
-  $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css));
+  $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css, 'nid' => $nid));
   echo $node_html;
   drupal_exit();
   // return 'pdf theme page';
