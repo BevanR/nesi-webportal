@@ -115,8 +115,10 @@ The Drush shell alias `drush pull-data` combines the *Import Content* process an
 
 Add the following to `~/.drush/drushrc.php`:
 
-    $options['shell-aliases']['pull-data'] = '!drush sql-dump && drush sql-drop && drush sql-sync @dev && drush sql-query \'UPDATE users SET mail = "user@example.com" WHERE uid > 1\' && drush registry-rebuild && drush cache-clear all && drush updb && drush features-revert-all && drush rsync @dev:%files %files';
+    $options['shell-aliases']['pull-data'] = '!drush sql-dump && drush sql-drop && drush sql-sync @dev && drush registry-rebuild && drush cache-clear all && drush updb && drush features-revert-all && drush rsync @dev:%files %files';
 
 This alias is especially useful when testing database update code (implementations of [`hook_update_N()`](http://api.drupal.org/api/drupal/7/search/hook_update_N) in a development sandbox, but can also be used on staging environments with some tweaks; at least `@dev` will need to be changed.
+
+This alias excludes the `drush sql-query` command because of [a bug in drush](http://drupal.org/node/1967346).
 
 Do not use this alias on production.
