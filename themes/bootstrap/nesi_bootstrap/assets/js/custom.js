@@ -27,9 +27,6 @@
     	});
   	});
 
-  	/* Fancy form elements */
-  	$('.form-type-radio input').uniform();
-
   	/* Tooltips */
 /*
   	$('.ws-tooltip').each(function() {

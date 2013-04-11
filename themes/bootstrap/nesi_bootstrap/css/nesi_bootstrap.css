@@ -183,7 +183,7 @@ a:hover {
   background: url(../assets/img/menu-delimiter.png) left bottom no-repeat;
   display: block;
   padding: 0 0 0 2px;
-  width: 24.8%;
+  width: 24.7%;
 }
 
 #pnav a {
@@ -649,28 +649,6 @@ input, button, select, textarea {
 div.radio {
   float: left;
   margin-right: 12px;
-}
-
-div.radio,
-div.radio span,
-div.radio input {
-  height: 23px;
-  width: 23px;
-}
-
-div.radio span {
-  background: url(../assets/img/form-radio.png);
-  cursor: pointer;
-}
-
-div.radio.focus:active span,
-div.radio:hover:active span,
-div.radio.focus.active span,
-div.radio.active:hover span,
-div.radio.focus span.checked,
-div.radio:hover span,
-div.radio span.checked {
-  background-position: 0 -23px !important;
 }
 
 #edit-intro-form .fieldset-wrapper .form-text {
@@ -1423,7 +1401,7 @@ div.radio span.checked {
 
 #proposal-statistics .inner > div {
   display: inline-block;
-  width: 32.9%;
+  width: 32.8%;
 }
 
 #proposal-statistics .labels,
