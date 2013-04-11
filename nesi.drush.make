@@ -61,18 +61,16 @@ projects[views][version] = "3.5"
 projects[wysiwyg][version] = "2.2"
 
 ; Themes
-projects[bootstrap][version] = "2.0-beta3"
+projects[bootstrap][version] = 2.0-beta3
 
 ; Libraries
-libraries[ckeditor][download][type] = "file"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6.1/ckeditor_3.6.6.1.tar.gz"
-libraries[ckeditor][directory_name] = "ckeditor"
-libraries[ckeditor][type] = "library"
+libraries[ckeditor][download][type] = file
+libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6.1/ckeditor_3.6.6.1.tar.gz
+libraries[ckeditor][type] = library
 
 libraries[colorpicker][download][type] = file
 libraries[colorpicker][download][url] = http://www.eyecon.ro/colorpicker/colorpicker.zip
-libraries[colorpicker][directory_name] = "colorpicker"
-libraries[colorpicker][type] = "library"
+libraries[colorpicker][type] = library
 
 libraries[bootstrap][download][type] = git
 libraries[bootstrap][download][url] = https://github.com/twitter/bootstrap.git
