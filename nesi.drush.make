@@ -51,9 +51,9 @@ projects[bootstrap][version] = 2.0-beta3
 
 ; The Bootstrap library goes in the Drupal bootstrap theme.
 libraries[bootstrap][destination] = themes/bootstrap
-; Download the zip file so that we can use drush make's "subtree" feature.
+; Download the zip file so that we can use drush make's subtree feature.
 libraries[bootstrap][download][type] = file
-; The version number is repeated in "subtree".
+; The version number is repeated in subtree.
 libraries[bootstrap][download][url] = https://github.com/twitter/bootstrap/archive/v2.2.2.zip
 ; We need the docs/assets/ directory.
 libraries[bootstrap][download][subtree] = bootstrap-2.2.2/docs/assets
@@ -61,11 +61,11 @@ libraries[bootstrap][download][subtree] = bootstrap-2.2.2/docs/assets
 ; Libraries
 libraries[ckeditor][download][type] = file
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6.1/ckeditor_3.6.6.1.tar.gz
-libraries[ckeditor][type] = library
 
 libraries[colorpicker][download][type] = file
 libraries[colorpicker][download][url] = http://www.eyecon.ro/colorpicker/colorpicker.zip
-libraries[colorpicker][type] = library
+; Check the md5 checksum since we can't specify the version number.
+libraries[colorpicker][download][md5] = d420dbce14507a13417d88f6c955429c
 
 libraries[phpmailer][download][git] = git
 libraries[phpmailer][download][url] = https://github.com/Synchro/PHPMailer.git
