@@ -1390,24 +1390,24 @@ div.radio {
 #proposal-statistics > div {
   display: inline-block;
   height: 93px;
-  width: 24.75%;
+  width: 30%;
 }
 
 #proposal-statistics .inner {
   float: right;
   padding: 0 60px;
-  width: 60%;
+  width: 55%;
 }
 
 #proposal-statistics .inner > div {
   display: inline-block;
+  vertical-align: top;
   width: 32.8%;
 }
 
 #proposal-statistics .labels,
 #proposal-statistics .inner > div {
   height: 69px;
-  padding: 12px 0;
 }
 
 #proposal-statistics * {
@@ -1424,7 +1424,6 @@ div.radio {
   color: #4b5b68;
   font-size: 17px;
   font-weight: normal;
-  line-height: 36px;
 }
 
 .node-type-proposal-research-class.page-node-edit .node {
@@ -1791,8 +1790,6 @@ div.radio {
 .nesi-pdf #proposal-statistics {
   width: 100%;
 }
-
-.nesi-pdf #proposal-statistics > div {}
 
 .nesi-pdf #proposal-statistics .inner {
   padding: 0;
