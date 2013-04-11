@@ -1796,3 +1796,16 @@ div.radio span.checked {
 #nesiLoginModal label {
   display: none;
 }
+
+/* PDF */
+.nesi-pdf #logo {
+  margin: 24px 0;
+}
+
+.nesi-pdf .node-proposal-development-class .field-group-fieldset.odd {
+  margin-right: 2%;
+}
+
+.nesi-pdf .node-proposal-development-class .field-group-fieldset.even {
+  margin-right: 0;
+}
