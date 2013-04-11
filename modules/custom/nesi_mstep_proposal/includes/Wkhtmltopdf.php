@@ -33,7 +33,8 @@ class Wkhtmltopdf
     /**
      * path to executable
      */
-    protected $_bin = '/srv/www/platforms/drupal/sites/www.nesi.org.nz/bin/wkhtmltopdf-amd64';
+#    protected $_bin = '/srv/www/platforms/drupal/sites/www.nesi.org.nz/bin/wkhtmltopdf-amd64';
+    protected $_bin = '/usr/bin/wkhtmltopdf';
     protected $_filename = null;                // filename in $path directory
 
     /**
@@ -640,7 +641,10 @@ class Wkhtmltopdf
 		$command .= ($this->getWindowStatus()) ? " --window-status ".$this->getWindowStatus()."" : "";
         $command .= ($this->getTOC()) ? " --toc" : "";
         $command .= ($this->getGrayscale()) ? " --grayscale" : "";
-        $command .= ' --footer-font-size 7 --disable-javascript --dpi 96 '; // Katie hardcoding extra flags copied from printpdf config
+        $command .= (mb_strlen($this->getPassword()) > 0) ? " --password " . $this->getPassword() . "" : "";
+        $command .= (mb_strlen($this->getUsername()) > 0) ? " --username " . $this->getUsername() . "" : "";
+        $command .= ' --footer-font-size 7 --disable-javascript --ignore-load-errors --username webscope --password eden --dpi 96 '; // Katie hardcoding extra flags copied fr~
+        #$command .= ' --footer-font-size 7 --disable-javascript --dpi 96 '; // Katie hardcoding extra flags copied from printpdf config
         $command .= (mb_strlen($this->getFooterHtml()) > 0) ? " --footer-html \"" . $this->getFooterHtml() . "\"" : "";
         $command .= (mb_strlen($this->getHeaderHtml()) > 0) ? " --header-html \"" . $this->getHeaderHtml() . "\"" : "";
         $command .= ($this->getTitle()) ? ' --title "' . $this->getTitle() . '"' : '';

@@ -117,7 +117,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   $wkhtmltopdf_files_path =  $absolute_path . '/files';
   //$wkhtmltopdf_header_html = $absolute_path . '/themes/ws_mm/templates/pdf-header.html';
   //$wkhtmltopdf_footer_html = $absolute_path . '/themes/ws_mm/templates/pdf-footer.html';
-  $wkhtmltopdf_margins = array('top' => '26', 'bottom' => '15', 'left' => null, 'right' => null);
+  $wkhtmltopdf_margins = array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null);
 
   $node = node_load($nid);
   $file_name = $node->type . '-' . $nid;
@@ -127,7 +127,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   $css = drupal_get_css();
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
-  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css));
+  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css, 'nid' => $nid));
   try {
     $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path));
     $wkhtmltopdf->setMargins($wkhtmltopdf_margins);

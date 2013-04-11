@@ -42,13 +42,11 @@ switch ($node->type) {
 </head>
 
 <body class="node-type-proposal-development-class nesi-pdf">
-  <?php //print_r($variables); ?>
-  <?php //print_r($node); ?>
   <div class="container">
     <div class="row-fluid">
       <section class="span12">
 
-        <img id="logo" src="/<?php print drupal_get_path('theme', 'nesi_bootstrap'); ?>/assets/img/nesi-logo.png" />
+        <img id="logo" src="http://<?php print $_SERVER['HTTP_HOST']; ?>/<?php print drupal_get_path('theme', 'nesi_bootstrap'); ?>/assets/img/nesi-logo.png" />
 
         <article role="main" class="node node-proposal-development-class node-promoted clearfix" id="node-122">
         

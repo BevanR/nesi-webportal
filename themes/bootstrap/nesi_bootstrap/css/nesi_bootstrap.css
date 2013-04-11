@@ -1809,3 +1809,18 @@ div.radio span.checked {
 .nesi-pdf .node-proposal-development-class .field-group-fieldset.even {
   margin-right: 0;
 }
+
+.nesi-pdf #proposal-statistics {
+  width: 100%;
+}
+
+.nesi-pdf #proposal-statistics > div {}
+
+.nesi-pdf #proposal-statistics .inner {
+  padding: 0;
+  width: 50%;
+}
+
+.nesi-pdf #proposal-statistics .inner > div {
+  width: 30%;
+}
