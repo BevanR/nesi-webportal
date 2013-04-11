@@ -4,7 +4,7 @@ core = 7.x
 api = 2
 
 ; Build with Drupal core version
-projects[drupal][version] = "7.21"
+projects[drupal][version] = "7.22"
 
 ; Modules
 projects[admin_menu][version] = "3.0-rc3"
