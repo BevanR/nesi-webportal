@@ -10,7 +10,7 @@ projects[drupal][version] = 7.22
 projects[admin_menu][version] = 3.0-rc3
 projects[advanced_help][version] = 1.0
 projects[bugherd][version] = 1.0-beta3
-projects[ctools][version] = 1.2
+projects[ctools][version] = 1.3
 projects[bundle_copy][version] = 1.1
 projects[countries][version] = 2.1
 projects[date][version] = 2.6
@@ -43,7 +43,7 @@ projects[shib_auth][version] = 4.0
 projects[smtp][version] = 1.0-beta2
 projects[token][version] = 1.4
 projects[viewfield][version] = 2.0
-projects[views][version] = 3.5
+projects[views][version] = 3.7
 projects[wysiwyg][version] = 2.2
 
 ; Themes
