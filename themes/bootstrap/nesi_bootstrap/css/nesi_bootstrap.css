@@ -1307,9 +1307,9 @@ div.radio {
   display: block;
   font-size: 24px;
   font-weight: normal;
-  line-height: 57px;
+  line-height: 32px;
   margin: 0;
-  text-indent: 20px;
+  padding: 0 0 0 20px;
 }
 
 .node-proposal-research-class #proposal-research-class-node-form .field-group-fieldset legend span,
@@ -1380,8 +1380,6 @@ div.radio {
 
 #proposal-statistics .inner {
   float: right;
-  padding: 0 60px;
-  width: 55%;
 }
 
 #proposal-statistics .inner > div {
@@ -1456,9 +1454,6 @@ div.radio {
   color: #606162;
   float: left;
   font-size: 14px;
-  /* line-height: 39px; */
-  margin: 0 20px 0 0;
-  width: 220px;
 }
 
 #proposal-research-class-node-form fieldset .controls,
