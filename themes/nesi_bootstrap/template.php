@@ -78,7 +78,15 @@ function nesi_bootstrap_menu_link(array $variables) {
 
   $element['#attributes']['class'][] = 'menu-' . $element['#original_link']['mlid'];
   $element['#localized_options']['html'] = TRUE;
-  $output = l($element['#title'] . '<span>' . $element['#localized_options']['attributes']['title'] . '</span>', $element['#href'], $element['#localized_options']);
+
+  // Append the title attribute to the link text.
+  // @todo Document why.
+  $span = '';
+  if (!empty($element['#localized_options']['attributes']['title'])) {
+    $span = '<span>' . $element['#localized_options']['attributes']['title'] . '</span>';
+  }
+
+  $output = l($element['#title'] . $span, $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
