@@ -897,6 +897,12 @@ div.radio {
   -webkit-box-shadow: 0 0 0 transparent;
 }
 
+#nesi-mstep-proposal-step-2 .control-group.error .radio,
+#nesi-mstep-proposal-step-3 .control-group.error .radio,
+#nesi-mstep-proposal-step-4 .control-group.error .radio {
+  color: #B94A48;
+}
+
 /* FAQs block */
 #block-nesi-config-nesi-faq {
   border-top: 1px solid #aaa;
