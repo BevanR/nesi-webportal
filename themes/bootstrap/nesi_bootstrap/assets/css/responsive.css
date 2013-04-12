@@ -70,6 +70,13 @@
   box-shadow: 0 0 0 transparent;
   height: 150px;
 }
+.nav-collapse.collapse {
+  height: auto;
+  overflow: visible;
+}
+.nav-collapse .dropdown-menu {
+  position: absolute;
+}
 @media (min-width: 768px) and (max-width: 979px) {
   #pnav .menu {
     width: 515px;
