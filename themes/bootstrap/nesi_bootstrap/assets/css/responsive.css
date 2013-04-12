@@ -62,9 +62,20 @@
 .container .row-fluid .span4 {
   width: 100%;
 }
+.navbar-inner {
+  background: transparent;
+  background-image: url(../img/header-bg.png);
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 transparent;
+  height: 150px;
+}
 @media (min-width: 768px) and (max-width: 979px) {
   #pnav .menu {
     width: 515px;
+  }
+  .navbar .nav-collapse .nav.pull-right {
+    float: right;
   }
   .hidden-desktop {
     display: inherit !important;
@@ -109,6 +120,11 @@
   #pnav a {
     padding: 20px 19% 16px;
   }
+  #pnav li.menu-1685 a,
+  #pnav li.menu-1732 a {
+    background: url(../img/nav-apply.png) 165px center no-repeat;
+    text-indent: -42px;
+  }
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
@@ -123,6 +139,11 @@
   }
   #pnav a {
     padding: 20px 22% 16px;
+  }
+  #pnav li.menu-1685 a,
+  #pnav li.menu-1732 a {
+    background-position: 190px center;
+    text-indent: -37px;
   }
   .row {
     margin-left: -30px;
@@ -884,6 +905,9 @@
 @media (max-width: 767px) {
   body {
     padding-top: 0;
+  }
+  .navbar-inner {
+    background: transparent;
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom {

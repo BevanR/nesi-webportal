@@ -161,15 +161,6 @@ a:hover {
   margin: 0;
 }
 
-.navbar-inner {
-  background: transparent;
-  background-image: url(../assets/img/header-bg.png);
-  border: 0;
-  border-radius: 0;
-  box-shadow: 0 0 0 transparent;
-  height: 150px;
-}
-
 .nav-collapse {
   clear: none; /* Hope this doesn't break anything else */
 }
@@ -183,7 +174,7 @@ a:hover {
   background: url(../assets/img/menu-delimiter.png) left bottom no-repeat;
   display: block;
   padding: 0 0 0 2px;
-  width: 24.7%;
+  width: 24.6%;
 }
 
 #pnav a {
@@ -227,12 +218,6 @@ a:hover {
 #pnav li.menu-1685,
 #pnav li.menu-1732 {
   border-bottom: 4px solid #4b5b68;
-}
-
-#pnav li.menu-1685 a,
-#pnav li.menu-1732 a {
-  background: url(../assets/img/nav-apply.png) 190px center no-repeat;
-  text-indent: -37px;
 }
 
 #pnav li.menu-1685:hover,
