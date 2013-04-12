@@ -1753,10 +1753,6 @@ div.radio {
   position: relative;
 }
 
-#nesiLoginModal label {
-  display: none;
-}
-
 /* PDF */
 .nesi-pdf #logo {
   margin: 24px 0;

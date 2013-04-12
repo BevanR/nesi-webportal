@@ -9,8 +9,8 @@
   	*/
   
   	/* Form labels */
-  	$('#nesi-mstep-proposal-step-1 .form-text, #nesiLoginModal .form-text').each(function() {
-    	$('#nesi-mstep-proposal-step-1 .form-type-textfield label, #nesiLoginModal .form-type-textfield label, #nesiLoginModal .form-type-password label').hide();
+  	$('#nesi-mstep-proposal-step-1 .form-text').each(function() {
+    	$('#nesi-mstep-proposal-step-1 .form-type-textfield label').hide();
     	$('.form-required').remove();
     	var id = $(this).attr('id');
     	var label = $("label[for=" + id +"]").text();
