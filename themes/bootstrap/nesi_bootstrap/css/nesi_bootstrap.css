@@ -969,7 +969,6 @@ div.radio {
   color: #4b5b68;
   float: right;
   margin: 10px 20px 10px 0;
-  width: 420px;
 }
 
 .page-user-dashboard .module {
@@ -1001,7 +1000,6 @@ div.radio {
   height: 70px;
   margin: 0;
   padding: 0 20px;
-  width: 1130px;
 }
 
 .page-user-dashboard .module h1 {
@@ -1030,7 +1028,6 @@ div.radio {
 
 .page-user-dashboard .proposal-outline header {
   float: left;
-  width: 60%;
 }
 
 .page-user-dashboard .proposal-meta {

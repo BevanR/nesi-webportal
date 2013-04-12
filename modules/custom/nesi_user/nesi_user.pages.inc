@@ -36,7 +36,7 @@ function nesi_user_dashboard_callback() {
         if (!empty($item->nid)) { 
           $in_progress = TRUE;
           $current_proposal = node_load($item->nid);
-          dpm($current_proposal);
+          //dpm($current_proposal);
           $options = array('absolute' => TRUE);
           $nodeurl = url('node/'. $current_proposal->nid, $options);
   
