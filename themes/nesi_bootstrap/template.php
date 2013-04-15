@@ -79,8 +79,7 @@ function nesi_bootstrap_menu_link(array $variables) {
   $element['#attributes']['class'][] = 'menu-' . $element['#original_link']['mlid'];
   $element['#localized_options']['html'] = TRUE;
 
-  // Append the title attribute to the link text.
-  // @todo Document why.
+  // Append the title attribute to the link text for bylines the main menu.
   $span = '';
   if (!empty($element['#localized_options']['attributes']['title'])) {
     $span = '<span>' . $element['#localized_options']['attributes']['title'] . '</span>';
