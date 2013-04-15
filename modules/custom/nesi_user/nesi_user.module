@@ -79,9 +79,6 @@ function nesi_user_menu() {
 }
 
 function nesi_user_menu_alter(&$items) {
-  // Disable access to request new password
-  $items['user/password']['access callback'] = FALSE;
-
   // Login with Drupal
   $items['user/login']['title'] = 'Login using NeSI account';
 
