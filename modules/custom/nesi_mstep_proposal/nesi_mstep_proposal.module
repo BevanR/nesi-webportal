@@ -137,7 +137,7 @@ function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
         'cancel callback' => 'nesi_mstep_proposal_wizard_cancel', //callback when cancel button is pressed
         'cancel path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
         'return path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
-        'finish text' => 'Finish',
+        'finish text' => 'Save',
         'order' => _nesi_mstep_proposal_steps(),
         'forms' => _nesi_mstep_proposal_forms(), 
       );
@@ -433,7 +433,7 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   // Clear the form data cache from the session
 
   // Send user to confirmation page
-  drupal_goto('apply/proposal-complete'.$proposal_redirect);
+  drupal_goto('proposal/'.$node_id);
 }
 
 /**
