@@ -108,7 +108,7 @@ function nesi_user_dashboard_callback() {
 
   // Show message if no proposals
   if (!$in_progress) {
-    drupal_set_message(t('It doesn\'t look like you have any saved or pending proposals yet, get started by creating one.'), 'info');
+    drupal_set_message(t('It doesn\'t look like you have any saved or pending proposals yet, get started by !url.', array('!url' => l(t('creating one') , 'apply'))), 'info');
   }
 
   // Show create options
@@ -145,8 +145,11 @@ function nesi_user_tuakiri_tab_callback() {
       <p>Tuakiri enables students, academics, alumni and researchers to get secure and seamless access to their computing resources and collaboration environments using one set of credentials granted by their home organisation.</p>
       <p><a class="btn btn-primary" href="'.shib_auth_generate_login_url().'">Login with Tuakiri</a></p>
     </div>
-    <p>Dont have a Tuakiri account,
-      <a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">apply for access</a>
+    <p>
+      Don\'t have a Tuakiri account?
+      <a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+        Apply for access
+      </a>
     </p>
 
     <div id="collapseOne" class="accordion-body collapse">
