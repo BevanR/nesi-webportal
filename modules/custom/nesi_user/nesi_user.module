@@ -57,7 +57,7 @@ function nesi_user_menu() {
 
   // Login with Tuakiri
   $items['user/tuakiri'] = array(
-    'title' => 'Login via Tuakiri',
+    'title' => 'Login using your institution credentials',
     'page callback' => 'nesi_user_tuakiri_tab_callback',
     'access callback' => 'user_is_anonymous',
     'type' => MENU_LOCAL_TASK,
@@ -83,7 +83,7 @@ function nesi_user_menu_alter(&$items) {
   $items['user/password']['access callback'] = FALSE;
 
   // Login with Drupal
-  $items['user/login']['title'] = 'Login via Drupal';
+  $items['user/login']['title'] = 'Login using NeSI account';
 
   // Remove researcher profile as separate form (include in standard user account edit form)
   //$items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
