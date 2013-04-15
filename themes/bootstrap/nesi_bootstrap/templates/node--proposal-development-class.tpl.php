@@ -42,7 +42,15 @@
   ?>
 
   <footer>
-    <?php print l('Edit proposal', 'node/' . $nid . '/edit', array('attributes' => array('id' => 'edit-proposal', 'class' => 'btn nesi-btn'))); ?>
+    <div class="proposal-actions pull-right">
+    <?php print l('Edit proposal', 'node/' . $nid . '/edit', array('attributes' => array('id' => 'edit-proposal', 'class' => 'btn nesi-btn pull-left'))); ?>
+    <?php
+      $proposal_flag = flag_get_flag('p_submit_proposal');
+      if (!$proposal_flag->is_flagged($node->nid)) {
+        print flag_create_link('p_submit_proposal', $node->nid);
+      } 
+    ?>
+    </div>
   </footer>
 
 </article> <!-- /.node -->

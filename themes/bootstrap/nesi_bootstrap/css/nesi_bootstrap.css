@@ -1253,6 +1253,10 @@ div.radio {
   width: 111px;
 }
 
+.proposal-actions a {
+  width: 180px;
+}
+
 /* View proposal */
 .node-type-proposal-research-class,
 .node-type-proposal-development-class {
