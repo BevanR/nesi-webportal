@@ -109,6 +109,7 @@ function _nesi_user_modal_login_block_view() {
           <div class="pull-right login-via-drupal">
             <h2>Login using NeSI Account</h2>
               ' . drupal_render(drupal_get_form('user_login')) . '
+              <p>' . l('Forgot password?', 'user/password') . '</p>
           </div>
     </div>
     <div class="modal-footer">
