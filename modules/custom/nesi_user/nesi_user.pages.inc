@@ -108,7 +108,7 @@ function nesi_user_dashboard_callback() {
 
   // Show message if no proposals
   if (!$in_progress) {
-    drupal_set_message(t('It doesn\'t look like you have any saved or pending proposals yet, get started by creating one.'), 'info');
+    drupal_set_message(t('It doesn\'t look like you have any saved or pending proposals yet, get started by !url.', array('!url' => l(t('creating one') , 'apply'))), 'info');
   }
 
   // Show create options
