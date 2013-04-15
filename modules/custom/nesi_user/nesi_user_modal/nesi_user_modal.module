@@ -60,7 +60,7 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
   }
 
   if ($form['#id'] === 'user-login') {
-    drupal_set_message(check_plain('Successful login'));
+    drupal_set_message('Successful login');
     global $user;
     $account = $user;
     if ($account->uid > 0) {
@@ -69,6 +69,9 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
         $commands[] = ctools_ajax_command_redirect('nesi-config');
       }
       else {
+        // Look to see if the user has any proposals
+        // if not redirect to the apply page
+        //
         $commands[] = ctools_ajax_command_redirect('user/dashboard');
       }
     }
