@@ -71,8 +71,18 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
       else {
         // Look to see if the user has any proposals
         // if not redirect to the apply page
-        //
-        $commands[] = ctools_ajax_command_redirect('user/dashboard');
+        $res = db_query('SELECT count(*) FROM {node} n
+                         WHERE n.uid = :uid 
+                         AND (n.type = :dev_class OR n.type = :research_class)', 
+                  array(':uid' => $account->uid,
+                        ':dev_class'=>'proposal_development_class', 
+                        ':research_class'=>'proposal_research_class'))->fetchField();
+        if(empty($res)) {
+          $commands[] = ctools_ajax_command_redirect('apply');
+        }
+        else {
+          $commands[] = ctools_ajax_command_redirect('user/dashboard');
+        }
       }
     }
   }

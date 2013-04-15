@@ -57,11 +57,11 @@ function nesi_user_menu() {
 
   // Login with Tuakiri
   $items['user/tuakiri'] = array(
-    'title' => 'Login using your institution credentials',
+    'title' => 'Login using institution credentials',
     'page callback' => 'nesi_user_tuakiri_tab_callback',
     'access callback' => 'user_is_anonymous',
     'type' => MENU_LOCAL_TASK,
-    'weight' => 0,
+    'weight' => -10,
     'file' => 'nesi_user.pages.inc',
     'file path' => drupal_get_path('module', 'nesi_user'),
   );
@@ -116,7 +116,6 @@ function nesi_user_theme($existing, $type, $theme, $path) {
 }
 
 function nesi_user_form_alter(&$form, &$form_state, $form_id) {
-
   /* Override flag options on node administration */
   if ($form['#form_id'] == 'node_admin_content') {
     foreach ($form['admin']['options']['operation']['#options'] as $key => $node_operation) {
