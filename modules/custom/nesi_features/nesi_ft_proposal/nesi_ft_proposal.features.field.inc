@@ -505,7 +505,7 @@ function nesi_ft_proposal_field_default_fields() {
   $fields['node-proposal_development_class-field_pdc_proposed_hpc_platform'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_pdc_proposed_hpc_platform',
@@ -2734,7 +2734,7 @@ function nesi_ft_proposal_field_default_fields() {
   $fields['node-proposal_research_class-field_prc_proposed_hpc_platform'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_prc_proposed_hpc_platform',
