@@ -79,15 +79,19 @@ function nesi_user_menu() {
 }
 
 function nesi_user_menu_alter(&$items) {
-  // Login with Drupal
+  // Login & register with Drupal.
   $items['user/login']['title'] = 'Login using NeSI account';
+  $items['user/register']['title'] = 'Create NeSI account';
+
+  // Drupal password recovery.
+  $items['user/password']['title'] = 'Forgot password?';
+  $items['user/password']['type'] = MENU_LOCAL_ACTION;
 
   // Remove researcher profile as separate form (include in standard user account edit form)
   //$items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
 }
 
 function nesi_user_theme($existing, $type, $theme, $path) {
-  
   $proposal_variables = array(
    'proposal_title' => '',
    'proposal_link' => '#',
