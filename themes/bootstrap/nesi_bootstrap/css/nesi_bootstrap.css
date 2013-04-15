@@ -1754,14 +1754,19 @@ div.radio {
 }
 
 #nesiLoginModal .control-group {
+  margin: 0 auto;
   position: relative;
+  width: 242px;
 }
 
 #nesiLoginModal .control-group label {
+  cursor: text;
+  height: 40px;
+  left: 10px;
+  line-height: 40px;
   position: absolute;
-  top: 3px;
-  left: 5px;
-  z-index:1;
+  top: 0;
+  z-index: 1;
 }
 
 /* PDF */
