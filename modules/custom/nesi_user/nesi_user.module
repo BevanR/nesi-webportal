@@ -43,6 +43,37 @@ function nesi_user_init(){
   }
 }
 
+/**
+ * Implements hook_theme().
+ */
+function nesi_user_theme($existing, $type, $theme, $path) {
+  $proposal_variables = array(
+   'proposal_title' => '',
+   'proposal_link' => '#',
+   'proposal_state' => '',
+  );
+
+  $create_variables = array();
+
+  return array(
+    'nesi_user_dashboard_proposals' => array(
+      'variables' => $proposal_variables,
+      'template' => 'nesi-user-dashboard-proposals',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
+    ),
+    'nesi_user_dashboard_create_proposal' => array(
+      'variables' => $create_variables,
+      'template' => 'nesi-user-dashboard-create-proposal',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
+    ),
+    'nesi_user_dashboard_wrapper' => array(
+      'variables' => array('content' => NULL),
+      'template' => 'nesi-user-dashboard-wrapper',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
+    )
+  );
+}
+
 function nesi_user_menu() {
   $items['user/dashboard'] = array(
     'title' => 'Dashboard',
@@ -78,61 +109,49 @@ function nesi_user_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_menu_alter().
+ *
+ * Hides local tasks (tabs) for password recovery and registration.  These are
+ * accessible via the login overlay and the Drupal/NeSI login page.
+ */
 function nesi_user_menu_alter(&$items) {
-  // Login & register with Drupal.
+  // Login with Drupal.
   $items['user/login']['title'] = 'Login using NeSI account';
+
+  // Register.
   $items['user/register']['title'] = 'Create NeSI account';
+  $items['user/register']['type'] = MENU_CALLBACK;
 
   // Drupal password recovery.
-  $items['user/password']['title'] = 'Forgot password?';
-  $items['user/password']['type'] = MENU_LOCAL_ACTION;
+  $items['user/password']['title'] = 'Recover your NeSI password';
+  $items['user/password']['type'] = MENU_CALLBACK;
 
   // Remove researcher profile as separate form (include in standard user account edit form)
   //$items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
 }
 
-function nesi_user_theme($existing, $type, $theme, $path) {
-  $proposal_variables = array(
-   'proposal_title' => '',
-   'proposal_link' => '#',
-   'proposal_state' => '',
+/**
+ * Implements hook_form_alter().
+ *
+ * Adds links to user/register and user/password.
+ */
+function nesi_user_form_user_login_alter(&$form, &$form_state) {
+  $form['register'] = array(
+    '#markup' => l(t('Create a NeSI account'), 'user/register'),
+    '#prefix' => '<ul><li>',
+    '#suffix' => '</li></ul>',
+    '#weight' => -10,
   );
 
-  $create_variables = array();
-
-  return array(
-    'nesi_user_dashboard_proposals' => array(
-      'variables' => $proposal_variables,
-      'template' => 'nesi-user-dashboard-proposals', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
-    ),
-    'nesi_user_dashboard_create_proposal' => array(
-      'variables' => $create_variables,
-      'template' => 'nesi-user-dashboard-create-proposal', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
-    ),
-    'nesi_user_dashboard_wrapper' => array(
-      'variables' => array('content' => NULL),
-      'template' => 'nesi-user-dashboard-wrapper', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
-    )
-  );  
-}
-
-function nesi_user_form_alter(&$form, &$form_state, $form_id) {
-  /* Override flag options on node administration */
-  if ($form['#form_id'] == 'node_admin_content') {
-    foreach ($form['admin']['options']['operation']['#options'] as $key => $node_operation) {
-      // If flag operation - remove
-      if ((substr($key, 0,5) === 'flag_') || (substr($key, 0,7) === 'unflag_') ) {
-        unset($form['admin']['options']['operation']['#options'][$key]);
-      }
-    }
-  }
+  $form['pass']['#description'] .= ' ' . l(t('Forgot password?'), 'user/password');
 }
 
 /**
  * Implements hook_form_alter().
+ *
+ * Documents that password recovery is only supported for Drupal/NeSI accounts,
+ * not Tuakiri accounts.
  */
 function nesi_user_form_user_pass_alter(&$form, &$form_state) {
   $form['help'] = array(
@@ -141,6 +160,20 @@ function nesi_user_form_user_pass_alter(&$form, &$form_state) {
     '#suffix' => '</p>',
     // '#weight' => -10,
   );
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Overrides flag options on node administration.
+ */
+function nesi_user_form_node_admin_content_alter(&$form, &$form_state) {
+  foreach ($form['admin']['options']['operation']['#options'] as $key => $node_operation) {
+    // If flag operation - remove
+    if ((substr($key, 0,5) === 'flag_') || (substr($key, 0,7) === 'unflag_') ) {
+      unset($form['admin']['options']['operation']['#options'][$key]);
+    }
+  }
 }
 
 /**

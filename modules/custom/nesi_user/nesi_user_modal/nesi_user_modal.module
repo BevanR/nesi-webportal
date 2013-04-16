@@ -102,7 +102,7 @@ function _nesi_user_modal_login_block_view() {
 
   $content = '<ul class="nav pull-right">';
   $content .= '<li>';
-  $content .= '<a href="'.$base_url.'/user/login" role="button" data-toggle="modal" data-target="#nesiLoginModal" data-remote="false">' . t('Login') . '</a>';
+  $content .= '<a href="' . url('user/tuakiri') . '" role="button" data-toggle="modal" data-target="#nesiLoginModal" data-remote="false">' . t('Login') . '</a>';
   $content .= '<div id="nesiLoginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nesiLoginModalLabel" aria-hidden="true">
 
   <div class="modal-header">
