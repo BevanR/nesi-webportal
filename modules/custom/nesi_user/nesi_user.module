@@ -43,6 +43,37 @@ function nesi_user_init(){
   }
 }
 
+/**
+ * Implements hook_theme().
+ */
+function nesi_user_theme($existing, $type, $theme, $path) {
+  $proposal_variables = array(
+   'proposal_title' => '',
+   'proposal_link' => '#',
+   'proposal_state' => '',
+  );
+
+  $create_variables = array();
+
+  return array(
+    'nesi_user_dashboard_proposals' => array(
+      'variables' => $proposal_variables,
+      'template' => 'nesi-user-dashboard-proposals',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
+    ),
+    'nesi_user_dashboard_create_proposal' => array(
+      'variables' => $create_variables,
+      'template' => 'nesi-user-dashboard-create-proposal',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
+    ),
+    'nesi_user_dashboard_wrapper' => array(
+      'variables' => array('content' => NULL),
+      'template' => 'nesi-user-dashboard-wrapper',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
+    )
+  );
+}
+
 function nesi_user_menu() {
   $items['user/dashboard'] = array(
     'title' => 'Dashboard',
@@ -98,37 +129,6 @@ function nesi_user_menu_alter(&$items) {
 
   // Remove researcher profile as separate form (include in standard user account edit form)
   //$items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
-}
-
-/**
- * Implements hook_theme().
- */
-function nesi_user_theme($existing, $type, $theme, $path) {
-  $proposal_variables = array(
-   'proposal_title' => '',
-   'proposal_link' => '#',
-   'proposal_state' => '',
-  );
-
-  $create_variables = array();
-
-  return array(
-    'nesi_user_dashboard_proposals' => array(
-      'variables' => $proposal_variables,
-      'template' => 'nesi-user-dashboard-proposals', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
-    ),
-    'nesi_user_dashboard_create_proposal' => array(
-      'variables' => $create_variables,
-      'template' => 'nesi-user-dashboard-create-proposal', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
-    ),
-    'nesi_user_dashboard_wrapper' => array(
-      'variables' => array('content' => NULL),
-      'template' => 'nesi-user-dashboard-wrapper', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
-    )
-  );  
 }
 
 /**
