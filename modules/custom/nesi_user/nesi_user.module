@@ -100,6 +100,9 @@ function nesi_user_menu_alter(&$items) {
   //$items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
 }
 
+/**
+ * Implements hook_theme().
+ */
 function nesi_user_theme($existing, $type, $theme, $path) {
   $proposal_variables = array(
    'proposal_title' => '',
@@ -126,18 +129,6 @@ function nesi_user_theme($existing, $type, $theme, $path) {
       'path' => drupal_get_path('module', 'nesi_user') .'/templates'
     )
   );  
-}
-
-function nesi_user_form_alter(&$form, &$form_state, $form_id) {
-  /* Override flag options on node administration */
-  if ($form['#form_id'] == 'node_admin_content') {
-    foreach ($form['admin']['options']['operation']['#options'] as $key => $node_operation) {
-      // If flag operation - remove
-      if ((substr($key, 0,5) === 'flag_') || (substr($key, 0,7) === 'unflag_') ) {
-        unset($form['admin']['options']['operation']['#options'][$key]);
-      }
-    }
-  }
 }
 
 /**
@@ -169,6 +160,20 @@ function nesi_user_form_user_pass_alter(&$form, &$form_state) {
     '#suffix' => '</p>',
     // '#weight' => -10,
   );
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Overrides flag options on node administration.
+ */
+function nesi_user_form_node_admin_content_alter(&$form, &$form_state) {
+  foreach ($form['admin']['options']['operation']['#options'] as $key => $node_operation) {
+    // If flag operation - remove
+    if ((substr($key, 0,5) === 'flag_') || (substr($key, 0,7) === 'unflag_') ) {
+      unset($form['admin']['options']['operation']['#options'][$key]);
+    }
+  }
 }
 
 /**
