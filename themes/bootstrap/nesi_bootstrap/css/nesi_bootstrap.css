@@ -1321,6 +1321,11 @@ div.radio {
   padding: 0 0 0 20px;
 }
 
+.node-proposal-research-class.page-node-edit .field-group-fieldset legend span,
+.node-type-proposal-development-class.page-node-edit .field-group-fieldset legend span {
+  padding: 0;
+}
+
 .node-proposal-research-class #proposal-research-class-node-form .field-group-fieldset legend span,
 .node-type-proposal-development-class #proposal-development-class-node-form .field-group-fieldset legend span {
   font-size: 24px;
