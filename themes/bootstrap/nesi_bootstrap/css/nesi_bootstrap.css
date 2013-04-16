@@ -152,11 +152,6 @@ a:hover {
   color: #2b9fc2;
 }
 
-.navbar {
-  position: relative;
-  z-index: 9999; /* This needs to sit on top of the homepage slideshow */
-}
-
 .navbar .brand {
   padding: 8px 20px;
 }
@@ -282,6 +277,7 @@ input, button, select, textarea {
 #home-hero {
   margin-bottom: 0;
   margin-top: -5px; /* This needs to be moved up so the navbar sits on top of it */
+  z-index: -1;
 }
 
 #home-hero .slide-title {
