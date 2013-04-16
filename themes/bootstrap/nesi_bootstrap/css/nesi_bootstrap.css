@@ -1689,6 +1689,10 @@ div.radio {
   display: none; /* Hide the Create a NeSI account link in the login modal */
 }
 
+#nesiLoginModal .login-via-drupal #ajax-user-login-alt-wrapper > form > div > ul {
+  display: none; /* Hide the Create a NeSI account link in the alt login modal */
+}
+
 .modal {
   background: transparent;
   border: 0;
@@ -1757,12 +1761,12 @@ div.radio {
   display: none;
 }
 
-#nesiLoginModal #ajax-user-login-wrapper {
+#nesiLoginModal #ajax-user-login-wrapper, #nesiLoginModal #ajax-user-login-alt-wrapper {
   margin-top: 5px;
 }
 
 #nesiLoginModal .tuakiri,
-#nesiLoginModal #ajax-user-login-wrapper {
+#nesiLoginModal #ajax-user-login-wrapper, #nesiLoginModal #ajax-user-login-alt-wrapper {
   min-height: 188px;
   padding-bottom: 65px;
   position: relative;
