@@ -1685,6 +1685,10 @@ div.radio {
   font-weight: 100;
 }
 
+#nesiLoginModal .login-via-drupal #ajax-user-login-wrapper > form > div > ul {
+  display: none; /* Hide the Create a NeSI account link in the login modal */
+}
+
 .modal {
   background: transparent;
   border: 0;
