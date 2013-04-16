@@ -86,7 +86,7 @@ function nesi_mstep_proposal_development_form() {
   $form['additional']['#title'] = 'Additional Information';
 
   $form['additional']['pdc-expert-support'] = array(
-    '#type' => 'radios',
+    '#type' => 'checkboxes',
     '#title' => t('Expert support'),
     '#description' => 'Please check the appropriate box if the project team will need NeSI support/consultancy for:',
     '#options' => array(
