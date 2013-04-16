@@ -1677,6 +1677,10 @@ div.radio {
   line-height: 36px;
 }
 
+#nesiLoginModal .error label {
+  display: none;
+}
+
 #nesiLoginModal p {
   font-weight: 100;
 }
@@ -1694,6 +1698,7 @@ div.radio {
 
 .modal-body {
   background: #fff;
+  overflow-y: hidden;
 }
 
 .modal-footer {
@@ -1758,7 +1763,7 @@ div.radio {
 
 #nesiLoginModal .tuakiri,
 #nesiLoginModal #ajax-user-login-wrapper {
-  min-height: 168px;
+  min-height: 188px;
   padding-bottom: 65px;
   position: relative;
 }

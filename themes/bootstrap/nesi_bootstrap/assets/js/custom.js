@@ -31,7 +31,7 @@
     function initOverLabels () {
       if (!document.getElementById) return;
       var labels, id, field;  // Set focus and blur handlers to hide and show 
-      labels = $('#nesiLoginModal').find('label');
+      labels = $('#nesiLoginModal .control-group').find('label');
       for (var i = 0; i < labels.length; i++) {
           // with another field.
           id = labels[i].htmlFor || labels[i].getAttribute ('for');
