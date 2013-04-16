@@ -53,47 +53,26 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
   ctools_include('ajax');
   ctools_add_js('ajax-responder');
 
-  $commands = array();
-
   if (form_get_errors()) {
-    return $form; // Reload form if it didn't pass validation.
+    // Reload form if it didn't pass validation.
+    return $form;
   }
+
+  $commands = array();
 
   if ($form['#id'] === 'user-login') {
     drupal_set_message('Successful login');
-    global $user;
-    $account = $user;
     if ($account->uid > 0) {
-      // Redirect based on role  
-      if (in_array('nesi-admin', $account->roles) || in_array('administrator', $account->roles )) {
-        $commands[] = ctools_ajax_command_redirect('nesi-config');
-      }
-      else {
-        // Look to see if the user has any proposals
-        // if not redirect to the apply page
-        $res = db_query('SELECT count(*) FROM {node} n
-                         WHERE n.uid = :uid 
-                         AND (n.type = :dev_class OR n.type = :research_class)', 
-                  array(':uid' => $account->uid,
-                        ':dev_class'=>'proposal_development_class', 
-                        ':research_class'=>'proposal_research_class'))->fetchField();
-        if(empty($res)) {
-          $commands[] = ctools_ajax_command_redirect('apply');
-        }
-        else {
-          $commands[] = ctools_ajax_command_redirect('user/dashboard');
-        }
-      }
+      // Redirect to site configuration if user has access.
+      $commands[] = ctools_ajax_command_redirect(user_access('nesi website config') ? 'nesi-config' : nesi_user_redirect_path());
     }
   }
   else {
     $commands[] = ctools_ajax_command_reload();
   }
 
-  return array(
-    '#type' => 'ajax',
-    '#commands' => $commands
-  );
+  print ajax_render($commands);
+  exit;
 }
 
 function _nesi_user_modal_login_block_view() {

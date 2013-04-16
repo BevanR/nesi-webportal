@@ -180,8 +180,24 @@ function nesi_user_form_node_admin_content_alter(&$form, &$form_state) {
  * Implements hook_form_profile2_form_alter()
  */
 function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
+  if ($form['#form_id'] == 'user_profile_form' || $form['#form_id'] == 'user_register_form') {
+    // Set form-redirect to user dashboard.
+    $form['#validate'][] = 'nesi_user_form_redirect_dashboard';
 
-  // User Registration form alter
+    // Set inline class for form layout.
+    $form['profile_researcher_profile']['field_user_firstname']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_middlename']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_lastname']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_institution']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_department']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_position']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_phone']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_address']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_altemail']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_nationality']['#attributes']['class'][] = 'form-horizontal';
+  }
+
+  // User Registration form alter.
   if ($form['#form_id'] == 'user_register_form') {
 
     $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];
@@ -195,67 +211,55 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
 
     $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
     $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
-    $form['#validate'][] = 'nesi_user_validate_researcher_profile';
-
-    // Set inline class for form layout
-    $form['profile_researcher_profile']['field_user_firstname']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_middlename']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_lastname']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_institution']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_department']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_position']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_phone']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_address']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_altemail']['#attributes']['class'][] = 'form-horizontal';
-    $form['profile_researcher_profile']['field_user_nationality']['#attributes']['class'][] = 'form-horizontal';
   }
 
   // User Profile form alter
   if ($form['#form_id'] == 'user_profile_form') {
-    
-    global $user;
-     
-    if ($user->uid > 1) {
-      
-      // As we are now sourcing data from tuakiri. Some data must be updated from tuakiri
+    if (!user_is_anonymous()) {
+      // Data is sourced from Tuakiri.
       if (nesi_user_tuakiri_validate()) {
         $tk_attributes = nesi_user_tuakiri_attributes();
-        
+
         $form['profile_researcher_profile']['field_user_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['givenName'];
         $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['sn'];
         $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['o'];
         //$form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['mail'];
 
-        // Tuakiri attributes should be locked
+        // Tuakiri attributes should be locked.
         $form['profile_researcher_profile']['field_user_firstname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         //$form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
       }
-
-      // Set inline class for form layout
-      $form['profile_researcher_profile']['field_user_firstname']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_middlename']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_lastname']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_institution']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_department']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_position']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_phone']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_address']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_altemail']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_nationality']['#attributes']['class'][] = 'form-horizontal';
-    } 
-  } 
+    }
+  }
 }
 
-function nesi_user_validate_researcher_profile(&$form, &$form_state) {
-  // First we need to verify form specific validation  
-  if(form_get_errors()) {
-    return;
-  }  
+/**
+ * Form validation callback to set the form's redirect path.
+ */
+function nesi_user_form_redirect_dashboard(&$form, &$form_state) {
+  $form_state['redirect'] = nesi_user_redirect_path();
+}
 
-  // Once complete
-  $form_state['redirect'] = 'user/dashboard';
+/**
+ * Determines the redirect path after login, register or profile update.
+ */
+function nesi_user_redirect_path($account = NULL) {
+  if (empty($account)) {
+    $account = $GLOBALS['user'];
+  }
+
+  // Look to see if the user has any proposals.
+  $result = db_query('SELECT count(*) FROM {node} n
+                   WHERE n.uid = :uid
+                   AND (n.type = :dev_class OR n.type = :research_class)',
+            array(':uid' => $account->uid,
+                  ':dev_class'=>'proposal_development_class',
+                  ':research_class'=>'proposal_research_class'))->fetchField();
+
+  // Redirect to the apply page if the user has no proposals.
+  return empty($result) ? 'apply' : 'user/dashboard';
 }
 
 function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
