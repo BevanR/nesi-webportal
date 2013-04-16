@@ -34,7 +34,6 @@ function nesi_user_modal_block_view($delta = '') {
 function nesi_user_modal_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'user_login':
-    case 'user_register_form':
       // Add ajax wrapper to form.
       $html_id = str_replace('_', '-', $form_id);
 
