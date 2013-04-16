@@ -634,4 +634,14 @@ function nesi_mstep_proposal_cache_clear($name) {
   ctools_object_cache_clear('nesi_mstep_proposal', $name);
 }
 
+function nesi_mstep_proposal_form_alter(&$form, &$form_state, $form_id) {
+  // These fields are not currently used in Research Proposal
+  // Remove from edit view.
+  if ($form_id == 'proposal_research_class_node_form' ) {
+    $form['field_prc_proposed_hpc_platform']['#access'] = FALSE;
+    $form['field_prc_cpu_core_hours']['#access'] = FALSE;
+    $form['field_prc_estimated_run_length']['#access'] = FALSE;
+  }
+}
+
 
