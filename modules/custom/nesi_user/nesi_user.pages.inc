@@ -27,7 +27,7 @@ function nesi_user_dashboard_callback() {
   
   $in_progress = FALSE;
   if (!empty($response)) {
-    $output .= '<h2>Submitted Proposals</h2><div class="stats-labels"><div class="dashboard-label">ID</div><div class="dashboard-label">Start</div><div class="dashboard-label">End</div><div class="dashboard-label">CPU core hours</div></div>';
+    $output .= '<h2>Submitted Proposals</h2><div class="stats-labels"><!--<div class="dashboard-label">ID</div>--><div class="dashboard-label">Start</div><!--<div class="dashboard-label">End</div>--><div class="dashboard-label">CPU core hours</div></div>';
     $output .= '<div class="module">';
       $output .= '<div class="module-inner">';
       // Display all proposals
