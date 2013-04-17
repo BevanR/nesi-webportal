@@ -1,11 +1,13 @@
 <?php
-// $Id$
-
 /**
  * @file
  * Ctools hooks for a multi step form
  */
 
+// @todo Do not include from global scope. Use Drupal registries and module_load_include() from function scope:
+// @see http://drupal.org/node/350780
+// @see http://api.drupal.org/api/search/7/module_load_include
+// @see "file path" http://api.drupal.org/api/search/7/hook_menu
 include_once 'forms/proposal_form_intro.inc';
 include_once 'forms/proposal_form_development.inc';
 include_once 'forms/proposal_form_research.inc';
@@ -441,7 +443,6 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
  * Serialises proposal form values into bp_container field
  */
 function _nesi_mstep_proposal_save(&$form_state) {
-  
   global $user;
   $proposal_type = $form_state['ctools_object']->data['proposal-type'];
 
@@ -449,10 +450,10 @@ function _nesi_mstep_proposal_save(&$form_state) {
 
   if ($proposal_type == 'proposal_development_class') {
     $p_title = $form_state['ctools_object']->data['p1']['pdc-title'];
-  }  
+  }
   if ($proposal_type == 'research_proposal_class') {
     $p_title = $form_state['ctools_object']->data['p1']['prc-title'];
-  } 
+  }
 
   // Prepare data to be saved
   //$proposal_json = json_encode($form_state['ctools_object']->data);
