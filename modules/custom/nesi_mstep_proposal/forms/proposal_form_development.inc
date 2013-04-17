@@ -64,7 +64,7 @@ function nesi_mstep_proposal_development_form() {
   $form['requirements']['#title'] = 'Requirements';
 
   $form['requirements']['pdc-platform'] = array(
-    '#type' => 'radios',
+    '#type' => 'checkboxes',
     '#title' => t('Desired HPC Platform'),
     '#options' => nesi_mstep_proposal_platform_options(),
     '#default_value' => '',
