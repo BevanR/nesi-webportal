@@ -135,8 +135,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     //$wkhtmltopdf->setFooterHtml($wkhtmltopdf_footer_html);
     $wkhtmltopdf->setTitle($report_title);
     $wkhtmltopdf->setHtml($html);
-    // @todo Make this fast or move it into a queue.
-    // $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
+    $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
   } catch (Exception $e) {
     echo $e->getMessage();
     drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
