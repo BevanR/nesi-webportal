@@ -230,6 +230,8 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
         $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         //$form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+
+
       }
     }
   }
@@ -321,6 +323,20 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
   $form['profile_researcher_profile']['#type'] = 'fieldset';
   $form['profile_researcher_profile']['#title'] = 'Researcher Profile';
   $form['profile_researcher_profile']['#collapsible'] = TRUE;
+
+
+  // Provide New Zealand and Australia as a primary option in nationality field.
+  $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];
+  $new_option = new stdClass();
+  $new_option->option['Select Nationality'] = array('NZ' => 'New Zealand', 'AU' => 'Australia'); 
+  $cur_option = new stdClass();
+  $cur_option->option['All Countries'] = $queue; 
+
+  if (empty($form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'])) {
+    $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
+  }
+  // Update country list
+  $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
 }
 
 /**
