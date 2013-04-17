@@ -201,6 +201,7 @@ a:hover {
 #pnav a.active-trail {
   background-image: linear-gradient(to bottom, #fcfdfe, #dedddd);
   background-image: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
 
 #pnav li.menu-696 {
@@ -224,6 +225,7 @@ a:hover {
 #pnav li.menu-1732:hover {
   background: linear-gradient(to bottom, #fcfdfe, #dedddd);
   background: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
 
 .legal {
@@ -261,6 +263,7 @@ input, button, select, textarea {
 
 .logged-in #block-nesi-user-modal-nesi-user-modal-login ul li a {
   background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
+  filter: inherit;
   padding: 0 29px 0 0;
 }
 
@@ -1605,6 +1608,11 @@ div.radio {
   line-height: 50px;
   margin: 0;
   padding: 0 27px;
+}
+
+#pnav #nesi-user-profile-dropdown li:hover a,
+#pnav #nesi-user-profile-dropdown li a:hover {
+  background: transparent;
 }
 
 #nesi-user-profile-dropdown li#nesi-base-actions {
