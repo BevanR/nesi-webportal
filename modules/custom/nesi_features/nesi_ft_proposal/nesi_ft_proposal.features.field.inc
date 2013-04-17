@@ -1106,7 +1106,7 @@ function nesi_ft_proposal_field_default_fields() {
       'bundle' => 'proposal_research_class',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Please provide any additional information on usage requirements.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1124,7 +1124,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_allocation_profile',
-      'label' => 'Additional usage information',
+      'label' => 'Please provide any additional information on usage requirements.',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
@@ -1262,7 +1262,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_cpu_hours_bluegene',
-      'label' => 'CPU Hours Bluegene',
+      'label' => 'CPU core hours required using BlueGene/P',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -1331,7 +1331,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_cpu_hours_intel',
-      'label' => 'CPU Hours Intel',
+      'label' => 'CPU core hours required using the Intel cluster',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -1400,7 +1400,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_cpu_hours_power6',
-      'label' => 'CPU Hours Power6',
+      'label' => 'CPU core hours required using P575/POWER6',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -1469,7 +1469,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_cpu_hours_power7',
-      'label' => 'CPU Hours Power7',
+      'label' => 'CPU core hours required using P755/POWER7',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2013,7 +2013,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_funding_amount',
-      'label' => 'Funding Amount',
+      'label' => 'Amount',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2134,7 +2134,7 @@ function nesi_ft_proposal_field_default_fields() {
       'bundle' => 'proposal_research_class',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please provide the duration of the grant or award.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2152,7 +2152,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_grant_duration',
-      'label' => 'Grant Duration',
+      'label' => 'Duration of the grant',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2203,7 +2203,7 @@ function nesi_ft_proposal_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'proposal_research_class',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please provide the start date of the grant or award.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2227,7 +2227,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_grant_start_date',
-      'label' => 'Grant Start Date',
+      'label' => 'Start date of the grant',
       'required' => 0,
       'settings' => array(
         'default_value' => 'now',
@@ -2286,7 +2286,7 @@ function nesi_ft_proposal_field_default_fields() {
       'bundle' => 'proposal_research_class',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please provide the title of the research grant or award that is associated this with proposal.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2304,7 +2304,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_grant_title',
-      'label' => 'Grant Title',
+      'label' => 'Title of research grant',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
