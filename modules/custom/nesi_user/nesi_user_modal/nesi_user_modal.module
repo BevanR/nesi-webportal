@@ -67,6 +67,9 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
     return $form;
   }
 
+  global $user;
+  $account = $user; 
+  
   $commands = array();
 
   if ($form['#id'] === 'user-login') {
