@@ -477,10 +477,12 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->field_pdc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-pi-phone'];
     $p_node->field_pdc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-team-access'];
     $p_node->field_pdc_team_experience[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-team-experience'];
-    $p_node->field_pdc_proposed_hpc_platform[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-platform'];
+    $p_node->field_pdc_proposed_hpc_platform[$p_node->language] = array();
+    // $p_node->field_pdc_proposed_hpc_platform[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-platform'];
     $p_node->field_pdc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-software'];
     $p_node->field_pdc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-storage'];
-    $p_node->field_pdc_expert_support[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-expert-support'];
+    $p_node->field_pdc_expert_support[$p_node->language] = array();
+    // $p_node->field_pdc_expert_support[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-expert-support'];
     $p_node->field_pdc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-further-information'];
   }
 
