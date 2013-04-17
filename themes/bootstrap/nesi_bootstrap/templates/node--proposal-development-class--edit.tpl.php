@@ -8,7 +8,7 @@ $name = $form['#node']->name;
 
   <header>
     <?php print render($title_prefix); ?>
-      <h1<?php print $title_attributes; ?>>Edit Proposal #<?php print $nid; ?> <span>- <?php print nesi_bootstrap_proposal_status($nid); ?></span></h1>
+      <h1<?php print $title_attributes; ?>>Edit <span>- <?php print nesi_bootstrap_proposal_status($nid); ?></span></h1>
     <?php print render($title_suffix); ?>
   </header>
 
