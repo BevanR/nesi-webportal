@@ -24,8 +24,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
   
   global $base_url;
   global $user;
-
-  $user_data = $user;
+  $user_data = user_load($user->uid);
 
   $admin_links = '';
   if (in_array('nesi-admin', $user_data->roles) || in_array('administrator', $user_data->roles )) {
@@ -49,8 +48,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
 
 function nesi_bootstrap_menu_tree__menu_researcher_menu($variables) {
   global $user;
-
-  $user_data = $user;
+  $user_data = user_load($user->uid);
 
   $output = '';
   $output .= '<ul id="user-menu" class="menu nav dropdown">';
@@ -84,8 +82,6 @@ function nesi_bootstrap_menu_link(array $variables) {
 
 function nesi_bootstrap_menu_link__main_menu(array $variables) {
 
-  global $user;
-  
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -94,7 +90,7 @@ function nesi_bootstrap_menu_link__main_menu(array $variables) {
   }
 
   if ($element['#href'] == 'apply/nojs/create-proposal') {
-    if ($user->uid == 0) {
+    if (user_is_anonymous()) {
       $element['#localized_options']['attributes']['data-toggle'] = 'modal';
       $element['#localized_options']['attributes']['data-target'] = '#nesiLoginModal';
       $element['#localized_options']['attributes']['data-remote'] = 'false';
