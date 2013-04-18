@@ -36,13 +36,16 @@
 ?>
 <?php //print l('Submit a proposal', 'apply/nojs/create-proposal', array('attributes' => array('id' => 'submit-proposal', 'class' => 'btn'))); ?>
 <div class="profile"<?php print $attributes; ?>>
-<?php $r_profile = profile2_load_by_user($user->uid); ?>
+<?php 
+  $account = menu_get_object('user');
+  $r_profile = profile2_load_by_user($account->uid); 
+?>
   <div class="module-wrapper module-wrapper-first">
     <h2>Account information</h2>
     <div class="module module-account">
       <div class="account-photo"><?php print render($user_profile['user_picture']); ?></div>
-      <div class="account-name"><?php print format_username($user); ?></div>
-      <div class="account-mail"><?php print $user->mail; ?></div>
+      <div class="account-name"><?php print format_username($account); ?></div>
+      <div class="account-mail"><?php print $account->mail; ?></div>
       <div class="account-history"><?php print render($user_profile['summary']['member_for']); ?></div>
     </div>
   </div>
@@ -84,6 +87,6 @@
     </div>
   </div>
 
-  <?php print l('Edit profile', 'user/' . $user->uid . '/edit', array('attributes' => array('id' => 'edit-profile', 'class' => 'btn nesi-btn'))); ?>
+  <?php print l('Edit profile', 'user/' . $account->uid . '/edit', array('attributes' => array('id' => 'edit-profile', 'class' => 'btn nesi-btn'))); ?>
 
 </div>
