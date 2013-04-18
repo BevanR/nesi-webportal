@@ -241,7 +241,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
  * Form validation callback to set the form's redirect path.
  */
 function nesi_user_form_redirect_dashboard(&$form, &$form_state) {
-  $form_state['redirect'] = nesi_user_redirect_path();
+  $_GET['destination'] = nesi_user_redirect_path();
 }
 
 /**
@@ -274,7 +274,7 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
 
     if (isset($form['account']['name'])) {
       $form['account']['name']['#disabled'] = TRUE;
-      $form['account']['name']['#value'] = $account->name;
+      $form['account']['name']['#value'] = format_username($account);
     }
 
     // Disable account email change

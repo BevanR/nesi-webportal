@@ -36,13 +36,16 @@
 ?>
 <?php //print l('Submit a proposal', 'apply/nojs/create-proposal', array('attributes' => array('id' => 'submit-proposal', 'class' => 'btn'))); ?>
 <div class="profile"<?php print $attributes; ?>>
-
+<?php 
+  $account = menu_get_object('user');
+  $r_profile = profile2_load_by_user($account->uid); 
+?>
   <div class="module-wrapper module-wrapper-first">
     <h2>Account information</h2>
     <div class="module module-account">
       <div class="account-photo"><?php print render($user_profile['user_picture']); ?></div>
-      <div class="account-name"><?php print $user->name; ?></div>
-      <div class="account-mail"><?php print $user->mail; ?></div>
+      <div class="account-name"><?php print format_username($account); ?></div>
+      <div class="account-mail"><?php print $account->mail; ?></div>
       <div class="account-history"><?php print render($user_profile['summary']['member_for']); ?></div>
     </div>
   </div>
@@ -53,15 +56,15 @@
       <div class="researcher-logo">TODO: ADD LOGO</div>
       <div class="researcher-institution">
         <strong>Institution</strong><br />
-        <?php print render($user_profile['profile_researcher_profile']['view']['profile2'][1]['field_user_institution'][0]); ?>
+        <?php print $r_profile['researcher_profile']->field_user_institution[LANGUAGE_NONE][0]['value']; ?>
       </div>
       <div class="researcher-department">
         <strong>Department / Group</strong><br />
-        <?php print render($user_profile['profile_researcher_profile']['view']['profile2'][1]['field_user_department'][0]); ?>
+        <?php print $r_profile['researcher_profile']->field_user_department[LANGUAGE_NONE][0]['value']; ?>
       </div>
       <div class="researcher-position">
         <strong>Position / Job title</strong><br />
-        <?php print render($user_profile['profile_researcher_profile']['view']['profile2'][1]['field_user_position'][0]); ?>
+        <?php print $r_profile['researcher_profile']->field_user_position[LANGUAGE_NONE][0]['value']; ?>
       </div>
     </div>
   </div>
@@ -71,19 +74,19 @@
     <div class="module module-contact">
       <div class="contact-telephone">
         <strong>Telephone</strong><br />
-        <?php print render($user_profile['profile_researcher_profile']['view']['profile2'][1]['field_user_phone'][0]); ?>
+        <?php print $r_profile['researcher_profile']->field_user_phone[LANGUAGE_NONE][0]['value']; ?>
       </div>
       <div class="contact-address">
         <strong>Address</strong><br />
-        <?php print render($user_profile['profile_researcher_profile']['view']['profile2'][1]['field_user_address'][0]); ?>
+        <?php print $r_profile['researcher_profile']->field_user_address[LANGUAGE_NONE][0]['value']; ?>
       </div>
       <div class="contact-email">
         <strong>Alternate email</strong><br />
-        <?php print render($user_profile['profile_researcher_profile']['view']['profile2'][1]['field_user_altemail'][0]); ?>
+        <?php print $r_profile['researcher_profile']->field_user_altemail[LANGUAGE_NONE][0]['value']; ?>
       </div>
     </div>
   </div>
 
-  <?php print l('Edit profile', 'user/' . $user->uid . '/edit', array('attributes' => array('id' => 'edit-profile', 'class' => 'btn nesi-btn'))); ?>
+  <?php print l('Edit profile', 'user/' . $account->uid . '/edit', array('attributes' => array('id' => 'edit-profile', 'class' => 'btn nesi-btn'))); ?>
 
 </div>

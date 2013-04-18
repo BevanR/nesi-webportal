@@ -70,8 +70,8 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
   $commands = array();
 
   if ($form['#id'] === 'user-login') {
-    drupal_set_message('Successful login');
-    if ($account->uid > 0) {
+    if (!user_is_anonymous()) {
+      drupal_set_message('Successful login');
       // Redirect to site configuration if user has access.
       $commands[] = ctools_ajax_command_redirect(user_access('nesi website config') ? 'nesi-config' : nesi_user_redirect_path());
     }
