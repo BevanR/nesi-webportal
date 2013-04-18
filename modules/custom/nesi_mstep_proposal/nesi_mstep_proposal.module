@@ -58,7 +58,7 @@ function nesi_mstep_proposal_menu() {
     'type' => MENU_CALLBACK,
   );
   
-  // for development
+  // For development
   $items['apply/pdf-theme'] = array(
     'title' => t('Email testing'),
     'page callback' => 'nesi_mstep_proposal_email_theme_page',
@@ -67,6 +67,7 @@ function nesi_mstep_proposal_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  // For testing
   $items['apply/pdf-generate'] = array(
     'title' => t('PDF testing'),
     'page callback' => 'nesi_mstep_proposal_pdf_generate_page',
