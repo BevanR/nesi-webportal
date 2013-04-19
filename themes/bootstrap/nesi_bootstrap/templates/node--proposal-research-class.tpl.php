@@ -41,10 +41,12 @@
     print render($content);
   ?>
 
-  <footer>
-    <div class="proposal-actions pull-right">
-      <?php print l('Edit proposal', 'node/' . $nid . '/edit', array('attributes' => array('id' => 'edit-proposal', 'class' => 'btn nesi-btn'))); ?>
-    </div>
-  </footer>
+  <?php if ($may_edit) : ?>
+    <footer>
+      <div class="proposal-actions pull-right">
+        <?php print l('Edit proposal', 'node/' . $nid . '/edit', array('attributes' => array('id' => 'edit-proposal', 'class' => 'btn nesi-btn'))); ?>
+      </div>
+    </footer>
+  <?php endif; ?>
 
 </article> <!-- /.node -->
