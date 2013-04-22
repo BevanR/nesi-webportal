@@ -2,7 +2,7 @@
 
   <header>
     <?php print render($title_prefix); ?>
-      <h1<?php print $title_attributes; ?>><?php print $title; ?> <span>- <?php print nesi_bootstrap_proposal_status($node->nid); ?></span></h1>
+      <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
     <?php print render($title_suffix); ?>
     <?php //print l('Back to Dashboard', 'user/dashboard', array('attributes' => array('id' => 'back-to-dashboard', 'class' => 'btn nesi-btn'))); ?>
   </header>
