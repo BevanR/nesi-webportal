@@ -11,7 +11,7 @@ function nesi_user_modal_block_info() {
     'status' => TRUE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => '',
-    'region' => 'navigation',
+    'region' => 'header',
   );
 
   return $blocks;

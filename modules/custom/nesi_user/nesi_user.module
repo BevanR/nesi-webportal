@@ -230,8 +230,6 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
         $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         //$form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
-
-
       }
     }
   }
@@ -318,12 +316,8 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
   // Set forms to be displayed with a fieldset...
   $form['account']['#type'] = 'fieldset';
   $form['account']['#title'] = 'Account Information';
-  $form['account']['#collapsible'] = TRUE;
-  $form['account']['#collapsed'] = TRUE;
   $form['profile_researcher_profile']['#type'] = 'fieldset';
   $form['profile_researcher_profile']['#title'] = 'Researcher Profile';
-  $form['profile_researcher_profile']['#collapsible'] = TRUE;
-
 
   // Provide New Zealand and Australia as a primary option in nationality field.
   $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];

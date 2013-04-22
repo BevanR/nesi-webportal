@@ -140,7 +140,7 @@ function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
         'cancel callback' => 'nesi_mstep_proposal_wizard_cancel', //callback when cancel button is pressed
         'cancel path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
         'return path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
-        'finish text' => 'Save',
+        'finish text' => 'Submit Proposal',
         'order' => _nesi_mstep_proposal_steps(),
         'forms' => _nesi_mstep_proposal_forms(), 
       );
@@ -232,7 +232,7 @@ function nesi_mstep_proposal_platform_options() {
     'power7' => 'P755/POWER7',
     'intel' => 'Intel cluster',
     'bluegene' => 'BlueGeneP',
-    'unspecified' => 'Don\'t know',
+    'unknown' => 'Don\'t know',
   );
 }
 
@@ -478,12 +478,22 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->field_pdc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-pi-phone'];
     $p_node->field_pdc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-team-access'];
     $p_node->field_pdc_team_experience[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-team-experience'];
+
     $p_node->field_pdc_proposed_hpc_platform[$p_node->language] = array();
-    // $p_node->field_pdc_proposed_hpc_platform[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-platform'];
+    $platforms = array_filter($form_state['ctools_object']->data['p1']['pdc-platform']);
+    foreach ($platforms as $selected) {
+      $p_node->field_pdc_proposed_hpc_platform[$p_node->language][] = array('value' => $selected);
+    }
+ 
     $p_node->field_pdc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-software'];
     $p_node->field_pdc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-storage'];
+
     $p_node->field_pdc_expert_support[$p_node->language] = array();
-    // $p_node->field_pdc_expert_support[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-expert-support'];
+    $support_items = array_filter($form_state['ctools_object']->data['p1']['pdc-expert-support']);
+    foreach ($support_items as $selected) {
+      $p_node->field_pdc_expert_support[$p_node->language][] = array('value' => $selected);
+    }
+
     $p_node->field_pdc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-further-information'];
   }
 

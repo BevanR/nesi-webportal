@@ -122,13 +122,12 @@ function nesi_bootstrap_preprocess_html(&$variables) {
   }
 }
 
-//function nesi_bootstrap_preprocess_node(&$vars) {
-  //dsm('In preprocess');
-
-  //dpr('In the mo fo!!');
-
-  //print_r('Commooonnnnn');
-//}
+/**
+ * Implements hook_proprocess_node().
+ */
+function nesi_bootstrap_preprocess_node(&$vars) {
+  $vars['may_edit'] = node_access('update', $vars['node']);
+}
 
 /* Return the proposal status */
 function nesi_bootstrap_proposal_status($nid) {
