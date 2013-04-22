@@ -651,7 +651,7 @@ class Wkhtmltopdf
           $command .= (mb_strlen($this->getUsername()) > 0) ? " --username " . $this->getUsername() . "" : "";
           $command .= ' --footer-font-size 7 --disable-javascript --ignore-load-errors --username webscope --password eden --dpi 96 '; // Katie hardcoding extra flags copied fr~
         }
-        $command .= ' --footer-font-size 7 --disable-javascript --ignore-load-errors --dpi 96 '; // Katie hardcoding extra flags copied fr~
+        $command .= ' --footer-font-size 7 --disable-javascript --dpi 96 '; // Katie hardcoding extra flags copied fr~
         $command .= (mb_strlen($this->getFooterHtml()) > 0) ? " --footer-html \"" . $this->getFooterHtml() . "\"" : "";
         $command .= (mb_strlen($this->getHeaderHtml()) > 0) ? " --header-html \"" . $this->getHeaderHtml() . "\"" : "";
         $command .= ($this->getTitle()) ? ' --title "' . $this->getTitle() . '"' : '';

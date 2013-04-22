@@ -131,4 +131,18 @@
 
 	});
 
+	/* Init Datepicker on page load rather than first focus() event */
+  Drupal.behaviors.date_popup = {
+    attach: function (context) {
+      for (var id in Drupal.settings.datePopup) {
+        var $this =  $('#'+ id);
+        if (!$this.hasClass('date-popup-init')) {
+          $this
+            .datepicker(Drupal.settings.datePopup[id].settings)
+            .addClass('date-popup-init');
+        }
+      }
+    }
+  };
+
 } ) ( jQuery );
