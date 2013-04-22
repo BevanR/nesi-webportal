@@ -67,6 +67,7 @@ function nesi_mstep_proposal_development_form() {
     '#type' => 'checkboxes',
     '#title' => t('Desired HPC Platform'),
     '#options' => nesi_mstep_proposal_platform_options(),
+    '#required' => TRUE,
     '#default_value' => '',
   ); 
 
