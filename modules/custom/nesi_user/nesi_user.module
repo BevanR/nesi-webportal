@@ -97,15 +97,6 @@ function nesi_user_menu() {
     'file path' => drupal_get_path('module', 'nesi_user'),
   );
 
-  $items['user/tuakiri/vho-request'] = array(
-    'title' => 'Tuakiri VHO Request',
-    'page callback' => 'nesi_user_tuakiri_vho_callback',
-    'type' => MENU_CALLBACK,
-    'weight' => 0,
-    'file' => 'nesi_user.pages.inc',
-    'file path' => drupal_get_path('module', 'nesi_user'),
-  );  
-
   return $items;
 }
 
