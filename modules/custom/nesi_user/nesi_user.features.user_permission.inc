@@ -389,15 +389,6 @@ function nesi_user_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer smtp module.
-  $permissions['administer smtp module'] = array(
-    'name' => 'administer smtp module',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'smtp',
-  );
-
   // Exported permission: administer software updates.
   $permissions['administer software updates'] = array(
     'name' => 'administer software updates',
