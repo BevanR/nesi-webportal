@@ -22,12 +22,8 @@
   
       <div>
         <h3>Submitted by</h3>
-        <p><?php print $node->name; ?></p>
-      </div>
-  
-      <div>
-        <h3>Assigned to</h3>
-        <p>TODO</p>
+        <?php $account = user_load($node->uid); ?>
+        <p><?php print format_username($account); ?></p>
       </div>
     </div>
 
