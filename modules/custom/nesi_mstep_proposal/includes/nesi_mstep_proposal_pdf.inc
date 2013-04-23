@@ -88,7 +88,7 @@ function nesi_mstep_proposal_data($nid) {
   // put the field data into the correct field group
   $ndata = array();
   foreach($data as $field=>$data) {
-    if($group_map[$field]) {
+    if(isset($group_map[$field])) {
       $group_name = $group_map[$field];
       $ndata[$group_name][$field] = $data;
     } 
