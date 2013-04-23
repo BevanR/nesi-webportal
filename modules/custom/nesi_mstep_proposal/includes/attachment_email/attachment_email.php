@@ -66,9 +66,8 @@ class AttachmentEmail {
     */
 
     $mail = new PHPMailer();
-    // Taken out for testing
-    //$mail->IsSMTP(); // telling the class to use SMTP
-    //$mail->Host = "mailhost.auckland.ac.nz"; // SMTP server
+    $mail->IsSMTP(); // telling the class to use SMTP
+    $mail->Host = "mailhost.auckland.ac.nz"; // SMTP server
 
     $mail->SetFrom($this->from, "NeSI");
     $mail->Subject = $this->subject;

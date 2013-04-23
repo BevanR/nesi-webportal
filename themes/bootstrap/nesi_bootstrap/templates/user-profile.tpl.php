@@ -53,7 +53,7 @@
   <div class="module-wrapper">
     <h2>Researcher information</h2>
     <div class="module module-researcher">
-      <div class="researcher-logo">TODO: ADD LOGO</div>
+      <!--<div class="researcher-logo">TODO: Add institution logo</div>-->
       <div class="researcher-institution">
         <strong>Institution</strong><br />
         <?php print $r_profile['researcher_profile']->field_user_institution[LANGUAGE_NONE][0]['value']; ?>

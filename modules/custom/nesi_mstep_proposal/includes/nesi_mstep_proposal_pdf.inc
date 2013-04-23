@@ -88,7 +88,7 @@ function nesi_mstep_proposal_data($nid) {
   // put the field data into the correct field group
   $ndata = array();
   foreach($data as $field=>$data) {
-    if($group_map[$field]) {
+    if(isset($group_map[$field])) {
       $group_name = $group_map[$field];
       $ndata[$group_name][$field] = $data;
     } 
@@ -129,7 +129,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
 
   // A fix for Nesi dev servers. The https cert is broken and prompts a warning 
   // that stops wkhtmltopdf from generating the pdf
-  $css = str_replace("://https" , "://http", $css);
+  $css = str_replace("https://" , "http://", $css);
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
   $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css, 'nid' => $nid));

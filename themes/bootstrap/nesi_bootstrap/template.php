@@ -77,8 +77,15 @@ function nesi_bootstrap_menu_link(array $variables) {
 
   $element['#attributes']['class'][] = 'menu-' . $element['#original_link']['mlid'];
   $element['#localized_options']['html'] = TRUE;
-  $output = l($element['#title'] . '<span>' . $element['#localized_options']['attributes']['title'] . '</span>', $element['#href'], $element['#localized_options']);
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+
+  // Fix for : Notice: Undefined index: title in nesi_bootstrap_menu_link() 
+  if(isset($element['#title'])) {
+    $output = l($element['#title'] . '<span>' . $element['#localized_options']['attributes']['title'] . '</span>', $element['#href'], $element['#localized_options']);
+    return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+  }
+  else {
+    return; 
+  }
 }
 
 function nesi_bootstrap_menu_link__main_menu(array $variables) {

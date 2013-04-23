@@ -51,7 +51,7 @@ switch ($node->type) {
         <article role="main" class="node node-proposal-development-class node-promoted clearfix" id="node-122">
         
           <header>
-            <h1><?php print $node->title; ?> <span>- <?php print nesi_bootstrap_proposal_status($nid); ?></span></h1>
+            <h1><?php print $node->title; ?></h1>
           </header>
 
           <div id="proposal-statistics">
@@ -69,12 +69,8 @@ switch ($node->type) {
 
               <div>
                 <h3>Submitted by</h3>
-                <p><?php print $node->name; ?></p>
-              </div>
-
-              <div>
-                <h3>Assigned to</h3>
-                <p>TODO</p>
+                <?php $account = user_load($node->uid); ?> 
+                <p><?php print format_username($account); ?></p>
               </div>
             </div>
 
