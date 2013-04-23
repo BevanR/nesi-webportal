@@ -468,14 +468,13 @@ function nesi_user_block_view_alter(&$data, $block) {
 
 /**
  * Implements hook_user_delete()
+ *
+ * DELETE disabled currently.
+ * Questions:
+ *   1. Will portal be used to manage users (ie. remove them from GOLD?)
+ *   2. Should user be able to delete own account?
  */
-function nesi_user_user_delete($account) {
-
-  // DELETE disabled currently. 
-  // Questions:
-  // 1. Will portal be used to manage users (ie. remove them from GOLD?)
-  // 2. Should user be able to delete own account?  
-}
+// function nesi_user_user_delete($account) {}
 
 /**
  * Implements hook_user_login()
