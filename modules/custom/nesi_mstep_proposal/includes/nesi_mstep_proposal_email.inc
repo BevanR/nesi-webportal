@@ -36,7 +36,6 @@ function nesi_mstep_proposal_email_test_page() {
  */
 function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) {
 
-  $to = 'sam+nesi@webscope.co.nz';
   // Notify submitter via email
   include_once 'attachment_email/attachment_email.php';
 
@@ -82,7 +81,6 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) 
  */
 function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id, $form_data = NULL) {
   
-  $to = 'sam+nesi@webscope.co.nz';
   global $base_url;
   // Notify submitter via email
   include_once 'includes/attachment_email/attachment_email.php';
