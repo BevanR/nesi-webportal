@@ -20,14 +20,8 @@ function nesi_user_init(){
   // Implement check to see if user has setup a researcher_profile
   // This check is done for users created automatically by Tuakiri or other external 
   // process where a researcher profile will not have been assigned by default
-
-  global $user;
-
-  if($user->uid && $user->uid != 1){
-
-    $account = user_load($user->uid);
-    //$obj = entity_metadata_wrapper('user', $account);
-    //dpm($obj->getPropertyInfo());
+  if (!user_access('nesi website config')) {
+    $account = user_load($GLOBALS['user']->uid);
     $profile = profile2_load_by_user($account->uid);
     //dpm($profile);
     $destination = drupal_get_destination();
