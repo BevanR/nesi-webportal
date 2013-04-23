@@ -326,15 +326,6 @@ function nesi_user_user_update(&$edit, $account, $category) {
 }
 
 /**
- * Implements hook_user_view()
- */
-function nesi_user_user_view($account, $view_mode, $langcode) {
-
-  // Removed direct call to pull user data from nesi_rest / GOLD
-  // Could be worth adding a user->gold_create flag check here?
-}
-
-/**
  * Implements hook_profile2_view()
  */
 function nesi_user_profile2_view($profile, $view_mode, $langcode) {
