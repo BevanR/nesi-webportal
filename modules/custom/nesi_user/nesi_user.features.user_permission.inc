@@ -37,18 +37,6 @@ function nesi_user_user_default_permissions() {
     'module' => 'views',
   );
 
-  // Exported permission: access bugherd.
-  $permissions['access bugherd'] = array(
-    'name' => 'access bugherd',
-    'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
-      2 => 'researcher',
-      3 => 'website engineer',
-    ),
-    'module' => 'bugherd',
-  );
-
   // Exported permission: access content.
   $permissions['access content'] = array(
     'name' => 'access content',
@@ -149,15 +137,6 @@ function nesi_user_user_default_permissions() {
       0 => 'website engineer',
     ),
     'module' => 'block',
-  );
-
-  // Exported permission: administer bugherd.
-  $permissions['administer bugherd'] = array(
-    'name' => 'administer bugherd',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'bugherd',
   );
 
   // Exported permission: administer contact forms.
@@ -950,13 +929,6 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: execute php code.
-  $permissions['execute php code'] = array(
-    'name' => 'execute php code',
-    'roles' => array(),
-    'module' => 'devel',
-  );
-
   // Exported permission: flush caches.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -1032,13 +1004,6 @@ function nesi_user_user_default_permissions() {
     'name' => 'select account cancellation method',
     'roles' => array(),
     'module' => 'user',
-  );
-
-  // Exported permission: switch users.
-  $permissions['switch users'] = array(
-    'name' => 'switch users',
-    'roles' => array(),
-    'module' => 'devel',
   );
 
   // Exported permission: use PHP for settings.
