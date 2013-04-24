@@ -58,15 +58,6 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: access news feeds.
-  $permissions['access news feeds'] = array(
-    'name' => 'access news feeds',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'aggregator',
-  );
-
   // Exported permission: access rules debug.
   $permissions['access rules debug'] = array(
     'name' => 'access rules debug',
@@ -275,15 +266,6 @@ function nesi_user_user_default_permissions() {
       0 => 'website engineer',
     ),
     'module' => 'nesi_rest',
-  );
-
-  // Exported permission: administer news feeds.
-  $permissions['administer news feeds'] = array(
-    'name' => 'administer news feeds',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'aggregator',
   );
 
   // Exported permission: administer nodes.
