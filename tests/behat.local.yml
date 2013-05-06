@@ -1,7 +1,7 @@
 default:
   extensions:
     Behat\MinkExtension\Extension:
-      base_url: 'http://commerce-behat.webscope.net.nz'
+      base_url: 'http://nesi-sam.webscope.net.nz'
     Drupal\DrupalExtension\Extension:
       drush:
         alias: self

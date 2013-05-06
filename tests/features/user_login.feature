@@ -6,35 +6,31 @@ Feature: Login Commerce Kickstart
 
   Scenario: View the Login page
     When I go to "/user/login"
-    Then I should see "Login"
+    Then I should see "Researcher Access"
     And I should see the following <links>
-      | links                    |
-      | Forgot your password?    |
-      | Create an account        |
+      | links                               |
+      | Login using institution credentials |
+      | Create a NeSI account               |
 
-  @validation
-  Scenario Outline: Username validation: Valid username
-    When I go to "/user/login"
-    And I fill in "Username" with "<name>"
-    And I fill in "Password" with random text
-    And I press "Log in"
-    Then I should see "Sorry, unrecognized username or password."
-    And the field "Username" should be outlined in red
-  Examples:
-    | name           |
-    | randomname     |
-    | 123453         |
-    | mail@mail.com  |
+  #@validation
+  #Scenario Outline: Username validation: Valid username
+    #When I go to "/user/login"
+    #And I fill in "Username" with "<name>"
+    #And I fill in "Password" with random text
+    #And I press "Log in"
+    #Then I should see "Sorry, unrecognized username or password."
+    #And the field "Username" should be outlined in red
+  #Examples:
+    #| name           |
+    #| randomname     |
+    #| 123453         |
+    #| mail@mail.com  |
 
   Scenario: Login and as admin and view user profile
     Given I am logged in as "admin user"
     And I go to "/user"
-    Then I should see "HELLO, ADMIN"
+    Then I should see "Profile"
     And I should see the following <links>
       | links                 |
-      | My account            |
-      | Address Book          |
-      | Update email/password |
-      | Connections           |
-      | Order history         |
+      | Edit profile          |
 
