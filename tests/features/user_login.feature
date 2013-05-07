@@ -26,11 +26,19 @@ Feature: Login Commerce Kickstart
     #| 123453         |
     #| mail@mail.com  |
 
-  Scenario: Login and as admin and view user profile
-    Given I am logged in as "admin user"
+  Scenario: Login and as researcher and view user profile
+    Given I am logged in as "researcher"
     And I go to "/user"
     Then I should see "Profile"
     And I should see the following <links>
       | links                 |
       | Edit profile          |
+
+  Scenario: Login and as researcher and download access policy
+    Given I am logged in as "researcher"
+    And I go to "/access-policy"
+    Then I should see "Access Policy"
+    And I should see the following <links>
+      | links                                   |
+      | NeSI Guidelines for Researchers 1.1.pdf |
 
