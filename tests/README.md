@@ -5,7 +5,7 @@ Base Setup
 ----------
 
 * To start running the tests the only outside dependancy is **Composer**. Check [composer installation instructions](http://getcomposer.org/doc/00-intro.md).
-* Download additional dependancies by running: **composer install** from root of the **tests** dir.
+* Download additional dependancies by running: **composer install** from the **tests** dir.
 
 Local Configuration
 -------------------
@@ -14,7 +14,7 @@ Local Configuration
 
 Running Tests
 ------------
-* Run **bin/behat** from the root of the **tests** dir.
+* Run **bin/behat** from the **tests** dir.
 
 Useful links:
 
