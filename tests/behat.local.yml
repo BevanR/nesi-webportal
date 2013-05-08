@@ -3,14 +3,14 @@ default:
     parameters:
       drupal_users:
         admin user:
-          username: 'webscope'
-          password: 'Ahmooch8'
+          username: '********'
+          password: '********'
         researcher:
-          username: 'sam+researcher@webscope.co.nz'
-          password: 'Ahmooch8'
+          username: '********'
+          password: '********'
   extensions:
     Behat\MinkExtension\Extension:
-      base_url: 'http://nesi-sam.webscope.net.nz'
+      base_url: 'http://********************'
     Drupal\DrupalExtension\Extension:
       drush:
         alias: self

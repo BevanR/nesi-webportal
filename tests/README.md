@@ -9,8 +9,7 @@ Base Setup
 
 Local Configuration
 -------------------
-* **behat.yml** needs to have valid Drupal admin user details added.
-* **behat.local.yml** needs to have base url of the site added.
+* **behat.local.yml** needs to have base url of the site being tested, and account details username and password details for **admin** and **researcher** test roles.
 
 Running Tests
 ------------
