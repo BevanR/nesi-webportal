@@ -1,8 +1,6 @@
 @user @login
-Feature: Login Commerce Kickstart
+Feature: Login to www.nesi.org
   In order to start using additional features of the site
-  As an anonymous user
-  I should be able to Login
 
   Scenario: View the Login page
     When I go to "/user/login"
@@ -11,20 +9,20 @@ Feature: Login Commerce Kickstart
       | links                               |
       | Login using institution credentials |
       | Create a NeSI account               |
-
+      
   #@validation
-  #Scenario Outline: Username validation: Valid username
-    #When I go to "/user/login"
-    #And I fill in "Username" with "<name>"
-    #And I fill in "Password" with random text
-    #And I press "Log in"
-    #Then I should see "Sorry, unrecognized username or password."
-    #And the field "Username" should be outlined in red
-  #Examples:
-    #| name           |
-    #| randomname     |
-    #| 123453         |
-    #| mail@mail.com  |
+  Scenario Outline: Username validation: Valid username
+    When I go to "/user/login"
+    And I fill in "E-mail" with "<name>"
+    And I fill in "Password" with random text
+    And I press "Log in"
+    Then I should see "Sorry, unrecognized username or password."
+    And the field "E-mail" should be outlined in red
+  Examples:
+    | name           |
+    | randomname     |
+    | 123453         |
+    | mail@mail.com  |
 
   Scenario: Login and as researcher and view user profile
     Given I am logged in as "researcher"
@@ -42,3 +40,27 @@ Feature: Login Commerce Kickstart
       | links                                   |
       | NeSI Guidelines for Researchers 1.1.pdf |
 
+  Scenario: Login and as researcher and able complete Development Proposal 
+    Given I am logged in as "researcher"
+    And I go to "/apply"
+    When I select the radio button "Proposal Development"
+    And I press "Start" 
+    Then I should see "Development Class: Technical Project Proposal"
+    And I fill in the following <formdetails>
+      | field_type | form_id                       | value                                                   |
+      | text       | Project Title                 | Chocolate Factory                                       |
+      ## Not able to use Field name due to date popup on this form element
+      | text       | pdc-start-date[date]          | 09-05-2013                                              |
+      | text       | Project description           | This is a description                                   |
+      | text       | Principal's name              | Willy Wonka                                             |
+      | text       | Principal's email             | willy@thechocolatefactory.com                           |
+      | text       | Principal's phone number      | 021 555 555                                             |
+      | text       | Project team members requiring access to the NeSI systems | Charlie Bucket, Veruca Salt |
+      | text       | Project team's HPC experience | Ohh yes lots of expereince                              |
+      ## Need to use the css id for a check box
+      | check      | #edit-pdc-platform-power7     | Check box                                               |
+      | text       | Software requirements         | Lisp, Colbalt, Erland and Go                            |
+      | text       | Storage requirements          | 2 TB                                                    |
+      | check      | #edit-pdc-expert-support-scaling-performance | Check box                                |
+      | text       | Further information           | None                                                    | 
+    Then I press "Submit Proposal"

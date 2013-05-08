@@ -1,4 +1,4 @@
-Setting up BeHat Tests
+Setting up Beat Tests
 ======================
 
 Base Setup
@@ -20,3 +20,4 @@ Useful links:
 
 * [behat.org](http://behat.org)
 * [getcomposer.org](http://composer.org)
+* [Behat Cheat Sheet](http://blog.lepine.pro/wp-content/uploads/2012/03/behat-cheat-sheet-en.pdf)

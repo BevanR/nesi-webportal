@@ -212,4 +212,42 @@ class FeatureContext extends DrupalContext {
     return FALSE;
   }
 
+  /**
+   * @Given /^I fill in the following <formdetails>$/
+   *
+   * http://www.whiteoctober.co.uk/blog/2012/09/12/behat-tablenodes-the-missing-manual/
+   */
+  public function iFillInTheFollowingFormdetails(TableNode $table) {
+    
+    $tableValues = $table->getHash();
+    //throw new PendingException();
+    $element = $this->getSession()->getPage();
+    if (empty($element)) {
+      throw new Exception('Page not found');
+    }
+
+    foreach($tableValues as $formData) {
+      
+      switch($formData['field_type']) {
+      
+        case 'text':
+            $element->fillField($formData['form_id'], $formData['value']);
+          break;
+
+        case 'check':
+            $checkElement = $element->find('css' ,$formData['form_id']);
+            $checkElement->check();
+          break;
+  
+      }
+
+    }
+    // If I see this, I'm not logged in at all so log the user in.
+    //$element->fillField('Password', $passwd);
+    //$submit = $element->findButton('Log in');
+    //if (empty($submit)) {
+      //throw new Exception('No submit button at ' . $this->getSession()->getCurrentUrl());
+    //}
+
+  }
 }
