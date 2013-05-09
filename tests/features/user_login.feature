@@ -40,7 +40,7 @@ Feature: Login to www.nesi.org
       | links                                   |
       | NeSI Guidelines for Researchers 1.1.pdf |
 
-  Scenario: Login and as researcher and able complete Development Proposal 
+  Scenario: Login and as researcher and are able complete Development Proposal 
     Given I am logged in as "researcher"
     And I go to "/apply"
     When I select the radio button "Proposal Development"
@@ -64,3 +64,46 @@ Feature: Login to www.nesi.org
       | check      | #edit-pdc-expert-support-scaling-performance | Check box                                |
       | text       | Further information           | None                                                    | 
     Then I press "Submit Proposal"
+
+  Scenario: Login and as researcher and create a second Development Proposal 
+    Given I am logged in as "researcher"
+    And I go to "/apply"
+    When I select the radio button "Proposal Development"
+    And I press "Start" 
+    Then I should see "Development Class: Technical Project Proposal"
+    And I fill in the following <formdetails>
+      | field_type | form_id                       | value                                                   |
+      | text       | Project Title                 | James and the Giant Peach                               |
+      ## Not able to use Field name due to date popup on this form element
+      | text       | pdc-start-date[date]          | 09-05-2013                                              |
+      | text       | Project description           | This is a description                                   |
+      | text       | Principal's name              | James Henry Trotter                                     |
+      | text       | Principal's email             | james@thegiantpeach.com                                 |
+      | text       | Principal's phone number      | 021 555 555                                             |
+      | text       | Project team members requiring access to the NeSI systems | The Earthworm, Miss Spider  |
+      | text       | Project team's HPC experience | Ohh yes lots of expereince                              |
+      ## Need to use the css id for a check box
+      | check      | #edit-pdc-platform-power7     | Check box                                               |
+      | text       | Software requirements         | Lisp, Colbalt, Erland and Go                            |
+      | text       | Storage requirements          | 2 TB                                                    |
+      | check      | #edit-pdc-expert-support-scaling-performance | Check box                                |
+      | text       | Further information           | None                                                    | 
+    Then I press "Submit Proposal"
+
+  @proposal
+  Scenario: Login and as researcher and a submitted proposal
+    Given I am logged in as "researcher"
+    And I go to "/user/dashboard"
+    When I click "Development Proposal - POWER7"
+    Then I should see "James Henry Trotter"
+
+  Scenario: Login and as researcher and view all submitted proposals
+    Given I am logged in as "researcher"
+    And I go to "/user/dashboard"
+    Then I should see "Proposals and Projects"
+    And I should see the following <texts>
+      | texts                      |
+      | James and the Giant Peach  |
+      | Chocolate Factory          |
+
+   
