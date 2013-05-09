@@ -105,7 +105,7 @@ function nesi_config_admin_submit($form, &$form_state) {
     $save_file($fid, 'submission_attached_pdf'); 
   }
   elseif(0 == $form_state['values']['submission_attached_pdf']){
-    $fid = variable_get('submission_attach_pdf');
+    $fid = variable_get('submission_attached_pdf');
     $delete_file($fid); 
   }
 }
