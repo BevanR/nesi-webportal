@@ -9,7 +9,7 @@ Base Setup
 
 Local Configuration
 -------------------
-* **behat.local.yml** needs to have base url of the site being tested, and account details username and password details for **admin** and **researcher** test roles.
+* **behat.local.yml** needs to have base url of the site being tested, and account details username and password details for **admin** and **researcher** test roles.  See **behat.local.example.yml**.
 
 Running Tests
 ------------
