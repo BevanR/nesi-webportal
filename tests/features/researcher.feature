@@ -28,7 +28,6 @@ Feature: Login to www.nesi.org as a researcher
   Scenario: Login and as researcher and create user profile
     Given I am logged in as "researcher"
     Then I should see "behat-researcher"
-    And I fill contact "form"
     Given I fill in the following <formdetails>
       | field_type | form_id              | value             |
       | text       | First Name           |  Big              |
