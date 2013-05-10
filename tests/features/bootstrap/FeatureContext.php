@@ -238,7 +238,13 @@ class FeatureContext extends DrupalContext {
             $checkElement = $element->find('css' ,$formData['form_id']);
             $checkElement->check();
           break;
-  
+
+      case 'select':
+            $selectElement = $element->find('css' , $formData['form_id'] );
+            $selectElement->selectOption($formData['value']);
+
+          break;
+
       }
 
     }

@@ -2,15 +2,12 @@ default:
   context:
     parameters:
       drupal_users:
-        admin user:
-          username: '********'
-          password: '********'
         researcher:
-          username: '********'
-          password: '********'
+          username: 'behat-researcher'
+          password: 'password'
   extensions:
     Behat\MinkExtension\Extension:
-      base_url: 'http://********************'
+      base_url: 'http://************'
     Drupal\DrupalExtension\Extension:
       drush:
         alias: self

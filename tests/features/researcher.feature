@@ -1,5 +1,5 @@
 @user @login
-Feature: Login to www.nesi.org
+Feature: Login to www.nesi.org as a researcher
   In order to start using additional features of the site
 
   Scenario: View the Login page
@@ -23,6 +23,26 @@ Feature: Login to www.nesi.org
     | randomname     |
     | 123453         |
     | mail@mail.com  |
+
+  @account-setup
+  Scenario: Login and as researcher and create user profile
+    Given I am logged in as "researcher"
+    Then I should see "behat-researcher"
+    And I fill contact "form"
+    Given I fill in the following <formdetails>
+      | field_type | form_id              | value             |
+      | text       | First Name           |  Big              |
+      | text       | Middle Name          | Friendly          |
+      | text       | Last Name            | Giant             |
+      | text       | Institution          | Dream Country     |
+      | text       | Department / Group   | Whizzpoppers      |
+      | text       | Position / Job Title | Dream Catcher     |
+      | text       | Contact Phone        | Frobscottle       |
+      | text       | Contact Address      | Giant Land        |
+      | text       | Alternate Email      | bfg@giantland.com |
+      # Select values need to be identified by css id
+      | select     | #edit-profile-researcher-profile-field-user-nationality-und  | New Zealand |
+    Then I press "Save"
 
   Scenario: Login and as researcher and view user profile
     Given I am logged in as "researcher"
