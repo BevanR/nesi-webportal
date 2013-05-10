@@ -7,16 +7,16 @@ Automated tests are implemented using the Behat framework.
 * php 5.3.2+
 * php5-curl
 * [Composer](http://getcomposer.org/doc/00-intro.md)
-* Composer manages further dependencies:
-* Download additional dependancies `composer install` from `tests/`.
+* Composer manages further dependencies: `composer install` from `tests/`.
 
 ### Configure
 
-* `behat.local.yml` needs to have base url of the site being tested, and account details username and password details for **admin** and **researcher** test roles.  See `behat.local.example.yml`.
+* `cp behat.local.example.yml behat.local.yml`
+* Set base URL and user credentials in `behat.local.yml`.
 
 ### Run Tests
 
-* Run **bin/behat** from the **tests** dir.
+* `bin/behat` from `tests/`.
 
 ### Write Tests
 
