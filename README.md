@@ -1,22 +1,29 @@
-Setting up Beat Tests
-======================
+## Automated Testing
 
-Base Setup
-----------
+Automated tests are implemented using the Behat framework.
 
-* To start running the tests the only outside dependancy is **Composer**. Check [composer installation instructions](http://getcomposer.org/doc/00-intro.md).
-* Download additional dependancies by running: **composer install** from the **tests** dir.
+### Dependencies
 
-Local Configuration
--------------------
-* **behat.local.yml** needs to have base url of the site being tested, and account details username and password details for **admin** and **researcher** test roles.  See **behat.local.example.yml**.
+* php 5.3.2+
+* php5-curl
+* [Composer](http://getcomposer.org/doc/00-intro.md)
+* Composer manages further dependencies: `composer install` from `tests/`.
 
-Running Tests
-------------
-* Run **bin/behat** from the **tests** dir.
+### Configure
 
-Useful links:
+* `cp behat.local.example.yml behat.local.yml`
+* Set base URL and user credentials in `behat.local.yml`.
+
+### Run Tests
+
+* `bin/behat` from `tests/`.
+
+### Write Tests
+
+@todo
+
+### Useful links
 
 * [behat.org](http://behat.org)
-* [getcomposer.org](http://composer.org)
-* [Behat Cheat Sheet](http://blog.lepine.pro/wp-content/uploads/2012/03/behat-cheat-sheet-en.pdf)
+* [getcomposer.org](http://getcomposer.org)
+* [Behat cheat sheet](http://blog.lepine.pro/wp-content/uploads/2012/03/behat-cheat-sheet-en.pdf)
