@@ -9,7 +9,7 @@ drush user-add-role "researcher" behat-researcher
 bin/behat
 
 # If you only what to run tagged tests
-#bin/behat --tags @account-setup
+#bin/behat --tags="@account-setup,@multi"
 
 echo "Do you wish to reset the DB to it's orginal state?"
 select yn in "Yes" "No"; do
