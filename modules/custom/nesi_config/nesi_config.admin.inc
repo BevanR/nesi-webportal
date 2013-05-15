@@ -85,7 +85,7 @@ function nesi_config_admin_submit($form, &$form_state) {
       // Change status to permanent.
       $file->status = FILE_STATUS_PERMANENT;
       file_save($file);
-      file_usage_add($file, 'nesi_config', 'user', $user->uid);
+      file_usage_add($file, 'mm_admin', 'user', $user->uid);
       variable_set($form_id, $file->fid);
     } 
   };
