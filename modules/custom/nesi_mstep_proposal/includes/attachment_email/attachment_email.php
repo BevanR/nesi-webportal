@@ -12,6 +12,8 @@ class AttachmentEmail {
   private $message = '';
   private $attachments = '';
 
+  public  $errorMsg = '';
+
   /**
    * Constructor.
    *
@@ -89,6 +91,7 @@ class AttachmentEmail {
 
     if(!$mail->Send()) {
       //echo "Mailer Error: " . $mail->ErrorInfo;
+      $this->errorMsg = $mail->ErrorInfo;
       return false;
     } 
     else {

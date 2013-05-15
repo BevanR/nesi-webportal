@@ -15,26 +15,17 @@ include_once 'nesi_user.features.inc';
 /**
  * Implements hook_init()
  */
-function nesi_user_init(){
- 
+function nesi_user_init() {
   // Implement check to see if user has setup a researcher_profile
   // This check is done for users created automatically by Tuakiri or other external 
   // process where a researcher profile will not have been assigned by default
-
-  global $user;
-
-  if($user->uid && $user->uid != 1){
-
-    $account = user_load($user->uid);
-    //$obj = entity_metadata_wrapper('user', $account);
-    //dpm($obj->getPropertyInfo());
+  if (!user_is_anonymous() && !user_access('nesi website config')) {
+    $account = user_load($GLOBALS['user']->uid);
     $profile = profile2_load_by_user($account->uid);
-    //dpm($profile);
     $destination = drupal_get_destination();
 
-    if(empty( $profile['researcher_profile']->pid )){
-
-      if($destination['destination'] != 'user/'.$account->uid.'/edit/researcher_profile' && $destination['destination'] != 'user/logout'){
+    if (empty( $profile['researcher_profile']->pid)) {
+      if ($destination['destination'] != 'user/'.$account->uid.'/edit/researcher_profile' && $destination['destination'] != 'user/logout') {
         drupal_set_message('<strong>Researcher profile incomplete.</strong>', 'info');
         drupal_set_message('Please complete the Researcher Profile form below. You need to complete the profile to continue.', 'info');
         drupal_goto('user/'.$account->uid.'/edit/researcher_profile');
@@ -43,53 +34,10 @@ function nesi_user_init(){
   }
 }
 
-function nesi_user_menu() {
-  $items['user/dashboard'] = array(
-    'title' => 'Proposals',
-    'page callback' => 'nesi_user_dashboard_callback',
-    'access callback' => 'user_is_logged_in',
-    'type' => MENU_NORMAL_ITEM,
-    'file' => 'nesi_user.pages.inc',
-    'file path' => drupal_get_path('module', 'nesi_user'),
-    'menu_name' => 'user-menu',
-  ); 
-
-  // Login with Tuakiri
-  $items['user/tuakiri'] = array(
-    'title' => 'Login via Tuakiri',
-    'page callback' => 'nesi_user_tuakiri_tab_callback',
-    'access callback' => 'user_is_anonymous',
-    'type' => MENU_LOCAL_TASK,
-    'weight' => 0,
-    'file' => 'nesi_user.pages.inc',
-    'file path' => drupal_get_path('module', 'nesi_user'),
-  );
-
-  $items['user/tuakiri/vho-request'] = array(
-    'title' => 'Tuakiri VHO Request',
-    'page callback' => 'nesi_user_tuakiri_vho_callback',
-    'type' => MENU_CALLBACK,
-    'weight' => 0,
-    'file' => 'nesi_user.pages.inc',
-    'file path' => drupal_get_path('module', 'nesi_user'),
-  );  
-
-  return $items;
-}
-
-function nesi_user_menu_alter(&$items) {
-  // Disable access to request new password
-  $items['user/password']['access callback'] = FALSE;
-
-  // Login with Drupal
-  $items['user/login']['title'] = 'Login via Drupal';
-
-  // Remove researcher profile as separate form (include in standard user account edit form)
-  //$items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
-}
-
+/**
+ * Implements hook_theme().
+ */
 function nesi_user_theme($existing, $type, $theme, $path) {
-  
   $proposal_variables = array(
    'proposal_title' => '',
    'proposal_link' => '#',
@@ -101,31 +49,111 @@ function nesi_user_theme($existing, $type, $theme, $path) {
   return array(
     'nesi_user_dashboard_proposals' => array(
       'variables' => $proposal_variables,
-      'template' => 'nesi-user-dashboard-proposals', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
+      'template' => 'nesi-user-dashboard-proposals',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
     ),
     'nesi_user_dashboard_create_proposal' => array(
       'variables' => $create_variables,
-      'template' => 'nesi-user-dashboard-create-proposal', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
+      'template' => 'nesi-user-dashboard-create-proposal',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
     ),
     'nesi_user_dashboard_wrapper' => array(
       'variables' => array('content' => NULL),
-      'template' => 'nesi-user-dashboard-wrapper', 
-      'path' => drupal_get_path('module', 'nesi_user') .'/templates'
+      'template' => 'nesi-user-dashboard-wrapper',
+      'path' => drupal_get_path('module', 'nesi_user') . '/templates',
     )
-  );  
+  );
 }
 
-function nesi_user_form_alter(&$form, &$form_state, $form_id) {
+function nesi_user_menu() {
+  $items['user/dashboard'] = array(
+    'title' => 'Dashboard',
+    'title callback' => 'nesi_user_dashboard_name_callback',
+    'page callback' => 'nesi_user_dashboard_callback',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'nesi_user.pages.inc',
+    'file path' => drupal_get_path('module', 'nesi_user'),
+    'menu_name' => 'user-menu',
+  ); 
 
-  /* Override flag options on node administration */
-  if ($form['#form_id'] == 'node_admin_content') {
-    foreach ($form['admin']['options']['operation']['#options'] as $key => $node_operation) {
-      // If flag operation - remove
-      if ((substr($key, 0,5) === 'flag_') || (substr($key, 0,7) === 'unflag_') ) {
-        unset($form['admin']['options']['operation']['#options'][$key]);
-      } 
+  // Login with Tuakiri
+  $items['user/tuakiri'] = array(
+    'title' => 'Login using institution credentials',
+    'page callback' => 'nesi_user_tuakiri_tab_callback',
+    'access callback' => 'user_is_anonymous',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -10,
+    'file' => 'nesi_user.pages.inc',
+    'file path' => drupal_get_path('module', 'nesi_user'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ *
+ * Hides local tasks (tabs) for password recovery and registration.  These are
+ * accessible via the login overlay and the Drupal/NeSI login page.
+ */
+function nesi_user_menu_alter(&$items) {
+  // Login with Drupal.
+  $items['user/login']['title'] = 'Login using NeSI account';
+
+  // Register.
+  $items['user/register']['title'] = 'Create NeSI account';
+  $items['user/register']['type'] = MENU_CALLBACK;
+
+  // Drupal password recovery.
+  $items['user/password']['title'] = 'Recover your NeSI password';
+  $items['user/password']['type'] = MENU_CALLBACK;
+
+  // Remove researcher profile as separate form (include in standard user account edit form)
+  //$items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Adds links to user/register and user/password.
+ */
+function nesi_user_form_user_login_alter(&$form, &$form_state) {
+  $form['register'] = array(
+    '#markup' => l(t('Create a NeSI account'), 'user/register'),
+    '#prefix' => '<ul><li>',
+    '#suffix' => '</li></ul>',
+    '#weight' => -10,
+  );
+
+  $form['pass']['#description'] .= ' ' . l(t('Forgot password?'), 'user/password');
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Documents that password recovery is only supported for Drupal/NeSI accounts,
+ * not Tuakiri accounts.
+ */
+function nesi_user_form_user_pass_alter(&$form, &$form_state) {
+  $form['help'] = array(
+    '#markup' => t('Only NeSI account passwords can be recovered.  Refer to your university or institution password management tools to recover your university or institution password.'),
+    '#prefix' => '<p>',
+    '#suffix' => '</p>',
+    // '#weight' => -10,
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Overrides flag options on node administration.
+ */
+function nesi_user_form_node_admin_content_alter(&$form, &$form_state) {
+  foreach ($form['admin']['options']['operation']['#options'] as $key => $node_operation) {
+    // If flag operation - remove
+    if ((substr($key, 0,5) === 'flag_') || (substr($key, 0,7) === 'unflag_') ) {
+      unset($form['admin']['options']['operation']['#options'][$key]);
     }
   }
 }
@@ -134,25 +162,11 @@ function nesi_user_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_form_profile2_form_alter()
  */
 function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
+  if ($form['#form_id'] == 'user_profile_form' || $form['#form_id'] == 'user_register_form') {
+    // Set form-redirect to user dashboard.
+    $form['#validate'][] = 'nesi_user_form_redirect_dashboard';
 
-  // User Registration form alter
-  if ($form['#form_id'] == 'user_register_form') {
-
-    $form_state['redirect'] = 'user/dashboard';
-    $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];
-
-    // Provide New Zealand and Australia as a primary option in nationality field.
-    $new_option = new stdClass();
-    $new_option->option['Select Nationality'] = array('NZ' => 'New Zealand', 'AU' => 'Australia'); 
-
-    $cur_option = new stdClass();
-    $cur_option->option['All Countries'] = $queue; 
-
-    $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
-    $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
-    $form['#validate'][] = 'nesi_user_validate_researcher_profile';
-
-    // Set inline class for form layout
+    // Set inline class for form layout.
     $form['profile_researcher_profile']['field_user_firstname']['#attributes']['class'][] = 'form-horizontal';
     $form['profile_researcher_profile']['field_user_middlename']['#attributes']['class'][] = 'form-horizontal';
     $form['profile_researcher_profile']['field_user_lastname']['#attributes']['class'][] = 'form-horizontal';
@@ -165,52 +179,69 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
     $form['profile_researcher_profile']['field_user_nationality']['#attributes']['class'][] = 'form-horizontal';
   }
 
+  // User Registration form alter.
+  if ($form['#form_id'] == 'user_register_form') {
+
+    $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];
+
+    // Provide New Zealand and Australia as a primary option in nationality field.
+    $new_option = new stdClass();
+    $new_option->option['Select Nationality'] = array('NZ' => 'New Zealand', 'AU' => 'Australia'); 
+
+    $cur_option = new stdClass();
+    $cur_option->option['All Countries'] = $queue; 
+
+    $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
+    $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
+  }
+
   // User Profile form alter
   if ($form['#form_id'] == 'user_profile_form') {
-    
-    global $user;
-     
-    if ($user->uid > 1) {
-      
-      // As we are now sourcing data from tuakiri. Some data must be updated from tuakiri
+    if (!user_is_anonymous()) {
+      // Data is sourced from Tuakiri.
       if (nesi_user_tuakiri_validate()) {
         $tk_attributes = nesi_user_tuakiri_attributes();
-        
+
         $form['profile_researcher_profile']['field_user_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['givenName'];
         $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['sn'];
         $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['o'];
         //$form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#default_value'] = $tk_attributes['mail'];
 
-        // Tuakiri attributes should be locked
+        // Tuakiri attributes should be locked.
         $form['profile_researcher_profile']['field_user_firstname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         $form['profile_researcher_profile']['field_user_lastname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         $form['profile_researcher_profile']['field_user_institution'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
         //$form['profile_researcher_profile']['field_user_altemail'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
       }
-
-      // Set inline class for form layout
-      $form['profile_researcher_profile']['field_user_firstname']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_middlename']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_lastname']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_institution']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_department']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_position']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_phone']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_address']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_altemail']['#attributes']['class'][] = 'form-horizontal';
-      $form['profile_researcher_profile']['field_user_nationality']['#attributes']['class'][] = 'form-horizontal';
-    } 
-  } 
+    }
+  }
 }
 
-function nesi_user_validate_researcher_profile(&$form, &$form_state) {
-  // First we need to verify form specific validation  
-  if(form_get_errors()) {
-    return;
-  }  
+/**
+ * Form validation callback to set the form's redirect path.
+ */
+function nesi_user_form_redirect_dashboard(&$form, &$form_state) {
+  $_GET['destination'] = nesi_user_redirect_path();
+}
 
-  // Once complete
-  $form_state['redirect'] = 'user/dashboard';
+/**
+ * Determines the redirect path after login, register or profile update.
+ */
+function nesi_user_redirect_path($account = NULL) {
+  if (empty($account)) {
+    $account = $GLOBALS['user'];
+  }
+
+  // Look to see if the user has any proposals.
+  $result = db_query('SELECT count(*) FROM {node} n
+                   WHERE n.uid = :uid
+                   AND (n.type = :dev_class OR n.type = :research_class)',
+            array(':uid' => $account->uid,
+                  ':dev_class'=>'proposal_development_class',
+                  ':research_class'=>'proposal_research_class'))->fetchField();
+
+  // Redirect to the apply page if the user has no proposals.
+  return empty($result) ? 'apply' : 'user/dashboard';
 }
 
 function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
@@ -223,7 +254,7 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
 
     if (isset($form['account']['name'])) {
       $form['account']['name']['#disabled'] = TRUE;
-      $form['account']['name']['#value'] = $account->name;
+      $form['account']['name']['#value'] = format_username($account);
     }
 
     // Disable account email change
@@ -267,19 +298,21 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
   // Set forms to be displayed with a fieldset...
   $form['account']['#type'] = 'fieldset';
   $form['account']['#title'] = 'Account Information';
-  $form['account']['#collapsible'] = TRUE;
-  $form['account']['#collapsed'] = TRUE;
   $form['profile_researcher_profile']['#type'] = 'fieldset';
   $form['profile_researcher_profile']['#title'] = 'Researcher Profile';
-  $form['profile_researcher_profile']['#collapsible'] = TRUE;
-}
 
-/**
- * Implements hook_user_insert()
- */
-function nesi_user_user_insert(&$edit, $account, $category) {
-  // Set landing page for new user
-  $edit['redirect'] = 'user/dashboard';
+  // Provide New Zealand and Australia as a primary option in nationality field.
+  $queue = $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'];
+  $new_option = new stdClass();
+  $new_option->option['Select Nationality'] = array('NZ' => 'New Zealand', 'AU' => 'Australia'); 
+  $cur_option = new stdClass();
+  $cur_option->option['All Countries'] = $queue; 
+
+  if (empty($form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'])) {
+    $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#default_value'] = '_none';
+  }
+  // Update country list
+  $form['profile_researcher_profile']['field_user_nationality'][LANGUAGE_NONE]['#options'] = array($new_option, $cur_option);
 }
 
 /**
@@ -290,15 +323,6 @@ function nesi_user_user_update(&$edit, $account, $category) {
   $queue = DrupalQueue::get('nesi_rest_user_queue');
   // Add this user update to the queue to be sent to GOLD
   $queue->createItem($account);
-}
-
-/**
- * Implements hook_user_view()
- */
-function nesi_user_user_view($account, $view_mode, $langcode) {
-
-  // Removed direct call to pull user data from nesi_rest / GOLD
-  // Could be worth adding a user->gold_create flag check here?
 }
 
 /**
@@ -444,22 +468,18 @@ function nesi_user_block_view_alter(&$data, $block) {
 
 /**
  * Implements hook_user_delete()
+ *
+ * DELETE disabled currently.
+ * Questions:
+ *   1. Will portal be used to manage users (ie. remove them from GOLD?)
+ *   2. Should user be able to delete own account?
  */
-function nesi_user_user_delete($account) {
-
-  // DELETE disabled currently. 
-  // Questions:
-  // 1. Will portal be used to manage users (ie. remove them from GOLD?)
-  // 2. Should user be able to delete own account?  
-}
+// function nesi_user_user_delete($account) {}
 
 /**
  * Implements hook_user_login()
  */
 function nesi_user_user_login(&$edit, $account) {
-
-  // Set user login destination
-  $edit['redirect'] = 'user/dashboard';
 
   // On login, check for updates to tuakiri information (if applicable)
   // If updated, save to drupal user profile 

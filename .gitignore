@@ -2,3 +2,7 @@
 .project
 .settings
 *.swp
+tests/vendor
+tests/bin
+tests/*.lock
+tests/behat.local.yml

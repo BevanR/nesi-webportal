@@ -1,5 +1,5 @@
 <article role="main">
-  <div class="module centered-module bordered-module">
+  <div class="module">
     <div>
       <article id="create-proposal">
         <h1>Create a proposal</h1>
