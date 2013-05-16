@@ -2,7 +2,7 @@
 
   <header>
     <?php print render($title_prefix); ?>
-      <h1<?php print $title_attributes; ?>><?php print $title; ?> - Proposal #<?php print $node->nid; ?> <span>- <?php print nesi_bootstrap_proposal_status($node->nid); ?></span></h1>
+      <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
     <?php print render($title_suffix); ?>
     <?php //print l('Back to Dashboard', 'user/dashboard', array('attributes' => array('id' => 'back-to-dashboard', 'class' => 'btn nesi-btn'))); ?>
   </header>
@@ -22,12 +22,8 @@
   
       <div>
         <h3>Submitted by</h3>
-        <p><?php print $node->name; ?></p>
-      </div>
-  
-      <div>
-        <h3>Assigned to</h3>
-        <p>TODO</p>
+        <?php $account = user_load($node->uid); ?>
+        <p><?php print format_username($account); ?></p>
       </div>
     </div>
 
@@ -41,8 +37,12 @@
     print render($content);
   ?>
 
-  <footer>
-    <?php print l('Edit proposal', 'node/' . $nid . '/edit', array('attributes' => array('id' => 'edit-proposal', 'class' => 'btn nesi-btn'))); ?>
-  </footer>
+  <?php if ($may_edit) : ?>
+    <footer>
+      <div class="proposal-actions pull-right">
+        <?php print l('Edit proposal', 'node/' . $nid . '/edit', array('attributes' => array('id' => 'edit-proposal', 'class' => 'btn nesi-btn pull-left'))); ?>
+      </div>
+    </footer>
+  <?php endif; ?>
 
 </article> <!-- /.node -->

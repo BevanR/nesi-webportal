@@ -1,0 +1,22 @@
+# Behat.yml
+default:
+  paths:
+    features: 'features'
+    bootstrap: 'features/bootstrap'
+  context:
+    parameters:
+      default_browser: 'goutte'
+  extensions:
+    Behat\MinkExtension\Extension:
+      goutte: ~
+      selenium2: ~
+      default_session: 'goutte'
+    Drupal\DrupalExtension\Extension:
+      blackbox: ~
+      drush: ~
+
+imports:
+  #- config/sauce.yml
+  #- config/jira.yml
+  - behat.local.yml
+

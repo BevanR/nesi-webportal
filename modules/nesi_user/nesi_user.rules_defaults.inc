@@ -15,7 +15,7 @@ function nesi_user_default_rules_configuration() {
       "REQUIRES" : [ "rules" ],
       "ON" : [ "user_insert" ],
       "DO" : [
-        { "user_add_role" : { "account" : [ "account" ], "roles" : { "value" : { "4" : "4" } } } }
+        { "user_add_role" : { "account" : [ "account" ], "roles" : { "value" : { "5" : "5" } } } }
       ]
     }
   }');

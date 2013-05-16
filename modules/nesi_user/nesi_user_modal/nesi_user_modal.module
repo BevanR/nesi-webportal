@@ -11,7 +11,7 @@ function nesi_user_modal_block_info() {
     'status' => TRUE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => '',
-    'region' => 'navigation',
+    'region' => 'header',
   );
 
   return $blocks;
@@ -34,15 +34,24 @@ function nesi_user_modal_block_view($delta = '') {
 function nesi_user_modal_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'user_login':
-    case 'user_register_form':
       // Add ajax wrapper to form.
       $html_id = str_replace('_', '-', $form_id);
-      $form['#prefix'] = '<div id="ajax-' . $html_id . '-wrapper">';
+
+      // If form is rendered twice, provide alternate wrapper
+      if ($form['#id'] === 'user-login' ) {
+        $wrapper = 'ajax-' . $html_id . '-wrapper';
+      }
+      else {
+        $wrapper = 'ajax-' . $html_id . '-alt-wrapper';
+      }
+  
+      $form['#prefix'] = '<div id="'.$wrapper.'">';
       $form['#suffix'] = '</div>';
+
       // Add ajax functionality to form submit button.
       $form['actions']['submit']['#ajax'] = array(
         'callback' => '_nesi_user_modal_ajax_callback',
-        'wrapper' => 'ajax-' . $html_id . '-wrapper',
+        'wrapper' => $wrapper,
         'event' => 'click',
       );
       break;
@@ -53,34 +62,26 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
   ctools_include('ajax');
   ctools_add_js('ajax-responder');
 
-  $commands = array();
-
   if (form_get_errors()) {
-    return $form; // Reload form if it didn't pass validation.
+    // Reload form if it didn't pass validation.
+    return $form;
   }
 
+  $commands = array();
+
   if ($form['#id'] === 'user-login') {
-    drupal_set_message(check_plain('Successful login'));
-    global $user;
-    $account = $user;
-    if ($account->uid > 0) {
-      // Redirect based on role  
-      if (in_array('nesi-admin', $account->roles) || in_array('administrator', $account->roles )) {
-        $commands[] = ctools_ajax_command_redirect('nesi-config');
-      }
-      else {
-        $commands[] = ctools_ajax_command_redirect('user/dashboard');
-      }
+    if (!user_is_anonymous()) {
+      drupal_set_message('Successful login');
+      // Redirect to site configuration if user has access.
+      $commands[] = ctools_ajax_command_redirect(user_access('nesi website config') ? 'nesi-config' : nesi_user_redirect_path());
     }
   }
   else {
     $commands[] = ctools_ajax_command_reload();
   }
 
-  return array(
-    '#type' => 'ajax',
-    '#commands' => $commands
-  );
+  print ajax_render($commands);
+  exit;
 }
 
 function _nesi_user_modal_login_block_view() {
@@ -89,7 +90,7 @@ function _nesi_user_modal_login_block_view() {
 
   $content = '<ul class="nav pull-right">';
   $content .= '<li>';
-  $content .= '<a href="'.$base_url.'/user/login" role="button" data-toggle="modal" data-target="#nesiLoginModal" data-remote="false">' . t('Login') . '</a>';
+  $content .= '<a href="' . url('user/tuakiri') . '" role="button" data-toggle="modal" data-target="#nesiLoginModal" data-remote="false">' . t('Login') . '</a>';
   $content .= '<div id="nesiLoginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nesiLoginModalLabel" aria-hidden="true">
 
   <div class="modal-header">
@@ -109,6 +110,7 @@ function _nesi_user_modal_login_block_view() {
           <div class="pull-right login-via-drupal">
             <h2>Login using NeSI Account</h2>
               ' . drupal_render(drupal_get_form('user_login')) . '
+              <p>' . l('Forgot password?', 'user/password') . '</p>
           </div>
     </div>
     <div class="modal-footer">

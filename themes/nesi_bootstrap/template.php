@@ -24,8 +24,8 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
   
   global $base_url;
   global $user;
-
-  $user_data = $user;
+  $user_data = user_load($user->uid);
+  $profile_data = profile2_load_by_user($user_data->uid);
 
   $admin_links = '';
   if (in_array('nesi-admin', $user_data->roles) || in_array('administrator', $user_data->roles )) {
@@ -37,7 +37,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
   $output .= '<li id="nesi-user-picture"><div class="nesi-user-picture"><div class="pull-left">'.theme('user_picture',  array('account' => $user)).'</div>
               <h2>' . format_username($user_data) . '</h2>
               <h3>Institution</h3>
-              <p>'.$user->name.'</p>
+              <p>'.$profile_data['researcher_profile']->field_user_institution[LANGUAGE_NONE][0]['value'].'</p>
               <p><em>Member for ' . format_interval(REQUEST_TIME - $user_data->created) . '</em></p>
               </div></li>';
   $output .=  $admin_links;
@@ -49,8 +49,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
 
 function nesi_bootstrap_menu_tree__menu_researcher_menu($variables) {
   global $user;
-
-  $user_data = $user;
+  $user_data = user_load($user->uid);
 
   $output = '';
   $output .= '<ul id="user-menu" class="menu nav dropdown">';
@@ -91,8 +90,6 @@ function nesi_bootstrap_menu_link(array $variables) {
 
 function nesi_bootstrap_menu_link__main_menu(array $variables) {
 
-  global $user;
-  
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -101,7 +98,7 @@ function nesi_bootstrap_menu_link__main_menu(array $variables) {
   }
 
   if ($element['#href'] == 'apply/nojs/create-proposal') {
-    if ($user->uid == 0) {
+    if (user_is_anonymous()) {
       $element['#localized_options']['attributes']['data-toggle'] = 'modal';
       $element['#localized_options']['attributes']['data-target'] = '#nesiLoginModal';
       $element['#localized_options']['attributes']['data-remote'] = 'false';
@@ -132,13 +129,12 @@ function nesi_bootstrap_preprocess_html(&$variables) {
   }
 }
 
-//function nesi_bootstrap_preprocess_node(&$vars) {
-  //dsm('In preprocess');
-
-  //dpr('In the mo fo!!');
-
-  //print_r('Commooonnnnn');
-//}
+/**
+ * Implements hook_proprocess_node().
+ */
+function nesi_bootstrap_preprocess_node(&$vars) {
+  $vars['may_edit'] = node_access('update', $vars['node']);
+}
 
 /* Return the proposal status */
 function nesi_bootstrap_proposal_status($nid) {

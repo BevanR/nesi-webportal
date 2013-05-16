@@ -161,15 +161,6 @@ a:hover {
   margin: 0;
 }
 
-.navbar-inner {
-  background: transparent;
-  background-image: url(../assets/img/header-bg.png);
-  border: 0;
-  border-radius: 0;
-  box-shadow: 0 0 0 transparent;
-  height: 150px;
-}
-
 .nav-collapse {
   clear: none; /* Hope this doesn't break anything else */
 }
@@ -183,7 +174,7 @@ a:hover {
   background: url(../assets/img/menu-delimiter.png) left bottom no-repeat;
   display: block;
   padding: 0 0 0 2px;
-  width: 24.8%;
+  width: 24.6%;
 }
 
 #pnav a {
@@ -210,6 +201,7 @@ a:hover {
 #pnav a.active-trail {
   background-image: linear-gradient(to bottom, #fcfdfe, #dedddd);
   background-image: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
 
 #pnav li.menu-696 {
@@ -229,16 +221,11 @@ a:hover {
   border-bottom: 4px solid #4b5b68;
 }
 
-#pnav li.menu-1685 a,
-#pnav li.menu-1732 a {
-  background: url(../assets/img/nav-apply.png) 190px center no-repeat;
-  text-indent: -37px;
-}
-
 #pnav li.menu-1685:hover,
 #pnav li.menu-1732:hover {
   background: linear-gradient(to bottom, #fcfdfe, #dedddd);
   background: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
 
 .legal {
@@ -276,6 +263,7 @@ input, button, select, textarea {
 
 .logged-in #block-nesi-user-modal-nesi-user-modal-login ul li a {
   background: url(../assets/img/arrow-dropdown.png) right center no-repeat;
+  filter: inherit;
   padding: 0 29px 0 0;
 }
 
@@ -291,6 +279,8 @@ input, button, select, textarea {
 /* Home page */
 #home-hero {
   margin-bottom: 0;
+  margin-top: -5px; /* This needs to be moved up so the navbar sits on top of it */
+  z-index: -1;
 }
 
 #home-hero .slide-title {
@@ -651,28 +641,6 @@ div.radio {
   margin-right: 12px;
 }
 
-div.radio,
-div.radio span,
-div.radio input {
-  height: 23px;
-  width: 23px;
-}
-
-div.radio span {
-  background: url(../assets/img/form-radio.png);
-  cursor: pointer;
-}
-
-div.radio.focus:active span,
-div.radio:hover:active span,
-div.radio.focus.active span,
-div.radio.active:hover span,
-div.radio.focus span.checked,
-div.radio:hover span,
-div.radio span.checked {
-  background-position: 0 -23px !important;
-}
-
 #edit-intro-form .fieldset-wrapper .form-text {
   color: #606162;
   font-size: 15px;
@@ -934,6 +902,12 @@ div.radio span.checked {
   -webkit-box-shadow: 0 0 0 transparent;
 }
 
+#nesi-mstep-proposal-step-2 .control-group.error .radio,
+#nesi-mstep-proposal-step-3 .control-group.error .radio,
+#nesi-mstep-proposal-step-4 .control-group.error .radio {
+  color: #B94A48;
+}
+
 /* FAQs block */
 #block-nesi-config-nesi-faq {
   border-top: 1px solid #aaa;
@@ -1006,7 +980,6 @@ div.radio span.checked {
   color: #4b5b68;
   float: right;
   margin: 10px 20px 10px 0;
-  width: 420px;
 }
 
 .page-user-dashboard .module {
@@ -1038,7 +1011,6 @@ div.radio span.checked {
   height: 70px;
   margin: 0;
   padding: 0 20px;
-  width: 1130px;
 }
 
 .page-user-dashboard .module h1 {
@@ -1067,7 +1039,6 @@ div.radio span.checked {
 
 .page-user-dashboard .proposal-outline header {
   float: left;
-  width: 60%;
 }
 
 .page-user-dashboard .proposal-meta {
@@ -1075,7 +1046,7 @@ div.radio span.checked {
   float: right;
   line-height: 21px;
   margin: 0;
-  width: 420px;
+  width: 240px;
 }
 
 .page-user-dashboard .proposal-meta > div,
@@ -1287,6 +1258,10 @@ div.radio span.checked {
   width: 111px;
 }
 
+.proposal-actions a {
+  width: 180px;
+}
+
 /* View proposal */
 .node-type-proposal-research-class,
 .node-type-proposal-development-class {
@@ -1344,9 +1319,14 @@ div.radio span.checked {
   display: block;
   font-size: 24px;
   font-weight: normal;
-  line-height: 57px;
+  line-height: 32px;
   margin: 0;
-  text-indent: 20px;
+  padding: 0 0 0 20px;
+}
+
+.node-proposal-research-class.page-node-edit .field-group-fieldset legend span,
+.node-type-proposal-development-class.page-node-edit .field-group-fieldset legend span {
+  padding: 0;
 }
 
 .node-proposal-research-class #proposal-research-class-node-form .field-group-fieldset legend span,
@@ -1412,24 +1392,22 @@ div.radio span.checked {
 #proposal-statistics > div {
   display: inline-block;
   height: 93px;
-  width: 24.75%;
+  width: 30%;
 }
 
 #proposal-statistics .inner {
   float: right;
-  padding: 0 60px;
-  width: 60%;
 }
 
 #proposal-statistics .inner > div {
   display: inline-block;
-  width: 32.9%;
+  vertical-align: top;
+  width: 32.8%;
 }
 
 #proposal-statistics .labels,
 #proposal-statistics .inner > div {
   height: 69px;
-  padding: 12px 0;
 }
 
 #proposal-statistics * {
@@ -1446,7 +1424,6 @@ div.radio span.checked {
   color: #4b5b68;
   font-size: 17px;
   font-weight: normal;
-  line-height: 36px;
 }
 
 .node-type-proposal-research-class.page-node-edit .node {
@@ -1494,9 +1471,6 @@ div.radio span.checked {
   color: #606162;
   float: left;
   font-size: 14px;
-  /* line-height: 39px; */
-  margin: 0 20px 0 0;
-  width: 220px;
 }
 
 #proposal-research-class-node-form fieldset .controls,
@@ -1636,6 +1610,11 @@ div.radio span.checked {
   padding: 0 27px;
 }
 
+#pnav #nesi-user-profile-dropdown li:hover a,
+#pnav #nesi-user-profile-dropdown li a:hover {
+  background: transparent;
+}
+
 #nesi-user-profile-dropdown li#nesi-base-actions {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
@@ -1711,8 +1690,20 @@ div.radio span.checked {
   line-height: 36px;
 }
 
+#nesiLoginModal .error label {
+  display: none;
+}
+
 #nesiLoginModal p {
   font-weight: 100;
+}
+
+#nesiLoginModal .login-via-drupal #ajax-user-login-wrapper > form > div > ul {
+  display: none; /* Hide the Create a NeSI account link in the login modal */
+}
+
+#nesiLoginModal .login-via-drupal #ajax-user-login-alt-wrapper > form > div > ul {
+  display: none; /* Hide the Create a NeSI account link in the alt login modal */
 }
 
 .modal {
@@ -1724,6 +1715,7 @@ div.radio span.checked {
 
 .modal-body {
   background: #fff;
+  overflow-y: hidden;
 }
 
 .modal-footer {
@@ -1782,17 +1774,55 @@ div.radio span.checked {
   display: none;
 }
 
-#nesiLoginModal #ajax-user-login-wrapper {
+#nesiLoginModal #ajax-user-login-wrapper, #nesiLoginModal #ajax-user-login-alt-wrapper {
   margin-top: 5px;
 }
 
 #nesiLoginModal .tuakiri,
-#nesiLoginModal #ajax-user-login-wrapper {
-  min-height: 168px;
+#nesiLoginModal #ajax-user-login-wrapper, #nesiLoginModal #ajax-user-login-alt-wrapper {
+  min-height: 188px;
   padding-bottom: 65px;
   position: relative;
 }
 
-#nesiLoginModal label {
-  display: none;
+#nesiLoginModal .control-group {
+  margin: 0 auto;
+  position: relative;
+  width: 242px;
+}
+
+#nesiLoginModal .control-group label {
+  cursor: text;
+  height: 40px;
+  left: 16px;
+  line-height: 40px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+/* PDF */
+.nesi-pdf #logo {
+  margin: 24px 0;
+}
+
+.nesi-pdf .node-proposal-development-class .field-group-fieldset.odd {
+  margin-right: 2%;
+}
+
+.nesi-pdf .node-proposal-development-class .field-group-fieldset.even {
+  margin-right: 0;
+}
+
+.nesi-pdf #proposal-statistics {
+  width: 100%;
+}
+
+.nesi-pdf #proposal-statistics .inner {
+  padding: 0;
+  width: 50%;
+}
+
+.nesi-pdf #proposal-statistics .inner > div {
+  width: 30%;
 }

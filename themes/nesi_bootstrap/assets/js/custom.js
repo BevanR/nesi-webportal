@@ -9,8 +9,8 @@
   	*/
   
   	/* Form labels */
-  	$('#nesi-mstep-proposal-step-1 .form-text, #nesiLoginModal .form-text').each(function() {
-    	$('#nesi-mstep-proposal-step-1 .form-type-textfield label, #nesiLoginModal .form-type-textfield label, #nesiLoginModal .form-type-password label').hide();
+  	$('#nesi-mstep-proposal-step-1 .form-text').each(function() {
+    	$('#nesi-mstep-proposal-step-1 .form-type-textfield label').hide();
     	$('.form-required').remove();
     	var id = $(this).attr('id');
     	var label = $("label[for=" + id +"]").text();
@@ -27,8 +27,59 @@
     	});
   	});
 
-  	/* Fancy form elements */
-  	$('.form-type-radio input').uniform();
+    /* Fancy field labels for login form */
+    function initOverLabels () {
+      if (!document.getElementById) return;
+      var labels, id, field;  // Set focus and blur handlers to hide and show 
+      labels = $('#nesiLoginModal .control-group').find('label');
+      for (var i = 0; i < labels.length; i++) {
+          // with another field.
+          id = labels[i].htmlFor || labels[i].getAttribute ('for');
+          if (!id || !(field = document.getElementById(id))) {
+            continue;
+          }
+          // Change the applied class to hover the label 
+          // over the form field.
+          labels[i].className = 'overlabel-apply';
+          // Hide any fields having an initial value.
+          if (field.value !== '') {
+            hideLabel(field.getAttribute('id'), true);
+          }
+          // Set handlers to show and hide labels.
+          field.onfocus = function () {
+            hideLabel(this.getAttribute('id'), true);
+          };
+          field.onblur = function () {
+            if (this.value === '') {
+              hideLabel(this.getAttribute('id'), false);
+            }
+          };
+          // Handle clicks to label elements (for Safari).
+          labels[i].onclick = function () {
+            var id, field;
+            id = this.getAttribute('for');
+            if (id && (field = document.getElementById(id))) {
+              field.focus();
+            }
+          };
+      }
+    };
+    
+    function hideLabel (field_id, hide) {
+      var field_for;
+      var labels = document.getElementsByTagName('label');
+      for (var i = 0; i < labels.length; i++) {
+        field_for = labels[i].htmlFor || labels[i]. getAttribute('for');
+        if (field_for == field_id) {
+          labels[i].style.textIndent = (hide) ? '-9999em' : '0px';
+          return true;
+        }
+      }
+    }
+    
+    window.onload = function () {
+      setTimeout(initOverLabels, 50);
+    };
 
   	/* Tooltips */
 /*
@@ -79,5 +130,19 @@
     $('.node-proposal-research-class .field-group-fieldset:odd, .node-type-proposal-development-class .field-group-fieldset:odd').addClass('odd');
 
 	});
+
+	/* Init Datepicker on page load rather than first focus() event */
+  Drupal.behaviors.date_popup = {
+    attach: function (context) {
+      for (var id in Drupal.settings.datePopup) {
+        var $this =  $('#'+ id);
+        if (!$this.hasClass('date-popup-init')) {
+          $this
+            .datepicker(Drupal.settings.datePopup[id].settings)
+            .addClass('date-popup-init');
+        }
+      }
+    }
+  };
 
 } ) ( jQuery );

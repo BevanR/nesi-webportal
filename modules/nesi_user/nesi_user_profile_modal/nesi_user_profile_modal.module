@@ -31,6 +31,7 @@ function nesi_user_profile_modal_block_view($delta = '') {
 * Implements hook_form_alter().
 */
 function nesi_user_profile_modal_form_alter(&$form, &$form_state, $form_id) {
+/* Disabled as currently breaks profile form on Tuakiri first-time login.
   switch ($form_id) {
     case 'user_profile_form':
       // Add ajax wrapper to form.
@@ -45,6 +46,7 @@ function nesi_user_profile_modal_form_alter(&$form, &$form_state, $form_id) {
       );
       break;
   }
+*/
 }
 
 function _nesi_user_profile_modal_ajax_callback($form, $form_state) {

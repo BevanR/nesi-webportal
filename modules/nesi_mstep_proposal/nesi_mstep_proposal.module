@@ -1,11 +1,13 @@
 <?php
-// $Id$
-
 /**
  * @file
  * Ctools hooks for a multi step form
  */
 
+// @todo Do not include from global scope. Use Drupal registries and module_load_include() from function scope:
+// @see http://drupal.org/node/350780
+// @see http://api.drupal.org/api/search/7/module_load_include
+// @see "file path" http://api.drupal.org/api/search/7/hook_menu
 include_once 'forms/proposal_form_intro.inc';
 include_once 'forms/proposal_form_development.inc';
 include_once 'forms/proposal_form_research.inc';
@@ -56,7 +58,7 @@ function nesi_mstep_proposal_menu() {
     'type' => MENU_CALLBACK,
   );
   
-  // for development
+  // For development
   $items['apply/pdf-theme'] = array(
     'title' => t('Email testing'),
     'page callback' => 'nesi_mstep_proposal_email_theme_page',
@@ -65,6 +67,7 @@ function nesi_mstep_proposal_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  // For testing
   $items['apply/pdf-generate'] = array(
     'title' => t('PDF testing'),
     'page callback' => 'nesi_mstep_proposal_pdf_generate_page',
@@ -137,7 +140,7 @@ function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
         'cancel callback' => 'nesi_mstep_proposal_wizard_cancel', //callback when cancel button is pressed
         'cancel path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
         'return path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
-        'finish text' => 'Finish',
+        'finish text' => 'Submit Proposal',
         'order' => _nesi_mstep_proposal_steps(),
         'forms' => _nesi_mstep_proposal_forms(), 
       );
@@ -225,11 +228,11 @@ function nesi_mstep_proposal_class_types() {
  */
 function nesi_mstep_proposal_platform_options() {
   return array(
-    'power6' => 'Power 6',
-    'power7' => 'Power 7',
-    'intel' => 'Intel',
-    'bluegene' => 'Bluegene',
-    'unspecified' => 'Don\'t know',
+    'power6' => 'P575/POWER6',
+    'power7' => 'P755/POWER7',
+    'intel' => 'Intel cluster',
+    'bluegene' => 'BlueGeneP',
+    'unknown' => 'Don\'t know',
   );
 }
 
@@ -433,7 +436,7 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   // Clear the form data cache from the session
 
   // Send user to confirmation page
-  drupal_goto('apply/proposal-complete'.$proposal_redirect);
+  drupal_goto('proposal/'.$node_id);
 }
 
 /**
@@ -441,7 +444,6 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
  * Serialises proposal form values into bp_container field
  */
 function _nesi_mstep_proposal_save(&$form_state) {
-  
   global $user;
   $proposal_type = $form_state['ctools_object']->data['proposal-type'];
 
@@ -449,10 +451,10 @@ function _nesi_mstep_proposal_save(&$form_state) {
 
   if ($proposal_type == 'proposal_development_class') {
     $p_title = $form_state['ctools_object']->data['p1']['pdc-title'];
-  }  
+  }
   if ($proposal_type == 'research_proposal_class') {
     $p_title = $form_state['ctools_object']->data['p1']['prc-title'];
-  } 
+  }
 
   // Prepare data to be saved
   //$proposal_json = json_encode($form_state['ctools_object']->data);
@@ -476,10 +478,22 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->field_pdc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-pi-phone'];
     $p_node->field_pdc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-team-access'];
     $p_node->field_pdc_team_experience[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-team-experience'];
-    $p_node->field_pdc_proposed_hpc_platform[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-platform'];
+
+    $p_node->field_pdc_proposed_hpc_platform[$p_node->language] = array();
+    $platforms = array_filter($form_state['ctools_object']->data['p1']['pdc-platform']);
+    foreach ($platforms as $selected) {
+      $p_node->field_pdc_proposed_hpc_platform[$p_node->language][] = array('value' => $selected);
+    }
+ 
     $p_node->field_pdc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-software'];
     $p_node->field_pdc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-storage'];
-    $p_node->field_pdc_expert_support[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-expert-support'];
+
+    $p_node->field_pdc_expert_support[$p_node->language] = array();
+    $support_items = array_filter($form_state['ctools_object']->data['p1']['pdc-expert-support']);
+    foreach ($support_items as $selected) {
+      $p_node->field_pdc_expert_support[$p_node->language][] = array('value' => $selected);
+    }
+
     $p_node->field_pdc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-further-information'];
   }
 
@@ -632,6 +646,16 @@ function nesi_mstep_proposal_cache_get($name) {
 function nesi_mstep_proposal_cache_clear($name) {
   ctools_include('object-cache');
   ctools_object_cache_clear('nesi_mstep_proposal', $name);
+}
+
+function nesi_mstep_proposal_form_alter(&$form, &$form_state, $form_id) {
+  // These fields are not currently used in Research Proposal
+  // Remove from edit view.
+  if ($form_id == 'proposal_research_class_node_form' ) {
+    $form['field_prc_proposed_hpc_platform']['#access'] = FALSE;
+    $form['field_prc_cpu_core_hours']['#access'] = FALSE;
+    $form['field_prc_estimated_run_length']['#access'] = FALSE;
+  }
 }
 
 

@@ -1,0 +1,10 @@
+{
+    "require": {
+        "drupal/drupal-extension": "dev-master",
+        "phpunit/phpunit": "3.7.*@dev"
+    },
+    "minimum-stability": "dev",
+    "config": {
+      "bin-dir": "bin/"
+    }
+}

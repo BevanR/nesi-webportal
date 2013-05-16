@@ -74,16 +74,18 @@ function nesi_config_site() {
   return 'Going to be a list of submissions here';
 }
 
+/**
+ * Implements hook_permission().
+ */
 function nesi_config_permission() {
-
   return array(
-      'nesi website config' => array(
-          'title' => 'Nesi config',
-          'description' => t('A description'),
-        ),
-    );
+    'nesi website config' => array(
+      'title' => 'Configure NeSI',
+      'description' => t('Configure NeSI data such as homepage statistics & FAQs'),
+    ),
+  );
 }
-  
+
 function nesi_config_wysiwyg_editor_settings_alter(&$settings, $context) {
   
   if ($context['profile']->editor == 'ckeditor') {

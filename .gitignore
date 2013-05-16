@@ -1,4 +1,6 @@
-files/
 settings.php
-local.settings.php
+files/
 
+# Any files specific to an IDE, editor or uncommon environment configuration
+# (E.g. Aegir) should go in the user's or system's git-ignore file instead of
+# this version-controlled git-ignore file.

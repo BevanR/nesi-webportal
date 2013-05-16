@@ -19,11 +19,9 @@ stylesheets[all][] = assets/css/bootstrap.css
 stylesheets[all][] = assets/css/responsive.css
 
 ; Additional css for nesi_bootstrap
-stylesheets[all][] = assets/css/uniform.default.min.css
 stylesheets[all][] = css/nesi_bootstrap.css
 
 ; Add JavaScript
-scripts[] = assets/js/jquery.uniform.min.js
 scripts[] = assets/js/custom.js
 
 settings[toggle_name] = 1

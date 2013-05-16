@@ -26,15 +26,17 @@ function nesi_mstep_proposal_email_theme_page() {
   
   global $base_url;
   $css = drupal_get_css(); 
-  $nid = 126;
+  $nid = 123;
   $data = nesi_mstep_proposal_data($nid);
-  $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css));
+  $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css, 'nid' => $nid));
   echo $node_html;
   drupal_exit();
+  // return 'pdf theme page';
 }
 
 function nesi_mstep_proposal_pdf_generate_page() {
-  $nid = 125;
+  // For testing
+  $nid = 123;
   nesi_mstep_generate_proposal_pdf($nid);
   return 'In pdf generate page';
 }
@@ -55,6 +57,7 @@ function nesi_mstep_proposal_data($nid) {
   
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
+  //dsm($fields);
   // Sort those fields so that are returned correctly weighted
   usort($fields,"nesi_mstep_sort_fields");
   // Use entity api
@@ -70,7 +73,30 @@ function nesi_mstep_proposal_data($nid) {
     $field_val    = $node_wrapper->{$field_name}->value();
     $data[$field_name] = array('field_label' => $field_label, 'field_val' => $field_val);
   }
-  return $data;
+
+  // using field_group api
+  $groups = field_group_info_groups('node', $content_type, 'default', TRUE);
+
+  // creating a map for sorting
+  $group_map = array();
+  foreach($groups as $group) {
+    foreach($group->children as $index=>$group_field) {
+      $group_map[$group_field] = $group->group_name;
+    }
+  }
+  
+  // put the field data into the correct field group
+  $ndata = array();
+  foreach($data as $field=>$data) {
+    if(isset($group_map[$field])) {
+      $group_name = $group_map[$field];
+      $ndata[$group_name][$field] = $data;
+    } 
+    else {
+      $ndata['non-field-group'][$field] = $data;
+    }
+  }
+  return $ndata;
 }
 
 function nesi_mstep_sort_fields($a,$b){
@@ -92,7 +118,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   $wkhtmltopdf_files_path =  $absolute_path . '/files';
   //$wkhtmltopdf_header_html = $absolute_path . '/themes/ws_mm/templates/pdf-header.html';
   //$wkhtmltopdf_footer_html = $absolute_path . '/themes/ws_mm/templates/pdf-footer.html';
-  $wkhtmltopdf_margins = array('top' => '26', 'bottom' => '15', 'left' => null, 'right' => null);
+  $wkhtmltopdf_margins = array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null);
 
   $node = node_load($nid);
   $file_name = $node->type . '-' . $nid;
@@ -100,11 +126,18 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   $title_map = array('proposal_development_class' => 'Development Proposal' , 'proposal_research_class' => 'Research Proposal' );
   $report_title = $title_map[$node->type];
   $css = drupal_get_css();
+
+  // A fix for Nesi dev servers. The https cert is broken and prompts a warning 
+  // that stops wkhtmltopdf from generating the pdf
+  $css = str_replace("https://" , "http://", $css);
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
-  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css));
+  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css, 'nid' => $nid));
   try {
-    $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path));
+    // The binary path changes for the nesi servers. This can be set in the 
+    // settings.php file
+    $bin_path = variable_get('wkhtmltopdf_bin_path', '/srv/www/platforms/drupal/sites/www.nesi.org.nz/bin/wkhtmltopdf-amd64');
+    $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path,'binpath' => $bin_path));
     $wkhtmltopdf->setMargins($wkhtmltopdf_margins);
     //$wkhtmltopdf->setHeaderHtml($wkhtmltopdf_header_html);
     //$wkhtmltopdf->setFooterHtml($wkhtmltopdf_footer_html);
