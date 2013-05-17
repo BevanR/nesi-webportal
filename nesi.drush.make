@@ -41,6 +41,7 @@ projects[profile2][version] = 1.3
 projects[rules][version] = 2.3
 projects[shib_auth][version] = 4.0
 projects[smtp][version] = 1.0
+projects[strongarm][version] = 2.0
 projects[token][version] = 1.5
 projects[viewfield][version] = 2.0
 projects[views][version] = 3.7
