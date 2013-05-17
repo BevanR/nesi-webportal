@@ -2,11 +2,9 @@
 
 This repository version-controls custom code for the website of NeSI, New Zealand eScience Infrastructure: [www.nesi.org.nz](http://www.nesi.org.nz/)
 
-This article documents how use this repository, deploy, maintain and manage a website hosting environment—an instance of the website used for production, staging, development or sandbox.
+This article documents how use this repository, test, deploy, maintain and manage a website hosting environment—an instance of the website used for production, staging, development or sandbox.
 
 ## Third Party Code
-
-The root of the repository is a Drupal `sites/` sub-directory.  E.g. `sites/default/`.
 
 Third party code is excluded from this repository:
 
@@ -28,34 +26,33 @@ Third party code (along with version numbers and patches) is referenced in `nesi
 * [GitHub](https://github.com/) account with SSH key-pair access.
 * [Membership of NeSI organization on GitHub](https://github.com/nesi?tab=members) is only required to push git commits
 
-## Setup New Environment
+## Installing and Managing Environments
+
+### Setup New Environment
 
 Use this process to create a new environment of the website.
 
 This process is automated in a puppet script.  The puppet script is used for staging and production environments: https://github.com/nesi/puppet-drupal
 
-1. `cd` to the web document root
-1. Check it is empty
 1. `git clone git@github.com:nesi/nesi-webportal.git default`
-1. `mkdir sites`
-1. `mv default sites/`
-1. `drush make sites/default/nesi.drush.make`
-1. `cp sites/default/default.settings.php sites/default/settings.php`
-1. Configure `$databases` in `sites/default/settings.php` with mysql database and credentials
+1. Configure `drupal/` as the apache web document root.
+1. `cd drupal/`
+1. `drush make nesi.drush.make`
+1. `cd sites/default/`
+1. `cp default.settings.php settings.php`
+1. Configure `$databases` in `settings.php` with mysql database and credentials
 1. Import database and files. See *Import Content*.
 
-## Update Existing Environment
+### Update Existing Environment
 
 Use this process to update an existing environment with latest code.
 
 1. `cd` to the web document root.
-1. `cd sites/default/`
 1. `git pull` or if switching git branches; `git fetch` and `git checkout BRANCH`
-1. `cd ../..`
-1. `drush make sites/default/nesi.drush.make`
+1. `drush make nesi.drush.make`
 1. Update the database.  See *Update Database*.
 
-## Additional Assumptions
+### Additional Assumptions
 
 These additional requirements and assumptions apply to the *Import Content*, *Update Database* and *Import & Update Content* processes below.
 
@@ -72,7 +69,7 @@ These additional requirements and assumptions apply to the *Import Content*, *Up
       Mac OS X: `$options['dump-dir'] = '/Users/brud046/sql-dumps';`
   * The directories must exist.  Drush will not create them.
 
-## Import Content
+### Import Content
 
 Use this process to pull the website's content (non version-controlled dynamic data: database & files directory) into a staging or development environment.  Do not run it in the production environment.
 
@@ -81,14 +78,13 @@ Use this process to pull the website's content (non version-controlled dynamic d
 > These aliases are version-controlled in `aliases.drushrc.php`.  They are available when Drush executes in the Drupal root directory or any sub-directory.  To use these aliases from any directory on the filesystem in the form `@nesi.dev` instead of shorthand `@dev`, create a symlink to the file from `~/.drush/nesi.aliases.drushrc.php`. Note however that this breaks `sql-sync` from inside the doc root.  See [this issue in the drush issue queue](http://drupal.org/node/1966160#comment-7279594).
 
 1. `cd` to the web document root.
-1. `cd sites/default/`
 1. `drush sql-dump`
 1. `drush sql-drop`
 1. `drush sql-sync @dev`
 1. `drush rsync @dev:%files %files`
 1. Update the database if it was running on an older code base.  See *Update Database*.
 
-## Update Database
+### Update Database
 
 This process is necessary when:
 
@@ -109,7 +105,7 @@ This process updates the database schema, rebuilds registries, clears caches and
 
 > Some email providers support [address tags](http://en.wikipedia.org/wiki/Email_address#Address_tags).  E.g. `bevan.rudge+foobar@nesi.org.nz`.  Gmail, Google Apps and `@nesi.org.nz` support this feature.  `@auckland.ac.nz` does not.  To take advantage of this feature, consider `SET mail = CONCAT("bevan.rudge+", name, "@nesi.org.nz")`.
 
-## Import & Update Content
+### Import & Update Content
 
 The Drush shell alias `drush pull-data` combines the *Import Content* process and most of the *Update Database* process into one simple step.
 
@@ -131,16 +127,23 @@ Automated tests are implemented using the Behat framework.
 * php 5.3.2+
 * php5-curl
 * [Composer](http://getcomposer.org/doc/00-intro.md)
-* Composer manages further dependencies: `composer install` from `tests/`.
+* `cd tests/`
+* Composer manages further dependencies: `composer install`
 
 ### Configure
 
+From the repository root;
+
+* `cd tests/`
 * `cp behat.local.example.yml behat.local.yml`
 * Set base URL and user credentials in `behat.local.yml`.
 
 ### Run Tests
 
-* `bin/behat` from `tests/`.
+From the repository root;
+
+* `cd tests/`
+* `bin/behat`
 
 ### Write Tests
 
