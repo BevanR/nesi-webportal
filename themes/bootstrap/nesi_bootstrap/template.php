@@ -28,7 +28,7 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
   $profile_data = profile2_load_by_user($user_data->uid);
 
   $admin_links = '';
-  if (user_access('nesi website-config')) {
+  if (user_access('nesi website config')) {
     $admin_links .= '<li><a href="'.$base_url.'/nesi-config">Administration Dashboard</a></li>';
   }
 
