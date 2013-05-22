@@ -147,7 +147,7 @@ From the repository root;
 
 ### Write Tests
 
-@todo
+The quickest way to get familiar with BDD and Behat is to purchase the [knpuniversity.com behat screencast](https://knpuniversity.com/screencast/behat) an excellent and informative tutorial.
 
 ### Useful links
 
