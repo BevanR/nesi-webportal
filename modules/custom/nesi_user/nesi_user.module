@@ -349,25 +349,20 @@ function nesi_user_profile2_view($profile, $view_mode, $langcode) {
 
 function nesi_user_username_alter(&$name, $account) {
 
-  if ($account->uid > 1) {
-    // Display actual user name rather than generated username
-    if (!empty($_SERVER['Shib-Identity-Provider'])) {
-      if (!empty($_SERVER['displayName'])) {
-        $name = $_SERVER['displayName'];
-      }
-      else {
-        // Tuakiri displayName not set. Curious detail, needs to be logged.
-        watchdog('nesi_user', 'Tuakiri displayName is empty - UID " '.$account->uid.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
-      }
-    }
-    else {
-      // Attempt to use researcher profile for non Tuakiri users
-      $profile = profile2_load_by_user($account, 'researcher_profile');
+  $user_data = user_load($account->uid);
+  // Attempt to use researcher profile for non Tuakiri users
+  $profile = profile2_load_by_user($user_data, 'researcher_profile');
 
-      if (is_object($profile)) {
-        $profile_data = entity_metadata_wrapper('profile2', $profile); 
-        $name = $profile_data->field_user_firstname->value().' '.$profile_data->field_user_lastname->value();
-      }
+  if (is_object($profile)) {
+    $profile_data = entity_metadata_wrapper('profile2', $profile);
+    $name = $profile_data->field_user_firstname->value().' '.$profile_data->field_user_lastname->value();
+  }
+
+  // Check shib users for displayName, log if it is not set
+  if (!empty($_SERVER['Shib-Identity-Provider'])) {
+    if (empty($_SERVER['displayName'])) {
+      // Tuakiri displayName not set. Curious detail, needs to be logged.
+      watchdog('nesi_user', 'Tuakiri displayName is empty - UID " '.$account->uid.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
     }
   }
 }
