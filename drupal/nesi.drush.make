@@ -63,8 +63,9 @@ libraries[bootstrap][download][subtree] = bootstrap-2.2.2/docs/assets
 libraries[ckeditor][download][type] = file
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6.1/ckeditor_3.6.6.1.tar.gz
 
-libraries[colorpicker][download][type] = file
-libraries[colorpicker][download][url] = http://www.eyecon.ro/colorpicker/colorpicker.zip
+;This file is from http://www.eyecon.ro/colorpicker/ but stored at github because the original location rejects all HTTP requests made with a "curl" user agent - and this makes life hard when using drush make....
+libraries[colorpicker][download][type] = get
+libraries[colorpicker][download][url] = https://github.com/downloads/reload/siteprocessor/colorpicker.zip 
 ; Check the md5 checksum since we can't specify the version number.
 libraries[colorpicker][download][md5] = d420dbce14507a13417d88f6c955429c
 
