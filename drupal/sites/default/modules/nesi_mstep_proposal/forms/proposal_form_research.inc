@@ -249,6 +249,7 @@ function nesi_mstep_proposal_research_form_part_3() {
     '#title' => t('Expert support'),
     '#description' => t('Please indicate if you would like to request an Expert from NeSI. Please provide an explanation of what this is intended to cover and an estimate of hours in the space below. Experts can "contribute to optimizing your applications and software to better scale and perform on our HPC facilities".'),
     '#options' => array('yes' => 'Yes', 'no' => 'No'),
+    '#required' => TRUE,
     '#default_value' => '',
   ); 
   
