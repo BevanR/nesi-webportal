@@ -7,7 +7,7 @@ default:
           password: 'password'
   extensions:
     Behat\MinkExtension\Extension:
-      base_url: 'http://nesi-sam.webscope.net.nz'
+      base_url: 'http://nesiwebsite'
     Drupal\DrupalExtension\Extension:
       drush:
         alias: self
