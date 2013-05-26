@@ -48,7 +48,7 @@ projects[views][version] = 3.7
 projects[wysiwyg][version] = 2.2
 
 ; Themes
-projects[bootstrap][version] = 2.0-beta3
+projects[bootstrap][version] = 2.0
 
 ; The Bootstrap library goes in the Drupal bootstrap theme.
 libraries[bootstrap][destination] = themes/bootstrap
