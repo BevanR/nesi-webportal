@@ -59,9 +59,9 @@ DirectoryIndex index.php index.html index.htm
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
   # if you enable "www." stripping or enforcement, in order to ensure that
   # you don't bounce between http and https.
-  RewriteRule ^ - [E=protossl]
-  RewriteCond %{HTTPS} on
-  RewriteRule ^ - [E=protossl:s]
+  # RewriteRule ^ - [E=protossl]
+  # RewriteCond %{HTTPS} on
+  # RewriteRule ^ - [E=protossl:s]
 
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or
@@ -95,10 +95,17 @@ DirectoryIndex index.php index.html index.htm
   # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   # RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
 
-  # Redirect for nesi.org.nz to www.nesi.org.nz
+  # Redirect nesi.org.nz to www.nesi.org.nz.
   RewriteCond %{HTTP_HOST} .
-  RewriteCond %{HTTP_HOST} ^nesi.org.nz$ [NC]
-  RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTP_HOST} ^nesi\.org\.nz$ [nocase]
+  RewriteRule ^ https://www.nesi.org.nz%{REQUEST_URI} [last,redirect=301]
+
+  # Redirect insecure HTTP to secure HTTPS, including dev, staging and
+  # geographic data centre specific domain names. (E.g. web.tamaki.nesi.org.nz
+  # web.ogdc.nesi.org.nz).
+  RewriteCond %{HTTP_HOST} .
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [last,redirect=301]
 
   # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
   # VirtualDocumentRoot and the rewrite rules are not working properly.
@@ -142,3 +149,4 @@ DirectoryIndex index.php index.html index.htm
     </FilesMatch>
   </IfModule>
 </IfModule>
+
