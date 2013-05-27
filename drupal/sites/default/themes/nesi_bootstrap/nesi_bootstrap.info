@@ -1,5 +1,5 @@
 name = NeSI
-description = 'Custom theme for New Zealand eScience Infrastructure (nesi.org.nz); a subtheme of <a href="http://drupal.org/project/bootstrap">bootstrap</a> subtheme.'
+description = 'Custom theme for New Zealand eScience Infrastructure (nesi.org.nz); a subtheme of <a href="http://drupal.org/project/bootstrap">bootstrap</a> starterkit.'
 core = 7.x
 base theme = bootstrap
 
