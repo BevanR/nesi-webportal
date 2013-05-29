@@ -245,9 +245,9 @@ class FeatureContext extends DrupalContext {
 
           break;
 
-      }
+        }
 
-    }
+      }
     // If I see this, I'm not logged in at all so log the user in.
     //$element->fillField('Password', $passwd);
     //$submit = $element->findButton('Log in');
@@ -255,5 +255,19 @@ class FeatureContext extends DrupalContext {
       //throw new Exception('No submit button at ' . $this->getSession()->getCurrentUrl());
     //}
 
-  }
+    }
+
+    /**
+     * Pauses the scenario until the user presses a key. Useful when debugging a scenario.
+     *
+     * @Then /^break$/
+     */
+    public function iPutABreakpoint()
+    {
+        fwrite(STDOUT, "\033[s    \033[93m[Breakpoint] Press \033[1;93m[RETURN]\033[0;93m to continue...\033[0m");
+        while (fgets(STDIN, 1024) == '') {}
+        fwrite(STDOUT, "\033[u");
+
+        return;
+    }
 }

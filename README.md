@@ -15,6 +15,8 @@ Third party code is excluded from this repository:
 
 Third party code (along with version numbers and patches) is referenced in `nesi.drush.make` instead of being added to the repository. Drush make can then include Drupal core, contrib and any other dependent third party code as well as apply patches to it.
 
+Drush make adds contrib modules to `sites/all/modules`.  Custom modules go in `sites/default/modules`.
+
 ## Requirements
 
 * Unix operating system such as Linux or Mac OS X
@@ -147,7 +149,7 @@ From the repository root;
 
 ### Write Tests
 
-@todo
+The quickest way to get familiar with BDD and Behat is to purchase the [knpuniversity.com behat screencast](https://knpuniversity.com/screencast/behat) an excellent and informative tutorial.
 
 ### Useful links
 

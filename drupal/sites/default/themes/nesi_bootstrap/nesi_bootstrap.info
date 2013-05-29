@@ -1,5 +1,5 @@
 name = NeSI
-description = 'Custom theme for New Zealand eScience Infrastructure (nesi.org.nz); a subtheme of <a href="http://drupal.org/project/bootstrap">bootstrap</a> subtheme.'
+description = 'Custom theme for New Zealand eScience Infrastructure (nesi.org.nz); a subtheme of <a href="http://drupal.org/project/bootstrap">bootstrap</a> starterkit.'
 core = 7.x
 base theme = bootstrap
 
@@ -14,21 +14,47 @@ regions[directory]      = 'Directory'
 regions[collaborators]  = 'Collaborators'
 regions[footer]         = 'Footer'
 
+; Stylesheets
+stylesheets[all][] = css/style.css
+
 ; Add custom bootstrap
 stylesheets[all][] = assets/css/bootstrap.css
 stylesheets[all][] = assets/css/responsive.css
 
-; Additional css for nesi_bootstrap
-stylesheets[all][] = css/nesi_bootstrap.css
-
 ; Add JavaScript
 scripts[] = assets/js/custom.js
 
-settings[toggle_name] = 1
-settings[toggle_search] = 0
-settings[toggle_logo] = 0
+;**********************************
+; METHOD 1: Bootstrap Source Files
+;**********************************
+; 
+; ; Scripts
+; scripts[] = 'bootstrap/js/bootstrap-affix.js'
+; scripts[] = 'bootstrap/js/bootstrap-alert.js'
+; scripts[] = 'bootstrap/js/bootstrap-button.js'
+; scripts[] = 'bootstrap/js/bootstrap-carousel.js'
+; scripts[] = 'bootstrap/js/bootstrap-collapse.js'
+; scripts[] = 'bootstrap/js/bootstrap-dropdown.js'
+; scripts[] = 'bootstrap/js/bootstrap-modal.js'
+; scripts[] = 'bootstrap/js/bootstrap-tooltip.js'
+; scripts[] = 'bootstrap/js/bootstrap-popover.js'
+; scripts[] = 'bootstrap/js/bootstrap-scrollspy.js'
+; scripts[] = 'bootstrap/js/bootstrap-transition.js'
+; scripts[] = 'bootstrap/js/bootstrap-typeahead.js'
+; 
+; ; Settings inherited by base theme, uncomment to override.
+; ;settings[toggle_name] = 0
+; ;settings[toggle_search] = 1
+; ; Disable the CDN as we are using our own source files.
+; settings[cdn_bootstrap] = 0
 
-; Remove parent theme declaration
-; Currently not working, investigating and disabled for now
-;exclude[css][] = bootstrap/css/bootstrap.css
-;exclude[css][] = bootstrap/css/bootstrap-responsive.css
+
+;*************************
+; METHOD 2: Bootstrap CDN
+;*************************
+; 
+; ; Settings inherited by base theme, uncomment to override.
+; ;settings[toggle_name] = 0
+; ;settings[toggle_search] = 1
+; ;settings[cdn_bootstrap] = 1
+; ;settings[cdn_bootstrap_version] = 2.3.1

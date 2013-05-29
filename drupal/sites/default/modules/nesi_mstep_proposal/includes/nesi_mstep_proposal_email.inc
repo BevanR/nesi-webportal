@@ -64,10 +64,10 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) 
   }
  
   //Send Email!
-  $email = new AttachmentEmail($to, $from, $subject, $message, $attachments);
+  $send_email = nesi_mstep_proposal_send_attachment_email($to, $from, $subject, $message, $attachments);
  
   // Watchdog any errors
-  if(!$email->send()) {
+  if(!$send_email) {
     watchdog('nesi_mstep_proposal', 'Problem sending confirmation email." '.$to.' .Debug message ' . $email->errorMsg , NULL , WATCHDOG_ERROR, $link = NULL);
   } 
   else {
@@ -97,10 +97,10 @@ function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id
   $attachments[] = nesi_mstep_proposal_pdf_attachement($node_id); 
 
    //Send Email!
-  $email = new AttachmentEmail($to, $from, $subject, $message, $attachments);
+  $send_email = nesi_mstep_proposal_send_attachment_email($to, $from, $subject, $message, $attachments);
   
   // Watchdog any errors
-  if(!$email->send()) {
+  if(!$send_email) {
     watchdog('nesi_mstep_proposal', 'Problem sending confirmation email - " '.$to.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
   } 
   else {
@@ -121,6 +121,43 @@ function nesi_mstep_proposal_pdf_attachement($nid) {
     'type' => file_get_mimetype($file->uri), 
   );
   return $attachment; 
+}
+
+function nesi_mstep_proposal_send_attachment_email($to, $from, $subject, $message, $attachments = array()) {
+
+  require_once('class.phpmailer.php');
+
+  $mail = new PHPMailer();
+  $mail->IsSMTP(); // telling the class to use SMTP
+  $mail->Host = "mailhost.auckland.ac.nz"; // SMTP server
+
+  $mail->SetFrom($from, "NeSI");
+  $mail->Subject = $subject;
+  $mail->MsgHTML(nl2br($message));
+
+  $mail->AddAddress($to, "");
+
+  // Process attachments
+  if (!empty($attachments)) {
+
+    foreach($attachments as $attachment) {
+      if(empty($attachment['isStringAttachment'])) {
+        $mail->AddAttachment($attachment['path']);      // attachment
+      }
+      else {
+        $mail->AddStringAttachment($attachment['data'], $attachment['name']);
+      }
+    }
+  }
+
+  if(!$mail->Send()) {
+    //echo "Mailer Error: " . $mail->ErrorInfo;
+    $errorMsg = $mail->ErrorInfo;
+    return false;
+  } 
+  else {
+    return true;
+  }
 }
 
 /**
