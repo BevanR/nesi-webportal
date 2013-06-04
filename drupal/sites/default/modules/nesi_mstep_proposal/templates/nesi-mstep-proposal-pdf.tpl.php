@@ -79,7 +79,7 @@ switch ($node->type) {
 <?php $count = 0; ?>
 <?php foreach($data as $field_group) :?>
   <fieldset class="field-group-fieldset form-wrapper <?php print (++$count%2 ? 'odd' : 'even'); ?>">
-    <legend><span class="fieldset-legend"><?php $val['field_label'] ? print $val['field_label'] : print 'Project'; ?></span></legend>
+    <legend><span class="fieldset-legend">Project</span></legend>
     <div class="fieldset-wrapper">
   <?php foreach($field_group as $field=>$val) :?>
     <div class="field">
@@ -88,7 +88,7 @@ switch ($node->type) {
   <?php
     if(is_array($val['field_val'])):
       foreach($val['field_val'] as $key) {
-        print $development_class_map[$key];
+        if(isset($development_class_map[$key])) print $development_class_map[$key];
       }
     else:
   ?>

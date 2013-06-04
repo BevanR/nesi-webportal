@@ -15,11 +15,11 @@
  *
  * apply/email-testing
  */
-function nesi_mstep_proposal_email_test_page() {
+function nesi_mstep_proposal_pdf_theme_page() {
   $to = variable_get('submission_nesi_admin_email', 999); 
   //nesi_mstep_proposal_email();
   $the_time = date('l G:i:s A' , time());
-  dsm("The time : $the_time");
+//  dsm("The time : $the_time");
   //nesi_mstep_admin_email($to);
   //nesi_mstep_proposal_pdf_attachement($nid = 121);
   //nesi_mstep_proposal_data();
@@ -35,9 +35,6 @@ function nesi_mstep_proposal_email_test_page() {
  * Using third party lib to send emails with attachments
  */
 function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) {
-
-  // Notify submitter via email
-  include_once 'attachment_email/attachment_email.php';
 
   // These are set in the website config admin page
   $from    = variable_get('submission_nesi_admin_email', '');
@@ -68,7 +65,7 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) 
  
   // Watchdog any errors
   if(!$send_email) {
-    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email." '.$to.' .Debug message ' . $email->errorMsg , NULL , WATCHDOG_ERROR, $link = NULL);
+    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email." '.$to , NULL , WATCHDOG_ERROR, $link = NULL);
   } 
   else {
     watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
@@ -82,8 +79,7 @@ function nesi_mstep_proposal_email($to = 'sam+nesitesting@webscope.co.nz',$nid) 
 function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id, $form_data = NULL) {
   
   global $base_url;
-  // Notify submitter via email
-  include_once 'includes/attachment_email/attachment_email.php';
+
   $proposal_url = $base_url . '/node/' . $node_id;
   // These are set in the website config admin page
   $from    = 'support@nesi.org.nz';
@@ -204,7 +200,7 @@ function _nesi_mstep_proposal_map_proposal_data($map = array(), $data = NULL) {
   $output = '';
   if (!empty($data)) {
     foreach($data as $key=>$val) {
-      $title = $map[$key];
+      if(isset($map[$key])) $title = $map[$key];
 
       // Clean line breaks 
       $order   = array("\r\n", "\n", "\r");

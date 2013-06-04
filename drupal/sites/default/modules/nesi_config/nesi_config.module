@@ -125,7 +125,8 @@ function nesi_config_block_view($delta = '') {
 function nesi_faq_content() {
 
   $faqs = variable_get('nesi_faqs');
-
+  
+  $content = '';
   $i = 0;
   foreach ( $faqs as $faq ) {
     $content .= '<div class="faq"><h4>' . $faq['question'] . '</h4><p>' . $faq['answer'] . '</p></div>';
