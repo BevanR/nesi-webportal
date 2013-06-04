@@ -26,7 +26,7 @@ function nesi_mstep_proposal_email_theme_page() {
   
   global $base_url;
   $css = drupal_get_css(); 
-  $nid = 123;
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation' , 154);
   $data = nesi_mstep_proposal_data($nid);
   $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css, 'nid' => $nid));
   echo $node_html;
@@ -36,7 +36,7 @@ function nesi_mstep_proposal_email_theme_page() {
 
 function nesi_mstep_proposal_pdf_generate_page() {
   // For testing
-  $nid = 123;
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation' , 154);
   nesi_mstep_generate_proposal_pdf($nid);
   return 'In pdf generate page';
 }
@@ -148,7 +148,14 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     echo $e->getMessage();
     drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
   }
+
   $file = file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);
+
+  // Printing a message to screen so that a behat test can be created 
+  if(!empty($pdf_file) && is_object($file)) {
+    drupal_set_message('Pdf file sucessfully created');
+  }
+
   return $file;
 }
 
