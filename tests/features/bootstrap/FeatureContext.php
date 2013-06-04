@@ -208,7 +208,7 @@ class FeatureContext extends DrupalContext {
     if ($find = $element->find('css', 'h1')) {
       $page_title = $find->getText();
       if ($page_title) {
-        return str_replace(strtolower($page_title));
+        return strtolower($page_title);
       }
     }
     return FALSE;
