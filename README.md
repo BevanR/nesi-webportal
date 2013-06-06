@@ -15,6 +15,8 @@ Third party code is excluded from this repository:
 
 Third party code (along with version numbers and patches) is referenced in `nesi.drush.make` instead of being added to the repository. Drush make can then include Drupal core, contrib and any other dependent third party code as well as apply patches to it.
 
+Drush make adds contrib modules to `sites/all/modules`.  Custom modules go in `sites/default/modules`.
+
 ## Requirements
 
 * Unix operating system such as Linux or Mac OS X
@@ -41,6 +43,7 @@ This process is automated in a puppet script.  The puppet script is used for sta
 1. `cd sites/default/`
 1. `cp default.settings.php settings.php`
 1. Configure `$databases` in `settings.php` with mysql database and credentials
+1. Run `echo "include_file(\"settings.inc\");" | cat >> settings.php` to add additional system settings
 1. Import database and files. See *Import Content*.
 
 ### Update Existing Environment

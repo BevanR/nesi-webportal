@@ -1,4 +1,6 @@
-# Ignore Drupal core files and directories.
+# Ignore Drupal core files and directories.  These are ignored from outside
+# Drupal core directory so that it does not conflict with Drupal's .gitignore
+# file when Drupal core is updated.
 drupal/.gitignore
 drupal/CHANGELOG.txt
 drupal/COPYRIGHT.txt

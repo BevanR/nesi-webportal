@@ -264,7 +264,7 @@ $aliases['prod'] = array(
   'uri' => 'http://www.nesi.org.nz',
   'path-aliases' => array(
      '%dump-dir' => '/tmp',
-   ),
+  ),
   'command-specific' => array(
     'sql-sync' => array(
       'structure-tables-key' => 'common',
