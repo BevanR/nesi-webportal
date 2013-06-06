@@ -14,14 +14,15 @@ regions[directory]      = 'Directory'
 regions[collaborators]  = 'Collaborators'
 regions[footer]         = 'Footer'
 
-; Stylesheets
-stylesheets[all][] = css/style.css
-
 ; Add custom bootstrap
 stylesheets[all][] = assets/css/bootstrap.css
 stylesheets[all][] = assets/css/responsive.css
 
+; Stylesheets
+stylesheets[all][] = css/style.css
+
 ; Add JavaScript
+scripts[] = assets/js/bootstrap.min.js
 scripts[] = assets/js/custom.js
 
 ;**********************************
@@ -46,7 +47,7 @@ scripts[] = assets/js/custom.js
 ; ;settings[toggle_name] = 0
 ; ;settings[toggle_search] = 1
 ; ; Disable the CDN as we are using our own source files.
-; settings[cdn_bootstrap] = 0
+settings[cdn_bootstrap] = 0
 
 
 ;*************************
