@@ -136,6 +136,53 @@ function nesi_bootstrap_preprocess_node(&$vars) {
   $vars['may_edit'] = node_access('update', $vars['node']);
 }
 
+/**
+ * Implements hook_preprocess_user_profile_category().
+ *
+ * Removes titles from from user profile categories.
+ */
+function nesi_bootstrap_preprocess_user_profile_category(&$vars) {
+  unset($vars['title']);
+}
+
+/**
+ * Implements hook_preprocess_user_profile_category().
+ *
+ * Removes titles from from profile2 entities except the 'expertise' bundle.
+ */
+function nesi_bootstrap_preprocess_entity(&$vars) {
+  if ($vars['elements']['#entity_type'] == 'profile2') {
+    if ($vars['elements']['#bundle'] != 'expertise') {
+      unset($vars['title']);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function nesi_bootstrap_preprocess_field(&$vars) {
+  if ($vars['element']['#bundle'] == 'researcher_profile') {
+    // Hides labels in researcher profile fields.
+    $vars['label_hidden'] = TRUE;
+
+    // Prepends email address and "Tel:" label to telephone numbers.
+    if ($vars['element']['#field_name'] == 'field_user_phone') {
+      $account = user_load($vars['element']['#object']->uid);
+      foreach ($vars['items'] as &$item) {
+        $item['#markup'] = l($account->mail, 'mailto:' . $account->mail) . '<br />' . t('Tel') . ':' . $item['#markup'];
+      }
+    }
+  }
+
+  // Convert new-line characters to HTML breaks.
+  if ($vars['element']['#field_name'] == 'field_user_address') {
+    foreach ($vars['items'] as &$item) {
+      $item['#markup'] = str_replace("\n", '<br />', $item['#markup']);
+    }
+  }
+}
+
 /* Return the proposal status */
 function nesi_bootstrap_proposal_status($nid) {
   $current_proposal = node_load($nid);
