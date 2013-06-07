@@ -137,6 +137,65 @@ function nesi_user_field_default_fields() {
     ),
   );
 
+  // Exported field: 'profile2-researcher_profile-field_user_city'.
+  $fields['profile2-researcher_profile-field_user_city'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_user_city',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Auckland',
+          1 => 'Wellington',
+          2 => 'Christchurch',
+        ),
+        'allowed_values_function' => '',
+        'profile2_private' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'list_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'researcher_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 10,
+        ),
+      ),
+      'entity_type' => 'profile2',
+      'field_name' => 'field_user_city',
+      'label' => 'City',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'profile2-researcher_profile-field_user_department'.
   $fields['profile2-researcher_profile-field_user_department'] = array(
     'field_config' => array(
@@ -645,6 +704,7 @@ function nesi_user_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Alternate Email');
+  t('City');
   t('Contact Address');
   t('Contact Phone');
   t('Department / Group');
