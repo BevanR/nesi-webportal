@@ -46,9 +46,9 @@
   </div>
 </div>
 
+  <?php print render($page['footer']); ?>
+
   <?php print render($page['directory']); ?>
 
   <?php print render($page['collaborators']); ?>
-
-  <?php print render($page['footer']); ?>
 

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the nesi_project feature.
+ */
+
+include_once 'nesi_project.features.inc';
