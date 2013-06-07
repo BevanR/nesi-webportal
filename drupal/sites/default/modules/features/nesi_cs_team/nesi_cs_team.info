@@ -44,6 +44,7 @@ features[uuid_term][] = 3ea724da-1fc7-4d81-aed7-aa3b77d35968
 features[uuid_term][] = 5823e471-c8bb-4d6d-b3c7-81e17ca21f89
 features[uuid_term][] = 6b171a54-f97c-48c8-a314-39c2251f266f
 features[uuid_term][] = ffdec1ef-6452-4525-982a-e804f51b1104
+features[variable][] = field_bundle_settings_profile2__expertise
 features[variable][] = field_bundle_settings_user__user
 features[variable][] = user_picture_dimensions
 features[views_view][] = computational_science_team
