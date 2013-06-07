@@ -10,9 +10,9 @@ regions[help]           = 'Help'
 regions[content]        = 'Content'
 regions[sidebar_first]  = 'Primary'
 regions[sidebar_second] = 'Secondary'
+regions[footer]         = 'Footer'
 regions[directory]      = 'Directory'
 regions[collaborators]  = 'Collaborators'
-regions[footer]         = 'Footer'
 
 ; Add custom bootstrap
 stylesheets[all][] = assets/css/bootstrap.css
