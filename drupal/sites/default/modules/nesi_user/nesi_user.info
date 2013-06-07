@@ -76,7 +76,6 @@ features[user_permission][] = administer jquery colorpicker
 features[user_permission][] = administer mailsystem
 features[user_permission][] = administer menu
 features[user_permission][] = administer menu attributes
-features[user_permission][] = administer modernizr
 features[user_permission][] = administer modules
 features[user_permission][] = administer nesi rest
 features[user_permission][] = administer nodes

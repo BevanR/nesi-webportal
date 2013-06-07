@@ -14,7 +14,8 @@ function nesi_user_user_default_permissions() {
   $permissions['access administration menu'] = array(
     'name' => 'access administration menu',
     'roles' => array(
-      0 => 'website engineer',
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'admin_menu',
   );
@@ -23,7 +24,8 @@ function nesi_user_user_default_permissions() {
   $permissions['access administration pages'] = array(
     'name' => 'access administration pages',
     'roles' => array(
-      0 => 'website engineer',
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'system',
   );
@@ -53,7 +55,8 @@ function nesi_user_user_default_permissions() {
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
     'roles' => array(
-      0 => 'website engineer',
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'node',
   );
@@ -107,7 +110,8 @@ function nesi_user_user_default_permissions() {
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
-      0 => 'website engineer',
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'user',
   );
@@ -239,15 +243,6 @@ function nesi_user_user_default_permissions() {
     'name' => 'administer menu attributes',
     'roles' => array(),
     'module' => 'menu_attributes',
-  );
-
-  // Exported permission: administer modernizr.
-  $permissions['administer modernizr'] = array(
-    'name' => 'administer modernizr',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'modernizr',
   );
 
   // Exported permission: administer modules.
@@ -415,7 +410,8 @@ function nesi_user_user_default_permissions() {
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
     'roles' => array(
-      0 => 'website engineer',
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'node',
   );
@@ -493,20 +489,14 @@ function nesi_user_user_default_permissions() {
   // Exported permission: create proposal_development_class content.
   $permissions['create proposal_development_class content'] = array(
     'name' => 'create proposal_development_class content',
-    'roles' => array(
-      0 => 'nesi administrator',
-      1 => 'website engineer',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
   // Exported permission: create proposal_research_class content.
   $permissions['create proposal_research_class content'] = array(
     'name' => 'create proposal_research_class content',
-    'roles' => array(
-      0 => 'nesi administrator',
-      1 => 'website engineer',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -532,7 +522,8 @@ function nesi_user_user_default_permissions() {
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
     'roles' => array(
-      0 => 'website engineer',
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'path',
   );
