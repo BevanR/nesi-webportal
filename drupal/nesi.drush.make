@@ -15,6 +15,7 @@ projects[bundle_copy][version] = 1.1
 projects[countries][version] = 2.1
 projects[date][version] = 2.6
 projects[devel][version] = 1.3
+projects[ds][version] = 2.3
 projects[email][version] = 1.2
 projects[email_registration][version] = 1.1
 projects[entity][version] = 1.0-rc3
@@ -35,6 +36,7 @@ projects[menu_attributes][version] = 1.0-rc2
 projects[menu_block][version] = 2.3
 projects[mimemail][version] = 1.0-alpha2
 projects[module_filter][version] = 1.7
+projects[mollom][version] = 2.6
 projects[references][version] = 2.1
 projects[pathauto][version] = 1.2
 projects[profile2][version] = 1.3
@@ -46,7 +48,6 @@ projects[token][version] = 1.5
 projects[viewfield][version] = 2.0
 projects[views][version] = 3.7
 projects[wysiwyg][version] = 2.2
-projects[mollom][version] = 2.6
 
 ; Themes
 projects[bootstrap][version] = 2.0
