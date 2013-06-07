@@ -110,7 +110,7 @@ function nesi_user_menu_alter(&$items) {
   $items['user/password']['type'] = MENU_CALLBACK;
 
   // Remove researcher profile as separate form (include in standard user account edit form)
-  //$items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
+  $items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
 }
 
 /**
@@ -245,6 +245,11 @@ function nesi_user_redirect_path($account = NULL) {
 }
 
 function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
+  // Only modify main account edit form, not the profile2.module categories.
+  if ($form['#user_category'] !== 'account') {
+    return;
+  }
+
   // Prevent tuakiri users from modifying their Drupal account password or email
   // Inspired by userprotect.module (http://drupal.org/project/userprotect)
 
@@ -524,21 +529,11 @@ function nesi_user_preprocess_page(&$variables) {
 
   // Hide tabs 
   if (arg(3) == 'researcher_profile') {
-    if(!empty($variables['tabs']['#secondary'])) {
-	    unset($variables['tabs']['#secondary']);
-    }
     if(!empty($variables['page']['content']['system_main']['shibboleth'])) {
 	    unset($variables['page']['content']['system_main']['shibboleth']);
     }
     if(!empty($variables['page']['content']['system_main']['account'])) {
 	    $variables['page']['content']['system_main']['account']['#access'] = FALSE;
-    }
-  }
-
-  // No need to show tabs on form as forms are combined.
-  if ((arg(0) == 'user') && (arg(2) == 'edit')) {
-    if(!empty($variables['tabs']['#secondary'])) {
-	    unset($variables['tabs']['#secondary']);
     }
   }
 
