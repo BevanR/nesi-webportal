@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Computational Science Team feature.
+ */
+
+include_once 'nesi_cs_team.features.inc';
