@@ -32,7 +32,6 @@ features[field][] = profile2-expertise-field_user_interests
 features[field][] = profile2-expertise-field_user_is_cs_team_member
 features[field][] = profile2-expertise-field_user_programming_languages
 features[field][] = profile2-expertise-field_user_software_apps_known
-features[field][] = profile2-researcher_profile-field_user_city
 features[image][] = 300x160
 features[profile2_type][] = expertise
 features[taxonomy][] = app_dev_expertise
