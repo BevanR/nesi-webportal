@@ -486,6 +486,15 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create project content.
+  $permissions['create project content'] = array(
+    'name' => 'create project content',
+    'roles' => array(
+      0 => 'advisor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create proposal_development_class content.
   $permissions['create proposal_development_class content'] = array(
     'name' => 'create proposal_development_class content',
@@ -573,6 +582,13 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any project content.
+  $permissions['delete any project content'] = array(
+    'name' => 'delete any project content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any proposal_development_class content.
   $permissions['delete any proposal_development_class content'] = array(
     'name' => 'delete any proposal_development_class content',
@@ -653,6 +669,13 @@ function nesi_user_user_default_permissions() {
     'roles' => array(
       0 => 'website engineer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own project content.
+  $permissions['delete own project content'] = array(
+    'name' => 'delete own project content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -755,6 +778,15 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any project content.
+  $permissions['edit any project content'] = array(
+    'name' => 'edit any project content',
+    'roles' => array(
+      0 => 'advisor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit any proposal_development_class content.
   $permissions['edit any proposal_development_class content'] = array(
     'name' => 'edit any proposal_development_class content',
@@ -851,6 +883,13 @@ function nesi_user_user_default_permissions() {
     'roles' => array(
       0 => 'website engineer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own project content.
+  $permissions['edit own project content'] = array(
+    'name' => 'edit own project content',
+    'roles' => array(),
     'module' => 'node',
   );
 

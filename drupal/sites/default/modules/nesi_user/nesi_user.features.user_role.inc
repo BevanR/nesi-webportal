@@ -10,6 +10,12 @@
 function nesi_user_user_default_roles() {
   $roles = array();
 
+  // Exported role: advisor.
+  $roles['advisor'] = array(
+    'name' => 'advisor',
+    'weight' => '6',
+  );
+
   // Exported role: nesi administrator.
   $roles['nesi administrator'] = array(
     'name' => 'nesi administrator',
