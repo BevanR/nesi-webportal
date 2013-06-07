@@ -769,6 +769,16 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any expertise profile.
+  $permissions['edit any expertise profile'] = array(
+    'name' => 'edit any expertise profile',
+    'roles' => array(
+      0 => 'nesi administrator',
+      1 => 'website engineer',
+    ),
+    'module' => 'profile2',
+  );
+
   // Exported permission: edit any page content.
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
@@ -875,6 +885,15 @@ function nesi_user_user_default_permissions() {
       0 => 'website engineer',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: edit own expertise profile.
+  $permissions['edit own expertise profile'] = array(
+    'name' => 'edit own expertise profile',
+    'roles' => array(
+      0 => 'authenticated user',
+    ),
+    'module' => 'profile2',
   );
 
   // Exported permission: edit own page content.
@@ -1109,9 +1128,28 @@ function nesi_user_user_default_permissions() {
     'module' => 'advanced_help',
   );
 
+  // Exported permission: view any expertise profile.
+  $permissions['view any expertise profile'] = array(
+    'name' => 'view any expertise profile',
+    'roles' => array(
+      0 => 'authenticated user',
+      1 => 'website engineer',
+    ),
+    'module' => 'profile2',
+  );
+
   // Exported permission: view any researcher_profile profile.
   $permissions['view any researcher_profile profile'] = array(
     'name' => 'view any researcher_profile profile',
+    'roles' => array(
+      0 => 'website engineer',
+    ),
+    'module' => 'profile2',
+  );
+
+  // Exported permission: view own expertise profile.
+  $permissions['view own expertise profile'] = array(
+    'name' => 'view own expertise profile',
     'roles' => array(
       0 => 'website engineer',
     ),
