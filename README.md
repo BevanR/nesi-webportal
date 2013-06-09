@@ -36,9 +36,9 @@ Use this process to create a new environment of the website.
 
 This process is automated in a puppet script.  The puppet script is used for staging and production environments: https://github.com/nesi/puppet-drupal
 
-1. `git clone git@github.com:nesi/nesi-webportal.git default`
-1. Configure `drupal/` as the apache web document root.
-1. `cd drupal/`
+1. `git clone git@github.com:nesi/nesi-webportal.git nesi-website`
+1. Configure `nesi-website/drupal/` as the apache web document root.
+1. `cd nesi-website/drupal/`
 1. `drush make nesi.drush.make`
 1. `cd sites/default/`
 1. `cp default.settings.php settings.php`
@@ -50,8 +50,10 @@ This process is automated in a puppet script.  The puppet script is used for sta
 
 Use this process to update an existing environment with latest code.
 
-1. `cd` to the web document root.
+1. `cd` to the root of the git repository.
 1. `git pull` or if switching git branches; `git fetch` and `git checkout BRANCH`
+1. `cd drupal`
+1. `rm -rf sites/all`
 1. `drush make nesi.drush.make`
 1. Update the database.  See *Update Database*.
 
