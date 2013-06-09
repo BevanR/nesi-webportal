@@ -50,6 +50,7 @@ projects[uuid_features][version] = 1.0-alpha3
 projects[viewfield][version] = 2.0
 projects[views][version] = 3.7
 projects[wysiwyg][version] = 2.2
+projects[mollom][version] = 2.6
 
 ; Themes
 projects[bootstrap][version] = 2.0
