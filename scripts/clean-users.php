@@ -6,7 +6,7 @@
  *
  * Cancels all users accounts on the system that are of role 'authenticated user'
  *
- * To run: ./clean-users @drush-aliase
+ * To run: ./clean-users.php @drush-alias
  */
 
 // Get uid of all users the have been assigned a role
