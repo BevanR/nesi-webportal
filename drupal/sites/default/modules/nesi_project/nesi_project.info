@@ -1,6 +1,7 @@
 name = NeSI Project
 core = 7.x
 package = NeSI
+php = 5.2.4
 version = 7.x-0.1
 project = nesi_project
 dependencies[] = ctools
@@ -20,6 +21,7 @@ features[field][] = node-project-field_end_date
 features[field][] = node-project-field_host_institution
 features[field][] = node-project-field_hpc_architecture
 features[field][] = node-project-field_principal_investigator
+features[field][] = node-project-field_project_advisor
 features[field][] = node-project-field_start_date
 features[node][] = project
 features[taxonomy][] = hpc_platforms
