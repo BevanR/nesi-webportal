@@ -51,6 +51,9 @@ projects[viewfield][version] = 2.0
 projects[views][version] = 3.7
 projects[wysiwyg][version] = 2.2
 projects[mollom][version] = 2.6
+projects[og][version] = 2.2
+projects[entityreference][version] = 1.0
+projects[views_bulk_operations][version] = 3.1
 
 ; Themes
 projects[bootstrap][version] = 2.0
