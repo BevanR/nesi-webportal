@@ -21,6 +21,9 @@ stylesheets[all][] = assets/css/responsive.css
 ; Stylesheets
 stylesheets[all][] = css/style.css
 
+; Styles for node/141.
+stylesheets[all][] = css/cs-team.css
+
 ; Add JavaScript
 scripts[] = assets/js/bootstrap.min.js
 scripts[] = assets/js/custom.js
