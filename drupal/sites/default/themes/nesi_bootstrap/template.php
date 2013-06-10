@@ -170,7 +170,7 @@ function nesi_bootstrap_preprocess_field(&$vars) {
     if ($vars['element']['#field_name'] == 'field_user_phone') {
       $account = user_load($vars['element']['#object']->uid);
       foreach ($vars['items'] as &$item) {
-        $item['#markup'] = l($account->mail, 'mailto:' . $account->mail) . '<br />' . t('Tel') . ':' . $item['#markup'];
+        $item['#markup'] = l($account->mail, 'mailto:' . $account->mail) . '<br /><label>' . t('Tel') . ':</label> ' . $item['#markup'];
       }
     }
   }
