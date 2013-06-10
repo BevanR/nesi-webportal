@@ -363,49 +363,58 @@ input, button, select, textarea {
 }
 */
 
-.container .row-fluid .span4 h1 {
+.container .row-fluid .nesi-intro-item h1 {
   color: #4b5b68;
   font-size: 24px;
   padding-top: 56px;
 }
 
-.container .row-fluid .span4 .sub-feature {
+.container .row-fluid .nesi-intro-item .sub-feature {
   padding-bottom: 62px;
 }
 
-.container .row-fluid .span4 #apply-intro h1 {
+.nesi-intro-item {
+  width: 230px;
+  float: left;
+}
+
+.container .row-fluid .nesi-intro-item #apply-intro h1 {
   background: url(../assets/img/apply-intro.png) top center no-repeat;
 } 
 
-.container .row-fluid .span4 #nesi-intro h1 {
+.container .row-fluid .nesi-intro-item #nesi-intro h1 {
   background: url(../assets/img/nesi-intro.png) top center no-repeat;
 } 
 
-.container .row-fluid .span4 #projects-intro h1 {
+.container .row-fluid .nesi-intro-item #projects-intro h1 {
   background: url(../assets/img/projects-intro.png) top center no-repeat;
 } 
 
-.container .row-fluid .span4 #news-intro h1 {
+.container .row-fluid .nesi-intro-item #news-intro h1 {
   background: url(../assets/img/news-intro.png) top center no-repeat;
 } 
 
-.container .row-fluid .span4 p {
+.container .row-fluid .nesi-intro-item #support-intro h1 {
+  background: url(../assets/img/nesi-support-intro.png) top center no-repeat;
+} 
+
+.container .row-fluid .nesi-intro-item p {
   color: #404040;
   font-size: 13px;
   line-height: 18px;
   margin-bottom: 6px;
 }
 
-.container .row-fluid .span4 p.sub {
+.container .row-fluid .nesi-intro-item p.sub {
   color: #7c7a7a;
 }
 
-.container .row-fluid .span4 p.sub a {
+.container .row-fluid .nesi-intro-item p.sub a {
   color: #2b9fc2;
   font-weight: bold;
 }
 
-.container .row-fluid .span4 p.sub a:hover {
+.container .row-fluid .nesi-intro-item p.sub a:hover {
   color: #4b5b68;
   text-decoration: none;
 }
