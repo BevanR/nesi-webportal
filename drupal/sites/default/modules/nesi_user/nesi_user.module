@@ -110,7 +110,7 @@ function nesi_user_menu_alter(&$items) {
   $items['user/password']['type'] = MENU_CALLBACK;
 
   // Remove researcher profile as separate form (include in standard user account edit form)
-  $items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
+  $items['user/%user_category/edit/researcher_profile']['type'] = MENU_CALLBACK;
 }
 
 /**
