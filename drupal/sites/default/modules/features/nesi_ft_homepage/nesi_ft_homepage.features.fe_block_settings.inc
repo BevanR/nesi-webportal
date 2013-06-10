@@ -21,12 +21,6 @@ function nesi_ft_homepage_default_fe_block_settings() {
     'pages' => '<front>',
     'roles' => array(),
     'themes' => array(
-      'garland' => array(
-        'region' => 'sidebar_first',
-        'status' => '1',
-        'theme' => 'garland',
-        'weight' => '0',
-      ),
       'nesi_bootstrap' => array(
         'region' => 'subheader',
         'status' => '1',
