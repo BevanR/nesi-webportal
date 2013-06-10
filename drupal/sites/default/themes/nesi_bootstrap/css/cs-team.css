@@ -1,5 +1,30 @@
 /* Styles for node/141; The Computation Science Team page. */
 
+/* Body styles. */
+article#node-141 .field-name-body p:first-child,
+article#node-141 .field-name-body p:last-child {
+  font-size: 135%;
+}
+
+
+/* Block of anchor links to profiles. */
+#block-views-6e46c24f4115d81251f18d75b36af6d8 h2.block-title {
+  margin: 0;
+  font-size: 115%;
+  color: black;
+}
+.view-computational-science-team ul,
+.view-computational-science-team li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  line-height: 200%;
+}
+.view-computational-science-team li a {
+  font-weight: bold;
+}
+
+
 /* Alternating rows backgrounds and borders. */
 .view-computational-science-team .views-row-1 {
   border-top: 1px solid rgb(197, 197, 197);
@@ -10,6 +35,13 @@
 }
 .view-computational-science-team .views-row-odd {
   background: rgb(249, 249, 249);
+}
+
+
+/* Remove margins. */
+.view-computational-science-team .content,
+.view-computational-science-team dl {
+  margin: 0;
 }
 
 
@@ -28,20 +60,23 @@
   font-weight: normal;
   margin: 1em 0;
 }
-.view-computational-science-team .group-left .field div {
+.view-computational-science-team .group-left .field div,
+.view-computational-science-team .group-left .field div label {
   float: none;
   display: inline;
+  line-height: 200%;
+  color: black;
+}
+.view-computational-science-team .group-left .field div label {
+  color: #404040;
 }
 
 
 /* Right coloumn of CS team profiles. */
-.view-computational-science-team .group-right dl {
-  margin: 0;
-}
 .view-computational-science-team .group-right h2 {
-  margin: 0 20% 1em 0;
-  font-size: 115%;
+  margin: 0 22% 1em 0;
   text-align: center;
+  font-size: 115%;
   color: black;
 }
 .view-computational-science-team .group-right .field {
