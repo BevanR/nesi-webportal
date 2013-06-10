@@ -5,3 +5,20 @@
  */
 
 include_once 'nesi_project.features.inc';
+
+function nesi_project_node_view($node, $view_mode, $langcode) {
+
+  // Display project expired message if end_date is in the past.
+  if ($node->type == 'project') {
+    if ($view_mode == 'full') {
+      $end_date = new DateObject($node->field_end_date[LANGUAGE_NONE][0]['value']);
+      $current_date = new DateObject();
+      $end_date = strtotime($end_date);    
+      $current_date = strtotime($current_date);    
+ 
+      if ($end_date < $current_date) {
+        $node->content['project_expired'] = array('#markup' => '<div class="nesi-project-expired alert"><strong>Project Expired: </strong> This project has reached it\'s end date.</div>');
+      }
+    }
+  }
+}
