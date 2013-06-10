@@ -25,9 +25,27 @@ function nesi_config_menu() {
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => 0,
     );
+
   $items['nesi-config/projects'] = array(
     'title' => 'Project Management',
+    'page callback' => 'nesi_config_projects_goto',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
+  $items['nesi-config/projects/active'] = array(
+    'title' => 'Active Projects',
     'page callback' => 'nesi_config_projects',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
+  $items['nesi-config/projects/expired'] = array(
+    'title' => 'Expired projects',
+    'page callback' => 'nesi_config_projects',
+    'page arguments' => array(FALSE),
     'access arguments' => array('nesi website config'),
     'type' => MENU_LOCAL_TASK,
     'weight' => 1,
@@ -68,12 +86,18 @@ function nesi_config_menu() {
   return $items;
 }
 
+function nesi_config_projects_goto() {
+
+  drupal_goto('nesi-config/projects/active');
+  return 'Projects overview';
+}
+
 /**
  * View of all projects
  */
-function nesi_config_projects() {
+function nesi_config_projects($active = TRUE) {
   $view = views_get_view('all_projects');
-  return $view->preview('default');
+  return $view->preview($active ? 'active' : 'expired');
 }
 
 /**
