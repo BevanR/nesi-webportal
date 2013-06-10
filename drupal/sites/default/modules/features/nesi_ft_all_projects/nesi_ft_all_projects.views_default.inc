@@ -90,32 +90,6 @@ function nesi_ft_all_projects_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: End Date */
-  $handler->display->display_options['fields']['field_end_date']['id'] = 'field_end_date';
-  $handler->display->display_options['fields']['field_end_date']['table'] = 'field_data_field_end_date';
-  $handler->display->display_options['fields']['field_end_date']['field'] = 'field_end_date';
-  $handler->display->display_options['fields']['field_end_date']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-  );
-  /* Field: Content: Estimated project start date */
-  $handler->display->display_options['fields']['field_pdc_start_date']['id'] = 'field_pdc_start_date';
-  $handler->display->display_options['fields']['field_pdc_start_date']['table'] = 'field_data_field_pdc_start_date';
-  $handler->display->display_options['fields']['field_pdc_start_date']['field'] = 'field_pdc_start_date';
-  $handler->display->display_options['fields']['field_pdc_start_date']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-  );
-  /* Field: Content: Principal Investigator */
-  $handler->display->display_options['fields']['field_principal_investigator']['id'] = 'field_principal_investigator';
-  $handler->display->display_options['fields']['field_principal_investigator']['table'] = 'field_data_field_principal_investigator';
-  $handler->display->display_options['fields']['field_principal_investigator']['field'] = 'field_principal_investigator';
   /* Field: Content: Start Date */
   $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
   $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
@@ -127,6 +101,21 @@ function nesi_ft_all_projects_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
+  /* Field: Content: End Date */
+  $handler->display->display_options['fields']['field_end_date']['id'] = 'field_end_date';
+  $handler->display->display_options['fields']['field_end_date']['table'] = 'field_data_field_end_date';
+  $handler->display->display_options['fields']['field_end_date']['field'] = 'field_end_date';
+  $handler->display->display_options['fields']['field_end_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Principal Investigator */
+  $handler->display->display_options['fields']['field_principal_investigator']['id'] = 'field_principal_investigator';
+  $handler->display->display_options['fields']['field_principal_investigator']['table'] = 'field_data_field_principal_investigator';
+  $handler->display->display_options['fields']['field_principal_investigator']['field'] = 'field_principal_investigator';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -151,6 +140,46 @@ function nesi_ft_all_projects_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'project' => 'project',
   );
+  /* Filter criterion: Content: End Date (field_end_date) */
+  $handler->display->display_options['filters']['field_end_date_value']['id'] = 'field_end_date_value';
+  $handler->display->display_options['filters']['field_end_date_value']['table'] = 'field_data_field_end_date';
+  $handler->display->display_options['filters']['field_end_date_value']['field'] = 'field_end_date_value';
+  $handler->display->display_options['filters']['field_end_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_end_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_end_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_end_date_value']['year_range'] = '-0:+8';
+
+  /* Display: Active Projects */
+  $handler = $view->new_display('block', 'Active Projects', 'active');
+
+  /* Display: Expired Projects */
+  $handler = $view->new_display('block', 'Expired Projects', 'expired');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'project' => 'project',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: End Date (field_end_date) */
+  $handler->display->display_options['filters']['field_end_date_value']['id'] = 'field_end_date_value';
+  $handler->display->display_options['filters']['field_end_date_value']['table'] = 'field_data_field_end_date';
+  $handler->display->display_options['filters']['field_end_date_value']['field'] = 'field_end_date_value';
+  $handler->display->display_options['filters']['field_end_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_end_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_end_date_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_end_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_end_date_value']['year_range'] = '-0:+8';
   $export['all_projects'] = $view;
 
   return $export;

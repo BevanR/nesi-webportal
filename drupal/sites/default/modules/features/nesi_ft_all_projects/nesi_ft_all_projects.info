@@ -1,7 +1,8 @@
 name = nesi_ft_all_projects
 core = 7.x
 package = NeSI
-version = 7.x-0.1
+php = 5.2.4
+version = 7.x-0.2
 project = nesi_ft_all_projects
 dependencies[] = ctools
 dependencies[] = views
