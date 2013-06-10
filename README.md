@@ -159,3 +159,30 @@ The quickest way to get familiar with BDD and Behat is to purchase the [knpunive
 * [behat.org](http://behat.org)
 * [getcomposer.org](http://getcomposer.org)
 * [Behat cheat sheet](http://blog.lepine.pro/wp-content/uploads/2012/03/behat-cheat-sheet-en.pdf)
+
+## Theme Information
+
+The NeSI website theme is based on the Bootstrap theme [Bootstrap theme - drupal.org](https://drupal.org/project/bootstrap).
+
+Theme files are contained within;
+
+* `nesi-webportal/drupal/sites/default/themes/nesi_bootstrap`
+
+### Modifying CSS for nesi_bootstrap
+
+It is recommended to update `nesi_bootstrap/css/style.css` file with any style overrides.
+
+NOTE: This process will change soon as css structures are being migrated to [LESS](http://lesscss.org/) to allow for all css to be managed by the `lessc` compiler. 
+
+### LESS source for nesi_bootstrap
+
+The nesi_bootstrap theme currently has it's source .less files in:
+
+* `nesi_bootstrap/assets/css/less`
+
+`nesibootstrap.less` can be compiled by `lessc` to recreate the bootstrap css as included within `nesi_bootstrap/nesi_bootstrap.info`.
+
+### Compiling LESS from source
+
+To compile .less source into .css you will need a `LESS` compiler. Bootstrap has a guide on getting started with .less and the bootstrap project structure [Extending Bootstrap](http://twitter.github.io/bootstrap/extend.html). More documentation to come.
+
