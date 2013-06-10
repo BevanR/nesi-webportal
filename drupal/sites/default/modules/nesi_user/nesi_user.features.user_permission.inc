@@ -110,8 +110,10 @@ function nesi_user_user_default_permissions() {
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
-      0 => 'nesi administrator',
-      1 => 'website engineer',
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+      2 => 'nesi administrator',
+      3 => 'website engineer',
     ),
     'module' => 'user',
   );
@@ -1132,8 +1134,9 @@ function nesi_user_user_default_permissions() {
   $permissions['view any expertise profile'] = array(
     'name' => 'view any expertise profile',
     'roles' => array(
-      0 => 'authenticated user',
-      1 => 'website engineer',
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+      2 => 'website engineer',
     ),
     'module' => 'profile2',
   );
@@ -1142,7 +1145,9 @@ function nesi_user_user_default_permissions() {
   $permissions['view any researcher_profile profile'] = array(
     'name' => 'view any researcher_profile profile',
     'roles' => array(
-      0 => 'website engineer',
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+      2 => 'website engineer',
     ),
     'module' => 'profile2',
   );
