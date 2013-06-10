@@ -43,7 +43,7 @@ This process is automated in a puppet script.  The puppet script is used for sta
 1. `cd sites/default/`
 1. `cp default.settings.php settings.php`
 1. Configure `$databases` in `settings.php` with mysql database and credentials
-1. Run `echo "include_file(\"settings.inc\");" | cat >> settings.php` to add additional system settings
+1. Run `echo "require 'settings.inc';" | cat >> settings.php` to add additional system settings
 1. Import database and files. See *Import Content*.
 
 ### Update Existing Environment

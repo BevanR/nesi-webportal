@@ -1,4 +1,4 @@
-#!/usr/bin/env drush              
+#!/srv/www/platforms/scripts/drush/drush
 <?php
 /**
  * Hacky script to remove all spam user accounts. Assumption is that all a normally registered 
