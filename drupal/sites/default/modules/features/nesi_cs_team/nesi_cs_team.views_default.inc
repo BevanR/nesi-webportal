@@ -129,29 +129,26 @@ function nesi_cs_team_views_default_views() {
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Field: Profile: City */
-  $handler->display->display_options['fields']['field_user_city']['id'] = 'field_user_city';
-  $handler->display->display_options['fields']['field_user_city']['table'] = 'field_data_field_user_city';
-  $handler->display->display_options['fields']['field_user_city']['field'] = 'field_user_city';
-  $handler->display->display_options['fields']['field_user_city']['relationship'] = 'profile_1';
-  $handler->display->display_options['fields']['field_user_city']['label'] = '';
-  $handler->display->display_options['fields']['field_user_city']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_user_city']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_user_city']['alter']['text'] = '<strong>:</strong> [field_user_city]';
-  $handler->display->display_options['fields']['field_user_city']['element_label_colon'] = FALSE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = '<strong>[name]</strong>[field_user_city]';
+  $handler->display->display_options['fields']['name']['alter']['text'] = '[name]:';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path'] = '#user-[uid]';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Profile: City */
+  $handler->display->display_options['fields']['field_user_city']['id'] = 'field_user_city';
+  $handler->display->display_options['fields']['field_user_city']['table'] = 'field_data_field_user_city';
+  $handler->display->display_options['fields']['field_user_city']['field'] = 'field_user_city';
+  $handler->display->display_options['fields']['field_user_city']['relationship'] = 'profile_1';
+  $handler->display->display_options['fields']['field_user_city']['label'] = '';
+  $handler->display->display_options['fields']['field_user_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['block_description'] = 'View: Computational Science Team Anchor Links';
   $export['computational_science_team'] = $view;
 
