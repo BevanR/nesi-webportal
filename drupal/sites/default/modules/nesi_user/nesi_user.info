@@ -190,5 +190,6 @@ features[user_role][] = nesi administrator
 features[user_role][] = researcher
 features[user_role][] = reviewer
 features[user_role][] = website engineer
+features[variable][] = field_bundle_settings_profile2__researcher_profile
 features[variable][] = user_mail_register_admin_created_body
 features[variable][] = user_mail_register_no_approval_required_body

@@ -36,22 +36,24 @@ Use this process to create a new environment of the website.
 
 This process is automated in a puppet script.  The puppet script is used for staging and production environments: https://github.com/nesi/puppet-drupal
 
-1. `git clone git@github.com:nesi/nesi-webportal.git default`
-1. Configure `drupal/` as the apache web document root.
-1. `cd drupal/`
+1. `git clone git@github.com:nesi/nesi-webportal.git nesi-website`
+1. Configure `nesi-website/drupal/` as the apache web document root.
+1. `cd nesi-website/drupal/`
 1. `drush make nesi.drush.make`
 1. `cd sites/default/`
 1. `cp default.settings.php settings.php`
 1. Configure `$databases` in `settings.php` with mysql database and credentials
-1. Run `echo "include_file(\"settings.inc\");" | cat >> settings.php` to add additional system settings
+1. Run `echo "require 'settings.inc';" | cat >> settings.php` to add additional system settings
 1. Import database and files. See *Import Content*.
 
 ### Update Existing Environment
 
 Use this process to update an existing environment with latest code.
 
-1. `cd` to the web document root.
+1. `cd` to the root of the git repository.
 1. `git pull` or if switching git branches; `git fetch` and `git checkout BRANCH`
+1. `cd drupal`
+1. `rm -rf sites/all`
 1. `drush make nesi.drush.make`
 1. Update the database.  See *Update Database*.
 
@@ -129,6 +131,8 @@ Automated tests are implemented using the Behat framework.
 
 * php 5.3.2+
 * php5-curl
+* [Selenium](https://code.google.com/p/selenium/downloads/list)?
+* Java runtime
 * [Composer](http://getcomposer.org/doc/00-intro.md)
 * `cd tests/`
 * Composer manages further dependencies: `composer install`
@@ -157,3 +161,28 @@ The quickest way to get familiar with BDD and Behat is to purchase the [knpunive
 * [behat.org](http://behat.org)
 * [getcomposer.org](http://getcomposer.org)
 * [Behat cheat sheet](http://blog.lepine.pro/wp-content/uploads/2012/03/behat-cheat-sheet-en.pdf)
+
+## Theme Information
+
+The NeSI website theme is based on the Bootstrap theme [Bootstrap theme - drupal.org](https://drupal.org/project/bootstrap).
+
+Theme files are contained within `nesi-webportal/drupal/sites/default/themes/nesi_bootstrap`
+
+The Bootstrap theme leverages the Bootstrap frontend framework [Bootstrap frontend framework](http://getbootstrap.com). Bootstrap provides a flexible standardised approach to build responsive websites.
+
+### Modifying CSS for nesi_bootstrap
+
+It is recommended to update `nesi_bootstrap/css/style.css` file with any style overrides.
+
+NOTE: This process will change soon as css structures are being migrated to [LESS](http://lesscss.org/) to allow for all css to be managed by the `lessc` compiler. 
+
+### LESS source for nesi_bootstrap
+
+The nesi_bootstrap theme currently has it's source .less files in `nesi_bootstrap/assets/css/less`
+
+`nesibootstrap.less` can be compiled to recreate the bootstrap css as included within `nesi_bootstrap/nesi_bootstrap.info`.
+
+### Compiling LESS from source
+
+To compile .less source into .css you will need a `LESS` compiler. Bootstrap has a guide on getting started with .less and the bootstrap project structure [Extending Bootstrap](http://twitter.github.io/bootstrap/extend.html). More documentation to come.
+

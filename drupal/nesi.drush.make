@@ -19,6 +19,7 @@ projects[ds][version] = 2.3
 projects[email][version] = 1.2
 projects[email_registration][version] = 1.1
 projects[entity][version] = 1.0-rc3
+projects[entityreference][version] = 1.0
 projects[features_extra][version] = 1.0-alpha2
 projects[features][version] = 1.0
 projects[feed_path_publisher][version] = 1.0-beta1
@@ -37,6 +38,7 @@ projects[menu_block][version] = 2.3
 projects[mimemail][version] = 1.0-alpha2
 projects[module_filter][version] = 1.7
 projects[mollom][version] = 2.6
+projects[og][version] = 2.2
 projects[references][version] = 2.1
 projects[pathauto][version] = 1.2
 projects[profile2][version] = 1.3
@@ -49,7 +51,9 @@ projects[uuid][version] = 1.0-alpha4
 projects[uuid_features][version] = 1.0-alpha3
 projects[viewfield][version] = 2.0
 projects[views][version] = 3.7
+projects[views_bulk_operations][version] = 3.1
 projects[wysiwyg][version] = 2.2
+; This list is ordered alphabetically.
 
 ; Themes
 projects[bootstrap][version] = 2.0

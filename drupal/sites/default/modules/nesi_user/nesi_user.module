@@ -110,7 +110,7 @@ function nesi_user_menu_alter(&$items) {
   $items['user/password']['type'] = MENU_CALLBACK;
 
   // Remove researcher profile as separate form (include in standard user account edit form)
-  $items['user/%user_category/edit/researcher_profile']['access callback'] = FALSE;
+  $items['user/%user_category/edit/researcher_profile']['type'] = MENU_CALLBACK;
 }
 
 /**
@@ -175,6 +175,7 @@ function nesi_user_form_profile2_form_alter(&$form, &$form_state) {
     $form['profile_researcher_profile']['field_user_position']['#attributes']['class'][] = 'form-horizontal';
     $form['profile_researcher_profile']['field_user_phone']['#attributes']['class'][] = 'form-horizontal';
     $form['profile_researcher_profile']['field_user_address']['#attributes']['class'][] = 'form-horizontal';
+    $form['profile_researcher_profile']['field_user_city']['#attributes']['class'][] = 'form-horizontal';
     $form['profile_researcher_profile']['field_user_altemail']['#attributes']['class'][] = 'form-horizontal';
     $form['profile_researcher_profile']['field_user_nationality']['#attributes']['class'][] = 'form-horizontal';
   }

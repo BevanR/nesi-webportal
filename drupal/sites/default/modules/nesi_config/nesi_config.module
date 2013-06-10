@@ -25,12 +25,38 @@ function nesi_config_menu() {
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => 0,
     );
+
+  $items['nesi-config/projects'] = array(
+    'title' => 'Projects',
+    'page callback' => 'nesi_config_projects_goto',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
+  $items['nesi-config/projects/active'] = array(
+    'title' => 'Active',
+    'page callback' => 'nesi_config_projects',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
+  $items['nesi-config/projects/expired'] = array(
+    'title' => 'Expired',
+    'page callback' => 'nesi_config_projects',
+    'page arguments' => array(FALSE),
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
   $items['nesi-config/site'] = array(
     'title' => 'Configure system',
     'page callback' => 'nesi_config_site',
     'access arguments' => array('nesi website config'),
     'type' => MENU_LOCAL_TASK,
-    'weight' => 1,
+    'weight' => 2,
     );
   $items['nesi-config/site/submission-email'] = array(
     'title' => 'Submission email',
@@ -58,6 +84,20 @@ function nesi_config_menu() {
     );
 
   return $items;
+}
+
+function nesi_config_projects_goto() {
+
+  drupal_goto('nesi-config/projects/active');
+  return 'Projects overview';
+}
+
+/**
+ * View of all projects
+ */
+function nesi_config_projects($active = TRUE) {
+  $view = views_get_view('all_projects');
+  return $view->preview($active ? 'active' : 'expired');
 }
 
 /**

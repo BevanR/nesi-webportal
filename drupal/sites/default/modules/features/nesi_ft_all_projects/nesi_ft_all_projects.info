@@ -1,0 +1,11 @@
+name = nesi_ft_all_projects
+core = 7.x
+package = NeSI
+php = 5.2.4
+version = 7.x-0.2
+project = nesi_ft_all_projects
+dependencies[] = ctools
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = all_projects

@@ -46,11 +46,11 @@ function nesi_user_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 10,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'profile2',
@@ -111,10 +111,9 @@ function nesi_user_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 9,
+          'type' => 'hidden',
+          'weight' => '10',
         ),
       ),
       'entity_type' => 'profile2',
@@ -132,7 +131,7 @@ function nesi_user_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -172,11 +171,11 @@ function nesi_user_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 10,
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'profile2',
@@ -191,7 +190,7 @@ function nesi_user_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '8',
       ),
     ),
   );
@@ -234,10 +233,9 @@ function nesi_user_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 3,
+          'type' => 'hidden',
+          'weight' => '6',
         ),
       ),
       'entity_type' => 'profile2',
@@ -298,10 +296,9 @@ function nesi_user_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 0,
+          'type' => 'hidden',
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'profile2',
@@ -362,10 +359,9 @@ function nesi_user_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 2,
+          'type' => 'hidden',
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'profile2',
@@ -426,10 +422,9 @@ function nesi_user_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 1,
+          'type' => 'hidden',
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'profile2',
@@ -490,10 +485,9 @@ function nesi_user_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 8,
+          'type' => 'hidden',
+          'weight' => '9',
         ),
       ),
       'entity_type' => 'profile2',
@@ -550,10 +544,9 @@ function nesi_user_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'countries',
           'settings' => array(),
-          'type' => 'country_default',
-          'weight' => 7,
+          'type' => 'hidden',
+          'weight' => '8',
         ),
       ),
       'entity_type' => 'profile2',
@@ -568,7 +561,7 @@ function nesi_user_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -610,11 +603,11 @@ function nesi_user_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 5,
+          'type' => 'text_plain',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'profile2',
@@ -675,10 +668,9 @@ function nesi_user_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 4,
+          'type' => 'hidden',
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'profile2',
