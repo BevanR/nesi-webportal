@@ -25,12 +25,20 @@ function nesi_config_menu() {
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => 0,
     );
+  $items['nesi-config/projects'] = array(
+    'title' => 'Project Management',
+    'page callback' => 'nesi_config_projects',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
   $items['nesi-config/site'] = array(
     'title' => 'Configure system',
     'page callback' => 'nesi_config_site',
     'access arguments' => array('nesi website config'),
     'type' => MENU_LOCAL_TASK,
-    'weight' => 1,
+    'weight' => 2,
     );
   $items['nesi-config/site/submission-email'] = array(
     'title' => 'Submission email',
@@ -58,6 +66,14 @@ function nesi_config_menu() {
     );
 
   return $items;
+}
+
+/**
+ * View of all projects
+ */
+function nesi_config_projects() {
+  $view = views_get_view('all_projects');
+  return $view->preview('default');
 }
 
 /**
