@@ -668,9 +668,9 @@ div.radio {
 }
 
 #nesi-mstep-proposal-step-1 .form-submit,
-#nesi-mstep-proposal-step-2 .form-actions input,
-#nesi-mstep-proposal-step-3 .form-actions input,
-#nesi-mstep-proposal-step-4 .form-actions input {
+#nesi-mstep-proposal-step-2 .form-actions button,
+#nesi-mstep-proposal-step-3 .form-actions button,
+#nesi-mstep-proposal-step-4 .form-actions button {
   background: #2b9fc2;
   border: 0;
   color: #fff;
