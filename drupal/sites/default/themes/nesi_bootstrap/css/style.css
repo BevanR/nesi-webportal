@@ -60,6 +60,10 @@ a.tabledrag-handle .handle {
   background-color: #fff;
 }
 
+.project h4 + p {
+  font-size: 100%;
+}
+
 #edit-profile-researcher-profile .fieldset-wrapper {
   padding-top: 15px;
 }
