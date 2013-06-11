@@ -58,7 +58,7 @@ function nesi_ft_homepage_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-46',
+    'weight' => '0',
   );
   // Exported menu link: main-menu:node/20
   $menu_links['main-menu:node/20'] = array(
@@ -115,7 +115,7 @@ function nesi_ft_homepage_menu_default_menu_links() {
     'menu_name' => 'main-menu',
     'link_path' => 'node/34',
     'router_path' => 'node/%',
-    'link_title' => 'Facilities',
+    'link_title' => 'Facilities & Guidelines',
     'options' => array(
       'attributes' => array(
         'title' => 'Nationwide HPC facilities',
@@ -127,23 +127,6 @@ function nesi_ft_homepage_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-49',
-  );
-  // Exported menu link: main-menu:node/39
-  $menu_links['main-menu:node/39'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/39',
-    'router_path' => 'node/%',
-    'link_title' => 'Files and Data',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '1',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-    'parent_path' => 'node/47',
   );
   // Exported menu link: main-menu:node/40
   $menu_links['main-menu:node/40'] = array(
@@ -163,57 +146,6 @@ function nesi_ft_homepage_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-48',
   );
-  // Exported menu link: main-menu:node/42
-  $menu_links['main-menu:node/42'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/42',
-    'router_path' => 'node/%',
-    'link_title' => 'Eligibility',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '1',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-    'parent_path' => 'node/47',
-  );
-  // Exported menu link: main-menu:node/43
-  $menu_links['main-menu:node/43'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/43',
-    'router_path' => 'node/%',
-    'link_title' => 'Acceptable Use Policy',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '1',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-    'parent_path' => 'node/47',
-  );
-  // Exported menu link: main-menu:node/44
-  $menu_links['main-menu:node/44'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/44',
-    'router_path' => 'node/%',
-    'link_title' => 'Acknowledgement and Publication',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '1',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-    'parent_path' => 'node/47',
-  );
   // Exported menu link: main-menu:node/45
   $menu_links['main-menu:node/45'] = array(
     'menu_name' => 'main-menu',
@@ -229,41 +161,6 @@ function nesi_ft_homepage_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '0',
-    'parent_path' => 'node/47',
-  );
-  // Exported menu link: main-menu:node/47
-  $menu_links['main-menu:node/47'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/47',
-    'router_path' => 'node/%',
-    'link_title' => 'Apply',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '1',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-49',
-    'parent_path' => 'node/47',
-  );
-  // Exported menu link: main-menu:node/48
-  $menu_links['main-menu:node/48'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/48',
-    'router_path' => 'node/%',
-    'link_title' => 'Access Policy',
-    'options' => array(
-      'attributes' => array(),
-    ),
-    'module' => 'menu',
-    'hidden' => '1',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-    'parent_path' => 'node/47',
   );
   // Exported menu link: main-menu:node/50
   $menu_links['main-menu:node/50'] = array(
@@ -280,7 +177,6 @@ function nesi_ft_homepage_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '0',
-    'parent_path' => 'node/47',
   );
   // Exported menu link: main-menu:node/56
   $menu_links['main-menu:node/56'] = array(
@@ -336,19 +232,13 @@ function nesi_ft_homepage_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('About NeSI');
-  t('Acceptable Use Policy');
-  t('Access Policy');
-  t('Acknowledgement and Publication');
   t('Advancing computational fluid dynamics');
   t('Allocations, Allocation Classes, Review Cycles');
-  t('Apply');
   t('Apply for access');
   t('Calls Timetable');
   t('Case Studies');
   t('Digital support in a national crisis');
-  t('Eligibility');
-  t('Facilities');
-  t('Files and Data');
+  t('Facilities & Guidelines');
   t('High performance computing’s role in biosecurity');
   t('Modelling glaciers of the Southern Alps');
   t('Molecular modelling in cancer research');
