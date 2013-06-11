@@ -53,12 +53,9 @@ article#node-141 .field-name-body p:last-child {
 .view-computational-science-team .views-row .group-right {
   width: 66.666%;
 }
-.view-computational-science-team .group-left {
-  padding-top: 1em;
-}
 .view-computational-science-team .group-left h2 {
   font-weight: normal;
-  margin: 1em 0;
+  margin: 0 0 1em;
 }
 .view-computational-science-team .group-left .field div,
 .view-computational-science-team .group-left .field div label {

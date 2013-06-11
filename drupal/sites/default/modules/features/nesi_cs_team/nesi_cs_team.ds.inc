@@ -22,11 +22,6 @@ function nesi_cs_team_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'ds_user_picture' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'ds_picture_300x160',
-    ),
   );
   $export['user|user|computation_science_team'] = $ds_fieldsetting;
 
@@ -49,16 +44,14 @@ function nesi_cs_team_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left' => array(
-        0 => 'ds_user_picture',
-        1 => 'name',
-        2 => 'profile_researcher_profile',
+        0 => 'name',
+        1 => 'profile_researcher_profile',
       ),
       'right' => array(
-        3 => 'profile_expertise',
+        2 => 'profile_expertise',
       ),
     ),
     'fields' => array(
-      'ds_user_picture' => 'left',
       'name' => 'left',
       'profile_researcher_profile' => 'left',
       'profile_expertise' => 'right',
