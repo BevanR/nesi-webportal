@@ -165,17 +165,19 @@ class FeatureContext extends DrupalContext {
     $this->getSession()->visit($this->locatePath('/user/login'));
 
     // If I see this, I'm not logged in at all so log the user in.
-    $element->fillField('E-mail', $username);
-    $element->fillField('Password', $passwd);
-    $submit = $element->findButton('Log in');
+    $element->fillField('edit-name', $username);
+    $element->fillField('edit-pass', $passwd);
+    $submit = $element->findButton('edit-submit');
     if (empty($submit)) {
       throw new Exception('No submit button at ' . $this->getSession()->getCurrentUrl());
     }
 
     // Log in.
     $submit->click();
-    // TODO this function doesn't work for us
-    $user = $this->whoami();
+    $this->getSession()->wait(2000);
+    // TODO this function doesn't work when using selenium
+    // Might need to stick a 'wait' in here 
+    //$user = $this->whoami();
     //if (strtolower($user) != strtolower($username)) {
       //throw new Exception('Could not log user in.');
     //}
@@ -206,7 +208,7 @@ class FeatureContext extends DrupalContext {
     if ($find = $element->find('css', 'h1')) {
       $page_title = $find->getText();
       if ($page_title) {
-        return str_replace('hello, ', '', strtolower($page_title));
+        return strtolower($page_title);
       }
     }
     return FALSE;
@@ -245,9 +247,9 @@ class FeatureContext extends DrupalContext {
 
           break;
 
-      }
+        }
 
-    }
+      }
     // If I see this, I'm not logged in at all so log the user in.
     //$element->fillField('Password', $passwd);
     //$submit = $element->findButton('Log in');
@@ -255,5 +257,19 @@ class FeatureContext extends DrupalContext {
       //throw new Exception('No submit button at ' . $this->getSession()->getCurrentUrl());
     //}
 
-  }
+    }
+
+    /**
+     * Pauses the scenario until the user presses a key. Useful when debugging a scenario.
+     *
+     * @Then /^break$/
+     */
+    public function iPutABreakpoint()
+    {
+        fwrite(STDOUT, "\033[s    \033[93m[Breakpoint] Press \033[1;93m[RETURN]\033[0;93m to continue...\033[0m");
+        while (fgets(STDIN, 1024) == '') {}
+        fwrite(STDOUT, "\033[u");
+
+        return;
+    }
 }

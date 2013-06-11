@@ -1,56 +1,9 @@
-@user @login
-Feature: Login to www.nesi.org as a researcher
-  In order to start using additional features of the site
-
-  Scenario: View the Login page
-    When I go to "/user/login"
-    Then I should see "Researcher Access"
-    And I should see the following <links>
-      | links                               |
-      | Login using institution credentials |
-      | Create a NeSI account               |
-      
-  @validation
-  Scenario Outline: Username validation: Valid username
-    When I go to "/user/login"
-    And I fill in "E-mail" with "<name>"
-    And I fill in "Password" with random text
-    And I press "Log in"
-    Then I should see "Sorry, unrecognized username or password."
-    And the field "E-mail" should be outlined in red
-    Examples:
-    | name           |
-    | randomname     |
-    | 123453         |
-    | mail@mail.com  |
-
-  @account-setup
-  Scenario: Login and as researcher and create user profile
-    Given I am logged in as "researcher"
-    Then I should see "behat-researcher"
-    Given I fill in the following <formdetails>
-      | field_type | form_id              | value             |
-      | text       | First Name           |  Big              |
-      | text       | Middle Name          | Friendly          |
-      | text       | Last Name            | Giant             |
-      | text       | Institution          | Dream Country     |
-      | text       | Department / Group   | Whizzpoppers      |
-      | text       | Position / Job Title | Dream Catcher     |
-      | text       | Contact Phone        | Frobscottle       |
-      | text       | Contact Address      | Giant Land        |
-      | text       | Alternate Email      | bfg@giantland.com |
-      ## Select values need to be identified by css id
-      | select     | #edit-profile-researcher-profile-field-user-nationality-und  | New Zealand |
-    Then I press "Save"
-
-  Scenario: Login and as researcher and view user profile
-    Given I am logged in as "researcher"
-    And I go to "/user"
-    Then I should see "Profile"
-    And I should see the following <links>
-      | links                 |
-      | Edit profile          |
-
+Feature: Submit a proposal
+  In order to get resource allocation
+  As a researcher
+  I need to submit proposals
+  
+  @access-policy
   Scenario: Login and as researcher and download access policy
     Given I am logged in as "researcher"
     And I go to "/access-policy"
@@ -59,6 +12,7 @@ Feature: Login to www.nesi.org as a researcher
       | links                                   |
       | NeSI Guidelines for Researchers 1.1.pdf |
 
+  @javascript
   Scenario: Login and as researcher and are able complete Development Proposal 
     Given I am logged in as "researcher"
     And I go to "/apply"
@@ -84,6 +38,7 @@ Feature: Login to www.nesi.org as a researcher
       | text       | Further information           | None                                                    | 
     Then I press "Submit Proposal"
 
+  @javascript
   Scenario: Login and as researcher and create a second Development Proposal 
     Given I am logged in as "researcher"
     And I go to "/apply"
@@ -126,7 +81,7 @@ Feature: Login to www.nesi.org as a researcher
       | James and the Giant Peach  |
       | Chocolate Factory          |
     
-  @multi
+  @javascript
   Scenario: Login and as researcher and are able complete Development Proposal 
     Given I am logged in as "researcher"
     And I go to "/apply"
@@ -137,20 +92,21 @@ Feature: Login to www.nesi.org as a researcher
       | field_type | form_id                                            | value                                 |
       | text       | Proposal Title                                     | Matilda                               |
       ## Not able to use Field name due to date popup on this form element
-      | text       | prc-start-date[date]                               | 09-05-2013                            |
+      | text       | prc-start-date[date]                               | 09-05-14                            |
       | text       | Scientific goals                                   | To understand Telekinesis             |
       | text       | Benefits from HPC                                  | Data crunching                        |
       | text       | Project deliverables                               | A magic pendant to allow telekinesis  |
       | text       | Name of peer-reviewed research grant provider      | Miss Honey                            |
-      | text       | prc-grant-start-date[date]                         | 09-05-2013                            |
+      | text       | Title of research grant                            | Miss Honey                            |
+      | text       | prc-grant-start-date[date]                         | 09-05-2014                            |
       | text       | Duration of the grant                              | As long as it takes                   |
       | text       | Amount                                             | 500 bitcoins                          |
       | text       | Principal's name                                   | Miss Trunchbull                       |
       | text       | Principal's email                                  | tbull@grimalkin.school                |
       | text       | Principal's phone number                           | 021 555 555                           |
       | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    | 
-    Then I press "Next: Technical Details"
-    And I go to "apply/nojs/create-proposal/step3"
+      | text       | Project team's HPC experience                      | Couple of week working in a dairy     |
+    And I press "Next: Technical Details"
     Then I should see "Part 2 of 3 - Technical details"
     And I fill in the following <formdetails>
       | field_type | form_id                                                          | value                   |
@@ -166,7 +122,6 @@ Feature: Login to www.nesi.org as a researcher
       | text       | Software requirements                                            | Python                  |
       | text       | Data transfer                                                    | None                    |
     Then I press "Next: Support Information"
-    And I go to "apply/nojs/create-proposal/step4"
     Then I select the radio button "Yes"
     And I fill in the following <formdetails>
       | field_type | form_id                                          | value                                   |

@@ -1,0 +1,177 @@
+<?php
+/**
+ * @file
+ * NeSI Config module.
+ * 
+ * @todo Provide config interface in admin.
+ */
+/**
+ * * Implements hook_menu().
+ * */
+
+/**
+* Implements hook_menu().
+*/
+function nesi_config_menu() {
+  $items['nesi-config'] = array(
+    'title' => 'Nesi Admin',
+    'page callback' => 'nesi_config_overview',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_NORMAL_ITEM,
+    );
+  $items['nesi-config/submissions'] = array(
+    'title' => 'Submissions',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+    );
+
+  $items['nesi-config/projects'] = array(
+    'title' => 'Projects',
+    'page callback' => 'nesi_config_projects_goto',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
+  $items['nesi-config/projects/active'] = array(
+    'title' => 'Active',
+    'page callback' => 'nesi_config_projects',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
+  $items['nesi-config/projects/expired'] = array(
+    'title' => 'Expired',
+    'page callback' => 'nesi_config_projects',
+    'page arguments' => array(FALSE),
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+    );
+
+  $items['nesi-config/site'] = array(
+    'title' => 'Configure system',
+    'page callback' => 'nesi_config_site',
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+    );
+  $items['nesi-config/site/submission-email'] = array(
+    'title' => 'Submission email',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_config_proposal_submission_email'),     
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'forms/nesi_config.submission_email.form.inc',
+    );
+  $items['nesi-config/site/front-stats'] = array(
+    'title' => 'Front Page Stats',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_config_front_stats'), 
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'forms/nesi_config.front_stats.form.inc',
+    );
+  $items['nesi-config/site/faqs'] = array(
+    'title' => 'FAQs',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nesi_config_faqs'), 
+    'access arguments' => array('nesi website config'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'forms/nesi_config.faqs.form.inc',
+    );
+
+  return $items;
+}
+
+function nesi_config_projects_goto() {
+
+  drupal_goto('nesi-config/projects/active');
+  return 'Projects overview';
+}
+
+/**
+ * View of all projects
+ */
+function nesi_config_projects($active = TRUE) {
+  $view = views_get_view('all_projects');
+  return $view->preview($active ? 'active' : 'expired');
+}
+
+/**
+ * View of all submitted proposals
+ */
+function nesi_config_overview() {
+  $view = views_get_view('all_proposals');
+  return $view->preview('default');
+}
+
+function nesi_config_site() {
+
+  drupal_goto('nesi-config/site/faqs');
+  return 'Going to be a list of submissions here';
+}
+
+/**
+ * Implements hook_permission().
+ */
+function nesi_config_permission() {
+  return array(
+    'nesi website config' => array(
+      'title' => 'Configure NeSI',
+      'description' => t('Configure NeSI data such as homepage statistics & FAQs'),
+    ),
+  );
+}
+
+function nesi_config_wysiwyg_editor_settings_alter(&$settings, $context) {
+  
+  if ($context['profile']->editor == 'ckeditor') {
+    // enable show blocks option by default on startup
+    $settings['startupOutlineBlocks'] = true;
+  }
+}
+
+/**
+* Implements hook_block_info().
+*/
+function nesi_config_block_info() {
+  $blocks['nesi_faq'] = array(
+    'info'   => t('Application page FAQ'),
+    'status' => TRUE,
+    'region' => 'content',
+    'weight'    => 0,
+    'visibility' => 1,
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function nesi_config_block_view($delta = '') {
+
+  switch ($delta) {
+    case 'nesi_faq':
+      $block['subject'] = t('Frequently Asked Questions: "See <a href="https://support.nesi.org.nz/">Support</a> for more details"');
+      $block['content'] = nesi_faq_content();
+      return $block;
+    break;
+  }
+}
+
+function nesi_faq_content() {
+
+  $faqs = variable_get('nesi_faqs');
+  
+  $content = '';
+  $i = 0;
+  foreach ( $faqs as $faq ) {
+    $content .= '<div class="faq"><h4>' . $faq['question'] . '</h4><p>' . $faq['answer'] . '</p></div>';
+    $i++;
+  }
+
+  return $content;
+}
