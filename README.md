@@ -161,6 +161,7 @@ The quickest way to get familiar with BDD and Behat is to purchase the [knpunive
 * [behat.org](http://behat.org)
 * [getcomposer.org](http://getcomposer.org)
 * [Behat cheat sheet](http://blog.lepine.pro/wp-content/uploads/2012/03/behat-cheat-sheet-en.pdf)
+* [Blog post on using tags](http://everzet.com/post/1461842003/behat-v03)
 
 ## Theme Information
 
