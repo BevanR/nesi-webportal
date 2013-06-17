@@ -347,6 +347,15 @@ input, button, select, textarea {
   padding: 12px 20px;
 }
 
+.hero-full {
+  position: relative;
+  z-index: 10;
+}
+#home-hero .carousel-control {
+  cursor: pointer;
+  font-size: 3em;
+}
+
 .page-intro {
   background: #fafafa url(../assets/img/intro-bg-left.png) bottom left no-repeat;
   border: 0;
