@@ -893,7 +893,9 @@ function nesi_user_user_default_permissions() {
   $permissions['edit own expertise profile'] = array(
     'name' => 'edit own expertise profile',
     'roles' => array(
-      0 => 'authenticated user',
+      0 => 'advisor',
+      1 => 'nesi administrator',
+      2 => 'website engineer',
     ),
     'module' => 'profile2',
   );
