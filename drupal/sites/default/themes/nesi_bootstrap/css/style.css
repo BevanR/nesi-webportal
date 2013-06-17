@@ -337,6 +337,15 @@ input, button, select, textarea {
   padding: 12px 20px;
 }
 
+.hero-full {
+  position: relative;
+  z-index: 10;
+}
+#home-hero .carousel-control {
+  cursor: pointer;
+  font-size: 3em;
+}
+
 .page-intro {
   background: #fafafa url(../assets/img/intro-bg-left.png) bottom left no-repeat;
   border: 0;
@@ -817,7 +826,7 @@ div.radio {
 .page-apply-proposal-complete h1.page-header {
   display: none;
 }
-
+/*
 .nesi-confirmation-left {
   background: url(../assets/img/confirmation-bg-left.png);
   float: left;
@@ -875,6 +884,7 @@ div.radio {
   width: 52%;
 }
 
+
 .nesi-confirmation-center p {
   background: url(../assets/img/email-icon.png) left center no-repeat;
   color: #4b5b68;
@@ -882,6 +892,46 @@ div.radio {
   line-height: 26px;
   margin: 63px auto 0;
   padding: 0 0 0 95px;
+  text-align: left;
+  width: 39%;
+}
+*/
+
+.nesi-confirmation-center-inner {
+  background-color: #f8f8f8;
+  border: 1px solid #e3e3e3;
+  border-radius: 10px 10px 10px 10px;
+}
+.nesi-confirmation-center-inner h1 {
+  border-bottom: 1px solid #DCDCDC;
+  color: #4B5B68;
+  font-size: 4em;
+  line-height: 1.5em;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 15px 0;
+  text-align: center;
+}
+.nesi-confirmation-center-inner h2 {
+  border-bottom: 1px solid #DCDCDC;
+  color: #4B5B68;
+  font-size: 1.6em;
+  font-weight: normal;
+  line-height: 36px;
+  margin: 6px auto 0;
+  padding: 20px 27%;
+  text-align: center;
+}
+.nesi-confirmation-center-inner p {
+  background-color: transparent;
+  background-image: url("../assets/img/email-icon.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  color: #4B5B68;
+  font-size: 17px;
+  line-height: 26px;
+  margin: 10px auto 0;
+  padding: 10px 0 35px 95px;
   text-align: left;
   width: 39%;
 }
