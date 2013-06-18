@@ -29,7 +29,7 @@ Feature: User login
   @account-setup
   Scenario: Login and as researcher and create user profile
     Given I am logged in as "researcher"
-    Then I should see "behat-researcher"
+    Then I should see "richard.researcher"
     Given I fill in the following <formdetails>
       | field_type | form_id              | value             |
       | text       | First Name           |  Big              |
