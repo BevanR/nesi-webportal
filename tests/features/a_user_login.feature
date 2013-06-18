@@ -4,7 +4,7 @@ Feature: User login
   As a user
   I need to be able to login
 
-  @login-page
+  @login-page @nojs
   Scenario: View the Login page
     When I go to "/user/login"
     Then I should see "Researcher Access"
@@ -13,7 +13,7 @@ Feature: User login
       | Login using institution credentials |
       | Create a NeSI account               |
       
-  @validation
+  @validation @nojs
   Scenario Outline: Username validation: Valid username
     When I go to "/user/login"
     And I fill in "E-mail" with "<name>"
@@ -26,7 +26,7 @@ Feature: User login
     | 123453         |
     | mail@mail.com  |
 
-  @account-setup
+  @account-setup @nojs
   Scenario: Login and as researcher and create user profile
     Given I am logged in as "researcher"
     Then I should see "richard.researcher"
@@ -45,6 +45,7 @@ Feature: User login
       | select     | #edit-profile-researcher-profile-field-user-nationality-und  | New Zealand |
     Then I press "Save"
 
+  @nojs
   Scenario: Login and as researcher and view user profile
     Given I am logged in as "researcher"
     And I go to "/user"
@@ -52,4 +53,3 @@ Feature: User login
     And I should see the following <links>
       | links                 |
       | Edit profile          |
-
