@@ -59,6 +59,7 @@ function nesi_mstep_proposal_menu() {
   );
   
   // For development
+  // TODO set access for developers only
   $items['apply/pdf-theme'] = array(
     'title' => t('Email testing'),
     'page callback' => 'nesi_mstep_proposal_email_theme_page',
@@ -297,7 +298,8 @@ function nesi_mstep_proposal_step_2($form, &$form_state) {
     $form['buttons']['next']['#value'] = 'Next: Technical Details';  
     $form['prc'] = nesi_mstep_proposal_research_form($form_state);
   }
-  
+
+  // Add here for post grad form id/steps 
   return $form;
 }
 
@@ -354,7 +356,7 @@ function nesi_mstep_proposal_step_2_validate($form, &$form_state) {
     // User needs to choose a platform
     $platform = $form_state['values']['pdc-platform'];
     if (empty($platform)) {
-      form_set_error('pdc-platform', 'Please select an HPC platform.');
+      //form_set_error('pdc-platform', 'Please select an HPC platform.');
     }
   }
 }
@@ -463,31 +465,32 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->language = LANGUAGE_NONE;
     $p_node->uid = $user->uid;
 
+    dsm($form_state);
     // Proposal Development Class
-    $p_node->field_pdc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-start-date'];
-    $p_node->field_pdc_description[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-description'];
-    $p_node->field_pdc_pi_name[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-pi-name'];
-    $p_node->field_pdc_pi_email[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-pi-email'];
-    $p_node->field_pdc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-pi-phone'];
-    $p_node->field_pdc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-team-access'];
-    $p_node->field_pdc_team_experience[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-team-experience'];
+    $p_node->field_pdc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-start-date'];
+    $p_node->field_pdc_description[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-description'];
+    $p_node->field_pdc_pi_name[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-pi-name'];
+    $p_node->field_pdc_pi_email[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-pi-email'];
+    $p_node->field_pdc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-pi-phone'];
+    $p_node->field_pdc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-team-access'];
+    $p_node->field_pdc_team_experience[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-team-experience'];
 
     $p_node->field_pdc_proposed_hpc_platform[$p_node->language] = array();
-    $platforms = array_filter($form_state['ctools_object']->data['p1']['pdc-platform']);
+    $platforms = array_filter($form_state['ctools_object']->data['p1']['field-pdc-platform']);
     foreach ($platforms as $selected) {
       $p_node->field_pdc_proposed_hpc_platform[$p_node->language][] = array('value' => $selected);
     }
  
-    $p_node->field_pdc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-software'];
-    $p_node->field_pdc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-storage'];
+    $p_node->field_pdc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-software'];
+    $p_node->field_pdc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-storage'];
 
     $p_node->field_pdc_expert_support[$p_node->language] = array();
-    $support_items = array_filter($form_state['ctools_object']->data['p1']['pdc-expert-support']);
+    $support_items = array_filter($form_state['ctools_object']->data['p1']['field-pdc-expert-support']);
     foreach ($support_items as $selected) {
       $p_node->field_pdc_expert_support[$p_node->language][] = array('value' => $selected);
     }
 
-    $p_node->field_pdc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['pdc-further-information'];
+    $p_node->field_pdc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['field-pdc-additional-information'];
   }
 
   if ($proposal_type == 'research_proposal_class') {
@@ -498,6 +501,8 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->title = $p_title;
     $p_node->language = LANGUAGE_NONE;
     $p_node->uid = $user->uid;
+
+    dsm($form_state);
     
     // Research Proposal Class
     $p_node->field_prc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['p1']['prc-start-date'];

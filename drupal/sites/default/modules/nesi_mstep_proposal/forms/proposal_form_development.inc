@@ -1,109 +1,135 @@
 <?php
 
-function nesi_mstep_proposal_development_form() {
-
-  $form['project']['#type'] = 'fieldset';
-  $form['project']['#title'] = 'Project';
-
-  $form['project']['pdc-title'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Project Title'),
-    '#required' => TRUE,
-  );
-
-  $form['project']['pdc-start-date'] = array(
-    '#type' => 'date_popup',
-    '#date_format' => 'd-m-Y',
-    '#title' => t('Estimated project start date'),
-    '#description' => t('Please indicate the approximate date from which the HPC resource will be required.'),
-    '#required' => TRUE,
-  );
-
-  $form['project']['pdc-description'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Project description'),
-    '#description' => t('Please provide a description of the project such as the scientific goals.'),
-    '#required' => TRUE,
-  );
-
-  $form['team']['#type'] = 'fieldset';
-  $form['team']['#title'] = 'Principal Investigator and Team';
-
-  $form['team']['pdc-pi-name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Principal\'s name'),
-    '#required' => TRUE,
-  );
-
-  $form['team']['pdc-pi-email'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Principal\'s email'),
-    '#required' => TRUE,
-  );
-
-  $form['team']['pdc-pi-phone'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Principal\'s phone number'),
-    '#required' => TRUE,
-  );
-
-  $form['team']['pdc-team-access'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Project team members requiring access to the NeSI systems'),
-    '#description' => t('Please list any project team members (including the PI) who will need to access the NeSI systems.'),
-    '#required' => TRUE,
-  );
-
-  $form['team']['pdc-team-experience'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Project team\'s HPC experience'),
-    '#description' => t('Please indicate if the project team has used HPC resources in the past. If yes, please provide information on the architecture used.'),
-  );
-
-  $form['requirements']['#type'] = 'fieldset';
-  $form['requirements']['#title'] = 'Requirements';
-
-  $form['requirements']['pdc-platform'] = array(
-    '#type' => 'checkboxes',
-    '#title' => t('Desired HPC Platform'),
-    '#options' => nesi_mstep_proposal_platform_options(),
-    '#required' => TRUE,
-    '#default_value' => '',
-  ); 
-
-  $form['requirements']['pdc-software'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Software requirements'),
-    '#description' => t('Please indicate production code(s) to be used including the licence status as well as external libraries, or/and compilers, debuggers, profilers and other dependencies required for developing your HPC code.'),
-  );
-
-  $form['requirements']['pdc-storage'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Storage requirements'),
-    '#description' => t('Please indicate how much data storage (GB units) the project will need. Note that this is not archival storage, but disk space for a job\'s input and output data.'),
-  );
-
-  $form['additional']['#type'] = 'fieldset';
-  $form['additional']['#title'] = 'Additional Information';
-
-  $form['additional']['pdc-expert-support'] = array(
-    '#type' => 'checkboxes',
-    '#title' => t('Expert support'),
-    '#description' => 'Please check the appropriate box if the project team will need NeSI support/consultancy for:',
-    '#options' => array(
-      'software_installation' => 'Software Installation',   
-      'software_porting' => 'Software Porting',   
-      'software_optimisation' => 'Software Optimisation',   
-      'scaling_performance' => 'Scaling Performance',   
-    ),    
-  );
- 
-  $form['additional']['pdc-further-information'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Further information'),
-    '#description' => t('Please use this section to add any information which has not been covered elsewhere.'),
-  );
-
+function nesi_mstep_proposal_development_form() { 
+  $form_structure = nesi_mstep_form_structure('proposal_development_class');
+  $form = nesi_mstep_form_elements($form_structure);
   return $form;
 }
+
+function nesi_mstep_form_structure($content_type) {
+
+  // Get information about all the fields attached to the content type
+  $fields = field_info_instances("node",$content_type);
+  // Use entity api
+  //$node_wrapper = entity_metadata_wrapper('node', $node);
+  
+
+  // using field_group api
+  $unsorted_groups = field_group_info_groups('node', $content_type, 'default', TRUE);
+  usort($unsorted_groups,"nesi_mstep_sort_groups");
+
+  $groups = array();
+  foreach($unsorted_groups as $group) {
+    $groups[$group->group_name] = $group;
+  } 
+
+  // form array structure
+  // array('group_name' => 
+  //       array('field_name' 
+  //        => array('field_type' => 'textarea' , 'title' => 'My project' 
+  //        , 'description' => ' blah blah blah' , 'required' => TRUE )
+  //        ))
+
+  // creating a map for sorting
+  $group_map = array();
+  foreach($groups as $group) {
+
+    foreach($group->children as $index=>$group_field) {
+
+      $field = $fields[$group_field];
+      $group_map[$group->group_name][$group_field] = $field;
+    }
+  }
+  return $group_map;  
+}
+
+function nesi_mstep_sort_groups($a,$b){
+    return $a->weight - $b->weight;
+}
+
+
+function nesi_mstep_form_elements($form_structure) {
+
+  $form = array();
+  //dsm($form_structure);
+  foreach($form_structure as $group_name => $group) {
+
+    $group_name = str_replace('_' , '-' , $group_name);
+    foreach($group as $field) {
+      //dsm($field); 
+      $form[$group_name]['#type'] = 'fieldset';
+      $form[$group_name]['#title'] = 'Project';
+      $form_ele = $field['widget']['type'];
+      $field_name = str_replace('_' , '-' , $field['field_name']);
+      switch($form_ele) {
+        // Form element templates
+        case 'text_textfield':
+
+          $form[$group_name][$field_name] = array(
+             '#type'     => 'textfield',
+             '#title'    => $field['label'],
+             '#required' => TRUE, 
+             '#description' => $field['description'],
+             '#default_value' => $field['default_value'],
+           );
+          break;
+
+        case 'text_textarea':
+          $form[$group_name][$field_name] = array(
+             '#type'     => 'textarea',
+             '#title'    => $field['label'],
+             '#required' => TRUE,
+             '#description' => $field['description'],
+             '#default_value' => $field['default_value'],
+            ); 
+          break;
+
+        case 'date_popup':
+          $form[$group_name][$field_name] = array(
+             '#type'     => 'date_popup',
+             '#date_format' => 'd-m-Y',
+             '#title'    => $field['label'],
+             '#description' => $field['description'],
+             '#required' => TRUE,
+              );
+          break;
+
+        case 'options_buttons':
+          $form[$group_name][$field_name] = array(
+             '#type'     => 'checkboxes',
+             '#title'    => $field['label'],
+             '#options' => nesi_mstep_form_options($field_name),
+             '#description' => $field['description'],
+             '#required' => TRUE,
+              );
+          break;
+      }
+    }
+  }
+  return $form;
+}
+
+/**
+ * TODO : Findout where to look this up in the DB
+ */
+function nesi_mstep_form_options($field_name) {
+
+  switch($field_name) {
+
+    case 'field-pdc-proposed-hpc-platform':
+      $options = nesi_mstep_proposal_platform_options();
+     break; 
+
+    case 'field-pdc-expert-support':
+      $options = array(
+        'software_installation' => 'Software Installation',   
+        'software_porting' => 'Software Porting',   
+        'software_optimisation' => 'Software Optimisation',   
+        'scaling_performance' => 'Scaling Performance',   
+      ); 
+     break; 
+  }
+  return $options;
+}
+
 
