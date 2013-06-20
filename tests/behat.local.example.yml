@@ -3,11 +3,20 @@ default:
     parameters:
       drupal_users:
         researcher:
-          username: 'webscope'
-          password: 'Ahmooch8'
+          username: 'richard.researcher'
+          # @todo Add richard.researcher's password here.
+          password: ''
   extensions:
     Behat\MinkExtension\Extension:
-      base_url: 'http://nesidev-sam.webscope.net.nz'
+      # @todo Insert the basic auth credentials here if necessary.
+      base_url: 'http://web.test.nesi.org.nz'
+      # @todo Allow testing with self-signed SSL certificates.
+      # goutte:
+      #   guzzle_parameters:
+      #     curl.options:
+      #       CURLOPT_SSL_VERIFYPEER: false
+      #       CURLOPT_CERTINFO: false
+      #     ssl.certificate_authority: false
     Drupal\DrupalExtension\Extension:
       drush:
         alias: self

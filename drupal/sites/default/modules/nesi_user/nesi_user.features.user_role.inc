@@ -13,19 +13,19 @@ function nesi_user_user_default_roles() {
   // Exported role: advisor.
   $roles['advisor'] = array(
     'name' => 'advisor',
-    'weight' => '6',
+    'weight' => '4',
   );
 
   // Exported role: nesi administrator.
   $roles['nesi administrator'] = array(
     'name' => 'nesi administrator',
-    'weight' => '4',
+    'weight' => '5',
   );
 
   // Exported role: researcher.
   $roles['researcher'] = array(
     'name' => 'researcher',
-    'weight' => '3',
+    'weight' => '2',
   );
 
   // Exported role: reviewer.
@@ -37,7 +37,7 @@ function nesi_user_user_default_roles() {
   // Exported role: website engineer.
   $roles['website engineer'] = array(
     'name' => 'website engineer',
-    'weight' => '5',
+    'weight' => '6',
   );
 
   return $roles;

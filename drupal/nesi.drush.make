@@ -7,6 +7,7 @@ api = 2
 projects[drupal][version] = 7.22
 
 ; Modules
+projects[admin_views][version] = 1.2
 projects[admin_menu][version] = 3.0-rc4
 projects[advanced_help][version] = 1.0
 projects[bugherd][version] = 1.0-beta3
