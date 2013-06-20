@@ -108,7 +108,7 @@ function _nesi_user_modal_login_block_view() {
             <h2>Login using your institutions credentials</h2>
             <div class="tuakiri">
               <p>We allow students, academics, alumni and researchers to get secure and seamless access to our computer resources using one set of credentials granted by their home organisation.</p>
-              <img alt="Logos" src="'.$base_url.'/'.$asset_path.'/assets/img/uni-logos.gif">
+              <img alt="Logos" src="'.$base_url.'/'.$asset_path.'/assets/img/institution-logos.jpg">
               <p><a class="btn" href="'.shib_auth_generate_login_url().'">Log in</a></p>
             </div>
             </div>
