@@ -1,6 +1,7 @@
 <?php
 
 function nesi_mstep_proposal_development_form() { 
+
   $form_structure = nesi_mstep_form_structure('proposal_development_class');
   $form = nesi_mstep_form_elements($form_structure);
   return $form;
@@ -10,8 +11,6 @@ function nesi_mstep_form_structure($content_type) {
 
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
-  // Use entity api
-  //$node_wrapper = entity_metadata_wrapper('node', $node);
   
 
   // using field_group api
@@ -33,7 +32,8 @@ function nesi_mstep_form_structure($content_type) {
   // creating a map for sorting
   $group_map = array();
   foreach($groups as $group) {
-
+    
+    $group_map[$group->group_name]['title'] = $group->label;
     foreach($group->children as $index=>$group_field) {
 
       $field = $fields[$group_field];
@@ -51,16 +51,21 @@ function nesi_mstep_sort_groups($a,$b){
 function nesi_mstep_form_elements($form_structure) {
 
   $form = array();
-  //dsm($form_structure);
   foreach($form_structure as $group_name => $group) {
 
     $group_name = str_replace('_' , '-' , $group_name);
+
     foreach($group as $field) {
-      //dsm($field); 
+
+      if(is_string($field)) {
+        $title = $field; 
+        continue;
+      }
       $form[$group_name]['#type'] = 'fieldset';
-      $form[$group_name]['#title'] = 'Project';
+      $form[$group_name]['#title'] = $title;
       $form_ele = $field['widget']['type'];
       $field_name = str_replace('_' , '-' , $field['field_name']);
+
       switch($form_ele) {
         // Form element templates
         case 'text_textfield':
