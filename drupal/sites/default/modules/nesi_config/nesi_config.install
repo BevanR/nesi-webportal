@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Update handlers for NeSI.org.nz.
+ */
+
+/**
+ * Fixes file paths in the database after files dir moved.
+ *
+ * Files dir moved from sites/www.nesi.org.nz to sites/default/files.
+ * The node body field, files table and file_managed table needed updating.
+ */
+function nesi_config_update_7100() {
+  $tables = array(
+    'files' => 'filepath',
+    'file_managed' => 'uri',
+    'field_data_body' => 'body_value',
+  );
+  foreach ($tables as $table => $column) {
+    db_query("UPDATE {$table} SET $column = REPLACE($column, 'sites/www.nesi.org.nz/files', 'sites/default/files') WHERE $column LIKE '%sites/www.nesi.org.nz/files%'");
+  }
+  return t('File paths updated in files table, file_managed table and Body field.');
+}
