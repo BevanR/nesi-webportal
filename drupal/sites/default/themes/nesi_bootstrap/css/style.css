@@ -1905,3 +1905,202 @@ div.radio {
 .nesi-pdf #proposal-statistics .inner > div {
   width: 30%;
 }
+/* blog */
+.title-wrapper {
+    display: inline-block;
+    margin-right: 1%;
+    width: 78%;
+}
+.title-wrapper h1 {
+  
+}
+.title-wrapper h2 {
+  font-family: 'open-sans';
+  font-size: 1.2em;
+  font-weight: lighter;
+  line-height: 1.4em;
+}
+.share-wrapper {
+    display: inline-block;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 20%;
+}
+.share-wrapper ul {
+  list-style: none;
+  margin: 0;
+}
+.share-wrapper .sharethis-wrapper span {
+  margin-bottom: 5px;
+}
+.share-wrapper .sharethis-wrapper span .stButton {
+  margin-bottom: 0;
+}
+.submitted-info-wrapper {
+  border-bottom: 1px solid #D14F63;
+  border-top: 1px solid #D14F63;
+  display: block;
+  margin: 25px 0;
+  padding: 10px 0;
+}
+.submitted-info-wrapper .author-picture {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: top;
+  width: 64px;
+}
+.submitted-info-wrapper .sub-info-wrapper {
+  display: inline-block;
+}
+.submitted-info-wrapper .sub-info-wrapper .author-info {
+  font-family: Arial;
+  font-size: 0.9em;
+  margin: 0;
+}
+.submitted-info-wrapper .sub-info-wrapper .date-created {
+  font-family: Arial;
+  font-size: 0.9em;
+  margin: 0;
+}
+.submitted-info-wrapper .sub-info-wrapper .custom-tags p {
+  font-family: Arial;
+  font-size: 0.9em;
+  margin: 0;
+}
+.image-wrapper {
+  
+}
+.image-wrapper .image-title {
+  display: block;
+  font-family: 'open-sans';
+  font-style: italic;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+  margin-top: 5px;
+}
+.body-wrapper {
+  margin-bottom: 2em;
+}
+.comments-wrapper h3 {
+  color: #4B5B68;
+  font-family: 'open-sans';
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+/* blog aside section */
+.block-views {
+    float: left;
+    margin-bottom: 2em;
+    font-size: 1em;
+}
+.block-views .block-title {
+  font-size: 1.1em;
+}
+.block-views .arrow-list-style .views-row {
+  background-image: url("../assets/img/background-arrow-list-marker.png");
+  background-position: left 5px;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+  padding-left: 15px;
+}
+.block-views .arrow-list-style .views-row a {
+  color: #404040;
+}
+.block-views .latest-posts {
+
+}
+.block-views .latest-posts .views-row {
+  float:left;
+  margin-bottom: 20px;
+}
+.block-views .latest-posts .views-field-field-image {
+  float: left;
+}
+.block-views .latest-posts .views-field-title,
+.block-views .latest-posts .views-field-body,
+.block-views .latest-posts .views-field-created {
+  clear: right;
+  float: right;
+  width: 53%;
+}
+.block-views .latest-posts .views-field-title a {
+  color: #4b5b68;
+  font-weight: bold;
+}
+.block-views .latest-posts .views-field-body span {
+
+}
+.block-views .latest-posts .views-field-created span {
+  color: #767778;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+/* blog page */
+.view.blog-page {
+
+}
+.view.blog-page .views-row {
+  float:left;
+  margin-bottom: 5em;
+  width: 100%;
+}
+.view.blog-page .views-field-field-image {
+    float: left;
+    margin-bottom: 1em;
+    margin-right: 2em;
+}
+.view.blog-page .views-field-title,
+.view.blog-page .views-field-body {
+  display: block;
+}
+.view.blog-page .views-field-field-user-firstname,
+.view.blog-page .views-field-field-user-lastname,
+.view.blog-page .views-field-comment-count,
+.view.blog-page .views-field-created {
+  display: inline-block;
+}
+.view.blog-page .views-field-field-user-firstname {
+  background-image: url("../assets/img/icon-calendar-blog.png");
+  background-position: left 5px;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+.view.blog-page .views-field-comment-count {
+  background-image: url("../assets/img/icon-text-box-bubble.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  float: right;
+  height: 21px;
+  text-align: right;
+  width: 23px;
+}
+.view.blog-page .views-field-comment-count span {
+  color: white;
+  display: block;
+  font-size: 0.8em;
+  line-height: 1em;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+.view.blog-page .views-field-title h2 {
+  color: #404040;
+  font-size: 1em;
+  font-weight: lighter;
+}
+.view.blog-page .views-field-title h2 a {
+    color: #404040;
+    font-size: 1.5em;
+}
+.view.blog-page .views-field-body span {
+
+}
+.view.blog-page .views-field-field-user-firstname span,
+.view.blog-page .views-field-field-user-lastname span,
+.view.blog-page .views-field-created span {
+  color: #767778;
+  font-size: 0.85em;
+  font-style: italic;
+  font-weight: lighter;
+}
