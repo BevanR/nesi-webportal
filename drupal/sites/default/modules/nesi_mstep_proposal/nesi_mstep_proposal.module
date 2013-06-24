@@ -488,8 +488,6 @@ function _nesi_mstep_proposal_save(&$form_state) {
   //$proposal_json = json_encode($form_state['ctools_object']->data);
   //$p_node->bp_container[$p_node->language][0]['value'] = $proposal_json;
 
-  dsm('Outside');
-  dsm($form_state);
   // Save proposal data
   if ($proposal_type == 'proposal_development_class') {
     

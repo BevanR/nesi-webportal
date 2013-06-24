@@ -103,11 +103,6 @@ DirectoryIndex index.php index.html index.htm
   # Redirect insecure HTTP to secure HTTPS, including dev, staging and
   # geographic data centre specific domain names. (E.g. web.tamaki.nesi.org.nz
   # web.ogdc.nesi.org.nz).
-  <IfModule mod_ssl.c>
-    RewriteCond %{HTTP_HOST} .
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [last,redirect=301]
-  </IfModule>
 
   # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
   # VirtualDocumentRoot and the rewrite rules are not working properly.

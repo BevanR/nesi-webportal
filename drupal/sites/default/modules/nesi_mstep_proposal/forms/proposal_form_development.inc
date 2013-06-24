@@ -107,7 +107,7 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
       $form_ele = $field['widget']['type'];
       $field_name = str_replace('_' , '-' , $field['field_name']);
       $default_value = $form_state['ctools_object']->data['form_data'][$field_name] ? $form_state['ctools_object']->data['form_data'][$field_name] : '' ;
-      //dsm($default_value);
+
       switch($form_ele) {
         // Form element templates
         case 'text_textfield':
@@ -177,6 +177,14 @@ function nesi_mstep_form_options($field_name) {
         'scaling_performance' => 'Scaling Performance',   
       ); 
      break; 
+
+    case 'field-prc-expert-support':
+      $options = array(
+        'yes' => 'Yes',   
+        'no' => 'No',   
+      ); 
+     break; 
+
   }
   return $options;
 }
