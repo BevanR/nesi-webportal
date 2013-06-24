@@ -6,8 +6,13 @@ function nesi_mstep_proposal_research_form($form_state) {
   $form['prc-form-title'] = array(
     '#markup' => '<h1>Part 1 of 3 - Project and Team details</h1>',
   );
+  $form_ele['group-project']['node-title'] = array(
+      '#type'     => 'textfield',
+      '#title'    => 'Proposal Title',
+      '#required' => TRUE, 
+    );
 
-  $form_structure = nesi_mstep_form_structure('proposal_research_class');
+  $form_structure = nesi_mstep_form_structure('proposal_research_class' , $form_ele);
   $form = nesi_mstep_form_elements($form_structure, $form , $form_state);
 
   unset($form['group-usage']);
@@ -27,8 +32,9 @@ function nesi_mstep_proposal_research_form_part_2($form_state) {
   );
 
   $form_structure = nesi_mstep_form_structure('proposal_research_class');
-  $form = nesi_mstep_form_elements($form_structure , $form_state);
+  $form = nesi_mstep_form_elements($form_structure ,$form, $form_state);
 
+  //dsm($form_state);
   unset($form['group-project']);
   unset($form['group-peer-reviewed']);
   unset($form['group-budget']);
@@ -38,7 +44,7 @@ function nesi_mstep_proposal_research_form_part_2($form_state) {
   return $form;
 }
 
-function nesi_mstep_proposal_research_form_part_3() {
+function nesi_mstep_proposal_research_form_part_3($form_state) {
 
   $form = array();
   $form['prc-form-title'] = array(
@@ -46,7 +52,7 @@ function nesi_mstep_proposal_research_form_part_3() {
   );
 
   $form_structure = nesi_mstep_form_structure('proposal_research_class');
-  $form = nesi_mstep_form_elements($form_structure);
+  $form = nesi_mstep_form_elements($form_structure, $form, $form_state);
 
   unset($form['group-project']);
   unset($form['group-peer-reviewed']);

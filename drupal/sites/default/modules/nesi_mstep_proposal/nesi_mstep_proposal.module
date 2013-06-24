@@ -455,6 +455,8 @@ function _nesi_mstep_proposal_save(&$form_state) {
   //$proposal_json = json_encode($form_state['ctools_object']->data);
   //$p_node->bp_container[$p_node->language][0]['value'] = $proposal_json;
 
+  dsm('Outside');
+  dsm($form_state);
   // Save proposal data
   if ($proposal_type == 'proposal_development_class') {
     
@@ -494,6 +496,7 @@ function _nesi_mstep_proposal_save(&$form_state) {
 
   if ($proposal_type == 'research_proposal_class') {
 
+    dsm($form_state);
     $p_node = new stdClass(); // Create a new node object
     $p_node->type = 'proposal_research_class';
     node_object_prepare($p_node); // Set some default values

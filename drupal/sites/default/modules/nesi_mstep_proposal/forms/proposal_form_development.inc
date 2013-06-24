@@ -3,20 +3,30 @@
 function nesi_mstep_proposal_development_form($form_state) { 
 
   $form = array();
-  $form['group-project']['node-title'] = array(
+  $form_ele['group-project']['node-title'] = array(
       '#type'     => 'textfield',
       '#title'    => 'Project Title',
       '#required' => TRUE, 
-      'default_value' => $form_state['ctools_object']->data['form_data'][$field_name] ? $form_state['ctools_object']->data['form_data'][$field_name] : '' ,
-
     );
-  $form_structure = nesi_mstep_form_structure('proposal_development_class');
+
+  $form_structure = nesi_mstep_form_structure('proposal_development_class' , $form_ele);
   $form = nesi_mstep_form_elements($form_structure , $form);
   return $form;
 }
 
-function nesi_mstep_form_structure($content_type) {
+/**
+ * Takes a content type and returns a structured array
+ *
+ * $group_map =  array('group_name' => 
+ *                    array('field_name' 
+ *                          => array('field_type' => 'textarea' , 'title' => 'My project' 
+ *                          , 'description' => ' blah blah blah' , 'required' => TRUE )
+ *                     ))
+ * Additional form elements may also added
+ */
+function nesi_mstep_form_structure($content_type , $form_ele = array()) {
 
+  $group_map_from_form = nesi_mstep_form_ele_to_field($form_ele);
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
   
@@ -30,13 +40,6 @@ function nesi_mstep_form_structure($content_type) {
     $groups[$group->group_name] = $group;
   } 
 
-  // form array structure
-  // array('group_name' => 
-  //       array('field_name' 
-  //        => array('field_type' => 'textarea' , 'title' => 'My project' 
-  //        , 'description' => ' blah blah blah' , 'required' => TRUE )
-  //        ))
-
   // creating a map for sorting
   $group_map = array();
   foreach($groups as $group) {
@@ -48,18 +51,47 @@ function nesi_mstep_form_structure($content_type) {
       $group_map[$group->group_name][$group_field] = $field;
     }
   }
+  $group_map = array_merge_recursive($group_map_from_form, $group_map);
   return $group_map;  
 }
 
+/**
+ * Sorts groups from highest to lowest
+ */
 function nesi_mstep_sort_groups($a,$b){
     return $a->weight - $b->weight;
 }
 
+/**
+ * Takes a form element and
+ */
+function nesi_mstep_form_ele_to_field($form) {
 
-function nesi_mstep_form_elements($form_structure , $form) {
+  $group_map = array();
+  foreach($form as $group_name => $group) {
+    $group_name = str_replace('-' , '_' , $group_name);
+    $field = array();
+    foreach($group as $field_name => $form_data) {
 
-  //dsm($form_state);
-  //dsm($form_structure);
+      $field_name = str_replace('-' , '_' , $field_name);
+      if(is_string($form_data)) continue;
+
+      $field['widget']['type'] = 'text_textfield';
+      $field['label'] = $form_data['#title'];
+      $field['field_name'] = $field_name;
+
+      $group_map[$group_name][$field_name] = $field;
+    }
+  }
+
+  return $group_map;
+}
+
+/**
+ * Builds a form api element from a content type field
+ */ 
+function nesi_mstep_form_elements($form_structure , $form, $form_state = array()) {
+
   foreach($form_structure as $group_name => $group) {
 
     $group_name = str_replace('_' , '-' , $group_name);
@@ -75,7 +107,7 @@ function nesi_mstep_form_elements($form_structure , $form) {
       $form_ele = $field['widget']['type'];
       $field_name = str_replace('_' , '-' , $field['field_name']);
       $default_value = $form_state['ctools_object']->data['form_data'][$field_name] ? $form_state['ctools_object']->data['form_data'][$field_name] : '' ;
-
+      //dsm($default_value);
       switch($form_ele) {
         // Form element templates
         case 'text_textfield':
@@ -136,9 +168,6 @@ function nesi_mstep_form_options($field_name) {
       $options = nesi_mstep_proposal_platform_options();
      break; 
 
-    case 'field-pdc-proposed-hpc-platform':
-      $options = nesi_mstep_proposal_platform_options();
-     break; 
 
     case 'field-pdc-expert-support':
       $options = array(
