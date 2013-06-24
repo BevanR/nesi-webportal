@@ -10,6 +10,76 @@
 function nesi_ft_proposal_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-proposal_development_class-field_access_policy_status'.
+  $fields['node-proposal_development_class-field_access_policy_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_access_policy_status',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => 'Accepted',
+        ),
+        'allowed_values_function' => '',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_development_class',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_access_policy_status',
+      'label' => 'Access Policy Status',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 0,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '4',
+      ),
+    ),
+  );
+
   // Exported field: 'node-proposal_development_class-field_p_project_id'.
   $fields['node-proposal_development_class-field_p_project_id'] = array(
     'field_config' => array(
@@ -91,7 +161,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -922,6 +992,76 @@ function nesi_ft_proposal_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-proposal_postgrad_class-field_access_policy_status'.
+  $fields['node-proposal_postgrad_class-field_access_policy_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_access_policy_status',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => 'Accepted',
+        ),
+        'allowed_values_function' => '',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_postgrad_class',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_access_policy_status',
+      'label' => 'Access Policy Status',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 0,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '7',
+      ),
+    ),
+  );
+
   // Exported field: 'node-proposal_postgrad_class-field_p_project_id'.
   $fields['node-proposal_postgrad_class-field_p_project_id'] = array(
     'field_config' => array(
@@ -1003,7 +1143,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '13',
+        'weight' => '8',
       ),
     ),
   );
@@ -3068,6 +3208,76 @@ function nesi_ft_proposal_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-proposal_research_class-field_access_policy_status'.
+  $fields['node-proposal_research_class-field_access_policy_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_access_policy_status',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => 'Accepted',
+        ),
+        'allowed_values_function' => '',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'proposal_research_class',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_access_policy_status',
+      'label' => 'Access Policy Status',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 0,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '7',
+      ),
+    ),
+  );
+
   // Exported field: 'node-proposal_research_class-field_p_project_id'.
   $fields['node-proposal_research_class-field_p_project_id'] = array(
     'field_config' => array(
@@ -3149,7 +3359,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '13',
+        'weight' => '8',
       ),
     ),
   );
@@ -5300,32 +5510,28 @@ function nesi_ft_proposal_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Additional usage information');
+  t('Access Policy Status');
+  t('Amount');
   t('Background');
   t('Benefits from HPC');
-  t('CPU Hours Bluegene');
-  t('CPU Hours Intel');
-  t('CPU Hours Power6');
-  t('CPU Hours Power7');
   t('CPU core Hours');
+  t('CPU core hours required using BlueGene/P');
+  t('CPU core hours required using P575/POWER6');
+  t('CPU core hours required using P755/POWER7');
+  t('CPU core hours required using the Intel cluster');
   t('Data Transfer');
   t('Desired HPC Platform');
+  t('Duration of the grant');
   t('Estimated Run Length');
   t('Estimated average length of each run (in wall-clock hours)');
   t('Estimated average number of CPUs per run');
   t('Estimated number of runs/simulations');
+  t('Estimated project start date');
   t('Expected journal article(s), conference proceedings or other publications that will come from this research.');
   t('Expert Support');
   t('Explanatory notes for "Expert support" section ');
-  t('Funding Amount');
   t('Further Information');
-  t('Grant Duration');
-  t('Grant Start Date');
-  t('Grant Title');
   t('Name of peer-reviewed research grant provider');
-  t('Principal\'s email');
-  t('Principal\'s name');
-  t('Principal\'s phone number');
   t('Please check the appropriate box if the project team will need NeSI support/consultancy for: ');
   t('Please describe how access to HPC resources will benefit your project.');
   t('Please indicate how much data storage (GB units) the project will need. Note that this is not archival storage, but disk space for a job\'s input and output data.');
@@ -5334,24 +5540,37 @@ function nesi_ft_proposal_field_default_fields() {
   t('Please indicate if you would like to request an Expert from NeSI. Please provide an explanation of what this is intended to cover and an estimate of hours in the space below. Experts can "contribute to optimizing your applications and software to better scale and perform on our HPC facilities".');
   t('Please indicate production code(s) to be used including the licence status as well as external libraries, or/and compilers, debuggers, profilers and other dependencies required for developing your HPC code.');
   t('Please indicate production code(s) to be used including the license status as well as external libraries, or/and compilers, debuggers, profilers and other dependencies required for developing your HPC code.');
+  t('Please indicate the approximate date from which the HPC resource will be required.');
   t('Please indicate unit, e.g. GB. Note that this is not archival storage, but disk space for a job\'s input and output data.');
+  t('Please list any project team members (including the PI) who will need to access the NeSI systems.');
   t('Please outline the scientific outcomes of your proposal. You are welcome to provide a reference to an overarching proposal, rather than duplicating content.');
   t('Please outline the team\'s experience with HPC. This should include HPC architectures, programming languages, parallelisation methods and packages the team has experience with. Please also include names of HPC facilities that the research team has collaborated with in the past.');
   t('Please provide a description of the project such as the scientific goals.');
   t('Please provide any additional information on usage requirements.');
+  t('Please provide the duration of the grant or award.');
   t('Please provide the name of your institutional, national or international grant provider.');
+  t('Please provide the start date of the grant or award.');
+  t('Please provide the title of the research grant or award that is associated this with proposal.');
   t('Please use this section to add any information which has not been covered elsewhere.');
+  t('Principal\'s email');
+  t('Principal\'s name');
+  t('Principal\'s phone number');
   t('Project Deliverables');
   t('Project Description');
   t('Project Reference');
+  t('Project team members requiring access to the NeSI systems');
   t('Project team\'s HPC experience');
   t('Scientific Goals');
   t('See also http://www.nesi.org.nz/facilities');
   t('Software Requirements');
-  t('Estimated project start date');
+  t('Start Date');
+  t('Start date of the grant');
   t('Storage Requirements');
-  t('Project team members requiring access to the NeSI systems');
+  t('Supervisor email');
+  t('Supervisor name');
+  t('Supervisor phone number');
   t('The amount of funding approved for HPC.');
+  t('Title of research grant');
 
   return $fields;
 }
