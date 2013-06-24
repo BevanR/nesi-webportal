@@ -167,6 +167,7 @@ function _nesi_mstep_proposal_steps() {
   return array( 
     'step1' => t('Get Started'),
     'step2' => t('Proposal Intro'),
+    'step3' => t('Access Policy'),
   );
 }
 
@@ -176,6 +177,7 @@ function _nesi_mstep_proposal_steps_research_proposal() {
     'step2' => t('Proposal Intro'),
     'step3' => t('Proposal Team'),
     'step4' => t('Completion'),
+    'step5' => t('Access Policy'),
   );
 }
 
@@ -191,6 +193,9 @@ function _nesi_mstep_proposal_forms() {
     'step2' => array(
       'form id' => 'nesi_mstep_proposal_step_2'
     ),
+    'step3' => array(
+      'form id' => 'nesi_mstep_proposal_accept_terms'
+    ), 
   );
 }
 
@@ -210,6 +215,9 @@ function _nesi_mstep_proposal_forms_research_proposal() {
     ), 
     'step4' => array(
       'form id' => 'nesi_mstep_proposal_step_4'
+    ), 
+    'step5' => array(
+      'form id' => 'nesi_mstep_proposal_accept_terms'
     ), 
   );
 }
@@ -315,6 +323,30 @@ function nesi_mstep_proposal_step_3($form, &$form_state) {
   }
  
   return $form;
+}
+
+/**
+ * Final proposal step to display access policy with acceptance options.
+ */
+function nesi_mstep_proposal_accept_terms($form, &$form_state) {
+
+  $proposal_selection = $form_state['ctools_object']->data['proposal-type'];
+
+  drupal_set_title('Access Guidelines'); 
+  $form['buttons']['next']['#value'] = 'I Accept';  
+  $form['access-policy'] = nesi_mstep_proposal_access_policy();
+ 
+  return $form;  
+}
+
+function nesi_mstep_proposal_access_policy() {
+  return array(
+    '#markup' => '<div class="proposal-step-access-policy">
+                    <h3 class="num">Access policy</h3>
+                    <p>The Access Policy is ... </p>
+                    <p>Have you read the above policy and accept terms of access?</p>
+                  </div>'
+  ); 
 }
 
 function nesi_mstep_proposal_step_4($form, &$form_state) {
