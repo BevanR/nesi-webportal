@@ -1,0 +1,9 @@
+name = NeSi Area of Research
+core = 7.x
+package = NeSI
+version = 7.x-1.0
+project = nesi_area_of_research
+dependencies[] = features
+dependencies[] = taxonomy
+features[features_api][] = api:1
+features[taxonomy][] = areas_of_research
