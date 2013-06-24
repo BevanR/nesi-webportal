@@ -44,6 +44,7 @@ projects[references][version] = 2.1
 projects[pathauto][version] = 1.2
 projects[profile2][version] = 1.3
 projects[rules][version] = 2.3
+projects[sharethis][version] = 2.5
 projects[shib_auth][version] = 4.0
 projects[smtp][version] = 1.0
 projects[strongarm][version] = 2.0
