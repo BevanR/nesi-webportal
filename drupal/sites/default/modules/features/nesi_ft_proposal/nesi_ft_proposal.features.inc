@@ -27,6 +27,14 @@ function nesi_ft_proposal_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'proposal_postgrad_class' => array(
+      'name' => t('Proposal Postgraduate Class'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'proposal_research_class' => array(
       'name' => t('Proposal Research Class'),
       'base' => 'node_content',
