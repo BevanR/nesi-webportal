@@ -215,11 +215,3 @@ function nesi_bootstrap_theme() {
     ),
   );
 }
-
-/* Remove "Add New Comment" link */
-function nesi_bootstrap_node_view_alter(&$build){
-    // remove "add comment" link from node teaser mode display
-    unset($build['links']['comment']['#links']['comment-add']);
-    // and if logged out this will cause another list item to appear, so let's get rid of that
-    unset($build['links']['comment']['#links']['comment_forbidden']);
-}
