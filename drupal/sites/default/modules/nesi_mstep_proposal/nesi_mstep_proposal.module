@@ -425,7 +425,7 @@ function nesi_mstep_proposal_step_4_validate($form, &$form_state) {
   // User needs to indicate if they need support
   $support = $form_state['values']['prc-expert-support'];
   if (empty($support)) {
-    form_set_error('prc-expert-support', 'Please indicate if you need expert support from NeSI');
+    #form_set_error('prc-expert-support', 'Please indicate if you need expert support from NeSI');
   }
 }
 
