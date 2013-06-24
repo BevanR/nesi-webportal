@@ -34,7 +34,6 @@ function nesi_mstep_proposal_research_form_part_2($form_state) {
   $form_structure = nesi_mstep_form_structure('proposal_research_class');
   $form = nesi_mstep_form_elements($form_structure ,$form, $form_state);
 
-  //dsm($form_state);
   unset($form['group-project']);
   unset($form['group-peer-reviewed']);
   unset($form['group-budget']);
