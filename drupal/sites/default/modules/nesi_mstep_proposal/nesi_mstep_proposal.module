@@ -11,6 +11,7 @@
 include_once 'forms/proposal_form_intro.inc';
 include_once 'forms/proposal_form_development.inc';
 include_once 'forms/proposal_form_research.inc';
+include_once 'forms/proposal_form_postgrad.inc';
 include_once 'includes/nesi_mstep_proposal_email.inc';
 include_once 'includes/nesi_mstep_proposal_pdf.inc';
 
@@ -257,6 +258,9 @@ function nesi_mstep_proposal_complete($proposal_type = NULL) {
     if ($proposal_type == 'prc') {
       $proposal_label = 'Research Proposal ';
     }
+    if ($proposal_type == 'pgc') {
+      $proposal_label = 'Postgraduate Proposal ';
+    }
   }
 
   return array(
@@ -308,6 +312,12 @@ function nesi_mstep_proposal_step_2($form, &$form_state) {
     $form['prc'] = nesi_mstep_proposal_research_form($form_state);
   }
 
+  if ($proposal_selection == 'proposal_postgrad_class') {
+    drupal_set_title('Postgraduate Class: Technical Project Proposal'); 
+    $form['buttons']['next']['#value'] = 'Next: Technical Details';  
+    $form['prc'] = nesi_mstep_proposal_postgrad_form($form_state);
+  }
+
   // Add here for post grad form id/steps 
   return $form;
 }
@@ -320,6 +330,12 @@ function nesi_mstep_proposal_step_3($form, &$form_state) {
     drupal_set_title('Research Class: Technical Project Proposal'); 
     $form['buttons']['next']['#value'] = 'Next: Support Information';  
     $form['prc'] = nesi_mstep_proposal_research_form_part_2($form_state);
+  }
+
+  if ($proposal_selection == 'proposal_postgrad_class') {
+    drupal_set_title('Postgraduate Class: Technical Project Proposal'); 
+    $form['buttons']['next']['#value'] = 'Next: Support Information';  
+    $form['prc'] = nesi_mstep_proposal_postgrad_form_part_2($form_state);
   }
  
   return $form;
@@ -357,6 +373,11 @@ function nesi_mstep_proposal_step_4($form, &$form_state) {
     drupal_set_title('Research Class: Technical Project Proposal'); 
     $form['prc'] = nesi_mstep_proposal_research_form_part_3();
   }
+
+  if ($proposal_selection == 'proposal_postgrad_class') {
+    drupal_set_title('Postgraduate Class: Technical Project Proposal'); 
+    $form['pgc'] = nesi_mstep_proposal_postgrad_form_part_3();
+  }
   
   return $form;
 }
@@ -370,7 +391,7 @@ function nesi_mstep_proposal_step_1_validate($form, &$form_state) {
   // Check that a proposal type has been selected
   $proposal_selection = $form_state['values']['proposal-type'];
 
-  $options = array('proposal_development_class','research_proposal_class');
+  $options = array('proposal_development_class','research_proposal_class','proposal_postgrad_class');
    
   if (!in_array($proposal_selection, $options)) {
     form_set_error('proposal-type', 'Please select a proposal type.');
@@ -418,6 +439,11 @@ function nesi_mstep_proposal_step_1_submit($form, &$form_state) {
     $form_state['ctools_object']->form_info['order'] = _nesi_mstep_proposal_steps_research_proposal();
     $form_state['ctools_object']->form_info['forms'] = _nesi_mstep_proposal_forms_research_proposal(); 
   }
+  // Collect extra steps for postgrad proposal
+  if ($form_state['ctools_object']->data['proposal-type'] == 'proposal_postgrad_class') {
+    $form_state['ctools_object']->form_info['order'] = _nesi_mstep_proposal_steps_research_proposal();
+    $form_state['ctools_object']->form_info['forms'] = _nesi_mstep_proposal_forms_research_proposal(); 
+  }
 }
 
 function nesi_mstep_proposal_step_2_submit($form, &$form_state) {
@@ -459,6 +485,9 @@ function nesi_mstep_proposal_wizard_finish(&$form_state) {
   }  
   if ($proposal_type == 'research_proposal_class') {
     $proposal_redirect = '/prc';
+  }  
+  if ($proposal_type == 'proposal_postgrad_class') {
+    $proposal_redirect = '/pgc';
   }  
 
   // Clear the form data cache from the session
