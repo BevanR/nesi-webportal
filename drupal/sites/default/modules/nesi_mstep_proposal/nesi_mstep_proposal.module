@@ -201,7 +201,7 @@ function _nesi_mstep_proposal_forms() {
 }
 
 function _nesi_mstep_proposal_forms_research_proposal() {
-  // These steps are used for Research Proposal workflow
+  // These steps are used for Research Proposal and Postgraduate workflow
 
   // Each step relates to a form callback
   return array(     
@@ -318,7 +318,6 @@ function nesi_mstep_proposal_step_2($form, &$form_state) {
     $form['prc'] = nesi_mstep_proposal_postgrad_form($form_state);
   }
 
-  // Add here for post grad form id/steps 
   return $form;
 }
 
