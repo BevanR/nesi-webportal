@@ -15,6 +15,7 @@
     
     <div class="share-wrapper">
       <?php print render($content['links']); ?>
+      <div class="comment-count-wrapper"><span><?php print $node->comment_count; ?></span></div>
     </div>
 
     <?php if ($display_submitted): ?>
@@ -73,7 +74,6 @@
   </div>
   
   <div class="comments-wrapper">
-    <h3>Comments</h3>
     <?php print render($content['comments']); ?>
   </div>
 
