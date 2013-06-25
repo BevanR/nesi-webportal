@@ -3,7 +3,7 @@ Feature: Submit a proposal
   As a researcher
   I need to submit proposals
   
-  @access-policy
+  @access-policy @nojs
   Scenario: Login and as researcher and download access policy
     Given I am logged in as "researcher"
     And I go to "/access-policy"
@@ -71,13 +71,14 @@ Feature: Submit a proposal
     And I should see "Thank you"
 
 
-  @proposal
+  @proposal @nojs
   Scenario: Login and as researcher and a submitted proposal
     Given I am logged in as "researcher"
     And I go to "/user/dashboard"
     When I click "Development Proposal - INTEL"
     Then I should see "James Henry Trotter"
 
+  @nojs
   Scenario: Login and as researcher and view all submitted proposals
     Given I am logged in as "researcher"
     And I go to "/user/dashboard"

@@ -263,7 +263,7 @@ $aliases['prod'] = array(
   'root' => '/srv/www/platforms/drupal',
   'uri' => 'http://www.nesi.org.nz',
   'path-aliases' => array(
-     '%dump-dir' => '/tmp',
+     '%dump-dir' => '~/sql-dumps',
   ),
   'command-specific' => array(
     'sql-sync' => array(
@@ -277,4 +277,7 @@ $aliases['dev'] = array(
   'parent' => '@prod',
   'remote-host' => 'web.dev.nesi.org.nz',
   'uri' => 'http://web.dev.nesi.org.nz',
+  'path-aliases' => array(
+     '%dump-dir' => '/tmp',
+  ),
 );

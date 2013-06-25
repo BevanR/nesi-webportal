@@ -28,9 +28,9 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
   $profile_data = profile2_load_by_user($user_data->uid);
 
   $admin_links = '';
-  if (in_array('nesi-admin', $user_data->roles) || in_array('administrator', $user_data->roles )) {
+  if (user_access('nesi website config')) {
     $admin_links .= '<li><a href="'.$base_url.'/nesi-config">Administration Dashboard</a></li>';
-  } 
+  }
 
   $output = '';
   $output .= '<ul id="nesi-user-profile-dropdown" class="dropdown-menu pull-right">';
@@ -215,3 +215,33 @@ function nesi_bootstrap_theme() {
     ),
   );
 }
+
+/* Remove "Add New Comment" link */
+function nesi_bootstrap_node_view_alter(&$build){
+  // remove "add comment" link from node teaser mode display
+  unset($build['links']['comment']['#links']['comment-add']);
+  // and if logged out this will cause another list item to appear, so let's get rid of that
+  unset($build['links']['comment']['#links']['comment_forbidden']);
+}
+
+/**
+ * Implements hook_preprocess_comment().
+ */
+function nesi_bootstrap_preprocess_comment(&$vars) {
+  $comment = $vars['comment'];
+  $vars['author'] = theme('username', array('account' => $comment));
+  $vars['created'] = format_date($comment->created, 'extra_long_without_time', '');
+  $vars['permalink'] = '';
+  $vars['submitted'] = t('Posted by !username on !datetime', array('!username' => $vars['author'], '!datetime' => $vars['created']));
+}
+
+/**
+ * Implements hook_form_comment_form_alter().
+ */
+function nesi_bootstrap_form_comment_form_alter(&$form, &$form_state) {
+  $form['author']['name']['#title'] = 'Name';
+  $form['author']['mail']['#title'] = 'Email';
+  $form['author']['homepage']['#access'] = FALSE;
+
+}
+   

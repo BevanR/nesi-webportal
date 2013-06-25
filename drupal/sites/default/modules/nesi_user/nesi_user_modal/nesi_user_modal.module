@@ -72,8 +72,14 @@ function _nesi_user_modal_ajax_callback($form, $form_state) {
   if ($form['#id'] === 'user-login') {
     if (!user_is_anonymous()) {
       drupal_set_message('Successful login');
-      // Redirect to site configuration if user has access.
-      $commands[] = ctools_ajax_command_redirect(user_access('nesi website config') ? 'nesi-config' : nesi_user_redirect_path());
+      // Redirect to apply or profile form if not an admin.
+      if (user_access('nesi website config') || user_access('administer modules')) {
+        $path = substr($form['#action'], strlen(base_path()));
+      }
+      else {
+        $path = nesi_user_redirect_path();
+      }
+      $commands[] = ctools_ajax_command_redirect($path);
     }
   }
   else {
@@ -102,7 +108,7 @@ function _nesi_user_modal_login_block_view() {
             <h2>Login using your institutions credentials</h2>
             <div class="tuakiri">
               <p>We allow students, academics, alumni and researchers to get secure and seamless access to our computer resources using one set of credentials granted by their home organisation.</p>
-              <img alt="Logos" src="'.$base_url.'/'.$asset_path.'/assets/img/uni-logos.gif">
+              <img alt="Logos" src="'.$base_url.'/'.$asset_path.'/assets/img/institution-logos.jpg">
               <p><a class="btn" href="'.shib_auth_generate_login_url().'">Log in</a></p>
             </div>
             </div>

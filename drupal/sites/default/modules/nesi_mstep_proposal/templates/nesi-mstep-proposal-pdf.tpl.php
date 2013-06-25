@@ -16,6 +16,13 @@ $development_class_map = array(
   'scaling_performance'   => 'Scaling Performance',
 );
 
+$group_heading_map = array(
+  'group_project' => 'Project',
+  'group_team' => 'Principal Investigator and Team',
+  'group_requirements' => 'Requirements',
+  'group_additional' => 'Additional Information',
+);
+
 switch ($node->type) {
   case 'proposal_development_class' :
     $proposal_type = 'Technical Development';
@@ -77,11 +84,12 @@ switch ($node->type) {
           </div>
 
 <?php $count = 0; ?>
-<?php foreach($data as $field_group) :?>
+<?php foreach($data as $group_name => $field_group) :?>
   <fieldset class="field-group-fieldset form-wrapper <?php print (++$count%2 ? 'odd' : 'even'); ?>">
     <legend><span class="fieldset-legend">Project</span></legend>
     <div class="fieldset-wrapper">
   <?php foreach($field_group as $field=>$val) :?>
+<?php if ($val['field_label'] <> 'Project Reference') { ?>
     <div class="field">
     <div class="field-label"><?php print $val['field_label']  ?></div>
 
@@ -97,6 +105,7 @@ switch ($node->type) {
     endif;
   ?>
     </div>
+<?php } ?>
  <?php
   endforeach;
   ?> 

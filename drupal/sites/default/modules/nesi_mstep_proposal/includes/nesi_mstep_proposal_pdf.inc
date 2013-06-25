@@ -78,6 +78,7 @@ function nesi_mstep_proposal_data($nid) {
   $groups = field_group_info_groups('node', $content_type, 'default', TRUE);
 
   // creating a map for sorting
+  $filter_out = array('field_p_project_id');
   $group_map = array();
   foreach($groups as $group) {
     foreach($group->children as $index=>$group_field) {
@@ -88,6 +89,9 @@ function nesi_mstep_proposal_data($nid) {
   // put the field data into the correct field group
   $ndata = array();
   foreach($data as $field=>$data) {
+
+    // ALERT! ALERT!! Bevan don't whip me it is a hack!! TODO
+    if( 'field_p_project_id' == $field || 'title' == $field) continue;
     if(isset($group_map[$field])) {
       $group_name = $group_map[$field];
       $ndata[$group_name][$field] = $data;

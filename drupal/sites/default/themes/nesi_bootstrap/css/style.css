@@ -6,6 +6,16 @@ body {
   padding-top: 0px;
 }
 
+/* Drupal throbber fix */
+html.js input.form-autocomplete {
+  background-position: 100% 8px; /* LTR */
+  background-repeat: no-repeat;
+}
+
+html.js input.throbbing {
+  background-position: 100% -13px; /* LTR */
+}
+
 /* Styles - Dan to review */
 /* default block title */
 h2.block-title {
@@ -29,22 +39,22 @@ a.tabledrag-handle .handle {
 
 /* jQuery Colorpicker fix inputs */
 .colorpicker input {
-	background-color: transparent;
-	border: 1px solid transparent;
-	position: absolute;
-	font-size: 10px;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #898989;
-	top: 4px;
-	right: 11px;
-	text-align: right;
-	margin: 0;
-	padding: 0;
-	height: 11px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  position: absolute;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #898989;
+  top: 4px;
+  right: 11px;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  height: 11px;
   width: auto;
 }
 .colorpicker_hex input {
-	right: 6px;
+  right: 6px;
 }
 
 .profile2-researcher-profile .field-label {
@@ -335,6 +345,15 @@ input, button, select, textarea {
 #home-hero .slide-title span {
   margin-bottom: 0;
   padding: 12px 20px;
+}
+
+.hero-full {
+  position: relative;
+  z-index: 10;
+}
+#home-hero .carousel-control {
+  cursor: pointer;
+  font-size: 3em;
 }
 
 .page-intro {
@@ -817,7 +836,7 @@ div.radio {
 .page-apply-proposal-complete h1.page-header {
   display: none;
 }
-
+/*
 .nesi-confirmation-left {
   background: url(../assets/img/confirmation-bg-left.png);
   float: left;
@@ -875,6 +894,7 @@ div.radio {
   width: 52%;
 }
 
+
 .nesi-confirmation-center p {
   background: url(../assets/img/email-icon.png) left center no-repeat;
   color: #4b5b68;
@@ -882,6 +902,46 @@ div.radio {
   line-height: 26px;
   margin: 63px auto 0;
   padding: 0 0 0 95px;
+  text-align: left;
+  width: 39%;
+}
+*/
+
+.nesi-confirmation-center-inner {
+  background-color: #f8f8f8;
+  border: 1px solid #e3e3e3;
+  border-radius: 10px 10px 10px 10px;
+}
+.nesi-confirmation-center-inner h1 {
+  border-bottom: 1px solid #DCDCDC;
+  color: #4B5B68;
+  font-size: 4em;
+  line-height: 1.5em;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 15px 0;
+  text-align: center;
+}
+.nesi-confirmation-center-inner h2 {
+  border-bottom: 1px solid #DCDCDC;
+  color: #4B5B68;
+  font-size: 1.6em;
+  font-weight: normal;
+  line-height: 36px;
+  margin: 6px auto 0;
+  padding: 20px 27%;
+  text-align: center;
+}
+.nesi-confirmation-center-inner p {
+  background-color: transparent;
+  background-image: url("../assets/img/email-icon.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  color: #4B5B68;
+  font-size: 17px;
+  line-height: 26px;
+  margin: 10px auto 0;
+  padding: 10px 0 35px 95px;
   text-align: left;
   width: 39%;
 }
@@ -1844,4 +1904,309 @@ div.radio {
 
 .nesi-pdf #proposal-statistics .inner > div {
   width: 30%;
+}
+/* blog */
+.title-wrapper {
+    display: inline-block;
+    margin-right: 1%;
+    width: 78%;
+}
+.title-wrapper h1 {
+  
+}
+.title-wrapper h2 {
+  font-family: 'open-sans';
+  font-size: 1.2em;
+  font-weight: lighter;
+  line-height: 1.4em;
+}
+.share-wrapper {
+    display: inline-block;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 20%;
+}
+.share-wrapper ul {
+  list-style: none;
+  margin: 0;
+}
+.share-wrapper .sharethis-wrapper span {
+  margin-bottom: 5px;
+}
+.share-wrapper .sharethis-wrapper span .stButton {
+  margin-bottom: 0;
+}
+.share-wrapper .comment-count-wrapper {
+  background-image: url("../assets/img/icon-text-box-bubble.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 21px;
+  text-align: right;
+  width: 23px;
+}
+.share-wrapper .comment-count-wrapper span {
+  color: white;
+  display: block;
+  font-size: 0.8em;
+  line-height: 1em;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+.submitted-info-wrapper {
+  border-bottom: 1px solid #D14F63;
+  border-top: 1px solid #D14F63;
+  display: block;
+  margin: 25px 0;
+  padding: 10px 0;
+}
+.submitted-info-wrapper .author-picture {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: top;
+  width: 64px;
+}
+.submitted-info-wrapper .sub-info-wrapper {
+  display: inline-block;
+}
+.submitted-info-wrapper .sub-info-wrapper .author-info {
+  font-family: Arial;
+  font-size: 0.9em;
+  margin: 0;
+}
+.submitted-info-wrapper .sub-info-wrapper .date-created {
+  font-family: Arial;
+  font-size: 0.9em;
+  margin: 0;
+}
+.submitted-info-wrapper .sub-info-wrapper .custom-tags p {
+  font-family: Arial;
+  font-size: 0.9em;
+  margin: 0;
+}
+.image-wrapper {
+  
+}
+.image-wrapper .image-title {
+  display: block;
+  font-family: 'open-sans';
+  font-style: italic;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+  margin-top: 5px;
+}
+.body-wrapper {
+  margin-bottom: 2em;
+}
+.comments-wrapper section#comments h2.title {
+  color: #4B5B68;
+  font-family: 'open-sans';
+  font-size: 1.5em;
+  font-weight: lighter;
+  padding-bottom: 0.5em;
+}
+.comments-wrapper section#comments .well {
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  border-radius: 0 0 0 0;
+  box-shadow: none;
+  margin: 0;
+  min-height: auto;
+  padding: 1em 0 0 0;
+}
+.comments-wrapper section#comments .comment {
+  border-top: 1px solid #4B5B68;
+  margin-bottom: 0.5em;
+  padding-bottom: 1em;
+  padding-top: 0.5em;
+}
+.comments-wrapper section#comments .indented {
+  margin-left: 3em;
+}
+.comments-wrapper section#comments .block-left {
+  display: inline-block;
+  margin: 0;
+  vertical-align: top;
+  width: 25%;
+}
+.comments-wrapper section#comments .block-right {
+  display: inline-block;
+  margin: 0;
+  width: 73%;
+}
+.comments-wrapper section#comments .author {
+  margin: 0;
+}
+.comments-wrapper section#comments .author a,
+.comments-wrapper section#comments .author span {
+  font-family: 'open-sans';
+  font-size: 1em;
+  font-weight: bold;
+}
+.comments-wrapper section#comments .content {
+  margin: 0 0 1em 0;
+}
+.comments-wrapper section#comments .content span {
+  font-family: 'open-sans';
+  font-size: 1em;
+  font-weight: lighter;
+}
+.comments-wrapper section#comments .submitted {
+  background-image: url("../assets/img/icon-calendar-blog.png");
+  background-position: left 5px;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  color: #767778;
+  font-size: 0.85em;
+  font-style: italic;
+  font-weight: lighter;
+}
+.comments-wrapper section#comments .reply {
+  margin: 0;
+}
+.comments-wrapper section#comments .reply a {
+  font-family: 'open-sans';
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+.comments-wrapper section#comments .reply ul {
+  list-style: none;
+  margin: 0;
+}
+.comments-wrapper section#comments #comment-form-wrapper .title {
+  border-bottom: 1px solid #4B5B68;
+  margin-bottom: 1em;
+}
+.comments-wrapper section#comments #comment-form-wrapper label {
+    display: inline-block;
+    vertical-align: top;
+    width: 15%;
+}
+.comments-wrapper section#comments #comment-form-wrapper .controls {
+    display: inline-block;
+    width: 75%;
+}
+.comments-wrapper section#comments #comment-form-wrapper input.form-text {
+    width: 98%;
+}
+.comments-wrapper section#comments #comment-form-wrapper button#edit-submit {
+  margin-left: 15%;
+}
+/* blog aside section */
+.block-views {
+    float: left;
+    margin-bottom: 2em;
+    font-size: 1em;
+}
+.block-views .block-title {
+  font-size: 1.1em;
+}
+.block-views .arrow-list-style .views-row {
+  background-image: url("../assets/img/background-arrow-list-marker.png");
+  background-position: left 5px;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+  padding-left: 15px;
+}
+.block-views .arrow-list-style .views-row a {
+  color: #404040;
+}
+.block-views .latest-posts {
+
+}
+.block-views .latest-posts .views-row {
+  float:left;
+  margin-bottom: 20px;
+}
+.block-views .latest-posts .views-field-field-image {
+  float: left;
+}
+.block-views .latest-posts .views-field-title,
+.block-views .latest-posts .views-field-body,
+.block-views .latest-posts .views-field-created {
+  clear: right;
+  float: right;
+  width: 53%;
+}
+.block-views .latest-posts .views-field-title a {
+  color: #4b5b68;
+  font-weight: bold;
+}
+.block-views .latest-posts .views-field-body span {
+
+}
+.block-views .latest-posts .views-field-created span {
+  color: #767778;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+/* blog page */
+.view.blog-page {
+
+}
+.view.blog-page .views-row {
+  float:left;
+  margin-bottom: 5em;
+  width: 100%;
+}
+.view.blog-page .views-field-field-image {
+    float: left;
+    margin-bottom: 1em;
+    margin-right: 2em;
+}
+.view.blog-page .views-field-title,
+.view.blog-page .views-field-body {
+  display: block;
+}
+.view.blog-page .views-field-field-user-firstname,
+.view.blog-page .views-field-field-user-lastname,
+.view.blog-page .views-field-comment-count,
+.view.blog-page .views-field-created {
+  display: inline-block;
+}
+.view.blog-page .views-field-field-user-firstname {
+  background-image: url("../assets/img/icon-calendar-blog.png");
+  background-position: left 5px;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+.view.blog-page .views-field-comment-count {
+  background-image: url("../assets/img/icon-text-box-bubble.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  float: right;
+  height: 21px;
+  text-align: right;
+  width: 23px;
+}
+.view.blog-page .views-field-comment-count span {
+  color: white;
+  display: block;
+  font-size: 0.8em;
+  line-height: 1em;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+.view.blog-page .views-field-title h2 {
+  color: #404040;
+  font-size: 1em;
+  font-weight: lighter;
+}
+.view.blog-page .views-field-title h2 a {
+    color: #404040;
+    font-size: 1.5em;
+}
+.view.blog-page .views-field-body span {
+
+}
+.view.blog-page .views-field-field-user-firstname span,
+.view.blog-page .views-field-field-user-lastname span,
+.view.blog-page .views-field-created span {
+  color: #767778;
+  font-size: 0.85em;
+  font-style: italic;
+  font-weight: lighter;
 }

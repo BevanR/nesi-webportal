@@ -7,6 +7,7 @@ api = 2
 projects[drupal][version] = 7.22
 
 ; Modules
+projects[admin_views][version] = 1.2
 projects[admin_menu][version] = 3.0-rc4
 projects[advanced_help][version] = 1.0
 projects[bugherd][version] = 1.0-beta3
@@ -15,7 +16,7 @@ projects[bundle_copy][version] = 1.1
 projects[countries][version] = 2.1
 projects[date][version] = 2.6
 projects[devel][version] = 1.3
-projects[ds][version] = 2.3
+projects[ds][version] = 2.4
 projects[email][version] = 1.2
 projects[email_registration][version] = 1.1
 projects[entity][version] = 1.0-rc3
@@ -43,6 +44,7 @@ projects[references][version] = 2.1
 projects[pathauto][version] = 1.2
 projects[profile2][version] = 1.3
 projects[rules][version] = 2.3
+projects[sharethis][version] = 2.5
 projects[shib_auth][version] = 4.0
 projects[smtp][version] = 1.0
 projects[strongarm][version] = 2.0
