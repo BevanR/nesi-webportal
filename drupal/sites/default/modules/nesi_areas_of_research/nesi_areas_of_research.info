@@ -1,9 +1,9 @@
-name = NeSi Area of Research
+name = NeSi Areas of Research
 core = 7.x
-package = NeSI
-php = 5.2.4
-version = 7.x-1.1
-project = nesi_area_of_research
+package = NeSi
+version = 7.x-1.0
+project = nesi_areas_of_research
+dependencies[] = ctools
 dependencies[] = features
 dependencies[] = taxonomy
 dependencies[] = views

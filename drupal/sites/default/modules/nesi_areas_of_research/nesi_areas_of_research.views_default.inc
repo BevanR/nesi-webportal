@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nesi_area_of_research.views_default.inc
+ * nesi_areas_of_research.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function nesi_area_of_research_views_default_views() {
+function nesi_areas_of_research_views_default_views() {
   $export = array();
 
   $view = new view();

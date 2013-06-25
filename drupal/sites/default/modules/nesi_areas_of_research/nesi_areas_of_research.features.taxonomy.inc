@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nesi_area_of_research.features.taxonomy.inc
+ * nesi_areas_of_research.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function nesi_area_of_research_taxonomy_default_vocabularies() {
+function nesi_areas_of_research_taxonomy_default_vocabularies() {
   return array(
     'areas_of_research' => array(
       'name' => 'Areas of Research',
