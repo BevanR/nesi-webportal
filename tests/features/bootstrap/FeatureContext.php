@@ -153,6 +153,7 @@ class FeatureContext extends DrupalContext {
 
     if (strtolower($user) == strtolower($username)) {
       // Already logged in.
+      echo "Already logged in \n";
       return;
     }
 
@@ -167,6 +168,8 @@ class FeatureContext extends DrupalContext {
     // If I see this, I'm not logged in at all so log the user in.
     $element->fillField('edit-name', $username);
     $element->fillField('edit-pass', $passwd);
+    
+    echo "Filling password fields \n";
     $submit = $element->findButton('edit-submit');
     if (empty($submit)) {
       throw new Exception('No submit button at ' . $this->getSession()->getCurrentUrl());
@@ -174,7 +177,7 @@ class FeatureContext extends DrupalContext {
 
     // Log in.
     $submit->click();
-    $this->getSession()->wait(2000);
+    //$this->getSession()->wait(2000);
     // TODO this function doesn't work when using selenium
     // Might need to stick a 'wait' in here 
     //$user = $this->whoami();
