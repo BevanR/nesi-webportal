@@ -29,7 +29,7 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
   $group_map_from_form = nesi_mstep_form_ele_to_field($form_ele);
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
-  
+
   // using field_group api
   $unsorted_groups = field_group_info_groups('node', $content_type, 'default', TRUE);
   usort($unsorted_groups,"nesi_mstep_sort_groups");
@@ -143,13 +143,36 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
           break;
 
         case 'options_buttons':
-          $form[$group_name][$field_name] = array(
-             '#type'     => 'checkboxes',
-             '#title'    => $field['label'],
-             '#options' => nesi_mstep_form_options($field_name),
-             '#description' => $field['description'],
-             '#required' => TRUE,
-              );
+
+          // Hmmm nested switch...
+          // The problem here is that it's not possible to differentiate 
+          // between checkboxes and radios with the field data returned
+          switch($field_name) {
+
+            case 'field-prc-expert-support':
+             $form[$group_name][$field_name] = array(
+                  '#type' => 'radios',
+                  '#title' => $field['label'],
+                  '#description' => $field['description'],
+                  '#options' => array('yes' => 'Yes', 'no' => 'No'),
+                  '#required' => TRUE,
+                  '#default_value' => $default_value,
+                ); 
+
+              break;
+
+            default:
+              $form[$group_name][$field_name] = array(
+                 '#type'     => 'checkboxes',
+                 '#title'    => $field['label'],
+                 '#options' => nesi_mstep_form_options($field_name),
+                 '#description' => $field['description'],
+                 '#required' => TRUE,
+                 '#default_value' => $default_value,
+                  );
+
+            }
+  
           break;
       }
     }
