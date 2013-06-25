@@ -16,6 +16,21 @@ function nesi_cs_team_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '-8',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'hpc_architectures' => array(
       'name' => 'HPC Architectures',
@@ -24,6 +39,21 @@ function nesi_cs_team_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '-10',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'hpc_software' => array(
       'name' => 'HPC Software & Applications',
@@ -32,6 +62,21 @@ function nesi_cs_team_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '-7',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'interests' => array(
       'name' => 'Interests',
@@ -40,6 +85,21 @@ function nesi_cs_team_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '-6',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'programming_languages' => array(
       'name' => 'Programming Languages',
@@ -48,6 +108,21 @@ function nesi_cs_team_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '-9',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'science_domains' => array(
       'name' => 'Science Domains',
@@ -56,6 +131,21 @@ function nesi_cs_team_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '-5',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
   );
 }

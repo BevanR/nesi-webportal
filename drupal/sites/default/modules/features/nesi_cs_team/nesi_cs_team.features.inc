@@ -67,7 +67,8 @@ function nesi_cs_team_default_profile2_type() {
     "type" : "expertise",
     "label" : "Experience and Expertise",
     "weight" : "0",
-    "data" : { "registration" : 0 }
+    "data" : { "registration" : 0 },
+    "rdf_mapping" : []
   }');
   return $items;
 }
