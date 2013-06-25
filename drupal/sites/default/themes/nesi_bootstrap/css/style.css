@@ -543,15 +543,7 @@ input, button, select, textarea {
 }
 
 #nesi-mstep-proposal-step-1 h3,
-#nesi-mstep-proposal-step-1 p/*
-,
-#nesi-mstep-proposal-step-2 h3,
-#nesi-mstep-proposal-step-2 p,
-#nesi-mstep-proposal-step-3 h3,
-#nesi-mstep-proposal-step-3 p,
-#nesi-mstep-proposal-step-4 h3,
-#nesi-mstep-proposal-step-4 p
-*/ {
+#nesi-mstep-proposal-step-1 p {
   margin-left: 55px;
 }
 
@@ -642,14 +634,7 @@ input, button, select, textarea {
 }
 
 #edit-intro-form {
-  /* border-left: 1px solid #aaa; */
   margin-left: 56%;
-/*
-  float: right;
-  min-height: 430px;
-  padding-left: 3%;
-  width: 40%;
-*/
 }
 
 #edit-intro-text div {
