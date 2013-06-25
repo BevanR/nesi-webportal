@@ -22,6 +22,12 @@ function nesi_blog_default_fe_block_settings() {
 community/blogs/*',
     'roles' => array(),
     'themes' => array(
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => '0',
+      ),
       'nesi_bootstrap' => array(
         'region' => 'sidebar_second',
         'status' => '1',
@@ -43,6 +49,12 @@ community/blogs/*',
 community/blogs/*',
     'roles' => array(),
     'themes' => array(
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => '0',
+      ),
       'nesi_bootstrap' => array(
         'region' => 'sidebar_second',
         'status' => '1',
@@ -64,6 +76,12 @@ community/blogs/*',
 community/blogs/*',
     'roles' => array(),
     'themes' => array(
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => '0',
+      ),
       'nesi_bootstrap' => array(
         'region' => 'sidebar_second',
         'status' => '1',
@@ -84,6 +102,12 @@ community/blogs/*',
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => '0',
+      ),
       'nesi_bootstrap' => array(
         'region' => '',
         'status' => 0,
