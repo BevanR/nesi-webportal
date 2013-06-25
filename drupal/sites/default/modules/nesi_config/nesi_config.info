@@ -5,3 +5,4 @@ package = NeSI
 version = 7.x-0.5
 project = nesi_config
 configure = admin/config/nesi/website
+dependencies[] = nesi_ft_all_projects
