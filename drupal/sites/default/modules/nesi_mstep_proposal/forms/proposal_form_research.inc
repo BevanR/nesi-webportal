@@ -39,6 +39,8 @@ function nesi_mstep_proposal_research_form_part_2($form_state) {
   unset($form['group-budget']);
   unset($form['group-team']);
   unset($form['group-additional']);
+  unset($form['group-software']['field-prc-proposed-hpc-platform']);
+  unset($form['group-software']['field-prc-cpu-core-hours']);
 
   return $form;
 }

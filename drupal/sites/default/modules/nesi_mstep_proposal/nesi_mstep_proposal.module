@@ -51,7 +51,7 @@ function nesi_mstep_proposal_menu() {
   );
 
   $items['apply/access-policy'] = array(
-    'title' => t('Access Guidelines'),
+    'title' => t('Access Policy'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('nesi_mstep_proposal_accept_terms_form'),
     'access callback' => TRUE,
@@ -345,13 +345,18 @@ function nesi_mstep_proposal_step_3($form, &$form_state) {
  */
 function nesi_mstep_proposal_accept_terms_form($form, &$form_state) {
 
-  $form['access-policy'] = nesi_mstep_proposal_access_policy();
+  $form['access-policy'] = array(
+    '#markup' => nesi_mstep_proposal_access_policy(),
+  );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('I Accept'),
+    '#value' => t('I accept'),
     '#submit' => array('nesi_mstep_proposal_accept_terms_submit'),
+    '#attributes' => array(
+      'class' => array('btn-primary'),
+    ),
   );
   $form['actions']['reject'] = array(
     '#type' => 'submit',
@@ -369,7 +374,7 @@ function nesi_mstep_proposal_accept_terms_submit($form, &$form_state) {
   $proposal = node_load($node_id);
 
   if ($proposal) {
-    if ($form_state['triggering_element']['#value'] == 'I Accept') {
+    if ($form_state['triggering_element']['#value'] == t('I accept')) {
       // Update access policy status for this project: 1 = ACCEPTED
       $proposal->field_access_policy_status[LANGUAGE_NONE][0]['value'] = 1;
       node_save($proposal);
@@ -394,13 +399,8 @@ function nesi_mstep_proposal_accept_terms_submit($form, &$form_state) {
 }
 
 function nesi_mstep_proposal_access_policy() {
-  return array(
-    '#markup' => '<div class="proposal-step-access-policy">
-                    <h3 class="num">Access policy</h3>
-                    <p>The Access Policy is ... </p>
-                    <p>Have you read the above policy and accept terms of access?</p>
-                  </div>'
-  ); 
+  $policy = render(node_view(node_load(variable_get('nesi_access_policy_nid', 145)), 'full'));
+  return '<div class="scrollable-frame">' . $policy . '</div>';
 }
 
 function nesi_mstep_proposal_step_4($form, &$form_state) {
@@ -485,15 +485,23 @@ function nesi_mstep_proposal_step_1_submit($form, &$form_state) {
 }
 
 function nesi_mstep_proposal_step_2_submit($form, &$form_state) {
-  $form_state['ctools_object']->data['form_data'] = $form_state['values'];
+  if (is_array($form_state['ctools_object']->data['form_data'])) {
+    $responses = array_merge($form_state['ctools_object']->data['form_data'], $form_state['values']);
+    $form_state['ctools_object']->data['form_data'] = $responses;
+  }
+  else {
+    $form_state['ctools_object']->data['form_data'] = $form_state['values'];
+  }
 }
 
 function nesi_mstep_proposal_step_3_submit($form, &$form_state) {
-  $form_state['ctools_object']->data['form_data'] = $form_state['values'];
+  $responses = array_merge($form_state['ctools_object']->data['form_data'], $form_state['values']);
+  $form_state['ctools_object']->data['form_data'] = $responses;
 }
 
 function nesi_mstep_proposal_step_4_submit($form, &$form_state) {
-  $form_state['ctools_object']->data['form_data'] = $form_state['values'];
+  $responses = array_merge($form_state['ctools_object']->data['form_data'], $form_state['values']);
+  $form_state['ctools_object']->data['form_data'] = $responses;
 }
 
 /**
@@ -591,109 +599,90 @@ function _nesi_mstep_proposal_save(&$form_state) {
 
     
     // Research Proposal Class
-    $p_node->field_prc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-start-date'];
-    $p_node->field_prc_scientific_goals[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-scientific-goals'];
-    $p_node->field_prc_hpc_benefits[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-hpc-benefits'];
-    $p_node->field_prc_project_deliverables[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-deliverables'];
-    $p_node->field_prc_funding_provider[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-grant-provider'];
-    $p_node->field_prc_grant_title[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-grant-title'];
-    $p_node->field_prc_grant_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-grant-start-date'];
-    $p_node->field_prc_grant_duration[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-grant-duration'];
-    $p_node->field_prc_funding_amount[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-funding-amount'];
-    $p_node->field_prc_pi_name[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-pi-name'];
-    $p_node->field_prc_pi_email[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-pi-email'];
-    $p_node->field_prc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-pi-phone'];
-    $p_node->field_prc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-team-access'];
-    $p_node->field_prc_hpc_background[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-team-experience'];
+    $p_node->field_prc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-start-date'];
+    $p_node->field_prc_scientific_goals[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-scientific-goals'];
+    $p_node->field_prc_hpc_benefits[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-hpc-benefits'];
+    $p_node->field_prc_project_deliverables[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-project-deliverables'];
+    $p_node->field_prc_funding_provider[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-funding-provider'];
+    $p_node->field_prc_grant_title[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-grant-title'];
+    $p_node->field_prc_grant_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-grant-start-date'];
+    $p_node->field_prc_grant_duration[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-grant-duration'];
+    $p_node->field_prc_funding_amount[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-funding-amount'];
+    $p_node->field_prc_pi_name[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-pi-name'];
+    $p_node->field_prc_pi_email[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-pi-email'];
+    $p_node->field_prc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-pi-phone'];
+    $p_node->field_prc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-team-access'];
+    $p_node->field_prc_hpc_background[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-hpc-background'];
 
     //form_data
-    $p_node->field_prc_estimated_simulations[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-num-simulations'];
-    $p_node->field_prc_estimated_cpus[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-num-cpus'];
-    $p_node->field_prc_estimated_run_length[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-run-length'];
-    $p_node->field_prc_estimated_wc_hours[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-wchours-per-run'];
-    $p_node->field_prc_allocation_profile[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-usage-additional'];
-    $p_node->field_prc_cpu_hours_intel[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-cpu-hours-intel'];
-    $p_node->field_prc_cpu_hours_power6[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-cpu-hours-power6'];
-    $p_node->field_prc_cpu_hours_power7[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-cpu-hours-power7'];
-    $p_node->field_prc_cpu_hours_bluegene[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-cpu-hours-bluegene'];
-    $p_node->field_prc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-storage-requirements'];
-    $p_node->field_prc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-software'];
-    $p_node->field_prc_data_transfer[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-data-transfer'];
+    $p_node->field_prc_estimated_simulations[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-estimated-simulations'];
+    $p_node->field_prc_estimated_cpus[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-estimated-cpus'];
+    $p_node->field_prc_estimated_run_length[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-estimated-run-length'];
+    $p_node->field_prc_estimated_wc_hours[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-estimated-wc-hours'];
+    $p_node->field_prc_allocation_profile[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-allocation-profile'];
+    $p_node->field_prc_cpu_hours_intel[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-cpu-hours-intel'];
+    $p_node->field_prc_cpu_hours_power6[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-cpu-hours-power6'];
+    $p_node->field_prc_cpu_hours_power7[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-cpu-hours-power7'];
+    $p_node->field_prc_cpu_hours_bluegene[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-cpu-hours-bluegene'];
+    $p_node->field_prc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-storage-requirements'];
+    $p_node->field_prc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-software-requirements'];
+    $p_node->field_prc_data_transfer[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-data-transfer'];
 
     // Expert Support
-    $p_node->field_prc_expert_support[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-expert-support'];
-    $p_node->field_prc_expert_support_notes[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-expert-support-notes'];
-    $p_node->field_prc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['prc-expert-further-information'];
+    $p_node->field_prc_expert_support[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-expert-support'];
+    $p_node->field_prc_expert_support_notes[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-expert-support-notes'];
+    $p_node->field_prc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-additional-information'];
+  }
 
+  if ($proposal_type == 'proposal_postgrad_class') {
+
+    dsm($form_state);
+    $p_node = new stdClass(); // Create a new node object
+    $p_node->type = 'proposal_postgrad_class';
+    node_object_prepare($p_node); // Set some default values
+    $p_node->title = $p_title;
+    $p_node->language = LANGUAGE_NONE;
+    $p_node->uid = $user->uid;
+
+    // Postgraduate Proposal Class
+    $p_node->field_pgc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-start-date'];
+    $p_node->field_pgc_scientific_goals[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-scientific-goals'];
+    $p_node->field_pgc_hpc_benefits[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-hpc-benefits'];
+    $p_node->field_pgc_project_deliverables[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-project-deliverables'];
+    $p_node->field_pgc_supervisor_name[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-supervisor-name'];
+    $p_node->field_pgc_supervisor_email[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-supervisor-email'];
+    $p_node->field_pgc_supervisor_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-supervisor-phone'];
+    $p_node->field_pgc_funding_amount[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-funding-amount'];
+    $p_node->field_pgc_pi_name[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-pi-name'];
+    $p_node->field_pgc_pi_email[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-pi-email'];
+    $p_node->field_pgc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-pi-phone'];
+    $p_node->field_pgc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-team-access'];
+    $p_node->field_pgc_hpc_background[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-hpc-background'];
+
+    //form_data
+    $p_node->field_pgc_estimated_simulations[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-estimated-simulations'];
+    $p_node->field_pgc_estimated_cpus[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-estimated-cpus'];
+    $p_node->field_pgc_estimated_run_length[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-estimated-run-length'];
+    $p_node->field_pgc_estimated_wc_hours[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-estimated-wc-hours'];
+    $p_node->field_pgc_allocation_profile[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-allocation-profile'];
+    $p_node->field_pgc_cpu_hours_intel[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-cpu-hours-intel'];
+    $p_node->field_pgc_cpu_hours_power6[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-cpu-hours-power6'];
+    $p_node->field_pgc_cpu_hours_power7[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-cpu-hours-power7'];
+    $p_node->field_pgc_cpu_hours_bluegene[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-cpu-hours-bluegene'];
+    $p_node->field_pgc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-storage-requirements'];
+    $p_node->field_pgc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-software-requirements'];
+    $p_node->field_pgc_data_transfer[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-data-transfer'];
+
+    // Expert Support
+    $p_node->field_pgc_expert_support[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-expert-support'];
+    $p_node->field_pgc_expert_support_notes[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-expert-support-notes'];
+    $p_node->field_pgc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pgc-additional-information'];   
   }
 
   node_save($p_node); 
   $node_id = $p_node->nid;
 
   return $node_id;
-}
-
-function _nesi_mstep_proposal_prc_map() {
-
-  $prc_map['p1'] = array(
-    'prc-title' => 'Proposal Title', 
-    'prc-start-date' => 'Estimated project start date', 
-    'prc-scientific-goals' => 'Scientific Goals',
-    'prc-hpc-benefits' => 'Benefits from HPC',
-    'prc-deliverables' => 'Project deliverables',
-    'prc-grant-provider' => 'Name of peer-reviewed research grant provider',
-    'prc-grant-title' => 'Title of research grant',
-    'prc-grant-start-date' => 'Start date of the grant',
-    'prc-grant-duration' => 'Duration of the grant',
-    'prc-funding-amount' => 'The amount of funding approved for HPC',
-    'prc-pi-name' => 'Principal\'s name',
-    'prc-pi-email' => 'Principal\'s email',
-    'prc-pi-phone' => 'Principal\'s phone number',
-    'prc-team-access' => 'Project team members requiring access to the NeSI systems',
-    'prc-team-experience' => 'Project team\'s HPC experience',
-  );
-
-  $prc_map['p2'] = array(
-    'prc-num-simulations' => 'Estimated number of runs/simulations.', 
-    'prc-num-cpus' => 'Estimated average number of CPUs per run.', 
-    'prc-wchours-per-run' => 'Estimated average length of each run (in wall-clock hours).', 
-    'prc-usage-additional' => 'Please provide any additional information on usage requirements.', 
-    'prc-cpu-hours-intel' => 'CPU core hours required using the Intel cluster', 
-    'prc-cpu-hours-power6' => 'CPU core hours required using P575/POWER6', 
-    'prc-cpu-hours-power7' => 'CPU core hours required using P755/POWER7', 
-    'prc-cpu-hours-bluegene' => 'CPU core hours required using BlueGene/P',
-    'prc-storage-requirements' => 'Storage requirements',
-    'prc-software' => 'Software requirements',
-    'prc-data-transfer' => 'Data transfer',
-  );
-
-  $prc_map['p3'] = array(
-    'prc-expert-support' => 'Expert support',
-    'prc-expert-support-notes' => 'Explanatory notes for "Expert support" section',
-    'prc-further-information' => 'Further information',
-  );
-  
-  return $prc_map;
-}
-
-function _nesi_mstep_proposal_pdc_map() {
-  $pdc_map['p1'] = array(
-    'pdc-title' => 'Proposal Title', 
-    'pdc-start-date' => 'Estimated project start date', 
-    'pdc-description' => 'Project Description',
-    'pdc-pi-name' => 'Principal\'s name',
-    'pdc-pi-email' => 'Principal\'s email',
-    'pdc-pi-phone' => 'Principal\'s phone',
-    'pdc-team-access' => 'Project team members requiring access to the NeSI systems',
-    'pdc-team-experience' => 'Project team\'s HPC experience',
-    'pdc-platform' => 'Desired HPC Platform',
-    'pdc-software' => 'Software requirements',
-    'pdc-storage' => 'Storage requirements',
-    'pdc-expert-support' => 'Expert support',
-    'pdc-further-information' => 'Further Information',
-  );
-  
-  return $pdc_map;
 }
 
 function nesi_mstep_proposal_wizard_cancel(&$form_state) {
