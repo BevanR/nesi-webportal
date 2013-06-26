@@ -350,7 +350,7 @@ function nesi_mstep_proposal_accept_terms_form($form, &$form_state) {
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('I Accept'),
+    '#value' => t('I accept'),
     '#submit' => array('nesi_mstep_proposal_accept_terms_submit'),
   );
   $form['actions']['reject'] = array(
@@ -369,7 +369,7 @@ function nesi_mstep_proposal_accept_terms_submit($form, &$form_state) {
   $proposal = node_load($node_id);
 
   if ($proposal) {
-    if ($form_state['triggering_element']['#value'] == 'I Accept') {
+    if ($form_state['triggering_element']['#value'] == t('I accept')) {
       // Update access policy status for this project: 1 = ACCEPTED
       $proposal->field_access_policy_status[LANGUAGE_NONE][0]['value'] = 1;
       node_save($proposal);
