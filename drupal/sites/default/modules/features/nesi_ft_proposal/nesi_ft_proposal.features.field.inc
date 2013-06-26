@@ -3594,6 +3594,7 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -3621,7 +3622,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_prc_cpu_hours_bluegene',
       'label' => 'CPU core hours required using BlueGene/P',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -3663,6 +3664,7 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -3690,7 +3692,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_prc_cpu_hours_intel',
       'label' => 'CPU core hours required using the Intel cluster',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -3732,6 +3734,7 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -3759,7 +3762,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_prc_cpu_hours_power6',
       'label' => 'CPU core hours required using P575/POWER6',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -3801,6 +3804,7 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -3828,7 +3832,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_prc_cpu_hours_power7',
       'label' => 'CPU core hours required using P755/POWER7',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -3870,6 +3874,7 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -3896,8 +3901,8 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_data_transfer',
-      'label' => 'Data Transfer',
-      'required' => 1,
+      'label' => 'Data transfer',
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -3979,75 +3984,6 @@ function nesi_ft_proposal_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-proposal_research_class-field_prc_estimated_run_length'.
-  $fields['node-proposal_research_class-field_prc_estimated_run_length'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_prc_estimated_run_length',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'proposal_research_class',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '5',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_prc_estimated_run_length',
-      'label' => 'Estimated Run Length',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '7',
       ),
     ),
   );
@@ -5531,6 +5467,7 @@ function nesi_ft_proposal_field_default_fields() {
   t('CPU core hours required using P755/POWER7');
   t('CPU core hours required using the Intel cluster');
   t('Data Transfer');
+  t('Data transfer');
   t('Desired HPC Platform');
   t('Duration of the grant');
   t('Estimated Run Length');
