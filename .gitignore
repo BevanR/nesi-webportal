@@ -27,6 +27,9 @@ drupal/update.php
 drupal/web.config
 drupal/xmlrpc.php
 
+# Ignore FirePHPCore, which is a devel module dependency.
+drupal/FirePHPCore/
+
 # Version control sites/default/ but not other sites/ directories, sites/sites.php or sites/README.md.
 drupal/sites/*
 !drupal/sites/default
