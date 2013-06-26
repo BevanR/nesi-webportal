@@ -32,8 +32,7 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
 
   // using field_group api
   $unsorted_groups = field_group_info_groups('node', $content_type, 'default', TRUE);
-  usort($unsorted_groups,"nesi_mstep_sort_groups");
-
+  usort($unsorted_groups, 'element_sort');
 
   $groups = array();
   foreach($unsorted_groups as $group) {
@@ -45,6 +44,10 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
   foreach($groups as $group) {
     
     $group_map[$group->group_name]['title'] = $group->label;
+
+    // Sort the fields inside each group.
+    usort($group->children, 'element_sort');
+
     foreach($group->children as $index=>$group_field) {
 
       $field = $fields[$group_field];
@@ -53,13 +56,6 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
   }
   $group_map = array_merge_recursive($group_map_from_form, $group_map);
   return $group_map;  
-}
-
-/**
- * Sorts groups from highest to lowest
- */
-function nesi_mstep_sort_groups($a,$b){
-    return $a->weight - $b->weight;
 }
 
 /**
