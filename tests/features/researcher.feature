@@ -23,20 +23,23 @@ Feature: Submit a proposal
       | field_type | form_id                       | value                                                   |
       | text       | Project Title                 | Chocolate Factory                                       |
       ## Not able to use Field name due to date popup on this form element
-      | text       | pdc-start-date[date]          | 09-05-2013                                              |
-      | text       | Project description           | This is a description                                   |
+      | text       | Project Description           | This is a description                                   |
+      | text       | field-pdc-start-date[date]          | 09-05-2013                                              |
       | text       | Principal's name              | Willy Wonka                                             |
       | text       | Principal's email             | willy@thechocolatefactory.com                           |
       | text       | Principal's phone number      | 021 555 555                                             |
       | text       | Project team members requiring access to the NeSI systems | Charlie Bucket, Veruca Salt |
       | text       | Project team's HPC experience | Ohh yes lots of expereince                              |
       ## Need to use the css id for a check box
-      | check      | #edit-pdc-platform-power7     | Check box                                               |
-      | text       | Software requirements         | Lisp, Colbalt, Erland and Go                            |
-      | text       | Storage requirements          | 2 TB                                                    |
-      | check      | #edit-pdc-expert-support-scaling-performance | Check box                                |
-      | text       | Further information           | None                                                    | 
+      | check      | #edit-field-pdc-proposed-hpc-platform-power7     | Check box                                               |
+      | text       | Software Requirements         | Lisp, Colbalt, Erland and Go                            |
+      | text       | Storage Requirements          | 2 TB                                                    |
+      | check      | #edit-field-pdc-expert-support-scaling-performance | Check box                                |
+      | text       | Further Information           | None                                                    | 
     Then I press "Submit Proposal"
+    And I should see "Access Guidelines"
+    Then I press "I Accept"
+    And I should see "Thank you"
 
   @javascript
   Scenario: Login and as researcher and create a second Development Proposal 
@@ -47,23 +50,26 @@ Feature: Submit a proposal
     Then I should see "Development Class: Technical Project Proposal"
     And I fill in the following <formdetails>
       | field_type | form_id                       | value                                                   |
-      | text       | Project Title                 | James and the Giant Peach                               |
+      | text       | Project Title                 | Chocolate Factory                                       |
       ## Not able to use Field name due to date popup on this form element
-      | text       | pdc-start-date[date]          | 09-05-2013                                              |
-      | text       | Project description           | This is a description                                   |
-      | text       | Principal's name              | James Henry Trotter                                     |
-      | text       | Principal's email             | james@thegiantpeach.com                                 |
+      | text       | Project Description           | This is a description                                   |
+      | text       | field-pdc-start-date[date]          | 09-05-2013                                              |
+      | text       | Principal's name              | Willy Wonka                                             |
+      | text       | Principal's email             | willy@thechocolatefactory.com                           |
       | text       | Principal's phone number      | 021 555 555                                             |
-      | text       | Project team members requiring access to the NeSI systems | The Earthworm, Miss Spider  |
+      | text       | Project team members requiring access to the NeSI systems | Charlie Bucket, Veruca Salt |
       | text       | Project team's HPC experience | Ohh yes lots of expereince                              |
       ## Need to use the css id for a check box
-      | check      | #edit-pdc-platform-intel      | Check box                                               |
-      | check      | #edit-pdc-platform-bluegene   | Check box                                               |
-      | text       | Software requirements         | Lisp, Colbalt, Erland and Go                            |
-      | text       | Storage requirements          | 2 TB                                                    |
-      | check      | #edit-pdc-expert-support-scaling-performance | Check box                                |
-      | text       | Further information           | None                                                    | 
+      | check      | #edit-field-pdc-proposed-hpc-platform-power7     | Check box                                               |
+      | text       | Software Requirements         | Lisp, Colbalt, Erland and Go                            |
+      | text       | Storage Requirements          | 2 TB                                                    |
+      | check      | #edit-field-pdc-expert-support-scaling-performance | Check box                                |
+      | text       | Further Information           | None                                                    | 
     Then I press "Submit Proposal"
+    And I should see "Access Guidelines"
+    Then I press "I Accept"
+    And I should see "Thank you"
+
 
   @proposal @nojs
   Scenario: Login and as researcher and a submitted proposal
@@ -81,7 +87,7 @@ Feature: Submit a proposal
       | texts                      |
       | James and the Giant Peach  |
       | Chocolate Factory          |
-    
+  
   @javascript
   Scenario: Login and as researcher and are able complete Development Proposal 
     Given I am logged in as "researcher"
@@ -93,39 +99,45 @@ Feature: Submit a proposal
       | field_type | form_id                                            | value                                 |
       | text       | Proposal Title                                     | Matilda                               |
       ## Not able to use Field name due to date popup on this form element
-      | text       | prc-start-date[date]                               | 09-05-14                            |
-      | text       | Scientific goals                                   | To understand Telekinesis             |
+      | text       | field-prc-start-date[date]                               | 09-05-2014                            |
+      | text       | Scientific Goals                                   | To understand Telekinesis             |
       | text       | Benefits from HPC                                  | Data crunching                        |
-      | text       | Project deliverables                               | A magic pendant to allow telekinesis  |
+      | text       | Project Deliverables                               | A magic pendant to allow telekinesis  |
       | text       | Name of peer-reviewed research grant provider      | Miss Honey                            |
       | text       | Title of research grant                            | Miss Honey                            |
-      | text       | prc-grant-start-date[date]                         | 09-05-2014                            |
+      | text       | field-prc-grant-start-date[date]                         | 09-05-2014                            |
       | text       | Duration of the grant                              | As long as it takes                   |
       | text       | Amount                                             | 500 bitcoins                          |
+      | text       | Background                                         | This is the background                |
       | text       | Principal's name                                   | Miss Trunchbull                       |
       | text       | Principal's email                                  | tbull@grimalkin.school                |
       | text       | Principal's phone number                           | 021 555 555                           |
       | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    | 
-      | text       | Project team's HPC experience                      | Couple of week working in a dairy     |
     And I press "Next: Technical Details"
     Then I should see "Part 2 of 3 - Technical details"
     And I fill in the following <formdetails>
       | field_type | form_id                                                          | value                   |
-      | text       | Estimated number of runs/simulations.                            | 5000                    |
+      | text       | Estimated Run Length                                             | 5000                    |
+      | text       | edit-field-prc-estimated-simulations                             | 5000                    |
       | text       | Estimated average number of CPUs per run                         | 30                      |
       | text       | Estimated average length of each run (in wall-clock hours)       | 2hrs                    |
       | text       | Please provide any additional information on usage requirements  | Will need 45 GB of RAM  |
+      | text       | CPU core Hours                                                   | 5                       |
       | text       | CPU core hours required using the Intel cluster                  | 5                       |
       | text       | CPU core hours required using P575/POWER6                        | 5                       |
       | text       | CPU core hours required using P755/POWER7                        | 5                       |
       | text       | CPU core hours required using BlueGene/P                         | 5                       |
-      | text       | Storage requirements                                             | 2 TB                    |
-      | text       | Software requirements                                            | Python                  |
-      | text       | Data transfer                                                    | None                    |
+      | text       | Storage Requirements                                             | 2 TB                    |
+      | text       | Software Requirements                                            | Python                  |
+      | text       | Data Transfer                                                    | None                    |
     Then I press "Next: Support Information"
-    Then I select the radio button "Yes"
     And I fill in the following <formdetails>
       | field_type | form_id                                          | value                                   |
       | text       | Explanatory notes for "Expert support" section   | Will need to work with a clair voyent   |
-      | text       | Further information                              | None                                    |
+      | check      | #edit-field-prc-expert-support-yes               | Check box                               |
+      | text       | Further Information                              | None                                    |
     Then I press "Submit Proposal"
+    And I should see "Access Guidelines"
+    Then I press "I Accept"
+    And I should see "Thank you"
+

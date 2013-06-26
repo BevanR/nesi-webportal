@@ -39,22 +39,22 @@ a.tabledrag-handle .handle {
 
 /* jQuery Colorpicker fix inputs */
 .colorpicker input {
-	background-color: transparent;
-	border: 1px solid transparent;
-	position: absolute;
-	font-size: 10px;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #898989;
-	top: 4px;
-	right: 11px;
-	text-align: right;
-	margin: 0;
-	padding: 0;
-	height: 11px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  position: absolute;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #898989;
+  top: 4px;
+  right: 11px;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  height: 11px;
   width: auto;
 }
 .colorpicker_hex input {
-	right: 6px;
+  right: 6px;
 }
 
 .profile2-researcher-profile .field-label {
@@ -543,15 +543,7 @@ input, button, select, textarea {
 }
 
 #nesi-mstep-proposal-step-1 h3,
-#nesi-mstep-proposal-step-1 p/*
-,
-#nesi-mstep-proposal-step-2 h3,
-#nesi-mstep-proposal-step-2 p,
-#nesi-mstep-proposal-step-3 h3,
-#nesi-mstep-proposal-step-3 p,
-#nesi-mstep-proposal-step-4 h3,
-#nesi-mstep-proposal-step-4 p
-*/ {
+#nesi-mstep-proposal-step-1 p {
   margin-left: 55px;
 }
 
@@ -642,14 +634,7 @@ input, button, select, textarea {
 }
 
 #edit-intro-form {
-  /* border-left: 1px solid #aaa; */
   margin-left: 56%;
-/*
-  float: right;
-  min-height: 430px;
-  padding-left: 3%;
-  width: 40%;
-*/
 }
 
 #edit-intro-text div {
@@ -836,76 +821,6 @@ div.radio {
 .page-apply-proposal-complete h1.page-header {
   display: none;
 }
-/*
-.nesi-confirmation-left {
-  background: url(../assets/img/confirmation-bg-left.png);
-  float: left;
-  height: 358px;
-  width: 25px;
-}
-
-.nesi-confirmation-center {
-  float: left;
-  height: 362px;
-  text-align: center;
-  width: 95%;
-}
-
-.nesi-confirmation-center-top {
-  background: url(../assets/img/confirmation-bg-top.png);
-  height: 25px;
-  width: 100%;
-}
-
-.nesi-confirmation-center-inner {
-  background: url(../assets/img/confirmation-bg-inner.png);
-  height: 302px;
-  padding: 6px 0 0 0;
-}
-
-.nesi-confirmation-center-bottom {
-  background: url(../assets/img/confirmation-bg-bottom.png);
-  height: 25px;
-  width: 100%;
-}
-
-.nesi-confirmation-right {
-  background: url(../assets/img/confirmation-bg-right.png);
-  float: left;
-  height: 358px;
-  width: 25px;
-}
-
-.nesi-confirmation-center h1 {
-  color: #4b5b68;
-  display: inline-block;
-  font-size: 51px;
-  line-height: 51px;
-  margin: 0;
-  padding: 0;
-}
-
-.nesi-confirmation-center h2 {
-  color: #4b5b68;
-  font-size: 24px;
-  font-weight: normal;
-  line-height: 36px;
-  margin: 62px auto 0;
-  width: 52%;
-}
-
-
-.nesi-confirmation-center p {
-  background: url(../assets/img/email-icon.png) left center no-repeat;
-  color: #4b5b68;
-  font-size: 17px;
-  line-height: 26px;
-  margin: 63px auto 0;
-  padding: 0 0 0 95px;
-  text-align: left;
-  width: 39%;
-}
-*/
 
 .nesi-confirmation-center-inner {
   background-color: #f8f8f8;

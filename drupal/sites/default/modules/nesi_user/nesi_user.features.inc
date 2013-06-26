@@ -32,7 +32,8 @@ function nesi_user_default_profile2_type() {
     "type" : "researcher_profile",
     "label" : "Researcher Profile",
     "weight" : "0",
-    "data" : { "registration" : 1 }
+    "data" : { "registration" : 1 },
+    "rdf_mapping" : []
   }');
   return $items;
 }

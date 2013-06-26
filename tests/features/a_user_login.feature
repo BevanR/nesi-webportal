@@ -8,6 +8,8 @@ Feature: User login
   Scenario: View the Login page
     When I go to "/user/login"
     Then I should see "Researcher Access"
+    And print last response
+    Then break
     And I should see the following <links>
       | links                               |
       | Login using institution credentials |
@@ -29,7 +31,7 @@ Feature: User login
   @account-setup @nojs
   Scenario: Login and as researcher and create user profile
     Given I am logged in as "researcher"
-    Then I should see "richard.researcher"
+    Then I should see "behat-researcher"
     Given I fill in the following <formdetails>
       | field_type | form_id              | value             |
       | text       | First Name           |  Big              |

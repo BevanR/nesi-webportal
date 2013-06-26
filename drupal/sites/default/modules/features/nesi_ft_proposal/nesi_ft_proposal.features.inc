@@ -12,6 +12,10 @@ function nesi_ft_proposal_ctools_plugin_api() {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -21,6 +25,14 @@ function nesi_ft_proposal_node_info() {
   $items = array(
     'proposal_development_class' => array(
       'name' => t('Proposal Development Class'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'proposal_postgrad_class' => array(
+      'name' => t('Proposal Postgraduate Class'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

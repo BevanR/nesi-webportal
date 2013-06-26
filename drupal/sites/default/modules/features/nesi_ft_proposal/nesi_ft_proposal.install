@@ -18,6 +18,7 @@ function nesi_ft_proposal_install() {
 
   /* Set default URI pattern */
   variable_set( 'pathauto_node_proposal_development_class_pattern', 'proposal/[node:nid]' );
+  variable_set( 'pathauto_node_proposal_postgrad_class_pattern', 'proposal/[node:nid]' );
   variable_set( 'pathauto_node_proposal_research_class_pattern', 'proposal/[node:nid]' );
 
 }
