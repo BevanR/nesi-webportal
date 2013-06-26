@@ -248,4 +248,66 @@ function _nesi_mstep_proposal_generate_email_body($form_data) {
   return $output;
 }
 
+function _nesi_mstep_proposal_prc_map() {
+
+  $prc_map['p1'] = array(
+    'prc-title' => 'Proposal Title', 
+    'prc-start-date' => 'Estimated project start date', 
+    'prc-scientific-goals' => 'Scientific Goals',
+    'prc-hpc-benefits' => 'Benefits from HPC',
+    'prc-deliverables' => 'Project deliverables',
+    'prc-grant-provider' => 'Name of peer-reviewed research grant provider',
+    'prc-grant-title' => 'Title of research grant',
+    'prc-grant-start-date' => 'Start date of the grant',
+    'prc-grant-duration' => 'Duration of the grant',
+    'prc-funding-amount' => 'The amount of funding approved for HPC',
+    'prc-pi-name' => 'Principal\'s name',
+    'prc-pi-email' => 'Principal\'s email',
+    'prc-pi-phone' => 'Principal\'s phone number',
+    'prc-team-access' => 'Project team members requiring access to the NeSI systems',
+    'prc-team-experience' => 'Project team\'s HPC experience',
+  );
+
+  $prc_map['p2'] = array(
+    'prc-num-simulations' => 'Estimated number of runs/simulations.', 
+    'prc-num-cpus' => 'Estimated average number of CPUs per run.', 
+    'prc-wchours-per-run' => 'Estimated average length of each run (in wall-clock hours).', 
+    'prc-usage-additional' => 'Please provide any additional information on usage requirements.', 
+    'prc-cpu-hours-intel' => 'CPU core hours required using the Intel cluster', 
+    'prc-cpu-hours-power6' => 'CPU core hours required using P575/POWER6', 
+    'prc-cpu-hours-power7' => 'CPU core hours required using P755/POWER7', 
+    'prc-cpu-hours-bluegene' => 'CPU core hours required using BlueGene/P',
+    'prc-storage-requirements' => 'Storage requirements',
+    'prc-software' => 'Software requirements',
+    'prc-data-transfer' => 'Data transfer',
+  );
+
+  $prc_map['p3'] = array(
+    'prc-expert-support' => 'Expert support',
+    'prc-expert-support-notes' => 'Explanatory notes for "Expert support" section',
+    'prc-further-information' => 'Further information',
+  );
+  
+  return $prc_map;
+}
+
+function _nesi_mstep_proposal_pdc_map() {
+  $pdc_map['p1'] = array(
+    'pdc-title' => 'Proposal Title', 
+    'pdc-start-date' => 'Estimated project start date', 
+    'pdc-description' => 'Project Description',
+    'pdc-pi-name' => 'Principal\'s name',
+    'pdc-pi-email' => 'Principal\'s email',
+    'pdc-pi-phone' => 'Principal\'s phone',
+    'pdc-team-access' => 'Project team members requiring access to the NeSI systems',
+    'pdc-team-experience' => 'Project team\'s HPC experience',
+    'pdc-platform' => 'Desired HPC Platform',
+    'pdc-software' => 'Software requirements',
+    'pdc-storage' => 'Storage requirements',
+    'pdc-expert-support' => 'Expert support',
+    'pdc-further-information' => 'Further Information',
+  );
+  
+  return $pdc_map;
+}
 
