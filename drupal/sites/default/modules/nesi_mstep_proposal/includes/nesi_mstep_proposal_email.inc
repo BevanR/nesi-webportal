@@ -161,6 +161,7 @@ function nesi_mstep_proposal_send_attachment_email($to, $from, $subject, $messag
  */
 function _nesi_mstep_proposal_generate_submission_file($form_data) {
 
+  dpm($form_data);
   $attachment_filename = 'submission.txt';
 
   // File content header
@@ -177,7 +178,7 @@ function _nesi_mstep_proposal_generate_submission_file($form_data) {
     $map = _nesi_mstep_proposal_prc_map();
   }
 
-  $output .= _nesi_mstep_proposal_map_proposal_data($map['p1'], $form_data->data['p1']);  
+  $output .= _nesi_mstep_proposal_map_proposal_data($map['fields'], $form_data->data['form_data']);  
 
   if ($form_data->data['proposal-type'] == 'research_proposal_class') {
     // Get additional response information   
@@ -232,12 +233,12 @@ function _nesi_mstep_proposal_generate_email_body($form_data) {
 
   $title = '';
   if ($proposal_type == 'proposal_development_class') {
-    $title = $form_data->data['p1']['pdc-title'];
+    $title = $form_data->data['form_data']['node-title'];
     $output = '***Notification of Proposal Development submission to NeSI***'."\n\n\n";
   }
   
   if ($proposal_type == 'research_proposal_class') {
-    $title = $form_data->data['p1']['prc-title'];
+    $title = $form_data->data['form_data']['node-title'];
     $output = '***Notification of Research Proposal submission to NeSI***'."\n\n\n";
   }
  
@@ -292,20 +293,20 @@ function _nesi_mstep_proposal_prc_map() {
 }
 
 function _nesi_mstep_proposal_pdc_map() {
-  $pdc_map['p1'] = array(
-    'pdc-title' => 'Proposal Title', 
-    'pdc-start-date' => 'Estimated project start date', 
-    'pdc-description' => 'Project Description',
-    'pdc-pi-name' => 'Principal\'s name',
-    'pdc-pi-email' => 'Principal\'s email',
-    'pdc-pi-phone' => 'Principal\'s phone',
-    'pdc-team-access' => 'Project team members requiring access to the NeSI systems',
-    'pdc-team-experience' => 'Project team\'s HPC experience',
-    'pdc-platform' => 'Desired HPC Platform',
-    'pdc-software' => 'Software requirements',
-    'pdc-storage' => 'Storage requirements',
-    'pdc-expert-support' => 'Expert support',
-    'pdc-further-information' => 'Further Information',
+  $pdc_map['fields'] = array(
+    'node-title' => 'Proposal Title', 
+    'field-pdc-start-date' => 'Estimated project start date', 
+    'field-pdc-description' => 'Project Description',
+    'field-pdc-pi-name' => 'Principal\'s name',
+    'field-pdc-pi-email' => 'Principal\'s email',
+    'field-pdc-pi-phone' => 'Principal\'s phone',
+    'field-pdc-team-access' => 'Project team members requiring access to the NeSI systems',
+    'field-pdc-team-experience' => 'Project team\'s HPC experience',
+    'field-pdc-proposed-hpc-platform' => 'Desired HPC Platform',
+    'field-pdc-software-requirements' => 'Software requirements',
+    'field-pdc-storage-requirements' => 'Storage requirements',
+    'field-pdc-expert-support' => 'Expert support',
+    'field-pdc-additional-information' => 'Further Information',
   );
   
   return $pdc_map;
