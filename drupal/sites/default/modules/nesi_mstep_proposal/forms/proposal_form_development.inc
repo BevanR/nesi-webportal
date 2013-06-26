@@ -32,7 +32,7 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
 
   // Using field_group api.
   $unsorted_groups = field_group_info_groups('node', $content_type, 'default', TRUE);
-  uasort($unsorted_groups, 'element_sort');
+  usort($unsorted_groups, 'element_sort');
 
   $groups = array();
   foreach($unsorted_groups as $group) {
@@ -46,7 +46,7 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
     $group_map[$group->group_name]['title'] = $group->label;
 
     // Sort the fields inside each group.
-    uasort($group->children, 'element_sort');
+    usort($group->children, 'element_sort');
 
     foreach($group->children as $index=>$group_field) {
 
