@@ -354,6 +354,9 @@ function nesi_mstep_proposal_accept_terms_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('I accept'),
     '#submit' => array('nesi_mstep_proposal_accept_terms_submit'),
+    '#attributes' => array(
+      'class' => array('btn-primary'),
+    ),
   );
   $form['actions']['reject'] = array(
     '#type' => 'submit',
