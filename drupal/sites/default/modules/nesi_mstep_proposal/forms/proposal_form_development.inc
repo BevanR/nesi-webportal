@@ -62,21 +62,20 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
  * Takes a form element and
  */
 function nesi_mstep_form_ele_to_field($form) {
-
   $group_map = array();
   foreach($form as $group_name => $group) {
     $group_name = str_replace('-' , '_' , $group_name);
+
     $field = array();
     foreach($group as $field_name => $form_data) {
-
       $field_name = str_replace('-' , '_' , $field_name);
-      if(is_string($form_data)) continue;
+      if (!is_string($form_data)) {
+        $field['widget']['type'] = 'text_textfield';
+        $field['label'] = $form_data['#title'];
+        $field['field_name'] = $field_name;
 
-      $field['widget']['type'] = 'text_textfield';
-      $field['label'] = $form_data['#title'];
-      $field['field_name'] = $field_name;
-
-      $group_map[$group_name][$field_name] = $field;
+        $group_map[$group_name][$field_name] = $field;
+      }
     }
   }
 
