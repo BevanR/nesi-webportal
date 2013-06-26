@@ -5,7 +5,7 @@ function nesi_mstep_proposal_development_form($form_state) {
   $form = array();
   $form_ele['group-project']['node-title'] = array(
       '#type'     => 'textfield',
-      '#title'    => 'Project Title',
+      '#title'    => t('Project title'),
       '#required' => TRUE, 
     );
 
@@ -30,10 +30,9 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
 
-  // using field_group api
+  // Using field_group api.
   $unsorted_groups = field_group_info_groups('node', $content_type, 'default', TRUE);
-  usort($unsorted_groups,"nesi_mstep_sort_groups");
-
+  uasort($unsorted_groups, 'element_sort');
 
   $groups = array();
   foreach($unsorted_groups as $group) {
@@ -45,6 +44,10 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
   foreach($groups as $group) {
     
     $group_map[$group->group_name]['title'] = $group->label;
+
+    // Sort the fields inside each group.
+    uasort($group->children, 'element_sort');
+
     foreach($group->children as $index=>$group_field) {
 
       $field = $fields[$group_field];
@@ -56,31 +59,24 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
 }
 
 /**
- * Sorts groups from highest to lowest
- */
-function nesi_mstep_sort_groups($a,$b){
-    return $a->weight - $b->weight;
-}
-
-/**
  * Takes a form element and
  */
 function nesi_mstep_form_ele_to_field($form) {
-
   $group_map = array();
   foreach($form as $group_name => $group) {
     $group_name = str_replace('-' , '_' , $group_name);
+
     $field = array();
     foreach($group as $field_name => $form_data) {
-
       $field_name = str_replace('-' , '_' , $field_name);
-      if(is_string($form_data)) continue;
+      if (!is_string($form_data)) {
+        $field['widget']['type'] = 'text_textfield';
+        $field['label'] = $form_data['#title'];
+        $field['field_name'] = $field_name;
+        $field['required'] = $field_name['#required'];
 
-      $field['widget']['type'] = 'text_textfield';
-      $field['label'] = $form_data['#title'];
-      $field['field_name'] = $field_name;
-
-      $group_map[$group_name][$field_name] = $field;
+        $group_map[$group_name][$field_name] = $field;
+      }
     }
   }
 
@@ -115,20 +111,20 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
           $form[$group_name][$field_name] = array(
              '#type'     => 'textfield',
              '#title'    => $field['label'],
-             '#required' => TRUE, 
+             '#required' => $field['required'],
              '#description' => $field['description'],
              '#default_value' => $default_value,
-           );
+          );
           break;
 
         case 'text_textarea':
           $form[$group_name][$field_name] = array(
              '#type'     => 'textarea',
              '#title'    => $field['label'],
-             '#required' => TRUE,
+             '#required' => $field['required'],
              '#description' => $field['description'],
              '#default_value' => $default_value,
-            ); 
+          );
           break;
 
         case 'date_popup':
@@ -138,8 +134,8 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
              '#title'    => $field['label'],
              '#description' => $field['description'],
              '#default_value' => $default_value,
-             '#required' => TRUE,
-              );
+             '#required' => $field['required'],
+          );
           break;
 
         case 'options_buttons':
@@ -155,10 +151,9 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
                   '#title' => $field['label'],
                   '#description' => $field['description'],
                   '#options' => array('yes' => 'Yes', 'no' => 'No'),
-                  '#required' => TRUE,
+                  '#required' => $field['required'],
                   '#default_value' => $default_value,
-                ); 
-
+                );
               break;
 
             default:
@@ -167,10 +162,9 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
                  '#title'    => $field['label'],
                  '#options' => nesi_mstep_form_options($field_name),
                  '#description' => $field['description'],
-                 '#required' => TRUE,
+                 '#required' => $field['required'],
                  '#default_value' => $default_value,
-                  );
-
+              );
             }
   
           break;
