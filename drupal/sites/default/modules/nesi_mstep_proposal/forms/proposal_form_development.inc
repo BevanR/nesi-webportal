@@ -47,6 +47,10 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
       $field = $fields[$group_field];
       $group_map[$group->group_name][$group_field] = $field;
     }
+
+    // @todo Refactor $group_map to be a render array so that the Form API will
+    // do the sorting downstream.
+    uasort($group_map[$group->group_name], 'nesi_mstep_sort_fields');
   }
   $group_map = array_merge_recursive($group_map_from_form, $group_map);
   return $group_map;  
@@ -55,8 +59,21 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
 /**
  * Sorts groups from highest to lowest.
  */
-function nesi_mstep_sort_groups($a,$b){
-    return $a->weight - $b->weight;
+function nesi_mstep_sort_groups($a, $b) {
+  return $a->weight - $b->weight;
+}
+
+/**
+ * Sorts fields in groups from highest to lowest.
+ */
+function nesi_mstep_sort_fields($a, $b) {
+  if (is_string($a)) {
+    return -1;
+  }
+  if (is_string($b)) {
+    return 1;
+  }
+  return $a['widget']['weight'] - $b['widget']['weight'];
 }
 
 /**
