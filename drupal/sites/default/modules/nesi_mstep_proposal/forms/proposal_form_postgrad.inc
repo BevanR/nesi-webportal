@@ -40,6 +40,7 @@ function nesi_mstep_proposal_postgrad_form_part_2($form_state) {
   unset($form['group-team']);
   unset($form['group-additional']);
   unset($form['group-software']['field-pgc-proposed-hpc-platform']);
+  unset($form['group-software']['field-pgc-cpu-core-hours']);
 
   return $form;
 }
