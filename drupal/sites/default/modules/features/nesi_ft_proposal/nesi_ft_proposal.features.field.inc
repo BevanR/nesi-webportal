@@ -189,9 +189,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -230,7 +228,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '5',
       ),
     ),
   );
@@ -258,9 +256,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -299,7 +295,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '3',
       ),
     ),
   );
@@ -328,7 +324,6 @@ function nesi_ft_proposal_field_default_fields() {
           'scaling_performance' => 'Scaling Performance',
         ),
         'allowed_values_function' => '',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_text',
@@ -365,7 +360,7 @@ function nesi_ft_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '6',
+        'weight' => '4',
       ),
     ),
   );
@@ -395,7 +390,6 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -423,7 +417,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_pi_email',
       'label' => 'Principal\'s email',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -435,7 +429,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '3',
       ),
     ),
   );
@@ -465,7 +459,6 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -493,7 +486,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_pi_name',
       'label' => 'Principal\'s name',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -505,7 +498,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '2',
       ),
     ),
   );
@@ -535,7 +528,6 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -563,7 +555,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_pi_phone',
       'label' => 'Principal\'s phone number',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -575,7 +567,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '4',
       ),
     ),
   );
@@ -642,7 +634,7 @@ function nesi_ft_proposal_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '7',
+        'weight' => '3',
       ),
     ),
   );
@@ -670,9 +662,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -711,7 +701,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '4',
       ),
     ),
   );
@@ -739,7 +729,6 @@ function nesi_ft_proposal_field_default_fields() {
           'second' => 0,
           'year' => 'year',
         ),
-        'profile2_private' => FALSE,
         'timezone_db' => '',
         'todate' => '',
         'tz_handling' => 'none',
@@ -775,7 +764,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_start_date',
       'label' => 'Estimated project start date',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'default_value' => 'now',
         'default_value2' => 'same',
@@ -795,7 +784,7 @@ function nesi_ft_proposal_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '7',
+        'weight' => '2',
       ),
     ),
   );
@@ -825,7 +814,6 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -853,7 +841,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_storage_requirements',
       'label' => 'Storage Requirements',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -865,7 +853,7 @@ function nesi_ft_proposal_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '5',
       ),
     ),
   );
@@ -893,9 +881,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -922,7 +908,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_team_access',
       'label' => 'Project team members requiring access to the NeSI systems',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -934,7 +920,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '5',
       ),
     ),
   );
@@ -962,9 +948,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -1003,7 +987,7 @@ function nesi_ft_proposal_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '8',
+        'weight' => '6',
       ),
     ),
   );
@@ -5328,6 +5312,7 @@ function nesi_ft_proposal_field_default_fields() {
           'second' => 0,
           'year' => 'year',
         ),
+        'profile2_private' => FALSE,
         'timezone_db' => '',
         'todate' => '',
         'tz_handling' => 'none',
@@ -5338,7 +5323,7 @@ function nesi_ft_proposal_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'proposal_research_class',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please indicate the approximate date from which the HPC resource will be required.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -5362,8 +5347,8 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_start_date',
-      'label' => 'Start Date',
-      'required' => 0,
+      'label' => 'Estimated project start date ',
+      'required' => 1,
       'settings' => array(
         'default_value' => 'now',
         'default_value2' => 'same',
@@ -5543,6 +5528,7 @@ function nesi_ft_proposal_field_default_fields() {
   t('Estimated average number of CPUs per run');
   t('Estimated number of runs/simulations');
   t('Estimated project start date');
+  t('Estimated project start date ');
   t('Expected journal article(s), conference proceedings or other publications that will come from this research.');
   t('Expert Support');
   t('Explanatory notes for "Expert support" section ');

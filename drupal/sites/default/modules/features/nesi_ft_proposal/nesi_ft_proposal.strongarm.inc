@@ -19,7 +19,7 @@ function nesi_ft_proposal_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '6',
+          'weight' => '-5',
         ),
         'path' => array(
           'weight' => '6',
