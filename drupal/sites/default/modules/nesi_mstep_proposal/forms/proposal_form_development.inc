@@ -73,6 +73,7 @@ function nesi_mstep_form_ele_to_field($form) {
         $field['widget']['type'] = 'text_textfield';
         $field['label'] = $form_data['#title'];
         $field['field_name'] = $field_name;
+        $field['required'] = $field_name['#required'];
 
         $group_map[$group_name][$field_name] = $field;
       }
@@ -110,20 +111,20 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
           $form[$group_name][$field_name] = array(
              '#type'     => 'textfield',
              '#title'    => $field['label'],
-             '#required' => TRUE, 
+             '#required' => $field['required'],
              '#description' => $field['description'],
              '#default_value' => $default_value,
-           );
+          );
           break;
 
         case 'text_textarea':
           $form[$group_name][$field_name] = array(
              '#type'     => 'textarea',
              '#title'    => $field['label'],
-             '#required' => TRUE,
+             '#required' => $field['required'],
              '#description' => $field['description'],
              '#default_value' => $default_value,
-            ); 
+          );
           break;
 
         case 'date_popup':
@@ -133,8 +134,8 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
              '#title'    => $field['label'],
              '#description' => $field['description'],
              '#default_value' => $default_value,
-             '#required' => TRUE,
-              );
+             '#required' => $field['required'],
+          );
           break;
 
         case 'options_buttons':
@@ -150,10 +151,9 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
                   '#title' => $field['label'],
                   '#description' => $field['description'],
                   '#options' => array('yes' => 'Yes', 'no' => 'No'),
-                  '#required' => TRUE,
+                  '#required' => $field['required'],
                   '#default_value' => $default_value,
-                ); 
-
+                );
               break;
 
             default:
@@ -162,10 +162,9 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
                  '#title'    => $field['label'],
                  '#options' => nesi_mstep_form_options($field_name),
                  '#description' => $field['description'],
-                 '#required' => TRUE,
+                 '#required' => $field['required'],
                  '#default_value' => $default_value,
-                  );
-
+              );
             }
   
           break;
