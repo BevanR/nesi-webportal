@@ -30,7 +30,7 @@ function nesi_mstep_form_structure($content_type , $form_ele = array()) {
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
 
-  // using field_group api
+  // Using field_group api.
   $unsorted_groups = field_group_info_groups('node', $content_type, 'default', TRUE);
   uasort($unsorted_groups, 'element_sort');
 
