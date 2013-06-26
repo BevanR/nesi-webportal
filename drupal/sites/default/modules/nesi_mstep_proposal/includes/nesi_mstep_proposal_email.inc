@@ -161,7 +161,6 @@ function nesi_mstep_proposal_send_attachment_email($to, $from, $subject, $messag
  */
 function _nesi_mstep_proposal_generate_submission_file($form_data) {
 
-  dpm($form_data);
   $attachment_filename = 'submission.txt';
 
   // File content header
@@ -171,20 +170,18 @@ function _nesi_mstep_proposal_generate_submission_file($form_data) {
   $output = '';
   $output .= $header;
 
+  $map = array();
   if ($form_data->data['proposal-type'] == 'proposal_development_class') {
     $map = _nesi_mstep_proposal_pdc_map();
   }
-  else {
+  if ($form_data->data['proposal-type'] == 'research_proposal_class') {
     $map = _nesi_mstep_proposal_prc_map();
+  }
+  if ($form_data->data['proposal-type'] == 'proposal_postgrad_class') {
+    $map = _nesi_mstep_proposal_pgc_map();
   }
 
   $output .= _nesi_mstep_proposal_map_proposal_data($map['fields'], $form_data->data['form_data']);  
-
-  if ($form_data->data['proposal-type'] == 'research_proposal_class') {
-    // Get additional response information   
-    $output .= _nesi_mstep_proposal_map_proposal_data($map['p2'], $form_data->data['p2']);  
-    $output .= _nesi_mstep_proposal_map_proposal_data($map['p3'], $form_data->data['p3']);  
-  }
 
   return array(
     'name' => $attachment_filename,
@@ -201,20 +198,35 @@ function _nesi_mstep_proposal_map_proposal_data($map = array(), $data = NULL) {
   $output = '';
   if (!empty($data)) {
     foreach($data as $key=>$val) {
-      if(isset($map[$key])) $title = $map[$key];
 
-      // Clean line breaks 
-      $order   = array("\r\n", "\n", "\r");
-      $replace = ' ';
-      
-      if (!empty($title)) {
+      if(isset($map[$key])) {
+        $title = $map[$key];
 
-        $clean_title = str_replace($order, $replace, $title);
-        $clean_val = str_replace($order, $replace, $val);
+        // Check if response value is an array, if so reduce selections to string
+        $response = '';
+        if (is_array($val)) {
+          foreach($val as $val_item) {
+            if(!empty($val_item)) {
+              $response .= $val_item.' ';
+            }
+          }  
+        }
+        else {
+          $response = $val;
+        }
 
-        $output .= '| '.$clean_title;
-        $output .= ' | '.$clean_val;
-        $output .= ' | |'."\n";
+        // Clean line breaks 
+        $order   = array("\r\n", "\n", "\r");
+        $replace = ' ';
+        
+        if (!empty($title)) {
+          $clean_title = str_replace($order, $replace, $title);
+          $clean_val = str_replace($order, $replace, $response);
+
+          $output .= '| '.$clean_title;
+          $output .= ' | '.$clean_val;
+          $output .= ' | |'."\n";
+        }
       }
     }
   }
@@ -231,15 +243,15 @@ function _nesi_mstep_proposal_generate_email_body($form_data) {
 
   $proposal_type = $form_data->data['proposal-type'];
 
-  $title = '';
+  $title = $form_data->data['form_data']['node-title'];
   if ($proposal_type == 'proposal_development_class') {
-    $title = $form_data->data['form_data']['node-title'];
     $output = '***Notification of Proposal Development submission to NeSI***'."\n\n\n";
   }
-  
   if ($proposal_type == 'research_proposal_class') {
-    $title = $form_data->data['form_data']['node-title'];
     $output = '***Notification of Research Proposal submission to NeSI***'."\n\n\n";
+  }
+  if ($proposal_type == 'proposal_postgrad_class') {
+    $output = '***Notification of Postgraduate Proposal submission to NeSI***'."\n\n\n";
   }
  
   $output .= 'Title: '.$title."\n\n\n";
@@ -247,49 +259,6 @@ function _nesi_mstep_proposal_generate_email_body($form_data) {
   $output .= "\n\n\n\n Thank you\n\n";
  
   return $output;
-}
-
-function _nesi_mstep_proposal_prc_map() {
-
-  $prc_map['p1'] = array(
-    'prc-title' => 'Proposal Title', 
-    'prc-start-date' => 'Estimated project start date', 
-    'prc-scientific-goals' => 'Scientific Goals',
-    'prc-hpc-benefits' => 'Benefits from HPC',
-    'prc-deliverables' => 'Project deliverables',
-    'prc-grant-provider' => 'Name of peer-reviewed research grant provider',
-    'prc-grant-title' => 'Title of research grant',
-    'prc-grant-start-date' => 'Start date of the grant',
-    'prc-grant-duration' => 'Duration of the grant',
-    'prc-funding-amount' => 'The amount of funding approved for HPC',
-    'prc-pi-name' => 'Principal\'s name',
-    'prc-pi-email' => 'Principal\'s email',
-    'prc-pi-phone' => 'Principal\'s phone number',
-    'prc-team-access' => 'Project team members requiring access to the NeSI systems',
-    'prc-team-experience' => 'Project team\'s HPC experience',
-  );
-
-  $prc_map['p2'] = array(
-    'prc-num-simulations' => 'Estimated number of runs/simulations.', 
-    'prc-num-cpus' => 'Estimated average number of CPUs per run.', 
-    'prc-wchours-per-run' => 'Estimated average length of each run (in wall-clock hours).', 
-    'prc-usage-additional' => 'Please provide any additional information on usage requirements.', 
-    'prc-cpu-hours-intel' => 'CPU core hours required using the Intel cluster', 
-    'prc-cpu-hours-power6' => 'CPU core hours required using P575/POWER6', 
-    'prc-cpu-hours-power7' => 'CPU core hours required using P755/POWER7', 
-    'prc-cpu-hours-bluegene' => 'CPU core hours required using BlueGene/P',
-    'prc-storage-requirements' => 'Storage requirements',
-    'prc-software' => 'Software requirements',
-    'prc-data-transfer' => 'Data transfer',
-  );
-
-  $prc_map['p3'] = array(
-    'prc-expert-support' => 'Expert support',
-    'prc-expert-support-notes' => 'Explanatory notes for "Expert support" section',
-    'prc-further-information' => 'Further information',
-  );
-  
-  return $prc_map;
 }
 
 function _nesi_mstep_proposal_pdc_map() {
@@ -310,5 +279,79 @@ function _nesi_mstep_proposal_pdc_map() {
   );
   
   return $pdc_map;
+}
+
+function _nesi_mstep_proposal_prc_map() {
+
+  $prc_map['fields'] = array(
+    'node-title' => 'Proposal Title', 
+    'prc-start-date' => 'Estimated project start date', 
+    'prc-scientific-goals' => 'Scientific Goals',
+    'prc-hpc-benefits' => 'Benefits from HPC',
+    'prc-deliverables' => 'Project deliverables',
+    'prc-grant-provider' => 'Name of peer-reviewed research grant provider',
+    'prc-grant-title' => 'Title of research grant',
+    'prc-grant-start-date' => 'Start date of the grant',
+    'prc-grant-duration' => 'Duration of the grant',
+    'prc-funding-amount' => 'The amount of funding approved for HPC',
+    'prc-pi-name' => 'Principal\'s name',
+    'prc-pi-email' => 'Principal\'s email',
+    'prc-pi-phone' => 'Principal\'s phone number',
+    'prc-team-access' => 'Project team members requiring access to the NeSI systems',
+    'prc-team-experience' => 'Project team\'s HPC experience',
+    'prc-num-simulations' => 'Estimated number of runs/simulations.', 
+    'prc-num-cpus' => 'Estimated average number of CPUs per run.', 
+    'prc-wchours-per-run' => 'Estimated average length of each run (in wall-clock hours).', 
+    'prc-usage-additional' => 'Please provide any additional information on usage requirements.', 
+    'prc-cpu-hours-intel' => 'CPU core hours required using the Intel cluster', 
+    'prc-cpu-hours-power6' => 'CPU core hours required using P575/POWER6', 
+    'prc-cpu-hours-power7' => 'CPU core hours required using P755/POWER7', 
+    'prc-cpu-hours-bluegene' => 'CPU core hours required using BlueGene/P',
+    'prc-storage-requirements' => 'Storage requirements',
+    'prc-software' => 'Software requirements',
+    'prc-data-transfer' => 'Data transfer',
+    'prc-expert-support' => 'Expert support',
+    'prc-expert-support-notes' => 'Explanatory notes for "Expert support" section',
+    'prc-further-information' => 'Further information',
+  );
+  
+  return $prc_map;
+}
+
+function _nesi_mstep_proposal_pgc_map() {
+
+  $pgc_map['fields'] = array(
+    'prc-title' => 'Proposal Title', 
+    'prc-start-date' => 'Estimated project start date', 
+    'prc-scientific-goals' => 'Scientific Goals',
+    'prc-hpc-benefits' => 'Benefits from HPC',
+    'prc-deliverables' => 'Project deliverables',
+    'prc-grant-provider' => 'Name of peer-reviewed research grant provider',
+    'prc-grant-title' => 'Title of research grant',
+    'prc-grant-start-date' => 'Start date of the grant',
+    'prc-grant-duration' => 'Duration of the grant',
+    'prc-funding-amount' => 'The amount of funding approved for HPC',
+    'prc-pi-name' => 'Principal\'s name',
+    'prc-pi-email' => 'Principal\'s email',
+    'prc-pi-phone' => 'Principal\'s phone number',
+    'prc-team-access' => 'Project team members requiring access to the NeSI systems',
+    'prc-team-experience' => 'Project team\'s HPC experience',
+    'prc-num-simulations' => 'Estimated number of runs/simulations.', 
+    'prc-num-cpus' => 'Estimated average number of CPUs per run.', 
+    'prc-wchours-per-run' => 'Estimated average length of each run (in wall-clock hours).', 
+    'prc-usage-additional' => 'Please provide any additional information on usage requirements.', 
+    'prc-cpu-hours-intel' => 'CPU core hours required using the Intel cluster', 
+    'prc-cpu-hours-power6' => 'CPU core hours required using P575/POWER6', 
+    'prc-cpu-hours-power7' => 'CPU core hours required using P755/POWER7', 
+    'prc-cpu-hours-bluegene' => 'CPU core hours required using BlueGene/P',
+    'prc-storage-requirements' => 'Storage requirements',
+    'prc-software' => 'Software requirements',
+    'prc-data-transfer' => 'Data transfer',
+    'prc-expert-support' => 'Expert support',
+    'prc-expert-support-notes' => 'Explanatory notes for "Expert support" section',
+    'prc-further-information' => 'Further information',
+  );
+  
+  return $pgc_map;
 }
 
