@@ -156,6 +156,17 @@ function nesi_mstep_form_elements($form_structure , $form, $form_state = array()
                 );
               break;
 
+            case 'field-pgc-expert-support':
+             $form[$group_name][$field_name] = array(
+                  '#type' => 'radios',
+                  '#title' => $field['label'],
+                  '#description' => $field['description'],
+                  '#options' => array('yes' => 'Yes', 'no' => 'No'),
+                  '#required' => $field['required'],
+                  '#default_value' => $default_value,
+                );
+              break;
+
             default:
               $form[$group_name][$field_name] = array(
                  '#type'     => 'checkboxes',
@@ -196,6 +207,13 @@ function nesi_mstep_form_options($field_name) {
      break; 
 
     case 'field-prc-expert-support':
+      $options = array(
+        'yes' => 'Yes',   
+        'no' => 'No',   
+      ); 
+     break; 
+
+    case 'field-pgc-expert-support':
       $options = array(
         'yes' => 'Yes',   
         'no' => 'No',   
