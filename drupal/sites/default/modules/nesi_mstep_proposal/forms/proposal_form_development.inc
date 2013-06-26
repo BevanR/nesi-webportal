@@ -5,7 +5,7 @@ function nesi_mstep_proposal_development_form($form_state) {
   $form = array();
   $form_ele['group-project']['node-title'] = array(
       '#type'     => 'textfield',
-      '#title'    => 'Project Title',
+      '#title'    => t('Project title'),
       '#required' => TRUE, 
     );
 
