@@ -26,17 +26,17 @@ function nesi_mstep_proposal_email_theme_page() {
   
   global $base_url;
   $css = drupal_get_css(); 
-  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 142);
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 144);
   $data = nesi_mstep_proposal_data($nid);
   $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css, 'nid' => $nid));
   echo $node_html;
   drupal_exit();
-  // return 'pdf theme page';
+  //return 'pdf theme page';
 }
 
 function nesi_mstep_proposal_pdf_generate_page() {
   // For testing
-  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 142);
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 144);
   nesi_mstep_generate_proposal_pdf($nid);
   return 'In pdf generate page';
 }
@@ -57,7 +57,6 @@ function nesi_mstep_proposal_data($nid) {
   
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
-  //dsm($fields);
   // Sort those fields so that are returned correctly weighted
   usort($fields,"nesi_mstep_sort_fields");
   // Use entity api
@@ -71,6 +70,10 @@ function nesi_mstep_proposal_data($nid) {
     $field_name   = $value['field_name'];
     $field_label  = $value['label'];
     $field_val    = $node_wrapper->{$field_name}->value();
+
+    // Formatting date field for presentation
+    if(strstr($field_name, 'date')) $field_val = date('d F Y' , $field_val);
+
     $data[$field_name] = array('field_label' => $field_label, 'field_val' => $field_val);
   }
 
