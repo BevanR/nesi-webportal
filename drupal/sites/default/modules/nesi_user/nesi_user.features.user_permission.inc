@@ -387,7 +387,8 @@ function nesi_user_user_default_permissions() {
   $permissions['administer users'] = array(
     'name' => 'administer users',
     'roles' => array(
-      0 => 'website engineer',
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'user',
   );
