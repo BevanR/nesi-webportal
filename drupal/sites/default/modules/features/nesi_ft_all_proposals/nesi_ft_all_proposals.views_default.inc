@@ -114,7 +114,7 @@ function nesi_ft_all_proposals_views_default_views() {
   $handler->display->display_options['fields']['field_pdc_proposed_hpc_platform']['id'] = 'field_pdc_proposed_hpc_platform';
   $handler->display->display_options['fields']['field_pdc_proposed_hpc_platform']['table'] = 'field_data_field_pdc_proposed_hpc_platform';
   $handler->display->display_options['fields']['field_pdc_proposed_hpc_platform']['field'] = 'field_pdc_proposed_hpc_platform';
-  /* Field: Content: Start Date */
+  /* Field: Content: Estimated project start date */
   $handler->display->display_options['fields']['field_pdc_start_date']['id'] = 'field_pdc_start_date';
   $handler->display->display_options['fields']['field_pdc_start_date']['table'] = 'field_data_field_pdc_start_date';
   $handler->display->display_options['fields']['field_pdc_start_date']['field'] = 'field_pdc_start_date';
@@ -138,6 +138,7 @@ function nesi_ft_all_proposals_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'proposal_development_class' => 'proposal_development_class',
+    'proposal_postgrad_class' => 'proposal_postgrad_class',
     'proposal_research_class' => 'proposal_research_class',
   );
 
