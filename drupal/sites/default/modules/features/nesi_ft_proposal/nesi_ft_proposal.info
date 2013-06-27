@@ -38,7 +38,6 @@ features[field][] = node-proposal_postgrad_class-field_pgc_cpu_hours_power6
 features[field][] = node-proposal_postgrad_class-field_pgc_cpu_hours_power7
 features[field][] = node-proposal_postgrad_class-field_pgc_data_transfer
 features[field][] = node-proposal_postgrad_class-field_pgc_estimated_cpus
-features[field][] = node-proposal_postgrad_class-field_pgc_estimated_run_length
 features[field][] = node-proposal_postgrad_class-field_pgc_estimated_simulations
 features[field][] = node-proposal_postgrad_class-field_pgc_estimated_wc_hours
 features[field][] = node-proposal_postgrad_class-field_pgc_expert_support
