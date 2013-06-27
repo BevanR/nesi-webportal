@@ -3387,7 +3387,9 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -3413,7 +3415,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_additional_information',
-      'label' => 'Further Information',
+      'label' => 'Further information',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4148,6 +4150,7 @@ function nesi_ft_proposal_field_default_fields() {
           'no' => 'No',
         ),
         'allowed_values_function' => '',
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_text',
@@ -4174,7 +4177,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_prc_expert_support',
-      'label' => 'Expert Support',
+      'label' => 'Expert support',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -5478,8 +5481,10 @@ function nesi_ft_proposal_field_default_fields() {
   t('Estimated project start date ');
   t('Expected journal article(s), conference proceedings or other publications that will come from this research.');
   t('Expert Support');
+  t('Expert support');
   t('Explanatory notes for "Expert support" section ');
   t('Further Information');
+  t('Further information');
   t('Name of peer-reviewed research grant provider');
   t('Please check the appropriate box if the project team will need NeSI support/consultancy for: ');
   t('Please describe how access to HPC resources will benefit your project.');
