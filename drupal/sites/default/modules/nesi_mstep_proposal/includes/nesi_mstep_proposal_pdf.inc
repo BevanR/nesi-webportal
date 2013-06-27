@@ -133,8 +133,6 @@ function nesi_mstep_generate_proposal_pdf($nid) {
                    , 'proposal_postgrad_class'    => 'Postgraduate Proposal');
   $report_title = $title_map[$node->type];
 
-  $css = drupal_get_css();
-  $css = str_replace("https://" , "http://", $css);
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
   $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css, 'nid' => $nid));
