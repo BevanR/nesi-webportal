@@ -589,7 +589,6 @@ function _nesi_mstep_proposal_save(&$form_state) {
 
   if ($proposal_type == 'research_proposal_class') {
 
-    dsm($form_state);
     $p_node = new stdClass(); // Create a new node object
     $p_node->type = 'proposal_research_class';
     node_object_prepare($p_node); // Set some default values
@@ -636,7 +635,6 @@ function _nesi_mstep_proposal_save(&$form_state) {
 
   if ($proposal_type == 'proposal_postgrad_class') {
 
-    dsm($form_state);
     $p_node = new stdClass(); // Create a new node object
     $p_node->type = 'proposal_postgrad_class';
     node_object_prepare($p_node); // Set some default values
