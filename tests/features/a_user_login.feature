@@ -8,8 +8,6 @@ Feature: User login
   Scenario: View the Login page
     When I go to "/user/login"
     Then I should see "Researcher Access"
-    And print last response
-    Then break
     And I should see the following <links>
       | links                               |
       | Login using institution credentials |

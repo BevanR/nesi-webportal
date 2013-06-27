@@ -2,6 +2,7 @@ name = nesi_ft_all_proposals
 description = Admin view of all submitted proposals
 core = 7.x
 package = NeSI
+php = 5.2.4
 version = 7.x-1.0
 project = nesi_ft_all_proposals
 dependencies[] = ctools

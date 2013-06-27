@@ -165,25 +165,16 @@ The quickest way to get familiar with BDD and Behat is to purchase the [knpunive
 
 ## Theme Information
 
-The NeSI website theme is based on the Bootstrap theme [Bootstrap theme - drupal.org](https://drupal.org/project/bootstrap).
+The NeSI website theme is a subtheme of the [Bootstrap theme for Drupal](https://drupal.org/project/bootstrap) which leverages the [Bootstrap framework](http://getbootstrap.com).  Use `drush make` (see above) to include both dependencies.
 
-Theme files are contained within `nesi-webportal/drupal/sites/default/themes/nesi_bootstrap`
+Theme files are in `drupal/sites/default/themes/nesi_bootstrap/`.
 
-The Bootstrap theme leverages the Bootstrap frontend framework [Bootstrap frontend framework](http://getbootstrap.com). Bootstrap provides a flexible standardised approach to build responsive websites.
+### Modifying CSS
 
-### Modifying CSS for nesi_bootstrap
+It is recommended to update `nesi_bootstrap/css/style.css` file with any style overrides.  This process will change when all CSS is managed with [LESS](http://lesscss.org/) and the `lessc` compiler.
 
-It is recommended to update `nesi_bootstrap/css/style.css` file with any style overrides.
+### Modifying LESS
 
-NOTE: This process will change soon as css structures are being migrated to [LESS](http://lesscss.org/) to allow for all css to be managed by the `lessc` compiler. 
+The `nesi_bootstrap` theme also has `.less` files in `nesi_bootstrap/assets/css/less/`.  `bootstrap.less` can be compiled to recreate the css files that Drupal includes via `nesi_bootstrap/nesi_bootstrap.info`.  You will need a `LESS` compiler. See [the Bootstrap framework's guide](http://twitter.github.io/bootstrap/extend.html).
 
-### LESS source for nesi_bootstrap
-
-The nesi_bootstrap theme currently has it's source .less files in `nesi_bootstrap/assets/css/less`
-
-`nesibootstrap.less` can be compiled to recreate the bootstrap css as included within `nesi_bootstrap/nesi_bootstrap.info`.
-
-### Compiling LESS from source
-
-To compile .less source into .css you will need a `LESS` compiler. Bootstrap has a guide on getting started with .less and the bootstrap project structure [Extending Bootstrap](http://twitter.github.io/bootstrap/extend.html). More documentation to come.
-
+> @todo Include the command to compile and watch for changes.
