@@ -189,9 +189,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -258,9 +256,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -328,7 +324,6 @@ function nesi_ft_proposal_field_default_fields() {
           'scaling_performance' => 'Scaling Performance',
         ),
         'allowed_values_function' => '',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_text',
@@ -395,7 +390,6 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -423,7 +417,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_pi_email',
       'label' => 'Principal\'s email',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -465,7 +459,6 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -493,7 +486,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_pi_name',
       'label' => 'Principal\'s name',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -535,7 +528,6 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -563,7 +555,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_pi_phone',
       'label' => 'Principal\'s phone number',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -670,9 +662,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -739,7 +729,6 @@ function nesi_ft_proposal_field_default_fields() {
           'second' => 0,
           'year' => 'year',
         ),
-        'profile2_private' => FALSE,
         'timezone_db' => '',
         'todate' => '',
         'tz_handling' => 'none',
@@ -775,7 +764,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_start_date',
       'label' => 'Estimated project start date',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'default_value' => 'now',
         'default_value2' => 'same',
@@ -825,7 +814,6 @@ function nesi_ft_proposal_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
-        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -853,7 +841,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_storage_requirements',
       'label' => 'Storage Requirements',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -893,9 +881,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -922,7 +908,7 @@ function nesi_ft_proposal_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pdc_team_access',
       'label' => 'Project team members requiring access to the NeSI systems',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -962,9 +948,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -1187,7 +1171,9 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -1213,7 +1199,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_pgc_additional_information',
-      'label' => 'Further Information',
+      'label' => 'Further information',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2212,7 +2198,9 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
       'translatable' => '0',
       'type' => 'text_long',
     ),
@@ -2220,7 +2208,7 @@ function nesi_ft_proposal_field_default_fields() {
       'bundle' => 'proposal_postgrad_class',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Please outline the team\'s experience with HPC. This should include HPC architectures, programming languages, parallelisation methods and packages the team has experience with. Please also include names of HPC facilities that the research team has collaborated with in the past.',
+      'description' => 'Please indicate if the project team has used HPC resources in the past. If yes, please provide information on the architecture used.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2238,7 +2226,7 @@ function nesi_ft_proposal_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_pgc_hpc_background',
-      'label' => 'Background',
+      'label' => 'Project team\'s HPC experience',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
@@ -5478,7 +5466,6 @@ function nesi_ft_proposal_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Access Policy Status');
   t('Amount');
-  t('Background');
   t('Benefits from HPC');
   t('CPU core Hours');
   t('CPU core hours required using BlueGene/P');
@@ -5514,7 +5501,6 @@ function nesi_ft_proposal_field_default_fields() {
   t('Please indicate unit, e.g. GB. Note that this is not archival storage, but disk space for a job\'s input and output data.');
   t('Please list any project team members (including the PI) who will need to access the NeSI systems.');
   t('Please outline the scientific outcomes of your proposal. You are welcome to provide a reference to an overarching proposal, rather than duplicating content.');
-  t('Please outline the team\'s experience with HPC. This should include HPC architectures, programming languages, parallelisation methods and packages the team has experience with. Please also include names of HPC facilities that the research team has collaborated with in the past.');
   t('Please provide a description of the project such as the scientific goals.');
   t('Please provide any additional information on usage requirements.');
   t('Please provide the duration of the grant or award.');
