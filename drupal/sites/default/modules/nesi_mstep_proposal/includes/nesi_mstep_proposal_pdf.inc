@@ -26,7 +26,7 @@ function nesi_mstep_proposal_email_theme_page() {
   
   global $base_url;
   $css = drupal_get_css(); 
-  $nid = variable_get('proposal_nid_for_testing_pdf_generation' , 154);
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 142);
   $data = nesi_mstep_proposal_data($nid);
   $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css, 'nid' => $nid));
   echo $node_html;
@@ -36,7 +36,7 @@ function nesi_mstep_proposal_email_theme_page() {
 
 function nesi_mstep_proposal_pdf_generate_page() {
   // For testing
-  $nid = variable_get('proposal_nid_for_testing_pdf_generation' , 154);
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 142);
   nesi_mstep_generate_proposal_pdf($nid);
   return 'In pdf generate page';
 }
@@ -131,6 +131,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   $report_title = $title_map[$node->type];
   $css = drupal_get_css();
 
+  $css = str_replace("https://" , "http://", $css);
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
   $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css, 'nid' => $nid));
