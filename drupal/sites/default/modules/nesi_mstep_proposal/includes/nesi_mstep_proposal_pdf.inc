@@ -26,17 +26,17 @@ function nesi_mstep_proposal_email_theme_page() {
   
   global $base_url;
   $css = drupal_get_css(); 
-  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 144);
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 145);
   $data = nesi_mstep_proposal_data($nid);
   $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css, 'nid' => $nid));
   echo $node_html;
   drupal_exit();
-  //return 'pdf theme page';
+  // return 'pdf theme page';
 }
 
 function nesi_mstep_proposal_pdf_generate_page() {
   // For testing
-  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 144);
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 145);
   nesi_mstep_generate_proposal_pdf($nid);
   return 'In pdf generate page';
 }
@@ -123,17 +123,17 @@ function nesi_mstep_generate_proposal_pdf($nid) {
 
   $absolute_path =  DRUPAL_ROOT . '/' . conf_path();
   $wkhtmltopdf_files_path =  $absolute_path . '/files';
-  //$wkhtmltopdf_header_html = $absolute_path . '/themes/ws_mm/templates/pdf-header.html';
-  //$wkhtmltopdf_footer_html = $absolute_path . '/themes/ws_mm/templates/pdf-footer.html';
   $wkhtmltopdf_margins = array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null);
 
   $node = node_load($nid);
   $file_name = $node->type . '-' . $nid;
 
-  $title_map = array('proposal_development_class' => 'Development Proposal' , 'proposal_research_class' => 'Research Proposal' );
+  $title_map = array('proposal_development_class' => 'Development Proposal' 
+                   , 'proposal_research_class'    => 'Research Proposal' 
+                   , 'proposal_postgrad_class'    => 'Postgraduate Proposal');
   $report_title = $title_map[$node->type];
-  $css = drupal_get_css();
 
+  $css = drupal_get_css();
   $css = str_replace("https://" , "http://", $css);
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
