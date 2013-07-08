@@ -3,11 +3,11 @@
     <a href="<?php print $link_target; ?>"><img src="<?php print $image_path; ?>"></a>
     <div class="slide-content">
       <h2 class="slide-title">
-        <span class="line1" style="color:#FFFFFF; background-color:#<?php print $primary_bg_color; ?>;"><?php print $primary_title; ?></span>
+        <a href="<?php print $link_target; ?>"><span class="line1" style="color:#FFFFFF; background-color:#<?php print $primary_bg_color; ?>;"><?php print $primary_title; ?></span></a>
       </h2>
       <h3>
-        <span class="line2" style="color:#FFFFFF; background-color:#<?php print $secondary_bg_color; ?>;"><?php print $secondary_title; ?></span>
-        <span class="line2" style="color:#FFFFFF; background-color:#<?php print $secondary_bg_color; ?>;"><?php print $secondary_title_line_2; ?></span>
+        <a href="<?php print $link_target; ?>"><span class="line2" style="color:#FFFFFF; background-color:#<?php print $secondary_bg_color; ?>;"><?php print $secondary_title; ?></span></a>
+        <a href="<?php print $link_target; ?>"><span class="line2" style="color:#FFFFFF; background-color:#<?php print $secondary_bg_color; ?>;"><?php print $secondary_title_line_2; ?></span></a>
       </h3>
     </div>
   </div>
