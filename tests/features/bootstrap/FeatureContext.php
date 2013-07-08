@@ -232,7 +232,7 @@ class FeatureContext extends DrupalContext {
 
     // Log in.
     $submit->click();
-    $this->getSession()->wait(2000);
+    $this->getSession()->wait(5000);
     // TODO this function doesn't work when using selenium
     // Might need to stick a 'wait' in here 
     //$user = $this->whoami();uuuu
@@ -330,5 +330,26 @@ class FeatureContext extends DrupalContext {
         fwrite(STDOUT, "\033[u");
 
         return;
+    }
+
+
+    /**
+     * Checks whether the current URI is https
+     *
+     * @Then /^I should be on a secure URI$/
+     */
+    public function iShouldBeOnASecureUri() {
+
+      $current_url = $this->getSession()->getCurrentUrl();
+      if (empty($current_url)) {
+        throw new Exception('Current URL could not be identified.');
+      }
+      else {
+        $url = $current_url->__toString();
+        if (substr_count($url, "http://") > 0) {
+          // Fail test
+          throw new Exception('Current URI is not secure. ( '.$url.' )');
+        }
+      }
     }
 }
