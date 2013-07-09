@@ -621,17 +621,8 @@ function _nesi_mstep_proposal_save(&$form_state) {
   $proposal_type = $form_state['ctools_object']->data['proposal-type'];
 
   $p_title = 'Proposal Title';
+  $p_title = $form_state['ctools_object']->data['form_data']['node-title'];
 
-  //if ($proposal_type == 'proposal_development_class') {
-    $p_title = $form_state['ctools_object']->data['form_data']['node-title'];
- // }
-  //if ($proposal_type == 'research_proposal_class') {
-    //$p_title = $form_state['ctools_object']->data['form_data']['node-title'];
-  //}
-
-  // Prepare data to be saved
-  //$proposal_json = json_encode($form_state['ctools_object']->data);
-  //$p_node->bp_container[$p_node->language][0]['value'] = $proposal_json;
    
   // Save proposal data
   if ($proposal_type == 'proposal_development_class') {
@@ -643,14 +634,14 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->language = LANGUAGE_NONE;
     $p_node->uid = $user->uid;
 
+    $fields = field_info_instances("node",$proposal_type);
     // Proposal Development Class
-    $p_node->field_pdc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-start-date'];
-    $p_node->field_pdc_description[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-description'];
-    $p_node->field_pdc_pi_name[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-pi-name'];
-    $p_node->field_pdc_pi_email[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-pi-email'];
-    $p_node->field_pdc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-pi-phone'];
-    $p_node->field_pdc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-team-access'];
-    $p_node->field_pdc_team_experience[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-team-experience'];
+    foreach($fields as $field_data) {
+      $field_name = $field_data['field_name'];
+      $field_data_name = str_replace('_' , '-' , $field_name);
+      $field_name_data = $form_state['ctools_object']->data['form_data'][$field_data_name];
+      $p_node->{$field_name}[$p_node->language][0]['value'] = $field_name_data; 
+    }
 
     $p_node->field_pdc_proposed_hpc_platform[$p_node->language] = array();
     $platforms = array_filter($form_state['ctools_object']->data['form_data']['field-pdc-platform']);
@@ -658,16 +649,12 @@ function _nesi_mstep_proposal_save(&$form_state) {
       $p_node->field_pdc_proposed_hpc_platform[$p_node->language][] = array('value' => $selected);
     }
  
-    $p_node->field_pdc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-software-requirments'];
-    $p_node->field_pdc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-storage-requirements'];
-
     $p_node->field_pdc_expert_support[$p_node->language] = array();
     $support_items = array_filter($form_state['ctools_object']->data['form_data']['field-pdc-expert-support']);
     foreach ($support_items as $selected) {
       $p_node->field_pdc_expert_support[$p_node->language][] = array('value' => $selected);
     }
 
-    $p_node->field_pdc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-pdc-additional-information'];
   }
 
   if ($proposal_type == 'research_proposal_class') {
@@ -679,42 +666,15 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->language = LANGUAGE_NONE;
     $p_node->uid = $user->uid;
 
-    
-    // Research Proposal Class
-    $p_node->field_prc_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-start-date'];
-    $p_node->field_prc_scientific_goals[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-scientific-goals'];
-    $p_node->field_prc_hpc_benefits[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-hpc-benefits'];
-    $p_node->field_prc_project_deliverables[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-deliverables'];
-    $p_node->field_prc_funding_provider[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-grant-provider'];
-    $p_node->field_prc_grant_title[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-grant-title'];
-    $p_node->field_prc_grant_start_date[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-grant-start-date'];
-    $p_node->field_prc_grant_duration[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-grant-duration'];
-    $p_node->field_prc_funding_amount[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-funding-amount'];
-    $p_node->field_prc_pi_name[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-pi-name'];
-    $p_node->field_prc_pi_email[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-pi-email'];
-    $p_node->field_prc_pi_phone[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-pi-phone'];
-    $p_node->field_prc_team_access[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-team-access'];
-    $p_node->field_prc_hpc_background[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-team-experience'];
+    $fields = field_info_instances("node",$proposal_type);
 
-    //form_data
-    $p_node->field_prc_estimated_simulations[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-num-simulations'];
-    $p_node->field_prc_estimated_cpus[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-num-cpus'];
-    $p_node->field_prc_estimated_run_length[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-run-length'];
-    $p_node->field_prc_estimated_wc_hours[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-wchours-per-run'];
-    $p_node->field_prc_allocation_profile[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-usage-additional'];
-    $p_node->field_prc_cpu_hours_intel[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-cpu-hours-intel'];
-    $p_node->field_prc_cpu_hours_power6[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-cpu-hours-power6'];
-    $p_node->field_prc_cpu_hours_power7[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-cpu-hours-power7'];
-    $p_node->field_prc_cpu_hours_bluegene[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-cpu-hours-bluegene'];
-    $p_node->field_prc_storage_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-storage-requirements'];
-    $p_node->field_prc_software_requirements[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-software'];
-    $p_node->field_prc_data_transfer[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-data-transfer'];
-
-    // Expert Support
-    $p_node->field_prc_expert_support[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-expert-support'];
-    $p_node->field_prc_expert_support_notes[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-expert-support-notes'];
-    $p_node->field_prc_additional_information[$p_node->language][0]['value'] = $form_state['ctools_object']->data['form_data']['field-prc-expert-further-information'];
-
+    foreach($fields as $field_data) {
+      $field_name = $field_data['field_name'];
+      $field_data_name = str_replace('_' , '-' , $field_name);
+      $field_name_data = $form_state['ctools_object']->data['form_data'][$field_data_name];
+      $p_node->{$field_name}[$p_node->language][0]['value'] = $field_name_data; 
+    }
+  
   }
 
   node_save($p_node); 
