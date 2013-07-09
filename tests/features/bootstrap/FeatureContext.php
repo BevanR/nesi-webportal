@@ -332,7 +332,6 @@ class FeatureContext extends DrupalContext {
         return;
     }
 
-
     /**
      * Checks whether the current URI is https
      *
@@ -351,5 +350,27 @@ class FeatureContext extends DrupalContext {
           throw new Exception('Current URI is not secure. ( '.$url.' )');
         }
       }
+    }
+
+    /**
+     * @Given /^I fill in my IDP credentials as "([^"]*)"$/
+     */
+    public function iFillInMyIdpCredentialsAs($username) {
+
+      $page = $this->getSession()->getPage();
+      if (empty($page)) {
+        throw new Exception('Page not found');
+      }
+
+      $details = $this->fetchUserDetails('drupal', $username);
+      $user = $details['username'];
+      $pass = $details['password'];
+
+      $page->fillField('j_username', $user);
+      $page->fillField('j_password', $pass);
+      
+      echo "Filling IDP credential fields \n";
+
+      return;
     }
 }
