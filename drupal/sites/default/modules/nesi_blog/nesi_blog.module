@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the NeSi Blog feature.
+ * Code for the NeSI Blog feature.
  */
 
 include_once 'nesi_blog.features.inc';
