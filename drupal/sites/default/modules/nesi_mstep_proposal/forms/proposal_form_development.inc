@@ -10,7 +10,7 @@ function nesi_mstep_proposal_development_form($form_state) {
     );
 
   $form_structure = nesi_mstep_form_structure('proposal_development_class' , $form_ele);
-  $form = nesi_mstep_form_elements($form_structure , $form);
+  $form = nesi_mstep_form_elements($form_structure , $form , $form_state);
   return $form;
 }
 
