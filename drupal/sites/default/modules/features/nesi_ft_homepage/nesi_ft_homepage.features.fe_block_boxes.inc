@@ -53,14 +53,13 @@ function nesi_ft_homepage_default_fe_block_boxes() {
     </div>
     <div class="nesi-intro-item">
     	<article class="sub-feature" id="support-intro">
-    		<a href="/node/141"><h1 class="feature-title">Computational Sciences Support</h1></a>
+    		<a href="/computational-science-team"><h1 class="feature-title">Computational Sciences Support</h1></a>
     		<p>Get up-to-date with the goings on nationwide at NeSI</p>
-                                      <p class="sub"><a href="/node/141" class="l-more">Find out more</a></p>
+    		<p class="sub"><a href="/computational-science-team" class="l-more">Find out more</a></p>
     	</article>
     </div>
   </div>
-</div>
-<!-- https://www.dropbox.com/s/yg9rzlozdygmqfq/Nesi-mega-user.jpg / https://www.dropbox.com/s/yg9rzlozdygmqfq/Nesi-mega-user.jpg -->';
+</div>';
 
   $export['homepage_intro_items'] = $fe_block_boxes;
 
