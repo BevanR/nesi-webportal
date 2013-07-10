@@ -1,4 +1,4 @@
-Feature: Submit a proposal
+Feature: Submit_a_proposal
   In order to get resource allocation
   As a researcher
   I need to submit proposals
@@ -12,7 +12,7 @@ Feature: Submit a proposal
       | links                                   |
       | NeSI Guidelines for Researchers 1.1.pdf |
 
-  @javascript
+  @javascript @researcher
   Scenario: Login and as researcher and are able complete Development Proposal 
     Given I am logged in through a browser as "researcher"
     And I go to "/apply"
@@ -36,12 +36,12 @@ Feature: Submit a proposal
       | text       | Storage Requirements          | 2 TB                                                    |
       | check      | #edit-field-pdc-expert-support-scaling-performance | Check box                                |
       | text       | Further Information           | None                                                    | 
-    Then I press "Submit Proposal"
+    Then I press "Continue"
     And I should see "Access Policy"
-    Then I press "I accept"
+    Then I press "I Accept"
     And I should see "Thank you"
 
-  @javascript
+  @javascript 
   Scenario: Login and as researcher and create a second Development Proposal 
     Given I am logged in through a browser as "researcher"
     And I go to "/apply"
@@ -65,9 +65,9 @@ Feature: Submit a proposal
       | text       | Storage Requirements          | 2 TB                                                    |
       | check      | #edit-field-pdc-expert-support-scaling-performance | Check box                                |
       | text       | Further Information           | None                                                    | 
-    Then I press "Submit Proposal"
+    Then I press "Continue"
     And I should see "Access Policy"
-    Then I press "I accept"
+    Then I press "I Accept"
     And I should see "Thank you"
 
 
@@ -88,7 +88,7 @@ Feature: Submit a proposal
       | Matilda                    |
       | Chocolate Factory          |
   
-  @javascript
+  @javascript @development
   Scenario: Login and as researcher and are able complete Development Proposal 
     Given I am logged in through a browser as "researcher"
     And I go to "/apply"
@@ -134,12 +134,12 @@ Feature: Submit a proposal
       | text       | Explanatory notes for "Expert support" section   | Will need to work with a clair voyent   |
       | check      | #edit-field-prc-expert-support-yes               | Check box                               |
       | text       | Further information                              | None                                    |
-    Then I press "Submit Proposal"
+    Then I press "Continue"
     And I should see "Access Policy"
-    Then I press "I accept"
+    Then I press "I Accept"
     And I should see "Thank you"
 
-  @javascript
+  @javascript @postgrad
   Scenario: Login and as researcher and are able complete Postgraduate Class 
     Given I am logged in through a browser as "researcher"
     And I go to "/apply"
@@ -182,10 +182,10 @@ Feature: Submit a proposal
     And I fill in the following <formdetails>
       | field_type | form_id                                          | value                                   |
       | text       | Explanatory notes for "Expert support" section   | Will need to work with a clair voyent   |
-      | text       | Further information                              | None                                    |
+      | text       | Further Information                              | None                                    |
     When I select the radio button "Yes"
-    Then I press "Submit Proposal"
+    Then I press "Continue"
     And I should see "Access Policy"
-    Then I press "I accept"
+    Then I press "I Accept"
     And I should see "Thank you"
 
