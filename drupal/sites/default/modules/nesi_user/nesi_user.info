@@ -213,4 +213,3 @@ features[user_role][] = website engineer
 features[variable][] = field_bundle_settings_profile2__researcher_profile
 features[variable][] = user_mail_register_admin_created_body
 features[variable][] = user_mail_register_no_approval_required_body
-features[views_view][] = nesi_user_administration
