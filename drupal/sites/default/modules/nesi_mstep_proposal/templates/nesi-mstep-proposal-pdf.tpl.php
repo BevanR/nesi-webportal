@@ -30,6 +30,9 @@ switch ($node->type) {
   case 'proposal_research_class' :
     $proposal_type = 'Research';
     break;
+  case 'proposal_postgrad_class' :
+    $proposal_type = 'Postgraduate';
+    break;
   default :
     $proposal_type = '';
 }

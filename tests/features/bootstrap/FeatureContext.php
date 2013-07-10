@@ -177,7 +177,6 @@ class FeatureContext extends DrupalContext {
 
     // Log in.
     $submit->click();
-    //$this->getSession()->wait(2000);
     // TODO this function doesn't work when using selenium
     // Might need to stick a 'wait' in here 
     //$user = $this->whoami();
@@ -188,6 +187,63 @@ class FeatureContext extends DrupalContext {
     // Successfully logged in.
     return;
   }
+
+ /**
+   * @Given /^I am logged in through a browser as "([^"]*)"$/
+   */
+  public function iAmLoggedInThroughABrowserAs($username) {
+    $details = $this->fetchUserDetails('drupal', $username);
+    $username = $details['username'];
+    $password = $details['password'];
+    $this->iAmLoggedInAsWithThePasswordUsingSelenium($username, $password);
+  }
+
+  /**
+   * Authenticates a user.
+   *
+   * @Given /^I am logged in as "([^"]*)" with the password "([^"]*)" using selenium$/
+   */
+  public function iAmLoggedInAsWithThePasswordUsingSelenium($username, $passwd) {
+    $user = $this->whoami();
+
+    if (strtolower($user) == strtolower($username)) {
+      // Already logged in.
+      echo "Already logged in \n";
+      return;
+    }
+
+    $element = $this->getSession()->getPage();
+    if (empty($element)) {
+      throw new Exception('Page not found');
+    }
+
+    // Go to the user login page.
+    $this->getSession()->visit($this->locatePath('/user/login'));
+
+    // If I see this, I'm not logged in at all so log the user in.
+    $element->fillField('edit-name', $username);
+    $element->fillField('edit-pass', $passwd);
+    
+    echo "Filling password fields \n";
+    $submit = $element->findButton('edit-submit');
+    if (empty($submit)) {
+      throw new Exception('No submit button at ' . $this->getSession()->getCurrentUrl());
+    }
+
+    // Log in.
+    $submit->click();
+    $this->getSession()->wait(5000);
+    // TODO this function doesn't work when using selenium
+    // Might need to stick a 'wait' in here 
+    //$user = $this->whoami();uuuu
+    //if (strtolower($user) != strtolower($username)) {
+      //throw new Exception('Could not log user in.');
+    //}
+
+    // Successfully logged in.
+    return;
+  }
+
 
   /**
    * Authenticates a user with password from configuration.                                                ]
@@ -274,5 +330,47 @@ class FeatureContext extends DrupalContext {
         fwrite(STDOUT, "\033[u");
 
         return;
+    }
+
+    /**
+     * Checks whether the current URI is https
+     *
+     * @Then /^I should be on a secure URI$/
+     */
+    public function iShouldBeOnASecureUri() {
+
+      $current_url = $this->getSession()->getCurrentUrl();
+      if (empty($current_url)) {
+        throw new Exception('Current URL could not be identified.');
+      }
+      else {
+        $url = $current_url->__toString();
+        if (substr_count($url, "http://") > 0) {
+          // Fail test
+          throw new Exception('Current URI is not secure. ( '.$url.' )');
+        }
+      }
+    }
+
+    /**
+     * @Given /^I fill in my IDP credentials as "([^"]*)"$/
+     */
+    public function iFillInMyIdpCredentialsAs($username) {
+
+      $page = $this->getSession()->getPage();
+      if (empty($page)) {
+        throw new Exception('Page not found');
+      }
+
+      $details = $this->fetchUserDetails('drupal', $username);
+      $user = $details['username'];
+      $pass = $details['password'];
+
+      $page->fillField('j_username', $user);
+      $page->fillField('j_password', $pass);
+      
+      echo "Filling IDP credential fields \n";
+
+      return;
     }
 }

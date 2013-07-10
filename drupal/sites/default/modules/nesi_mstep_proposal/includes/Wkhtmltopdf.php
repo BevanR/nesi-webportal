@@ -646,7 +646,7 @@ class Wkhtmltopdf
         $command .= ($this->getTOC()) ? " --toc" : "";
         $command .= ($this->getGrayscale()) ? " --grayscale" : "";
         // For testing on the webscope development environment
-        if('/usr/bin/wkhtmltopdf' == $this->_bin) {
+        if('/usr/bin/wkhtmltopdf-old' == $this->_bin) {
           $command .= (mb_strlen($this->getPassword()) > 0) ? " --password " . $this->getPassword() . "" : "";
           $command .= (mb_strlen($this->getUsername()) > 0) ? " --username " . $this->getUsername() . "" : "";
           $command .= ' --footer-font-size 7 --disable-javascript --ignore-load-errors --username webscope --password eden --dpi 96 '; // Katie hardcoding extra flags copied fr~

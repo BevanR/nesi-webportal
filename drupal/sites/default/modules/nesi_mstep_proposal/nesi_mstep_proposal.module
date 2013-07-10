@@ -629,9 +629,20 @@ function _nesi_mstep_proposal_save(&$form_state) {
   }
 
   if ($proposal_type == 'research_proposal_class') {
-    
+
     $p_node = new stdClass(); // Create a new node object
     $p_node->type = 'proposal_research_class';
+    node_object_prepare($p_node); // Set some default values
+    $p_node->title = $p_title;
+    $p_node->language = LANGUAGE_NONE;
+    $p_node->uid = $user->uid;
+
+    $save_to_node($p_node, $p_node->type);
+  } 
+  if ($proposal_type == 'proposal_postgrad_class') {
+
+    $p_node = new stdClass(); // Create a new node object
+    $p_node->type = 'proposal_postgrad_class';
     node_object_prepare($p_node); // Set some default values
     $p_node->title = $p_title;
     $p_node->language = LANGUAGE_NONE;

@@ -26,7 +26,7 @@ function nesi_mstep_proposal_email_theme_page() {
   
   global $base_url;
   $css = drupal_get_css(); 
-  $nid = variable_get('proposal_nid_for_testing_pdf_generation' , 154);
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 145);
   $data = nesi_mstep_proposal_data($nid);
   $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css, 'nid' => $nid));
   echo $node_html;
@@ -36,7 +36,7 @@ function nesi_mstep_proposal_email_theme_page() {
 
 function nesi_mstep_proposal_pdf_generate_page() {
   // For testing
-  $nid = variable_get('proposal_nid_for_testing_pdf_generation' , 154);
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation-old' , 145);
   nesi_mstep_generate_proposal_pdf($nid);
   return 'In pdf generate page';
 }
@@ -57,7 +57,6 @@ function nesi_mstep_proposal_data($nid) {
   
   // Get information about all the fields attached to the content type
   $fields = field_info_instances("node",$content_type);
-  //dsm($fields);
   // Sort those fields so that are returned correctly weighted
   usort($fields,"nesi_mstep_sort_fields");
   // Use entity api
@@ -71,6 +70,10 @@ function nesi_mstep_proposal_data($nid) {
     $field_name   = $value['field_name'];
     $field_label  = $value['label'];
     $field_val    = $node_wrapper->{$field_name}->value();
+
+    // Formatting date field for presentation
+    if(strstr($field_name, 'date')) $field_val = date('d F Y' , $field_val);
+
     $data[$field_name] = array('field_label' => $field_label, 'field_val' => $field_val);
   }
 
@@ -120,19 +123,17 @@ function nesi_mstep_generate_proposal_pdf($nid) {
 
   $absolute_path =  DRUPAL_ROOT . '/' . conf_path();
   $wkhtmltopdf_files_path =  $absolute_path . '/files';
-  //$wkhtmltopdf_header_html = $absolute_path . '/themes/ws_mm/templates/pdf-header.html';
-  //$wkhtmltopdf_footer_html = $absolute_path . '/themes/ws_mm/templates/pdf-footer.html';
   $wkhtmltopdf_margins = array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null);
 
   $node = node_load($nid);
   $file_name = $node->type . '-' . $nid;
 
-  $title_map = array('proposal_development_class' => 'Development Proposal' , 'proposal_research_class' => 'Research Proposal' );
+  $title_map = array('proposal_development_class' => 'Development Proposal' 
+                   , 'proposal_research_class'    => 'Research Proposal' 
+                   , 'proposal_postgrad_class'    => 'Postgraduate Proposal');
   $report_title = $title_map[$node->type];
-  $css = drupal_get_css();
 
-  // A fix for Nesi dev servers. The https cert is broken and prompts a warning 
-  // that stops wkhtmltopdf from generating the pdf
+  $css = drupal_get_css();
   $css = str_replace("https://" , "http://", $css);
   // Need to pass in $nid here
   $data = nesi_mstep_proposal_data($nid);
