@@ -1,6 +1,6 @@
-name = NeSi Areas of Research
+name = NeSI Areas of Research
 core = 7.x
-package = NeSi
+package = NeSI
 version = 7.x-1.0
 project = nesi_areas_of_research
 dependencies[] = ctools
