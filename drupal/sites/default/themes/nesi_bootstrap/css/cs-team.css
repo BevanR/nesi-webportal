@@ -6,8 +6,10 @@ article#node-141 .field-name-body p:last-child {
   font-size: 135%;
 }
 
-
 /* Block of anchor links to profiles. */
+#block-views-d4b8cad1b1d9ddaeef7ecbfd3fb9e286 {
+  width: 100%;
+}
 #block-views-6e46c24f4115d81251f18d75b36af6d8 h2.block-title {
   margin: 0;
   font-size: 115%;
