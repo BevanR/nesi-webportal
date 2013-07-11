@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Taxonomy Term Administration feature.
+ */
+
+include_once 'nesi_term_admin.features.inc';
