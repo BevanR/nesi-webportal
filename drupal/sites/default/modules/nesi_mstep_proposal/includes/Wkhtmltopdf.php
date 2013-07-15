@@ -647,7 +647,7 @@ class Wkhtmltopdf
         $command .= ($this->getGrayscale()) ? " --grayscale" : "";
         // In Webscope dev environments, append this to settings.php:
         // $conf['nesi_wkhtmltopdf_extra_options'] = '--username webscope --password eden';
-        $command .= variable_get('nesi_wkhtmltopdf_extra_options', '') . ' ';
+        $command .= ' ' . variable_get('nesi_wkhtmltopdf_extra_options', '');
         $command .= ' --footer-font-size 7 --disable-javascript --dpi 96 --quiet ';
         $command .= (mb_strlen($this->getFooterHtml()) > 0) ? " --footer-html \"" . $this->getFooterHtml() . "\"" : "";
         $command .= (mb_strlen($this->getHeaderHtml()) > 0) ? " --header-html \"" . $this->getHeaderHtml() . "\"" : "";
