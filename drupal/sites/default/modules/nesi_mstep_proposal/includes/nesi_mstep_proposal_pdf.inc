@@ -107,28 +107,17 @@ function nesi_mstep_sort_fields($a,$b){
   return $a['widget']['weight']-$b['widget']['weight'];
 }
 
+function nesi_mstep_generate_proposal_pdf($nid) {
+  static $title_map = array(
+    'proposal_development_class' => 'Development Proposal',
+    'proposal_research_class' => 'Research Proposal',
+    'proposal_postgrad_class' => 'Postgraduate Proposal',
+  );
 
-/**
- * For this to work there can't be any htaccess on the site
- * at the moment.
- * wkhtmltopdf can be used with htaccess but we aren't set up 
- * for that at the moment
- */
-function nesi_mstep_generate_proposal_pdf($nid) { 
-  
   include_once 'Wkhtmltopdf.php';
-
-  $absolute_path =  DRUPAL_ROOT . '/' . conf_path();
-  $wkhtmltopdf_files_path =  $absolute_path . '/files';
-  //$wkhtmltopdf_header_html = $absolute_path . '/themes/ws_mm/templates/pdf-header.html';
-  //$wkhtmltopdf_footer_html = $absolute_path . '/themes/ws_mm/templates/pdf-footer.html';
-  $wkhtmltopdf_margins = array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null);
-
+  $wkhtmltopdf_files_path = DRUPAL_ROOT . '/' . conf_path() . '/files';
   $node = node_load($nid);
-  $file_name = $node->type . '-' . $nid;
-
-  $title_map = array('proposal_development_class' => 'Development Proposal' , 'proposal_research_class' => 'Research Proposal' );
-  $report_title = $title_map[$node->type];
+  $file_name = 'NeSI-submission-' . $nid;
   $css = drupal_get_css();
   $data = nesi_mstep_proposal_data($nid);
   $html = theme('nesi_mstep_proposal_pdf', array('data' => $data, 'css' => $css, 'nid' => $nid));
@@ -137,8 +126,8 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     // Allow the path to the binary to be overridden in settings.php.
     $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
     $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path, 'binpath' => $bin_path));
-    $wkhtmltopdf->setMargins($wkhtmltopdf_margins);
-    $wkhtmltopdf->setTitle($report_title);
+    $wkhtmltopdf->setMargins(array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null));
+    $wkhtmltopdf->setTitle($title_map[$node->type]);
     $wkhtmltopdf->setHtml($html);
     $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
   }
