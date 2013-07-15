@@ -10,7 +10,7 @@ Feature: Submit_a_proposal
     Then I should see "Access Policy"
     And I should see the following <links>
       | links                                   |
-      | NeSI Guidelines for Researchers 1.1.pdf |
+      | NeSI Guidelines for Researchers 1.2.pdf |
 
   @javascript @researcher
   Scenario: Login and as researcher and are able complete Development Proposal 
@@ -57,7 +57,7 @@ Feature: Submit_a_proposal
       | text       | Principal's name              | Willy Wonka                                             |
       | text       | Principal's email             | willy@thechocolatefactory.com                           |
       | text       | Principal's phone number      | 021 555 555                                             |
-      | text       | Project team members requiring access to the NeSI systems | Charlie Bucket, Veruca Salt |
+      | text       | Project team members requiring access to the NeSI systems | James Henry Trotter, Charlie Bucket, Veruca Salt |
       | text       | Project team's HPC experience | Ohh yes lots of expereince                              |
       ## Need to use the css id for a check box
       | check      | #edit-field-pdc-proposed-hpc-platform-power7     | Check box                                               |

@@ -7,9 +7,12 @@
  * @license http://framework.zend.com/license/new-bsd     New BSD License
  * @see Repository: https://github.com/aur1mas/Wkhtmltopdf
  * @version 1.10
+ *
+ * This has been configured for NeSI.
+ * @todo Unhack this third party library.
+ * @see https://github.com/aur1mas/Wkhtmltopdf
+ * @todo Manage third party library with drush make.
  */
-// A couple of config options need to be changed 
-// to allow this to workon the Webscope dev servers
 
 class Wkhtmltopdf
 {
@@ -38,7 +41,7 @@ class Wkhtmltopdf
      * path to executable
      */
 
-    protected $_bin = '/srv/www/platforms/drupal/sites/www.nesi.org.nz/bin/wkhtmltopdf-amd64';
+    protected $_bin = '/usr/bin/wkhtmltopdf';
     protected $_filename = null;                // filename in $path directory
 
     /**
@@ -642,23 +645,24 @@ class Wkhtmltopdf
             $command .= (!is_null($margin)) ? sprintf(' --margin-%s %s', $position, $margin) : '';
         }
 
-		    $command .= ($this->getWindowStatus()) ? " --window-status ".$this->getWindowStatus()."" : "";
+        $command .= ($this->getWindowStatus()) ? " --window-status ".$this->getWindowStatus()."" : "";
         $command .= ($this->getTOC()) ? " --toc" : "";
         $command .= ($this->getGrayscale()) ? " --grayscale" : "";
-        // For testing on the webscope development environment
-        if('/usr/bin/wkhtmltopdf-old' == $this->_bin) {
-          $command .= (mb_strlen($this->getPassword()) > 0) ? " --password " . $this->getPassword() . "" : "";
-          $command .= (mb_strlen($this->getUsername()) > 0) ? " --username " . $this->getUsername() . "" : "";
-          $command .= ' --footer-font-size 7 --disable-javascript --ignore-load-errors --username webscope --password eden --dpi 96 '; // Katie hardcoding extra flags copied fr~
-        }
-        $command .= ' --footer-font-size 7 --disable-javascript --dpi 96 --quiet '; // Katie hardcoding extra flags copied fr~
+
+        // In Webscope dev environments, append this to settings.php:
+        // $conf['nesi_wkhtmltopdf_extra_options'] = '--username webscope --password eden';
+        // @todo This should be done outside of Wkhtmlpdf because Wkhtmlpdf is a third party library.
+        $command .= ' ' . variable_get('nesi_wkhtmltopdf_extra_options', '');
+        $command .= ' --footer-font-size 7 --disable-javascript --dpi 96 --quiet ';
         $command .= (mb_strlen($this->getFooterHtml()) > 0) ? " --footer-html \"" . $this->getFooterHtml() . "\"" : "";
         $command .= (mb_strlen($this->getHeaderHtml()) > 0) ? " --header-html \"" . $this->getHeaderHtml() . "\"" : "";
         $command .= ($this->getTitle()) ? ' --title "' . $this->getTitle() . '"' : '';
         $command .= ' "%input%"';
         $command .= " -";
-        if ( $this->getRunInVirtualX() )
+        if ($this->getRunInVirtualX()) {
           $command = 'xvfb-run ' . $command;
+        }
+        watchdog('wkhtmltopdf', 'wkhtmltopdf command: %command', array('%command' => $command), WATCHDOG_DEBUG);
         return $command;
     }
 

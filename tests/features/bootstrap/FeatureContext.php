@@ -146,6 +146,8 @@ class FeatureContext extends DrupalContext {
   /**
    * Authenticates a user.
    *
+   * @todo Refactor iAmLoggedInAsWithThePasswordUsingSelenium() for code re-use.
+   *
    * @Given /^I am logged in as "([^"]*)" with the password "([^"]*)"$/
    */
   public function iAmLoggedInAsWithThePassword($username, $passwd) {
@@ -153,7 +155,7 @@ class FeatureContext extends DrupalContext {
 
     if (strtolower($user) == strtolower($username)) {
       // Already logged in.
-      echo "Already logged in \n";
+      // echo "Already logged in \n";
       return;
     }
 
@@ -169,7 +171,7 @@ class FeatureContext extends DrupalContext {
     $element->fillField('edit-name', $username);
     $element->fillField('edit-pass', $passwd);
     
-    echo "Filling password fields \n";
+    // echo "Filling password fields \n";
     $submit = $element->findButton('edit-submit');
     if (empty($submit)) {
       throw new Exception('No submit button at ' . $this->getSession()->getCurrentUrl());
@@ -201,6 +203,8 @@ class FeatureContext extends DrupalContext {
   /**
    * Authenticates a user.
    *
+   * @todo Refactor iAmLoggedInAsWithThePassword() for code re-use.
+   *
    * @Given /^I am logged in as "([^"]*)" with the password "([^"]*)" using selenium$/
    */
   public function iAmLoggedInAsWithThePasswordUsingSelenium($username, $passwd) {
@@ -208,7 +212,7 @@ class FeatureContext extends DrupalContext {
 
     if (strtolower($user) == strtolower($username)) {
       // Already logged in.
-      echo "Already logged in \n";
+      // echo "Already logged in \n";
       return;
     }
 
@@ -224,7 +228,7 @@ class FeatureContext extends DrupalContext {
     $element->fillField('edit-name', $username);
     $element->fillField('edit-pass', $passwd);
     
-    echo "Filling password fields \n";
+    // echo "Filling password fields \n";
     $submit = $element->findButton('edit-submit');
     if (empty($submit)) {
       throw new Exception('No submit button at ' . $this->getSession()->getCurrentUrl());
