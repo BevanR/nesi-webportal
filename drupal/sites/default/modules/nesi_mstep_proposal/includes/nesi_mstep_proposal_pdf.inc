@@ -141,8 +141,6 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     $bin_path = variable_get('wkhtmltopdf_bin_path', '/srv/www/platforms/drupal/sites/www.nesi.org.nz/bin/wkhtmltopdf-amd64');
     $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path,'binpath' => $bin_path));
     $wkhtmltopdf->setMargins($wkhtmltopdf_margins);
-    //$wkhtmltopdf->setHeaderHtml($wkhtmltopdf_header_html);
-    //$wkhtmltopdf->setFooterHtml($wkhtmltopdf_footer_html);
     $wkhtmltopdf->setTitle($report_title);
     $wkhtmltopdf->setHtml($html);
     $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");

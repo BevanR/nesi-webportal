@@ -7,9 +7,9 @@
  * @license http://framework.zend.com/license/new-bsd     New BSD License
  * @see Repository: https://github.com/aur1mas/Wkhtmltopdf
  * @version 1.10
+ *
+ *  This has been configured for NeSI.
  */
-// A couple of config options need to be changed 
-// to allow this to workon the Webscope dev servers
 
 class Wkhtmltopdf
 {
@@ -642,7 +642,7 @@ class Wkhtmltopdf
             $command .= (!is_null($margin)) ? sprintf(' --margin-%s %s', $position, $margin) : '';
         }
 
-		    $command .= ($this->getWindowStatus()) ? " --window-status ".$this->getWindowStatus()."" : "";
+        $command .= ($this->getWindowStatus()) ? " --window-status ".$this->getWindowStatus()."" : "";
         $command .= ($this->getTOC()) ? " --toc" : "";
         $command .= ($this->getGrayscale()) ? " --grayscale" : "";
         // For testing on the webscope development environment
@@ -657,8 +657,9 @@ class Wkhtmltopdf
         $command .= ($this->getTitle()) ? ' --title "' . $this->getTitle() . '"' : '';
         $command .= ' "%input%"';
         $command .= " -";
-        if ( $this->getRunInVirtualX() )
+        if ($this->getRunInVirtualX()) {
           $command = 'xvfb-run ' . $command;
+        }
         return $command;
     }
 
