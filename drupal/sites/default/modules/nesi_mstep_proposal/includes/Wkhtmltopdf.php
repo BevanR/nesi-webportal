@@ -657,6 +657,7 @@ class Wkhtmltopdf
         if ($this->getRunInVirtualX()) {
           $command = 'xvfb-run ' . $command;
         }
+        watchdog('wkhtmltopdf', 'wkhtmltopdf command: %command', array('%command' => $command), WATCHDOG_DEBUG);
         return $command;
     }
 
