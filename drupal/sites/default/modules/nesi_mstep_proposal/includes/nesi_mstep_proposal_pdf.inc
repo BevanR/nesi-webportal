@@ -138,8 +138,8 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   try {
     // The binary path changes for the nesi servers. This can be set in the 
     // settings.php file
-    $bin_path = variable_get('wkhtmltopdf_bin_path', '/srv/www/platforms/drupal/sites/www.nesi.org.nz/bin/wkhtmltopdf-amd64');
-    $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path,'binpath' => $bin_path));
+    $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
+    $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path, 'binpath' => $bin_path));
     $wkhtmltopdf->setMargins($wkhtmltopdf_margins);
     $wkhtmltopdf->setTitle($report_title);
     $wkhtmltopdf->setHtml($html);
