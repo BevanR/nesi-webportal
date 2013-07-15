@@ -146,6 +146,8 @@ class FeatureContext extends DrupalContext {
   /**
    * Authenticates a user.
    *
+   * @todo Refactor iAmLoggedInAsWithThePasswordUsingSelenium() for code re-use.
+   *
    * @Given /^I am logged in as "([^"]*)" with the password "([^"]*)"$/
    */
   public function iAmLoggedInAsWithThePassword($username, $passwd) {
@@ -200,6 +202,8 @@ class FeatureContext extends DrupalContext {
 
   /**
    * Authenticates a user.
+   *
+   * @todo Refactor iAmLoggedInAsWithThePassword() for code re-use.
    *
    * @Given /^I am logged in as "([^"]*)" with the password "([^"]*)" using selenium$/
    */
