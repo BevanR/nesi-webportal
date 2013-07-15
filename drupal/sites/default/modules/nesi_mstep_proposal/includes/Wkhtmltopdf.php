@@ -8,7 +8,10 @@
  * @see Repository: https://github.com/aur1mas/Wkhtmltopdf
  * @version 1.10
  *
- *  This has been configured for NeSI.
+ * This has been configured for NeSI.
+ * @todo Unhack this third party library.
+ * @see https://github.com/aur1mas/Wkhtmltopdf
+ * @todo Manage third party library with drush make.
  */
 
 class Wkhtmltopdf
@@ -647,6 +650,7 @@ class Wkhtmltopdf
         $command .= ($this->getGrayscale()) ? " --grayscale" : "";
         // In Webscope dev environments, append this to settings.php:
         // $conf['nesi_wkhtmltopdf_extra_options'] = '--username webscope --password eden';
+        // @todo This should be done outside of Wkhtmlpdf because Wkhtmlpdf is a third party library.
         $command .= ' ' . variable_get('nesi_wkhtmltopdf_extra_options', '');
         $command .= ' --footer-font-size 7 --disable-javascript --dpi 96 --quiet ';
         $command .= (mb_strlen($this->getFooterHtml()) > 0) ? " --footer-html \"" . $this->getFooterHtml() . "\"" : "";
