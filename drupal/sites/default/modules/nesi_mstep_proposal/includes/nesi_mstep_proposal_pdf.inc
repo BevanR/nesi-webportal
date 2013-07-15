@@ -104,7 +104,7 @@ function nesi_mstep_proposal_data($nid) {
 }
 
 function nesi_mstep_sort_fields($a,$b){
-    return $a['widget']['weight']-$b['widget']['weight'];
+  return $a['widget']['weight']-$b['widget']['weight'];
 }
 
 
@@ -136,15 +136,15 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   $data = nesi_mstep_proposal_data($nid);
   $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css, 'nid' => $nid));
   try {
-    // The binary path changes for the nesi servers. This can be set in the 
-    // settings.php file
+    // Allow the path to the binary to be overridden in settings.php.
     $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
     $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path, 'binpath' => $bin_path));
     $wkhtmltopdf->setMargins($wkhtmltopdf_margins);
     $wkhtmltopdf->setTitle($report_title);
     $wkhtmltopdf->setHtml($html);
     $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
-  } catch (Exception $e) {
+  }
+  catch (Exception $e) {
     echo $e->getMessage();
     drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
   }
@@ -158,6 +158,3 @@ function nesi_mstep_generate_proposal_pdf($nid) {
 
   return $file;
 }
-
-
-
