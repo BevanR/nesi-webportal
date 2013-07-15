@@ -10,7 +10,7 @@ Feature: Submit a proposal
     Then I should see "Access Policy"
     And I should see the following <links>
       | links                                   |
-      | NeSI Guidelines for Researchers 1.1.pdf |
+      | NeSI Guidelines for Researchers 1.2.pdf |
 
   @javascript
   Scenario: Login and as researcher and are able complete Development Proposal 
