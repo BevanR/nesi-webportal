@@ -131,7 +131,8 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   $report_title = $title_map[$node->type];
   $css = drupal_get_css();
   $data = nesi_mstep_proposal_data($nid);
-  $html = theme('nesi_mstep_proposal_pdf' , array('data' => $data, 'css' => $css, 'nid' => $nid));
+  $html = theme('nesi_mstep_proposal_pdf', array('data' => $data, 'css' => $css, 'nid' => $nid));
+
   try {
     // Allow the path to the binary to be overridden in settings.php.
     $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
