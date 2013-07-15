@@ -146,12 +146,5 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
   }
 
-  $file = file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);
-
-  // Printing a message to screen so that a behat test can be created 
-  if(!empty($pdf_file) && is_object($file)) {
-    drupal_set_message('Pdf file sucessfully created');
-  }
-
-  return $file;
+  return file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);
 }
