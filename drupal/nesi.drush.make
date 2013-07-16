@@ -85,5 +85,5 @@ libraries[phpmailer][download][revision] = v5.2.6
 
 ; Wkhtmltopdf class requires the wkhtmltopdf binary and the binary requires libdev-ssl.
 libraries[wkhtmltopdf][download][type] = git
-libraries[wkhtmltopdf][download][url] = https://github.com/nesi/Wkhtmltopdf.git
-; libraries[wkhtmltopdf][download][revision] = 2dcfe68d594081b0a07fd67d8288ebfdcd90abae
+libraries[wkhtmltopdf][download][url] = https://github.com/aur1mas/Wkhtmltopdf.git
+libraries[wkhtmltopdf][download][revision] = 2dcfe68d594081b0a07fd67d8288ebfdcd90abae
