@@ -45,7 +45,7 @@ function nesi_mstep_proposal_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  // For testing
+  // For testing.
   // $items['apply/email-testing'] = array(
   //   'title' => t('Email testing'),
   //   'page callback' => 'nesi_mstep_proposal_email_test_page',
@@ -54,7 +54,7 @@ function nesi_mstep_proposal_menu() {
   //   'type' => MENU_CALLBACK,
   // );
 
-  // For development
+  // For development.
   // $items['apply/pdf-theme'] = array(
   //   'title' => t('Email testing'),
   //   'page callback' => 'nesi_mstep_proposal_email_theme_page',
@@ -63,7 +63,7 @@ function nesi_mstep_proposal_menu() {
   //   'type' => MENU_CALLBACK,
   // );
 
-  // For testing
+  // For testing.
   // $items['apply/pdf-generate'] = array(
   //   'title' => t('PDF testing'),
   //   'page callback' => 'nesi_mstep_proposal_pdf_generate_page',
