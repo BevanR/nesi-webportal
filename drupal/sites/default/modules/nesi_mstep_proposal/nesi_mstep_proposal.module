@@ -16,19 +16,6 @@ include_once 'includes/nesi_mstep_proposal_email.inc';
 include_once 'includes/nesi_mstep_proposal_pdf.inc';
 
 /**
- * Implements hook_init().
- */
-function nesi_mstep_proposal_init() {
-  // Don't cache proposal page for anonymous users!
-
-  // if the path leads to the wizard
-  if (drupal_match_path($_GET['q'], 'apply/*')) {
-    // set cache to false
-    $GLOBALS['conf']['cache'] = FALSE;   
-  }
-}
-
-/**
  * Implements hook_menu().
  */
 function nesi_mstep_proposal_menu() {
