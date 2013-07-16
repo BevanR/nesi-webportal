@@ -119,10 +119,14 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     'proposal_postgrad_class' => 'Postgraduate Proposal',
   );
 
-  require_once(libraries_get_path('wkhtmltopdf') . '/Wkhtmltopdf.php');
-  $wkhtmltopdf_files_path = DRUPAL_ROOT . '/' . conf_path() . '/files/applications';
-  $node = node_load($nid);
+  // Prepare the directory for the PDF.
+  $relative_path = file_default_scheme() . '://applications';
+  file_prepare_directory($relative_path, FILE_CREATE_DIRECTORY);
+  $absolute_path = drupal_realpath($relative_path);
+
+  // Prepare the content.
   $file_name = 'NeSI-submission-' . $nid;
+  $node = node_load($nid);
   $css = drupal_get_css();
   $data = nesi_mstep_proposal_data($nid);
   $html = theme('nesi_mstep_proposal_pdf', array('data' => $data, 'css' => $css, 'nid' => $nid));
@@ -130,7 +134,8 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   try {
     // Allow the path to the binary to be overridden in settings.php.
     $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
-    $doc = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path, 'binpath' => $bin_path));
+    require_once(libraries_get_path('wkhtmltopdf') . '/Wkhtmltopdf.php');
+    $doc = new Wkhtmltopdf(array('path' => $absolute_path, 'binpath' => $bin_path));
     $doc->setMargins(array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null));
     $doc->setTitle($title_map[$node->type]);
     $doc->setHtml($html);
