@@ -111,6 +111,7 @@ function nesi_mstep_sort_fields($a,$b){
 }
 
 function nesi_mstep_generate_proposal_pdf($nid) {
+  // @todo Merge with nesi_mstep_proposal_class_types().
   static $title_map = array(
     'proposal_development_class' => 'Development Proposal',
     'proposal_research_class' => 'Research Proposal',

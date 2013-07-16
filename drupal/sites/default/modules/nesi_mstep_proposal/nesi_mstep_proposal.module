@@ -238,6 +238,8 @@ function _nesi_mstep_proposal_forms_research_proposal() {
 
 /**
  * Returns array of proposal types available for completion.
+ *
+ * @todo Get the title from the content type configuration.
  */
 function nesi_mstep_proposal_class_types() {
   return array(

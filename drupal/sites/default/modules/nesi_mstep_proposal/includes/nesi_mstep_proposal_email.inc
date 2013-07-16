@@ -92,7 +92,7 @@ function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id
   $attachments[] = _nesi_mstep_proposal_generate_submission_file($form_data); 
   $attachments[] = nesi_mstep_proposal_pdf_attachement($node_id); 
 
-   //Send Email!
+  // Send Email!
   $send_email = nesi_mstep_proposal_send_attachment_email($to, $from, $subject, $message, $attachments);
   
   // Watchdog any errors
@@ -105,11 +105,9 @@ function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id
 }
 
 /**
- *
+ * For testing.
  */
 function nesi_mstep_proposal_pdf_attachement($nid) {
-  // For testing
-  //$nid = 121;
   $file = nesi_mstep_generate_proposal_pdf($nid);
   $attachment = array(
     'name' => $file->filename, 
