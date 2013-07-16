@@ -119,23 +119,19 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     'proposal_postgrad_class' => 'Postgraduate Proposal',
   );
 
-  // Prepare the directory for the PDF.
-  $relative_path = file_default_scheme() . '://applications';
-  file_prepare_directory($relative_path, FILE_CREATE_DIRECTORY);
-  $absolute_path = drupal_realpath($relative_path);
-
-  // Prepare the content.
-  $file_name = 'NeSI-submission-' . $nid;
   $node = node_load($nid);
   $css = drupal_get_css();
   $data = nesi_mstep_proposal_data($nid);
   $html = theme('nesi_mstep_proposal_pdf', array('data' => $data, 'css' => $css, 'nid' => $nid));
 
   try {
-    // Allow the path to the binary to be overridden in settings.php.
-    $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
     require_once(libraries_get_path('wkhtmltopdf') . '/Wkhtmltopdf.php');
-    $doc = new Wkhtmltopdf(array('path' => $absolute_path, 'binpath' => $bin_path));
+    $doc = new Wkhtmltopdf(array(
+      // wkhtmltopdf binary creates HTML files here.
+      'path' => file_directory_temp(),
+      // Allow the path to the binary to be overridden in settings.php.
+      'binpath' => variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf'),
+    ));
     $doc->setMargins(array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null));
     $doc->setTitle($title_map[$node->type]);
     $doc->setHtml($html);
@@ -150,11 +146,11 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     // Debug.
     // die($doc->_getCommand());
     // dpm($doc->_getCommand());
-    $pdf_file = $doc->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
+    $tmp_file = $doc->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
   }
   catch (Exception $e) {
     watchdog('wkhtmltopdf', 'Wkhtmltopdf error: %message', array('%message' => $e->getMessage()), WATCHDOG_ERROR);
   }
 
-  return file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);
+  return file_save_data($tmp_file, "public://applications/NeSI-submission-$nid.pdf", FILE_EXISTS_REPLACE);
 }
