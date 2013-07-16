@@ -120,8 +120,7 @@ function nesi_mstep_proposal_pdf_attachement($nid) {
 }
 
 function nesi_mstep_proposal_send_attachment_email($to, $from, $subject, $message, $attachments = array()) {
-
-  require_once('class.phpmailer.php');
+  require_once(libraries_get_path('phpmailer') . '/class.phpmailer.php');
 
   $mail = new PHPMailer();
   $mail->IsSMTP(); // telling the class to use SMTP

@@ -117,7 +117,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     'proposal_postgrad_class' => 'Postgraduate Proposal',
   );
 
-  include_once 'Wkhtmltopdf.php';
+  require_once(libraries_get_path('wkhtmltopdf') . '/Wkhtmltopdf.php');
   $wkhtmltopdf_files_path = DRUPAL_ROOT . '/' . conf_path() . '/files';
   $node = node_load($nid);
   $file_name = 'NeSI-submission-' . $nid;
