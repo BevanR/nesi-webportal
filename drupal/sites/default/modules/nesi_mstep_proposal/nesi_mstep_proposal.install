@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Requirements and update handlers.
+ *
+ * @todo Implement hook_requirements().
+ */
+
+/**
+ * Checks the new directory for proposal PDFs exists.
+ */
+function nesi_mstep_proposal_update_7100() {
+  $relative_path = file_default_scheme() . '://applications';
+  file_prepare_directory($relative_path, FILE_CREATE_DIRECTORY);
+  return t('The new directory for proposal PDFs exists and is writable.');
+}
