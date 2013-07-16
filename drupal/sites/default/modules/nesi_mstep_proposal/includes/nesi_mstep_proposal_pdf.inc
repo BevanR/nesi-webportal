@@ -131,14 +131,18 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     // Allow the path to the binary to be overridden in settings.php.
     $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
     $doc = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path, 'binpath' => $bin_path));
-    // @todo Set BasicAuth credentials if securesite is enabled or Apache BasicAuth is on.
-    // if (module_exists('securesite') && variable_get('securesite_enabled')) {
-    //   $doc->setUsername(variable_get('securesite_username'));
-    //   $doc->setPassword(variable_get('securesite_password'));
-    // }
     $doc->setMargins(array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null));
     $doc->setTitle($title_map[$node->type]);
     $doc->setHtml($html);
+
+    // Set BasicAuth credentials if securesite is enabled.
+    // @todo Set from $conf variables for other environments, like oscar.
+    if (module_exists('securesite') && 0 < variable_get('securesite_enabled')) {
+      $doc->setUsername(variable_get('securesite_guest_name'));
+      $doc->setPassword(variable_get('securesite_guest_pass'));
+    }
+
+    // Debug.
     // die($doc->_getCommand());
     // dpm($doc->_getCommand());
     $pdf_file = $doc->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
