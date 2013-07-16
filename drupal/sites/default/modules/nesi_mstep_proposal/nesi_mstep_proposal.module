@@ -46,32 +46,31 @@ function nesi_mstep_proposal_menu() {
   );
 
   // For testing
-  $items['apply/email-testing'] = array(
-    'title' => t('Email testing'),
-    'page callback' => 'nesi_mstep_proposal_email_test_page',
-    'page arguments' => array(1),
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-  );
-  
+  // $items['apply/email-testing'] = array(
+  //   'title' => t('Email testing'),
+  //   'page callback' => 'nesi_mstep_proposal_email_test_page',
+  //   'page arguments' => array(1),
+  //   'access callback' => TRUE,
+  //   'type' => MENU_CALLBACK,
+  // );
+
   // For development
-  // TODO set access for developers only
-  $items['apply/pdf-theme'] = array(
-    'title' => t('Email testing'),
-    'page callback' => 'nesi_mstep_proposal_email_theme_page',
-    'page arguments' => array(1),
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-  );
+  // $items['apply/pdf-theme'] = array(
+  //   'title' => t('Email testing'),
+  //   'page callback' => 'nesi_mstep_proposal_email_theme_page',
+  //   'page arguments' => array(1),
+  //   'access callback' => TRUE,
+  //   'type' => MENU_CALLBACK,
+  // );
 
   // For testing
-  $items['apply/pdf-generate'] = array(
-    'title' => t('PDF testing'),
-    'page callback' => 'nesi_mstep_proposal_pdf_generate_page',
-    'page arguments' => array(1),
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-  );
+  // $items['apply/pdf-generate'] = array(
+  //   'title' => t('PDF testing'),
+  //   'page callback' => 'nesi_mstep_proposal_pdf_generate_page',
+  //   'page arguments' => array(1),
+  //   'access callback' => TRUE,
+  //   'type' => MENU_CALLBACK,
+  // );
 
   return $items;
 }
