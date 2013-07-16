@@ -132,11 +132,6 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     // Allow the path to the binary to be overridden in settings.php.
     $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
     $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path, 'binpath' => $bin_path));
-    $wkhtmltopdf->setOptions(array(
-      // @todo Is this still necessary if the chain certificates are installed?
-      // @todo Contribute as patch to Wkhtmltopdf.php.
-      'quiet' => NULL,
-    ));
     $wkhtmltopdf->setMargins(array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null));
     $wkhtmltopdf->setTitle($title_map[$node->type]);
     $wkhtmltopdf->setHtml($html);
