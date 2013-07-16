@@ -121,7 +121,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   );
 
   require_once(libraries_get_path('wkhtmltopdf') . '/Wkhtmltopdf.php');
-  $wkhtmltopdf_files_path = DRUPAL_ROOT . '/' . conf_path() . '/files';
+  $wkhtmltopdf_files_path = DRUPAL_ROOT . '/' . conf_path() . '/files/applications';
   $node = node_load($nid);
   $file_name = 'NeSI-submission-' . $nid;
   $css = drupal_get_css();
