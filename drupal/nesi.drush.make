@@ -55,7 +55,7 @@ projects[viewfield][version] = 2.0
 projects[views][version] = 3.7
 projects[views_bulk_operations][version] = 3.1
 projects[wysiwyg][version] = 2.2
-; This list is ordered alphabetically.
+; The list of modules is ordered alphabetically.
 
 ; Themes
 projects[bootstrap][version] = 2.0
