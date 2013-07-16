@@ -136,8 +136,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
   }
   catch (Exception $e) {
-    echo $e->getMessage();
-    drupal_set_message('WKHTMLTOPDF error : ' . $e->getMessage(),'error');
+    watchdog('wkhtmltopdf', 'Wkhtmltopdf error: %message', array('%message' => $e->getMessage()), WATCHDOG_ERROR);
   }
 
   return file_save_data($pdf_file, 'public://' . $file_name . '.pdf', FILE_EXISTS_REPLACE);

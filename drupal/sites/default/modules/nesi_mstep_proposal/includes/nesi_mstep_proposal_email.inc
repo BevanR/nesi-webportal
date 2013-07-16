@@ -94,14 +94,14 @@ function nesi_mstep_admin_email($to = 'sam+nesitesting@webscope.co.nz', $node_id
 
   // Send Email!
   $send_email = nesi_mstep_proposal_send_attachment_email($to, $from, $subject, $message, $attachments);
-  
-  // Watchdog any errors
-  if(!$send_email) {
-    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email - " '.$to.' " ', NULL , WATCHDOG_WARNING, $link = NULL);
-  } 
+
+  // Log to watchdog.
+  if ($send_email) {
+    watchdog('nesi_mstep_proposal', 'Confirmation email sent to %to', array('%to' => $to), WATCHDOG_INFO);
+  }
   else {
-    watchdog('nesi_mstep_proposal', 'Confirmation email sent - " '.$to.' " ', NULL , WATCHDOG_INFO, $link = NULL);
-  } 
+    watchdog('nesi_mstep_proposal', 'Problem sending confirmation email to %to', array('%to' => $to), WATCHDOG_WARNING);
+  }
 }
 
 /**
