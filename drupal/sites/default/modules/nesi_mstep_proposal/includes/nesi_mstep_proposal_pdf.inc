@@ -131,18 +131,18 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   try {
     // Allow the path to the binary to be overridden in settings.php.
     $bin_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
-    $wkhtmltopdf = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path, 'binpath' => $bin_path));
+    $doc = new Wkhtmltopdf(array('path' => $wkhtmltopdf_files_path, 'binpath' => $bin_path));
     // @todo Set BasicAuth credentials if securesite is enabled or Apache BasicAuth is on.
     // if (module_exists('securesite') && variable_get('securesite_enabled')) {
-    //   $wkhtmltopdf->setUsername(variable_get('securesite_username'));
-    //   $wkhtmltopdf->setPassword(variable_get('securesite_password'));
+    //   $doc->setUsername(variable_get('securesite_username'));
+    //   $doc->setPassword(variable_get('securesite_password'));
     // }
-    $wkhtmltopdf->setMargins(array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null));
-    $wkhtmltopdf->setTitle($title_map[$node->type]);
-    $wkhtmltopdf->setHtml($html);
-    // die($wkhtmltopdf->_getCommand());
-    // dpm($wkhtmltopdf->_getCommand());
-    $pdf_file = $wkhtmltopdf->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
+    $doc->setMargins(array('top' => '15', 'bottom' => '15', 'left' => null, 'right' => null));
+    $doc->setTitle($title_map[$node->type]);
+    $doc->setHtml($html);
+    // die($doc->_getCommand());
+    // dpm($doc->_getCommand());
+    $pdf_file = $doc->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
   }
   catch (Exception $e) {
     watchdog('wkhtmltopdf', 'Wkhtmltopdf error: %message', array('%message' => $e->getMessage()), WATCHDOG_ERROR);
