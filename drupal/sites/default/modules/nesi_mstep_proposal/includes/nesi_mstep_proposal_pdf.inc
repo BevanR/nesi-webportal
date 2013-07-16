@@ -31,7 +31,6 @@ function nesi_mstep_proposal_email_theme_page() {
   $node_html = theme('nesi_mstep_proposal_pdf' , array( 'data' => $data, 'css' => $css, 'nid' => $nid));
   echo $node_html;
   drupal_exit();
-  // return 'pdf theme page';
 }
 
 /**
