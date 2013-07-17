@@ -141,3 +141,17 @@
     }
   };
 } (jQuery));
+
+// Opens the login overlay if the user is not logged in.
+Drupal.behaviors.nesiLoginModal = {
+  attach: function (context) {
+    "use strict";
+    if (Drupal.settings.nesiLoginModal.open) {
+      // Hide the "close" button.
+      // @todo Also disable the ability to close the modal with escape or
+      // background click.
+      jQuery('#nesiLoginModal').find('.modal-header').remove();
+      jQuery('#nesi-login-modal-button', context).click();
+    }
+  }
+};

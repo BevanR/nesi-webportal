@@ -107,42 +107,41 @@ function nesi_mstep_proposal_theme($existing, $type, $theme, $path) {
  * Page callback for apply/%ctools_js/create-proposal
  */
 function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
+  // Open the login overlay on page load for anonymous users.
   if (!user_is_logged_in()) {
-    drupal_goto('user/login');
+    drupal_add_js(array('nesiLoginModal' => array('open' => TRUE)), 'setting');
   }
-  else {
-    ctools_include('wizard');
-    ctools_include('object-cache');
+  ctools_include('wizard');
+  ctools_include('object-cache');
 
-    if (empty($step)) {
-      // We reset the form when $step is NULL because that means they have
-      // for whatever reason started over.
-      nesi_mstep_proposal_cache_clear('nesi_mstep');
-      $step = 'step1';
-    }
+  if (empty($step)) {
+    // We reset the form when $step is NULL because that means they have
+    // for whatever reason started over.
+    nesi_mstep_proposal_cache_clear('nesi_mstep');
+    $step = 'step1';
+  }
 
-    // Get form from cache
-    $ctools_object = nesi_mstep_proposal_cache_get('nesi_mstep');
+  // Get form from cache
+  $ctools_object = nesi_mstep_proposal_cache_get('nesi_mstep');
 
-    if (empty($ctools_object->form_info)) {
-      $ctools_object->form_info = array(
-        'id' => 'nesi_mstep', //form id
-        'path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step", //pass the step we're on to the form, step1, step2, ..etc
-        'show trail' => FALSE, //show the breadcrumb / path trail for the forms
-        'show back' => TRUE, //show the back button
-        'show cancel' => FALSE, //show the cancel button
-        'show return' => FALSE, //show the update and return button
-        'next callback' =>  'nesi_mstep_proposal_wizard_next', //a callback function to run when the next button is pressed
-        'finish callback' => 'nesi_mstep_proposal_wizard_finish', //callback when finish button is pressed
-        'return callback' => 'nesi_mstep_proposal_wizard_finish', //callback when finish button is pressed
-        'cancel callback' => 'nesi_mstep_proposal_wizard_cancel', //callback when cancel button is pressed
-        'cancel path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
-        'return path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
-        'finish text' => 'Submit Proposal',
-        'order' => _nesi_mstep_proposal_steps(),
-        'forms' => _nesi_mstep_proposal_forms(), 
-      );
-    }
+  if (empty($ctools_object->form_info)) {
+    $ctools_object->form_info = array(
+      'id' => 'nesi_mstep', //form id
+      'path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step", //pass the step we're on to the form, step1, step2, ..etc
+      'show trail' => FALSE, //show the breadcrumb / path trail for the forms
+      'show back' => TRUE, //show the back button
+      'show cancel' => FALSE, //show the cancel button
+      'show return' => FALSE, //show the update and return button
+      'next callback' =>  'nesi_mstep_proposal_wizard_next', //a callback function to run when the next button is pressed
+      'finish callback' => 'nesi_mstep_proposal_wizard_finish', //callback when finish button is pressed
+      'return callback' => 'nesi_mstep_proposal_wizard_finish', //callback when finish button is pressed
+      'cancel callback' => 'nesi_mstep_proposal_wizard_cancel', //callback when cancel button is pressed
+      'cancel path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
+      'return path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step",
+      'finish text' => 'Submit Proposal',
+      'order' => _nesi_mstep_proposal_steps(),
+      'forms' => _nesi_mstep_proposal_forms(),
+    );
 
     $form_state['ctools_object'] = $ctools_object;
 

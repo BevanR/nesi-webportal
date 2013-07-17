@@ -45,13 +45,14 @@ function nesi_mstep_proposal_intro_form() {
     //'#description' => t('Please indicate the type of proposal for this application'),
     '#options' => nesi_mstep_proposal_class_types(),
     '#default_value' => '',
+    '#disabled' => !user_is_logged_in(),
   );
-  
-  global $user;
 
-  $form['intro-form']['sub_email']['#title'] = 'Email address';
+  // This is a hack to make the error message for anonymous users read "Login
+  // is required."
+  $form['intro-form']['sub_email']['#title'] = t('Login');
   $form['intro-form']['sub_email']['#type'] = 'hidden';
-  $form['intro-form']['sub_email']['#default_value'] = $user->mail;
+  $form['intro-form']['sub_email']['#default_value'] = $GLOBALS['user']->mail;
   $form['intro-form']['sub_email']['#required'] = TRUE;
 
   return $form;
