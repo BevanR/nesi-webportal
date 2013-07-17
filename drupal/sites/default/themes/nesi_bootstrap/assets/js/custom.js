@@ -2,17 +2,10 @@
 /*global jQuery, Drupal */
 (function($) {
   "use strict";
-
   $(document).ready(function() {
     var hideLabel, initOverLabels, onFieldBlur, onFieldFocus, onLabelClick;
 
-    /*
-    $('[rel="tooltip"]').tooltip();
-    $('#home-hero').carousel();
-    $('#home-hero .slide-title').lettering('lines').children('words');
-    */
-
-    /* Form labels */
+    /* Form labels. */
     $('#nesi-mstep-proposal-step-1 .form-text').each(function() {
       var id, label;
       $('#nesi-mstep-proposal-step-1 .form-type-textfield label').hide();
@@ -32,21 +25,21 @@
       });
     });
 
-    /* Fancy field labels for login form */
-
+    /* Fancy field labels for login form. */
     initOverLabels = function() {
+      var i, labels, id, field;
       if (!document.getElementById) {
         return;
       }
-      var i, labels, id, field; // Set focus and blur handlers to hide and show
+
+      // Set focus and blur handlers to hide and show ...
       labels = $('#nesiLoginModal .control-group').find('label');
       for (i = 0; i < labels.length; i += 1) {
         if (id && field) {
-          // with another field.
+          // ... with another field.
           id = labels[i].htmlFor || labels[i].getAttribute('for');
           field = document.getElementById(id);
-          // Change the applied class to hover the label
-          // over the form field.
+          // Change the applied class to hover the label over the form field.
           labels[i].className = 'overlabel-apply';
           // Hide any fields having an initial value.
           if (field.value !== '') {
@@ -97,22 +90,7 @@
       setTimeout(initOverLabels, 50);
     };
 
-    /* Tooltips */
-    /*
-    $('.ws-tooltip').each(function() {
-      var text = $(this).attr('title');
-      $(this).hover(
-        function() {
-          $(this).append('<span class="ws-tooltip-active">' + text + '</span>');
-        },
-        function() {
-          $(this).find('.ws-tooltip-active').remove();
-        }
-      );
-    });
-*/
-
-    /* Move form descriptions to be part of labels */
+    /* Move form descriptions to be part of labels. */
     /* @todo Handle this in nese_mstep_proposal module and proposal node module using PHP instead. */
     $('#nesi-mstep-proposal-step-2 .help-block, #nesi-mstep-proposal-step-3 .help-block, #nesi-mstep-proposal-step-4 .help-block').each(function() {
       $(this).appendTo($(this).parent().prev('label'));
@@ -122,13 +100,13 @@
       $(this).appendTo($(this).parent().prev('label'));
     });
 
-    /* Open Support modal when Contact links are clicked */
+    /* Open Support modal when Contact links are clicked. */
     $('a[href="#contact"]').click(function() {
       $('#feedback_tab_text').click();
       return false;
     });
 
-    /* Make elements be the same height */
+    /* Make elements be the same height. */
     $.fn.equalHeights = function(minHeight, maxHeight) {
       var tallest = minHeight || 0;
       this.each(function() {
@@ -146,10 +124,9 @@
 
     $('.node-proposal-research-class .fieldset-wrapper, .node-proposal-development-class .fieldset-wrapper').equalHeights();
     $('.node-proposal-research-class .field-group-fieldset:odd, .node-type-proposal-development-class .field-group-fieldset:odd').addClass('odd');
-
   });
 
-  /* Init Datepicker on page load rather than first focus() event */
+  /* Init Datepicker on page load rather than first focus() event. */
   Drupal.behaviors.date_popup = {
     attach: function(context) {
       var id, $this;
@@ -163,5 +140,4 @@
       }
     }
   };
-
 } (jQuery));
