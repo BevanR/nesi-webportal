@@ -107,9 +107,10 @@ function nesi_mstep_proposal_theme($existing, $type, $theme, $path) {
  * Page callback for apply/%ctools_js/create-proposal
  */
 function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
-
-  if (user_is_logged_in()) {
- 
+  if (!user_is_logged_in()) {
+    drupal_goto('user/login');
+  }
+  else {
     ctools_include('wizard');
     ctools_include('object-cache');
 
@@ -124,7 +125,6 @@ function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
     $ctools_object = nesi_mstep_proposal_cache_get('nesi_mstep');
 
     if (empty($ctools_object->form_info)) {
-   
       $ctools_object->form_info = array(
         'id' => 'nesi_mstep', //form id
         'path' => "apply/" . ($js ? 'ajax' : 'nojs') . "/create-proposal/%step", //pass the step we're on to the form, step1, step2, ..etc
@@ -143,17 +143,11 @@ function nesi_mstep_proposal_page($js = NULL, $step = NULL) {
         'forms' => _nesi_mstep_proposal_forms(), 
       );
     }
-    
+
     $form_state['ctools_object'] = $ctools_object;
 
     // Send this all off to our form. This is like drupal_get_form only wizardy.
-    $ctools_form = ctools_wizard_multistep_form($ctools_object->form_info, $step, $form_state);
-    $output = drupal_render($ctools_form);
-    
-    return $output;
-  }
-  else {
-    drupal_goto('user/login');
+    return ctools_wizard_multistep_form($ctools_object->form_info, $step, $form_state);
   }
 }
 
