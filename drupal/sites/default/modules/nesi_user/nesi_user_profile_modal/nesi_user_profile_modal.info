@@ -1,5 +1,0 @@
-name = NeSI User Profile Modal
-core = 7.x
-package = NeSI
-version = 7.x-0.1
-project = nesi_user_profile_modal
