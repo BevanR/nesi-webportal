@@ -14,3 +14,13 @@ function nesi_user_install() {
     profile2_type_delete($main_profile_group);
   }
 }
+
+/**
+ * Disables the search module.
+ */
+function nesi_user_update_7100() {
+  if (module_exists('search')) {
+    module_disable(array('search'));
+  }
+  return t('The search module was disabled.');
+}
