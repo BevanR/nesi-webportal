@@ -320,15 +320,6 @@ function nesi_user_user_default_permissions() {
     'module' => 'rules',
   );
 
-  // Exported permission: administer search.
-  $permissions['administer search'] = array(
-    'name' => 'administer search',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'search',
-  );
-
   // Exported permission: administer shibboleth authentication.
   $permissions['administer shibboleth authentication'] = array(
     'name' => 'administer shibboleth authentication',
@@ -1199,15 +1190,6 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: search content.
-  $permissions['search content'] = array(
-    'name' => 'search content',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'search',
-  );
-
   // Exported permission: select account cancellation method.
   $permissions['select account cancellation method'] = array(
     'name' => 'select account cancellation method',
@@ -1231,15 +1213,6 @@ function nesi_user_user_default_permissions() {
       0 => 'website engineer',
     ),
     'module' => 'googleanalytics',
-  );
-
-  // Exported permission: use advanced search.
-  $permissions['use advanced search'] = array(
-    'name' => 'use advanced search',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'search',
   );
 
   // Exported permission: use flag import.
