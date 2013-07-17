@@ -1,7 +1,11 @@
+/*jslint white: true, browser: true, todo: true */
+/*global jQuery, Drupal */
 (function($) {
+  "use strict";
 
   $(document)
     .ready(function() {
+    var hideLabel, initOverLabels, onFieldBlur, onFieldFocus, onLabelClick;
 
     /*
     $('[rel="tooltip"]').tooltip();
@@ -12,20 +16,21 @@
     /* Form labels */
     $('#nesi-mstep-proposal-step-1 .form-text')
       .each(function() {
+      var id, label;
       $('#nesi-mstep-proposal-step-1 .form-type-textfield label')
         .hide();
       $('.form-required')
         .remove();
-      var id = $(this)
+      id = $(this)
         .attr('id');
-      var label = $("label[for=" + id + "]")
+      label = $("label[for=" + id + "]")
         .text();
       $(this)
         .val(label);
       $(this)
         .focus(function() {
         if ($(this)
-          .val() == label) {
+          .val() === label) {
           $(this)
             .val('');
         }
@@ -33,7 +38,7 @@
       $(this)
         .blur(function() {
         if ($(this)
-          .val() == '') {
+          .val() === '') {
           $(this)
             .val(label);
         }
@@ -42,55 +47,65 @@
 
     /* Fancy field labels for login form */
 
-    function initOverLabels() {
-      if (!document.getElementById) return;
-      var labels, id, field; // Set focus and blur handlers to hide and show
+    initOverLabels = function() {
+      if (!document.getElementById) {
+        return;
+      }
+      var i, labels, id, field; // Set focus and blur handlers to hide and show
       labels = $('#nesiLoginModal .control-group')
         .find('label');
-      for (var i = 0; i < labels.length; i++) {
-        // with another field.
-        id = labels[i].htmlFor || labels[i].getAttribute('for');
-        if (!id || !(field = document.getElementById(id))) {
-          continue;
-        }
-        // Change the applied class to hover the label
-        // over the form field.
-        labels[i].className = 'overlabel-apply';
-        // Hide any fields having an initial value.
-        if (field.value !== '') {
-          hideLabel(field.getAttribute('id'), true);
-        }
-        // Set handlers to show and hide labels.
-        field.onfocus = function() {
-          hideLabel(this.getAttribute('id'), true);
-        };
-        field.onblur = function() {
-          if (this.value === '') {
-            hideLabel(this.getAttribute('id'), false);
+      for (i = 0; i < labels.length; i += 1) {
+        if (id && field) {
+          // with another field.
+          id = labels[i].htmlFor || labels[i].getAttribute('for');
+          field = document.getElementById(id);
+          // Change the applied class to hover the label
+          // over the form field.
+          labels[i].className = 'overlabel-apply';
+          // Hide any fields having an initial value.
+          if (field.value !== '') {
+            hideLabel(field.getAttribute('id'), true);
           }
-        };
-        // Handle clicks to label elements (for Safari).
-        labels[i].onclick = function() {
-          var id, field;
-          id = this.getAttribute('for');
-          if (id && (field = document.getElementById(id))) {
-            field.focus();
-          }
-        };
+          // Set handlers to show and hide labels.
+          field.onfocus = onFieldFocus;
+          field.onblur = onFieldBlur;
+          // Handle clicks to label elements (for Safari).
+          labels[i].onclick = onLabelClick;
+        }
       }
     };
 
-    function hideLabel(field_id, hide) {
-      var field_for;
-      var labels = document.getElementsByTagName('label');
-      for (var i = 0; i < labels.length; i++) {
+    // Handler to show and hide labels.
+    onFieldFocus = function() {
+      hideLabel(this.getAttribute('id'), true);
+    };
+    onFieldBlur = function() {
+      if (this.value === '') {
+        hideLabel(this.getAttribute('id'), false);
+      }
+    };
+
+    // Handle clicks to label elements (for Safari).
+    onLabelClick = function() {
+      var id, field;
+      id = this.getAttribute('for');
+      field = document.getElementById(id);
+      if (id && field) {
+        field.focus();
+      }
+    };
+
+    hideLabel = function(field_id, hide) {
+      var labels, field_for, i;
+      labels = document.getElementsByTagName('label');
+      for (i = 0; i < labels.length; i += 1) {
         field_for = labels[i].htmlFor || labels[i].getAttribute('for');
-        if (field_for == field_id) {
+        if (field_for === field_id) {
           labels[i].style.textIndent = (hide) ? '-9999em' : '0px';
           return true;
         }
       }
-    }
+    };
 
     window.onload = function() {
       setTimeout(initOverLabels, 50);
@@ -112,7 +127,7 @@
 */
 
     /* Move form descriptions to be part of labels */
-    /* TODO: handle this in nese_mstep_proposal module and proposal node module using PHP instead */
+    /* @todo Handle this in nese_mstep_proposal module and proposal node module using PHP instead. */
     $('#nesi-mstep-proposal-step-2 .help-block, #nesi-mstep-proposal-step-3 .help-block, #nesi-mstep-proposal-step-4 .help-block')
       .each(function() {
       $(this)
@@ -139,7 +154,7 @@
 
     /* Make elements be the same height */
     $.fn.equalHeights = function(minHeight, maxHeight) {
-      tallest = (minHeight) ? minHeight : 0;
+      var tallest = minHeight || 0;
       this.each(function() {
         if ($(this)
           .height() > tallest) {
@@ -147,13 +162,15 @@
             .height();
         }
       });
-      if ((maxHeight) && tallest > maxHeight) tallest = maxHeight;
+      if ((maxHeight) && tallest > maxHeight) {
+        tallest = maxHeight;
+      }
       return this.each(function() {
         $(this)
           .height(tallest)
           .css("overflow", "auto");
       });
-    }
+    };
 
     $('.node-proposal-research-class .fieldset-wrapper, .node-proposal-development-class .fieldset-wrapper')
       .equalHeights();
@@ -165,14 +182,17 @@
   /* Init Datepicker on page load rather than first focus() event */
   Drupal.behaviors.date_popup = {
     attach: function(context) {
-      for (var id in Drupal.settings.datePopup) {
-        var $this = $('#' + id);
-        if (!$this.hasClass('date-popup-init')) {
-          $this.datepicker(Drupal.settings.datePopup[id].settings)
-            .addClass('date-popup-init');
+      var id, $this;
+      for (id in Drupal.settings.datePopup) {
+        if (Drupal.settings.datePopup.hasOwnProperty(id)) {
+          $this = $('#' + id, context);
+          if (!$this.hasClass('date-popup-init')) {
+            $this.datepicker(Drupal.settings.datePopup[id].settings)
+              .addClass('date-popup-init');
+          }
         }
       }
     }
   };
 
-})(jQuery);
+}(jQuery));
