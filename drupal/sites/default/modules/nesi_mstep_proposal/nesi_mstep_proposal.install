@@ -61,5 +61,18 @@ function nesi_mstep_proposal_requirements($phase) {
     }
   }
 
+  // The PHPmailer PHP class.
+  $requirements['phpmailer_class'] = array(
+    'title' => $t('PHPmailer library'),
+    'value' => $t('Installed'),
+    'severity' => REQUIREMENT_OK,
+  );
+  // Check the PHP class exists.
+  if (!class_exists('PHPMailer')) {
+    $requirements['phpmailer_class']['severity'] = REQUIREMENT_ERROR;
+    $requirements['phpmailer_class']['value'] = $t('Not installed');
+    $requirements['phpmailer_class']['description'] = $t('The <a href="http://github.com/PHPMailer/PHPMailer">PHPmailer library</a> could not be loaded.  Install/enable the SMTP module.');
+  }
+
   return $requirements;
 }
