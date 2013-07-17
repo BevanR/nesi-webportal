@@ -79,10 +79,6 @@ libraries[colorpicker][download][url] = https://github.com/downloads/reload/site
 ; Check the md5 checksum since we can't specify the version number.
 libraries[colorpicker][download][md5] = d420dbce14507a13417d88f6c955429c
 
-libraries[phpmailer][download][type] = git
-libraries[phpmailer][download][url] = https://github.com/Synchro/PHPMailer.git
-libraries[phpmailer][download][revision] = v5.2.6
-
 ; Wkhtmltopdf class requires the wkhtmltopdf binary and the binary requires libdev-ssl.
 libraries[wkhtmltopdf][download][type] = git
 libraries[wkhtmltopdf][download][url] = https://github.com/aur1mas/Wkhtmltopdf.git
