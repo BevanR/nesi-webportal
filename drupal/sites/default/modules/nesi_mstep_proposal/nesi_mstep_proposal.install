@@ -2,6 +2,64 @@
 /**
  * @file
  * Requirements and update handlers.
- *
- * @todo Implement hook_requirements().
  */
+
+/**
+ * Implements hook_requirements().
+ */
+function nesi_mstep_proposal_requirements($phase) {
+  // Ensure translations don't break at install time.
+  $t = get_t();
+  $requirements = array();
+
+  if ($phase == 'runtime') {
+    // Directory for submission PDFs.
+    $requirements['nesi_submissions_directory'] = array(
+      'title' => $t('NeSI Submissions directory'),
+      'value' => $t('Writable'),
+      'severity' => REQUIREMENT_OK,
+      'description' => $t('The directory for NeSI submission PDFs is %path.', array('%path' => NESI_MSTEP_PROPOSAL_PDF_DIRECTORY)),
+    );
+    // Check the directory is writable.
+    $relative_path = NESI_MSTEP_PROPOSAL_PDF_DIRECTORY;
+    $writable = file_prepare_directory($relative_path, FILE_CREATE_DIRECTORY);
+    if (!$writable) {
+      $requirements['nesi_submissions_directory']['severity'] = REQUIREMENT_ERROR;
+      $requirements['nesi_submissions_directory']['value'] = $t('Not writable');
+      $requirements['nesi_submissions_directory']['description'] = $t('The %path directory for NeSI submission PDFs could not be created or is not writable.', array('%path' => drupal_realpath(NESI_MSTEP_PROPOSAL_PDF_DIRECTORY)));
+    }
+
+    // The Wkhtmltopdf PHP class.
+    $requirements['wkhtmltopdf_class'] = array(
+      'title' => $t('Wkhtmltopdf library'),
+      'value' => $t('Installed'),
+      'severity' => REQUIREMENT_OK,
+    );
+    // Load the library and check the PHP class exists.
+    $path = libraries_get_path('wkhtmltopdf') . '/Wkhtmltopdf.php';
+    if (file_exists($path)) {
+      include_once($path);
+    }
+    if (!class_exists('Wkhtmltopdf')) {
+      $requirements['wkhtmltopdf_class']['severity'] = REQUIREMENT_ERROR;
+      $requirements['wkhtmltopdf_class']['value'] = $t('Not installed');
+      $requirements['wkhtmltopdf_class']['description'] = $t('The <a href="http://github.com/aur1mas/Wkhtmltopdf">Wkhtmltopdf PHP library</a> could not be loaded.  Run <code>drush make nesi.drush.make</code> to install it.');
+    }
+
+    // The wkhtmltopdf binary.
+    $requirements['wkhtmltopdf_binary'] = array(
+      'title' => $t('Wkhtmltopdf binary'),
+      'value' => $t('Installed'),
+      'severity' => REQUIREMENT_OK,
+    );
+    // Check the is executable.
+    $binary_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
+    if (!is_executable($binary_path)) {
+      $requirements['wkhtmltopdf_binary']['severity'] = REQUIREMENT_ERROR;
+      $requirements['wkhtmltopdf_binary']['value'] = $t('Not installed');
+      $requirements['wkhtmltopdf_binary']['description'] = $t('The <a href="https://code.google.com/p/wkhtmltopdf/">wkhtmltopdf binary</a> at %path is missing or not executable.  Version 0.11 is required.', array('%path' => $binary_path));
+    }
+  }
+
+  return $requirements;
+}
