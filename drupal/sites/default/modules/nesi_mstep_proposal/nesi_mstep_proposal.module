@@ -285,11 +285,8 @@ function nesi_mstep_proposal_complete($proposal_type = NULL) {
 }
 
 function nesi_mstep_proposal_step_1($form, &$form_state) {
-   
-  $form['intro'] = nesi_mstep_proposal_intro_form(); 
-
-  $form['buttons']['next']['#value'] = 'Start';  
-
+  $form['intro'] = nesi_mstep_proposal_intro_form();
+  $form['buttons']['next']['#value'] = 'Start';
   return $form;
 }
 
