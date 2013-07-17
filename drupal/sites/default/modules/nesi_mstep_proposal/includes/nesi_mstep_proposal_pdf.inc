@@ -111,6 +111,14 @@ function nesi_mstep_sort_fields($a,$b){
   return $a['widget']['weight']-$b['widget']['weight'];
 }
 
+/**
+ * Build an HTML string and render the PDF from it.
+ *
+ * @todo It is probably better for Wkhtmltopdf get the HTML via HTTP and render
+ * the HTML via it's own menu callback.  Then CSS would include the correct
+ * stylesheets and exclude the ones it doesn't need.  And the amount of custom
+ * code for theme functions could be reduced.
+ */
 function nesi_mstep_generate_proposal_pdf($nid) {
   // @todo Merge with nesi_mstep_proposal_class_types().
   static $title_map = array(
@@ -137,11 +145,22 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     $doc->setHtml($html);
 
     // Set BasicAuth credentials if securesite is enabled.
+    //
+    // This is unnecessary because the HTML is passed in as a rendered string
+    // instead of retrieved by wkhtmltopdf via HTTP and because securesite
+    // module does not protect CSS files (which wkhtmltopdf module does
+    // retrieve via HTTP).
+    //
+    // The commented-out code remains here in case the code is refactored for
+    // Wkhtmltopdf to retrieve both the page and the CSS over HTTP (see the
+    // @todo in the function header), and as an example for the following @todo.
+    //
     // @todo Set from $conf variables for other environments, like oscar.
-    if (module_exists('securesite') && 0 < variable_get('securesite_enabled')) {
-      $doc->setUsername(variable_get('securesite_guest_name'));
-      $doc->setPassword(variable_get('securesite_guest_pass'));
-    }
+    //
+    // if (module_exists('securesite') && 0 < variable_get('securesite_enabled')) {
+    //   $doc->setUsername(variable_get('securesite_guest_name'));
+    //   $doc->setPassword(variable_get('securesite_guest_pass'));
+    // }
 
     // Debug.
     // die($doc->_getCommand());
