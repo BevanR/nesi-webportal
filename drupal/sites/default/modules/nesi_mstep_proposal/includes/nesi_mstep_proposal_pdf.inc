@@ -172,7 +172,7 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   }
 
   // Prepare the directory.
-  $relative_path = 'public://applications';
+  $relative_path = NESI_MSTEP_PROPOSAL_PDF_DIRECTORY;
   file_prepare_directory($relative_path, FILE_CREATE_DIRECTORY);
   return file_save_data($tmp_file, "$relative_path/NeSI-submission-$nid.pdf", FILE_EXISTS_REPLACE);
 }
