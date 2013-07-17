@@ -57,7 +57,7 @@ function nesi_mstep_proposal_requirements($phase) {
     if (!is_executable($binary_path)) {
       $requirements['wkhtmltopdf_binary']['severity'] = REQUIREMENT_ERROR;
       $requirements['wkhtmltopdf_binary']['value'] = $t('Not installed');
-      $requirements['wkhtmltopdf_binary']['description'] = $t('The <a href="https://code.google.com/p/wkhtmltopdf/">wkhtmltopdf binary</a> at %path is missing or not executable.  Version 0.11 is required.', array('%path' => $binary_path));
+      $requirements['wkhtmltopdf_binary']['description'] = $t('The <a href="http://code.google.com/p/wkhtmltopdf/">wkhtmltopdf binary</a> at %path is missing or not executable.  Version 0.11 is required.', array('%path' => $binary_path));
     }
   }
 
