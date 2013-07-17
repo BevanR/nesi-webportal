@@ -143,9 +143,9 @@ function _nesi_user_modal_logged_in_block_view() {
   $content = '<ul class="nav pull-right">';
   $content .= '<li>';
   $content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#">' . format_username($user_data) . '</a>';
-      $dropdown_menu = menu_tree_all_data('user-menu');
-      $output_menu = menu_tree_output($dropdown_menu);
-      $sub_menu = drupal_render($output_menu);
+  $dropdown_menu = menu_tree_all_data('user-menu');
+  $output_menu = menu_tree_output($dropdown_menu);
+  $sub_menu = drupal_render($output_menu);
   $content .= $sub_menu;
   $content .= '</li>';
   $content .= '</ul>';
@@ -155,4 +155,3 @@ function _nesi_user_modal_logged_in_block_view() {
     'content' => $content,
   );
 }
-
