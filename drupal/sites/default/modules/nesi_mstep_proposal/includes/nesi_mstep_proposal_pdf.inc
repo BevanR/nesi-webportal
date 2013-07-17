@@ -171,5 +171,8 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     watchdog('wkhtmltopdf', 'Wkhtmltopdf error: %message', array('%message' => $e->getMessage()), WATCHDOG_ERROR);
   }
 
-  return file_save_data($tmp_file, "public://applications/NeSI-submission-$nid.pdf", FILE_EXISTS_REPLACE);
+  // Prepare the directory.
+  $relative_path = 'public://applications';
+  file_prepare_directory($relative_path, FILE_CREATE_DIRECTORY);
+  return file_save_data($tmp_file, "$relative_path/NeSI-submission-$nid.pdf", FILE_EXISTS_REPLACE);
 }
