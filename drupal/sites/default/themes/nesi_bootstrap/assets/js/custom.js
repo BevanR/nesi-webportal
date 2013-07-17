@@ -3,8 +3,7 @@
 (function($) {
   "use strict";
 
-  $(document)
-    .ready(function() {
+  $(document).ready(function() {
     var hideLabel, initOverLabels, onFieldBlur, onFieldFocus, onLabelClick;
 
     /*
@@ -14,33 +13,21 @@
     */
 
     /* Form labels */
-    $('#nesi-mstep-proposal-step-1 .form-text')
-      .each(function() {
+    $('#nesi-mstep-proposal-step-1 .form-text').each(function() {
       var id, label;
-      $('#nesi-mstep-proposal-step-1 .form-type-textfield label')
-        .hide();
-      $('.form-required')
-        .remove();
-      id = $(this)
-        .attr('id');
-      label = $("label[for=" + id + "]")
-        .text();
-      $(this)
-        .val(label);
-      $(this)
-        .focus(function() {
-        if ($(this)
-          .val() === label) {
-          $(this)
-            .val('');
+      $('#nesi-mstep-proposal-step-1 .form-type-textfield label').hide();
+      $('.form-required').remove();
+      id = $(this).attr('id');
+      label = $("label[for=" + id + "]").text();
+      $(this).val(label);
+      $(this).focus(function() {
+        if ($(this).val() === label) {
+          $(this).val('');
         }
       });
-      $(this)
-        .blur(function() {
-        if ($(this)
-          .val() === '') {
-          $(this)
-            .val(label);
+      $(this).blur(function() {
+        if ($(this).val() === '') {
+          $(this).val(label);
         }
       });
     });
@@ -52,8 +39,7 @@
         return;
       }
       var i, labels, id, field; // Set focus and blur handlers to hide and show
-      labels = $('#nesiLoginModal .control-group')
-        .find('label');
+      labels = $('#nesiLoginModal .control-group').find('label');
       for (i = 0; i < labels.length; i += 1) {
         if (id && field) {
           // with another field.
@@ -128,27 +114,17 @@
 
     /* Move form descriptions to be part of labels */
     /* @todo Handle this in nese_mstep_proposal module and proposal node module using PHP instead. */
-    $('#nesi-mstep-proposal-step-2 .help-block, #nesi-mstep-proposal-step-3 .help-block, #nesi-mstep-proposal-step-4 .help-block')
-      .each(function() {
-      $(this)
-        .appendTo($(this)
-        .parent()
-        .prev('label'));
+    $('#nesi-mstep-proposal-step-2 .help-block, #nesi-mstep-proposal-step-3 .help-block, #nesi-mstep-proposal-step-4 .help-block').each(function() {
+      $(this).appendTo($(this).parent().prev('label'));
     });
 
-    $('#proposal-research-class-node-form .help-block, #proposal-development-class-node-form .help-block')
-      .each(function() {
-      $(this)
-        .appendTo($(this)
-        .parent()
-        .prev('label'));
+    $('#proposal-research-class-node-form .help-block, #proposal-development-class-node-form .help-block').each(function() {
+      $(this).appendTo($(this).parent().prev('label'));
     });
 
     /* Open Support modal when Contact links are clicked */
-    $('a[href="#contact"]')
-      .click(function() {
-      $('#feedback_tab_text')
-        .click();
+    $('a[href="#contact"]').click(function() {
+      $('#feedback_tab_text').click();
       return false;
     });
 
@@ -156,26 +132,20 @@
     $.fn.equalHeights = function(minHeight, maxHeight) {
       var tallest = minHeight || 0;
       this.each(function() {
-        if ($(this)
-          .height() > tallest) {
-          tallest = $(this)
-            .height();
+        if ($(this).height() > tallest) {
+          tallest = $(this).height();
         }
       });
       if ((maxHeight) && tallest > maxHeight) {
         tallest = maxHeight;
       }
       return this.each(function() {
-        $(this)
-          .height(tallest)
-          .css("overflow", "auto");
+        $(this).height(tallest).css("overflow", "auto");
       });
     };
 
-    $('.node-proposal-research-class .fieldset-wrapper, .node-proposal-development-class .fieldset-wrapper')
-      .equalHeights();
-    $('.node-proposal-research-class .field-group-fieldset:odd, .node-type-proposal-development-class .field-group-fieldset:odd')
-      .addClass('odd');
+    $('.node-proposal-research-class .fieldset-wrapper, .node-proposal-development-class .fieldset-wrapper').equalHeights();
+    $('.node-proposal-research-class .field-group-fieldset:odd, .node-type-proposal-development-class .field-group-fieldset:odd').addClass('odd');
 
   });
 
@@ -187,12 +157,11 @@
         if (Drupal.settings.datePopup.hasOwnProperty(id)) {
           $this = $('#' + id, context);
           if (!$this.hasClass('date-popup-init')) {
-            $this.datepicker(Drupal.settings.datePopup[id].settings)
-              .addClass('date-popup-init');
+            $this.datepicker(Drupal.settings.datePopup[id].settings).addClass('date-popup-init');
           }
         }
       }
     }
   };
 
-}(jQuery));
+} (jQuery));
