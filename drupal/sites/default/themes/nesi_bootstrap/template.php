@@ -112,7 +112,7 @@ function nesi_bootstrap_menu_link__main_menu(array $variables) {
 
 function nesi_bootstrap_preprocess_page(&$vars, $hook) {
   // Add Typekit
-  drupal_add_js('http://use.typekit.net/fmw6ovn.js', 'external');
+  drupal_add_js('//use.typekit.net/fmw6ovn.js', 'external');
   drupal_add_js('try{Typekit.load();}catch(e){}',
     array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
   );
