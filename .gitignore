@@ -2,37 +2,37 @@
 # Drupal core directory so that it does not conflict with Drupal's .gitignore
 # file when Drupal core is updated.
 drupal/.gitignore
-drupal/CHANGELOG.txt
-drupal/COPYRIGHT.txt
-drupal/INSTALL.mysql.txt
-drupal/INSTALL.pgsql.txt
-drupal/INSTALL.sqlite.txt
-drupal/INSTALL.txt
-drupal/LICENSE.txt
-drupal/MAINTAINERS.txt
-drupal/README.txt
-drupal/UPGRADE.txt
-drupal/authorize.php
-drupal/cron.php
-drupal/includes/
-drupal/index.php
-drupal/install.php
-drupal/misc/
-drupal/modules/
-drupal/profiles/
-drupal/robots.txt
-drupal/scripts/
-drupal/themes/
-drupal/update.php
-drupal/web.config
-drupal/xmlrpc.php
+CHANGELOG.txt
+COPYRIGHT.txt
+INSTALL.mysql.txt
+INSTALL.pgsql.txt
+INSTALL.sqlite.txt
+INSTALL.txt
+LICENSE.txt
+MAINTAINERS.txt
+README.txt
+UPGRADE.txt
+authorize.php
+cron.php
+includes/
+index.php
+install.php
+misc/
+modules/
+profiles/
+robots.txt
+scripts/
+themes/
+update.php
+web.config
+xmlrpc.php
 
 # Ignore FirePHPCore, which is a devel module dependency.
-drupal/FirePHPCore/
+FirePHPCore/
 
 # Version control sites/default/ but not other sites/ directories, sites/sites.php or sites/README.md.
-drupal/sites/*
-!drupal/sites/default
+sites/*
+!sites/default
 
 # Any files specific to an IDE, editor or uncommon environment configuration
 # (E.g. Aegir) should go in the user's or system's git-ignore file instead of
