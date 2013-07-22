@@ -1,39 +1,9 @@
-# Ignore Drupal core files and directories.  These are ignored from outside
-# Drupal core directory so that it does not conflict with Drupal's .gitignore
-# file when Drupal core is updated.
-drupal/.gitignore
-CHANGELOG.txt
-COPYRIGHT.txt
-INSTALL.mysql.txt
-INSTALL.pgsql.txt
-INSTALL.sqlite.txt
-INSTALL.txt
-LICENSE.txt
-MAINTAINERS.txt
-README.txt
-UPGRADE.txt
-authorize.php
-cron.php
-includes/
-index.php
-install.php
-misc/
-modules/
-profiles/
-robots.txt
-scripts/
-themes/
-update.php
-web.config
-xmlrpc.php
+# Ignore configuration files that may contain sensitive information.
+sites/*/settings*.php
+
+# Ignore paths that contain user-generated content.
+sites/*/files
+sites/*/private
 
 # Ignore FirePHPCore, which is a devel module dependency.
 FirePHPCore/
-
-# Version control sites/default/ but not other sites/ directories, sites/sites.php or sites/README.md.
-sites/*
-!sites/default
-
-# Any files specific to an IDE, editor or uncommon environment configuration
-# (E.g. Aegir) should go in the user's or system's git-ignore file instead of
-# this version-controlled git-ignore file.
