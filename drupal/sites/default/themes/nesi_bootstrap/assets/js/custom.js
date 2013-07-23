@@ -143,10 +143,11 @@
 } (jQuery));
 
 // Opens the login overlay if the user is not logged in.
+// @todo Refactor rest of this file to use Drupal JS API correctly, as below.
 Drupal.behaviors.nesiLoginModal = {
   attach: function (context) {
     "use strict";
-    if (Drupal.settings.nesiLoginModal.open) {
+    if (Drupal.settings.nesiLoginModal && Drupal.settings.nesiLoginModal.open) {
       // Hide the "close" button.
       // @todo Also disable the ability to close the modal with escape or
       // background click.
