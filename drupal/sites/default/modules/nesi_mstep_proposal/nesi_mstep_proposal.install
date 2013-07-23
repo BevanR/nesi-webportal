@@ -59,6 +59,21 @@ function nesi_mstep_proposal_requirements($phase) {
       $requirements['wkhtmltopdf_binary']['value'] = $t('Not installed');
       $requirements['wkhtmltopdf_binary']['description'] = $t('The <a href="http://code.google.com/p/wkhtmltopdf/">wkhtmltopdf binary</a> at %path is missing or not executable.  Version 0.11 is required.', array('%path' => $binary_path));
     }
+
+    // Checks proposal PDF generation 
+    $requirements['pdf_generation'] = array(
+      'title' => $t('Pdf generation'),
+      'value' => $t('Working'),
+      'severity' => REQUIREMENT_OK,
+    );
+    // Check the is executable.
+    $binary_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
+    if (!is_executable($binary_path)) {
+      $requirements['pdf_generation']['severity'] = REQUIREMENT_ERROR;
+      $requirements['pdf_generation']['value'] = $t('Not working');
+      $requirements['pdf_generation']['description'] = $t('Not working for this reason : ......', array());
+    }
+
   }
 
   // The PHPmailer PHP class.
