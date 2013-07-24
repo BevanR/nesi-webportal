@@ -42,7 +42,7 @@ function nesi_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_blog';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['comment_form_location_blog'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -127,7 +127,7 @@ function nesi_blog_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_blog';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'promote',
     1 => 'revision',
   );
   $export['node_options_blog'] = $strongarm;
@@ -195,7 +195,7 @@ function nesi_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sharethis_publisherID';
-  $strongarm->value = 'dr-8a4f6fd1-4c11-d784-1568-bd2713596e5';
+  $strongarm->value = 'dr-5ff4d8ab-3af0-6cf7-bf27-35df93796749';
   $export['sharethis_publisherID'] = $strongarm;
 
   $strongarm = new stdClass();

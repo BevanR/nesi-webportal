@@ -39,6 +39,16 @@ function nesi_user_user_default_permissions() {
     'module' => 'views',
   );
 
+  // Exported permission: access comments.
+  $permissions['access comments'] = array(
+    'name' => 'access comments',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'comment',
+  );
+
   // Exported permission: access content.
   $permissions['access content'] = array(
     'name' => 'access content',
@@ -134,6 +144,16 @@ function nesi_user_user_default_permissions() {
       0 => 'website engineer',
     ),
     'module' => 'block',
+  );
+
+  // Exported permission: administer comments.
+  $permissions['administer comments'] = array(
+    'name' => 'administer comments',
+    'roles' => array(
+      0 => 'nesi administrator',
+      1 => 'website engineer',
+    ),
+    'module' => 'comment',
   );
 
   // Exported permission: administer contact forms.
@@ -471,6 +491,16 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create blog content.
+  $permissions['create blog content'] = array(
+    'name' => 'create blog content',
+    'roles' => array(
+      0 => 'nesi administrator',
+      1 => 'website engineer',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create casestudy content.
   $permissions['create casestudy content'] = array(
     'name' => 'create casestudy content',
@@ -583,6 +613,16 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any blog content.
+  $permissions['delete any blog content'] = array(
+    'name' => 'delete any blog content',
+    'roles' => array(
+      0 => 'nesi administrator',
+      1 => 'website engineer',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any casestudy content.
   $permissions['delete any casestudy content'] = array(
     'name' => 'delete any casestudy content',
@@ -679,6 +719,16 @@ function nesi_user_user_default_permissions() {
     'name' => 'delete own base_proposal content',
     'roles' => array(
       0 => 'website engineer',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own blog content.
+  $permissions['delete own blog content'] = array(
+    'name' => 'delete own blog content',
+    'roles' => array(
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'node',
   );
@@ -828,6 +878,20 @@ function nesi_user_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: delete terms in 8.
+  $permissions['delete terms in 8'] = array(
+    'name' => 'delete terms in 8',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 9.
+  $permissions['delete terms in 9'] = array(
+    'name' => 'delete terms in 9',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: display drupal links.
   $permissions['display drupal links'] = array(
     'name' => 'display drupal links',
@@ -849,6 +913,16 @@ function nesi_user_user_default_permissions() {
     'name' => 'edit any base_proposal content',
     'roles' => array(
       0 => 'website engineer',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any blog content.
+  $permissions['edit any blog content'] = array(
+    'name' => 'edit any blog content',
+    'roles' => array(
+      0 => 'nesi administrator',
+      1 => 'website engineer',
     ),
     'module' => 'node',
   );
@@ -981,6 +1055,16 @@ function nesi_user_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit own blog content.
+  $permissions['edit own blog content'] = array(
+    'name' => 'edit own blog content',
+    'roles' => array(
+      0 => 'nesi administrator',
+      1 => 'website engineer',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit own casestudy content.
   $permissions['edit own casestudy content'] = array(
     'name' => 'edit own casestudy content',
@@ -988,6 +1072,15 @@ function nesi_user_user_default_permissions() {
       0 => 'website engineer',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: edit own comments.
+  $permissions['edit own comments'] = array(
+    'name' => 'edit own comments',
+    'roles' => array(
+      0 => 'website engineer',
+    ),
+    'module' => 'comment',
   );
 
   // Exported permission: edit own event content.
@@ -1138,6 +1231,20 @@ function nesi_user_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: edit terms in 8.
+  $permissions['edit terms in 8'] = array(
+    'name' => 'edit terms in 8',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 9.
+  $permissions['edit terms in 9'] = array(
+    'name' => 'edit terms in 9',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: flush caches.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -1190,6 +1297,16 @@ function nesi_user_user_default_permissions() {
     'module' => 'googleanalytics',
   );
 
+  // Exported permission: post comments.
+  $permissions['post comments'] = array(
+    'name' => 'post comments',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'comment',
+  );
+
   // Exported permission: revert revisions.
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
@@ -1213,6 +1330,16 @@ function nesi_user_user_default_permissions() {
     'name' => 'select account cancellation method',
     'roles' => array(),
     'module' => 'user',
+  );
+
+  // Exported permission: skip comment approval.
+  $permissions['skip comment approval'] = array(
+    'name' => 'skip comment approval',
+    'roles' => array(
+      0 => 'nesi administrator',
+      1 => 'website engineer',
+    ),
+    'module' => 'comment',
   );
 
   // Exported permission: use PHP for settings.

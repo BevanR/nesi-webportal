@@ -1,7 +1,8 @@
 name = NeSI Custom Tags
 core = 7.x
 package = NeSI
-version = 7.x-1.0
+php = 5.2.4
+version = 7.x-1.2
 project = nesi_custom_tags
 dependencies[] = features
 dependencies[] = taxonomy
