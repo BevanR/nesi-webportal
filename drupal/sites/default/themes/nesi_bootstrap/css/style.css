@@ -1893,6 +1893,7 @@ div.radio {
 .submitted-info-wrapper .author-picture {
   display: inline-block;
   margin-right: 10px;
+  min-height: 64px;
   vertical-align: top;
   width: 64px;
 }
@@ -2023,11 +2024,26 @@ div.radio {
 .comments-wrapper section#comments #comment-form-wrapper button#edit-submit {
   margin-left: 15%;
 }
+.comments-wrapper .filter-wrapper.form-wrapper {
+  display: none;
+}
+.comments-wrapper .field-name-comment-body p:before {
+  content: "\"";
+}
+.comments-wrapper .field-name-comment-body p:after {
+  content: "\"";
+}
+/*edit form */
+body.page-node-add .node-blog-form .form-text,
+body.page-node-edit .node-blog-form .form-text {
+  width: 80%;
+}
 /* blog aside section */
 .block-views {
-    float: left;
-    margin-bottom: 2em;
-    font-size: 1em;
+  clear: left;
+  float: left;
+  margin-bottom: 2em;
+  font-size: 1em;
 }
 .block-views .block-title {
   font-size: 1.1em;
@@ -2055,7 +2071,6 @@ div.radio {
 .block-views .latest-posts .views-field-title,
 .block-views .latest-posts .views-field-body,
 .block-views .latest-posts .views-field-created {
-  clear: right;
   float: right;
   width: 53%;
 }

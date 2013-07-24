@@ -47,9 +47,7 @@
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <p>Posted in - 
   <?php $count = count($items); ?>
-  <?php foreach ($items as $delta => $item): ?>
-    <?php print render($item); ?>
-    <?php if ( $i < $count-1 ) { print ", "; } $i++; ?>
+  <?php foreach ($items as $delta => $item): ?><?php print render($item); ?><?php if ( $i < $count-1 ) { print "<span>,</span>"; } $i++; ?>
   <?php endforeach; ?>
   </p>
 </div>

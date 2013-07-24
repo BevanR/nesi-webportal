@@ -36,7 +36,15 @@
           
         ?>
         
-        <div class="author-picture"><?php print theme('image_style', array('style_name' => 'blog-author-thumbnail', 'path' => $author->picture->uri)); ?></div>
+        <div class="author-picture">
+          <?php if(!empty($author->picture->uri)): ?>
+            <?php print theme('image_style', array('style_name' => 'blog-author-thumbnail', 'path' => $author->picture->uri)); ?>
+          <?php else: ?>
+            <?php $path = variable_get('user_picture_default'); ?>
+            <?php //$path = 'sites/default/files/nesi_avatar.png'; ?>
+            <img src="<?php print $GLOBALS['base_url'] . '/' . $path; ?>" alt="Default Avatar" />
+          <?php endif; ?>
+       </div>
         
         <div class="sub-info-wrapper">
           
