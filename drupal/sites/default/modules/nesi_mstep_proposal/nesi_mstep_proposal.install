@@ -52,7 +52,7 @@ function nesi_mstep_proposal_requirements($phase) {
       'value' => $t('Installed'),
       'severity' => REQUIREMENT_OK,
     );
-    // Check the is executable.
+    // Check the binary is executable.
     $binary_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
     if (!is_executable($binary_path)) {
       $requirements['wkhtmltopdf_binary']['severity'] = REQUIREMENT_ERROR;
@@ -60,18 +60,18 @@ function nesi_mstep_proposal_requirements($phase) {
       $requirements['wkhtmltopdf_binary']['description'] = $t('The <a href="http://code.google.com/p/wkhtmltopdf/">wkhtmltopdf binary</a> at %path is missing or not executable.  Version 0.11 is required.', array('%path' => $binary_path));
     }
 
-    // Checks proposal PDF generation 
+    // Proposal PDF generation 
     $requirements['pdf_generation'] = array(
       'title' => $t('Pdf generation'),
       'value' => $t('Working'),
       'severity' => REQUIREMENT_OK,
     );
-    // Check the is executable.
-    $binary_path = variable_get('wkhtmltopdf_bin_path', '/usr/bin/wkhtmltopdf');
-    if (!is_executable($binary_path)) {
+    // Check that PDF generation worked
+    $pdf = nesi_mstep_proposal_pdf_test();
+    if (!$pdf['pass']) {
       $requirements['pdf_generation']['severity'] = REQUIREMENT_ERROR;
       $requirements['pdf_generation']['value'] = $t('Not working');
-      $requirements['pdf_generation']['description'] = $t('Not working for this reason : ......', array());
+      $requirements['pdf_generation']['description'] = $t('Not working for this reason : %msg', array('%msg' => $pdf['msg']));
     }
 
   }

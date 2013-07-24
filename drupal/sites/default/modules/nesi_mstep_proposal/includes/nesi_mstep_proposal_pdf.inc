@@ -43,6 +43,60 @@ function nesi_mstep_proposal_pdf_generate_page() {
 }
 
 /**
+ * This is called from hoo_requirements.
+ * It checks a pdf file is generated properly
+ */
+function nesi_mstep_proposal_pdf_test() {
+
+  $nid = variable_get('proposal_nid_for_testing_pdf_generation', 145);
+
+  $node = node_load($nid);
+  if(!$node) {
+    $msg = 'Test proposal node not present. nid : ' . $nid;
+    return array('pass' => FALSE , 'msg' => $msg);
+  }
+
+  $proposal_types = array('proposal_postgrad_class' , 'proposal_research_class' , 'proposal_development_class');
+  if(!in_array($node->type, $proposal_types)) {
+    $msg = 'The node being used for testing is the wrong content type';
+    return array('pass' => FALSE , 'msg' => $msg);
+  }
+
+  $relative_path = NESI_MSTEP_PROPOSAL_PDF_DIRECTORY;
+  if(!file_destination("$relative_path/NeSI-submission-$nid.pdf" , FILE_EXISTS_ERROR)) {
+    drupal_unlink("$relative_path/NeSI-submission-$nid.pdf");
+  }
+
+  $file = nesi_mstep_generate_proposal_pdf($nid);
+  if(!$file) {
+    $msg = 'There was a problem genrating the PDF file';
+    return array('pass' => FALSE , 'msg' => $msg);
+  }
+
+  if(file_destination("$relative_path/NeSI-submission-$nid.pdf" , FILE_EXISTS_ERROR)) {
+    $msg = 'The PDF file wasn\'t created';
+    return array('pass' => FALSE , 'msg' => $msg);
+  }
+
+  if(file_destination("$relative_path/NeSI-submission-$nid.pdf" , FILE_EXISTS_ERROR)) {
+    $msg = 'The PDF file wasn\'t created';
+    return array('pass' => FALSE , 'msg' => $msg);
+  }
+
+  if('application/pdf' !== $file->filemime) {
+    $msg = 'A file of type ' . $file->filemime . ' was created and not a PDF';
+    return array('pass' => FALSE , 'msg' => $msg);
+  }
+
+  if($file->filesize < 10) {
+    $msg = 'The PDF file that was created was too small - needs investigating';
+    return array('pass' => FALSE , 'msg' => $msg);
+  }
+
+  return array('pass' => TRUE , 'msg' => '');
+}
+
+/**
  * Returns that data for a proposal to be 
  * displayed in a pdf. Makes the enitity 
  * module a dependancy
@@ -123,8 +177,8 @@ function nesi_mstep_generate_proposal_pdf($nid) {
   // @todo Merge with nesi_mstep_proposal_class_types().
   static $title_map = array(
     'proposal_development_class' => 'Development Proposal',
-    'proposal_research_class' => 'Research Proposal',
-    'proposal_postgrad_class' => 'Postgraduate Proposal',
+    'proposal_research_class'    => 'Research Proposal',
+    'proposal_postgrad_class'    => 'Postgraduate Proposal',
   );
 
   $node = node_load($nid);
@@ -165,6 +219,9 @@ function nesi_mstep_generate_proposal_pdf($nid) {
     // Debug.
     // die($doc->_getCommand());
     // dpm($doc->_getCommand());
+    $doc->setUsername('webscope');
+    $doc->setPassword('eden');
+
     $tmp_file = $doc->output(Wkhtmltopdf::MODE_STRING, "file.pdf");
   }
   catch (Exception $e) {
