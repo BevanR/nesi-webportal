@@ -377,4 +377,42 @@ class FeatureContext extends DrupalContext {
 
       return;
     }
+
+  /**
+   * @Then /^I should see "([^"]*)" in row "([^"]*)"$/
+   */
+  public function iShouldSeeInRow($text, $row_text) {
+
+    $page = $this->getSession()->getPage();
+    $rows = $page->findAll('css', 'tr');
+    if (!$rows) {
+      throw new \Exception(sprintf('No rows found on the page %s', $this->getSession()->getCurrentUrl()));
+    }
+    $row_found = FALSE;
+    foreach ($rows as $row) {
+      if (strpos($row->getText(), $row_text) !== FALSE) {
+        $row_found = TRUE;
+        // Found text in this row, now find link in a cell.
+        $cells = $row->findAll('css', 'td');
+        if (!$cells) {
+          throw new \Exception(sprintf('No cells found in table row on the page %s', $this->getSession()->getCurrentUrl()));
+        }
+        foreach ($cells as $cell) {
+          if (strpos($cell->getText(), $text) !== FALSE) {
+            return;
+          }
+        }
+      }
+    }
+    if ($row_found) {
+      throw new \Exception(sprintf('Found a row containing "%s", but no "%s" text on the page %s', $row_text, $text, $this->getSession()->getCurrentUrl()));
+    }
+    else {
+      throw new \Exception(sprintf('Failed to find a row containing "%s" on the page %s', $row_text, $this->getSession()->getCurrentUrl()));
+    }
+
+
+
+    throw new PendingException();
+  }
 }
