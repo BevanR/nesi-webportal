@@ -6,8 +6,12 @@
         <a href="<?php print $link_target; ?>"><span class="line1" style="color:#FFFFFF; background-color:#<?php print $primary_bg_color; ?>;"><?php print $primary_title; ?></span></a>
       </h2>
       <h3>
-        <a href="<?php print $link_target; ?>"><span class="line2" style="color:#FFFFFF; background-color:#<?php print $secondary_bg_color; ?>;"><?php print $secondary_title; ?></span></a>
-        <a href="<?php print $link_target; ?>"><span class="line2" style="color:#FFFFFF; background-color:#<?php print $secondary_bg_color; ?>;"><?php print $secondary_title_line_2; ?></span></a>
+        <?php if (!empty($secondary_title)) { ?>
+          <a href="<?php print $link_target; ?>"><span class="line2" style="color:#FFFFFF; background-color:#<?php print $secondary_bg_color; ?>;"><?php print $secondary_title; ?></span></a>
+        <?php } ?>
+        <?php if (!empty($secondary_title_line_2)) { ?>
+          <a href="<?php print $link_target; ?>"><span class="line2" style="color:#FFFFFF; background-color:#<?php print $secondary_bg_color; ?>;"><?php print $secondary_title_line_2; ?></span></a>
+        <?php } ?>
       </h3>
     </div>
   </div>
