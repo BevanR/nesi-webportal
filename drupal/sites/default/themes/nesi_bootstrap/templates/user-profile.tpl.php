@@ -87,6 +87,12 @@
     </div>
   </div>
 
-  <?php print l('Edit profile', 'user/' . $account->uid . '/edit', array('attributes' => array('id' => 'edit-profile', 'class' => 'btn nesi-btn'))); ?>
+  <?php 
+    if (!user_is_anonymous()) {
+      if ($account->uid == $GLOBALS['user']->uid) {
+        print l('Edit profile', 'user/' . $account->uid . '/edit', array('attributes' => array('id' => 'edit-profile', 'class' => 'btn nesi-btn'))); 
+      }
+    }
+  ?>
 
 </div>
