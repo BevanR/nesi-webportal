@@ -35,7 +35,7 @@
       // Set focus and blur handlers to hide and show ...
       labels = $('#nesiLoginModal .control-group').find('label');
       for (i = 0; i < labels.length; i += 1) {
-        if (id && field) {
+        //if (id && field) {
           // ... with another field.
           id = labels[i].htmlFor || labels[i].getAttribute('for');
           field = document.getElementById(id);
@@ -50,7 +50,7 @@
           field.onblur = onFieldBlur;
           // Handle clicks to label elements (for Safari).
           labels[i].onclick = onLabelClick;
-        }
+       // }
       }
     };
 

@@ -26,8 +26,8 @@ stylesheets[all][] = css/cs-team.css
 
 ; Add JavaScript
 scripts[] = assets/js/bootstrap.min.js
-; scripts[] = assets/js/custom.js
-scripts[] = assets/js/custom.min.js
+scripts[] = assets/js/custom.js
+; scripts[] = assets/js/custom.min.js
 
 ;**********************************
 ; METHOD 1: Bootstrap Source Files
