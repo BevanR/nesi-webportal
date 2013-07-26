@@ -264,7 +264,6 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
 
     if (isset($form['account']['name'])) {
       $form['account']['name']['#disabled'] = TRUE;
-      $form['account']['name']['#value'] = format_username($account);
     }
 
     // Disable account email change
