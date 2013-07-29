@@ -268,7 +268,7 @@ function nesi_blog_field_default_fields() {
           'module' => 'image',
           'settings' => array(
             'image_link' => 'file',
-            'image_style' => 'blog-large',
+            'image_style' => '',
           ),
           'type' => 'image',
           'weight' => '0',
