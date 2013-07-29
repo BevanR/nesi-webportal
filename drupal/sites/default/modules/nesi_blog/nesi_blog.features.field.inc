@@ -72,19 +72,19 @@ function nesi_blog_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
 
-  // Exported field: 'node-blog-field_areas_research'.
-  $fields['node-blog-field_areas_research'] = array(
+  // Exported field: 'node-blog-field_blog_topics'.
+  $fields['node-blog-field_blog_topics'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_areas_research',
+      'field_name' => 'field_blog_topics',
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -103,7 +103,7 @@ function nesi_blog_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'areas_of_research',
+            'vocabulary' => 'blog_topics',
             'parent' => '0',
           ),
         ),
@@ -122,7 +122,7 @@ function nesi_blog_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -132,8 +132,8 @@ function nesi_blog_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_areas_research',
-      'label' => 'Areas of research',
+      'field_name' => 'field_blog_topics',
+      'label' => 'Blog topics',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -194,7 +194,7 @@ function nesi_blog_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -218,7 +218,7 @@ function nesi_blog_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -380,7 +380,7 @@ function nesi_blog_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Areas of research');
+  t('Blog topics');
   t('Body');
   t('Image');
   t('Subtitle');
