@@ -129,7 +129,7 @@ function nesi_ft_researcher_proposals_views_default_views() {
   $handler->display->display_options['fields']['field_prc_cpu_core_hours']['field'] = 'field_prc_cpu_core_hours';
   $handler->display->display_options['fields']['field_prc_cpu_core_hours']['label'] = 'CPU Hours';
   $handler->display->display_options['fields']['field_prc_cpu_core_hours']['element_label_colon'] = FALSE;
-  /* Field: Content: Start Date */
+  /* Field: Content: Estimated project start date */
   $handler->display->display_options['fields']['field_pdc_start_date']['id'] = 'field_pdc_start_date';
   $handler->display->display_options['fields']['field_pdc_start_date']['table'] = 'field_data_field_pdc_start_date';
   $handler->display->display_options['fields']['field_pdc_start_date']['field'] = 'field_pdc_start_date';
@@ -142,7 +142,7 @@ function nesi_ft_researcher_proposals_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Content: Start Date */
+  /* Field: Content: Estimated project start date  */
   $handler->display->display_options['fields']['field_prc_start_date']['id'] = 'field_prc_start_date';
   $handler->display->display_options['fields']['field_prc_start_date']['table'] = 'field_data_field_prc_start_date';
   $handler->display->display_options['fields']['field_prc_start_date']['field'] = 'field_prc_start_date';
@@ -175,6 +175,7 @@ function nesi_ft_researcher_proposals_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'proposal_development_class' => 'proposal_development_class',
+    'proposal_postgrad_class' => 'proposal_postgrad_class',
     'proposal_research_class' => 'proposal_research_class',
   );
 
