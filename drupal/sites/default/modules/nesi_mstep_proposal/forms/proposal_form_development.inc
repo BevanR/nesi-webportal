@@ -211,6 +211,8 @@ function nesi_mstep_form_options($field_name) {
   switch($field_name) {
 
     case 'field-pdc-proposed-hpc-platform':
+    case 'field-pgc-proposed-hpc-platform':
+    case 'field-prc-proposed-hpc-platform':
       $options = nesi_mstep_proposal_platform_options();
      break; 
 

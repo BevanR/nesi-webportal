@@ -602,7 +602,7 @@ function _nesi_mstep_proposal_save(&$form_state) {
  
     // Check boxes
     $p_node->field_pdc_proposed_hpc_platform[$p_node->language] = array();
-    $platforms = array_filter($form_state['ctools_object']->data['form_data']['field-pdc-platform']);
+    $platforms = array_filter($form_state['ctools_object']->data['form_data']['field-pdc-proposed-hpc-platform']);
     foreach ($platforms as $selected) {
       $p_node->field_pdc_proposed_hpc_platform[$p_node->language][] = array('value' => $selected);
     }
@@ -625,7 +625,22 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->uid = $user->uid;
 
     $save_to_node($p_node, $p_node->type);
+    
+    // Check boxes
+    $p_node->field_prc_proposed_hpc_platform[$p_node->language] = array();
+    $platforms = array_filter($form_state['ctools_object']->data['form_data']['field-prc-proposed-hpc-platform']);
+    foreach ($platforms as $selected) {
+      $p_node->field_prc_proposed_hpc_platform[$p_node->language][] = array('value' => $selected);
+    }
+ 
+    // Check boxes
+    $p_node->field_prc_expert_support[$p_node->language] = array();
+    $support_items = array_filter($form_state['ctools_object']->data['form_data']['field-prc-expert-support']);
+    foreach ($support_items as $selected) {
+      $p_node->field_prc_expert_support[$p_node->language][] = array('value' => $selected);
+    }
   } 
+
   if ($proposal_type == 'proposal_postgrad_class') {
 
     $p_node = new stdClass(); // Create a new node object
@@ -636,6 +651,20 @@ function _nesi_mstep_proposal_save(&$form_state) {
     $p_node->uid = $user->uid;
 
     $save_to_node($p_node, $p_node->type);
+
+    // Check boxes
+    $p_node->field_pgc_proposed_hpc_platform[$p_node->language] = array();
+    $platforms = array_filter($form_state['ctools_object']->data['form_data']['field-pgc-proposed-hpc-platform']);
+    foreach ($platforms as $selected) {
+      $p_node->field_pgc_proposed_hpc_platform[$p_node->language][] = array('value' => $selected);
+    }
+ 
+    // Check boxes
+    $p_node->field_pgc_expert_support[$p_node->language] = array();
+    $support_items = array_filter($form_state['ctools_object']->data['form_data']['field-pgc-expert-support']);
+    foreach ($support_items as $selected) {
+      $p_node->field_pgc_expert_support[$p_node->language][] = array('value' => $selected);
+    }
   }
 
   node_save($p_node); 
