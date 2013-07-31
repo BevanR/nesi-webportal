@@ -32,12 +32,13 @@ function nesi_bootstrap_menu_tree__user_menu($variables) {
     $admin_links .= '<li><a href="'.$base_url.'/nesi-config">Administration Dashboard</a></li>';
   }
 
+  $researcher_profile_institution = isset($profile_data['researcher_profile']) ? $profile_data['researcher_profile']->field_user_institution[LANGUAGE_NONE][0]['value'] : 'Not Available';
   $output = '';
   $output .= '<ul id="nesi-user-profile-dropdown" class="dropdown-menu pull-right">';
   $output .= '<li id="nesi-user-picture"><div class="nesi-user-picture"><div class="pull-left">'.theme('user_picture',  array('account' => $user)).'</div>
               <h2>' . format_username($user_data) . '</h2>
               <h3>Institution</h3>
-              <p>'.$profile_data['researcher_profile']->field_user_institution[LANGUAGE_NONE][0]['value'].'</p>
+              <p>' . $researcher_profile_institution . '</p>
               <p><em>Member for ' . format_interval(REQUEST_TIME - $user_data->created) . '</em></p>
               </div></li>';
   $output .=  $admin_links;
