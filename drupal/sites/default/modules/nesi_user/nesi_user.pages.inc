@@ -72,19 +72,24 @@ function nesi_user_dashboard_callback() {
           */
 
           $proposal_platform = '';
-          if ($current_proposal->type == 'proposal_development_class') {
-            $proposal_platform = $current_proposal->field_pdc_proposed_hpc_platform['und'][0]['value'];
-          }
-          elseif ($current_proposal->type == 'proposal_research_class') {
-            $proposal_platform = $current_proposal->field_prc_proposed_hpc_platform['und'][0]['value'];
-          }
-
           $proposal_start_date = '';
-          if ($current_proposal->type == 'proposal_development_class') {
-            $proposal_start_date = format_date(strtotime($current_proposal->field_pdc_start_date['und'][0]['value']), 'custom', 'j/m/Y');
-          }
-          elseif ($current_proposal->type == 'proposal_research_class') {
-            $proposal_start_date = format_date(strtotime($current_proposal->field_prc_start_date['und'][0]['value']), 'custom', 'j/m/Y');
+          switch($current_proposal->type) {
+          
+            case 'proposal_development_class':
+              $proposal_platform = $current_proposal->field_pdc_proposed_hpc_platform['und'][0]['value'];
+              $proposal_start_date = format_date(strtotime($current_proposal->field_pdc_start_date['und'][0]['value']), 'custom', 'j/m/Y');
+              break;
+
+            case 'proposal_research_class':
+              $proposal_platform = $current_proposal->field_prc_proposed_hpc_platform['und'][0]['value'];
+              $proposal_start_date = format_date(strtotime($current_proposal->field_prc_start_date['und'][0]['value']), 'custom', 'j/m/Y');
+              break;
+
+            case 'proposal_postgrad_class':
+              $proposal_platform = $current_proposal->field_pgc_proposed_hpc_platform['und'][0]['value'];
+              $proposal_start_date = format_date(strtotime($current_proposal->field_pgc_start_date['und'][0]['value']), 'custom', 'j/m/Y');
+              break;
+        
           }
 
           $proposal_variables = array(
@@ -96,7 +101,9 @@ function nesi_user_dashboard_callback() {
             'proposal_platform' => $proposal_platform,
             'proposal_id' => $current_proposal->nid,
             'proposal_start_date' => $proposal_start_date,
-            'proposal_cpu_hours' => $current_proposal->field_prc_cpu_core_hours['und'][0]['value'],
+            // This isn't being used at the moment
+            // Var also commented out in the dashboard
+            //'proposal_cpu_hours' => $current_proposal->field_prc_cpu_core_hours['und'][0]['value'],
           );
 
           $output .= theme('nesi_user_dashboard_proposals', $proposal_variables);

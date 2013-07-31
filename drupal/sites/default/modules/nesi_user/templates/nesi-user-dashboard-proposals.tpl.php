@@ -6,8 +6,8 @@ switch ( $proposal_type ) {
   case 'proposal_development_class' :
     $type = 'Development Proposal';
     break;
-  case 'proposal_collaborator_class' :
-    $type = 'Collaborator Proposal';
+  case 'proposal_postgrad_class' :
+    $type = 'Postgraduate Proposal';
     break;
 }
 ?>
@@ -31,7 +31,7 @@ switch ( $proposal_type ) {
       </div>
       -->
       <div>
-        <?php print $proposal_cpu_hours; ?>
+        <?php //print $proposal_cpu_hours; ?>
       </div>
     </div>
   </article>
