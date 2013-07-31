@@ -121,6 +121,7 @@ Feature: Submit_a_proposal
       | text       | Estimated average number of CPUs per run                         | 30                      |
       | text       | Estimated average length of each run (in wall-clock hours)       | 2hrs                    |
       | text       | Please provide any additional information on usage requirements  | Will need 45 GB of RAM  |
+      | check      | #edit-field-prc-proposed-hpc-platform-power6                     | Check box               |
       | text       | CPU core hours required using the Intel cluster                  | 5                       |
       | text       | CPU core hours required using P575/POWER6                        | 5                       |
       | text       | CPU core hours required using P755/POWER7                        | 5                       |
@@ -171,6 +172,7 @@ Feature: Submit_a_proposal
       | text       | Estimated average number of CPUs per run                         | 30                      |
       | text       | Estimated average length of each run (in wall-clock hours)       | 2hrs                    |
       | text       | Please provide any additional information on usage requirements  | Will need 45 GB of RAM  |
+      | check      | #edit-field-pgc-proposed-hpc-platform-power6                     | Check box               |
       | text       | CPU core hours required using the Intel cluster                  | 5                       |
       | text       | CPU core hours required using P575/POWER6                        | 5                       |
       | text       | CPU core hours required using P755/POWER7                        | 5                       |
@@ -182,7 +184,7 @@ Feature: Submit_a_proposal
     And I fill in the following <formdetails>
       | field_type | form_id                                          | value                                   |
       | text       | Explanatory notes for "Expert support" section   | Will need to work with a clair voyent   |
-      | text       | Further Information                              | None                                    |
+      | text       | Further information                              | None                                    |
     When I select the radio button "Yes"
     Then I press "Continue"
     And I should see "Access Policy"

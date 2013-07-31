@@ -1,16 +1,18 @@
 #!/bin/bash
 ssh soscar 'cd /var/aegir/nesi-platforms/nesi-webportal-sam/drupal/sites/nesidev-sam.webscope.net.nz; drush sql-dump > nesi-behat.mysql'
 
-ssh soscar 'cd /var/aegir/nesi-platforms/nesi-webportal-sam/drupal/sites/nesidev-sam.webscope.net.nz; drush user-create behat-researcher --mail="willyWonka@chocolatefactory.com" --password="password"'
+#ssh soscar 'cd /var/aegir/nesi-platforms/nesi-webportal-sam/drupal/sites/nesidev-sam.webscope.net.nz; drush user-create behat-researcher --mail="willyWonka@chocolatefactory.com" --password="password"'
 
-ssh soscar 'cd /var/aegir/nesi-platforms/nesi-webportal-sam/drupal/sites/nesidev-sam.webscope.net.nz; drush user-add-role "researcher" behat-researcher'
+#ssh soscar 'cd /var/aegir/nesi-platforms/nesi-webportal-sam/drupal/sites/nesidev-sam.webscope.net.nz; drush user-add-role "researcher" behat-researcher'
 
 
 # Run BDD tests
 #bin/behat
 
 # If you only what to run tagged tests
-bin/behat --tags @account-setup
+#bin/behat --tags @researcher
+#bin/behat --tags @development
+bin/behat --tags @postgrad
 #bin/behat --tags @pitchmaster
 #bin/behat --tags @edit-pitchmaster
 
