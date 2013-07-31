@@ -26,6 +26,11 @@ $group_heading_map = array(
   'group_team' => 'Principal Investigator and Team',
   'group_requirements' => 'Requirements',
   'group_additional' => 'Additional Information',
+  'group_peer_reviewed' => 'Peer-Reviewed Research Grant Provider Details',
+  'group_budget' => 'Budget',
+  'group_usage' => 'NeSI HPC Usage',
+  'group_software' => 'Software storage and CPU',
+  'group_additional' => 'Additional Information',
 );
 
 switch ($node->type) {
