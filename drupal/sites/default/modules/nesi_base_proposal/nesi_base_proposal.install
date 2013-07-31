@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * Update hooks for proposal submissions.
+ */
+
+
+/**
+ * Unpublishes all published proposal submissions.
+ */
+function nesi_base_proposal_update_7100() {
+  // Get all the proposals with views.  There are few enough published proposals
+  // that we don't need to worry about paging.
+  $results = views_get_view_result('all_proposals');
+  if (!is_array($results)) {
+    throw new DrupalUpdateException('The "all_proposals" view does not exist or execution of it failed.');
+  }
+
+  // Unpublish each proposal node, counting how many get unpublished.
+  $count = 0;
+  foreach ($results as $row) {
+    $node = node_load($row->nid);
+    if ($node->status !== NODE_NOT_PUBLISHED) {
+      $node->status = NODE_NOT_PUBLISHED;
+      node_save($node);
+      $count++;
+    }
+  }
+
+  // Return the counts of published and not-published proposal nodes.
+  $total = count($results);
+  $already_unpublished = $total - $count;
+  return t('Of !total proposals, !count were unpublished and !already were already unpublished.', array('!total' => $total, '!count' => $count, '!already' => $already_unpublished));
+}
