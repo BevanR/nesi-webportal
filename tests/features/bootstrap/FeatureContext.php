@@ -99,10 +99,7 @@ class FeatureContext extends DrupalContext {
    * @Given /^I fill in "([^"]*)" with random text$/
    */
   public function iFillInWithRandomText($label) {
-    // A @Tranform would be more elegant.
-    $randomString = $this->randomString(10);
-
-    $step = "I fill in \"$label\" with \"$randomString\"";
+    $step = "I fill in \"$label\" with \"SJ8CMPkFFO\"";
     return new Then($step);
   }
 
