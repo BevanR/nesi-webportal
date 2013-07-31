@@ -32,16 +32,13 @@ function nesi_mstep_proposal_postgrad_form_part_2($form_state) {
   );
 
   $form_structure = nesi_mstep_form_structure('proposal_postgrad_class');
-  dsm($form_structure);
   $form = nesi_mstep_form_elements($form_structure ,$form, $form_state);
-  dsm($form);
 
   unset($form['group-project']);
   unset($form['group-peer-reviewed']);
   unset($form['group-budget']);
   unset($form['group-team']);
   unset($form['group-additional']);
-  //unset($form['group-software']['field-pgc-proposed-hpc-platform']);
   unset($form['group-software']['field-pgc-cpu-core-hours']);
 
   return $form;
