@@ -233,13 +233,9 @@ class FeatureContext extends DrupalContext {
 
     // Log in.
     $submit->click();
-    $this->getSession()->wait(2000);
-    // TODO this function doesn't work when using selenium
-    // Might need to stick a 'wait' in here 
-    //$user = $this->whoami();uuuu
-    //if (strtolower($user) != strtolower($username)) {
-      //throw new Exception('Could not log user in.');
-    //}
+    // Wait for the AJAX login to complete.
+    // @todo Look for an event to bind to instead.
+    $this->getSession()->wait(10000);
 
     // Successfully logged in.
     return;
