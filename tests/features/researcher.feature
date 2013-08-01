@@ -92,23 +92,22 @@ Feature: Submit a proposal
       | text       | field-prc-start-date[date]                               | 09-05-2014                            |
       | text       | Scientific Goals                                   | To understand Telekinesis             |
       | text       | Benefits from HPC                                  | Data crunching                        |
-      | text       | Project Deliverables                               | A magic pendant to allow telekinesis  |
+      | text       | Project deliverables                               | A magic pendant to allow telekinesis  |
       | text       | Name of peer-reviewed research grant provider      | Miss Honey                            |
       | text       | Title of research grant                            | Miss Honey                            |
       | text       | field-prc-grant-start-date[date]                         | 09-05-2014                            |
       | text       | Duration of the grant                              | As long as it takes                   |
       | text       | Amount                                             | 500 bitcoins                          |
-      | text       | Background                                         | This is the background                |
       | text       | Principal's name                                   | Miss Trunchbull                       |
       | text       | Principal's email                                  | tbull@grimalkin.school                |
       | text       | Principal's phone number                           | 021 555 555                           |
-      | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    | 
+      | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    |
+      | text       | Project team's HPC experience                      | Ohh yes lots of expereince            |
     And I press "Next: Technical Details"
     Then I should see "Part 2 of 3 - Technical details"
     And I fill in the following <formdetails>
       | field_type | form_id                                                          | value                   |
-      | text       | Estimated Run Length                                             | 5000                    |
-      | text       | edit-field-prc-estimated-simulations                             | 5000                    |
+      | text       | Estimated number of runs/simulations                             | 5000                    |
       | text       | Estimated average number of CPUs per run                         | 30                      |
       | text       | Estimated average length of each run (in wall-clock hours)       | 2hrs                    |
       | text       | Please provide any additional information on usage requirements  | Will need 45 GB of RAM  |
@@ -118,13 +117,13 @@ Feature: Submit a proposal
       | text       | CPU core hours required using BlueGene/P                         | 5                       |
       | text       | Storage Requirements                                             | 2 TB                    |
       | text       | Software Requirements                                            | Python                  |
-      | text       | Data Transfer                                                    | None                    |
+      | text       | Data transfer                                                    | None                    |
     Then I press "Next: Support Information"
     And I fill in the following <formdetails>
       | field_type | form_id                                          | value                                   |
       | text       | Explanatory notes for "Expert support" section   | Will need to work with a clair voyent   |
       | check      | #edit-field-prc-expert-support-yes               | Check box                               |
-      | text       | Further Information                              | None                                    |
+      | text       | Further information                              | None                                    |
     Then I press "Submit Proposal"
     And I should see "Access Policy"
     Then I press "I accept"
@@ -141,7 +140,7 @@ Feature: Submit a proposal
       | field_type | form_id                                            | value                                 |
       | text       | Proposal Title                                     | Matilda                               |
       ## Not able to use Field name due to date popup on this form element
-      | text       | field-pgc-start-date[date]                               | 09-05-2014                            |
+      | text       | field-pgc-start-date[date]                         | 09-05-2014                            |
       | text       | Scientific Goals                                   | To understand Telekinesis             |
       | text       | Benefits from HPC                                  | Data crunching                        |
       | text       | Project Deliverables                               | A magic pendant to allow telekinesis  |
@@ -149,17 +148,16 @@ Feature: Submit a proposal
       | text       | Supervisor name                                    | Bert                                  |
       | text       | Supervisor phone number                            | 021 555 555                           |
       | text       | Amount                                             | 500 bitcoins                          |
-      | text       | Background                                         | This is the background                |
       | text       | Principal's name                                   | Miss Trunchbull                       |
       | text       | Principal's email                                  | tbull@grimalkin.school                |
       | text       | Principal's phone number                           | 021 555 555                           |
-      | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    | 
+      | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    |
+      | text       | Project team's HPC experience                      | Honey                                 |
     And I press "Next: Technical Details"
     Then I should see "Part 2 of 3 - Technical details"
     And I fill in the following <formdetails>
       | field_type | form_id                                                          | value                   |
-      | text       | Estimated Run Length                                             | 5000                    |
-      | text       | edit-field-pgc-estimated-simulations                             | 5000                    |
+      | text       | Estimated number of runs/simulations                             | 5000                    |
       | text       | Estimated average number of CPUs per run                         | 30                      |
       | text       | Estimated average length of each run (in wall-clock hours)       | 2hrs                    |
       | text       | Please provide any additional information on usage requirements  | Will need 45 GB of RAM  |
@@ -174,7 +172,7 @@ Feature: Submit a proposal
     And I fill in the following <formdetails>
       | field_type | form_id                                          | value                                   |
       | text       | Explanatory notes for "Expert support" section   | Will need to work with a clair voyent   |
-      | text       | Further Information                              | None                                    |
+      | text       | Further information                              | None                                    |
     When I select the radio button "Yes"
     Then I press "Submit Proposal"
     And I should see "Access Policy"
