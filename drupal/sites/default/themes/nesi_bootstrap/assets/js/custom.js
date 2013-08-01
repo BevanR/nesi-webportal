@@ -5,26 +5,6 @@
   $(document).ready(function() {
     var hideLabel, initOverLabels, onFieldBlur, onFieldFocus, onLabelClick;
 
-    /* Form labels. */
-    $('#nesi-mstep-proposal-step-1 .form-text').each(function() {
-      var id, label;
-      $('#nesi-mstep-proposal-step-1 .form-type-textfield label').hide();
-      $('.form-required').remove();
-      id = $(this).attr('id');
-      label = $("label[for=" + id + "]").text();
-      $(this).val(label);
-      $(this).focus(function() {
-        if ($(this).val() === label) {
-          $(this).val('');
-        }
-      });
-      $(this).blur(function() {
-        if ($(this).val() === '') {
-          $(this).val(label);
-        }
-      });
-    });
-
     /* Fancy field labels for login form. */
     initOverLabels = function() {
       var i, labels, id, field;
