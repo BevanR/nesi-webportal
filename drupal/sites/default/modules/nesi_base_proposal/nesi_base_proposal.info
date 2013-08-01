@@ -7,6 +7,7 @@ dependencies[] = field_sql_storage
 dependencies[] = node
 dependencies[] = strongarm
 dependencies[] = text
+features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
 features[field][] = node-base_proposal-bp_container
 features[node][] = base_proposal
