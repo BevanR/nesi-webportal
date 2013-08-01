@@ -77,16 +77,6 @@ Feature: Submit a proposal
     And I go to "/user/dashboard"
     When I click "Development Proposal -"
     Then I should see "James Henry Trotter"
-
-  @nojs
-  Scenario: Login and as researcher and view all submitted proposals
-    Given I am logged in as "researcher"
-    And I go to "/user/dashboard"
-    Then I should see "Proposals and Projects"
-    And I should see the following <texts>
-      | texts                      |
-      | Matilda                    |
-      | Chocolate Factory          |
   
   @javascript
   Scenario: Login and as researcher and are able complete Development Proposal 
@@ -191,3 +181,13 @@ Feature: Submit a proposal
     Then I press "I accept"
     And I should see "Thank you"
 
+  @nojs
+  Scenario: Login and as researcher and view all submitted proposals
+    Given I am logged in as "researcher"
+    And I go to "/user/dashboard"
+    Then I should see "Proposals and Projects"
+    And I should see the following <texts>
+      | texts                      |
+      | The Twits                  |
+      | Chocolate Factory          |
+      | Matilda                    |
