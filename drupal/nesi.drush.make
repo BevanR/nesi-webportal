@@ -65,7 +65,7 @@ libraries[bootstrap][destination] = themes/bootstrap
 ; Download the zip file so that we can use drush make's subtree feature.
 libraries[bootstrap][download][type] = file
 ; The version number is repeated in subtree.
-libraries[bootstrap][download][url] = https://github.com/twitter/bootstrap/archive/v2.2.2.zip
+libraries[bootstrap][download][url] = https://github.com/twbs/bootstrap/archive/v2.2.2.zip
 ; We need the docs/assets/ directory.
 libraries[bootstrap][download][subtree] = bootstrap-2.2.2/docs/assets
 
