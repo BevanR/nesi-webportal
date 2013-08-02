@@ -348,8 +348,7 @@ class FeatureContext extends DrupalContext {
         throw new Exception('Current URL could not be identified.');
       }
       else {
-        $url = $current_url->__toString();
-        if (substr_count($url, "http://") > 0) {
+        if (substr_count($current_url, "http://") > 0) {
           // Fail test
           throw new Exception('Current URI is not secure. ( '.$url.' )');
         }
