@@ -24,7 +24,8 @@ function nesi_user_dashboard_callback() {
   $view = views_get_view('researcher_my_proposals');
   $view->execute();
   $response = $view->result; 
-  
+
+  // @todo Views can do all of this much more elegantly by configuring it to render a table.
   $in_progress = FALSE;
   if (!empty($response)) {
     $output .= '<h2>Submitted Proposals</h2><div class="stats-labels"><!--<div class="dashboard-label">ID</div>--><div class="dashboard-label">Start</div><!--<div class="dashboard-label">End</div>--><div class="dashboard-label">CPU core hours</div></div>';

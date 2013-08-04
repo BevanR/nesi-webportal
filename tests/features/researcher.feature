@@ -1,4 +1,4 @@
-Feature: Submit_a_proposal
+Feature: Submit a proposal
   In order to get resource allocation
   As a researcher
   I need to submit proposals
@@ -12,7 +12,7 @@ Feature: Submit_a_proposal
       | links                                   |
       | NeSI Guidelines for Researchers 1.2.pdf |
 
-  @javascript @researcher
+  @javascript
   Scenario: Login and as researcher and are able complete Development Proposal 
     Given I am logged in through a browser as "researcher"
     And I go to "/apply"
@@ -36,12 +36,12 @@ Feature: Submit_a_proposal
       | text       | Storage Requirements          | 2 TB                                                    |
       | check      | #edit-field-pdc-expert-support-scaling-performance | Check box                                |
       | text       | Further Information           | None                                                    | 
-    Then I press "Continue"
+    Then I press "Submit Proposal"
     And I should see "Access Policy"
-    Then I press "I Accept"
+    Then I press "I accept"
     And I should see "Thank you"
 
-  @javascript 
+  @javascript
   Scenario: Login and as researcher and create a second Development Proposal 
     Given I am logged in through a browser as "researcher"
     And I go to "/apply"
@@ -65,9 +65,9 @@ Feature: Submit_a_proposal
       | text       | Storage Requirements          | 2 TB                                                    |
       | check      | #edit-field-pdc-expert-support-scaling-performance | Check box                                |
       | text       | Further Information           | None                                                    | 
-    Then I press "Continue"
+    Then I press "Submit Proposal"
     And I should see "Access Policy"
-    Then I press "I Accept"
+    Then I press "I accept"
     And I should see "Thank you"
 
 
@@ -77,18 +77,8 @@ Feature: Submit_a_proposal
     And I go to "/user/dashboard"
     When I click "Development Proposal -"
     Then I should see "James Henry Trotter"
-
-  @nojs
-  Scenario: Login and as researcher and view all submitted proposals
-    Given I am logged in as "researcher"
-    And I go to "/user/dashboard"
-    Then I should see "Proposals and Projects"
-    And I should see the following <texts>
-      | texts                      |
-      | Matilda                    |
-      | Chocolate Factory          |
   
-  @javascript @development
+  @javascript
   Scenario: Login and as researcher and are able complete Development Proposal 
     Given I am logged in through a browser as "researcher"
     And I go to "/apply"
@@ -111,17 +101,16 @@ Feature: Submit_a_proposal
       | text       | Principal's name                                   | Miss Trunchbull                       |
       | text       | Principal's email                                  | tbull@grimalkin.school                |
       | text       | Principal's phone number                           | 021 555 555                           |
-      | text       | Project team's HPC experience                      | Wokring in a dairy                    |
-      | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    | 
+      | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    |
+      | text       | Project team's HPC experience                      | Ohh yes lots of expereince            |
     And I press "Next: Technical Details"
     Then I should see "Part 2 of 3 - Technical details"
     And I fill in the following <formdetails>
       | field_type | form_id                                                          | value                   |
-      | text       | edit-field-prc-estimated-simulations                             | 5000                    |
+      | text       | Estimated number of runs/simulations                             | 5000                    |
       | text       | Estimated average number of CPUs per run                         | 30                      |
       | text       | Estimated average length of each run (in wall-clock hours)       | 2hrs                    |
       | text       | Please provide any additional information on usage requirements  | Will need 45 GB of RAM  |
-      | check      | #edit-field-prc-proposed-hpc-platform-power6                     | Check box               |
       | text       | CPU core hours required using the Intel cluster                  | 5                       |
       | text       | CPU core hours required using P575/POWER6                        | 5                       |
       | text       | CPU core hours required using P755/POWER7                        | 5                       |
@@ -135,12 +124,12 @@ Feature: Submit_a_proposal
       | text       | Explanatory notes for "Expert support" section   | Will need to work with a clair voyent   |
       | check      | #edit-field-prc-expert-support-yes               | Check box                               |
       | text       | Further information                              | None                                    |
-    Then I press "Continue"
+    Then I press "Submit Proposal"
     And I should see "Access Policy"
-    Then I press "I Accept"
+    Then I press "I accept"
     And I should see "Thank you"
 
-  @javascript @postgrad
+  @javascript
   Scenario: Login and as researcher and are able complete Postgraduate Class 
     Given I am logged in through a browser as "researcher"
     And I go to "/apply"
@@ -151,7 +140,7 @@ Feature: Submit_a_proposal
       | field_type | form_id                                            | value                                 |
       | text       | Proposal Title                                     | Matilda                               |
       ## Not able to use Field name due to date popup on this form element
-      | text       | field-pgc-start-date[date]                               | 09-05-2014                            |
+      | text       | field-pgc-start-date[date]                         | 09-05-2014                            |
       | text       | Scientific Goals                                   | To understand Telekinesis             |
       | text       | Benefits from HPC                                  | Data crunching                        |
       | text       | Project Deliverables                               | A magic pendant to allow telekinesis  |
@@ -162,17 +151,16 @@ Feature: Submit_a_proposal
       | text       | Principal's name                                   | Miss Trunchbull                       |
       | text       | Principal's email                                  | tbull@grimalkin.school                |
       | text       | Principal's phone number                           | 021 555 555                           |
-      | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    | 
-      | text       | Project team's HPC experience                      | Wokring in a dairy                    |
+      | text       | Project team members requiring access to the NeSI systems  | Miss Honey                    |
+      | text       | Project team's HPC experience                      | Honey                                 |
     And I press "Next: Technical Details"
     Then I should see "Part 2 of 3 - Technical details"
     And I fill in the following <formdetails>
       | field_type | form_id                                                          | value                   |
-      | text       | edit-field-pgc-estimated-simulations                             | 5000                    |
+      | text       | Estimated number of runs/simulations                             | 5000                    |
       | text       | Estimated average number of CPUs per run                         | 30                      |
       | text       | Estimated average length of each run (in wall-clock hours)       | 2hrs                    |
       | text       | Please provide any additional information on usage requirements  | Will need 45 GB of RAM  |
-      | check      | #edit-field-pgc-proposed-hpc-platform-power6                     | Check box               |
       | text       | CPU core hours required using the Intel cluster                  | 5                       |
       | text       | CPU core hours required using P575/POWER6                        | 5                       |
       | text       | CPU core hours required using P755/POWER7                        | 5                       |
@@ -186,8 +174,18 @@ Feature: Submit_a_proposal
       | text       | Explanatory notes for "Expert support" section   | Will need to work with a clair voyent   |
       | text       | Further information                              | None                                    |
     When I select the radio button "Yes"
-    Then I press "Continue"
+    Then I press "Submit Proposal"
     And I should see "Access Policy"
-    Then I press "I Accept"
+    Then I press "I accept"
     And I should see "Thank you"
 
+  @nojs
+  Scenario: Login and as researcher and view all submitted proposals
+    Given I am logged in as "researcher"
+    And I go to "/user/dashboard"
+    Then I should see "Proposals and Projects"
+    And I should see the following <texts>
+      | texts                      |
+      | The Twits                  |
+      | Chocolate Factory          |
+      | Matilda                    |

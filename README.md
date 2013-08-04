@@ -131,11 +131,11 @@ Automated tests are implemented using the Behat framework.
 
 * php 5.3.2+
 * php5-curl
-* [Selenium](https://code.google.com/p/selenium/downloads/list)?
-* Java runtime
 * [Composer](http://getcomposer.org/doc/00-intro.md)
 * `cd tests/`
-* Composer manages further dependencies: `composer install`
+* Composer manages further dependencies: `composer install` (This one takes a while)
+* Java runtime
+* [Selenium standalone server](https://code.google.com/p/selenium/downloads/list) into `tests/bin/`
 
 ### Configure
 
@@ -149,6 +149,9 @@ From the repository root;
 
 From the repository root;
 
+* `cd tests/`
+* `java -jar bin/selenium-server-standalone-2.33.0.jar`
+* And in a new bash session/tab:
 * `cd tests/`
 * `bin/behat`
 
