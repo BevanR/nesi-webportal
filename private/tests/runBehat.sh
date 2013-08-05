@@ -1,6 +1,10 @@
 #!/bin/bash
 drush sql-dump > nesi-behat.mysql
 
+# Create Drupal user with researcher role for testing
+drush user-create behat-researcher --mail="willyWonka@chocolatefactory.com" --password="password"
+drush user-add-role "researcher" behat-researcher
+
 # Run BDD tests
 bin/behat
 
