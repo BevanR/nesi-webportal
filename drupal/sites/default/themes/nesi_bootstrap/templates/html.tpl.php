@@ -32,49 +32,7 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-
-
-	<div class="container">
-		<div class="row-fluid collaborators">
-			<div>
-				<h3 class="span3">Our collaborators</h3>
-				<div class="span9">
-					<ul class="unstyled inline-list">
-						<li>
-							<a href="http://www.auckland.ac.nz/uoa/">
-								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-a.jpg" alt="logo">
-							</a>
-						</li>
-						<li>
-							<a href="http://www.canterbury.ac.nz/">
-								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-c.jpg" alt="logo">
-							</a>
-						</li>
-						<li>
-							<a href="http://www.niwa.co.nz/">
-								<img src="/<?php print $directory; ?>/assets/img/logo-niwa.jpg" alt="logo">
-							</a>
-						</li>
-						<li>
-							<a href="http://www.msi.govt.nz/">
-								<img src="/<?php print $directory; ?>/assets/img/logo-ministry-of-si.jpg" alt="logo">
-							</a>
-						</li>
-						<li>
-							<a href="http://www.otago.ac.nz/">
-								<img src="/<?php print $directory; ?>/assets/img/logo-manaaki-whenua.jpg" alt="logo">
-							</a>
-						</li>
-						<li>
-							<a href="http://www.landcareresearch.co.nz/">
-								<img src="/<?php print $directory; ?>/assets/img/logo-u-of-o.jpg" alt="logo">
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<footer>
     <div class="legal">
       <div class="container">&copy;<?php print date('Y'); ?> New Zealand eScience Infrastructure. All rights reserved</div>

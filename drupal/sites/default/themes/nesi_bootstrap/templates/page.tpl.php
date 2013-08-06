@@ -51,5 +51,3 @@
 
   <?php print render($page['directory']); ?>
 
-  <?php print render($page['collaborators']); ?>
-

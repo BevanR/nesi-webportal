@@ -12,24 +12,30 @@ function nesi_ft_homepage_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
-  $export['block-homepage_intro_items'] = array(
+  $export['menu-secondary-menu'] = array(
     'cache' => -1,
     'custom' => '0',
-    'machine_name' => 'homepage_intro_items',
-    'module' => 'block',
+    'delta' => 'secondary-menu',
+    'module' => 'menu',
     'node_types' => array(),
-    'pages' => '<front>',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => '0',
+      ),
       'nesi_bootstrap' => array(
-        'region' => 'subheader',
-        'status' => '1',
+        'region' => '',
+        'status' => 0,
         'theme' => 'nesi_bootstrap',
-        'weight' => '-23',
+        'weight' => '-21',
       ),
     ),
     'title' => '',
-    'visibility' => '1',
+    'visibility' => '0',
   );
 
   $export['nesi_stats-front_stats'] = array(
@@ -41,6 +47,12 @@ function nesi_ft_homepage_default_fe_block_settings() {
     'pages' => '<front>',
     'roles' => array(),
     'themes' => array(
+      'garland' => array(
+        'region' => 'sidebar_first',
+        'status' => '1',
+        'theme' => 'garland',
+        'weight' => '0',
+      ),
       'nesi_bootstrap' => array(
         'region' => '',
         'status' => 0,
