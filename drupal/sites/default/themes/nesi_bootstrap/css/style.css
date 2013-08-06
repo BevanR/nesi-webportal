@@ -22,11 +22,6 @@ h2.block-title {
   font-size: 14px;
 }
 
-/* Overrides <p> margins in <blockquote>s from bootstrap.css. */
-blockquote p {
-  margin-bottom: 8px;
-}
-
 /* Scrollable frames, such as for policies, T&Cs and other long text documents
    where the "I accept" button is more important than the content itself. */
 .scrollable-frame {
@@ -235,15 +230,19 @@ a:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
 
-#pnav li.menu-696 {
+#pnav li.menu-696,
+#pnav li.menu-2002 {
   border-bottom: 4px solid #d8de3f;
 }
 
-#pnav li.menu-1592 {
+#pnav li.menu-1592,
+#pnav li.menu-1873,
+#pnav li.menu-2728 {
   border-bottom: 4px solid #d14f63;
 }
 
-#pnav li.menu-832 {
+#pnav li.menu-832,
+#pnav li.menu-1874 {
   border-bottom: 4px solid #bea8ce;
 }
 
@@ -2139,4 +2138,154 @@ div.radio {
   font-size: 0.85em;
   font-style: italic;
   font-weight: lighter;
+}
+
+/* landing page */
+.node-type-landing-page header h1 {
+  text-align: center;
+  width: 100%;
+}
+.node-type-landing-page .field-name-body {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0 2em;
+  text-align: center;
+}
+.node-type-landing-page .field-name-body p {
+  color: #4b5b68;
+  font-size: 1.7em;
+}
+.page-node-edit.node-type-landing-page .field-name-body {
+  text-align: left;
+}
+.node-type-landing-page [role="main"] {
+  max-width: 100%;
+}
+.node-type-landing-page .field-collection-view {
+  border: none;
+}
+.node-type-landing-page .field-collection-container {
+  border: medium none;
+  display: block;
+  margin-top: 2em;
+  padding: 0 2em;
+  text-align: center;
+}
+.node-type-landing-page .field-collection-container .field-collection-view .content {
+  background-image: url("../assets/img/background-separator-horizontal.png");
+  background-position: 75% bottom;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+  display: inline-block;
+  padding-bottom: 3em;
+}
+.node-type-landing-page .field-collection-container .field-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+}
+.node-type-landing-page .field-collection-container .field-item .field-item {
+  text-align: left;
+  width: 100%; 
+}
+.node-type-landing-page .field-collection-container .field-name-field-section-image {
+  float: left;
+  width: 25%;
+}
+.node-type-landing-page .field-collection-container .field-name-field-section-image img {
+
+}
+.node-type-landing-page .field-collection-container .field-name-field-section-title {
+  float: right;
+  margin-right: 6%;
+  width: 60%;
+}
+.node-type-landing-page .field-collection-container .field-name-field-section-title h2.field-item {
+  color: #4B5B68;
+  font-size: 1.7em;
+  font-weight: normal;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+}
+.node-type-landing-page .field-collection-container .field-name-field-section-description {
+  float: right;
+  margin-right: 6%;
+  width: 60%;
+}
+.node-type-landing-page .field-collection-container .field-name-field-section-related-links {
+  float: right;
+  margin-right: 6%;
+  width: 60%;
+}
+.node-type-landing-page .field-collection-container .field-name-field-section-related-links .field-item {
+  float: left;
+  background-image: url("../assets/img/background-arrow-list-marker.png");
+  background-position: left 5px;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+  padding-left: 15px;
+}
+
+/* community */
+body.community article.node-page {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.community-content-list .views-row {
+  margin-bottom: 3em;
+  padding-left: 20px;
+}
+.community-content-list .views-row.event {
+  border-left: 10px solid #4a2372;
+}
+.community-content-list .views-row.story {
+  border-left: 10px solid green;
+}
+.community-content-list .views-row.blog {
+  border-left: 10px solid gray;
+}
+.community-content-list .views-field-title h2 {
+  font-weight: normal;
+  margin: 0;
+}
+.community-content-list .views-field-body {
+  margin-top: 0.5em;
+}
+.block-block {
+  float: left;
+}
+.block-block .block-title {
+  font-size: 1.1em;
+}
+.block ul.community-links {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.block ul.community-links li {
+  clear: left;
+  padding-left: 0;
+}
+.block ul.community-links li a {
+  color: #404040;
+  float: left;
+  font-size: 1em;
+  margin-bottom: 5px;
+  padding: 5px 20px 5px 10px;
+  text-decoration: none;
+}
+.block ul.community-links li a:hover {
+  color: #404040;
+  background-color: #eeeeee;
+  text-decoration: none;
+}
+.block ul.community-links li.event a {
+  border-left: 5px solid #4a2372;
+}
+.block ul.community-links li.story a {
+  border-left: 5px solid green;
+}
+.block ul.community-links li.blog a {
+  border-left: 5px solid gray;
 }

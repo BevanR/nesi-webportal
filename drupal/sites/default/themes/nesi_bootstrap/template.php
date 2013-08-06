@@ -112,7 +112,7 @@ function nesi_bootstrap_menu_link__main_menu(array $variables) {
 
 function nesi_bootstrap_preprocess_page(&$vars, $hook) {
   // Add Typekit
-  drupal_add_js('https://use.typekit.net/fmw6ovn.js', 'external');
+  drupal_add_js('http://use.typekit.net/fmw6ovn.js', 'external');
   drupal_add_js('try{Typekit.load();}catch(e){}',
     array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
   );
@@ -127,6 +127,13 @@ function nesi_bootstrap_preprocess_html(&$variables) {
   if ( arg(0) == 'user' && is_numeric(arg(1)) && !arg(3) ) {
     $variables['classes_array'][] = 'page-user-profile';
   }
+  
+  // Add classes to body tag dynamically based on page path
+  $path = drupal_get_path_alias($_GET['q']);
+  $aliases = explode('/', $path);
+  foreach($aliases as $alias) {
+    $variables['classes_array'][] = drupal_clean_css_identifier($alias);
+  } 
 }
 
 /**

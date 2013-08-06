@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the NeSI Areas of Research feature.
- */
-
-include_once 'nesi_areas_of_research.features.inc';
