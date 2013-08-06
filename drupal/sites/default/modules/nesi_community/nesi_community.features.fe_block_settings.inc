@@ -47,5 +47,31 @@ news-events/*',
     'visibility' => '1',
   );
 
+  $export['views-community-block'] = array(
+    'cache' => -1,
+    'custom' => '0',
+    'delta' => 'community-block',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => 'community',
+    'roles' => array(),
+    'themes' => array(
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => '0',
+      ),
+      'nesi_bootstrap' => array(
+        'region' => 'content',
+        'status' => '1',
+        'theme' => 'nesi_bootstrap',
+        'weight' => '0',
+      ),
+    ),
+    'title' => '',
+    'visibility' => '0',
+  );
+
   return $export;
 }
