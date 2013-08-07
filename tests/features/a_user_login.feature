@@ -28,7 +28,7 @@ Feature: User login
 
   @account-setup @nojs
   Scenario: Login and as researcher and create user profile
-    Given I am logged in as "researcher"
+    Given I am logged in as existing "researcher"
     Then I should see "behat-researcher"
     Given I fill in the following <formdetails>
       | field_type | form_id              | value             |
@@ -47,7 +47,7 @@ Feature: User login
 
   @nojs
   Scenario: Login and as researcher and view user profile
-    Given I am logged in as "researcher"
+    Given I am logged in as existing "researcher"
     And I go to "/user"
     Then I should see "Profile"
     And I should see the following <links>

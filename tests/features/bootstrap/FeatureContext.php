@@ -253,9 +253,9 @@ class FeatureContext extends DrupalContext {
   /**
    * Authenticates a user with password from configuration.                                                ]
    *
-   * @Given /^I am logged in as "([^"]*)"$/
+   * @Given /^I am logged in as existing "([^"]*)"$/
    */
-  public function iAmLoggedInAs($username) {
+  public function iAmLoggedInAsExisting($username) {
     $details = $this->fetchUserDetails('drupal', $username);
     $username = $details['username'];
     $password = $details['password'];

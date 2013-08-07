@@ -5,7 +5,7 @@ Feature: Submit a proposal
   
   @access-policy @nojs
   Scenario: Login and as researcher and download access policy
-    Given I am logged in as "researcher"
+    Given I am logged in as existing "researcher"
     And I go to "/access-policy"
     Then I should see "Access Policy"
     And I should see the following <links>
@@ -73,7 +73,7 @@ Feature: Submit a proposal
 
   @proposal @nojs
   Scenario: Login and as researcher and a submitted proposal
-    Given I am logged in as "researcher"
+    Given I am logged in as existing "researcher"
     And I go to "/user/dashboard"
     When I click "Development Proposal -"
     Then I should see "James Henry Trotter"
@@ -181,7 +181,7 @@ Feature: Submit a proposal
 
   @nojs
   Scenario: Login and as researcher and view all submitted proposals
-    Given I am logged in as "researcher"
+    Given I am logged in as existing "researcher"
     And I go to "/user/dashboard"
     Then I should see "Proposals and Projects"
     And I should see the following <texts>
