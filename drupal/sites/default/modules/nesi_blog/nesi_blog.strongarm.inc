@@ -150,7 +150,7 @@ function nesi_blog_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_blog_pattern';
-  $strongarm->value = 'post/[node:field_blog_topics]/[node:created:custom:Y]/[node:created:custom:m]/[node:title]';
+  $strongarm->value = 'blogs/[node:field_blog_topics]/[node:created:custom:Y]/[node:created:custom:m]/[node:title]';
   $export['pathauto_node_blog_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

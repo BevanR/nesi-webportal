@@ -30,12 +30,6 @@ news-events
 news-events/*',
     'roles' => array(),
     'themes' => array(
-      'garland' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'garland',
-        'weight' => '0',
-      ),
       'nesi_bootstrap' => array(
         'region' => 'sidebar_second',
         'status' => '1',
@@ -56,12 +50,6 @@ news-events/*',
     'pages' => 'community',
     'roles' => array(),
     'themes' => array(
-      'garland' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'garland',
-        'weight' => '0',
-      ),
       'nesi_bootstrap' => array(
         'region' => 'content',
         'status' => '1',
@@ -69,8 +57,8 @@ news-events/*',
         'weight' => '0',
       ),
     ),
-    'title' => '',
-    'visibility' => '0',
+    'title' => '<none>',
+    'visibility' => '1',
   );
 
   return $export;

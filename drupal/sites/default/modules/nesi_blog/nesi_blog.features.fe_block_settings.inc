@@ -22,12 +22,6 @@ function nesi_blog_default_fe_block_settings() {
 blogs/*',
     'roles' => array(),
     'themes' => array(
-      'garland' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'garland',
-        'weight' => '0',
-      ),
       'nesi_bootstrap' => array(
         'region' => 'sidebar_second',
         'status' => '1',
@@ -49,12 +43,6 @@ blogs/*',
 blogs/*',
     'roles' => array(),
     'themes' => array(
-      'garland' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'garland',
-        'weight' => '0',
-      ),
       'nesi_bootstrap' => array(
         'region' => 'sidebar_second',
         'status' => '1',
@@ -82,12 +70,6 @@ events
 events/*',
     'roles' => array(),
     'themes' => array(
-      'garland' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'garland',
-        'weight' => '0',
-      ),
       'nesi_bootstrap' => array(
         'region' => 'sidebar_second',
         'status' => '1',

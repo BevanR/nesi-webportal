@@ -21,17 +21,11 @@ function nesi_ft_homepage_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'garland' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'garland',
-        'weight' => '0',
-      ),
       'nesi_bootstrap' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'directory',
+        'status' => '1',
         'theme' => 'nesi_bootstrap',
-        'weight' => '-21',
+        'weight' => '-30',
       ),
     ),
     'title' => '',
@@ -47,12 +41,6 @@ function nesi_ft_homepage_default_fe_block_settings() {
     'pages' => '<front>',
     'roles' => array(),
     'themes' => array(
-      'garland' => array(
-        'region' => 'sidebar_first',
-        'status' => '1',
-        'theme' => 'garland',
-        'weight' => '0',
-      ),
       'nesi_bootstrap' => array(
         'region' => '',
         'status' => 0,

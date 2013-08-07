@@ -22,7 +22,7 @@ function nesi_blog_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Blog';
+  $handler->display->display_options['title'] = 'Blogs';
   $handler->display->display_options['css_class'] = 'blog-page';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -133,8 +133,8 @@ function nesi_blog_views_default_views() {
     'blog' => 'blog',
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  /* Display: Blogs */
+  $handler = $view->new_display('page', 'Blogs', 'page');
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
