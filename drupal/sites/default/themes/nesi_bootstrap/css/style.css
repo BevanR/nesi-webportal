@@ -230,6 +230,9 @@ a:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
 
+#pnav li {
+  border-bottom: 4px solid #666666;
+}
 
 #pnav li.first {
   border-bottom: 4px solid #d8de3f;
@@ -247,12 +250,14 @@ a:hover {
   border-bottom: 4px solid #4b5b68;
 }
 
+/*
 #pnav li.menu-1685:hover,
 #pnav li.menu-1732:hover {
   background: linear-gradient(to bottom, #fcfdfe, #dedddd);
   background: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
+*/
 
 .legal {
   background: #4b5b68;
