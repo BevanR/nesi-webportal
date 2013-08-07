@@ -230,24 +230,20 @@ a:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
 
-#pnav li.menu-696,
-#pnav li.menu-2002 {
+
+#pnav li.first {
   border-bottom: 4px solid #d8de3f;
 }
 
-#pnav li.menu-1592,
-#pnav li.menu-1873,
-#pnav li.menu-2728 {
+#pnav li:nth-child(2) {
   border-bottom: 4px solid #d14f63;
 }
 
-#pnav li.menu-832,
-#pnav li.menu-1874 {
+#pnav li:nth-child(3) {
   border-bottom: 4px solid #bea8ce;
 }
 
-#pnav li.menu-1685,
-#pnav li.menu-1732 {
+#pnav li.last {
   border-bottom: 4px solid #4b5b68;
 }
 
