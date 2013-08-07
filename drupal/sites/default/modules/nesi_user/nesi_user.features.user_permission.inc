@@ -256,15 +256,6 @@ function nesi_user_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer nesi rest.
-  $permissions['administer nesi rest'] = array(
-    'name' => 'administer nesi rest',
-    'roles' => array(
-      0 => 'website engineer',
-    ),
-    'module' => 'nesi_rest',
-  );
-
   // Exported permission: administer nodes.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',

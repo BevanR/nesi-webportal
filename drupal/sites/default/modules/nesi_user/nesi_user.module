@@ -328,10 +328,14 @@ function nesi_user_form_user_profile_form_alter(&$form, &$form_state) {
  * Implements hook_user_update()
  */
 function nesi_user_user_update(&$edit, $account, $category) {
+
+  /* Disabled as only used with nesi_rest module which is not deployed */
+  /*
   // Get user queue
   $queue = DrupalQueue::get('nesi_rest_user_queue');
   // Add this user update to the queue to be sent to GOLD
   $queue->createItem($account);
+  */
 }
 
 /**
