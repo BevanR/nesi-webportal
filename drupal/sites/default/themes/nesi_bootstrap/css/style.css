@@ -230,34 +230,32 @@ a:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
 
-#pnav li {
+#pnav .block-menu li {
   border-bottom: 4px solid #666666;
 }
 
-#pnav li.first {
+#pnav .block-menu li.first {
   border-bottom: 4px solid #d8de3f;
 }
 
-#pnav li:nth-child(2) {
+#pnav .block-menu li:nth-child(2) {
   border-bottom: 4px solid #d14f63;
 }
 
-#pnav li:nth-child(3) {
+#pnav .block-menu li:nth-child(3) {
   border-bottom: 4px solid #bea8ce;
 }
 
-#pnav li.last {
+#pnav .block-menu li.last {
   border-bottom: 4px solid #4b5b68;
 }
 
-/*
-#pnav li.menu-1685:hover,
-#pnav li.menu-1732:hover {
+#pnav .block-menu li.last:hover {
   background: linear-gradient(to bottom, #fcfdfe, #dedddd);
   background: -webkit-linear-gradient(top, #fcfdfe, #dedddd);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfdfe', endColorstr='#dedddd');
 }
-*/
+
 
 .legal {
   background: #4b5b68;
