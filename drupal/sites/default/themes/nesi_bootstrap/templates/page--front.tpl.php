@@ -1,7 +1,14 @@
 
   <?php print render($page['header']); ?>
 
-  <?php //print $messages; ?>
+  <?php if ( isset($messages) && !empty($messages) ) : ?>
+    <div class="container">
+      <div class="fluid">
+        <?php print $messages; ?>
+      </div>
+    </div>
+  <?php endif; ?>
+  
   <?php print render($page['subheader']); ?>
 
   <?php print render($page['directory']); ?>
